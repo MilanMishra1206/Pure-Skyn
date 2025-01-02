@@ -1,23 +1,29 @@
-import logo from './logo.svg';
-import './App.css';
+/* eslint-disable import/no-unresolved */
+import RouteStatusprovider from "./config/Context/RouteContext";
+import { AppSnackbarProvider } from "./config/Context/SnackbarContext";
+import Theme from "./config/Theme";
+import Router from "./utils/Router";
+import { SnackbarProvider } from "notistack";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
+    <div>
+      <Theme>
+        <SnackbarProvider
+          maxSnack={3}
+          anchorOrigin={{
+            vertical: "top",
+            horizontal: "right",
+          }}
+          autoHideDuration={3000}
         >
-          Learn React
-        </a>
-      </header>
+          <AppSnackbarProvider>
+            <RouteStatusprovider>
+              <Router />
+            </RouteStatusprovider>
+          </AppSnackbarProvider>
+        </SnackbarProvider>
+      </Theme>
     </div>
   );
 }

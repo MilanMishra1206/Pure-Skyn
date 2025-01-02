@@ -1,0 +1,252 @@
+import { useEffect, useRef, useState } from "react";
+import { Link, useLocation, useNavigate } from "react-router-dom";
+import Resources from "../../config/Resources";
+import { GiHamburgerMenu } from "react-icons/gi";
+import { useMediaQuery } from "@mui/material";
+import MenuForDesktop from "./MenuForDesktop";
+import MenuForMobile from "./MenuForMobile";
+import { AnimatePresence, motion } from "framer-motion";
+import { useAppSnackbar } from "../../config/Context/SnackbarContext";
+
+function CustomNavbar() {
+  const location = useLocation();
+  const navigate = useNavigate();
+  const [menuOpen, setMenuOpen] = useState(false);
+  const packageButtonRefForMobile = useRef(null);
+  const serviceButtonRefForMobile = useRef(null);
+  const [isLoggedIn, setIsLoggedIn] = useState(true);
+  const [isOpenPackageForMobile, setIsOpenPackageForMobile] = useState(false);
+  const [isOpenServicesForMobile, setIsOpenServicesForMobile] = useState(false);
+  const [isConfirmingLogout, setIsConfirmingLogout] = useState(false);
+  const [userName, setUserName] = useState("");
+  const isAdmin = false;
+
+  const isActive = (path) => location.pathname === path;
+  const toggleMenu = () => setMenuOpen(!menuOpen);
+  const isTablet = useMediaQuery("(max-width: 768px)");
+  const showSnackbar = useAppSnackbar();
+
+  useEffect(() => {
+    // setIsLoggedIn(true);
+    setUserName("Milan");
+  }, []);
+
+  const handleLogout = () => {
+    setIsConfirmingLogout(true);
+    toggleMenu();
+  };
+
+  const confirmLogout = () => {
+    setIsLoggedIn(false);
+    setIsConfirmingLogout(false);
+    showSnackbar("Logged-out successfully!", "success");
+  };
+
+  const cancelLogout = () => {
+    setIsConfirmingLogout(false);
+  };
+
+  const profileItem = [
+    {
+      id: 1,
+      label: "User Profile",
+      icon: Resources.images.NavBar.userProfile,
+      action: () => {
+        navigate("/user-profile");
+      },
+    },
+    {
+      id: 2,
+      label: "Logout",
+      icon: Resources.images.NavBar.logout,
+      action: handleLogout,
+    },
+  ];
+
+  const serviceItemForMobile = [
+    {
+      id: 1,
+      label: "Laser Hair Removal",
+      link: "/services/laser-hair-removal",
+    },
+    {
+      id: 2,
+      label: "Oxy Hydra Facial",
+      link: "/services/skin/medi-facial/oxy-hydra-facial",
+    },
+    {
+      id: 3,
+      label: "RF Skin Tightening",
+      link: "/services/skin/medi-facial/skin-tightening",
+    },
+    {
+      id: 4,
+      label: "Dermafrac Infusion Facial",
+      link: "/services/skin/medi-facial/dermafrac-infusion-facial",
+    },
+    {
+      id: 5,
+      label: "Oxygeneo",
+      link: "/services/skin/medi-facial/oxygeneo",
+    },
+  ];
+
+  const packagesItemForMobile = [
+    {
+      id: 1,
+      label: "Laser Hair Removal Packages",
+      link: "/services/laser-hair-removal-packages",
+    },
+    {
+      id: 2,
+      label: "Medi Facial",
+      link: "/services/skin/medi-facial-packages",
+    },
+  ];
+
+  const serviceItem = [
+    {
+      id: 1,
+      label: "Laser Hair Removal",
+      action: () => {
+        navigate("/services/laser-hair-removal");
+      },
+    },
+    {
+      id: 2,
+      label: "Oxy Hydra Facial",
+      action: () => {
+        navigate("/services/skin/medi-facial/oxy-hydra-facial");
+      },
+    },
+    {
+      id: 3,
+      label: "RF Skin Tightening",
+      action: () => {
+        navigate("/services/skin/medi-facial/skin-tightening");
+      },
+    },
+    {
+      id: 4,
+      label: "Dermafrac Infusion Facial",
+      action: () => {
+        navigate("/services/skin/medi-facial/dermafrac-infusion-facial");
+      },
+    },
+    {
+      id: 5,
+      label: "Oxygeneo",
+      action: () => {
+        navigate("/services/skin/medi-facial/oxygeneo");
+      },
+    },
+  ];
+
+  const packagesItem = [
+    {
+      id: 1,
+      label: "Laser Hair Removal Packages",
+      action: () => {
+        navigate("/services/laser-hair-removal-packages");
+      },
+    },
+    {
+      id: 2,
+      label: "Medi Facial Packages",
+      action: () => {
+        navigate("/services/skin/medi-facial-packages");
+      },
+    },
+  ];
+
+  return (
+    <div className="flex flex-col bg-coal !text-white p-3 fixed top-0 left-0 w-full z-50">
+      <div>
+        <nav className="flex items-center gap-2">
+          <button
+            className="lg:hidden text-white focus:outline-none"
+            onClick={toggleMenu}
+          >
+            <GiHamburgerMenu size={"2rem"} />
+          </button>
+          <div className="flex ml-4">
+            <Link to="/" className="ml-16 no-underline font-bold lg:hidden">
+              <img
+                src={Resources.images.NavBar.branding}
+                alt="branding"
+                style={{ width: "10rem" }}
+              />
+            </Link>
+          </div>
+        </nav>
+        {!isTablet ? (
+          <MenuForDesktop
+            isActive={isActive}
+            userName={userName}
+            serviceItem={serviceItem}
+            profileItem={profileItem}
+            packagesItem={packagesItem}
+            isAdmin={isAdmin}
+            isLoggedIn={isLoggedIn}
+          />
+        ) : (
+          <MenuForMobile
+            isActive={isActive}
+            userName={userName}
+            serviceItemForMobile={serviceItemForMobile}
+            packagesItemForMobile={packagesItemForMobile}
+            toggleMenu={() => setMenuOpen(!menuOpen)}
+            menuOpen={menuOpen}
+            setIsOpenServicesForMobile={setIsOpenServicesForMobile}
+            isOpenServicesForMobile={isOpenServicesForMobile}
+            serviceButtonRefForMobile={serviceButtonRefForMobile}
+            isOpenPackageForMobile={isOpenPackageForMobile}
+            setIsOpenPackageForMobile={setIsOpenPackageForMobile}
+            packageButtonRefForMobile={packageButtonRefForMobile}
+            isAdmin={isAdmin}
+            isLoggedIn={isLoggedIn}
+          />
+        )}
+      </div>
+      <AnimatePresence>
+        {isConfirmingLogout && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.3 }}
+            className="bg-slate-900/20 backdrop-blur p-4 fixed inset-0 z-50 md:grid place-items-center place-content-center overflow-scroll"
+          >
+            <motion.div
+              initial={{ scale: 0 }}
+              animate={{ scale: 1 }}
+              exit={{ scale: 0 }}
+              transition={{ duration: 0.3 }}
+              className="bg-white p-8 rounded-lg w-full max-w-lg"
+            >
+              <h3 className="text-coal font-bold text-lg mb-4">
+                Are you sure you want to logout?
+              </h3>
+              <div className="flex justify-center gap-4">
+                <button
+                  onClick={cancelLogout}
+                  className="bg-gray-200 text-gray-700 px-4 py-2 rounded-md hover:bg-gray-300"
+                >
+                  Cancel
+                </button>
+                <button
+                  onClick={confirmLogout}
+                  className="bg-red-600 text-white px-4 py-2 rounded-md hover:bg-red-700"
+                >
+                  Logout
+                </button>
+              </div>
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </div>
+  );
+}
+
+export default CustomNavbar;
