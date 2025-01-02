@@ -37,7 +37,7 @@ export const laserServiceForMenContent = [
       "Everyone's hair is different. Generally, once a session is completed, it can last for years, even in some cases forever. 4-8 treatments are required at 4-6 week intervals. One of the main benefits of laser hair removal is that it is a long-term solution. Unlike other hair removal methods that require regular maintenance, laser hair removal targets the hair follicles themselves, preventing hair growth for an extended period of time.",
     sectionTwo:
       "After just a few sessions, you'll notice a significant reduction in hair growth and may even experience permanent hair removal.",
-    img: Resources.images.Services.LaserHairRemoval.Men.imageFour,
+    img: Resources.images.Services.LaserHairRemoval.Men.image5,
   },
 ];
 
@@ -347,5 +347,77 @@ export const mediFacialPrimePackages = [
     name: "Oxygeneo",
     price: "₹6,500",
     route: "/book-now?treatment=Oxygeneo",
+  },
+];
+
+export const servicesCardDetails = [
+  {
+    id: 1,
+    title: "Laser Hair Removal: Silky Smooth, Hassle-Free Skin",
+    cardTitle: "Laser Hair Removal",
+    description:
+      "Say goodbye to the hassle of traditional hair removal methods with our advanced Laser Hair Removal treatments. Using state-of-the-art technology, we offer a safe, effective, and virtually painless solution to permanently reduce unwanted hair. Whether it's your face, arms, legs, or sensitive areas, our team ensures a smooth, long-lasting result that leaves your skin feeling soft and hair-free. No more waxing, shaving, or ingrown hairs—just beautifully smooth skin.",
+    benefits: [
+      "Permanent hair reduction",
+      "Safe for all skin types",
+      "Quick and comfortable sessions",
+    ],
+    image: `${Resources.images.Services.LaserHairRemoval.laserHairRemovalCard}`,
+    linkTo: "/laser-hair-removal",
+  },
+  {
+    id: 2,
+    title: "Oxy Hydra Facial: Oxygen-Infused Hydration for Radiant Skin",
+    cardTitle: "Oxy Hydra Facial",
+    description:
+      "Replenish and rejuvenate your skin with our luxurious Oxy Hydra Facial. This deeply hydrating facial combines oxygen therapy with advanced hydradermabrasion to exfoliate, hydrate, and infuse your skin with essential nutrients. It effectively removes dead skin cells, unclogs pores, and promotes circulation, leaving you with a dewy, glowing complexion. It's the perfect solution for anyone seeking to combat dryness, dullness, or skin congestion.",
+    benefits: [
+      "Deep hydration and nourishment",
+      "Revitalizes tired, dull skin",
+      "Safe for sensitive skin",
+    ],
+    image: `${Resources.images.Services.OxyHydra.oxyHydraCard}`,
+    linkTo: "skin/medi-facial/oxy-hydra-facial",
+  },
+  {
+    id: 3,
+    title: "RF Skin Tightening: Lift, Firm, and Renew Your Skin",
+    cardTitle: "RF Skin Tightening",
+    description:
+      "Achieve firmer, tighter, and more youthful skin with our RF (Radiofrequency) Skin Tightening treatment. Using radiofrequency energy, this treatment stimulates collagen production deep within your skin, tightening loose or sagging areas and reducing the appearance of fine lines and wrinkles. It's non-invasive, painless, and highly effective in restoring your skin's natural elasticity and firmness without any downtime.",
+    benefits: [
+      "Non-invasive and painless",
+      "Improves skin elasticity and tone",
+      "Targets fine lines and sagging skin",
+    ],
+    image: `${Resources.images.Services.SkinTightening.skinTighteningCard}`,
+    linkTo: "skin/medi-facial/skin-tightening",
+  },
+  {
+    id: 4,
+    title: "Dermafrac Infusion Facial: Advanced Skin Rejuvenation",
+    cardTitle: "Dermafrac Infusion Facial",
+    description:
+      "The Dermafrac Infusion Facial combines microneedling with the infusion of targeted serums to deeply rejuvenate your skin. This non-invasive treatment stimulates collagen production while addressing skin concerns like fine lines, acne scars, uneven tone, and dryness. The result is smoother, more youthful skin with improved texture and hydration.",
+    benefits: [
+      "Reduces fine lines, brightens skin, improves acne scars, and hydrates deeply",
+      "Quick recovery with glowing, refreshed skin",
+    ],
+    image: `${Resources.images.Services.Dermafrac.dermafracCard}`,
+    linkTo: "skin/medi-facial/dermafrac-infusion-facial",
+  },
+  {
+    id: 5,
+    title: "Oxygeneo: 3-in-1 Facial for Ultimate Skin Rejuvenation",
+    cardTitle: "Oxygeneo",
+    description:
+      "Experience the power of three skin treatments in one with Oxygeneo. This innovative facial combines exfoliation, oxygenation, and infusion to promote healthy, glowing skin. The treatment gently exfoliates the outer layers of the skin, infuses it with nourishing serums, and enhances oxygen delivery, resulting in radiant, plump skin. It's perfect for those looking to brighten, hydrate, and rejuvenate their skin in a single session.",
+    benefits: [
+      "3-in-1 rejuvenation: Exfoliation, oxygenation, and infusion",
+      "Instantly refreshes and revitalizes skin",
+      "Targets uneven skin tone, fine lines, and texture",
+    ],
+    image: `${Resources.images.Services.OxyGeneo.oxygeneoCard}`,
+    linkTo: "skin/medi-facial/oxygeneo",
   },
 ];

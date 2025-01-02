@@ -246,14 +246,16 @@ function MediFacial() {
           link="/services/skin/medi-facial-packages"
         />
       </motion.div>
-      <div className={`grid ${!type ? "md:!grid-cols-2" : ""} mb-5 px-4`}>
+      <div
+        className={`grid lg:gap-5 justify-center ${!type ? "md:!grid-cols-2 xl:!grid-cols-4" : ""} mb-5 ${isMobile ? "" : "px-4"}`}
+      >
         {(!type || type === "oxy-hydra-facial") && (
-          <div>
+          <div className="flex flex-col items-center">
             <Suspense fallback={<CustomLoader />}>
-              <OxyHydra />
+              <OxyHydra type={type} />
             </Suspense>
             {pathname !== "/services/skin/medi-facial/oxy-hydra-facial" && (
-              <div className="px-5">
+              <div className="flex justify-center">
                 <CustomCards
                   title={mediFacialServices[0].title}
                   imgSrc={mediFacialServices[0].image}
@@ -265,12 +267,12 @@ function MediFacial() {
           </div>
         )}
         {(!type || type === "skin-tightening") && (
-          <div>
+          <div className="flex flex-col items-center">
             <Suspense fallback={<CustomLoader />}>
-              <SkinTightening />
+              <SkinTightening type={type} />
             </Suspense>
             {pathname !== "/services/skin/medi-facial/skin-tightening" && (
-              <div className="px-5">
+              <div className="flex justify-center">
                 <CustomCards
                   title={mediFacialServices[1].title}
                   imgSrc={mediFacialServices[1].image}
@@ -282,13 +284,13 @@ function MediFacial() {
           </div>
         )}
         {(!type || type === "dermafrac-infusion-facial") && (
-          <div>
+          <div className="flex flex-col items-center">
             <Suspense fallback={<CustomLoader />}>
-              <DermafracInfusionFacial />
+              <DermafracInfusionFacial type={type} />
             </Suspense>
             {pathname !==
               "/services/skin/medi-facial/dermafrac-infusion-facial" && (
-              <div className="px-5">
+              <div className="flex justify-center">
                 <CustomCards
                   title={mediFacialServices[2].title}
                   imgSrc={mediFacialServices[2].image}
@@ -300,12 +302,12 @@ function MediFacial() {
           </div>
         )}
         {(!type || type === "oxygeneo") && (
-          <div>
+          <div className="flex flex-col items-center">
             <Suspense fallback={<CustomLoader />}>
-              <Oxygeneo />
+              <Oxygeneo type={type} />
             </Suspense>
             {pathname !== "/services/skin/medi-facial/oxygeneo" && (
-              <div className="px-5">
+              <div className="flex justify-center">
                 <CustomCards
                   title={mediFacialServices[3].title}
                   imgSrc={mediFacialServices[3].image}

@@ -26,14 +26,14 @@ function LaserHairRemoval() {
     {
       id: 1,
       title: "Men",
-      image: `${Resources.images.Services.LaserHairRemoval.laserHairFullBody}`,
+      image: `${Resources.images.Services.LaserHairRemoval.Men.image5}`,
       button: "Read More",
       linkTo: "/services/laser-hair-removal/men",
     },
     {
       id: 2,
       title: "Women",
-      image: `${Resources.images.Services.LaserHairRemoval.laserHairSelectedPart}`,
+      image: `${Resources.images.Services.LaserHairRemoval.Women.imageOne}`,
       button: "Read More",
       linkTo: "/services/laser-hair-removal/women",
     },
@@ -202,7 +202,7 @@ function LaserHairRemoval() {
           </motion.div>
         )}
         <div
-          className={`flex flex-col md:!flex-row  justify-center ${!category ? "md:!grid-cols-2" : ""} mb-5 ${isMobile ? "" : "px-4"}`}
+          className={`flex flex-col md:!flex-row gap-5 justify-center ${!category ? "md:!grid-cols-2" : ""} mb-5 ${isMobile ? "" : "px-4"}`}
         >
           {(!category || category === "men") && (
             <div>
@@ -213,7 +213,7 @@ function LaserHairRemoval() {
                 />
               </Suspense>
               {pathname !== "/services/laser-hair-removal/men" && (
-                <div className="px-5">
+                <div className="flex justify-center">
                   <CustomCards
                     title={services[0].title}
                     imgSrc={services[0].image}
@@ -233,7 +233,7 @@ function LaserHairRemoval() {
                 />
               </Suspense>
               {pathname !== "/services/laser-hair-removal/women" && (
-                <div className="px-5">
+                <div className="flex justify-center">
                   <CustomCards
                     title={services[1].title}
                     imgSrc={services[1].image}

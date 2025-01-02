@@ -1,7 +1,13 @@
 import { useMediaQuery } from "@mui/material";
 import CustomBackNavigation from "../CustomBackNavigation";
 
-function CustomHeader({ heading, subHeading, showBackButton, navigateTo }) {
+function CustomHeader({
+  heading,
+  subHeading,
+  showBackButton,
+  navigateTo,
+  headerClass,
+}) {
   const isMobile = useMediaQuery("(max-width: 767px)");
 
   return (
@@ -9,7 +15,9 @@ function CustomHeader({ heading, subHeading, showBackButton, navigateTo }) {
       {showBackButton && <CustomBackNavigation navigateTo={navigateTo} />}
       <div>
         <div className="flex flex-col font-poppins">
-          <div className="text-3xl font-bold text-skyn mb-2">{heading}</div>
+          <div className={`text-3xl font-bold text-skyn ${headerClass}`}>
+            {heading}
+          </div>
           <hr className="h-1 !bg-skyn mb-2" />
         </div>
         {subHeading && (

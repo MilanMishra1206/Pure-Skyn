@@ -5,6 +5,7 @@ import CustomCards from "../../../shared/CustomCards";
 import FadeInWrapper from "../../../config/MotionFramer/FadeInWrapper";
 import { motion } from "framer-motion";
 import DrawCircleText from "../../../shared/CustomDrawCircleText";
+import { MdKeyboardDoubleArrowRight } from "react-icons/md";
 
 function BestSelling({ isMobile }) {
   const services = [
@@ -39,12 +40,13 @@ function BestSelling({ isMobile }) {
           subHeading={"Laser Hair Removal"}
         />
       </div>
-      <div className="flex justify-end mt-4 px-5">
+      <div className="flex justify-end px-5">
         <Link
           to="/services/laser-hair-removal"
-          className="text-skyn hover:opacity-80 font-bold text-xl font-poppins hover:!font-mono"
+          className="flex items-center text-skyn font-bold text-xl font-poppins no-underline hover:opacity-80 hover:underline hover:!tracking-widest"
         >
-          {"Explore More >>"}
+          Explore More
+          <MdKeyboardDoubleArrowRight className="text-2xl text-skyn" />
         </Link>
       </div>
       <div

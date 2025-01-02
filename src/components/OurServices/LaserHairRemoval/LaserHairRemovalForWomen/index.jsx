@@ -30,7 +30,7 @@ function LaserHairRemovalForWomen({ category, isMobile }) {
         {category && (
           <div>
             <div
-              className={`w-full h-96 bg-cover ${isMobile ? "" : "bg-center"} relative`}
+              className={`w-full h-[30rem] bg-cover ${isMobile ? "" : "bg-center"} relative`}
               style={{
                 backgroundImage: `url(${!isMobile ? Resources.images.Services.LaserHairRemoval.Women.headerWomen : Resources.images.Services.LaserHairRemoval.Women.headerWomen})`,
               }}

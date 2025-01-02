@@ -1,6 +1,6 @@
 import Resources from "../../../../../config/Resources";
 import { Box, Fab, useMediaQuery } from "@mui/material";
-import { Link, useParams } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { MdKeyboardDoubleArrowRight } from "react-icons/md";
 import { oxygeneoFaq } from "../../../../../helpers/AccordianContent";
 import { OxyGeneoContent } from "../../../../../helpers/MediFacial";
@@ -9,24 +9,24 @@ import FadeInWrapper from "../../../../../config/MotionFramer/FadeInWrapper";
 import CustomAccordian from "../../../../../shared/CustomAccordian";
 import CustomHeader from "../../../../../shared/CustomHeader";
 
-function Oxygeneo() {
-  const { type } = useParams();
+function Oxygeneo({ type }) {
   const isMobile = useMediaQuery("(max-width: 767px)");
   const isTablet = useMediaQuery("(max-width: 1023px)");
 
   return (
-    <div className="mt-5">
+    <div>
       <motion.div
         variants={FadeInWrapper("left", 0.1)}
         initial="hidden"
         whileInView="show"
         viewport={{ once: true }}
-        className={`mt-5 ${isMobile ? "px-3" : "p-3"}`}
+        className={`${isMobile ? "px-3" : "p-3"}`}
       >
         <CustomHeader
           heading={"Oxygeneo"}
           showBackButton={type}
           navigateTo={"/services/skin/medi-facial"}
+          headerClass={!type && "!text-2xl"}
         />
       </motion.div>
       {type && (
@@ -36,7 +36,7 @@ function Oxygeneo() {
             initial="hidden"
             whileInView="show"
             viewport={{ once: true }}
-            className={`w-full ${isTablet ? "h-96" : "h-screen"} bg-cover bg-center relative`}
+            className={`w-full ${isTablet ? "h-96" : "h-[40rem]"} bg-cover bg-center relative`}
             style={{
               backgroundImage: `url(${!isMobile ? Resources.images.Services.OxyGeneo.header : Resources.images.Services.OxyGeneo.img1})`,
             }}

@@ -20,7 +20,7 @@ function CustomFooter() {
           <div className="flex flex-col items-center justify-center">
             <Link>
               <img
-                src={Resources.images.NavBar.logo4}
+                src={Resources.images.NavBar.logo2}
                 alt="branding"
                 style={{ width: "9rem" }}
               />

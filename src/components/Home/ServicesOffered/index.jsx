@@ -4,6 +4,7 @@ import { useMediaQuery } from "@mui/material";
 import BookNowForm from "../../BookNow/BookNowForm";
 import CustomHeader from "../../../shared/CustomHeader";
 import CustomCards from "../../../shared/CustomCards";
+import { MdKeyboardDoubleArrowRight } from "react-icons/md";
 
 function ServicesOffered() {
   const isMobile = useMediaQuery("(max-width: 767px)");
@@ -31,7 +32,7 @@ function ServicesOffered() {
     {
       id: 4,
       title: "Dermafrac Infusion Facial",
-      image: `${Resources.images.Services.Dermafrac.dermafracCard}`,
+      image: `${Resources.images.Services.Dermafrac.image5}`,
       linkTo: "services/skin/medi-facial/dermafrac-infusion-facial",
     },
     {
@@ -82,12 +83,13 @@ function ServicesOffered() {
           </div>
         )}
         <div className="px-5 mt-5">
-          <div className="flex justify-end px-5 mt-5">
+          <div className="flex justify-end px-5">
             <Link
               to="/services"
-              className="text-skyn hover:opacity-80 font-bold text-xl font-poppins"
+              className="flex items-center text-skyn font-bold text-xl font-poppins no-underline hover:opacity-80 hover:underline hover:!tracking-widest"
             >
-              {"Explore More >"}
+              Explore More
+              <MdKeyboardDoubleArrowRight className="text-2xl text-skyn" />
             </Link>
           </div>
         </div>

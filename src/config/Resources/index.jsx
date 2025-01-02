@@ -31,16 +31,11 @@ const Resources = {
       branding: `${base}/NavBar/branding.jpeg`,
       logo1: `${base}/NavBar/Logo1.png`,
       logo2: `${base}/NavBar/Logo1.svg`,
-      logo3: `${base}/NavBar/Logo2.png`,
-      logo4: `${base}/NavBar/Logo2.svg`,
     },
     PageNotFound: {
       Crack1: `${base}/PageNotFound/Crack1.svg`,
       Crack2: `${base}/PageNotFound/Crack2.svg`,
       NotFound: `${base}/PageNotFound/NotFound.svg`,
-    },
-    TimePicker: {
-      ToggleIcon: `${base}/TimePicker/ToggleIcon.svg`,
     },
     Warning: {
       error: `${base}/Warning/Error.svg`,
@@ -57,7 +52,6 @@ const Resources = {
       feedback: `${base}/Services/feedback.jpg`,
       LaserHairRemoval: {
         laserHairSelectedPart: `${base}/Services/LaserHairRemoval/Women/img7.webp`,
-        laserHairFullBody: `${base}/Services/LaserHairRemoval/HairRemovalFull.webp`,
         hairRemovalBookNow: `${base}/Services/LaserHairRemoval/HairRemovalBookNow.jpg`,
         laserHairRemovalCard: `${base}/Services/LaserHairRemoval/laser-hair-removal.webp`,
         faceAndNeck: `${base}/Services/LaserHairRemoval/faceAndNeck.jpg`,
@@ -66,8 +60,6 @@ const Resources = {
         fullBodyWomenLHR: `${base}/Services/LaserHairRemoval/fullBodyWomenLHR.jpg`,
         fullBodyMenLHR: `${base}/Services/LaserHairRemoval/fullBodyMenLHR.jpg`,
         chestAndBack: `${base}/Services/LaserHairRemoval/chest-back.webp`,
-        call: `${base}/Services/LaserHairRemoval/call.webp`,
-        expert: `${base}/Services/LaserHairRemoval/expert.webp`,
         home: `${base}/Services/LaserHairRemoval/home.png`,
         machine: `${base}/Services/LaserHairRemoval/machine.webp`,
         back: `${base}/Services/LaserHairRemoval/back.jpg`,
@@ -76,10 +68,6 @@ const Resources = {
         facial: `${base}/Services/LaserHairRemoval/facial.jpg`,
         fullLegs: `${base}/Services/LaserHairRemoval/full-legs.jpg`,
         underarmsIcon: `${base}/Services/LaserHairRemoval/underarms.jpg`,
-        legs: `${base}/Services/LaserHairRemoval/legs.png`,
-        legs2: `${base}/Services/LaserHairRemoval/legs2.jpg`,
-        legs3: `${base}/Services/LaserHairRemoval/legs3.webp`,
-        legs4: `${base}/Services/LaserHairRemoval/legs4.webp`,
         Men: {
           headerMen: `${base}/Services/LaserHairRemoval/Men/header.jpg`,
           headerMenMobile: `${base}/Services/LaserHairRemoval/Men/headerMobile.jpg`,
@@ -87,6 +75,7 @@ const Resources = {
           imageTwo: `${base}/Services/LaserHairRemoval/Men/img2.webp`,
           imageThree: `${base}/Services/LaserHairRemoval/Men/img3.webp`,
           imageFour: `${base}/Services/LaserHairRemoval/Men/img4.webp`,
+          image5: `${base}/Services/LaserHairRemoval/Men/LHR-Men-img2.webp`,
         },
         Women: {
           headerWomen: `${base}/Services/LaserHairRemoval/Women/header.jpg`,
@@ -135,6 +124,7 @@ const Resources = {
         imageTwo: `${base}/Services/Dermafrac/img2.webp`,
         imageThree: `${base}/Services/Dermafrac/img3.webp`,
         imageFour: `${base}/Services/Dermafrac/img4.webp`,
+        image5: `${base}/Services/Dermafrac/img5.webp`,
         dermaPackage: `${base}/Services/Dermafrac/derma-package.jpg`,
       },
     },

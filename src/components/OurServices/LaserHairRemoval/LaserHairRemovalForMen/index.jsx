@@ -30,7 +30,7 @@ function LaserHairRemovalForMen({ category, isMobile }) {
         {category && (
           <div>
             <div
-              className="w-full h-72 bg-cover bg-center relative"
+              className="h-[30rem] bg-cover bg-center relative"
               style={{
                 backgroundImage: `url(${!isMobile ? Resources.images.Services.LaserHairRemoval.Men.headerMen : Resources.images.Services.LaserHairRemoval.Men.headerMenMobile})`,
               }}
@@ -59,7 +59,7 @@ function LaserHairRemovalForMen({ category, isMobile }) {
                 </div>
                 <Link
                   to={"/book-now?treatment=Laser Hair Removal"}
-                  className="border duration-300 ease-in-out flex font-bold font-poppins hover:!opacity-80 hover:!tracking-widest items-center mt-4 no-underline p-3 rounded-2 space-x-3 text-3xl text-white transition-colors"
+                  className="border duration-300 ease-in-out flex font-bold font-poppins hover:!opacity-80 hover:!tracking-widestitems-center mt-4 no-underline p-3 rounded-2 space-x-3 text-3xl text-white transition-colors"
                 >
                   Book Now{" "}
                   <MdKeyboardDoubleArrowRight className="ml-2 text-3xl text-white" />

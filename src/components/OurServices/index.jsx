@@ -1,43 +1,12 @@
-import Resources from "../../config/Resources";
 import { useMediaQuery } from "@mui/material";
 import CustomCards from "../../shared/CustomCards";
 import CustomHeader from "../../shared/CustomHeader";
+import { servicesCardDetails } from "../../helpers/LaserServices";
+import FadeInWrapper from "../../config/MotionFramer/FadeInWrapper";
+import { motion } from "framer-motion";
 
 function LaserServices() {
   const isMobile = useMediaQuery("(max-width: 767px)");
-
-  const services = [
-    {
-      id: 1,
-      title: "Laser Hair Removal",
-      image: `${Resources.images.Services.LaserHairRemoval.laserHairRemovalCard}`,
-      linkTo: "laser-hair-removal",
-    },
-    {
-      id: 2,
-      title: "Oxy Hydra Facial",
-      image: `${Resources.images.Services.OxyHydra.oxyHydraCard}`,
-      linkTo: "skin/medi-facial/oxy-hydra-facial",
-    },
-    {
-      id: 3,
-      title: "RF Skin Tightening",
-      image: `${Resources.images.Services.SkinTightening.skinTighteningCard}`,
-      linkTo: "skin/medi-facial/skin-tightening",
-    },
-    {
-      id: 4,
-      title: "Dermafrac Infusion Facial",
-      image: `${Resources.images.Services.Dermafrac.dermafracCard}`,
-      linkTo: "skin/medi-facial/dermafrac-infusion-facial",
-    },
-    {
-      id: 5,
-      title: "Oxygeneo",
-      image: `${Resources.images.Services.OxyGeneo.oxygeneoCard}`,
-      linkTo: "skin/medi-facial/oxygeneo",
-    },
-  ];
 
   return (
     <div className="mt-5">
@@ -48,15 +17,48 @@ function LaserServices() {
           showBackButton={true}
           navigateTo={"/"}
         />
-
-        <div className="grid grid-cols-1 md:!grid-cols-2 lg:!grid-cols-3 gap-4 px-4">
-          {services.map((item) => (
-            <CustomCards
-              title={item.title}
-              imgSrc={item.image}
-              linkTo={item.linkTo}
-              key={item.id}
-            />
+        <div className="text-justify font-poppins text-cello">
+          <p>
+            At <strong>Pure Skyn</strong>, we believe in the power of self-care
+            and rejuvenation, offering cutting-edge, non-invasive beauty and
+            wellness treatments that bring out the best version of yourself. Our
+            expertly designed services are tailored to cater to your skin's
+            unique needs, leaving you feeling refreshed, revitalized, and
+            glowing. Whether you're looking to tackle unwanted hair, rejuvenate
+            your skin, or tighten and lift, we have the perfect solution for
+            you.
+          </p>
+          {servicesCardDetails.map((service, index) => (
+            <motion.div
+              variants={FadeInWrapper("up", 0.1)}
+              initial="hidden"
+              whileInView="show"
+              viewport={{ once: true }}
+            >
+              <div key={service.id}>
+                <div className="gap-5 grid grid-cols-1 md:grid-cols-2 place-items-center">
+                  <div>
+                    <p className="font-bold">
+                      {index + 1}. {service.title}
+                    </p>
+                    <span>{service.description}</span>
+                    <ol className="font-medium list-disc text-start p-4 ml-4">
+                      {service.benefits.map((benefit, idx) => (
+                        <li key={idx}>{benefit}</li>
+                      ))}
+                    </ol>
+                  </div>
+                  <div className="flex items-center">
+                    <CustomCards
+                      title={service.cardTitle}
+                      imgSrc={service.image}
+                      linkTo={service.linkTo}
+                    />
+                  </div>
+                </div>
+                {index < servicesCardDetails.length - 1 && <hr />}
+              </div>
+            </motion.div>
           ))}
         </div>
       </div>
