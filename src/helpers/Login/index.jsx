@@ -94,14 +94,6 @@ const bookNowInitialValues = {
   treatment: "",
 };
 
-const bookNowFormInitialValues = {
-  ...bookNowInitialValues,
-  address: "",
-  treatmentDate: "",
-  timeSlot: "",
-  laserOption: "",
-};
-
 const getBookNowValidation = () =>
   yup.object().shape({
     name: yup.string().required("Name is required"),
@@ -150,6 +142,5 @@ export {
   getTandCContent,
   bookNowInitialValues,
   getBookNowValidation,
-  bookNowFormInitialValues,
   getBookNowFormValidation,
 };

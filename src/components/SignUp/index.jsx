@@ -34,8 +34,6 @@ function SignUpPage() {
         className="absolute top-0 left-0 w-full h-full bg-cover bg-center hidden md:block"
         style={{
           backgroundImage: `url(${Resources.images.Login.signupBg})`,
-          backgroundSize: "cover",
-          backgroundPosition: "center",
         }}
       />
       <div className="w-full h-full flex flex-col md:flex-row justify-end items-center z-10 relative">
@@ -43,13 +41,12 @@ function SignUpPage() {
           <SignUpForm formik={formik} handleSubmit={handleSubmit} />
         </div>
       </div>
-      <div
-        className="md:hidden w-full h-full bg-cover bg-center absolute top-0 left-0 mt-5"
-        style={{
-          backgroundImage: `url(${Resources.images.Login.mobileBg})`,
-        }}
-      >
-        <SignUpForm formik={formik} handleSubmit={handleSubmit} />
+      <div className="md:hidden w-full h-full absolute">
+        <SignUpForm
+          formik={formik}
+          handleSubmit={handleSubmit}
+          mobileClass="flex flex-col justify-center items-center"
+        />
       </div>
     </div>
   );

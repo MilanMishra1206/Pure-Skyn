@@ -2,12 +2,8 @@ import { Button, useMediaQuery } from "@mui/material";
 import CustomHeader from "../../shared/CustomHeader";
 import { lazy, Suspense, useEffect } from "react";
 import { getIn, useFormik } from "formik";
-import {
-  bookNowFormInitialValues,
-  getBookNowFormValidation,
-} from "../../helpers/Login";
+import { getBookNowFormValidation } from "../../helpers/Login";
 import { useAppSnackbar } from "../../config/Context/SnackbarContext";
-import CustomLoader from "../../shared/CustomLoader";
 import DrawCircleText from "../../shared/CustomDrawCircleText";
 import FadeInWrapper from "../../config/MotionFramer/FadeInWrapper";
 import { motion } from "framer-motion";
@@ -29,8 +25,12 @@ function BookNow() {
     validateOnMount: true,
     validateOnChange: true,
     initialValues: {
-      ...bookNowFormInitialValues,
-      treatment: "",
+      name: location.state?.name || "",
+      email: location.state?.email || "",
+      mobile: location.state?.mobile || "",
+      address: "",
+      city: location.state?.city || "",
+      treatment: location.state?.treatment || "",
       laserOption: "",
     },
     validationSchema: getBookNowFormValidation,

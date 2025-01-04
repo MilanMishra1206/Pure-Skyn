@@ -18,18 +18,18 @@ function LoginPage() {
     validationSchema: getLoginValidation,
     onSubmit: (value) => {
       console.log("values", value);
-      navigate("/")
+      navigate("/");
       showSnackbar("Logged-in successfully!", "success");
     },
   });
 
   const handleSubmit = () => {
-    if(!formik.isValid) {
+    if (!formik.isValid) {
       showSnackbar("Please fill all the required details!", "error");
     } else {
       formik.handleSubmit();
     }
-  }
+  };
 
   return (
     <div className="flex justify-center items-center min-h-screen relative">
@@ -41,16 +41,15 @@ function LoginPage() {
       />
       <div className="w-full h-full flex flex-col md:flex-row justify-end items-center z-10 relative">
         <div className="hidden md:flex w-full md:w-1/2 p-8 flex-col justify-center items-center">
-          <LoginForm formik={formik} handleSubmit={handleSubmit}/>
+          <LoginForm formik={formik} handleSubmit={handleSubmit} />
         </div>
       </div>
-      <div
-        className="md:hidden w-full h-full bg-cover bg-center absolute top-0 left-0 flex items-center justify-center"
-        style={{
-          backgroundImage: `url(${Resources.images.Login.mobileBg})`,
-        }}
-      >
-        <LoginForm formik={formik} handleSubmit={handleSubmit}/>
+      <div className="md:hidden w-full h-full absolute flex">
+        <LoginForm
+          formik={formik}
+          handleSubmit={handleSubmit}
+          mobileClass="flex flex-col justify-center items-center"
+        />
       </div>
     </div>
   );

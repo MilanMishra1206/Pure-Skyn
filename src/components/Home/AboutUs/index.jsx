@@ -1,6 +1,8 @@
 import { useMediaQuery } from "@mui/material";
 import { useRouteStatus } from "../../../config/Context/RouteContext";
 import CustomHeader from "../../../shared/CustomHeader";
+import FadeInWrapper from "../../../config/MotionFramer/FadeInWrapper";
+import { motion } from "framer-motion";
 
 function AboutUs() {
   const isTablet = useMediaQuery("(max-width: 1023px)");
@@ -8,7 +10,13 @@ function AboutUs() {
 
   const { isHomePage } = useRouteStatus();
   return (
-    <div className={`mt-3 ${isTablet ? "py-3" : "py-4 mt-4"}`}>
+    <motion.div
+      variants={FadeInWrapper("left", 0.1)}
+      initial="hidden"
+      whileInView="show"
+      viewport={{ once: true }}
+      className={`mt-3 ${isTablet ? "py-3" : ""}`}
+    >
       <div className={`mt-5 ${isMobile ? "px-4" : "px-5"}`}>
         <CustomHeader
           heading={"About Us"}
@@ -55,7 +63,7 @@ function AboutUs() {
         </p>
         <hr className="my-4 w-50" />
       </div>
-    </div>
+    </motion.div>
   );
 }
 

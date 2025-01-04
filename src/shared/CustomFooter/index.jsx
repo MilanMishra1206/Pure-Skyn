@@ -15,7 +15,7 @@ function CustomFooter() {
     <div className="bottom-0 left-0 w-full bg-coal text-white p-8 font-poppins">
       <div className="flex flex-col px-4">
         <div
-          className={`grid gap-4 ${isAdmin ? "md:!grid-cols-3" : "md:!grid-cols-4"}`}
+          className={`grid gap-4 ${isAdmin ? "md:!grid-cols-2" : "md:!grid-cols-4"}`}
         >
           <div className="flex flex-col items-center justify-center">
             <Link>

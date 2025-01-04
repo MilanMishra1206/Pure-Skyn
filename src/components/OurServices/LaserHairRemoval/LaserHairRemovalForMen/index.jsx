@@ -67,7 +67,7 @@ function LaserHairRemovalForMen({ category, isMobile }) {
               </div>
             )}
             <div
-              className={`grid grid-cols-1 mt-3 place-items-center ${isMobile ? "p-2" : ""}`}
+              className={`grid grid-cols-1 mt-3 place-items-center ${isMobile ? "p-2" : ""} text-justify`}
             >
               {laserServiceForMenContent.map((item) => (
                 <motion.div

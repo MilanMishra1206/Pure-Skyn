@@ -1,8 +1,10 @@
-import React from "react";
+import React, { lazy, Suspense } from "react";
 import { useFormik } from "formik";
-import * as Yup from "yup";
-import { Button } from "@mui/material";
 import CustomCheckBox from "../../../shared/CustomCheckbox";
+import { motion } from "framer-motion";
+import FadeInWrapper from "../../../config/MotionFramer/FadeInWrapper";
+
+const CustomDatePicker = lazy(() => import("../../../shared/CustomDatePicker"));
 
 const timeSlots = [
   { label: "10:00 AM", value: "10:00 AM" },
@@ -18,41 +20,63 @@ const technicians = ["Milan Mishra", "John Doe", "Sara Khan", "Anil Singh"];
 function Schedule() {
   const slotFormik = useFormik({
     initialValues: {
+      date: "",
       selectedSlots: [],
     },
-    validationSchema: Yup.object({
-      selectedSlots: Yup.array()
-        .min(1, "Please select at least one time slot")
-        .required("Please select time slots"),
-    }),
     onSubmit: (values) => {
+      console.log("Selected Date:", values.date);
       console.log("Selected Time Slots:", values.selectedSlots);
     },
   });
 
   const technicianFormik = useFormik({
     initialValues: {
+      date: "",
       selectedTechnicians: [],
     },
-    validationSchema: Yup.object({
-      selectedTechnicians: Yup.array()
-        .min(1, "Please select at least one technician")
-        .required("Please select technicians"),
-    }),
     onSubmit: (values) => {
+      console.log("Selected Date:", values.date);
       console.log("Selected Technicians:", values.selectedTechnicians);
     },
   });
 
   return (
-    <div className="p-3 md:!p-5 font-poppins">
+    <motion.div
+      variants={FadeInWrapper("left", 0.1)}
+      initial="hidden"
+      whileInView="show"
+      viewport={{ once: true }}
+      className="p-3 md:!p-5 font-poppins"
+    >
       <h2 className="text-lg font-medium">Schedule Available Slots</h2>
       <form onSubmit={slotFormik.handleSubmit}>
         <p className="text-sm mt-2 mb-4">
           <span className="font-bold text-sm">Note: </span>
-          <span>Please select the available time slots for today</span>
+          <span>
+            Please select the <strong>non-available</strong> time slots
+          </span>
         </p>
         <div>
+          <div className="mb-4">
+            <Suspense fallback={<div />}>
+              <CustomDatePicker
+                label="Date"
+                name="slotFormik.date"
+                textClassToOverride="!text-kashmirBlue"
+                disablePast
+                className="w-full rounded-md !bg-transparent shadow-insetLight"
+                fieldWidth="!w-64"
+                setFieldValue={slotFormik.setFieldValue}
+                setFieldTouched={slotFormik.setFieldTouched}
+                value={slotFormik.values.date}
+                error={slotFormik.errors.date}
+                touched={slotFormik.touched.date}
+                inputClassName="!text-kashmirBlue !font-poppins"
+                onChange={slotFormik.handleChange}
+                handleBlur={slotFormik.handleBlur}
+              />
+            </Suspense>
+          </div>
           {timeSlots.map((slot) => (
             <div key={slot.value} className="flex items-center space-x-2">
               <CustomCheckBox
@@ -80,12 +104,6 @@ function Schedule() {
               />
             </div>
           ))}
-          {slotFormik.errors.selectedSlots &&
-            slotFormik.touched.selectedSlots && (
-              <p className="text-red-500 text-xs">
-                {slotFormik.errors.selectedSlots}
-              </p>
-            )}
         </div>
         <div className="mt-4">
           <button
@@ -103,8 +121,30 @@ function Schedule() {
       <form onSubmit={technicianFormik.handleSubmit}>
         <p className="text-sm mt-2 mb-4">
           <span className="font-bold text-sm">Note: </span>
-          <span>Please select the technicians available for today</span>
+          <span>
+            Please select the <strong>non-available</strong> technicians
+          </span>
         </p>
+        <div className="mb-4">
+          <Suspense fallback={<div />}>
+            <CustomDatePicker
+              label="Date"
+              name="technicianFormik.date"
+              textClassToOverride="!text-kashmirBlue"
+              disablePast
+              className="w-full rounded-md !bg-transparent shadow-insetLight"
+              fieldWidth="!w-64"
+              setFieldValue={technicianFormik.setFieldValue}
+              setFieldTouched={technicianFormik.setFieldTouched}
+              value={technicianFormik.values.date}
+              error={technicianFormik.errors.date}
+              touched={technicianFormik.touched.date}
+              inputClassName="!text-kashmirBlue !font-poppins"
+              onChange={technicianFormik.handleChange}
+              handleBlur={technicianFormik.handleBlur}
+            />
+          </Suspense>
+        </div>
         {technicians.map((tech) => (
           <div key={tech}>
             <div className="flex items-center space-x-2">
@@ -134,12 +174,6 @@ function Schedule() {
                 size="small"
               />
             </div>
-            {technicianFormik.errors.selectedTechnicians &&
-              technicianFormik.touched.selectedTechnicians && (
-                <p className="text-red-500 text-xs">
-                  {technicianFormik.errors.selectedTechnicians}
-                </p>
-              )}
           </div>
         ))}
         <div className="mt-4">
@@ -151,7 +185,7 @@ function Schedule() {
           </button>
         </div>
       </form>
-    </div>
+    </motion.div>
   );
 }
 

@@ -15,8 +15,7 @@ const CustomHeroSection = () => {
           />
         </span>
         <p className="text-base md:text-lg text-coal my-4 md:my-6 px-3 lg:!mx-5 font-poppins text-center">
-          Lorem ipsum dolor sit amet consectetur, adipisicing elit. Nam nobis in
-          error repellat voluptatibus ad.
+          Download our app to stay connected
         </p>
         <div className="flex justify-center">
           <button className="bg-skyn text-white font-medium py-2 px-4 lg:!mx-5 rounded transition-all hover:!opacity-80 active:!scale-95 ml-5 font-poppins">
@@ -53,7 +52,7 @@ const squareData = [
   },
   {
     id: 2,
-    src: `${Resources.images.Services.LaserHairRemoval.Men.imageThree}`,
+    src: `${Resources.images.Services.LaserHairRemoval.Men.imageTwo}`,
   },
   {
     id: 3,
@@ -77,15 +76,15 @@ const squareData = [
   },
   {
     id: 8,
-    src: `${Resources.images.Services.OxyHydra.img1}`,
+    src: `${Resources.images.Services.OxyHydra.img3}`,
   },
   {
     id: 9,
-    src: `${Resources.images.Services.OxyHydra.img2}`,
+    src: `${Resources.images.Services.OxyHydra.header2}`,
   },
   {
     id: 10,
-    src: `${Resources.images.Services.Dermafrac.header}`,
+    src: `${Resources.images.Services.LaserHairRemoval.Men.headerMen}`,
   },
   {
     id: 11,
@@ -93,7 +92,7 @@ const squareData = [
   },
   {
     id: 12,
-    src: `${Resources.images.Services.Dermafrac.imageThree}`,
+    src: `${Resources.images.Services.Dermafrac.dermafracCard}`,
   },
   {
     id: 13,
@@ -145,7 +144,7 @@ const ShuffleGrid = () => {
   };
 
   return (
-    <div className="grid grid-cols-4 grid-rows-4 h-[650px] gap-1">
+    <div className="grid grid-cols-2 xl:!grid-cols-4 grid-rows-4 h-[650px] gap-1">
       {squares.map((sq) => sq)}
     </div>
   );

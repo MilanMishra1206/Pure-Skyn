@@ -1,12 +1,16 @@
-import React from "react";
+import React, { lazy, Suspense } from "react";
 import Resources from "../../../config/Resources";
-import { useFormik } from "formik";
+import { getIn, useFormik } from "formik";
 import {
   bookNowInitialValues,
   getBookNowValidation,
 } from "../../../helpers/Login";
 import { useAppSnackbar } from "../../../config/Context/SnackbarContext";
 import { useNavigate } from "react-router-dom";
+import regex from "../../../helpers/Regex";
+
+const CustomTextField = lazy(() => import("../../../shared/CustomTextField"));
+const CustomDropdown = lazy(() => import("../../../shared/CustomDropdown"));
 
 const BookNowForm = () => {
   const showSnackbar = useAppSnackbar();
@@ -19,7 +23,14 @@ const BookNowForm = () => {
     initialValues: bookNowInitialValues,
     validationSchema: getBookNowValidation,
     onSubmit: (value) => {
-      navigate(`/book-now?treatment=${value.treatment}`);
+      const formData = {
+        name: formik.values.name,
+        email: formik.values.email,
+        mobile: formik.values.mobile,
+        city: formik.values.city,
+        treatment: formik.values.treatment,
+      };
+      navigate("/book-now", { state: formData });
     },
   });
 
@@ -32,7 +43,7 @@ const BookNowForm = () => {
   };
 
   return (
-    <div className="w-full max-w-sm mx-auto bg-white shadow-lg rounded-3xl p-8 h-75">
+    <div className="w-96 max-w-sm mx-auto bg-white shadow-lg rounded-3xl p-8 h-75">
       <div className="flex justify-center">
         <img
           src={Resources.images.NavBar.branding}
@@ -44,138 +55,131 @@ const BookNowForm = () => {
         Book Your Appointment Now!
       </div>
       <form className="w-full">
-        <div className="mb-4">
-          <label
-            htmlFor="name"
-            className="block text-sm font-medium text-kashmirBlue"
-          >
-            Name
-          </label>
-          <input
-            id="name"
+        <Suspense fallback={<div />}>
+          <CustomTextField
+            textClassOverride="!text-kashmirBlue"
+            placeholderClasses="placeholder:!opacity-30 !text-licorice"
+            className="h-12 rounded-md !bg-transparent"
+            placeholder="Enter"
+            requiredStar
+            labelToShow="Name"
             name="name"
-            className="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-skyn"
-            placeholder="Enter your name"
-            value={formik.values.name}
+            textFieldColorClass="shadow-insetLight"
+            inputClassName="!bg-transparent"
+            fieldWidth="w-full !mb-4"
+            value={formik.values?.name}
             onChange={formik.handleChange}
-            onBlur={formik.handleBlur}
-            required
+            handleBlur={formik.handleBlur}
+            error={formik.errors.name}
+            touched={formik.touched.name}
           />
-          {formik.errors.name && formik.touched.name && (
-            <p className="mt-1 ml-1 text-xs text-bitterSweet">
-              {formik.errors.name}*
-            </p>
-          )}
-        </div>
-        <div className="mb-4">
-          <label
-            htmlFor="email"
-            className="block text-sm font-medium text-kashmirBlue"
-          >
-            Email
-          </label>
-          <input
-            type="email"
-            id="email"
+        </Suspense>
+        <Suspense fallback={<div />}>
+          <CustomTextField
+            textClassOverride="!text-kashmirBlue"
+            placeholderClasses="placeholder:!opacity-30 !text-licorice"
+            className="h-12 rounded-md !bg-transparent"
+            placeholder="Enter"
+            requiredStar
+            regex={/^[^!#$%^&*()=+{}[\]:;<>,?/~`|"\\ ]*$/}
+            labelToShow="Email ID"
             name="email"
-            className="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-skyn"
-            placeholder="Enter your email"
-            value={formik.values.email}
+            textFieldColorClass="shadow-insetLight"
+            inputClassName="!bg-transparent"
+            fieldWidth="!mb-4"
+            maxLength={50}
+            value={formik.values?.email}
             onChange={formik.handleChange}
-            onBlur={formik.handleBlur}
-            required
+            handleBlur={formik.handleBlur}
+            error={formik.errors?.email}
+            touched={formik.touched?.email}
           />
-          {formik.errors.email && formik.touched.email && (
-            <p className="mt-1 ml-1 text-xs text-bitterSweet">
-              {formik.errors.email}*
-            </p>
-          )}
-        </div>
-        <div className="mb-4">
-          <label
-            htmlFor="mobile"
-            className="block text-sm font-medium text-kashmirBlue"
-          >
-            Mobile Number
-          </label>
-          <input
-            id="mobile"
+        </Suspense>
+        <Suspense fallback={<div />}>
+          <CustomTextField
+            textClassOverride="!text-kashmirBlue"
+            placeholderClasses="placeholder:!opacity-30 !text-licorice"
+            className="h-12 rounded-md !bg-transparent"
+            placeholder="Enter"
+            requiredStar
+            labelToShow="Mobile Number"
             name="mobile"
-            className="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-skyn"
-            placeholder="Enter your mobile"
+            maxLength={10}
+            regex={regex.numeric}
+            textFieldColorClass="shadow-insetLight"
+            inputClassName="!bg-transparent"
+            fieldWidth="!mb-4"
             value={formik.values.mobile}
             onChange={formik.handleChange}
-            onBlur={formik.handleBlur}
-            maxLength={10}
-            required
+            handleBlur={formik.handleBlur}
+            error={formik.errors.mobile}
+            touched={formik.touched.mobile}
           />
-          {formik.errors.mobile && formik.touched.mobile && (
-            <p className="mt-1 ml-1 text-xs text-bitterSweet">
-              {formik.errors.mobile}*
-            </p>
-          )}
-        </div>
-        <div className="mb-4">
-          <label
-            htmlFor="city"
-            className="block text-sm font-medium text-kashmirBlue"
-          >
-            Select City
-          </label>
-          <select
-            id="city"
+        </Suspense>
+        <Suspense fallback={<div />}>
+          <CustomDropdown
+            textClassOverride="!text-kashmirBlue"
+            classes="!rounded-md !mb-4"
+            requiredStar
+            labelToShow="Select City"
             name="city"
-            className="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-skyn"
+            showIconOutline
+            options={[
+              { label: "Gurgaon", value: "Gurgaon" },
+              {
+                label: "South Delhi",
+                value: "South Delhi",
+              },
+            ]}
             value={formik.values.city}
-            onChange={formik.handleChange}
-            onBlur={formik.handleBlur}
-            required
-          >
-            <option value="">Select a city</option>
-            <option value="Gurgaon">Gurgaon</option>
-            <option value="South Delhi">South Delhi</option>
-          </select>
-          {formik.errors.city && formik.touched.city && (
-            <p className="mt-1 ml-1 text-xs text-bitterSweet">
-              {formik.errors.city}*
-            </p>
-          )}
-        </div>
-        <div className="mb-4">
-          <label
-            htmlFor="treatment"
-            className="block text-sm font-medium text-kashmirBlue"
-          >
-            Select Treatment
-          </label>
-          <select
-            id="treatment"
+            handleBlur={formik.handleBlur}
+            handleChange={formik.handleChange}
+            errorMessage={getIn(formik.errors, "city")}
+            error={getIn(formik.errors, "city")}
+            touched={getIn(formik.touched, "city")}
+          />
+        </Suspense>
+        <Suspense fallback={<div />}>
+          <CustomDropdown
+            textClassOverride="!text-kashmirBlue"
+            classes="!rounded-md !mb-4"
+            requiredStar
+            labelToShow="Select Treatment"
             name="treatment"
-            className="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-skyn"
+            showIconOutline
+            options={[
+              {
+                label: "Laser Hair Removal",
+                value: "Laser Hair Removal",
+              },
+              {
+                label: "Oxy Hydra Facial",
+                value: "Oxy Hydra Facial",
+              },
+              {
+                label: "RF Skin Tightening",
+                value: "RF Skin Tightening",
+              },
+              {
+                label: "Dermafrac Infusion Facial",
+                value: "Dermafrac Infusion Facial",
+              },
+              {
+                label: "Oxygeneo",
+                value: "Oxygeneo",
+              },
+            ]}
             value={formik.values.treatment}
-            onChange={formik.handleChange}
-            onBlur={formik.handleBlur}
-            required
-          >
-            <option value="" className="text-kashmirBlue">
-              Select a treatment
-            </option>
-            <option value="Laser Hair Removal">Laser Hair Removal</option>
-            <option value="Oxy Hydra Facial">Oxy Hydra Facial</option>
-            <option value="RF Skin Tightening">RF Skin Tightening</option>
-            <option value="Dermafrac Infusion">
-              Dermafrac Infusion Facial
-            </option>
-            <option value="OxygeneoFacial">Oxygeneo</option>
-          </select>
-          {formik.errors.treatment && formik.touched.treatment && (
-            <p className="mt-1 ml-1 text-xs text-bitterSweet">
-              {formik.errors.treatment}*
-            </p>
-          )}
-        </div>
+            handleBlur={formik.handleBlur}
+            handleChange={formik.handleChange}
+            errorMessage={getIn(formik.errors, "treatment")}
+            error={getIn(formik.errors, "treatment")}
+            touched={getIn(formik.touched, "treatment")}
+          />
+        </Suspense>
       </form>
       <button
+        type="button"
         className="w-full bg-skyn text-white py-2 px-4 rounded-md hover:bg-skyn-dark focus:outline-none focus:ring-2 focus:ring-skyn transition-all shadow-[3px_3px_0px_#313440] hover:shadow-none hover:translate-x-[3px] hover:translate-y-[3px]"
         onClick={() => handleFormSubmit()}
       >

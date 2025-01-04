@@ -7,13 +7,15 @@ import Resources from "../../../config/Resources";
 
 const CustomTextField = lazy(() => import("../../../shared/CustomTextField"));
 
-function SignUpForm({ formik, handleSubmit }) {
+function SignUpForm({ formik, handleSubmit, mobileClass }) {
   const [showPassword, setShowPassword] = useState(false);
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
 
   return (
-    <div className="w-full max-w-md mx-auto bg-[#FAFAFA] shadow-lg rounded-3xl p-8">
+    <div
+      className={`w-full max-w-md mx-auto bg-[#FAFAFA] shadow-lg rounded-3xl p-8 ${mobileClass}`}
+    >
       <div className="flex justify-center mb-3">
         <img
           src={Resources.images.NavBar.logo1}

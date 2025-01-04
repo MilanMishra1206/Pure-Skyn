@@ -104,6 +104,7 @@ const Resources = {
         header: `${base}/Services/OxyHydra/header.jpg`,
         img1: `${base}/Services/OxyHydra/img1.webp`,
         img2: `${base}/Services/OxyHydra/img2.jpg`,
+        img3: `${base}/Services/OxyHydra/img3.jpg`,
         oxyPackage: `${base}/Services/OxyHydra/oxy-package.jpg`,
       },
       SkinTightening: {
@@ -129,11 +130,9 @@ const Resources = {
       },
     },
     Login: {
-      login: `${base}/Login/login.jpg`,
-      signup: `${base}/Login/signup.jpg`,
-      mobileBg: `${base}/Login/mobileBg.jpg`,
       loginBg: `${base}/Login/login-bg.webp`,
       signupBg: `${base}/Login/signup-bg.jpg`,
+      signupBgMobile: `${base}/Login/signupMobile.jpg`,
     },
     ContactUs: {
       contactUs: `${base}/ContactUs/contactUs.jpg`,

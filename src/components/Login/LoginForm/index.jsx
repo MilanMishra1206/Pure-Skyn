@@ -5,11 +5,13 @@ import { FaEye, FaEyeSlash } from "react-icons/fa";
 
 const CustomTextField = lazy(() => import("../../../shared/CustomTextField"));
 
-function LoginForm({ formik, handleSubmit }) {
+function LoginForm({ formik, handleSubmit, mobileClass }) {
   const [showPassword, setShowPassword] = useState(false);
 
   return (
-    <div className="w-full max-w-md mx-auto bg-[#FAFAFA] shadow-lg rounded-3xl p-8">
+    <div
+      className={`w-full max-w-md mx-auto bg-[#FAFAFA] shadow-lg rounded-3xl p-8 ${mobileClass}`}
+    >
       <div className="flex justify-center">
         <img
           src={Resources.images.NavBar.logo1}
