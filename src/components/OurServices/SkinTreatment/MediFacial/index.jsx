@@ -30,25 +30,25 @@ function MediFacial() {
     {
       id: 1,
       title: "Oxy Hydra Facial",
-      image: `${Resources.images.Services.OxyHydra.oxyHydraCard}`,
+      image: `${Resources.images.Services.OxyHydra.img4}`,
       linkTo: "oxy-hydra-facial",
     },
     {
       id: 2,
       title: "RF Skin Tightening",
-      image: `${Resources.images.Services.SkinTightening.skinTighteningCard}`,
+      image: `${Resources.images.Services.SkinTightening.img7}`,
       linkTo: "skin-tightening",
     },
     {
       id: 3,
       title: "Dermafrac Infusion Facial",
-      image: `${Resources.images.Services.Dermafrac.dermafracCard}`,
+      image: `${Resources.images.Services.Dermafrac.img6}`,
       linkTo: "dermafrac-infusion-facial",
     },
     {
       id: 4,
       title: "Oxygeneo",
-      image: `${Resources.images.Services.OxyGeneo.img1}`,
+      image: `${Resources.images.Services.OxyGeneo.img6}`,
       linkTo: "oxygeneo",
     },
   ];
@@ -233,19 +233,21 @@ function MediFacial() {
           </section>
         </motion.div>
       )}
-      <motion.div
-        variants={FadeInWrapper("up", 0.1)}
-        initial="hidden"
-        whileInView="show"
-        viewport={{ once: true }}
-      >
-        <DrawCircleText
-          headerText={"Exciting Offers -"}
-          serviceName={"Medi-Facial Packages!"}
-          buttonText="Check Now"
-          link="/services/skin/medi-facial-packages"
-        />
-      </motion.div>
+      {!type && (
+        <motion.div
+          variants={FadeInWrapper("up", 0.1)}
+          initial="hidden"
+          whileInView="show"
+          viewport={{ once: true }}
+        >
+          <DrawCircleText
+            headerText={"Exciting Offers -"}
+            serviceName={"Medi-Facial Packages!"}
+            buttonText="Check Now"
+            link="/services/skin/medi-facial-packages"
+          />
+        </motion.div>
+      )}
       <div
         className={`grid lg:gap-5 justify-center ${!type ? "md:!grid-cols-2 xl:!grid-cols-4" : ""} mb-5 ${isMobile ? "" : "px-4"}`}
       >

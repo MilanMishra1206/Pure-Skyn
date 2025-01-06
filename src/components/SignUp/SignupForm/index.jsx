@@ -4,6 +4,8 @@ import { FaEye, FaEyeSlash } from "react-icons/fa";
 import CustomModal from "../../../shared/CustomModal";
 import regex from "../../../helpers/Regex";
 import Resources from "../../../config/Resources";
+import { motion } from "framer-motion";
+import FadeInWrapper from "../../../config/MotionFramer/FadeInWrapper";
 
 const CustomTextField = lazy(() => import("../../../shared/CustomTextField"));
 
@@ -13,7 +15,11 @@ function SignUpForm({ formik, handleSubmit, mobileClass }) {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
-    <div
+    <motion.div
+      variants={FadeInWrapper("up", 0.1)}
+      initial="hidden"
+      whileInView="show"
+      viewport={{ once: true }}
       className={`w-full max-w-md mx-auto bg-[#FAFAFA] shadow-lg rounded-3xl p-8 ${mobileClass}`}
     >
       <div className="flex justify-center mb-3">
@@ -34,16 +40,35 @@ function SignUpForm({ formik, handleSubmit, mobileClass }) {
             className="h-12 rounded-md !bg-transparent"
             placeholder="Enter"
             requiredStar
-            labelToShow="Full Name"
-            name="fullName"
+            labelToShow="First Name"
+            name="firstName"
             textFieldColorClass="shadow-insetLight"
             inputClassName="!bg-transparent"
             fieldWidth="w-full !mb-4"
-            value={formik.values?.fullName}
+            value={formik.values?.firstName}
             onChange={formik.handleChange}
             handleBlur={formik.handleBlur}
-            error={formik.errors.fullName}
-            touched={formik.touched.fullName}
+            error={formik.errors.firstName}
+            touched={formik.touched.firstName}
+          />
+        </Suspense>
+        <Suspense fallback={<div />}>
+          <CustomTextField
+            textClassOverride="!text-kashmirBlue"
+            placeholderClasses="placeholder:!opacity-30 !text-licorice"
+            className="h-12 rounded-md !bg-transparent"
+            placeholder="Enter"
+            requiredStar
+            labelToShow="Last Name"
+            name="lastName"
+            textFieldColorClass="shadow-insetLight"
+            inputClassName="!bg-transparent"
+            fieldWidth="w-full !mb-4"
+            value={formik.values?.lastName}
+            onChange={formik.handleChange}
+            handleBlur={formik.handleBlur}
+            error={formik.errors.lastName}
+            touched={formik.touched.lastName}
           />
         </Suspense>
         <Suspense fallback={<div />}>
@@ -54,17 +79,17 @@ function SignUpForm({ formik, handleSubmit, mobileClass }) {
             placeholder="Enter"
             requiredStar
             labelToShow="Contact Number"
-            name="contactNumber"
+            name="phone"
             maxLength={10}
             regex={regex.numeric}
             textFieldColorClass="shadow-insetLight"
             inputClassName="!bg-transparent"
             fieldWidth="w-full !mb-4"
-            value={formik.values?.contactNumber}
+            value={formik.values?.phone}
             onChange={formik.handleChange}
             handleBlur={formik.handleBlur}
-            error={formik.errors.contactNumber}
-            touched={formik.touched.contactNumber}
+            error={formik.errors.phone}
+            touched={formik.touched.phone}
           />
         </Suspense>
         <Suspense fallback={<div />}>
@@ -75,15 +100,15 @@ function SignUpForm({ formik, handleSubmit, mobileClass }) {
             placeholder="Enter"
             requiredStar
             labelToShow="Email Id"
-            name="emailAddress"
+            name="email"
             textFieldColorClass="shadow-insetLight"
             inputClassName="!bg-transparent"
             fieldWidth="w-full !mb-4"
-            value={formik.values?.emailAddress}
+            value={formik.values?.email}
             onChange={formik.handleChange}
             handleBlur={formik.handleBlur}
-            error={formik.errors.emailAddress}
-            touched={formik.touched.emailAddress}
+            error={formik.errors.email}
+            touched={formik.touched.email}
           />
         </Suspense>
         <Suspense fallback={<div />}>
@@ -144,7 +169,7 @@ function SignUpForm({ formik, handleSubmit, mobileClass }) {
       </form>
       <button
         type="button"
-        className="w-full bg-skyn text-white mt-4 py-2 px-4 rounded-md hover:opacity-80 focus:outline-none focus:ring-2 focus:ring-skyn"
+        className="w-full bg-skyn text-white mt-4 py-2 px-4 rounded-md hover:opacity-80 focus:outline-none focus:ring-2 focus:ring-skyn shadow-lg"
         onClick={handleSubmit}
       >
         Sign Up
@@ -153,7 +178,7 @@ function SignUpForm({ formik, handleSubmit, mobileClass }) {
         <p>
           Already have an account?{" "}
           <Link to="/login" className="text-skyn hover:opacity-80 underline">
-            Login here
+            Login
           </Link>
         </p>
       </div>
@@ -221,7 +246,7 @@ function SignUpForm({ formik, handleSubmit, mobileClass }) {
           </div>
         </CustomModal>
       )}
-    </div>
+    </motion.div>
   );
 }
 

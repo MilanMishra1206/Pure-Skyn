@@ -1,22 +1,19 @@
-/* eslint-disable prefer-promise-reject-errors */
-/* eslint-disable no-unsafe-optional-chaining */
-/* eslint-disable no-else-return */
-/* eslint-disable no-useless-catch */
-/* eslint-disable consistent-return */
-/* eslint-disable @typescript-eslint/no-unused-vars */
-/* eslint-disable no-param-reassign */
 import axios from "axios";
 import API_URLS from "../../config/API_URLS";
+
+const axiosInstanceLogin = axios.create({
+  baseURL: API_URLS.baseURL,
+});
 
 const axiosInstance = axios.create({
   baseURL: API_URLS.baseURL,
 });
 
-axiosInstance.interceptors.request.use(
-  async (config) => {
-    const token = sessionStorage.getItem("token");
+const token = () => sessionStorage.getItem("token") || "";
+
+axiosInstanceLogin.interceptors.request.use(
+  (config) => {
     config.headers = {
-      accesstoken: token,
       ...config.headers,
     };
     return config;
@@ -24,14 +21,45 @@ axiosInstance.interceptors.request.use(
   (err) => Promise.reject(err)
 );
 
-axiosInstance.interceptors.response.use(
-  (response) => {
-    if (response.data?.isError) {
-      console.log("error", response.data?.isError);
-    }
-    return response.data;
-  },
-  (error) => Promise.reject(error?.response?.data)
+axiosInstanceLogin.interceptors.response.use(
+  (response) => response.data,
+  (error) => {
+    Promise.reject(error?.response?.data);
+  }
 );
 
-export { axiosInstance };
+const getToken = async () => {
+  const accessToken = token();
+  try {
+    if (!accessToken) {
+      window.location.href = `${window.location.origin}/logout`;
+      return null;
+    }
+    return accessToken;
+  } catch (error) {
+    window.location.href = `${window.location.origin}/logout`;
+    return null;
+  }
+};
+
+axiosInstance.interceptors.request.use(
+  async (config) => {
+    const token = await getToken();
+    config.headers = {
+      Authorization: `Bearer ${token}`,
+      ...config.headers,
+    };
+
+    return config;
+  },
+  (err) => Promise.reject(err)
+);
+
+axiosInstance.interceptors.response.use(
+  (response) => response.data,
+  (error) => {
+    Promise.reject(error?.response?.data);
+  }
+);
+
+export { axiosInstanceLogin };

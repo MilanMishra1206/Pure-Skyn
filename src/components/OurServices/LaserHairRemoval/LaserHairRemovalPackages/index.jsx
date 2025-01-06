@@ -19,6 +19,7 @@ import CustomHeader from "../../../../shared/CustomHeader";
 import FuzzyPricingOverlay from "../../../../shared/CustomFuzzyPricingOverlay";
 import DrawCircleText from "../../../../shared/CustomDrawCircleText";
 import CustomPricingTable from "../../../../shared/CustomPricingTable";
+import FadedLineBreak from "../../../../shared/CustomHrTag";
 
 function LaserHairRemovalPackages() {
   const isTablet = useMediaQuery("(max-width: 1023px)");
@@ -89,9 +90,7 @@ function LaserHairRemovalPackages() {
                 serviceName={"Laser Hair Removal Packages!"}
               />
             </motion.div>
-            <div className="flex place-content-center">
-              <hr className="border-t-4 my-4 mt-4 w-50" />
-            </div>
+            <FadedLineBreak />
             <motion.div
               variants={FadeInWrapper("right", 0.1)}
               initial="hidden"
@@ -114,9 +113,7 @@ function LaserHairRemovalPackages() {
                 lifetime of effortless beauty.
               </p>
             </motion.div>
-            <div className="flex place-content-center">
-              <hr className="border-t-4 my-4 w-50" />
-            </div>
+            <FadedLineBreak />
             <motion.div
               variants={FadeInWrapper("up", 0.1)}
               initial="hidden"
@@ -193,7 +190,7 @@ function LaserHairRemovalPackages() {
                 backgroundImage: `url(${Resources.images.Common.cardBg2})`,
               }}
             >
-              <div className="grid grid-cols-1 md:grid-cols-2 xl:!grid-cols-4 text-lg font-medium text-start mt-4 gap-4 bg-opacity-40">
+              <div className="grid grid-cols-1 md:grid-cols-2 xl:!grid-cols-4 font-medium text-start mt-4 gap-4 bg-opacity-40">
                 {LHRBenefits.map((item) => (
                   <div
                     className="shadow p-4 w-64 bg-[#143048] text-white text-center rounded-xl"
@@ -202,7 +199,7 @@ function LaserHairRemovalPackages() {
                     <p>
                       <strong>{item.mainText}</strong>
                     </p>
-                    <hr className="border-t-4 my-4" />
+                    <FadedLineBreak />
                     <p>{item.content}</p>
                   </div>
                 ))}
@@ -237,7 +234,7 @@ function LaserHairRemovalPackages() {
                 <CustomPricingTable pricingContent={item.pricingContent} />
               </div>
             ))}
-            <hr className="border-t-4 my-4" />
+            <FadedLineBreak />
           </motion.div>
           <motion.div
             variants={FadeInWrapper("right", 0.1)}
@@ -258,7 +255,7 @@ function LaserHairRemovalPackages() {
             </div>
             <CustomPricingTable pricingContent={LHRPrimePackages} />
           </motion.div>
-          <hr className="border-t-4 my-4" />
+          <FadedLineBreak />
           <motion.div
             variants={FadeInWrapper("right", 0.1)}
             initial="hidden"
@@ -278,7 +275,7 @@ function LaserHairRemovalPackages() {
             </div>
             <CustomPricingTable pricingContent={LHRRemovalArea} />
           </motion.div>
-          <hr className="border-t-4 my-4" />
+          <FadedLineBreak />
           <motion.div
             variants={FadeInWrapper("right", 0.1)}
             initial="hidden"
@@ -290,7 +287,7 @@ function LaserHairRemovalPackages() {
               <p className="font-extrabold text-3xl ">
                 Session wise hair reduction
               </p>
-              <p className="font-medium text-lg">
+              <p className="font-medium">
                 Expected hair growth as per number of sessions taken
               </p>
             </div>
@@ -300,7 +297,7 @@ function LaserHairRemovalPackages() {
                 backgroundImage: `url(${Resources.images.Common.cardBg2})`,
               }}
             >
-              <div className="grid grid-cols-1 lg:!grid-cols-2 xl:!grid-cols-3 text-lg font-medium text-start mt-4 gap-4 bg-opacity-40">
+              <div className="grid grid-cols-1 lg:!grid-cols-2 xl:!grid-cols-3 font-medium text-start mt-4 gap-4 bg-opacity-40">
                 {sessionWiseHairReduction.map((item) => (
                   <div
                     className="shadow p-4 w-96 bg-[#143048] text-white text-center rounded-xl"
@@ -309,7 +306,7 @@ function LaserHairRemovalPackages() {
                     <p>
                       <strong>{item.mainText}</strong>
                     </p>
-                    <hr className="border-t-4 my-4" />
+                    <FadedLineBreak />
                     <div
                       dangerouslySetInnerHTML={{
                         __html: item.content,
@@ -320,7 +317,7 @@ function LaserHairRemovalPackages() {
               </div>
             </div>
           </motion.div>
-          <hr className="border-t-4 my-4" />
+          <FadedLineBreak />
           <motion.div
             variants={FadeInWrapper("right", 0.1)}
             initial="hidden"
@@ -332,7 +329,7 @@ function LaserHairRemovalPackages() {
               <p className="font-extrabold text-3xl ">Pure Skyn Expertise</p>
             </div>
             <div>
-              <div className="grid grid-cols-1 md:grid-cols-4 text-lg font-medium text-start mt-4 gap-4 bg-opacity-40 ">
+              <div className="grid grid-cols-1 md:grid-cols-4 font-medium text-start mt-4 gap-4 bg-opacity-40 ">
                 <div className="flex items-center flex-col p-2">
                   <img
                     src={Resources.images.Services.LaserHairRemoval.machine}

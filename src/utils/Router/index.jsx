@@ -7,6 +7,7 @@ import CustomLoader from "../../shared/CustomLoader";
 // Lazy Loaded Routes
 const PureSkynHome = lazy(() => import("../../pages/PureSkynHome"));
 const PureSkynLogin = lazy(() => import("../../pages/PureSkynLogin"));
+const PureSkynLogout = lazy(() => import("../../pages/PureSkynLogout"));
 const PureSkynServices = lazy(() => import("../../pages/PureSkynServices"));
 const PureSkynProducts = lazy(() => import("../../pages/PureSkynProducts"));
 const PureSkynSignUp = lazy(() => import("../../pages/PureSkynSignUp"));
@@ -99,6 +100,10 @@ const routesConfig = [
   {
     path: "/book-now",
     Component: PureSkynBookNow,
+  },
+  {
+    path: "/logout",
+    Component: PureSkynLogout,
   },
 ];
 

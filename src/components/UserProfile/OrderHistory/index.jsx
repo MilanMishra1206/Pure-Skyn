@@ -1,10 +1,13 @@
 import React from "react";
+import FadedLineBreak from "../../../shared/CustomHrTag";
 
 export default function OrderHistory({ orderHistory }) {
   return (
     <div>
-      <p className="font-semibold text-cello font-poppins text-xl">My Orders</p>
-      <hr className="my-4 border-blue-gray-50 px-8" />
+      <p className="font-semibold text-cello font-poppins text-xl text-center">
+        My Orders
+      </p>
+      <FadedLineBreak />
       <div className="grid grid-cols-1 gap-4">
         {orderHistory.map((order) => (
           <div key={order.id} className="flex flex-col">

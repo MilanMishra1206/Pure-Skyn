@@ -3,6 +3,7 @@ import { useRouteStatus } from "../../../config/Context/RouteContext";
 import CustomHeader from "../../../shared/CustomHeader";
 import FadeInWrapper from "../../../config/MotionFramer/FadeInWrapper";
 import { motion } from "framer-motion";
+import CustomHrTag from "../../../shared/CustomHrTag";
 
 function AboutUs() {
   const isTablet = useMediaQuery("(max-width: 1023px)");
@@ -38,7 +39,7 @@ function AboutUs() {
           shine in every moment. We believe that everyone deserves to feel their
           best, and we're here to help you achieve just that.
         </p>
-        <hr className="my-4 w-50" />
+        <CustomHrTag />
         <p className="mt-4 font-poppins text-kashmirBlue font-bold text-2xl">
           Laser Hair Removal
         </p>
@@ -50,7 +51,7 @@ function AboutUs() {
           have the expertise and technology to get you the smooth skin you've
           always dreamed of.
         </p>
-        <hr className="my-4 w-50" />
+        <CustomHrTag />
         <span className="mt-4 font-poppins text-kashmirBlue font-bold text-2xl">
           Medi Facial Treatments
         </span>
@@ -61,7 +62,7 @@ function AboutUs() {
           treatments use the latest skincare technologies to deliver immediate
           results and long-lasting benefits.
         </p>
-        <hr className="my-4 w-50" />
+        <CustomHrTag />
       </div>
     </motion.div>
   );

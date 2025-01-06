@@ -7,13 +7,15 @@ import { motion } from "framer-motion";
 import FadeInWrapper from "../../../../../config/MotionFramer/FadeInWrapper";
 import CustomAccordian from "../../../../../shared/CustomAccordian";
 import CustomHeader from "../../../../../shared/CustomHeader";
+import FadedLineBreak from "../../../../../shared/CustomHrTag";
+import DrawCircleText from "../../../../../shared/CustomDrawCircleText";
 
 function SkinTightening({ type }) {
   const isMobile = useMediaQuery("(max-width: 767px)");
   const isTablet = useMediaQuery("(max-width: 1023px)");
 
   return (
-    <div>
+    <div className="mt-4">
       <motion.div
         variants={FadeInWrapper("left", 0.1)}
         initial="hidden"
@@ -85,9 +87,9 @@ function SkinTightening({ type }) {
             className={`mt-5 ${isTablet ? "p-4" : ""}`}
           >
             <div
-              className={`flex ${isMobile ? "flex-col" : "flex-row justify-center items-center"} font-poppins text-lg text-cello`}
+              className={`grid grid-cols-1 md:!grid-cols-2 lg:ml-5 lg:p-5 font-poppins text-cello`}
             >
-              <div className={`${!isMobile ? "w-50" : "w-full"}`}>
+              <div className={`${!isTablet ? "ml-5" : "w-full"}`}>
                 <div className="text-2xl font-bold mb-4">
                   What is HIFU Facial
                 </div>
@@ -113,7 +115,7 @@ function SkinTightening({ type }) {
                   skin.
                 </p>
               </div>
-              <div className="flex justify-center items-center">
+              <div className="flex justify-center items-center mt-4 md:!mt-0">
                 <img
                   src={Resources.images.Services.SkinTightening.img1}
                   alt="skin-tightening"
@@ -130,9 +132,9 @@ function SkinTightening({ type }) {
             className={`mt-3 ${isTablet ? "p-4" : ""}`}
           >
             <div
-              className={`flex ${isTablet ? "flex-col" : "ml-5 p-5"} font-poppins text-lg text-cello`}
+              className={`flex ${isTablet ? "flex-col" : "ml-3 p-5"} font-poppins text-cello`}
             >
-              <div className={`flex flex-col ${!isTablet ? "ml-5" : "w-full"}`}>
+              <div className={`flex flex-col ${!isTablet ? "" : "w-full"}`}>
                 <div className="!text-2xl font-bold mb-4">
                   How does HIFU facial work?
                 </div>
@@ -203,9 +205,7 @@ function SkinTightening({ type }) {
             viewport={{ once: true }}
             className={`mt-3 ${isTablet ? "p-4" : ""}`}
           >
-            <div
-              className={`${isTablet ? "" : "p-5"} font-poppins text-lg text-cello`}
-            >
+            <div className={`${isTablet ? "" : "p-5"} font-poppins text-cello`}>
               <div className="flex flex-col">
                 <div className="!text-2xl font-bold">
                   HIFU facial before and after Precautions
@@ -214,9 +214,9 @@ function SkinTightening({ type }) {
                   Here are some measures to follow before and after your HIFU
                   therapy:-
                 </p>
-                <div className="grid grid-cols-1 md:!grid-cols-2">
+                <div className="grid grid-cols-1 md:!grid-cols-2 mt-4">
                   <div className="flex flex-col px-4">
-                    <div className="font-bold text-2xl mb-4">
+                    <div className="font-bold text-xl mb-4">
                       Before Treatment
                     </div>
                     <ul className="list-disc pl-4">
@@ -239,7 +239,7 @@ function SkinTightening({ type }) {
                     </ul>
                   </div>
                   <div className="flex flex-col px-4">
-                    <div className="font-bold text-2xl mb-4">
+                    <div className="font-bold text-xl mb-4">
                       After Treatment
                     </div>
                     <ul className="list-disc pl-4">
@@ -260,7 +260,7 @@ function SkinTightening({ type }) {
             viewport={{ once: true }}
             className="px-4"
           >
-            <hr className="border-t-4 my-4" />
+            <FadedLineBreak />
           </motion.div>
           <motion.div
             variants={FadeInWrapper("right", 0.1)}
@@ -269,9 +269,7 @@ function SkinTightening({ type }) {
             viewport={{ once: true }}
             className={`mt-3 ${isTablet ? "p-4" : ""}`}
           >
-            <div
-              className={`${isTablet ? "" : "p-5"} font-poppins text-lg text-cello`}
-            >
+            <div className={`${isTablet ? "" : "p-5"} font-poppins text-cello`}>
               <div className="text-2xl font-bold mb-4">
                 Why choose Pure Skyn for a HIFU procedure?
               </div>
@@ -298,6 +296,21 @@ function SkinTightening({ type }) {
               </p>
             </div>
           </motion.div>
+          {type && (
+            <motion.div
+              variants={FadeInWrapper("left", 0.1)}
+              initial="hidden"
+              whileInView="show"
+              viewport={{ once: true }}
+            >
+              <DrawCircleText
+                headerText={"Exciting Offers -"}
+                serviceName={"Medi-Facial Packages!"}
+                buttonText="Check Now"
+                link="/services/skin/medi-facial-packages"
+              />
+            </motion.div>
+          )}
           <motion.div
             variants={FadeInWrapper("up", 0.1)}
             initial="hidden"
@@ -305,7 +318,7 @@ function SkinTightening({ type }) {
             viewport={{ once: true }}
           >
             <div className="px-4">
-              <hr className="border-t-4 my-4" />
+              <FadedLineBreak />
             </div>
             <div className="flex items-center justify-center text-skyn font-bold text-3xl px-4">
               <p>Frequently Asked Questions(FAQs)</p>

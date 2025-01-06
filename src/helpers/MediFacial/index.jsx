@@ -1,3 +1,5 @@
+import Resources from "../../config/Resources";
+
 export const dermaFracMicroneedling = [
   {
     id: 1,
@@ -49,5 +51,29 @@ export const OxyGeneoContent = [
     title: "Why we love it",
     content:
       "We are raving about OxyGeneo because it works for any skin type without any irritation or side effects. It’s the perfect lunchtime treatment that takes just as long as a facial with much more dramatic results. Because there are no noticeable side effects from treatment, it’s also the perfect way to get a last-minute touch up before a major event, where treatments like microdermabrasion and chemical peels would need more healing time.",
+  },
+];
+
+export const oxygeneoThreeSteps = [
+  {
+    id: 1,
+    title: "Exfoliate",
+    imgSrc: Resources.images.Services.OxyGeneo.exfoliate,
+    content:
+      "The Capsugen tablet exfoliates the upper skin layer to remove dead cells, smooth and renew the skin, preparing the skin to receive active nutrients.",
+  },
+  {
+    id: 2,
+    title: "Infuse",
+    imgSrc: Resources.images.Services.OxyGeneo.infuse,
+    content:
+      "Capsugen cleanses the skin, preparing it for infusion of active ingredients: NeoRevive for rejuvenation and anti-aging or NeoBright for skin brightening and texture improvement",
+  },
+  {
+    id: 3,
+    title: "Oxygenate",
+    imgSrc: Resources.images.Services.OxyGeneo.oxygenate,
+    content:
+      "The OxyGeneO effect produces CO2 bubbles which gently burst on the skin surface creating a physiological response, sending oxygen-rich blood to the area. This increases capillary flow and skin metabolism. Oxygenation results in optimal absorption of active ingredients.",
   },
 ];

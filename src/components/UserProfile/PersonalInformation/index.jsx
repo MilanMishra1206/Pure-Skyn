@@ -4,6 +4,7 @@ import { FiEdit3 } from "react-icons/fi";
 import { getPersonalInfoValidationSchema } from "../../../helpers/UserProfile";
 import { useAppSnackbar } from "../../../config/Context/SnackbarContext";
 import regex from "../../../helpers/Regex";
+import FadedLineBreak from "../../../shared/CustomHrTag";
 
 const CustomTextField = lazy(() => import("../../../shared/CustomTextField"));
 
@@ -56,17 +57,17 @@ export default function PersonalInformation({
   return (
     <div className="w-full">
       <form>
-        <div className="flex items-center justify-between mb-4">
-          <p className="font-semibold text-cello font-poppins text-xl">
+        <div className="flex items-center gap-4 mb-4 justify-center">
+          <span className="font-semibold text-cello font-poppins text-xl">
             Personal Information
-          </p>
+          </span>
           <FiEdit3
             className="text-gray-500 cursor-pointer hover:text-gray-800 transition"
             size={20}
             onClick={() => setEditMode(!editMode)}
           />
         </div>
-        <hr className="mb-4" />
+        <FadedLineBreak />
         <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4 font-poppins">
           <div>
             {editMode ? (

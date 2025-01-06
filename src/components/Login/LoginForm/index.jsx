@@ -2,6 +2,8 @@ import React, { lazy, Suspense, useState } from "react";
 import { Link } from "react-router-dom";
 import Resources from "../../../config/Resources";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
+import { motion } from "framer-motion";
+import FadeInWrapper from "../../../config/MotionFramer/FadeInWrapper";
 
 const CustomTextField = lazy(() => import("../../../shared/CustomTextField"));
 
@@ -9,7 +11,11 @@ function LoginForm({ formik, handleSubmit, mobileClass }) {
   const [showPassword, setShowPassword] = useState(false);
 
   return (
-    <div
+    <motion.div
+      variants={FadeInWrapper("up", 0.1)}
+      initial="hidden"
+      whileInView="show"
+      viewport={{ once: true }}
       className={`w-full max-w-md mx-auto bg-[#FAFAFA] shadow-lg rounded-3xl p-8 ${mobileClass}`}
     >
       <div className="flex justify-center">
@@ -31,15 +37,15 @@ function LoginForm({ formik, handleSubmit, mobileClass }) {
             placeholder="Enter"
             requiredStar
             labelToShow="Email Id"
-            name="emailAddress"
+            name="email"
             textFieldColorClass="shadow-insetLight"
             inputClassName="!bg-transparent"
             fieldWidth="w-full !mb-4"
-            value={formik.values?.emailAddress}
+            value={formik.values?.email}
             onChange={formik.handleChange}
             handleBlur={formik.handleBlur}
-            error={formik.errors.emailAddress}
-            touched={formik.touched.emailAddress}
+            error={formik.errors.email}
+            touched={formik.touched.email}
           />
         </Suspense>
         <Suspense fallback={<div />}>
@@ -65,10 +71,20 @@ function LoginForm({ formik, handleSubmit, mobileClass }) {
           />
         </Suspense>
       </form>
+      <div className="">
+        <p>
+          <Link
+            to="/change-password"
+            className="underline text-skyn hover:!opacity-80 text-sm"
+          >
+            Forgot Password?
+          </Link>
+        </p>
+      </div>
       <button
         type="button"
         onClick={handleSubmit}
-        className="mt-4 w-full bg-skyn text-white py-2 px-4 rounded-md hover:opacity-80 focus:outline-none focus:ring-2 focus:ring-skyn"
+        className="mt-4 w-full bg-skyn text-white py-2 px-4 rounded-md hover:opacity-80 focus:outline-none focus:ring-2 focus:ring-skyn shadow-lg"
       >
         Login
       </button>
@@ -88,7 +104,7 @@ function LoginForm({ formik, handleSubmit, mobileClass }) {
           </Link>
         </p>
       </div>
-    </div>
+    </motion.div>
   );
 }
 

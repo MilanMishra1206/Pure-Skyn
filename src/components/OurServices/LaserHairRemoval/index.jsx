@@ -10,6 +10,7 @@ import FadeInWrapper from "../../../config/MotionFramer/FadeInWrapper";
 import CustomHeader from "../../../shared/CustomHeader";
 import CustomAccordian from "../../../shared/CustomAccordian";
 import DrawCircleText from "../../../shared/CustomDrawCircleText";
+import FadedLineBreak from "../../../shared/CustomHrTag";
 
 const LaserHairRemovalForMen = lazy(() => import("./LaserHairRemovalForMen"));
 const LaserHairRemovalForWomen = lazy(
@@ -77,7 +78,7 @@ function LaserHairRemoval() {
                 performed on various parts of the body, leaving the surrounding
                 skin undisturbed.
               </p>
-              <hr className="my-4 border-blue-gray-50 px-8" />
+              <FadedLineBreak />
               <h4 className="text-kashmirBlue font-bold">
                 Why Choose Laser Hair Removal?
               </h4>
@@ -108,7 +109,7 @@ function LaserHairRemoval() {
                   with built-in cooling systems.
                 </li>
               </ul>
-              <hr className="my-4 border-blue-gray-50 px-8" />
+              <FadedLineBreak />
               <h4 className="text-kashmirBlue font-bold">
                 Areas of the Body We Treat
               </h4>
@@ -139,7 +140,7 @@ function LaserHairRemoval() {
                   the bikini area.
                 </li>
               </ul>
-              <hr className="my-4 border-blue-gray-50 px-8" />
+              <FadedLineBreak />
               <h4 className="text-kashmirBlue font-bold">
                 What to Expect During the Treatment
               </h4>
@@ -163,7 +164,7 @@ function LaserHairRemoval() {
                   instructions provided by our specialists.
                 </li>
               </ul>
-              <hr className="my-4 border-blue-gray-50 px-8" />
+              <FadedLineBreak />
 
               <h4 className="text-kashmirBlue font-bold">
                 Is Laser Hair Removal Right for You?
@@ -177,7 +178,7 @@ function LaserHairRemoval() {
                 skin and hair type to recommend the most suitable approach for
                 optimal results.
               </p>
-              <hr className="my-4 border-blue-gray-50 px-8" />
+              <FadedLineBreak />
               <h4 className="text-kashmirBlue font-bold">
                 Benefits of Laser Hair Removal
               </h4>
@@ -264,9 +265,7 @@ function LaserHairRemoval() {
           whileInView="show"
           viewport={{ once: true }}
         >
-          <div className="px-4">
-            <hr className="border-t-4 my-4" />
-          </div>
+          <FadedLineBreak />
           <div className="flex items-center justify-center text-skyn font-bold text-3xl px-4">
             <p>Frequently Asked Questions(FAQs)</p>
           </div>

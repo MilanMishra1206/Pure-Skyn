@@ -4,6 +4,7 @@ import { FiEdit2, FiTrash2 } from "react-icons/fi";
 import regex from "../../../helpers/Regex";
 import { useAppSnackbar } from "../../../config/Context/SnackbarContext";
 import { AnimatePresence, motion } from "framer-motion";
+import FadedLineBreak from "../../../shared/CustomHrTag";
 
 const CustomTextField = lazy(() => import("../../../shared/CustomTextField"));
 
@@ -97,10 +98,10 @@ export default function Address({
 
   return (
     <div>
-      <p className="font-semibold text-cello font-poppins text-xl">
+      <p className="font-semibold text-cello font-poppins text-xl text-center">
         Address Details
       </p>
-      <hr className="my-4 border-blue-gray-50 px-8" />
+      <FadedLineBreak />
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 mt-4 font-poppins">
         {addresses.map((address, index) => (
           <div
@@ -367,10 +368,10 @@ export default function Address({
                       onClick={() =>
                         addressFormik.setFieldValue("addressName", type)
                       }
-                      className={`py-2 px-4 rounded-md text-sm font-medium transition-all border ${
+                      className={`py-2 px-4 rounded-md text-sm font-medium transition-all shadow-md ${
                         addressFormik.values.addressName === type
-                          ? "bg-skyn text-white border-skyn"
-                          : "bg-white text-gray-700 border-gray-300 hover:bg-gray-100"
+                          ? "bg-skyn text-white"
+                          : "bg-white text-gray-700 hover:!bg-gray-100"
                       }`}
                     >
                       {type}
@@ -382,13 +383,13 @@ export default function Address({
                 <button
                   type="button"
                   onClick={handleCancel}
-                  className="bg-gray-200 text-gray-700 px-4 py-2 rounded-md hover:bg-gray-300"
+                  className="bg-gray-200 text-gray-700 px-4 py-2 rounded-md hover:bg-gray-300 shadow-md"
                 >
                   Cancel
                 </button>
                 <button
                   type="button"
-                  className="bg-skyn text-white px-4 py-2 rounded-md hover:bg-skyn-dark hover:opacity-80"
+                  className="bg-skyn text-white px-4 py-2 rounded-md hover:bg-skyn-dark hover:opacity-80 shadow-md"
                   onClick={handleSave}
                 >
                   {editingAddressIndex !== null

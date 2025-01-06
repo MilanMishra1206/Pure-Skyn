@@ -9,6 +9,7 @@ import CustomHeader from "../../../../../shared/CustomHeader";
 import FuzzyPricingOverlay from "../../../../../shared/CustomFuzzyPricingOverlay";
 import Resources from "../../../../../config/Resources";
 import CustomPricingTable from "../../../../../shared/CustomPricingTable";
+import FadedLineBreak from "../../../../../shared/CustomHrTag";
 
 function MediFacialPackages() {
   const isTablet = useMediaQuery("(max-width: 1023px)");
@@ -80,15 +81,13 @@ function MediFacialPackages() {
                 link="/book-now"
               />
             </motion.div>
-            <div className="flex place-content-center mt-5">
-              <hr className="border-t-4 mb-4 w-50" />
-            </div>
+            <FadedLineBreak />
             <motion.div
               variants={FadeInWrapper("right", 0.1)}
               initial="hidden"
               whileInView="show"
               viewport={{ once: true }}
-              className="flex flex-col font-poppins font-medium text-xl text-center text-coal"
+              className="flex flex-col font-poppins font-medium text-lg text-center text-coal"
             >
               <p>
                 At Pure Skyn, we take pride in our commitment to delivering
@@ -104,9 +103,7 @@ function MediFacialPackages() {
               </p>
             </motion.div>
           </div>
-          <div className="flex place-content-center">
-            <hr className="border-t-4 mt-3 w-50" />
-          </div>
+          <FadedLineBreak />
           <motion.div
             variants={FadeInWrapper("right", 0.1)}
             initial="hidden"
@@ -145,9 +142,7 @@ function MediFacialPackages() {
             </div>
             <CustomPricingTable pricingContent={mediFacialPrimePackages} />
           </motion.div>
-          <div className="flex place-content-center">
-            <hr className="border-t-4 mt-4 w-50" />
-          </div>
+          <FadedLineBreak />
           <motion.div
             variants={FadeInWrapper("right", 0.1)}
             initial="hidden"
@@ -159,7 +154,7 @@ function MediFacialPackages() {
               <p className="font-extrabold text-3xl ">Pure Skyn Expertise</p>
             </div>
             <div>
-              <div className="grid grid-cols-1 md:grid-cols-4 text-lg font-medium text-start gap-4 bg-opacity-40 ">
+              <div className="grid grid-cols-1 md:grid-cols-4 font-medium text-start gap-4 bg-opacity-40 ">
                 <div className="flex items-center flex-col p-2">
                   <img
                     src={Resources.images.Services.SkinTightening.img4}

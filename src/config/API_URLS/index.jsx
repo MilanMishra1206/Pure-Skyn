@@ -1,5 +1,20 @@
 const API_URLS = {
-  // baseURL: process.env.REACT_APP_BASE_API_URL,
+  baseURL: "https://pureSkyn.com/api/v1/",
+  Auth: {
+    login: "auth/login",
+    registerUser: "auth/register/user",
+    registerAdmin: "auth/register/admin",
+  },
+  Services: {
+    getAllServices: "services/all",
+    createService: "services/create",
+  },
+  Booking: {
+    createBooking: "booking/create",
+  },
+  Admin: {
+    getAllUsers: "/users/all",
+  },
 };
 
 export default API_URLS;

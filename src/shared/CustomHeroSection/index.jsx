@@ -18,7 +18,7 @@ const CustomHeroSection = () => {
           Download our app to stay connected
         </p>
         <div className="flex justify-center">
-          <button className="bg-skyn text-white font-medium py-2 px-4 lg:!mx-5 rounded transition-all hover:!opacity-80 active:!scale-95 ml-5 font-poppins">
+          <button className="bg-skyn text-white font-medium py-2 px-4 lg:!mx-5 rounded transition-all hover:!opacity-80 active:!scale-95 ml-5 font-poppins shadow-lg">
             Download App
           </button>
         </div>

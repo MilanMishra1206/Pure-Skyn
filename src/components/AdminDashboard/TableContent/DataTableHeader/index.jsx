@@ -2,7 +2,13 @@ import { Suspense } from "react";
 import CustomTextField from "../../../../shared/CustomTextField";
 import Resources from "../../../../config/Resources";
 
-function DataTableHeader({ filters, setFilters, totalCount, nameField }) {
+function DataTableHeader({
+  filters,
+  setFilters,
+  totalCount,
+  nameField,
+  placeholder,
+}) {
   return (
     <div>
       <div className="flex justify-between flex-col xl:!flex-row">
@@ -22,7 +28,7 @@ function DataTableHeader({ filters, setFilters, totalCount, nameField }) {
               textClassOverride="!text-kashmirBlue"
               placeholderClasses="placeholder:!opacity-30 !text-licorice !bg-transparent !font-poppins"
               className="md:w-[400px] w-full rounded-md !bg-transparent"
-              placeholder="Search Appointment Details"
+              placeholder={placeholder}
               value={filters.search}
               name={nameField}
               textFieldColorClass="!bg-transparent !border !border-linkWater"

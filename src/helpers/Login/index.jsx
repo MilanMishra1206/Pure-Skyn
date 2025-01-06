@@ -3,13 +3,13 @@ import regex from "../Regex";
 import React from "react";
 
 const loginInitialValues = {
-  emailAddress: "",
+  email: "",
   password: "",
 };
 
 const getLoginValidation = () =>
   yup.object().shape({
-    emailAddress: yup
+    email: yup
       .string()
       .email("Please Enter Valid Email")
       .required("Email is required"),
@@ -17,21 +17,23 @@ const getLoginValidation = () =>
   });
 
 const signUpInitialValue = {
-  fullName: "",
-  emailAddress: "",
-  contactNumber: "",
+  firstName: "",
+  lastName: "",
+  email: "",
+  phone: "",
   password: "",
   confirmPassword: "",
 };
 
 const getSignUpValidation = () =>
   yup.object().shape({
-    fullName: yup.string().required("Name is required"),
-    emailAddress: yup
+    firstName: yup.string().required("First name is required"),
+    lastName: yup.string().required("Last name is required"),
+    email: yup
       .string()
       .email("Please Enter Valid Email")
       .required("Email is required"),
-    contactNumber: yup
+    phone: yup
       .string()
       .required("Phone number is required")
       .matches(regex.mobileNumber, "Enter Valid Phone Number"),

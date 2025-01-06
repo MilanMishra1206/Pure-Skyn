@@ -9,6 +9,7 @@ import FadeInWrapper from "../../config/MotionFramer/FadeInWrapper";
 import { motion } from "framer-motion";
 import { useLocation } from "react-router-dom";
 import regex from "../../helpers/Regex";
+import FadedLineBreak from "../../shared/CustomHrTag";
 
 const CustomTextField = lazy(() => import("../../shared/CustomTextField"));
 const CustomDropdown = lazy(() => import("../../shared/CustomDropdown"));
@@ -126,6 +127,7 @@ function BookNow() {
               <div className="text-3xl font-poppins text-center font-extrabold mb-5">
                 Please Share Booking Details
               </div>
+              <FadedLineBreak />
               <div className="grid md:!grid-cols-2 xl:!grid-cols-3 gap-4 p-5">
                 <Suspense fallback={<div />}>
                   <CustomTextField
@@ -325,10 +327,10 @@ function BookNow() {
                         key={index}
                         type="button"
                         onClick={() => formik.setFieldValue("timeSlot", slot)}
-                        className={`py-2 px-4 rounded border text-sm font-bold transition-all ${
+                        className={`py-2 px-4 rounded text-sm font-bold transition-all shadow-md ${
                           formik.values.timeSlot === slot
                             ? "bg-skyn text-white border-skyn"
-                            : "bg-white text-gray-700 border-gray-300 hover:bg-gray-100"
+                            : "bg-white text-gray-700 hover:!bg-gray-100"
                         }`}
                       >
                         {slot}

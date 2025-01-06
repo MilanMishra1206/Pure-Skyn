@@ -82,7 +82,43 @@ export const techHeaders = [
   },
 ];
 
-export const statusDropdownValues = [
+export const adminMobileHeaders = [
+  { key: "adminId", label: "Admin ID" },
+  { key: "action", label: "" },
+];
+
+export const adminHeaders = [
+  {
+    key: "adminId",
+    label: "Admin ID",
+  },
+  {
+    key: "adminName",
+    label: "Admin's Name",
+  },
+  {
+    key: "email",
+    label: "Email ID",
+  },
+  {
+    key: "mobile",
+    label: "Mobile No",
+  },
+  {
+    key: "status",
+    label: "Status",
+  },
+  {
+    key: "actions",
+    label: "Action",
+  },
+  {
+    key: "action",
+    label: "",
+  },
+];
+
+export const locationDropdownValues = [
   {
     label: "Gurgaon",
     value: "Gurgaon",

@@ -1,11 +1,8 @@
-/* eslint-disable import/no-unresolved */
-
 import { Suspense } from "react";
 import AutoComplete from "../../../../shared/CustomAutocomplete";
-import { statusDropdownValues } from "../../../../helpers/Admin";
 import Resources from "../../../../config/Resources";
 
-function DataTableFilter({ filters, setFilters }) {
+function DataTableFilter({ filters, setFilters, dropdownValues }) {
   return (
     <div className="mt-2 flex flex-col md:flex-row items-center justify-center mx-0 md:!mx-4">
       <div className="flex flex-row mb-3 md:!mb-0">
@@ -20,7 +17,7 @@ function DataTableFilter({ filters, setFilters }) {
                 size="small"
                 classes="!bg-white"
                 chipClassName="h-5"
-                options={statusDropdownValues}
+                options={dropdownValues}
                 multiple
                 trimTextLength={0}
                 selectAllByDefault

@@ -8,13 +8,15 @@ import { motion } from "framer-motion";
 import FadeInWrapper from "../../../../../config/MotionFramer/FadeInWrapper";
 import CustomAccordian from "../../../../../shared/CustomAccordian";
 import CustomHeader from "../../../../../shared/CustomHeader";
+import FadedLineBreak from "../../../../../shared/CustomHrTag";
+import DrawCircleText from "../../../../../shared/CustomDrawCircleText";
 
 function DermafracInfusionFacial({ type }) {
   const isMobile = useMediaQuery("(max-width: 767px)");
   const isTablet = useMediaQuery("(max-width: 1023px)");
 
   return (
-    <div>
+    <div className="mt-4">
       <motion.div
         variants={FadeInWrapper("left", 0.1)}
         initial="hidden"
@@ -86,7 +88,7 @@ function DermafracInfusionFacial({ type }) {
             className={`mt-3 ${isTablet ? "p-4" : ""}`}
           >
             <div
-              className={`flex ${isTablet ? "flex-col" : "flex-row justify-center items-center"} font-poppins text-lg text-cello mt-5`}
+              className={`flex ${isTablet ? "flex-col" : "flex-row justify-center items-center"} font-poppins text-cello mt-5`}
             >
               <div className={`${!isTablet ? "w-50" : "w-full"}`}>
                 <p>
@@ -130,7 +132,7 @@ function DermafracInfusionFacial({ type }) {
             className={`mt-3 ${isTablet ? "p-4" : ""}`}
           >
             <div
-              className={`flex ${isTablet ? "flex-col" : "justify-center items-center p-5"} font-poppins text-lg text-cello`}
+              className={`flex ${isTablet ? "flex-col" : "justify-center items-center p-5"} font-poppins text-cello`}
             >
               {!isTablet && (
                 <img
@@ -180,7 +182,7 @@ function DermafracInfusionFacial({ type }) {
             className={`mt-3 ${isTablet ? "p-4" : ""}`}
           >
             <div
-              className={`font-poppins text-lg text-cello ${isTablet ? "flex justify-center items-center" : ""}`}
+              className={`font-poppins text-cello ${isTablet ? "flex justify-center items-center" : ""}`}
             >
               <div className="flex flex-col ml-0 xl:!ml-5">
                 <div className="!text-2xl font-bold mb-2">
@@ -209,8 +211,8 @@ function DermafracInfusionFacial({ type }) {
                         <div className="text-xl font-bold text-center">
                           {item.title}
                         </div>
-                        <hr className="border-t-4 my-4" />
-                        <p className="text-center text-lg">{item.content}</p>
+                        <FadedLineBreak />
+                        <p className="text-center">{item.content}</p>
                       </div>
                     ))}
                   </div>
@@ -226,7 +228,7 @@ function DermafracInfusionFacial({ type }) {
             className={`mt-3 ${isTablet ? "p-4" : ""}`}
           >
             <div
-              className={`flex ${isTablet ? "flex-col" : "justify-center items-center p-5"} font-poppins text-lg text-cello`}
+              className={`flex ${isTablet ? "flex-col" : "justify-center items-center p-5"} font-poppins text-cello`}
             >
               {!isTablet && (
                 <img
@@ -241,7 +243,7 @@ function DermafracInfusionFacial({ type }) {
                 <div className="!text-2xl font-bold">
                   What Can You Use This Treatment For?
                 </div>
-                <div className="flex flex-col">
+                <div className="flex flex-col mt-4">
                   <p>
                     In general, microneedling treatments are highly versatile
                     and can be used to treat most skin concerns, with the
@@ -251,7 +253,7 @@ function DermafracInfusionFacial({ type }) {
                     concerns. Some specific concerns that this treatment can
                     help with include:
                   </p>
-                  <ul className="list-disc pl-4">
+                  <ul className="list-disc pl-4 mt-4">
                     <li>Acne scarring</li>
                     <li>Shallow scarring</li>
                     <li>Fine lines and wrinkles</li>
@@ -275,13 +277,28 @@ function DermafracInfusionFacial({ type }) {
               )}
             </div>
           </motion.div>
+          {type && (
+            <motion.div
+              variants={FadeInWrapper("left", 0.1)}
+              initial="hidden"
+              whileInView="show"
+              viewport={{ once: true }}
+            >
+              <DrawCircleText
+                headerText={"Exciting Offers -"}
+                serviceName={"Medi-Facial Packages!"}
+                buttonText="Check Now"
+                link="/services/skin/medi-facial-packages"
+              />
+            </motion.div>
+          )}
           <motion.div
             variants={FadeInWrapper("up", 0.1)}
             initial="hidden"
             whileInView="show"
             viewport={{ once: true }}
           >
-            <hr className="border-t-4 my-4" />
+            <FadedLineBreak />
             <div className="flex items-center justify-center text-skyn font-bold text-3xl px-4">
               <p>Frequently Asked Questions(FAQs)</p>
             </div>

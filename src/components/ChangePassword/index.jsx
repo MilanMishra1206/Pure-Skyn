@@ -1,11 +1,15 @@
 import { useFormik } from "formik";
 import * as yup from "yup";
 import CustomHeader from "../../shared/CustomHeader";
-import { useState } from "react";
+import { lazy, Suspense, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import regex from "../../helpers/Regex";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
 import { useMediaQuery } from "@mui/material";
+import { motion } from "framer-motion";
+import FadeInWrapper from "../../config/MotionFramer/FadeInWrapper";
+
+const CustomTextField = lazy(() => import("../../shared/CustomTextField"));
 
 function ChangePassword() {
   const navigate = useNavigate();
@@ -14,6 +18,7 @@ function ChangePassword() {
   const [showNewPassword, setShowNewPassword] = useState(false);
   const [showConfirmNewPassword, setShowConfirmNewPassword] = useState(false);
   const isMobile = useMediaQuery("(max-width: 767px)");
+  const isTablet = useMediaQuery("(max-width: 1023px)");
 
   const passwordFormik = useFormik({
     enableReinitialize: true,
@@ -59,180 +64,134 @@ function ChangePassword() {
   };
 
   return (
-    <div className={`mt-5 font-poppins ${isMobile ? "p-2": "p-5"}`}>
+    <motion.div
+      variants={FadeInWrapper("left", 0.1)}
+      initial="hidden"
+      whileInView="show"
+      viewport={{ once: true }}
+      className={`mt-3 ${isTablet ? "py-3" : ""}`}
+    >
       <div className="mt-3 p-5">
         <CustomHeader
           heading="Password Management"
           subHeading={"Change Your Password Here!"}
         />
-      </div>
-      <div className={`flex flex-col shadow rounded-3xl w-full md:!w-55/100 ${isMobile ? "p-4": "p-5"}`}>
-        <form onSubmit={passwordFormik.handleSubmit}>
-          <div className="mb-4 relative">
-            <label
-              htmlFor="currentPassword"
-              className="block text-sm font-medium text-kashmirBlue"
-            >
-              Current Password
-            </label>
-            <div className="flex justify-center items-center">
-              <input
+
+        <div
+          className={`flex flex-col shadow rounded-3xl w-full md:!w-1/2 ${isMobile ? "p-4" : "p-5"}`}
+        >
+          <form onSubmit={passwordFormik.handleSubmit}>
+            <Suspense fallback={<div />}>
+              <CustomTextField
+                textClassOverride="!text-kashmirBlue"
                 type={showCurrentPassword ? "text" : "password"}
-                id="currentPassword"
+                placeholderClasses="placeholder:!opacity-30 !text-licorice"
+                className="h-12 rounded-md !bg-transparent"
+                placeholder="Enter"
+                requiredStar
+                labelToShow="Current Password"
                 name="currentPassword"
-                value={passwordFormik.values.currentPassword}
+                textFieldColorClass="shadow-insetLight"
+                inputClassName="!bg-transparent"
+                fieldWidth="w-full !mb-4"
+                value={passwordFormik.values?.currentPassword}
                 onChange={passwordFormik.handleChange}
-                onBlur={passwordFormik.handleBlur}
-                className="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-skyn"
-                placeholder="Enter"
-                required
+                handleBlur={passwordFormik.handleBlur}
+                error={passwordFormik.errors.currentPassword}
+                touched={passwordFormik.touched.currentPassword}
+                iconEnd={showCurrentPassword ? <FaEye /> : <FaEyeSlash />}
+                iconOnClick={() => setShowCurrentPassword(!showCurrentPassword)}
               />
-              <div
-                className="absolute right-3 cursor-pointer"
-                onClick={() => setShowCurrentPassword(!showCurrentPassword)}
-              >
-                {showCurrentPassword ? (
-                  <FaEyeSlash size={20} className="text-gray-500" />
-                ) : (
-                  <FaEye size={20} className="text-gray-500" />
-                )}
-              </div>
-            </div>
-            {passwordFormik.errors.currentPassword &&
-              passwordFormik.touched.currentPassword && (
-                <p className="mt-1 ml-1 text-xs text-bitterSweet">
-                  {passwordFormik.errors.currentPassword}*
-                </p>
-              )}
-          </div>
-
-          <div className="mb-4 relative">
-            <label
-              htmlFor="newPassword"
-              className="block text-sm font-medium text-kashmirBlue"
-            >
-              New Password
-            </label>
-            <div className="flex justify-center items-center">
-              <input
+            </Suspense>
+            <Suspense fallback={<div />}>
+              <CustomTextField
+                textClassOverride="!text-kashmirBlue"
                 type={showNewPassword ? "text" : "password"}
-                id="newPassword"
+                placeholderClasses="placeholder:!opacity-30 !text-licorice"
+                className="h-12 rounded-md !bg-transparent"
+                placeholder="Enter"
+                requiredStar
+                labelToShow="New Password"
                 name="newPassword"
-                value={passwordFormik.values.newPassword}
+                textFieldColorClass="shadow-insetLight"
+                inputClassName="!bg-transparent"
+                fieldWidth="w-full !mb-4"
+                value={passwordFormik.values?.newPassword}
                 onChange={passwordFormik.handleChange}
-                onBlur={passwordFormik.handleBlur}
-                className="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-skyn"
-                placeholder="Enter"
-                required
+                handleBlur={passwordFormik.handleBlur}
+                error={passwordFormik.errors.newPassword}
+                touched={passwordFormik.touched.newPassword}
+                iconEnd={showNewPassword ? <FaEye /> : <FaEyeSlash />}
+                iconOnClick={() => setShowNewPassword(!showNewPassword)}
               />
-              <div
-                className="absolute right-3 cursor-pointer"
-                onClick={() => setShowNewPassword(!showNewPassword)}
-              >
-                {showNewPassword ? (
-                  <FaEyeSlash size={20} className="text-gray-500" />
-                ) : (
-                  <FaEye size={20} className="text-gray-500" />
-                )}
-              </div>
-            </div>
-            {passwordFormik.errors.newPassword &&
-              passwordFormik.touched.newPassword && (
-                <p className="mt-1 ml-1 text-xs text-bitterSweet">
-                  {passwordFormik.errors.newPassword}*
-                </p>
-              )}
-          </div>
-
-          <div className="mb-4 relative">
-            <label
-              htmlFor="confirmNewPassword"
-              className="block text-sm font-medium text-kashmirBlue"
-            >
-              Confirm New Password
-            </label>
-            <div className="flex justify-center items-center">
-              <input
+            </Suspense>
+            <Suspense fallback={<div />}>
+              <CustomTextField
+                textClassOverride="!text-kashmirBlue"
                 type={showConfirmNewPassword ? "text" : "password"}
-                id="confirmNewPassword"
-                name="confirmNewPassword"
-                value={passwordFormik.values.confirmNewPassword}
-                onChange={passwordFormik.handleChange}
-                onBlur={passwordFormik.handleBlur}
-                className="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-skyn"
+                placeholderClasses="placeholder:!opacity-30 !text-licorice"
+                className="h-12 rounded-md !bg-transparent"
                 placeholder="Enter"
-                required
-              />
-              <div
-                className="absolute right-3 cursor-pointer"
-                onClick={() =>
+                requiredStar
+                labelToShow="New Password"
+                name="confirmNewPassword"
+                textFieldColorClass="shadow-insetLight"
+                inputClassName="!bg-transparent"
+                fieldWidth="w-full !mb-4"
+                value={passwordFormik.values?.confirmNewPassword}
+                onChange={passwordFormik.handleChange}
+                handleBlur={passwordFormik.handleBlur}
+                error={passwordFormik.errors.confirmNewPassword}
+                touched={passwordFormik.touched.confirmNewPassword}
+                iconEnd={showConfirmNewPassword ? <FaEye /> : <FaEyeSlash />}
+                iconOnClick={() =>
                   setShowConfirmNewPassword(!showConfirmNewPassword)
                 }
+              />
+            </Suspense>
+            <Suspense fallback={<div />}>
+              <CustomTextField
+                textClassOverride="!text-kashmirBlue"
+                placeholderClasses="placeholder:!opacity-30 !text-licorice"
+                className="h-12 rounded-md !bg-transparent"
+                placeholder="Enter"
+                requiredStar
+                labelToShow="Phone Number"
+                name="phoneNumber"
+                maxLength={10}
+                regex={regex.numeric}
+                textFieldColorClass="shadow-insetLight"
+                inputClassName="!bg-transparent"
+                fieldWidth="w-full !mb-4"
+                value={passwordFormik.values?.phoneNumber}
+                onChange={passwordFormik.handleChange}
+                handleBlur={passwordFormik.handleBlur}
+                error={passwordFormik.errors.phoneNumber}
+                touched={passwordFormik.touched.phoneNumber}
+              />
+            </Suspense>
+            {!isOtpSent && (
+              <button
+                type="submit"
+                className="w-full md:!w-1/2 bg-skyn text-white py-2 px-4 rounded-md hover:bg-skyn-dark focus:outline-none transition-all shadow-[3px_3px_0px_#313440] hover:shadow-none hover:translate-x-[3px] hover:translate-y-[3px]"
+                onClick={() => sendOtp()}
               >
-                {showConfirmNewPassword ? (
-                  <FaEyeSlash size={20} className="text-gray-500" />
-                ) : (
-                  <FaEye size={20} className="text-gray-500" />
-                )}
-              </div>
-            </div>
-            {passwordFormik.errors.confirmNewPassword &&
-              passwordFormik.touched.confirmNewPassword && (
-                <p className="mt-1 ml-1 text-xs text-bitterSweet">
-                  {passwordFormik.errors.confirmNewPassword}*
-                </p>
-              )}
-          </div>
-
-          <div className="mb-4">
-            <label
-              htmlFor="phoneNumber"
-              className="block text-sm font-medium text-kashmirBlue"
-            >
-              Enter Your Phone Number
-            </label>
-            <input
-              type="text"
-              id="phoneNumber"
-              name="phoneNumber"
-              maxLength={10}
-              value={passwordFormik.values.phoneNumber}
-              onChange={passwordFormik.handleChange}
-              onBlur={passwordFormik.handleBlur}
-              className="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-skyn"
-              placeholder="Enter"
-              required
-            />
-            {passwordFormik.errors.phoneNumber &&
-              passwordFormik.touched.phoneNumber && (
-                <p className="mt-1 ml-1 text-xs text-bitterSweet">
-                  {passwordFormik.errors.phoneNumber}*
-                </p>
-              )}
-          </div>
-
-          {!isOtpSent && (
-            <button
-              type="submit"
-              className="w-full lg:!w-2/4 mt-3 bg-skyn text-white py-2 px-4 rounded-md hover:bg-skyn-dark focus:outline-none focus:ring-2 focus:ring-skyn"
-              onClick={() => sendOtp()}
-            >
-              Send OTP
-            </button>
-          )}
-          {isOtpSent && (
-            <button
-              type="submit"
-              className="w-full lg:!w-2/4 mt-3 bg-skyn text-white py-2 px-4 rounded-md hover:bg-skyn-dark focus:outline-none focus:ring-
-              focus:ring-2 focus:ring-skyn"
-              onClick={() => changePassword()}
-            >
-              Change Password
-            </button>
-          )}
-        </form>
+                Send OTP
+              </button>
+            )}
+            {isOtpSent && (
+              <button
+                type="submit"
+                className="w-full md:!w-1/2 bg-skyn text-white py-2 px-4 rounded-md hover:bg-skyn-dark focus:outline-none transition-all shadow-[3px_3px_0px_#313440] hover:shadow-none hover:translate-x-[3px] hover:translate-y-[3px]"
+                onClick={() => changePassword()}
+              >
+                Change Password
+              </button>
+            )}
+          </form>
+        </div>
       </div>
-    </div>
+    </motion.div>
   );
 }
 

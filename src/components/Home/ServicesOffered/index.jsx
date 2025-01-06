@@ -20,25 +20,25 @@ function ServicesOffered() {
     {
       id: 2,
       title: "Oxy Hydra Facial",
-      image: `${Resources.images.Services.OxyHydra.oxyHydraCard}`,
+      image: `${Resources.images.Services.OxyHydra.img4}`,
       linkTo: "services/skin/medi-facial/oxy-hydra-facial",
     },
     {
       id: 3,
       title: "RF Skin Tightening",
-      image: `${Resources.images.Services.SkinTightening.skinTighteningCard}`,
+      image: `${Resources.images.Services.SkinTightening.img7}`,
       linkTo: "services/skin/medi-facial/skin-tightening",
     },
     {
       id: 4,
       title: "Dermafrac Infusion Facial",
-      image: `${Resources.images.Services.Dermafrac.image5}`,
+      image: `${Resources.images.Services.Dermafrac.img6}`,
       linkTo: "services/skin/medi-facial/dermafrac-infusion-facial",
     },
     {
       id: 5,
       title: "Oxygeneo",
-      image: `${Resources.images.Services.OxyGeneo.img1}`,
+      image: `${Resources.images.Services.OxyGeneo.img6}`,
       linkTo: "services/skin/medi-facial/oxygeneo",
     },
   ];

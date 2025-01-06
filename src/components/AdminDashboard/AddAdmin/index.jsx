@@ -7,12 +7,22 @@ import CustomPagination from "../../../shared/CustomDashboardTable/CustomPaginat
 import { locationDropdownValues } from "../../../helpers/Admin";
 import DataTableFilter from "../TableContent/DataTableFilter";
 import DataTableHeader from "../TableContent/DataTableHeader";
+import AdminModal from "./AdminModal";
+import { useFormik } from "formik";
+import {
+  getSignUpValidation,
+  signUpInitialValue,
+} from "../../../helpers/Login";
+import { useAppSnackbar } from "../../../config/Context/SnackbarContext";
 
-function TechniciansList({ isTablet, isMobile }) {
+function AddAdmin({ isTablet, isMobile }) {
+  const showSnackbar = useAppSnackbar();
   const [rowsPerPage, setRowsPerPage] = useState("25");
   const [pageNumber, setPageNumber] = useState(1);
   const [totalCount, setTotalCount] = useState(0);
   const [techniciansData, setTechniciansData] = useState([]);
+  const [showAdminModal, setShowAdminModal] = useState(false);
+  const [editingAddressIndex, setEditingAddressIndex] = useState(null);
   const [filters, setFilters] = useState({
     search: "",
     location: [],
@@ -20,6 +30,35 @@ function TechniciansList({ isTablet, isMobile }) {
 
   const debouncedSearchTerm = useDebounce(filters.search, 500);
   const debounceStatus = useDebounce(filters.location, 500);
+
+  const adminFormik = useFormik({
+    enableReinitialize: true,
+    validateOnMount: true,
+    validateOnChange: true,
+    initialValues: signUpInitialValue,
+    validationSchema: getSignUpValidation,
+    onSubmit: (value) => {
+      console.log(value);
+      setShowAdminModal(false);
+      showSnackbar("Successfully Signed-up!", "success");
+    },
+  });
+
+  const handleSubmit = () => {
+    if (!adminFormik.isValid) {
+      console.log(adminFormik.errors);
+      showSnackbar("Please enter all the required fields!", "error");
+      return;
+    } else {
+      adminFormik.handleSubmit();
+    }
+  };
+
+  const handleCancel = () => {
+    setShowAdminModal(false);
+    setEditingAddressIndex(null);
+    adminFormik.resetForm();
+  };
 
   //   const { isFetching, refetch } = useQuery(
   //     [
@@ -72,14 +111,25 @@ function TechniciansList({ isTablet, isMobile }) {
     }
   }, [totalCount]);
 
+  const addAdmin = () => {
+    adminFormik.resetForm();
+    setShowAdminModal(true);
+  };
+
   return (
     <div className="p-3 md:!p-5">
-      <div className="mb-3">
+      <div className="flex flex-col justify-center md:!flex-row md:justify-between gap-5 mb-3">
         <DataTableFilter
           filters={filters}
           setFilters={setFilters}
           dropdownValues={locationDropdownValues}
         />
+        <button
+          className="w-full md:w-1/4 bg-skyn text-white py-2 px-4 rounded-md hover:bg-skyn-dark focus:outline-none focus:ring-2 focus:ring-skyn transition-all shadow-[3px_3px_0px_#313440] hover:shadow-none hover:translate-x-[3px] hover:translate-y-[3px]"
+          onClick={addAdmin}
+        >
+          Add Admin
+        </button>
       </div>
       <Divider />
       <div className="mt-4">
@@ -87,8 +137,8 @@ function TechniciansList({ isTablet, isMobile }) {
           filters={filters}
           setFilters={setFilters}
           totalCount={totalCount}
-          nameField="searchTechnicians"
-          placeholder={"Search Technicians"}
+          nameField="searchAdmin"
+          placeholder={"Search Admin"}
         />
       </div>
       <div className="mt-3">
@@ -106,8 +156,16 @@ function TechniciansList({ isTablet, isMobile }) {
           </CustomPagination>
         </Suspense>
       </div>
+      {showAdminModal && (
+        <AdminModal
+          adminFormik={adminFormik}
+          handleSave={handleSubmit}
+          handleCancel={handleCancel}
+          editingAdminIndex={editingAddressIndex}
+        />
+      )}
     </div>
   );
 }
 
-export default TechniciansList;
+export default AddAdmin;

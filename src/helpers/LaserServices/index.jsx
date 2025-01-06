@@ -309,7 +309,7 @@ export const sessionWiseHairReduction = [
     id: 4,
     mainText: "5th, 6th and 7th session",
     content: `<p><strong><u>5th session (Week 19)</u></strong></p>
-              <p>You will notice more hairless patches compared to before. Keep going to reach your goal</p>
+              <p>You will notice more hairless patches compared to before. Keep going to reach your goal.</p>
        <p><strong><u>6th session (Week 23)</u></strong></p>
        <p>You will notice significant reduction in overall hair growth. Not far to go from here!</p>
        <p><strong><u>7th session (Week 27)</u></strong></p>

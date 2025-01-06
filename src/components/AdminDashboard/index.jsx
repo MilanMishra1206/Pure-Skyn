@@ -7,28 +7,35 @@ import { AiOutlineSchedule } from "react-icons/ai";
 import Schedule from "./Schedule";
 import { PiUserList } from "react-icons/pi";
 import TechniciansList from "./TechniciansList";
+import { AiOutlineUserAdd } from "react-icons/ai";
+import AddAdmin from "./AddAdmin";
 
 function AdminDashboard() {
   const isTablet = useMediaQuery("(max-width: 1023px)");
   const isMobile = useMediaQuery("(max-width: 767px)");
   const adminName = "Milan";
-  const [selectedSection, setSelectedSection] = useState("Appointments");
+  const [selectedSection, setSelectedSection] = useState("appointments");
 
   const sidebarItems = [
     {
-      id: "Appointments",
+      id: "appointments",
       label: "All Appointments",
-      icon: <FaUser size="1.5rem" />,
+      icon: <FaUser size="1.3rem" />,
     },
     {
-      id: "Schedule",
+      id: "schedule",
       label: "Schedule",
       icon: <AiOutlineSchedule size="1.5rem" />,
     },
     {
-      id: "Technicians",
+      id: "technicians",
       label: "Technicians",
-      icon: <PiUserList size="1.5rem" />,
+      icon: <PiUserList size="1.6rem" />,
+    },
+    {
+      id: "add_admin",
+      label: "Add Admin",
+      icon: <AiOutlineUserAdd size="1.3rem" />,
     },
   ];
 
@@ -63,7 +70,7 @@ function AdminDashboard() {
             ))}
           </div>
         </div>
-        {selectedSection === "Appointments" && (
+        {selectedSection === "appointments" && (
           <div className="md:m-5 lg:w-full">
             <div className="rounded shadow-lg w-full">
               <div className="text-xl font-poppins font-extrabold bg-skyn text-white p-4 text-center rounded-t-lg">
@@ -73,7 +80,7 @@ function AdminDashboard() {
             </div>
           </div>
         )}
-        {selectedSection === "Schedule" && (
+        {selectedSection === "schedule" && (
           <div className="md:m-5 lg:w-full">
             <div className="rounded shadow-lg w-full">
               <div className="text-xl font-poppins font-extrabold bg-skyn text-white p-4 text-center rounded-t-lg">
@@ -83,13 +90,23 @@ function AdminDashboard() {
             </div>
           </div>
         )}
-        {selectedSection === "Technicians" && (
+        {selectedSection === "technicians" && (
           <div className="md:m-5 lg:w-full">
             <div className="rounded shadow-lg w-full">
               <div className="text-xl font-poppins font-extrabold bg-skyn text-white p-4 text-center rounded-t-lg">
                 <p>Technicians</p>
               </div>
               <TechniciansList isTablet={isTablet} isMobile={isMobile} />
+            </div>
+          </div>
+        )}
+        {selectedSection === "add_admin" && (
+          <div className="md:m-5 lg:w-full">
+            <div className="rounded shadow-lg w-full">
+              <div className="text-xl font-poppins font-extrabold bg-skyn text-white p-4 text-center rounded-t-lg">
+                <p>Admins</p>
+              </div>
+              <AddAdmin isTablet={isTablet} isMobile={isMobile} />
             </div>
           </div>
         )}

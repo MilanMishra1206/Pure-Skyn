@@ -7,13 +7,15 @@ import { motion } from "framer-motion";
 import FadeInWrapper from "../../../../../config/MotionFramer/FadeInWrapper";
 import CustomAccordian from "../../../../../shared/CustomAccordian";
 import CustomHeader from "../../../../../shared/CustomHeader";
+import FadedLineBreak from "../../../../../shared/CustomHrTag";
+import DrawCircleText from "../../../../../shared/CustomDrawCircleText";
 
 function OxyHydra({ type }) {
   const isMobile = useMediaQuery("(max-width: 767px)");
   const isTablet = useMediaQuery("(max-width: 1023px)");
 
   return (
-    <div>
+    <div className="mt-4">
       <motion.div
         variants={FadeInWrapper("left", 0.1)}
         initial="hidden"
@@ -85,27 +87,29 @@ function OxyHydra({ type }) {
             className={`mt-5 ${isTablet ? "p-4" : ""}`}
           >
             <div
-              className={`flex ${isMobile ? "flex-col" : "flex-row justify-center items-center"} font-poppins text-lg text-cello`}
+              className={`flex ${isMobile ? "flex-col" : "flex-row justify-center items-center"} font-poppins text-cello`}
             >
-              <div className={`${!isMobile ? "w-50" : "w-full"}`}>
+              <div className={`${!isMobile ? "w-50 mr-5" : "w-full"}`}>
                 <p>
                   Hydra Facial in Delhi is a well-known and most demanding
                   procedure. The procedure has got fame in the society because
                   of its enormous benefits. Nowadays, people are behind the
                   white and fair skin whitening in Delhi. So, they are looking
                   for ways that can provide them with their desired skin color.
-                  Your skin color may be affected for any reason. The cause can
-                  be heredity, genetics, environmental effects, side effects of
-                  medicine, etc. Hence, whatever the reason is, Pure Skyn is the
-                  best cosmetic & Hydra Facial and provides you the treatment
-                  with optimal results.
+                  Your skin color may be affected for any reason.
+                </p>
+                <p>
+                  The cause can be heredity, genetics, environmental effects,
+                  side effects of medicine, etc. Hence, whatever the reason is,
+                  Pure Skyn is the best cosmetic & Hydra Facial and provides you
+                  the treatment with optimal results.
                 </p>
               </div>
               <div className="flex justify-center items-center">
                 <img
-                  src={Resources.images.Services.OxyHydra.oxyHydraCard}
+                  src={Resources.images.Services.OxyHydra.img4}
                   alt="oxy-hydra"
-                  className={`rounded-xl shadow ${isMobile ? "" : "h-96 ml-5"} lg:ml-10`}
+                  className={`rounded-xl shadow ${isMobile ? "mt-4" : "w-80 h-96 ml-5"} lg:ml-10`}
                 />
               </div>
             </div>
@@ -118,9 +122,11 @@ function OxyHydra({ type }) {
             className={`mt-5 ${isTablet ? "p-4" : ""}`}
           >
             <div
-              className={`flex ${isMobile ? "flex-col" : "justify-center items-center"} font-poppins text-lg text-cello`}
+              className={`flex ${isMobile ? "flex-col" : "justify-center items-center"} font-poppins text-cello`}
             >
-              <div className={`flex flex-col ${!isMobile ? "w-50" : "w-full"}`}>
+              <div
+                className={`flex flex-col ${!isMobile ? "w-50 mr-5" : "w-full"}`}
+              >
                 <div className="!text-2xl font-bold">Evaluations</div>
                 <div className="flex flex-col">
                   <p>
@@ -140,7 +146,7 @@ function OxyHydra({ type }) {
                 <img
                   src={Resources.images.Services.OxyHydra.img1}
                   alt="oxy-hydra"
-                  className={`rounded-xl shadow ${isMobile ? "" : "h-96 ml-5"} lg:ml-10`}
+                  className={`rounded-xl shadow ${isMobile ? "mt-4" : "h-96 ml-5"} lg:ml-10`}
                 />
               </div>
             </div>
@@ -153,13 +159,13 @@ function OxyHydra({ type }) {
             className={`mt-3 ${isTablet ? "p-4" : ""}`}
           >
             <div
-              className={`grid grid-cols-1 md:grid-cols-2 gap-5 ${isTablet ? "" : "p-5"} font-poppins text-lg text-cello`}
+              className={`grid grid-cols-1 md:grid-cols-2 gap-5 ${isTablet ? "" : "p-5"} font-poppins text-cello`}
             >
               <div className="flex flex-col">
                 <div className="!text-xl font-bold text-center">
                   AIMS OF OXY HYDRA FACIAL TREATMENT
                 </div>
-                <hr className="border-t-4 my-4" />
+                <FadedLineBreak />
                 <div className="flex flex-col">
                   <ul className="list-disc pl-4 space-y-3">
                     <li>
@@ -182,7 +188,7 @@ function OxyHydra({ type }) {
                 <div className="!text-xl font-bold text-center">
                   BENEFITS OF OXY HYDRA FACIAL
                 </div>
-                <hr className="border-t-4 my-4" />
+                <FadedLineBreak />
                 <div className="flex flex-col">
                   <ul className="list-disc pl-4 space-y-3">
                     <li>
@@ -204,7 +210,7 @@ function OxyHydra({ type }) {
                 <div className="!text-xl font-bold text-center">
                   UNDERSTANDING OF HAVING OXY HYDRA FACIAL
                 </div>
-                <hr className="border-t-4 my-4" />
+                <FadedLineBreak />
                 <ul className="list-disc pl-4 space-y-3">
                   <li>
                     <strong>General Price Range</strong>: In Delhi, the cost of
@@ -230,7 +236,7 @@ function OxyHydra({ type }) {
                 <div className="!text-xl font-bold text-center">
                   IMPORTANCE OF CHOOSING A RELIABLE CLINIC
                 </div>
-                <hr className="border-t-4 my-4" />
+                <FadedLineBreak />
                 <div className="flex flex-col">
                   <ul className="list-disc pl-4 space-y-3">
                     <li>
@@ -262,7 +268,7 @@ function OxyHydra({ type }) {
                 <div className="!text-2xl font-bold text-center">
                   Pure Skyn'S COMMITMENT TO EXCELENCE
                 </div>
-                <hr className="border-t-4 my-4" />
+                <FadedLineBreak />
                 <div className="flex flex-col">
                   <ul className="list-disc pl-4 space-y-3">
                     <li>
@@ -297,9 +303,9 @@ function OxyHydra({ type }) {
             className={`mt-3 ${isTablet ? "p-4" : ""}`}
           >
             <div
-              className={`${isTablet ? "" : "px-5"} font-poppins text-lg text-cello`}
+              className={`${isTablet ? "" : "px-3"} font-poppins text-cello mb-5`}
             >
-              <p>
+              <p className="text-lg border-l-8 p-3">
                 In summary, while the cost of a HydraFacial in Delhi varies,
                 choosing a reputable clinic like Pure Skyn ensures a
                 comprehensive, safe, and effective treatment. The investment in
@@ -309,6 +315,21 @@ function OxyHydra({ type }) {
               </p>
             </div>
           </motion.div>
+          {type && (
+            <motion.div
+              variants={FadeInWrapper("left", 0.1)}
+              initial="hidden"
+              whileInView="show"
+              viewport={{ once: true }}
+            >
+              <DrawCircleText
+                headerText={"Exciting Offers -"}
+                serviceName={"Medi-Facial Packages!"}
+                buttonText="Check Now"
+                link="/services/skin/medi-facial-packages"
+              />
+            </motion.div>
+          )}
           <motion.div
             variants={FadeInWrapper("up", 0.1)}
             initial="hidden"
@@ -316,7 +337,7 @@ function OxyHydra({ type }) {
             viewport={{ once: true }}
           >
             <div className="px-4">
-              <hr className="border-t-4 my-4" />
+              <FadedLineBreak />
             </div>
             <div className="flex items-center justify-center text-skyn font-bold text-3xl px-4">
               <p>Frequently Asked Questions(FAQs)</p>

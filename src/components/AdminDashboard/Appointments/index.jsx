@@ -1,11 +1,12 @@
 import { Suspense, useEffect, useState } from "react";
 import { useDebounce } from "use-debounce";
-import DataTableFilter from "./DataTableFilter";
-import DataTableHeader from "./DataTableHeader";
 import DataTable from "./DataTable";
 import { useQuery } from "react-query";
 import { Divider } from "@mui/material";
 import CustomPagination from "../../../shared/CustomDashboardTable/CustomPagination";
+import { locationDropdownValues } from "../../../helpers/Admin";
+import DataTableFilter from "../TableContent/DataTableFilter";
+import DataTableHeader from "../TableContent/DataTableHeader";
 
 function Appointments({ isTablet, isMobile }) {
   const [rowsPerPage, setRowsPerPage] = useState("25");
@@ -67,7 +68,11 @@ function Appointments({ isTablet, isMobile }) {
   return (
     <div className="p-3 md:!p-5">
       <div className="mb-3">
-        <DataTableFilter filters={filters} setFilters={setFilters} />
+        <DataTableFilter
+          filters={filters}
+          setFilters={setFilters}
+          dropdownValues={locationDropdownValues}
+        />
       </div>
       <Divider />
       <div className="mt-4">
@@ -76,6 +81,7 @@ function Appointments({ isTablet, isMobile }) {
           setFilters={setFilters}
           totalCount={totalCount}
           nameField="searchAppointments"
+          placeholder={"Search Appointments"}
         />
       </div>
       <div className="mt-3">

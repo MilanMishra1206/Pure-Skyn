@@ -93,9 +93,12 @@ const Resources = {
         oxygeneoCard: `${base}/Services/OxyGeneo/oxygeneoCard.jpg`,
         img1: `${base}/Services/OxyGeneo/img1.jpg`,
         img2: `${base}/Services/OxyGeneo/img2.jpg`,
-        img3: `${base}/Services/OxyGeneo/img3.png`,
         img4: `${base}/Services/OxyGeneo/img4.png`,
         img5: `${base}/Services/OxyGeneo/img5.png`,
+        img6: `${base}/Services/OxyGeneo/img6.jpg`,
+        exfoliate: `${base}/Services/OxyGeneo/exfoliate.png`,
+        infuse: `${base}/Services/OxyGeneo/infuse.png`,
+        oxygenate: `${base}/Services/OxyGeneo/oxygenate.png`,
       },
       OxyHydra: {
         oxyHydraCard: `${base}/Services/OxyHydra/oxyHydra.jpg`,
@@ -105,6 +108,7 @@ const Resources = {
         img1: `${base}/Services/OxyHydra/img1.webp`,
         img2: `${base}/Services/OxyHydra/img2.jpg`,
         img3: `${base}/Services/OxyHydra/img3.jpg`,
+        img4: `${base}/Services/OxyHydra/img4.jpg`,
         oxyPackage: `${base}/Services/OxyHydra/oxy-package.jpg`,
       },
       SkinTightening: {
@@ -116,6 +120,7 @@ const Resources = {
         img4: `${base}/Services/SkinTightening/img4.png`,
         img5: `${base}/Services/SkinTightening/img5.jpg`,
         img6: `${base}/Services/SkinTightening/img6.jpg`,
+        img7: `${base}/Services/SkinTightening/img7.jpg`,
         skinPackage: `${base}/Services/SkinTightening/skin-package.jpg`,
       },
       Dermafrac: {
@@ -126,6 +131,7 @@ const Resources = {
         imageThree: `${base}/Services/Dermafrac/img3.webp`,
         imageFour: `${base}/Services/Dermafrac/img4.webp`,
         image5: `${base}/Services/Dermafrac/img5.webp`,
+        img6: `${base}/Services/Dermafrac/img6.jpg`,
         dermaPackage: `${base}/Services/Dermafrac/derma-package.jpg`,
       },
     },

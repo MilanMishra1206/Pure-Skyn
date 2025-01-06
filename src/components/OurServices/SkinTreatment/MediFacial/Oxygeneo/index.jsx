@@ -3,18 +3,23 @@ import { Box, Fab, useMediaQuery } from "@mui/material";
 import { Link } from "react-router-dom";
 import { MdKeyboardDoubleArrowRight } from "react-icons/md";
 import { oxygeneoFaq } from "../../../../../helpers/AccordianContent";
-import { OxyGeneoContent } from "../../../../../helpers/MediFacial";
+import {
+  OxyGeneoContent,
+  oxygeneoThreeSteps,
+} from "../../../../../helpers/MediFacial";
 import { motion } from "framer-motion";
 import FadeInWrapper from "../../../../../config/MotionFramer/FadeInWrapper";
 import CustomAccordian from "../../../../../shared/CustomAccordian";
 import CustomHeader from "../../../../../shared/CustomHeader";
+import FadedLineBreak from "../../../../../shared/CustomHrTag";
+import DrawCircleText from "../../../../../shared/CustomDrawCircleText";
 
 function Oxygeneo({ type }) {
   const isMobile = useMediaQuery("(max-width: 767px)");
   const isTablet = useMediaQuery("(max-width: 1023px)");
 
   return (
-    <div>
+    <div className="mt-4">
       <motion.div
         variants={FadeInWrapper("left", 0.1)}
         initial="hidden"
@@ -85,7 +90,7 @@ function Oxygeneo({ type }) {
             viewport={{ once: true }}
             className={`mt-5 ${isTablet ? "p-4" : ""}`}
           >
-            <div className="flex flex-col lg:!px-5 justify-center items-center font-poppins text-lg text-cello">
+            <div className="flex flex-col md:!flex-row lg:!px-5 justify-center items-center font-poppins text-cello">
               <div className={`w-full xl:!w-4/5 lg:!px-5 mb-4`}>
                 <p>
                   Throughout your daily routine, your skin takes a lot of abuse
@@ -96,12 +101,14 @@ function Oxygeneo({ type }) {
                   overall dull appearance in your face. While you might use
                   products to combat these effects, you may occasionally desire
                   a deeper, more intense healing experience for your skin, and
-                  that is what you'll find with OxyGeneo. This non-invasive
-                  treatment is designed to be a 3-in-1 Super Facial that can be
-                  tailored to the specific needs of your skin type. One
-                  treatment can yield dramatic results, but you may be compelled
-                  to keep coming back for regular rejuvenation with this
-                  innovative system.
+                  that is what you'll find with OxyGeneo.
+                </p>
+                <p>
+                  This non-invasive treatment is designed to be a 3-in-1 Super
+                  Facial that can be tailored to the specific needs of your skin
+                  type. One treatment can yield dramatic results, but you may be
+                  compelled to keep coming back for regular rejuvenation with
+                  this innovative system.
                 </p>
               </div>
               <div
@@ -116,18 +123,41 @@ function Oxygeneo({ type }) {
             </div>
           </motion.div>
           <motion.div
-            variants={FadeInWrapper("left", 0.1)}
+            variants={FadeInWrapper("left", 0.2)}
             initial="hidden"
             whileInView="show"
             viewport={{ once: true }}
-            className={`mt-5 ${isTablet ? "px-4" : "px-5"}`}
+            className="flex flex-col items-center justify-center font-poppins font-medium text-xl text-center text-coal mt-5 gap-4"
           >
-            <div className="flex justify-center items-center font-poppins">
-              <img
-                src={Resources.images.Services.OxyGeneo.img3}
-                alt="oxygeneo"
-                className="rounded-xl shadow h-screen"
-              />
+            <div className="text-3xl text-center">
+              <p className="font-bold">Step By Step Process</p>
+            </div>
+            <div
+              className="bg-center bg-cover bg-repeat flex p-5 place-content-center w-full"
+              style={{
+                backgroundImage: `url(${Resources.images.Common.cardBg2})`,
+              }}
+            >
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 font-medium text-start mt-4 gap-4 bg-opacity-40">
+                {oxygeneoThreeSteps.map((item) => (
+                  <div
+                    className="flex flex-col rounded-2xl shadow bg-[#143048] text-white p-4 opacity-90"
+                    key={item.id}
+                  >
+                    <div className="text-3xl font-bold text-center">
+                      {item.title}
+                    </div>
+                    <FadedLineBreak />
+                    <div className="flex flex-col justify-center items-center gap-5">
+                      <img
+                        src={item.imgSrc}
+                        className="h-[150px] md:!h-75 rounded md:w-50"
+                      />
+                      <p className="text-center">{item.content}</p>
+                    </div>
+                  </div>
+                ))}
+              </div>
             </div>
           </motion.div>
           <motion.div
@@ -138,7 +168,7 @@ function Oxygeneo({ type }) {
             className={`mt-3 ${isTablet ? "p-4" : ""}`}
           >
             <div
-              className={`flex ${isTablet ? "flex-col" : "justify-center items-center p-5"} font-poppins text-lg text-cello`}
+              className={`flex ${isTablet ? "flex-col" : "justify-center items-center p-5"} font-poppins text-cello`}
             >
               <div
                 className={`flex flex-col ${!isTablet ? "w-75 ml-5 mr-5" : "w-full"} lg:mr-10`}
@@ -159,6 +189,21 @@ function Oxygeneo({ type }) {
               </div>
             </div>
           </motion.div>
+          {type && (
+            <motion.div
+              variants={FadeInWrapper("left", 0.1)}
+              initial="hidden"
+              whileInView="show"
+              viewport={{ once: true }}
+            >
+              <DrawCircleText
+                headerText={"Exciting Offers -"}
+                serviceName={"Medi-Facial Packages!"}
+                buttonText="Check Now"
+                link="/services/skin/medi-facial-packages"
+              />
+            </motion.div>
+          )}
           <motion.div
             variants={FadeInWrapper("up", 0.1)}
             initial="hidden"
@@ -166,7 +211,7 @@ function Oxygeneo({ type }) {
             viewport={{ once: true }}
             className="px-4"
           >
-            <hr className="border-t-4 my-4" />
+            <FadedLineBreak />
             <div className="flex items-center justify-center text-skyn font-bold text-3xl px-4">
               <p>Frequently Asked Questions(FAQs)</p>
             </div>
@@ -188,9 +233,9 @@ function Oxygeneo({ type }) {
                 className={`flex justify-center items-center ${!isTablet ? "px-5" : "mt-4"}`}
               >
                 <img
-                  src={Resources.images.Services.SkinTightening.img3}
+                  src={Resources.images.Services.OxyGeneo.img6}
                   alt="oxygeneo"
-                  className="rounded-xl shadow w-4/5"
+                  className="rounded-xl shadow h-[30rem]"
                 />
               </div>
             </div>

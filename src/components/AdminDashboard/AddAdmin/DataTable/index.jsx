@@ -11,7 +11,7 @@ import { MdExpandMore, MdOutlineExpandLess } from "react-icons/md";
 import { useNavigate } from "react-router-dom";
 import TableCellText from "../../../../shared/CustomDashboardTable/CustomTable";
 import CustomTable from "../../../../shared/CustomDashboardTable/CustomTable";
-import { techHeaders, techMobileHeaders } from "../../../../helpers/Admin";
+import { adminHeaders, adminMobileHeaders } from "../../../../helpers/Admin";
 
 function DataTable({ data, totalCount }) {
   const isMobile = useMediaQuery("(max-width: 768px)");
@@ -28,7 +28,7 @@ function DataTable({ data, totalCount }) {
   return (
     <div>
       <Suspense fallback={<div />}>
-        <CustomTable headCells={isMobile ? techMobileHeaders : techHeaders}>
+        <CustomTable headCells={isMobile ? adminMobileHeaders : adminHeaders}>
           <TableBody>
             {totalCount > 0 ? (
               data.map((item, index) => (
@@ -46,10 +46,10 @@ function DataTable({ data, totalCount }) {
                       >
                         {item?.techId}
                       </Link> */}
-                      <TableCellText text={item?.techId} />
+                      <TableCellText text={item?.adminId} />
                     </TableCell>
                     <TableCellText
-                      text={item?.technicianName}
+                      text={item?.adminName}
                       className={`${isMobile && "!hidden"}`}
                     />
                     <TableCellText
@@ -97,10 +97,10 @@ function DataTable({ data, totalCount }) {
                       unmountOnExit
                     >
                       <div className="!flex !flex-col p-2">
-                        {techHeaders
+                        {adminHeaders
                           .filter(
                             (obj) =>
-                              !techMobileHeaders.some(
+                              !adminMobileHeaders.some(
                                 (mobileCell) => mobileCell.key === obj.key
                               )
                           )
