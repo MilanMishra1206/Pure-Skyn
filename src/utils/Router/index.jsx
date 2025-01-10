@@ -10,6 +10,9 @@ const PureSkynLogin = lazy(() => import("../../pages/PureSkynLogin"));
 const PureSkynLogout = lazy(() => import("../../pages/PureSkynLogout"));
 const PureSkynServices = lazy(() => import("../../pages/PureSkynServices"));
 const PureSkynProducts = lazy(() => import("../../pages/PureSkynProducts"));
+const PureSkynProductDetails = lazy(
+  () => import("../../pages/PureSkynProductDetails")
+);
 const PureSkynSignUp = lazy(() => import("../../pages/PureSkynSignUp"));
 const PureSkynFaq = lazy(() => import("../../pages/PureSkynFaq"));
 const PureSkynUserProfile = lazy(
@@ -82,6 +85,10 @@ const routesConfig = [
     Component: PureSkynProducts,
   },
   {
+    path: "/products/:productName",
+    Component: PureSkynProductDetails,
+  },
+  {
     path: "/sign-up",
     Component: PureSkynSignUp,
   },
@@ -113,24 +120,9 @@ function Router() {
   const isAdmin = false;
 
   const location = useLocation();
-  const showNavAndFooter = [
-    "/",
-    "/services",
-    "/products",
-    "/faq",
-    "/user-profile",
-    "/change-password",
-    "/book-now",
-    "/services/laser-hair-removal",
-    "/services/laser-hair-removal/men",
-    "/services/laser-hair-removal/women",
-    "/services/laser-hair-removal-packages",
-    "/services/skin/medi-facial",
-    "/services/skin/medi-facial-packages",
-    "/services/skin/medi-facial/oxy-hydra-facial",
-    "/services/skin/medi-facial/skin-tightening",
-    "/services/skin/medi-facial/dermafrac-infusion-facial",
-    "/services/skin/medi-facial/oxygeneo",
+  const showNavAndFooter = ![
+    "/login",
+    "sign-up"
   ].includes(location.pathname);
 
   const showCarousel = ["/"].includes(location.pathname);
@@ -155,14 +147,14 @@ function Router() {
   return (
     <div>
       {showNavAndFooter && (
-        <Suspense fallback={<CustomLoader />}>
+        <Suspense fallback={<CustomLoader open={true} />}>
           <div className="mb-5">
             <CustomNavbar />
           </div>
         </Suspense>
       )}
       {showCarousel && !isAdmin && (
-        <Suspense fallback={<CustomLoader />}>
+        <Suspense fallback={<CustomLoader open={true} />}>
           <div className="mt-5 flex flex-col">
             <CustomHeroSection />
           </div>
@@ -176,7 +168,7 @@ function Router() {
               path={path}
               element={
                 true ? (
-                  <Suspense fallback={<CustomLoader />}>
+                  <Suspense fallback={<CustomLoader open={true} />}>
                     <Component />
                   </Suspense>
                 ) : (
@@ -189,7 +181,7 @@ function Router() {
         <Route
           path="*"
           element={
-            <Suspense fallback={<CustomLoader />}>
+            <Suspense fallback={<CustomLoader open={true} />}>
               <PageNotFound />
             </Suspense>
           }
@@ -197,7 +189,7 @@ function Router() {
       </Routes>
       <ScrollToTopButton />
       {showNavAndFooter && (
-        <Suspense fallback={<CustomLoader />}>
+        <Suspense fallback={<CustomLoader open={true} />}>
           <CustomFooter />
         </Suspense>
       )}

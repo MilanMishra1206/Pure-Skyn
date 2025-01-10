@@ -136,6 +136,17 @@ const getBookNowFormValidation = () =>
       ),
   });
 
+const getAddReviewValidation = () =>
+  yup.object().shape({
+    fullName: yup.string().required("Full name is required"),
+    email: yup
+      .string()
+      .email("Please Enter Valid Email")
+      .required("Email is required"),
+    rating: yup.string().required("Rating is required"),
+    description: yup.string().required("Description name is required"),
+  });
+
 export {
   loginInitialValues,
   getLoginValidation,
@@ -145,4 +156,5 @@ export {
   bookNowInitialValues,
   getBookNowValidation,
   getBookNowFormValidation,
+  getAddReviewValidation
 };

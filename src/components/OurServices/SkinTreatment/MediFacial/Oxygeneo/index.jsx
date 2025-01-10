@@ -9,7 +9,7 @@ import {
 } from "../../../../../helpers/MediFacial";
 import { motion } from "framer-motion";
 import FadeInWrapper from "../../../../../config/MotionFramer/FadeInWrapper";
-import CustomAccordian from "../../../../../shared/CustomAccordian";
+import CustomAccordion from "../../../../../shared/CustomAccordion";
 import CustomHeader from "../../../../../shared/CustomHeader";
 import FadedLineBreak from "../../../../../shared/CustomHrTag";
 import DrawCircleText from "../../../../../shared/CustomDrawCircleText";
@@ -221,7 +221,7 @@ function Oxygeneo({ type }) {
               <div
                 className={`mt-4 w-full xl:!w-1/2 ${!isTablet ? "px-5" : ""}`}
               >
-                <CustomAccordian accordionData={oxygeneoFaq} />
+                <CustomAccordion accordionData={oxygeneoFaq} />
                 <Link
                   to="/faq#Oxygeneo"
                   className="text-skyn hover:opacity-80 text-xl font-bold"

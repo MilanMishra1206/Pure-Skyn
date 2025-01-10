@@ -9,7 +9,7 @@ import FadeInWrapper from "../../../../config/MotionFramer/FadeInWrapper";
 import CustomLoader from "../../../../shared/CustomLoader";
 import CustomHeader from "../../../../shared/CustomHeader";
 import CustomCards from "../../../../shared/CustomCards";
-import CustomAccordian from "../../../../shared/CustomAccordian";
+import CustomAccordion from "../../../../shared/CustomAccordion";
 import DrawCircleText from "../../../../shared/CustomDrawCircleText";
 
 const DermafracInfusionFacial = lazy(() => import("./DermafracInfusionFacial"));
@@ -253,7 +253,7 @@ function MediFacial() {
       >
         {(!type || type === "oxy-hydra-facial") && (
           <div className="flex flex-col items-center">
-            <Suspense fallback={<CustomLoader />}>
+            <Suspense fallback={<CustomLoader open={true} />}>
               <OxyHydra type={type} />
             </Suspense>
             {pathname !== "/services/skin/medi-facial/oxy-hydra-facial" && (
@@ -270,7 +270,7 @@ function MediFacial() {
         )}
         {(!type || type === "skin-tightening") && (
           <div className="flex flex-col items-center">
-            <Suspense fallback={<CustomLoader />}>
+            <Suspense fallback={<CustomLoader open={true} />}>
               <SkinTightening type={type} />
             </Suspense>
             {pathname !== "/services/skin/medi-facial/skin-tightening" && (
@@ -287,7 +287,7 @@ function MediFacial() {
         )}
         {(!type || type === "dermafrac-infusion-facial") && (
           <div className="flex flex-col items-center">
-            <Suspense fallback={<CustomLoader />}>
+            <Suspense fallback={<CustomLoader open={true} />}>
               <DermafracInfusionFacial type={type} />
             </Suspense>
             {pathname !==
@@ -305,7 +305,7 @@ function MediFacial() {
         )}
         {(!type || type === "oxygeneo") && (
           <div className="flex flex-col items-center">
-            <Suspense fallback={<CustomLoader />}>
+            <Suspense fallback={<CustomLoader open={true} />}>
               <Oxygeneo type={type} />
             </Suspense>
             {pathname !== "/services/skin/medi-facial/oxygeneo" && (
@@ -339,7 +339,7 @@ function MediFacial() {
             className={`flex justify-center items-center ${isTablet ? "p-3 flex-col" : "flex-row"}`}
           >
             <div className={`mt-4 w-full ${!isTablet ? "px-5" : ""}`}>
-              <CustomAccordian accordionData={mediFacialAccordianContent} />
+              <CustomAccordion accordionData={mediFacialAccordianContent} />
               <Link
                 to="/faq#Medi Facial"
                 className="text-skyn hover:opacity-80 text-xl font-bold"

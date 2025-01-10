@@ -11,11 +11,11 @@ function PureSkynHome() {
   return (
     <div>
       {!isAdmin ? (
-        <Suspense fallback={<CustomLoader />}>
+        <Suspense fallback={<CustomLoader open={true} />}>
           <Home />
         </Suspense>
       ) : (
-        <Suspense fallback={<CustomLoader />}>
+        <Suspense fallback={<CustomLoader open={true} />}>
           <AdminDashboard />
         </Suspense>
       )}

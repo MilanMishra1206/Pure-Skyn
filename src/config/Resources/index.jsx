@@ -143,6 +143,14 @@ const Resources = {
     ContactUs: {
       contactUs: `${base}/ContactUs/contactUs.jpg`,
     },
+    Products: {
+      img1: `${base}/Products/img1.jpg`,
+      img2: `${base}/Products/img2.jpg`,
+      img3: `${base}/Products/img3.jpg`,
+      img4: `${base}/Products/img4.jpg`,
+      img5: `${base}/Products/img5.jpg`,
+      img6: `${base}/Products/img6.jpg`,
+    }
   },
 };
 

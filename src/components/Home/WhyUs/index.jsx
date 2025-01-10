@@ -1,6 +1,6 @@
 import Resources from "../../../config/Resources";
 import { whyUsContent } from "../../../helpers/AccordianContent";
-import CustomAccordian from "../../../shared/CustomAccordian";
+import CustomAccordion from "../../../shared/CustomAccordion";
 import CustomHeader from "../../../shared/CustomHeader";
 
 function WhyUs({ isMobile }) {
@@ -25,7 +25,7 @@ function WhyUs({ isMobile }) {
           />
         </div>
         <div className="mt-4">
-          <CustomAccordian accordionData={whyUsContent} />
+          <CustomAccordion accordionData={whyUsContent} />
         </div>
       </div>
     </div>

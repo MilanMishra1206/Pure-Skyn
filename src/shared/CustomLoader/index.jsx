@@ -1,12 +1,15 @@
 import React from "react";
 import "./SkeletonLoader.css";
+import { Backdrop } from "@mui/material";
 
-const CustomLoader = () => {
+const CustomLoader = ({ open }) => {
   return (
-    <div className="loader-container">
-      <div className="loader"></div>
-      <p className="loader-text">Loading...</p>
-    </div>
+    <Backdrop open={open} className="!z-[9999]">
+      <div className="loader-container">
+        <div className="loader"></div>
+        <p className="loader-text">Loading...</p>
+      </div>
+    </Backdrop>
   );
 };
 

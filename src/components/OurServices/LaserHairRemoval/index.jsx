@@ -8,7 +8,7 @@ import { motion } from "framer-motion";
 import MotionWrapper from "../../../config/MotionFramer/MotionWrapper";
 import FadeInWrapper from "../../../config/MotionFramer/FadeInWrapper";
 import CustomHeader from "../../../shared/CustomHeader";
-import CustomAccordian from "../../../shared/CustomAccordian";
+import CustomAccordion from "../../../shared/CustomAccordion";
 import DrawCircleText from "../../../shared/CustomDrawCircleText";
 import FadedLineBreak from "../../../shared/CustomHrTag";
 
@@ -273,7 +273,7 @@ function LaserHairRemoval() {
             className={`flex justify-center items-center ${isTablet ? "p-3 flex-col" : "flex-row"}`}
           >
             <div className={`mt-4 w-full ${!isTablet ? "px-5" : ""}`}>
-              <CustomAccordian accordionData={LHRAccordianContent} />
+              <CustomAccordion accordionData={LHRAccordianContent} />
               <Link
                 to="/faq#Laser Hair Removal"
                 className="text-skyn hover:opacity-80 text-xl font-bold"

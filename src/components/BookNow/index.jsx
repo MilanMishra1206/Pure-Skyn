@@ -10,16 +10,32 @@ import { motion } from "framer-motion";
 import { useLocation } from "react-router-dom";
 import regex from "../../helpers/Regex";
 import FadedLineBreak from "../../shared/CustomHrTag";
+import { useMutation } from "react-query";
+import createNewBooking from "../../services/Booking";
 
 const CustomTextField = lazy(() => import("../../shared/CustomTextField"));
 const CustomDropdown = lazy(() => import("../../shared/CustomDropdown"));
 const CustomDatePicker = lazy(() => import("../../shared/CustomDatePicker"));
+const CustomLoader = lazy(() => import("../../shared/CustomLoader"));
 
 function BookNow() {
   const isTablet = useMediaQuery("(max-width: 1023px)");
   const isMobile = useMediaQuery("(max-width: 767px)");
   const showSnackbar = useAppSnackbar();
   const location = useLocation();
+
+  const { mutate: createBooking, isLoading } = useMutation(createNewBooking, {
+    onSuccess(res) {
+      if (res?.isError) {
+        showSnackbar(res?.message, "success");
+      } else {
+        showSnackbar(res?.message, "error");
+      }
+    },
+    onError(error) {
+      showSnackbar(error?.message, "error");
+    }
+  });
 
   const formik = useFormik({
     enableReinitialize: true,
@@ -30,14 +46,27 @@ function BookNow() {
       email: location.state?.email || "",
       mobile: location.state?.mobile || "",
       address: "",
+      treatmentDate: "",
+      timeSlot: "",
       city: location.state?.city || "",
       treatment: location.state?.treatment || "",
       laserOption: "",
     },
     validationSchema: getBookNowFormValidation,
     onSubmit: (value) => {
-      console.log("values", value);
-      showSnackbar("Booking Confirmed", "success");
+      createBooking({
+        userId: "A12",
+        serviceId: "LHR",
+        name: value.name,
+        email: value.email,
+        mobile: value.mobile,
+        address: value.address,
+        treatmentDate: value.treatmentDate,
+        timeSlot: value.treatment,
+        pinCode: "342001", //to be fetched from Address API
+        treatment: value.treatment,
+        laserOption: value.laserOption,
+      });
     },
   });
 
@@ -101,8 +130,12 @@ function BookNow() {
       formik.handleSubmit();
     }
   };
+
   return (
     <div className={`mt-3 ${isTablet ? "py-3" : "py-4 mt-4"}`}>
+      <Suspense>
+        <CustomLoader open={isLoading} />
+      </Suspense>
       <div className={`mt-5 ${isMobile ? "px-4" : "px-5"}`}>
         <CustomHeader
           heading={"Book Now"}

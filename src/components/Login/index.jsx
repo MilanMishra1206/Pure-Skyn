@@ -1,14 +1,28 @@
-import React from "react";
+import React, { lazy, Suspense } from "react";
 import Resources from "../../config/Resources";
 import { useFormik } from "formik";
 import { getLoginValidation, loginInitialValues } from "../../helpers/Login";
 import LoginForm from "./LoginForm";
 import { useAppSnackbar } from "../../config/Context/SnackbarContext";
 import { useNavigate } from "react-router-dom";
+import { useMutation } from "react-query";
+import { loginUser } from "../../services/LoginAndRegister";
+
+const CustomLoader = lazy(() => import("../../shared/CustomLoader"));
 
 function LoginPage() {
   const showSnackbar = useAppSnackbar();
   const navigate = useNavigate();
+
+  const { mutate: loginUsers, isLoading } = useMutation(loginUser, {
+    onSuccess(res) {
+      navigate("/");
+      showSnackbar(res?.messag, "success");
+    },
+    onError(error) {
+      showSnackbar(error, "error");
+    },
+  });
 
   const formik = useFormik({
     enableReinitialize: true,
@@ -17,9 +31,10 @@ function LoginPage() {
     initialValues: loginInitialValues,
     validationSchema: getLoginValidation,
     onSubmit: (value) => {
-      console.log("values", value);
-      navigate("/");
-      showSnackbar("Logged-in successfully!", "success");
+      loginUsers({
+        email: value.email,
+        password: value.password,
+      });
     },
   });
 
@@ -33,6 +48,9 @@ function LoginPage() {
 
   return (
     <div className="flex justify-center items-center min-h-screen relative">
+      <Suspense>
+        <CustomLoader open={isLoading} />
+      </Suspense>
       <div
         className="absolute top-0 left-0 w-full h-full bg-cover bg-center hidden md:block"
         style={{

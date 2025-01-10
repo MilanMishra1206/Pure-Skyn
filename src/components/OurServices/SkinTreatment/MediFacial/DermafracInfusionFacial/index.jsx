@@ -6,7 +6,7 @@ import { dermaFracMicroneedling } from "../../../../../helpers/MediFacial";
 import { dermoFracAccordianContent } from "../../../../../helpers/AccordianContent";
 import { motion } from "framer-motion";
 import FadeInWrapper from "../../../../../config/MotionFramer/FadeInWrapper";
-import CustomAccordian from "../../../../../shared/CustomAccordian";
+import CustomAccordion from "../../../../../shared/CustomAccordion";
 import CustomHeader from "../../../../../shared/CustomHeader";
 import FadedLineBreak from "../../../../../shared/CustomHrTag";
 import DrawCircleText from "../../../../../shared/CustomDrawCircleText";
@@ -308,7 +308,7 @@ function DermafracInfusionFacial({ type }) {
               <div
                 className={`mt-4 w-full lg:!w-1/2 ${!isTablet ? "p-5" : ""}`}
               >
-                <CustomAccordian accordionData={dermoFracAccordianContent} />
+                <CustomAccordion accordionData={dermoFracAccordianContent} />
                 <Link
                   to="/faq#Dermafrac Infusion Facial"
                   className="text-skyn hover:opacity-80 text-xl font-bold"

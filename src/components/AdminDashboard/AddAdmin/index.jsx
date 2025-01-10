@@ -1,7 +1,7 @@
-import { Suspense, useEffect, useState } from "react";
+import { lazy, Suspense, useEffect, useState } from "react";
 import { useDebounce } from "use-debounce";
 import DataTable from "./DataTable";
-import { useQuery } from "react-query";
+import { useMutation, useQuery } from "react-query";
 import { Divider } from "@mui/material";
 import CustomPagination from "../../../shared/CustomDashboardTable/CustomPagination";
 import { locationDropdownValues } from "../../../helpers/Admin";
@@ -14,6 +14,9 @@ import {
   signUpInitialValue,
 } from "../../../helpers/Login";
 import { useAppSnackbar } from "../../../config/Context/SnackbarContext";
+import { registerAdmin } from "../../../services/LoginAndRegister";
+
+const CustomLoader = lazy(() => import("../../../shared/CustomLoader"));
 
 function AddAdmin({ isTablet, isMobile }) {
   const showSnackbar = useAppSnackbar();
@@ -31,6 +34,16 @@ function AddAdmin({ isTablet, isMobile }) {
   const debouncedSearchTerm = useDebounce(filters.search, 500);
   const debounceStatus = useDebounce(filters.location, 500);
 
+  const { mutate: signupAdmin, isLoading } = useMutation(registerAdmin, {
+    onSuccess(res) {
+      setShowAdminModal(false);
+      showSnackbar(res.message, "success");
+    },
+    onError(err) {
+      showSnackbar(err.message, "error");
+    },
+  });
+
   const adminFormik = useFormik({
     enableReinitialize: true,
     validateOnMount: true,
@@ -38,9 +51,13 @@ function AddAdmin({ isTablet, isMobile }) {
     initialValues: signUpInitialValue,
     validationSchema: getSignUpValidation,
     onSubmit: (value) => {
-      console.log(value);
-      setShowAdminModal(false);
-      showSnackbar("Successfully Signed-up!", "success");
+      signupAdmin({
+        firstName: value.firstName,
+        lastName: value.lastName,
+        email: value.email,
+        password: value.password,
+        email: value.email,
+      });
     },
   });
 
@@ -118,6 +135,9 @@ function AddAdmin({ isTablet, isMobile }) {
 
   return (
     <div className="p-3 md:!p-5">
+      <Suspense>
+        <CustomLoader open={isLoading} />
+      </Suspense>
       <div className="flex flex-col justify-center md:!flex-row md:justify-between gap-5 mb-3">
         <DataTableFilter
           filters={filters}

@@ -62,4 +62,4 @@ axiosInstance.interceptors.response.use(
   }
 );
 
-export { axiosInstanceLogin };
+export { axiosInstance, axiosInstanceLogin };

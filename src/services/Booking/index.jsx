@@ -5,11 +5,29 @@ import { axiosInstance } from "../../utils/Axios";
 const createNewBooking = async ({
   userId,
   serviceId,
-  pinCode,
-  date,
+  name,
+  email,
+  mobile,
+  address,
+  treatmentDate,
   timeSlot,
+  pinCode,
+  treatment,
+  laserOption,
 }) => {
-  const reqBody = { userId, serviceId, pinCode, date, timeSlot };
+  const reqBody = {
+    userId,
+    serviceId,
+    name,
+    email,
+    mobile,
+    address,
+    treatmentDate,
+    timeSlot,
+    pinCode,
+    treatment,
+    laserOption,
+  };
   try {
     const data = await axiosInstance.post(
       API_URLS.Booking.createBooking,

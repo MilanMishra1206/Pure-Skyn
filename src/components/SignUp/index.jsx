@@ -1,12 +1,26 @@
-import React from "react";
+import React, { lazy, Suspense } from "react";
 import { useFormik } from "formik";
 import { signUpInitialValue, getSignUpValidation } from "../../helpers/Login";
 import SignUpForm from "./SignupForm";
 import Resources from "../../config/Resources";
 import { useAppSnackbar } from "../../config/Context/SnackbarContext";
+import { useMutation } from "react-query";
+import { registerUser } from "../../services/LoginAndRegister";
+
+const CustomLoader = lazy(() => import("../../shared/CustomLoader"));
 
 function SignUpPage() {
   const showSnackbar = useAppSnackbar();
+
+  const { mutate: signupUser, isLoading } = useMutation(registerUser, {
+    onSuccess(res) {
+      showSnackbar(res.message, "success");
+    },
+    onError(err) {
+      showSnackbar(err.message, "error");
+    },
+  });
+
   const formik = useFormik({
     enableReinitialize: true,
     validateOnMount: true,
@@ -14,8 +28,13 @@ function SignUpPage() {
     initialValues: signUpInitialValue,
     validationSchema: getSignUpValidation,
     onSubmit: (value) => {
-      console.log(value);
-      showSnackbar("Successfully Signed-up!", "success");
+      signupUser({
+        firstName: value.firstName,
+        lastName: value.lastName,
+        email: value.email,
+        password: value.password,
+        email: value.email,
+      });
     },
   });
 
@@ -30,6 +49,9 @@ function SignUpPage() {
 
   return (
     <div className="flex justify-center items-center min-h-screen relative">
+      <Suspense>
+        <CustomLoader open={isLoading} />
+      </Suspense>
       <div
         className="absolute top-0 left-0 w-full h-full bg-cover bg-center hidden md:block"
         style={{

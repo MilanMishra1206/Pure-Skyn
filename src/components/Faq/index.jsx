@@ -12,7 +12,7 @@ import { Button, useMediaQuery } from "@mui/material";
 import { motion } from "framer-motion";
 import FadeInWrapper from "../../config/MotionFramer/FadeInWrapper";
 import CustomHeader from "../../shared/CustomHeader";
-import CustomAccordian from "../../shared/CustomAccordian";
+import CustomAccordion from "../../shared/CustomAccordion";
 
 function Faq() {
   const location = useLocation();
@@ -126,7 +126,7 @@ function Faq() {
                   {title}
                 </div>
                 <div className="mt-4">
-                  <CustomAccordian accordionData={content} />
+                  <CustomAccordion accordionData={content} />
                 </div>
                 <hr className="border-t-4 my-4" />
               </motion.div>
