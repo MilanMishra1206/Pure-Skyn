@@ -4,6 +4,7 @@ import CustomHeader from "../../shared/CustomHeader";
 import { servicesCardDetails } from "../../helpers/LaserServices";
 import FadeInWrapper from "../../config/MotionFramer/FadeInWrapper";
 import { motion } from "framer-motion";
+import FadedLineBreak from "../../shared/CustomHrTag";
 
 function LaserServices() {
   const isMobile = useMediaQuery("(max-width: 767px)");
@@ -56,7 +57,7 @@ function LaserServices() {
                     />
                   </div>
                 </div>
-                {index < servicesCardDetails.length - 1 && <hr />}
+                {index < servicesCardDetails.length - 1 && <FadedLineBreak /> }
               </div>
             </motion.div>
           ))}

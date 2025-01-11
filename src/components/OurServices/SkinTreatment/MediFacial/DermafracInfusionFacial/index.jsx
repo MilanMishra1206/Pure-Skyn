@@ -153,7 +153,7 @@ function DermafracInfusionFacial({ type }) {
                     skin types. With this technology, we have treated and
                     improved different skin conditions such as:
                   </p>
-                  <ul className="list-disc pl-4">
+                  <ul className="list-disc pl-4 !text-left">
                     <li>Congested oily skin</li>
                     <li>Scars</li>
                     <li>Stretch marks</li>
@@ -299,14 +299,14 @@ function DermafracInfusionFacial({ type }) {
             viewport={{ once: true }}
           >
             <FadedLineBreak />
-            <div className="flex items-center justify-center text-skyn font-bold text-3xl px-4">
+            <div className="text-center text-skyn font-bold text-3xl px-4">
               <p>Frequently Asked Questions(FAQs)</p>
             </div>
             <div
               className={`mt-3 flex justify-center items-center ${isTablet ? "p-3 flex-col" : "flex-row"}`}
             >
               <div
-                className={`mt-4 w-full lg:!w-1/2 ${!isTablet ? "p-5" : ""}`}
+                className={`mt-4 w-full lg:!w-1/2 !text-left ${!isTablet ? "p-5" : ""}`}
               >
                 <CustomAccordion accordionData={dermoFracAccordianContent} />
                 <Link

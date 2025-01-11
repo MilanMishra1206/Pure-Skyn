@@ -20,11 +20,16 @@ import FuzzyPricingOverlay from "../../../../shared/CustomFuzzyPricingOverlay";
 import DrawCircleText from "../../../../shared/CustomDrawCircleText";
 import CustomPricingTable from "../../../../shared/CustomPricingTable";
 import FadedLineBreak from "../../../../shared/CustomHrTag";
+import CustomButton2 from "../../../../shared/CustomButton2";
 
 function LaserHairRemovalPackages() {
   const isTablet = useMediaQuery("(max-width: 1023px)");
   const isMobile = useMediaQuery("(max-width: 767px)");
   const navigate = useNavigate();
+
+  const handleBookNowClick = (laserOption) => {
+    navigate(`/book-now?treatment=Laser Hair Removal&laserType=${laserOption}`);
+  };
 
   return (
     <MotionWrapper>
@@ -156,16 +161,11 @@ function LaserHairRemovalPackages() {
                         </ol>
                       </div>
                       <div className="p-4">
-                        <button
-                          onClick={() =>
-                            navigate(
-                              `/book-now?treatment=Laser Hair Removal&laserType=${item.laserOption}`
-                            )
+                        <CustomButton2
+                          handleSubmit={() =>
+                            handleBookNowClick(item.laserOption)
                           }
-                          className="w-full bg-skyn text-white py-2 px-4 rounded-md hover:bg-skyn-dark focus:outline-none focus:ring-2 focus:ring-skyn transition-all shadow-[3px_3px_0px_#313440] hover:shadow-none hover:translate-x-[3px] hover:translate-y-[3px]"
-                        >
-                          Book Now
-                        </button>
+                        />
                       </div>
                     </div>
                   </div>

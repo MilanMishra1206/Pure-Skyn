@@ -2,17 +2,20 @@ import React, { lazy, Suspense, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import { Box, Rating } from "@mui/material";
 import StarIcon from "@mui/icons-material/Star";
-import FadedLineBreak from "../../../shared/CustomHrTag";
+import FadedLineBreak from "../../../../shared/CustomHrTag";
 import { useFormik } from "formik";
-import { getAddReviewValidation } from "../../../helpers/Login";
-import { useAppSnackbar } from "../../../config/Context/SnackbarContext";
+import { getAddReviewValidation } from "../../../../helpers/Login";
+import { useAppSnackbar } from "../../../../config/Context/SnackbarContext";
+import { CustomRevealHeading } from "../../../../shared/CustomRevealHeading";
 
-const CustomTextField = lazy(() => import("../../../shared/CustomTextField"));
+const CustomTextField = lazy(
+  () => import("../../../../shared/CustomTextField")
+);
 
 export const ProductReviews = ({ ReviewContent }) => {
   return (
     <div className="py-12 text-zinc-50 cursor-pointer">
-      <RevealLinks />
+      <CustomRevealHeading heading="Reviews" />
       <motion.div
         initial="initial"
         animate="animate"
@@ -106,12 +109,15 @@ const AddReviewBlock = () => {
     initialValues: {
       fullName: "",
       email: "",
-      rating: "5",
+      rating: 5,
       description: "",
     },
     validationSchema: getAddReviewValidation,
     onSubmit: (value) => {
       console.log("Reviews", value);
+      setShowAddReviewModal(false);
+      showSnackbar("Thanks for your valuable feedback!", "success");
+      reviewFormik.resetForm();
     },
   });
 
@@ -135,7 +141,7 @@ const AddReviewBlock = () => {
         className="w-full bg-skyn text-white py-2 px-4 rounded-md hover:bg-skyn-dark focus:outline-none focus:ring-2 focus:ring-skyn transition-all shadow-[3px_3px_0px_#313440] hover:shadow-none hover:translate-x-[3px] hover:translate-y-[3px]"
         onClick={() => setShowAddReviewModal(true)}
       >
-        Add Review
+        Write a Review
       </button>
       {showAddReviewModal && (
         <AnimatePresence>
@@ -155,7 +161,7 @@ const AddReviewBlock = () => {
               className="bg-white p-6 rounded-lg w-full max-w-lg"
             >
               <div className="text-skyn text-center font-poppins font-bold text-2xl mb-4">
-                Add Review
+                Review
               </div>
               <FadedLineBreak />
               <form className="w-full">
@@ -198,14 +204,15 @@ const AddReviewBlock = () => {
                   />
                 </Suspense>
                 <div className="flex flex-col gap-1 mb-2">
-                  <label htmlFor="rating" className="text-kashmirBlue text-sm">Rating<span className="text-bitterSweet">*</span></label>
+                  <label htmlFor="rating" className="text-kashmirBlue text-sm">
+                    Rating<span className="text-bitterSweet">*</span>
+                  </label>
                   <Rating
                     name="rating"
                     defaultValue={5}
                     precision={0.5}
                     value={reviewFormik.values?.rating}
                     onChange={reviewFormik.handleChange}
-                    handleBlur={reviewFormik.handleBlur}
                   />
                 </div>
                 <Suspense fallback={<div />}>
@@ -242,7 +249,7 @@ const AddReviewBlock = () => {
                   className="bg-skyn text-white px-4 py-2 rounded-md hover:bg-skyn-dark hover:opacity-80 shadow-md"
                   onClick={handleSubmit}
                 >
-                  Add Review
+                  Submit Review
                 </button>
               </div>
             </motion.div>
@@ -250,76 +257,5 @@ const AddReviewBlock = () => {
         </AnimatePresence>
       )}
     </Block>
-  );
-};
-
-const RevealLinks = () => {
-  return (
-    <section className="grid place-content-center gap-2 text-skyn mb-4">
-      <FlipLink>Reviews</FlipLink>
-    </section>
-  );
-};
-
-const DURATION = 0.25;
-const STAGGER = 0.025;
-
-const FlipLink = ({ children }) => {
-  return (
-    <motion.a
-      initial="initial"
-      whileHover="hovered"
-      className="relative block overflow-hidden whitespace-nowrap text-4xl font-black uppercase sm:text-7xl"
-      style={{
-        lineHeight: 0.75,
-      }}
-    >
-      <div>
-        {children.split("").map((l, i) => (
-          <motion.span
-            variants={{
-              initial: {
-                y: 0,
-              },
-              hovered: {
-                y: "-100%",
-              },
-            }}
-            transition={{
-              duration: DURATION,
-              ease: "easeInOut",
-              delay: STAGGER * i,
-            }}
-            className="inline-block"
-            key={i}
-          >
-            {l}
-          </motion.span>
-        ))}
-      </div>
-      <div className="absolute inset-0">
-        {children.split("").map((l, i) => (
-          <motion.span
-            variants={{
-              initial: {
-                y: "100%",
-              },
-              hovered: {
-                y: 0,
-              },
-            }}
-            transition={{
-              duration: DURATION,
-              ease: "easeInOut",
-              delay: STAGGER * i,
-            }}
-            className="inline-block"
-            key={i}
-          >
-            {l}
-          </motion.span>
-        ))}
-      </div>
-    </motion.a>
   );
 };

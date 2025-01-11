@@ -3,23 +3,26 @@ import {
   AccordionDetails,
   AccordionSummary,
   Box,
+  Breadcrumbs,
   Rating,
   Typography,
   useMediaQuery,
 } from "@mui/material";
 import { motion } from "framer-motion";
-import FadeInWrapper from "../../config/MotionFramer/FadeInWrapper";
-import Resources from "../../config/Resources";
-import FadedLineBreak from "../../shared/CustomHrTag";
-import StarIcon from "@mui/icons-material/Star";
-import { useParams } from "react-router-dom";
-import CustomDropdown from "../../shared/CustomDropdown";
+import { Link, useParams } from "react-router-dom";
 import { useState } from "react";
-import CustomTextField from "../../shared/CustomTextField";
-import regex from "../../helpers/Regex";
-import { FaShippingFast, FaShieldAlt } from "react-icons/fa";
+import { FaShippingFast, FaShieldAlt, FaCartPlus } from "react-icons/fa";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
+import StarIcon from "@mui/icons-material/Star";
 import { ProductReviews } from "./ProductReviews";
+import BuyMoreProducts from "./BuyMoreProducts";
+import Resources from "../../../config/Resources";
+import FadedLineBreak from "../../../shared/CustomHrTag";
+import FadeInWrapper from "../../../config/MotionFramer/FadeInWrapper";
+import regex from "../../../helpers/Regex";
+import CustomTextField from "../../../shared/CustomTextField";
+import CustomDropdown from "../../../shared/CustomDropdown";
+import CustomButton2 from "../../../shared/CustomButton2";
 
 function ProductsDetails() {
   const { productName } = useParams();
@@ -36,6 +39,7 @@ function ProductsDetails() {
     ratings: 4,
     strikePrice: "2800",
     productPrice: "2250",
+    category: "Machine",
   };
 
   const productContent = [
@@ -130,6 +134,26 @@ function ProductsDetails() {
     },
   ];
 
+  const breadcrumbs = [
+    <Link
+      key="1"
+      to="/"
+      className="text-kashmirBlue font-poppins hover:opacity-80"
+    >
+      Home
+    </Link>,
+    <Link
+      key="2"
+      to="/products"
+      className="text-kashmirBlue font-poppins hover:opacity-80"
+    >
+      Products
+    </Link>,
+    <Typography key="3" className="text-coal font-poppins cursor-pointer">
+      {products.productName}
+    </Typography>,
+  ];
+
   const [selectedItem, setSelectedItem] = useState(productContent[0].id); // update this to null and then setSelectedItem after the API call
   const selectedContent = productContent.find(
     (item) => item.id === selectedItem
@@ -143,6 +167,10 @@ function ProductsDetails() {
     setSelectedItem(id);
   };
 
+  const handlePincodeCheck = () => {
+    console.log("Pincode", pinCode);
+  }
+
   return (
     <div className="mt-5">
       <motion.div
@@ -152,9 +180,10 @@ function ProductsDetails() {
         viewport={{ once: true }}
         className={`mt-5 ${isMobile ? "p-3" : "p-5"}`}
       >
-        <div
-          className={`mb-4 py-24 ${isMobile ? "" : "px-5"} font-poppins`}
-        >
+        <div className={`mb-4 py-24 ${isMobile ? "" : "px-5"} font-poppins`}>
+          <Breadcrumbs separator="›" aria-label="breadcrumb" className="mb-4">
+            {breadcrumbs}
+          </Breadcrumbs>
           <div className="grid lg:grid-cols-2 gap-4">
             <div className="grid grid-cols-1">
               <div className="p-4 rounded-lg shadow-lg flex justify-center self-start">
@@ -219,7 +248,7 @@ function ProductsDetails() {
                 </div>
               </div>
               {/* <FadedLineBreak /> */}
-              <div className="grid grid-cols-1 md:!grid-cols-3 gap-4 place-items-center mt-5">
+              <div className="grid grid-cols-1 md:!grid-cols-2 gap-4 place-items-center mt-5">
                 <CustomDropdown
                   textClassOverride="!text-kashmirBlue"
                   classes="!rounded-md !mb-4"
@@ -249,17 +278,11 @@ function ProductsDetails() {
                   value={quantity}
                   handleChange={(e) => setQuantity(e.target.value)}
                 />
-                <button
-                  className="text-coal shadow-md rounded-xl p-3 text-sm text-center font-semibold border !border-skyn hover:bg-skyn hover:!text-white w-full transition duration-500"
-                  onClick={() => {
-                    console.log("quantity", quantity);
-                  }}
-                >
-                  Add To Cart
-                </button>
-                <button className="shadow-md rounded-xl p-3 text-sm text-center font-semibold bg-skyn text-white hover:opacity-80 w-full transition duration-500">
-                  Buy Now
-                </button>
+                <CustomButton2
+                  buttonText="Add to Cart"
+                  faIcon={<FaCartPlus size="1.5rem" />}
+                  buttonClass="!mt-0"
+                />
               </div>
               <FadedLineBreak />
               <div className="flex gap-4 place-items-center w-100 md:!w-96">
@@ -279,14 +302,10 @@ function ProductsDetails() {
                   value={pinCode}
                   onChange={(e) => setPinCode(e.target.value)}
                 />
-                <button
-                  className="shadow-md rounded-xl p-3 text-sm text-center font-semibold bg-skyn text-white transition duration-500 mt-4 w-1/3"
-                  onClick={() => {
-                    console.log("Pincode", pinCode);
-                  }}
-                >
-                  Check
-                </button>
+                <CustomButton2
+                  buttonText="Check"
+                  handleSubmit={handlePincodeCheck}
+                />
               </div>
               <div className="flex flex-col mt-5 gap-3">
                 <div className="flex flex-col">
@@ -376,7 +395,25 @@ function ProductsDetails() {
           </motion.div>
           <FadedLineBreak />
           {/* Product Reviews */}
-          <ProductReviews ReviewContent={reviewContent} />
+          <motion.div
+            variants={FadeInWrapper("right", 0.1)}
+            initial="hidden"
+            whileInView="show"
+            viewport={{ once: true }}
+          >
+            <ProductReviews ReviewContent={reviewContent} />
+          </motion.div>
+          <FadedLineBreak />
+          {/* More Product */}
+          <motion.div
+            variants={FadeInWrapper("left", 0.1)}
+            initial="hidden"
+            whileInView="show"
+            viewport={{ once: true }}
+          >
+            <BuyMoreProducts />
+          </motion.div>
+          <FadedLineBreak />
         </div>
       </motion.div>
     </div>

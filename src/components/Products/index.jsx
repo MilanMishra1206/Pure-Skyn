@@ -1,5 +1,4 @@
 import { Box, Rating, useMediaQuery } from "@mui/material";
-import { lazy, Suspense } from "react";
 import { motion } from "framer-motion";
 import FadeInWrapper from "../../config/MotionFramer/FadeInWrapper";
 import CustomHeader from "../../shared/CustomHeader";
@@ -7,6 +6,8 @@ import Resources from "../../config/Resources";
 import FadedLineBreak from "../../shared/CustomHrTag";
 import StarIcon from "@mui/icons-material/Star";
 import { Link, useNavigate } from "react-router-dom";
+import { FaCartPlus } from "react-icons/fa";
+import CustomButton2 from "../../shared/CustomButton2";
 
 function Products() {
   const isMobile = useMediaQuery("(max-width: 767px)");
@@ -22,6 +23,7 @@ function Products() {
       ratings: 4,
       strikePrice: "2800",
       productPrice: "2250",
+      category: "Machine",
     },
     {
       id: 2,
@@ -31,6 +33,7 @@ function Products() {
         "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat",
       ratings: 4.5,
       productPrice: "250",
+      category: "Bandages",
     },
     {
       id: 3,
@@ -41,6 +44,7 @@ function Products() {
       ratings: 5,
       strikePrice: "1000",
       productPrice: "700",
+      category: "Machine",
     },
     {
       id: 4,
@@ -50,6 +54,7 @@ function Products() {
         "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat",
       ratings: 5,
       productPrice: "650",
+      category: "Bla Bla",
     },
     {
       id: 5,
@@ -60,6 +65,7 @@ function Products() {
       ratings: 4,
       strikePrice: "2000",
       productPrice: "1500",
+      category: "Machine",
     },
     {
       id: 6,
@@ -69,6 +75,7 @@ function Products() {
         "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat",
       ratings: 3.5,
       productPrice: "250",
+      category: "Bla Bla",
     },
   ];
 
@@ -128,12 +135,19 @@ function Products() {
               />
               <FadedLineBreak />
               <Link
-                className="font-bold text-xl mt-4 hover:text-skyn no-underline"
+                className="font-bold text-xl mt-4 text-coal hover:text-skyn no-underline"
                 to={`/products/${product.productName}`}
               >
                 {product.productName}
               </Link>
-              <Box sx={{ width: 200, display: "flex", alignItems: "center", marginTop: "1rem" }}>
+              <Box
+                sx={{
+                  width: 200,
+                  display: "flex",
+                  alignItems: "center",
+                  marginTop: "1rem",
+                }}
+              >
                 <Rating
                   name="text-feedback"
                   value={product.ratings}
@@ -162,14 +176,10 @@ function Products() {
               <span className="mt-4 text-left text-skyn font-bold">
                 ₹{product.productPrice}
               </span>
-              <div className="flex flex-col md:!flex-row gap-4 mt-4">
-                <button className="text-coal shadow-md rounded-xl p-3 text-sm font-semibold border !border-skyn hover:bg-skyn hover:!text-white w-full transition duration-500">
-                  Add To Cart
-                </button>
-                <button className="text-coal shadow-md rounded-xl p-3 text-sm font-semibold border !border-skyn hover:bg-skyn hover:!text-white w-full transition duration-500">
-                  Buy Now
-                </button>
-              </div>
+              <CustomButton2
+                buttonText="Add to Cart"
+                faIcon={<FaCartPlus size="1.5rem" />}
+              />
             </div>
           ))}
         </div>

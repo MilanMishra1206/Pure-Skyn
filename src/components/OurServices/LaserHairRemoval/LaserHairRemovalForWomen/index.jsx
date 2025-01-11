@@ -7,6 +7,7 @@ import MotionWrapper from "../../../../config/MotionFramer/MotionWrapper";
 import { motion } from "framer-motion";
 import FadeInWrapper from "../../../../config/MotionFramer/FadeInWrapper";
 import CustomHeader from "../../../../shared/CustomHeader";
+import FadedLineBreak from "../../../../shared/CustomHrTag";
 
 function LaserHairRemovalForWomen({ category, isMobile }) {
   const isLaptop = useMediaQuery("(min-width: 1023px)");
@@ -25,6 +26,7 @@ function LaserHairRemovalForWomen({ category, isMobile }) {
             heading={"Laser Hair Removal For Women"}
             showBackButton={category}
             navigateTo={"/services/laser-hair-removal"}
+            headerClass={`${!category ? "!text-center" : ""}`}
           />
         </motion.div>
         {category && (
@@ -84,15 +86,15 @@ function LaserHairRemovalForWomen({ category, isMobile }) {
                     </div>
                   )}
                   <div className="font-poppins w-full lg:!w-1/2 mr-0 lg:!mr-5">
-                    <div className="font-extrabold text-skyn text-3xl">
+                    <div className="font-extrabold text-skyn text-3xl text-center md:!text-left">
                       {item.header}
                     </div>
-                    <hr className="border-t-4 my-4 w-50" />
+                    <FadedLineBreak />
                     {item.subHeader && (
                       <h4 className="font-medium">{item.subHeader}</h4>
                     )}
                     {item.subHeaderTwo && (
-                      <h4 className="font-semibold mt-5">
+                      <h4 className="font-semibold mt-5 !text-left">
                         {item.subHeaderTwo}
                       </h4>
                     )}
@@ -104,7 +106,7 @@ function LaserHairRemovalForWomen({ category, isMobile }) {
                       <div className="flex justify-center w-full lg:!w-1/2">
                         <img src={item.img} className="rounded-2xl h-75" />
                       </div>
-                      <hr className="border-t-4 my-4" />
+                      <FadedLineBreak />
                     </div>
                   )}
                   {isLaptop && item.id % 2 !== 0 && (

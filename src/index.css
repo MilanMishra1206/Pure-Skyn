@@ -7,16 +7,27 @@
 body {
   margin: 0;
   padding: 0;
-  font-family: "Poppins", -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto",
-    "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans",
-    "Helvetica Neue", sans-serif;
+  font-family:
+    "Poppins",
+    -apple-system,
+    BlinkMacSystemFont,
+    "Segoe UI",
+    "Roboto",
+    "Oxygen",
+    "Ubuntu",
+    "Cantarell",
+    "Fira Sans",
+    "Droid Sans",
+    "Helvetica Neue",
+    sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   /* background-color: #FAF8F2 !important; */
 }
 
 code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New", monospace;
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
+    monospace;
 }
 
 .navbar-links {
@@ -47,7 +58,7 @@ code {
   border-radius: 100px;
   font-weight: 400;
   color: #f9f9f9;
-  box-shadow: 0 0 0 2px #EE6503;
+  box-shadow: 0 0 0 2px #ee6503;
   overflow: hidden;
   bottom: 0;
   right: 0;
@@ -77,7 +88,7 @@ code {
   transform: translate(-50%, -50%);
   width: 20px;
   height: 20px;
-  background-color: #EE6503;
+  background-color: #ee6503;
   border-radius: 50%;
   opacity: 0;
   transition: all 0.8s cubic-bezier(0.23, 1, 0.32, 1);
@@ -117,11 +128,78 @@ code {
 
 .btn-1:active {
   scale: 0.95;
-  box-shadow: 0 0 0 4px #EE6503;
+  box-shadow: 0 0 0 4px #ee6503;
 }
 
 .btn-1:hover .circle {
   width: 100%;
   height: 240px;
   opacity: 1;
+}
+
+.slick-track {
+  display: flex;
+}
+.slick-slider {
+  display: flex;
+  align-items: center;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.slick-slide {
+  padding: 6px;
+}
+
+.slick-slide img {
+  display: block;
+}
+
+.slick-arrow {
+  color: black !important;
+}
+
+.slick-prev {
+  position: absolute;
+  left: -25px !important;
+  z-index: 1;
+  border-radius: 50%;
+  height: 30px !important;
+  width: 30px !important;
+  box-shadow:
+    0 10px 20px rgba(0, 0, 0, 0.19),
+    0 6px 6px rgba(0, 0, 0, 0.23);
+}
+
+.slick-next {
+  right: -8px !important;
+  top: 20%;
+  position: absolute;
+  right: -25px !important;
+  z-index: 1;
+  border-radius: 50%;
+  height: 30px !important;
+  width: 30px !important;
+  box-shadow:
+    0 10px 20px rgba(0, 0, 0, 0.19),
+    0 6px 6px rgba(0, 0, 0, 0.23);
+}
+
+.slick-prev:before,
+.slick-next:before {
+  font-size: 30px !important;
+  line-height: 1.1 !important;
+  color: black !important;
+}
+
+.slick-prev:focus,
+.slick-prev:hover,
+.slick-next:hover,
+.slick-next:focus {
+  color: transparent;
+  outline: none;
+}
+.product-actions {
+  display: flex;
+  justify-content: space-between;
 }

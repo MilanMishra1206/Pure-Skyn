@@ -212,7 +212,7 @@ function Oxygeneo({ type }) {
             className="px-4"
           >
             <FadedLineBreak />
-            <div className="flex items-center justify-center text-skyn font-bold text-3xl px-4">
+            <div className="text-center text-skyn font-bold text-3xl px-4">
               <p>Frequently Asked Questions(FAQs)</p>
             </div>
             <div

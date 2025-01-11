@@ -53,7 +53,7 @@ function MediFacial() {
     },
   ];
   return (
-    <div className="mt-5 text-justify">
+    <div className="mt-5">
       {pathname === "/services/skin/medi-facial" && (
         <motion.div
           variants={FadeInWrapper("left", 0.1)}
@@ -68,7 +68,7 @@ function MediFacial() {
             navigateTo={"/services"}
           />
           <section className="mt-4">
-            <div className="flex flex-col justify-center items-center md:!flex-row space-x-2">
+            <div className="flex flex-col justify-center items-center md:!flex-row space-x-2 text-justify">
               <div className="lg:mr-10">
                 <p className="text-cello font-medium">
                   Who doesn't want glowing skin? And to meet that need, Indians
@@ -86,7 +86,7 @@ function MediFacial() {
                   skin where healing & repairing is required.
                 </p>
                 {isTablet && (
-                  <div className="flex justify-center md:m-4">
+                  <div className="flex justify-center mt-4 mb-4 lg:!mt-0 lg:!mb-0">
                     <img
                       src={Resources.images.Services.mediFacial}
                       alt="Medi Facial"
@@ -124,7 +124,7 @@ function MediFacial() {
             <h4 className="text-kashmirBlue font-bold text-xl">
               How is Medi-facial customizable?
             </h4>
-            <p className="text-cello font-medium mt-3">
+            <p className="text-cello font-medium mt-3 text-justify">
               When you visit a medical professional, they initially analyze your
               skin type & the skin conditions that need to be treated. Based on
               the report, they prescribe the natural ingredients required as per
@@ -139,7 +139,7 @@ function MediFacial() {
             <h4 className="text-kashmirBlue font-bold text-xl">
               Why Medi-facial?
             </h4>
-            <p className="text-cello font-medium mt-3">
+            <p className="text-cello font-medium mt-3 text-justify">
               Even now if you are not fully convinced, let's have a look at the
               following benefits provided by Medi facial to your skin.
             </p>
@@ -332,7 +332,7 @@ function MediFacial() {
           <div className="px-4">
             <hr className="border-t-4 my-4" />
           </div>
-          <div className="flex items-center justify-center text-skyn font-bold text-3xl px-4">
+          <div className="text-center text-skyn font-bold text-3xl px-4">
             <p>Frequently Asked Questions(FAQs)</p>
           </div>
           <div

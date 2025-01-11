@@ -12,6 +12,7 @@ import regex from "../../helpers/Regex";
 import FadedLineBreak from "../../shared/CustomHrTag";
 import { useMutation } from "react-query";
 import createNewBooking from "../../services/Booking";
+import CustomButton2 from "../../shared/CustomButton2";
 
 const CustomTextField = lazy(() => import("../../shared/CustomTextField"));
 const CustomDropdown = lazy(() => import("../../shared/CustomDropdown"));
@@ -34,7 +35,7 @@ function BookNow() {
     },
     onError(error) {
       showSnackbar(error?.message, "error");
-    }
+    },
   });
 
   const formik = useFormik({
@@ -380,13 +381,10 @@ function BookNow() {
             </div>
           </form>
           <div className="px-4">
-            <Button
-              variant="contained"
-              className="w-full md:!w-2/5 !bg-skyn !text-white py-2 px-4 rounded-md hover:bg-skyn-dark focus:outline-none focus:ring-2 focus:ring-skyn transition-all !shadow-[3px_3px_0px_black] hover:!shadow-none hover:!translate-x-[3px] hover:!translate-y-[3px]"
-              onClick={() => handleSubmit()}
-            >
-              Book Now
-            </Button>
+            <CustomButton2
+              handleSubmit={handleSubmit}
+              buttonClass="md:!w-2/5"
+            />
           </div>
         </div>
         {/* <img src={Resources.images.Common.bookNowCard2} className={`h-96 w-35`}/> */}

@@ -8,6 +8,7 @@ import {
 import { useAppSnackbar } from "../../../config/Context/SnackbarContext";
 import { useNavigate } from "react-router-dom";
 import regex from "../../../helpers/Regex";
+import CustomButton2 from "../../../shared/CustomButton2";
 
 const CustomTextField = lazy(() => import("../../../shared/CustomTextField"));
 const CustomDropdown = lazy(() => import("../../../shared/CustomDropdown"));
@@ -178,13 +179,7 @@ const BookNowForm = () => {
           />
         </Suspense>
       </form>
-      <button
-        type="button"
-        className="w-full bg-skyn text-white py-2 px-4 rounded-md hover:bg-skyn-dark focus:outline-none focus:ring-2 focus:ring-skyn transition-all shadow-[3px_3px_0px_#313440] hover:shadow-none hover:translate-x-[3px] hover:translate-y-[3px]"
-        onClick={() => handleFormSubmit()}
-      >
-        Book Now
-      </button>
+      <CustomButton2 handleSubmit={handleFormSubmit} />
     </div>
   );
 };

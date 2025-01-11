@@ -165,7 +165,6 @@ function LaserHairRemoval() {
                 </li>
               </ul>
               <FadedLineBreak />
-
               <h4 className="text-kashmirBlue font-bold">
                 Is Laser Hair Removal Right for You?
               </h4>
@@ -266,7 +265,7 @@ function LaserHairRemoval() {
           viewport={{ once: true }}
         >
           <FadedLineBreak />
-          <div className="flex items-center justify-center text-skyn font-bold text-3xl px-4">
+          <div className="text-center text-skyn font-bold text-3xl px-4">
             <p>Frequently Asked Questions(FAQs)</p>
           </div>
           <div

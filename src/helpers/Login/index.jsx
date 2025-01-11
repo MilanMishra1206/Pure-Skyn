@@ -143,7 +143,7 @@ const getAddReviewValidation = () =>
       .string()
       .email("Please Enter Valid Email")
       .required("Email is required"),
-    rating: yup.string().required("Rating is required"),
+    rating: yup.number().required("Rating is required"),
     description: yup.string().required("Description name is required"),
   });
 

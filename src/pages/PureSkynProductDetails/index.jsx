@@ -1,11 +1,11 @@
-import ProductsDetails from "../../components/ProductsDetails";
+import ProductsDetails from "../../components/Products/ProductsDetails";
 
-function PureSkynProductDetails () {
-return (
+function PureSkynProductDetails() {
+  return (
     <div>
-        <ProductsDetails />
+      <ProductsDetails />
     </div>
-)
+  );
 }
 
 export default PureSkynProductDetails;

@@ -167,7 +167,7 @@ function OxyHydra({ type }) {
                 </div>
                 <FadedLineBreak />
                 <div className="flex flex-col">
-                  <ul className="list-disc pl-4 space-y-3">
+                  <ul className="list-disc pl-4 space-y-3 !text-left">
                     <li>
                       <strong>Introduction to Hydrafacial</strong>:
                       Understanding the Core Objectives of the Treatment
@@ -190,7 +190,7 @@ function OxyHydra({ type }) {
                 </div>
                 <FadedLineBreak />
                 <div className="flex flex-col">
-                  <ul className="list-disc pl-4 space-y-3">
+                  <ul className="list-disc pl-4 space-y-3 !text-left">
                     <li>
                       <strong>Maximizing Skin Health</strong>: Key Benefits of
                       Opting for HydraFacial in Delhi
@@ -211,7 +211,7 @@ function OxyHydra({ type }) {
                   UNDERSTANDING OF HAVING OXY HYDRA FACIAL
                 </div>
                 <FadedLineBreak />
-                <ul className="list-disc pl-4 space-y-3">
+                <ul className="list-disc pl-4 space-y-3 !text-left">
                   <li>
                     <strong>General Price Range</strong>: In Delhi, the cost of
                     a HydraFacial treatment typically ranges between PKR 5,000
@@ -238,7 +238,7 @@ function OxyHydra({ type }) {
                 </div>
                 <FadedLineBreak />
                 <div className="flex flex-col">
-                  <ul className="list-disc pl-4 space-y-3">
+                  <ul className="list-disc pl-4 space-y-3 !text-left">
                     <li>
                       <strong>Quality and Safety at Pure Skyn</strong>: When
                       considering a HydraFacial, it's crucial to opt for a
@@ -270,7 +270,7 @@ function OxyHydra({ type }) {
                 </div>
                 <FadedLineBreak />
                 <div className="flex flex-col">
-                  <ul className="list-disc pl-4 space-y-3">
+                  <ul className="list-disc pl-4 space-y-3 !text-left">
                     <li>
                       <strong>Premium Service</strong>: Pure Skyn in Delhi
                       distinguishes itself by offering top-tier HydraFacial
@@ -339,7 +339,7 @@ function OxyHydra({ type }) {
             <div className="px-4">
               <FadedLineBreak />
             </div>
-            <div className="flex items-center justify-center text-skyn font-bold text-3xl px-4">
+            <div className="text-center text-skyn font-bold text-3xl px-4">
               <p>Frequently Asked Questions(FAQs)</p>
             </div>
             <div

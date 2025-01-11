@@ -27,7 +27,7 @@ function SkinTightening({ type }) {
           heading={"RF Skin Tightening"}
           showBackButton={type}
           navigateTo={"/services/skin/medi-facial"}
-          headerClass={!type && "!text-2xl"}
+          headerClass={!type && "!text-2xl !text-left"}
         />
       </motion.div>
       {type && (
@@ -320,7 +320,7 @@ function SkinTightening({ type }) {
             <div className="px-4">
               <FadedLineBreak />
             </div>
-            <div className="flex items-center justify-center text-skyn font-bold text-3xl px-4">
+            <div className="text-center text-skyn font-bold text-3xl px-4">
               <p>Frequently Asked Questions(FAQs)</p>
             </div>
             <div
