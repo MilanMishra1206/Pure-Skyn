@@ -3,7 +3,7 @@ import Resources from "../../../config/Resources";
 import FlyoutLink from "../FlayoutLink";
 import Dropdown from "../Dropdown";
 import DropdownContent, { handleKeyPress } from "../Dropdown/DropdownContent";
-import { useState } from "react";
+import { FaCartShopping } from "react-icons/fa6";
 
 const MenuForDesktop = ({
   isActive,
@@ -70,6 +70,9 @@ const MenuForDesktop = ({
         )}
       </div>
       <div className="flex items-center navbar-links">
+        <Link to="/cart" className="mr-5 hover:opacity-80 text-white">
+          <FaCartShopping />
+        </Link>
         {isLoggedIn && (
           <div className="flex">
             <Dropdown

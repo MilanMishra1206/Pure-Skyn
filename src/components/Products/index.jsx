@@ -8,9 +8,13 @@ import StarIcon from "@mui/icons-material/Star";
 import { Link, useNavigate } from "react-router-dom";
 import { FaCartPlus } from "react-icons/fa";
 import CustomButton2 from "../../shared/CustomButton2";
+import { IoFilterSharp } from "react-icons/io5";
+import { FaSort } from "react-icons/fa";
+import { useAppSnackbar } from "../../config/Context/SnackbarContext";
 
 function Products() {
   const isMobile = useMediaQuery("(max-width: 767px)");
+  const showSnackbar = useAppSnackbar();
   const navigate = useNavigate();
 
   const productList = [
@@ -91,6 +95,10 @@ function Products() {
     return `Save ₹${+oldPrice - +newPrice}`;
   };
 
+  const handleAddToCart = () => {
+    showSnackbar("Product Added to Cart", "success");
+  };
+
   return (
     <div className="mt-5">
       <motion.div
@@ -106,6 +114,21 @@ function Products() {
           navigateTo={"/"}
         />
       </motion.div>
+      {/* <motion.div
+        variants={FadeInWrapper("right", 0.2)}
+        initial="hidden"
+        whileInView="show"
+        className={`flex gap-2 justify-center items-center mb-4 font-poppins ${isMobile ? "px-3" : "px-5"}`}
+      >
+        <button className="flex items-center gap-2 py-3 shadow px-5 border bg-secondary rounded text-white text-xl font-poppins hover:!opacity-80">
+          <IoFilterSharp size="1.5rem"/>
+          Filter
+        </button>
+        <button className="flex items-center gap-2 py-3 shadow px-5 border bg-secondary rounded text-white text-xl font-poppins hover:!opacity-80">
+          <FaSort size="1.5rem"/>
+          Sort
+        </button>
+      </motion.div> */}
       <motion.div
         variants={FadeInWrapper("up", 0.2)}
         initial="hidden"
@@ -179,6 +202,7 @@ function Products() {
               <CustomButton2
                 buttonText="Add to Cart"
                 faIcon={<FaCartPlus size="1.5rem" />}
+                handleSubmit={handleAddToCart}
               />
             </div>
           ))}

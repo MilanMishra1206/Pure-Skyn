@@ -14,7 +14,7 @@ function ProductCarousel({ carouselContent }) {
     arrows: true,
     responsive: [
       {
-        breakpoint: 1024,
+        breakpoint: 1101,
         settings: {
           slidesToShow: 3,
           slidesToScroll: 3,
@@ -22,7 +22,7 @@ function ProductCarousel({ carouselContent }) {
         },
       },
       {
-        breakpoint: 600,
+        breakpoint: 881,
         settings: {
           slidesToShow: 2,
           slidesToScroll: 2,

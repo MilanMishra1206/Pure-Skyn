@@ -34,6 +34,7 @@ const PureSkynLHRPackages = lazy(
 const PureSkynMediFacialPackages = lazy(
   () => import("../../pages/PureSkynMediFacialPackages")
 );
+const PureSkynCart = lazy(() => import("../../pages/PureSkynCart"));
 const CustomNavbar = lazy(() => import("../../shared/CustomNavbar"));
 const CustomHeroSection = lazy(() => import("../../shared/CustomHeroSection"));
 const PageNotFound = lazy(() => import("../../shared/PageNotFound"));
@@ -109,6 +110,10 @@ const routesConfig = [
     Component: PureSkynBookNow,
   },
   {
+    path: "/cart",
+    Component: PureSkynCart,
+  },
+  {
     path: "/logout",
     Component: PureSkynLogout,
   },
@@ -120,10 +125,7 @@ function Router() {
   const isAdmin = false;
 
   const location = useLocation();
-  const showNavAndFooter = ![
-    "/login",
-    "sign-up"
-  ].includes(location.pathname);
+  const showNavAndFooter = !["/login", "sign-up"].includes(location.pathname);
 
   const showCarousel = ["/"].includes(location.pathname);
 

@@ -6,6 +6,11 @@ import CustomButton2 from "../CustomButton2";
 
 const CustomHeroSection = () => {
   const isTablet = useMediaQuery("(max-width: 1023px)");
+
+  const handleDownloadApp = () => {
+    console.log("Download app button clicked");
+  };
+
   return (
     <section className="w-full bg-[#FAFAFA] px-8 py-12 grid grid-cols-1 md:grid-cols-2 items-center gap-8 mx-auto mt-5 shadow-lg">
       <div>
@@ -19,7 +24,11 @@ const CustomHeroSection = () => {
           Download our app to stay connected
         </p>
         <div className="flex justify-center">
-          <CustomButton2 buttonText="Download App" buttonClass="md:!w-1/2" />
+          <CustomButton2
+            buttonText="Download App"
+            buttonClass="md:!w-1/2"
+            handleSubmit={handleDownloadApp}
+          />
         </div>
       </div>
       <ShuffleGrid />

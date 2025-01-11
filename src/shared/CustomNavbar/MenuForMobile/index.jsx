@@ -5,6 +5,7 @@ import {
   MdOutlineKeyboardArrowUp,
 } from "react-icons/md";
 import Resources from "../../../config/Resources";
+import { FaCartShopping } from "react-icons/fa6";
 
 const MenuForMobile = ({
   isActive,
@@ -191,10 +192,17 @@ const MenuForMobile = ({
             </Link>
             <Link
               to="/products"
-              className={`navbar-links !text-black !ml-0 ${isActive("/products") ? "bg-skyn rounded-3xl !text-white" : "hover:bg-skyn hover:rounded-3xl hover:!text-white"}`}
+              className={`navbar-links !text-black !ml-0 ${isActive("/products") ? "bg-skyn rounded-3xl !text-white" : "hover:bg-skyn hover:rounded-3xl hover:!text-white mb-3"}`}
               onClick={toggleMenu}
             >
               Products
+            </Link>
+            <Link
+              to="/cart"
+              className={`navbar-links flex justify-center items-center gap-2 !text-black !ml-0 ${isActive("/cart") ? "bg-skyn rounded-3xl !text-white" : "hover:bg-skyn hover:rounded-3xl hover:!text-white"}`}
+              onClick={toggleMenu}
+            >
+              <FaCartShopping size="1.3rem" /> Cart
             </Link>
           </div>
         )}

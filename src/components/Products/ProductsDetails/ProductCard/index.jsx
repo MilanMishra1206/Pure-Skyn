@@ -5,15 +5,21 @@ import { Box, Rating } from "@mui/material";
 import StarIcon from "@mui/icons-material/Star";
 import { FaCartPlus } from "react-icons/fa";
 import CustomButton2 from "../../../../shared/CustomButton2";
+import { useAppSnackbar } from "../../../../config/Context/SnackbarContext";
 
 function ProductCard({ product }) {
   const navigate = useNavigate();
+  const showSnackbar = useAppSnackbar();
   const truncateText = (text, limit) => {
     const words = text.split(" ");
     if (words.length > limit) {
       return words.slice(0, limit).join(" ") + "...";
     }
     return text;
+  };
+
+  const handleAddToCart = () => {
+    showSnackbar("Product Added to Cart", "success");
   };
 
   return (
@@ -74,6 +80,7 @@ function ProductCard({ product }) {
           <CustomButton2
             buttonText="Add to Cart"
             faIcon={<FaCartPlus size="1.5rem" />}
+            handleSubmit={handleAddToCart}
           />
         </Card.Body>
       </Card>

@@ -133,7 +133,13 @@ function BookNow() {
   };
 
   return (
-    <div className={`mt-3 ${isTablet ? "py-3" : "py-4 mt-4"}`}>
+    <motion.div
+      variants={FadeInWrapper("left", 0.1)}
+      initial="hidden"
+      whileInView="show"
+      viewport={{ once: true }}
+      className={`mt-3 ${isTablet ? "py-3" : "py-4 mt-4"}`}
+    >
       <Suspense>
         <CustomLoader open={isLoading} />
       </Suspense>
@@ -389,7 +395,7 @@ function BookNow() {
         </div>
         {/* <img src={Resources.images.Common.bookNowCard2} className={`h-96 w-35`}/> */}
       </div>
-    </div>
+    </motion.div>
   );
 }
 

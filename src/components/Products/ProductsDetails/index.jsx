@@ -23,9 +23,11 @@ import regex from "../../../helpers/Regex";
 import CustomTextField from "../../../shared/CustomTextField";
 import CustomDropdown from "../../../shared/CustomDropdown";
 import CustomButton2 from "../../../shared/CustomButton2";
+import { useAppSnackbar } from "../../../config/Context/SnackbarContext";
 
 function ProductsDetails() {
   const { productName } = useParams();
+  const showSnackbar = useAppSnackbar();
   const isMobile = useMediaQuery("(max-width: 768px)");
   const isLargeScreen = useMediaQuery("(min-width: 1438px)");
   const [quantity, setQuantity] = useState("1");
@@ -169,7 +171,11 @@ function ProductsDetails() {
 
   const handlePincodeCheck = () => {
     console.log("Pincode", pinCode);
-  }
+  };
+
+  const handleAddToCart = () => {
+    showSnackbar("Product Added to Cart", "success");
+  };
 
   return (
     <div className="mt-5">
@@ -282,6 +288,7 @@ function ProductsDetails() {
                   buttonText="Add to Cart"
                   faIcon={<FaCartPlus size="1.5rem" />}
                   buttonClass="!mt-0"
+                  handleSubmit={handleAddToCart}
                 />
               </div>
               <FadedLineBreak />
