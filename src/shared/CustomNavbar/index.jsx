@@ -7,6 +7,8 @@ import MenuForDesktop from "./MenuForDesktop";
 import MenuForMobile from "./MenuForMobile";
 import { AnimatePresence, motion } from "framer-motion";
 import { useAppSnackbar } from "../../config/Context/SnackbarContext";
+import { FaCartShopping } from "react-icons/fa6";
+import { useSelector } from "react-redux";
 
 function CustomNavbar() {
   const location = useLocation();
@@ -25,6 +27,8 @@ function CustomNavbar() {
   const toggleMenu = () => setMenuOpen(!menuOpen);
   const isTablet = useMediaQuery("(max-width: 768px)");
   const showSnackbar = useAppSnackbar();
+  const cartItems = useSelector((state) => state.cart.items);
+  const totalItems = cartItems.length;
 
   useEffect(() => {
     // setIsLoggedIn(true);
@@ -162,15 +166,15 @@ function CustomNavbar() {
   return (
     <div className="flex flex-col bg-coal !text-white p-3 fixed top-0 left-0 w-full z-50">
       <div>
-        <nav className="flex items-center gap-2">
+        <nav className="flex items-center justify-between gap-2">
           <button
             className="lg:hidden text-white focus:outline-none"
             onClick={toggleMenu}
           >
             <GiHamburgerMenu size={"2rem"} />
           </button>
-          <div className="flex ml-4">
-            <Link to="/" className="ml-16 no-underline font-bold lg:hidden">
+          <div className="flex lg:hidden">
+            <Link to="/" className="no-underline font-bold">
               <img
                 src={Resources.images.NavBar.branding}
                 alt="branding"
@@ -178,6 +182,14 @@ function CustomNavbar() {
               />
             </Link>
           </div>
+          <Link to="/cart" className="navbar-links mr-4 relative lg:hidden">
+            <FaCartShopping size="1.8rem" />
+            {totalItems > 0 && (
+              <span className="absolute left-1/2 bottom-50 text-xs bg-skyn text-white rounded-full px-2 py-1">
+                {totalItems}
+              </span>
+            )}
+          </Link>
         </nav>
         {!isTablet ? (
           <MenuForDesktop

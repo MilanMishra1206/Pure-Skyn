@@ -2,7 +2,7 @@ import { motion } from "framer-motion";
 
 export const CustomRevealHeading = ({ heading }) => {
   return (
-    <section className="grid place-content-center gap-2 text-skyn mb-4">
+    <section className="grid place-content-center gap-2 !text-skyn mb-4">
       <FlipLink>{heading}</FlipLink>
     </section>
   );
@@ -16,7 +16,7 @@ const FlipLink = ({ children }) => {
     <motion.a
       initial="initial"
       whileHover="hovered"
-      className="relative block overflow-hidden text-4xl font-black uppercase sm:text-5xl"
+      className="relative block overflow-hidden text-4xl font-black uppercase sm:text-5xl !text-skyn"
       style={{
         lineHeight: 0.75,
       }}

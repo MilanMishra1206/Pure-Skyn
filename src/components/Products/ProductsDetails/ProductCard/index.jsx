@@ -6,9 +6,13 @@ import StarIcon from "@mui/icons-material/Star";
 import { FaCartPlus } from "react-icons/fa";
 import CustomButton2 from "../../../../shared/CustomButton2";
 import { useAppSnackbar } from "../../../../config/Context/SnackbarContext";
+import { addToCart } from "../../../../redux/Actions";
+import { useDispatch } from "react-redux";
 
 function ProductCard({ product }) {
   const navigate = useNavigate();
+  const dispatch = useDispatch();
+
   const showSnackbar = useAppSnackbar();
   const truncateText = (text, limit) => {
     const words = text.split(" ");
@@ -19,6 +23,7 @@ function ProductCard({ product }) {
   };
 
   const handleAddToCart = () => {
+    dispatch(addToCart(product));
     showSnackbar("Product Added to Cart", "success");
   };
 
@@ -35,7 +40,7 @@ function ProductCard({ product }) {
         <Card.Body>
           <Card.Title>
             <Link
-              className="font-bold text-xl mt-4 hover:text-skyn no-underline"
+              className="font-bold text-coal text-xl mt-4 hover:text-skyn no-underline"
               to={`/products/${product.productName}`}
             >
               {product.productName}

@@ -44,7 +44,7 @@ const BookNowForm = () => {
   };
 
   return (
-    <div className="w-96 max-w-sm mx-auto bg-white shadow-lg rounded-3xl p-8 h-75">
+    <div className="max-w-sm mx-auto bg-white shadow-lg rounded-3xl p-8 h-75">
       <div className="flex justify-center">
         <img
           src={Resources.images.NavBar.branding}

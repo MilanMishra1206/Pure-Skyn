@@ -24,10 +24,13 @@ import CustomTextField from "../../../shared/CustomTextField";
 import CustomDropdown from "../../../shared/CustomDropdown";
 import CustomButton2 from "../../../shared/CustomButton2";
 import { useAppSnackbar } from "../../../config/Context/SnackbarContext";
+import { addToCart } from "../../../redux/Actions";
+import { useDispatch } from "react-redux";
 
 function ProductsDetails() {
   const { productName } = useParams();
   const showSnackbar = useAppSnackbar();
+  const dispatch = useDispatch();
   const isMobile = useMediaQuery("(max-width: 768px)");
   const isLargeScreen = useMediaQuery("(min-width: 1438px)");
   const [quantity, setQuantity] = useState("1");
@@ -42,6 +45,7 @@ function ProductsDetails() {
     strikePrice: "2800",
     productPrice: "2250",
     category: "Machine",
+    quantity: 1,
   };
 
   const productContent = [
@@ -174,6 +178,7 @@ function ProductsDetails() {
   };
 
   const handleAddToCart = () => {
+    dispatch(addToCart(products));
     showSnackbar("Product Added to Cart", "success");
   };
 
@@ -291,6 +296,43 @@ function ProductsDetails() {
                   handleSubmit={handleAddToCart}
                 />
               </div>
+              {/* <div className="flex flex-col gap-4 mt-5">
+                <div className="flex gap-3">
+                  <button
+                    className="px-3 py-2 rounded shadow bg-aliceBlue-2 mt-4"
+                    onClick={() => setQuantity(+quantity - 1)}
+                  >
+                    <FaMinus className="text-coal" size="1.1rem" />
+                  </button>
+                  <CustomTextField
+                    textClassOverride="!text-kashmirBlue"
+                    placeholderClasses="placeholder:!opacity-30 !text-licorice !text-center"
+                    className="h-12 rounded-md !bg-transparent"
+                    classes="!rounded-md !mb-4"
+                    requiredStar
+                    labelToShow="Select Quantity"
+                    maxLength={2}
+                    regex={regex.numeric}
+                    inputClassName="!bg-transparent !text-center"
+                    name="quantity"
+                    showIconOutline
+                    value={quantity}
+                    onChange={(e) => setQuantity(e.target.value)}
+                  />
+                  <button
+                    className="px-3 py-2 rounded shadow bg-aliceBlue-2 mt-4"
+                    onClick={() => setQuantity(+quantity + 1)}
+                  >
+                    <FaPlus className="text-coal" size="1.1rem" />
+                  </button>
+                </div>
+                <CustomButton2
+                  buttonText="Add to Cart"
+                  faIcon={<FaCartPlus size="1.5rem" />}
+                  buttonClass="!mt-0 !w-64"
+                  handleSubmit={handleAddToCart}
+                />
+              </div> */}
               <FadedLineBreak />
               <div className="flex gap-4 place-items-center w-100 md:!w-96">
                 <CustomTextField

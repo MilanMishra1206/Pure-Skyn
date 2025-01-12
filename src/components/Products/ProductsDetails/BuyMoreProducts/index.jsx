@@ -15,6 +15,7 @@ function BuyMoreProducts() {
       strikePrice: "2800",
       productPrice: "2250",
       category: "Machine",
+      quantity: 1,
     },
     {
       id: 2,
@@ -25,6 +26,7 @@ function BuyMoreProducts() {
       ratings: 4.5,
       productPrice: "250",
       category: "Bandages",
+      quantity: 1,
     },
     {
       id: 3,
@@ -36,6 +38,7 @@ function BuyMoreProducts() {
       strikePrice: "1000",
       productPrice: "700",
       category: "Machine",
+      quantity: 1,
     },
     {
       id: 4,
@@ -46,6 +49,7 @@ function BuyMoreProducts() {
       ratings: 5,
       productPrice: "650",
       category: "Bla Bla",
+      quantity: 1,
     },
     {
       id: 5,
@@ -56,6 +60,7 @@ function BuyMoreProducts() {
       ratings: 3.5,
       productPrice: "250",
       category: "Bla Bla",
+      quantity: 1,
     },
     {
       id: 6,
@@ -67,6 +72,7 @@ function BuyMoreProducts() {
       strikePrice: "2000",
       productPrice: "1500",
       category: "Machine",
+      quantity: 1,
     },
   ];
 
@@ -80,7 +86,7 @@ function BuyMoreProducts() {
       <div className="flex p-3 justify-center w-auto">
         <Link
           to="/products"
-          className="text-skyn hover:scale-110 hover:opacity-80 text-xl font-bold"
+          className="text-skyn no-underline hover:scale-110 hover:opacity-80 text-xl font-bold"
         >
           Show All
         </Link>

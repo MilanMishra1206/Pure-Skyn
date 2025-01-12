@@ -40,7 +40,7 @@ function ProductCarousel({ carouselContent }) {
   };
 
   return (
-    <div className="p-3 w-auto">
+    <div className="p-5 w-auto">
       <Slider {...settings}>
         {carouselContent.map((item, index) => (
           <div key={index}>

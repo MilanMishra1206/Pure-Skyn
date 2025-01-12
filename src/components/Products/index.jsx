@@ -11,11 +11,15 @@ import CustomButton2 from "../../shared/CustomButton2";
 import { IoFilterSharp } from "react-icons/io5";
 import { FaSort } from "react-icons/fa";
 import { useAppSnackbar } from "../../config/Context/SnackbarContext";
+import { useDispatch } from "react-redux";
+import { useSelector } from "react-redux";
+import { addToCart } from "../../redux/Actions";
 
 function Products() {
   const isMobile = useMediaQuery("(max-width: 767px)");
   const showSnackbar = useAppSnackbar();
   const navigate = useNavigate();
+  const dispatch = useDispatch();
 
   const productList = [
     {
@@ -95,7 +99,8 @@ function Products() {
     return `Save ₹${+oldPrice - +newPrice}`;
   };
 
-  const handleAddToCart = () => {
+  const handleAddToCart = (product) => {
+    dispatch(addToCart(product));
     showSnackbar("Product Added to Cart", "success");
   };
 
@@ -202,7 +207,7 @@ function Products() {
               <CustomButton2
                 buttonText="Add to Cart"
                 faIcon={<FaCartPlus size="1.5rem" />}
-                handleSubmit={handleAddToCart}
+                handleSubmit={() => handleAddToCart(product)}
               />
             </div>
           ))}
