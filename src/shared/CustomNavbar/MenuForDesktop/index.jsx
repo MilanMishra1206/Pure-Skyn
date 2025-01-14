@@ -74,14 +74,19 @@ const MenuForDesktop = ({
         )}
       </div>
       <div className="flex items-center navbar-links">
-        <Link to="/cart" className="mr-5 hover:opacity-80 text-white relative">
-          <FaCartShopping size={"2rem"} />
-          {totalItems > 0 && (
-            <span className="absolute left-1/2 bottom-50 text-xs bg-skyn text-white rounded-full px-2 py-1">
-              {totalItems}
-            </span>
-          )}
-        </Link>
+        {!isAdmin && (
+          <Link
+            to="/cart"
+            className="mr-5 hover:opacity-80 text-white relative"
+          >
+            <FaCartShopping size={"2rem"} />
+            {totalItems > 0 && (
+              <span className="absolute left-1/2 bottom-50 text-xs bg-skyn text-white rounded-full px-2 py-1">
+                {totalItems}
+              </span>
+            )}
+          </Link>
+        )}
         {isLoggedIn && (
           <div className="flex">
             <Dropdown

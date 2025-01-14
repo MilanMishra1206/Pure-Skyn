@@ -3,32 +3,86 @@ import { AnimatePresence, motion } from "framer-motion";
 import FadeInWrapper from "../../config/MotionFramer/FadeInWrapper";
 import CustomHeader from "../../shared/CustomHeader";
 import { useSelector } from "react-redux";
-import { MdOutlineShoppingCartCheckout } from "react-icons/md";
+import {
+  MdKeyboardDoubleArrowRight,
+  MdOutlineShoppingCartCheckout,
+} from "react-icons/md";
 import { MdDeleteForever } from "react-icons/md";
 import CustomButton2 from "../../shared/CustomButton2";
 import FadedLineBreak from "../../shared/CustomHrTag";
 import BuyMoreProducts from "../Products/ProductsDetails/BuyMoreProducts";
 import { useDispatch } from "react-redux";
-import { removeFromCart, updateQuantity } from "../../redux/Actions";
-import { useState } from "react";
+import { emptyCart, removeFromCart, updateQuantity } from "../../redux/Actions";
+import { lazy, Suspense, useEffect, useState } from "react";
+import StarRateRoundedIcon from "@mui/icons-material/StarRateRounded";
+import { TbMoodSadSquint } from "react-icons/tb";
+import { Link, useNavigate } from "react-router-dom";
+import Resources from "../../config/Resources";
+import { FaCartPlus } from "react-icons/fa";
+import { FaCircleCheck } from "react-icons/fa6";
+
+const CustomTextField = lazy(() => import("../../shared/CustomTextField"));
 
 function Cart() {
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+
   const isTablet = useMediaQuery("(max-width: 1023px)");
   const isMobile = useMediaQuery("(max-width: 767px)");
   const isLargerScreen = useMediaQuery("(min-width: 1280px)");
+  const originalShippingCharges = 149;
+
   const [productId, setProductId] = useState("");
   const [removeItem, setRemoveItem] = useState(false);
-  const dispatch = useDispatch();
+  const [removeMessage, setRemoveMessage] = useState("");
+  const [isEmptyCart, setIsEmptyCart] = useState(false);
+  const [totalCartValue, setTotalCartValue] = useState(0);
+  const [shippingCharges, setShippingCharges] = useState(149);
+  const [couponCodeName, setCouponCodeName] = useState("");
+  const [amountAfterCoupon, setAmountAfterCoupon] = useState(0);
+  const [isCouponApplied, setIsCouponApplied] = useState(false);
+  const [originalCartValue, setOriginCartValue] = useState(0);
+  const [showMinValueMessage, setShowMinValueMessage] = useState("");
 
   const cartItems = useSelector((state) => state.cart.items);
 
-  // Calculate total price for each item
   const getTotalForItem = (item) => item.quantity * +item.productPrice;
 
-  // Calculate the overall total
-  const getTotalCartValue = () => {
-    return cartItems.reduce((acc, item) => acc + getTotalForItem(item), 0);
-  };
+  useEffect(() => {
+    return setTotalCartValue(
+      cartItems.reduce((acc, item) => acc + getTotalForItem(item), 0)
+    );
+  }, [cartItems]);
+
+  useEffect(() => {
+    return setOriginCartValue(
+      cartItems.reduce((acc, item) => acc + getTotalForItem(item), 0)
+    );
+  }, [cartItems]);
+
+  // const getTotalCartValue = () => {
+  //   return cartItems.reduce(
+  //     (acc, item) => setTotalCartValue(acc + getTotalForItem(item)),
+  //     0
+  //   );
+  // };
+
+  const availableCoupons = [
+    {
+      id: 1,
+      couponCode: "PS30",
+      description: "30% off on the cart value",
+      percentOff: 30,
+      productsFree: 0,
+    },
+    {
+      id: 2,
+      couponCode: "PS40",
+      description: "40% off on the cart value",
+      percentOff: 40,
+      productsFree: 0,
+    },
+  ];
 
   const truncateText = (text, limit) => {
     const words = text.split(" ");
@@ -52,19 +106,82 @@ function Cart() {
     }
   };
 
+  const handleEmptyCart = () => {
+    setRemoveItem(true);
+    setRemoveMessage(
+      "Are you sure you want to empty your cart? You will miss out great offers!"
+    );
+    setIsEmptyCart(true);
+  };
+
   const handleItemRemove = (productId) => {
     setRemoveItem(true);
+    setRemoveMessage("Are you sure you want to the remove product from cart?");
+    setIsEmptyCart(false);
     setProductId(productId);
   };
 
   const handleCancel = () => {
     setRemoveItem(false);
+    setRemoveMessage("");
+    setIsEmptyCart(false);
   };
 
   const confirmRemove = () => {
+    isEmptyCart ? dispatch(emptyCart()) : dispatch(removeFromCart(productId));
     setRemoveItem(false);
-    dispatch(removeFromCart(productId));
   };
+
+  const freeDeliveryStatus = () => {
+    if (originalCartValue >= 500) {
+      return "CONGRATS! You get FREE SHIPPING 🎉🎉";
+    } else {
+      return "FREE SHIPPING on orders above ₹500";
+    }
+  };
+
+  useEffect(() => {
+    return originalCartValue >= 500
+      ? setShippingCharges(0)
+      : setShippingCharges(149);
+  }, [originalCartValue]);
+
+  const handleCouponApply = (couponCode) => {
+    const couponDetails = availableCoupons.filter(
+      (item) => item.couponCode === couponCode
+    );
+    if (couponCodeName.trim()) {
+      if (couponDetails.length > 0 && originalCartValue >= 500) {
+        const percentOff = couponDetails[0].percentOff;
+        setTotalCartValue(totalCartValue - (totalCartValue * percentOff) / 100);
+        setAmountAfterCoupon((totalCartValue * percentOff) / 100);
+        setIsCouponApplied(true);
+        setShowMinValueMessage("");
+      } else {
+        if (originalCartValue < 500) {
+          setShowMinValueMessage("Minimum cart value should be more than ₹500");
+        } else {
+          setShowMinValueMessage("No such coupon available. Please try again!");
+        }
+        setIsCouponApplied(false);
+      }
+    } else {
+      setIsCouponApplied(false);
+      setShowMinValueMessage("");
+    }
+  };
+
+  const handleRemoveCoupon = () => {
+    setIsCouponApplied(false);
+    setCouponCodeName("");
+    setTotalCartValue(originalCartValue);
+  };
+
+  useEffect(() => {
+    if (originalCartValue < 500) {
+      handleCouponApply();
+    }
+  }, [originalCartValue]);
 
   return (
     <motion.div
@@ -75,71 +192,138 @@ function Cart() {
       className={`mt-3 ${isTablet ? "py-3" : "py-4 mt-4"}`}
     >
       <div className={`mt-5 ${isMobile ? "px-1" : "px-4"}`}>
-        <div className="px-4">
+        <div className="px-2">
           <CustomHeader heading={"Shopping Cart"} showBackButton={true} />
         </div>
-        <div className="mx-auto">
-          <div className="flex flex-col lg:!flex-row gap-4 place-content-center px-4 py-6 sm:px-8 sm:py-10">
-            <div className="flow-root border shadow rounded md:p-4">
-              <ul className="md:my-8 pl-4">
-                {cartItems.map((item) => (
-                  <div key={item.id}>
-                    <li className="flex flex-col space-y-3 py-6 text-left sm:flex-row sm:space-x-5 sm:space-y-0">
-                      <div className="shrink-0">
-                        <img
-                          className="h-24 w-24 max-w-full rounded-lg object-cover"
-                          src={item.imgSrc}
-                          alt="product-icon"
-                        />
-                      </div>
-                      <div className="relative flex flex-1 flex-col xl:!flex-row justify-between">
-                        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 place-items-center lg:!place-items-start">
-                          <div>
-                            <p className="text-base font-semibold text-gray-900">
-                              {item.productName}
-                            </p>
-                            <p className="mx-0 mt-1 mb-0 text-sm text-gray-400">
-                              {truncateText(item.productDescription, 13)}
-                            </p>
+        {cartItems?.length === 0 ? (
+          <div className="flex flex-col items-center justify-center px-2 md:!px-5 pb-5">
+            <img src={Resources.images.Common.emptyCart} />
+            <p className="text-xl font-bold text-center">
+              Your cart is empty. Let's add some items! ⚡
+            </p>
+            <CustomButton2
+              buttonText="Continue Shopping"
+              buttonClass="md:!w-3/5 lg:!w-1/3"
+              handleSubmit={() => navigate("/products")}
+              faIcon={<FaCartPlus size="1.5rem" />}
+            />
+          </div>
+        ) : (
+          <>
+            <div className="flex justify-end px-5">
+              <Link
+                to={"/products"}
+                className="flex items-center text-skyn hover:opacity-80 font-bold no-underline hover:scale-110 text-xl md:!text-2xl"
+              >
+                Continue Shopping
+                <MdKeyboardDoubleArrowRight className="text-3xl text-skyn" />
+              </Link>
+            </div>
+            <div className="md:px-5 xl:!mx-5">
+              <div className="flex flex-col lg:!flex-row gap-4 place-content-center px-2 py-6 md:!px-4 sm:py-10">
+                <div className="flow-root border shadow rounded md:p-4 lg:!pl-1 xl:!p-4 self-start">
+                  <ul className="md:my-8 p-0">
+                    {cartItems?.map((item) => (
+                      <div key={item.id}>
+                        <li className="flex flex-col gap-2 space-y-3 py-2 text-left sm:flex-row sm:space-x-5 sm:space-y-0 px-3">
+                          <div className="shrink-0 flex justify-center">
+                            <img
+                              className="h-[150px] max-w-full rounded-lg object-cover cursor-pointer"
+                              src={item.imgSrc}
+                              alt="product-icon"
+                              onClick={() =>
+                                navigate(`/products/${item.productName}`)
+                              }
+                            />
                           </div>
-                          {isMobile && !isLargerScreen && (
-                            <div className="flex flex-row items-center gap-4">
-                              <div className="mx-auto flex h-8 items-stretch text-gray-600">
-                                <button
-                                  className="flex items-center justify-center rounded-l-md  px-4 transition hover:bg-coal hover:text-white disabled:cursor-not-allowed disabled:bg-gray-200 disabled:text-black"
-                                  disabled={item.quantity === 1}
-                                  onClick={() => handleItemDecrease(item)}
+                          <div className="relative flex flex-1 flex-col xl:!flex-row justify-between">
+                            <div className="grid grid-cols-1 md:grid-cols-2 gap-4 place-items-center">
+                              <div>
+                                <Link
+                                  className={`${isMobile ? "!text-center" : "!text-left"} no-underline text-base font-semibold text-gray-900 cursor-pointer hover:!text-skyn`}
+                                  to={`/products/${item.productName}`}
                                 >
-                                  -
-                                </button>
-                                <div className="flex w-full items-center justify-center bg-gray-100 px-4 text-xs uppercase transition">
-                                  {item.quantity}
-                                </div>
-                                <button
-                                  className="flex items-center justify-center rounded-r-md  px-4 transition hover:bg-coal hover:text-white"
-                                  onClick={() => handleItemIncrease(item)}
+                                  {item.productName}
+                                </Link>
+                                <p
+                                  className={`mx-0 mt-1 mb-0 text-sm text-gray-400`}
                                 >
-                                  +
-                                </button>
+                                  {truncateText(item.productDescription, 13)}{" "}
+                                  <Link
+                                    to={`/products/${item.productName}`}
+                                    className="text-sm text-skyn hover:opacity-80 no-underline"
+                                  >
+                                    {" "}
+                                    Read More
+                                  </Link>
+                                </p>
                               </div>
-                              <MdDeleteForever
-                                size="1.5rem"
-                                className="text-gray-500 transition-all duration-200 ease-in-out focus:shadow hover:text-bitterSweet cursor-pointer disabled:cursor-not-allowed"
-                                disabled={item.quantity === 1}
-                                onClick={() => handleItemRemove(item.id)}
-                              />
+                              {isMobile && !isLargerScreen && (
+                                <div className="flex flex-row items-center gap-4">
+                                  <div className="mx-auto flex h-8 items-stretch text-gray-600">
+                                    <button
+                                      className="flex items-center justify-center rounded-l-md px-4 transition bg-gray-200 hover:bg-coal hover:!text-white disabled:!cursor-not-allowed disabled:!bg-gray-200 disabled:!text-black"
+                                      disabled={item.quantity === 1}
+                                      onClick={() => handleItemDecrease(item)}
+                                    >
+                                      -
+                                    </button>
+                                    <div className="flex w-full items-center justify-center bg-gray-100 px-4 text-xs uppercase transition">
+                                      {item.quantity}
+                                    </div>
+                                    <button
+                                      className="flex items-center justify-center rounded-r-md px-4 transition bg-gray-200 hover:bg-coal hover:!text-white disabled:!cursor-not-allowed disabled:!bg-gray-200 disabled:!text-black"
+                                      onClick={() => handleItemIncrease(item)}
+                                    >
+                                      +
+                                    </button>
+                                  </div>
+                                  <MdDeleteForever
+                                    size="1.5rem"
+                                    className="text-gray-500 transition-all duration-200 ease-in-out focus:shadow hover:text-bitterSweet cursor-pointer disabled:cursor-not-allowed"
+                                    disabled={item.quantity === 1}
+                                    onClick={() => handleItemRemove(item.id)}
+                                  />
+                                </div>
+                              )}
+                              <div className="flex items-end justify-between sm:mt-0 sm:items-start sm:justify-end">
+                                <p className="shrink-0 text-base font-semibold text-gray-900 sm:order-2 sm:ml-8 sm:text-right">
+                                  ₹{getTotalForItem(item)}
+                                </p>
+                                {isLargerScreen && (
+                                  <div className="flex flex-row items-center gap-4">
+                                    <div className="mx-auto flex h-8 items-stretch text-gray-600">
+                                      <button
+                                        className="flex items-center justify-center rounded-l-md bg-gray-200 px-4 transition hover:bg-coal hover:!text-white disabled:!cursor-not-allowed disabled:!bg-gray-200 disabled:!text-black"
+                                        disabled={item.quantity === 1}
+                                        onClick={() => handleItemDecrease(item)}
+                                      >
+                                        -
+                                      </button>
+                                      <div className="flex w-full items-center justify-center bg-gray-100 px-4 text-xs uppercase transition">
+                                        {item.quantity}
+                                      </div>
+                                      <button
+                                        className="flex items-center justify-center rounded-r-md bg-gray-200 px-4 transition hover:bg-coal hover:!text-white disabled:!cursor-not-allowed disabled:!bg-gray-200 disabled:!text-black"
+                                        onClick={() => handleItemIncrease(item)}
+                                      >
+                                        +
+                                      </button>
+                                    </div>
+                                    <MdDeleteForever
+                                      size="1.5rem"
+                                      className="text-gray-500 transition-all duration-200 ease-in-out focus:shadow hover:text-bitterSweet cursor-pointer"
+                                      onClick={() => handleItemRemove(item.id)}
+                                    />
+                                  </div>
+                                )}
+                              </div>
                             </div>
-                          )}
-                          <div className="flex items-end justify-between sm:mt-0 sm:items-start sm:justify-end">
-                            <p className="shrink-0 w-20 text-base font-semibold text-gray-900 sm:order-2 sm:ml-8 sm:text-right">
-                              ₹{getTotalForItem(item)}
-                            </p>
-                            {isLargerScreen && (
-                              <div className="flex flex-row items-center gap-4">
+                            {!isMobile && !isLargerScreen && (
+                              <div className="flex flex-row items-center gap-4 mt-4 md:self-start">
                                 <div className="mx-auto flex h-8 items-stretch text-gray-600">
                                   <button
-                                    className="flex items-center justify-center rounded-l-md bg-gray-200 px-4 transition hover:bg-coal hover:text-white disabled:cursor-not-allowed disabled:bg-gray-200 disabled:text-black"
-                                    disabled={item.quantity === 1}
+                                    className="flex items-center justify-center rounded-l-md bg-gray-200 px-4 transition hover:bg-coal hover:!text-white disabled:!cursor-not-allowed disabled:!bg-gray-200 disabled:!text-black"
                                     onClick={() => handleItemDecrease(item)}
                                   >
                                     -
@@ -148,7 +332,7 @@ function Cart() {
                                     {item.quantity}
                                   </div>
                                   <button
-                                    className="flex items-center justify-center rounded-r-md bg-gray-200 px-4 transition hover:bg-coal hover:text-white"
+                                    className="flex items-center justify-center rounded-r-md bg-gray-200 px-4 transition hover:bg-coal hover:!text-white disabled:!cursor-not-allowed disabled:!bg-gray-200 disabled:!text-black"
                                     onClick={() => handleItemIncrease(item)}
                                   >
                                     +
@@ -162,77 +346,162 @@ function Cart() {
                               </div>
                             )}
                           </div>
+                        </li>
+                        <FadedLineBreak />
+                      </div>
+                    ))}
+                  </ul>
+                  <div className="flex justify-center md:!justify-end lg:!justify-center xl:!justify-end px-4 lg:!px-0 mb-4 lg:ml-3">
+                    <button
+                      className="flex items-center justify-center gap-1 px-4 py-2 w-full md:!w-1/3 font-bold lg:!w-full xl:!w-1/3 rounded bg-gray-700 text-white hover:opacity-80"
+                      onClick={() => handleEmptyCart(cartItems)}
+                    >
+                      <MdDeleteForever size="1.5rem" className="text-white" />
+                      Empty Cart
+                    </button>
+                  </div>
+                </div>
+                <div className="flex flex-col border shadow rounded p-4 lg:self-start font-poppins">
+                  <div className="text-2xl font-bold text-center">
+                    Cart Value
+                  </div>
+                  <div className="rounded-2xl bg-slate-50 text-coal py-4 px-2 my-4 shadow">
+                    <p className="font-bold text-xl text-center mb-4">
+                      Available Coupons
+                    </p>
+                    {availableCoupons.length === 0 ? (
+                      <div className="flex font-bold text-skyn p-2">
+                        Sorry! No Coupons Available at the moment.
+                        <TbMoodSadSquint size="2rem" />
+                      </div>
+                    ) : (
+                      availableCoupons.map((coupon) => (
+                        <div
+                          key={coupon.id}
+                          className="mb-3 bg-[#ecf2fb] p-1 rounded"
+                        >
+                          <StarRateRoundedIcon
+                            style={{ color: "#fde047", fontSize: "1.6rem" }}
+                          />
+                          <span key={coupon.id}>{coupon.description} - </span>
+                          <span className="text-skyn font-bold cursor-pointer hover:opacity-80">
+                            {coupon.couponCode}{" "}
+                          </span>
+                          <StarRateRoundedIcon
+                            style={{ color: "#fde047", fontSize: "1.6rem" }}
+                          />
                         </div>
-                        {!isMobile && !isLargerScreen && (
-                          <div className="flex flex-row items-center gap-4 mt-4 md:self-start">
-                            <div className="mx-auto flex h-8 items-stretch text-gray-600">
-                              <button
-                                className="flex items-center justify-center rounded-l-md bg-gray-200 px-4 transition hover:bg-coal hover:text-white disabled:bg-gray-200 disabled:text-black"
-                                onClick={() => handleItemDecrease(item)}
-                              >
-                                -
-                              </button>
-                              <div className="flex w-full items-center justify-center bg-gray-100 px-4 text-xs uppercase transition">
-                                {item.quantity}
-                              </div>
-                              <button
-                                className="flex items-center justify-center rounded-r-md bg-gray-200 px-4 transition hover:bg-coal hover:text-white"
-                                onClick={() => handleItemIncrease(item)}
-                              >
-                                +
-                              </button>
-                            </div>
-                            <MdDeleteForever
-                              size="1.5rem"
-                              className="text-gray-500 transition-all duration-200 ease-in-out focus:shadow hover:text-bitterSweet cursor-pointer"
-                              onClick={() => handleItemRemove(item.id)}
-                            />
-                          </div>
+                      ))
+                    )}
+                    {availableCoupons.length > 1 && (
+                      <small>
+                        <span className="font-bold">Note: </span>You cannot club
+                        2 coupons
+                      </small>
+                    )}
+                  </div>
+                  <div className="p-2 text-lg bg-slate-50 text-skyn shadow rounded-xl text-center font-bold">
+                    {freeDeliveryStatus()}
+                  </div>
+                  <div className="mt-6 border-t border-b py-2">
+                    <div className="flex items-center justify-between">
+                      <p className="text-kashmirBlue">Subtotal</p>
+                      <p className="text-lg font-semibold text-cello">
+                        {isCouponApplied
+                          ? `₹${originalCartValue}`
+                          : `₹${totalCartValue.toFixed(2)}`}
+                      </p>
+                    </div>
+                    <div className="flex items-center justify-between">
+                      <p className="text-kashmirBlue">Shipping</p>
+                      {shippingCharges === 0 ? (
+                        <div className="flex gap-1 items-center self-start">
+                          <span className="text-left text-slate-400 line-through font-bold mr-4">
+                            ₹{originalShippingCharges}
+                          </span>
+                          <span className="text-lg font-semibold text-cello">
+                            ₹{shippingCharges.toFixed(2)}
+                          </span>
+                        </div>
+                      ) : (
+                        <span className="text-lg font-semibold text-cello">
+                          ₹{shippingCharges.toFixed(2)}
+                        </span>
+                      )}
+                    </div>
+                    {isCouponApplied ? (
+                      <div className="p-2 rounded font-bold my-4">
+                        <div className="flex flex-col md:flex-row justify-between items-center mb-4">
+                          <p className="flex text-skyn items-center gap-2">
+                            {couponCodeName} Applied{" "}
+                            <FaCircleCheck size="1rem" fill="green" />
+                          </p>
+                          <button
+                            className="text-bitterSweet text-sm underline cursor-pointer hover:opacity-80"
+                            onClick={handleRemoveCoupon}
+                          >
+                            Remove Coupon
+                          </button>
+                        </div>
+                        <span className="font-bold bg-emerald-700 text-white p-2 rounded text-ce">
+                          Congratulations! You got ₹{amountAfterCoupon} OFF
+                        </span>
+                      </div>
+                    ) : (
+                      <div className="flex flex-col items-center justify-content-end lg:!justify-between mt-4 my-4">
+                        <Suspense fallback={<div />}>
+                          <CustomTextField
+                            textClassOverride="!text-kashmirBlue"
+                            placeholderClasses="placeholder:!opacity-30 !text-licorice"
+                            className="h-12 rounded-md !bg-transparent"
+                            placeholder="Enter"
+                            labelToShow="Have a coupon? Apply here"
+                            name="name"
+                            textFieldColorClass="shadow-insetLight"
+                            inputClassName="!bg-transparent"
+                            fieldWidth="!mb-4"
+                            value={couponCodeName}
+                            onChange={(e) => setCouponCodeName(e.target.value)}
+                          />
+                        </Suspense>
+                        <button
+                          onClick={() => handleCouponApply(couponCodeName)}
+                          className="mt-1 px-4 py-2 h-12 text-sm bg-emerald-800 text-white rounded focus:outline-none focus:ring-2 focus:ring-green-500 hover:opacity-80 mb-4"
+                        >
+                          Apply Coupon
+                        </button>
+                        {showMinValueMessage && (
+                          <small className="text-sm text-bitterSweet">
+                            {showMinValueMessage}
+                          </small>
                         )}
                       </div>
-                    </li>
-                    <FadedLineBreak />
+                    )}
                   </div>
-                ))}
-              </ul>
-            </div>
-            <div className="flex flex-col border shadow rounded p-4 lg:self-start font-poppins">
-              <div className="text-2xl font-bold text-center">Cart Value</div>
-              <div className="mt-6 border-t border-b py-2">
-                <div className="flex items-center justify-between">
-                  <p className="text-kashmirBlue">Subtotal</p>
-                  <p className="text-lg font-semibold text-cello">
-                    ₹{getTotalCartValue().toFixed(2)}
-                  </p>
-                </div>
-                <div className="flex items-center justify-between">
-                  <p className="text-kashmirBlue">Shipping</p>
-                  <p className="text-lg font-semibold text-cello">₹8.00</p>
-                </div>
-              </div>
-              <div className="mt-6 flex items-center justify-between">
-                <p className="font-medium text-kashmirBlue">Total</p>
-                <p className="text-xl font-semibold text-coal">
-                  ₹{getTotalCartValue().toFixed(2) + 8}
-                </p>
-              </div>
-
-              <div className="mt-6 flex justify-end mb-5">
-                <CustomButton2
-                  buttonText="Checkout"
-                  handleSubmit={handleCartSubmit}
-                  faIcon={
-                    <MdOutlineShoppingCartCheckout
-                      size="1.5rem"
-                      className="ml-2 group-hover:scale-110 group-hover:!ml-5"
+                  <div className="mt-6 flex items-center justify-between">
+                    <p className="font-medium text-kashmirBlue">Total</p>
+                    <p className="text-xl font-semibold text-coal">
+                      ₹{(totalCartValue + shippingCharges).toFixed(2)}
+                    </p>
+                  </div>
+                  <div className="mt-6 flex justify-end mb-5">
+                    <CustomButton2
+                      buttonText="Checkout"
+                      handleSubmit={handleCartSubmit}
+                      faIcon={
+                        <MdOutlineShoppingCartCheckout
+                          size="1.5rem"
+                          className="ml-2 group-hover:scale-110 group-hover:!ml-5"
+                        />
+                      }
+                      buttonClass="!w-96 !justify-end !text-xl"
                     />
-                  }
-                  buttonClass="!w-96 !justify-end !text-xl"
-                />
+                  </div>
+                </div>
               </div>
             </div>
-          </div>
-        </div>
+          </>
+        )}
         <FadedLineBreak />
         <motion.div
           variants={FadeInWrapper("left", 0.1)}
@@ -257,12 +526,18 @@ function Cart() {
               animate={{ scale: 1 }}
               exit={{ scale: 0 }}
               transition={{ duration: 0.3 }}
-              className="bg-white p-6 rounded-lg w-full max-w-lg"
+              className="bg-white p-8 rounded-lg w-full max-w-lg"
             >
-              <h3 className="font-bold text-lg mb-4">
-                Are you sure you want to the remove product from cart?
+              <div className="flex justify-center mb-4">
+                <img
+                  src={Resources.images.Common.removeItem}
+                  className="h-16 mb-3"
+                />
+              </div>
+              <h3 className="font-bold text-lg mb-4 text-center">
+                {removeMessage}
               </h3>
-              <div className="flex justify-end gap-4">
+              <div className="flex flex-col md:!flex-row justify-center gap-4 mt-4">
                 <button
                   onClick={handleCancel}
                   className="bg-gray-200 text-gray-700 px-4 py-2 rounded-md hover:bg-gray-300"
@@ -273,7 +548,7 @@ function Cart() {
                   onClick={confirmRemove}
                   className="bg-red-600 text-white px-4 py-2 rounded-md hover:bg-red-700"
                 >
-                  Remove
+                  {isEmptyCart ? "Empty" : "Remove"}
                 </button>
               </div>
             </motion.div>

@@ -32,6 +32,12 @@ const cartReducer = (state = initialState, action) => {
         items: state.items.filter((item) => item.id !== action.payload),
       };
 
+    case "EMPTY_CART":
+      return {
+        ...state,
+        items: [],
+      };
+
     case "UPDATE_QUANTITY":
       return {
         ...state,

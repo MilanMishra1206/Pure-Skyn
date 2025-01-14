@@ -12,8 +12,8 @@ import { IoFilterSharp } from "react-icons/io5";
 import { FaSort } from "react-icons/fa";
 import { useAppSnackbar } from "../../config/Context/SnackbarContext";
 import { useDispatch } from "react-redux";
-import { useSelector } from "react-redux";
 import { addToCart } from "../../redux/Actions";
+import { MdKeyboardDoubleArrowRight } from "react-icons/md";
 
 function Products() {
   const isMobile = useMediaQuery("(max-width: 767px)");
@@ -118,6 +118,15 @@ function Products() {
           showBackButton={true}
           navigateTo={"/"}
         />
+        <div className="flex justify-end px-4">
+          <Link
+            to={"/cart"}
+            className="flex items-center text-skyn hover:opacity-80 font-bold no-underline hover:scale-110 text-2xl"
+          >
+            Go To Cart
+            <MdKeyboardDoubleArrowRight className="text-3xl text-skyn" />
+          </Link>
+        </div>
       </motion.div>
       {/* <motion.div
         variants={FadeInWrapper("right", 0.2)}

@@ -10,6 +10,10 @@ export const removeFromCart = (productId) => ({
   payload: productId,
 });
 
+export const emptyCart = () => ({
+  type: types.EMPTY_CART,
+});
+
 export const updateQuantity = (productId, quantity) => ({
   type: types.UPDATE_QUANTITY,
   payload: { productId, quantity },

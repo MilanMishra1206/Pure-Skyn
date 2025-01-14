@@ -18,6 +18,8 @@ const Resources = {
       filterIcon: `${base}/Common/Filter.svg`,
       dropdownIcon: `${base}/Common/DropdownIcon.svg`,
       dermat: `${base}/Common/dermat.png`,
+      emptyCart: `${base}/Common/empty-cart.png`,
+      removeItem: `${base}/Common/remove-from-cart.png`,
       personalisedPlanning: `${base}/Common/personalized-planning.png`,
       serviceAtHome: `${base}/Common/service-at-home.svg`,
       personalDr: `${base}/Common/personalised-doctor.svg`,

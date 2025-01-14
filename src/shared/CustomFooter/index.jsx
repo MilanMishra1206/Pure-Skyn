@@ -63,6 +63,12 @@ function CustomFooter() {
                   Products
                 </Link>
                 <Link
+                  to="/cart"
+                  className="text-skyn transition-colors duration-300 no-underline hover:opacity-80"
+                >
+                  Cart
+                </Link>
+                <Link
                   to="/faq"
                   className="text-skyn transition-colors duration-300 no-underline hover:opacity-80"
                 >
