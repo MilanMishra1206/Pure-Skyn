@@ -1,5 +1,5 @@
 import { useMediaQuery } from "@mui/material";
-import { AnimatePresence, motion } from "framer-motion";
+import { motion } from "framer-motion";
 import FadeInWrapper from "../../config/MotionFramer/FadeInWrapper";
 import CustomHeader from "../../shared/CustomHeader";
 import { useSelector } from "react-redux";
@@ -20,6 +20,8 @@ import { Link, useNavigate } from "react-router-dom";
 import Resources from "../../config/Resources";
 import { FaCartPlus } from "react-icons/fa";
 import { FaCircleCheck } from "react-icons/fa6";
+import HandleQuantity from "./HandleQuantity";
+import ConfirmationModal from "./ConfirmationModal";
 
 const CustomTextField = lazy(() => import("../../shared/CustomTextField"));
 
@@ -260,30 +262,20 @@ function Cart() {
                               </div>
                               {isMobile && !isLargerScreen && (
                                 <div className="flex flex-row items-center gap-4">
-                                  <div className="mx-auto flex h-8 items-stretch text-gray-600">
-                                    <button
-                                      className="flex items-center justify-center rounded-l-md px-4 transition bg-gray-200 hover:bg-coal hover:!text-white disabled:!cursor-not-allowed disabled:!bg-gray-200 disabled:!text-black"
-                                      disabled={item.quantity === 1}
-                                      onClick={() => handleItemDecrease(item)}
-                                    >
-                                      -
-                                    </button>
-                                    <div className="flex w-full items-center justify-center bg-gray-100 px-4 text-xs uppercase transition">
-                                      {item.quantity}
-                                    </div>
-                                    <button
-                                      className="flex items-center justify-center rounded-r-md px-4 transition bg-gray-200 hover:bg-coal hover:!text-white disabled:!cursor-not-allowed disabled:!bg-gray-200 disabled:!text-black"
-                                      onClick={() => handleItemIncrease(item)}
-                                    >
-                                      +
-                                    </button>
+                                  <div className="flex flex-row items-center gap-4">
+                                    <HandleQuantity
+                                      item={item}
+                                      handleItemDecrease={() =>
+                                        handleItemDecrease(item)
+                                      }
+                                      handleItemIncrease={() =>
+                                        handleItemIncrease(item)
+                                      }
+                                      handleItemRemove={() =>
+                                        handleItemRemove(item.id)
+                                      }
+                                    />
                                   </div>
-                                  <MdDeleteForever
-                                    size="1.5rem"
-                                    className="text-gray-500 transition-all duration-200 ease-in-out focus:shadow hover:text-bitterSweet cursor-pointer disabled:cursor-not-allowed"
-                                    disabled={item.quantity === 1}
-                                    onClick={() => handleItemRemove(item.id)}
-                                  />
                                 </div>
                               )}
                               <div className="flex items-end justify-between sm:mt-0 sm:items-start sm:justify-end">
@@ -292,28 +284,17 @@ function Cart() {
                                 </p>
                                 {isLargerScreen && (
                                   <div className="flex flex-row items-center gap-4">
-                                    <div className="mx-auto flex h-8 items-stretch text-gray-600">
-                                      <button
-                                        className="flex items-center justify-center rounded-l-md bg-gray-200 px-4 transition hover:bg-coal hover:!text-white disabled:!cursor-not-allowed disabled:!bg-gray-200 disabled:!text-black"
-                                        disabled={item.quantity === 1}
-                                        onClick={() => handleItemDecrease(item)}
-                                      >
-                                        -
-                                      </button>
-                                      <div className="flex w-full items-center justify-center bg-gray-100 px-4 text-xs uppercase transition">
-                                        {item.quantity}
-                                      </div>
-                                      <button
-                                        className="flex items-center justify-center rounded-r-md bg-gray-200 px-4 transition hover:bg-coal hover:!text-white disabled:!cursor-not-allowed disabled:!bg-gray-200 disabled:!text-black"
-                                        onClick={() => handleItemIncrease(item)}
-                                      >
-                                        +
-                                      </button>
-                                    </div>
-                                    <MdDeleteForever
-                                      size="1.5rem"
-                                      className="text-gray-500 transition-all duration-200 ease-in-out focus:shadow hover:text-bitterSweet cursor-pointer"
-                                      onClick={() => handleItemRemove(item.id)}
+                                    <HandleQuantity
+                                      item={item}
+                                      handleItemDecrease={() =>
+                                        handleItemDecrease(item)
+                                      }
+                                      handleItemIncrease={() =>
+                                        handleItemIncrease(item)
+                                      }
+                                      handleItemRemove={() =>
+                                        handleItemRemove(item.id)
+                                      }
                                     />
                                   </div>
                                 )}
@@ -321,28 +302,20 @@ function Cart() {
                             </div>
                             {!isMobile && !isLargerScreen && (
                               <div className="flex flex-row items-center gap-4 mt-4 md:self-start">
-                                <div className="mx-auto flex h-8 items-stretch text-gray-600">
-                                  <button
-                                    className="flex items-center justify-center rounded-l-md bg-gray-200 px-4 transition hover:bg-coal hover:!text-white disabled:!cursor-not-allowed disabled:!bg-gray-200 disabled:!text-black"
-                                    onClick={() => handleItemDecrease(item)}
-                                  >
-                                    -
-                                  </button>
-                                  <div className="flex w-full items-center justify-center bg-gray-100 px-4 text-xs uppercase transition">
-                                    {item.quantity}
-                                  </div>
-                                  <button
-                                    className="flex items-center justify-center rounded-r-md bg-gray-200 px-4 transition hover:bg-coal hover:!text-white disabled:!cursor-not-allowed disabled:!bg-gray-200 disabled:!text-black"
-                                    onClick={() => handleItemIncrease(item)}
-                                  >
-                                    +
-                                  </button>
+                                <div className="flex flex-row items-center gap-4">
+                                  <HandleQuantity
+                                    item={item}
+                                    handleItemDecrease={() =>
+                                      handleItemDecrease(item)
+                                    }
+                                    handleItemIncrease={() =>
+                                      handleItemIncrease(item)
+                                    }
+                                    handleItemRemove={() =>
+                                      handleItemRemove(item.id)
+                                    }
+                                  />
                                 </div>
-                                <MdDeleteForever
-                                  size="1.5rem"
-                                  className="text-gray-500 transition-all duration-200 ease-in-out focus:shadow hover:text-bitterSweet cursor-pointer"
-                                  onClick={() => handleItemRemove(item.id)}
-                                />
                               </div>
                             )}
                           </div>
@@ -512,49 +485,14 @@ function Cart() {
           <BuyMoreProducts />
         </motion.div>
       </div>
-      <AnimatePresence>
-        {removeItem && (
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            transition={{ duration: 0.3 }}
-            className="bg-slate-900/20 backdrop-blur p-4 fixed inset-0 z-50 md:grid place-items-center place-content-center overflow-scroll"
-          >
-            <motion.div
-              initial={{ scale: 0 }}
-              animate={{ scale: 1 }}
-              exit={{ scale: 0 }}
-              transition={{ duration: 0.3 }}
-              className="bg-white p-8 rounded-lg w-full max-w-lg"
-            >
-              <div className="flex justify-center mb-4">
-                <img
-                  src={Resources.images.Common.removeItem}
-                  className="h-16 mb-3"
-                />
-              </div>
-              <h3 className="font-bold text-lg mb-4 text-center">
-                {removeMessage}
-              </h3>
-              <div className="flex flex-col md:!flex-row justify-center gap-4 mt-4">
-                <button
-                  onClick={handleCancel}
-                  className="bg-gray-200 text-gray-700 px-4 py-2 rounded-md hover:bg-gray-300"
-                >
-                  Cancel
-                </button>
-                <button
-                  onClick={confirmRemove}
-                  className="bg-red-600 text-white px-4 py-2 rounded-md hover:bg-red-700"
-                >
-                  {isEmptyCart ? "Empty" : "Remove"}
-                </button>
-              </div>
-            </motion.div>
-          </motion.div>
-        )}
-      </AnimatePresence>
+      {removeItem && (
+        <ConfirmationModal
+          isEmptyCart={isEmptyCart}
+          removeMessage={removeMessage}
+          handleCancel={handleCancel}
+          confirmRemove={confirmRemove}
+        />
+      )}
     </motion.div>
   );
 }

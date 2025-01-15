@@ -4,13 +4,14 @@ import {
   AccordionSummary,
   Box,
   Breadcrumbs,
+  Divider,
   Rating,
   Typography,
   useMediaQuery,
 } from "@mui/material";
 import { motion } from "framer-motion";
 import { Link, useParams } from "react-router-dom";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { FaShippingFast, FaShieldAlt, FaCartPlus } from "react-icons/fa";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import StarIcon from "@mui/icons-material/Star";
@@ -26,15 +27,17 @@ import CustomButton2 from "../../../shared/CustomButton2";
 import { useAppSnackbar } from "../../../config/Context/SnackbarContext";
 import { addToCart } from "../../../redux/Actions";
 import { useDispatch } from "react-redux";
+import { MdVerified } from "react-icons/md";
 
 function ProductsDetails() {
   const { productName } = useParams();
   const showSnackbar = useAppSnackbar();
   const dispatch = useDispatch();
-  const isMobile = useMediaQuery("(max-width: 768px)");
+  const isMobile = useMediaQuery("(max-width: 767px)");
   const isLargeScreen = useMediaQuery("(min-width: 1438px)");
   const [quantity, setQuantity] = useState("1");
   const [pinCode, setPinCode] = useState("");
+  const [noOfRatings, setNoOfRatings] = useState(0);
 
   const products = {
     productName: "BP Machine",
@@ -52,8 +55,7 @@ function ProductsDetails() {
     {
       id: 1,
       name: "Description",
-      content:
-        "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim.",
+      content: `Lorem ipsum dolor sit amet, <b>consectetuer adipiscing elit</b>Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. <b>Donec quam felis</b>: <ul class="list-disc"> <li>ultricies nec</li> <li>pellentesque eu</li> <li>pretium quis sem.</li> <li>Nulla consequat massa quis enim.</li></ul>`,
     },
     {
       id: 2,
@@ -82,8 +84,18 @@ function ProductsDetails() {
     {
       id: 6,
       name: "Shipping & Return",
-      content:
-        "Cosmetics and personal use items once delivered cannot be returned. Please record an unboxing video during opening of the package as this is necessary for issuing refund in case of wrong item delivery/damaged delivery. Please Note this is the policy of shipping partner and not sarinskin.com. Without unboxing video a refund will not be issued.",
+      content: `<div class="font-bold text-xl">Returns Policy</div>
+                <div class="space-y-4 font-poppins">
+                <p class="mt-4">Personal use items once delivered cannot be returned. <b>Please record an unboxing video during opening of the package as this is necessary for issuing refund in case of wrong item delivery/damaged delivery. Please Note this is the policy of shipping partner and not pureskyn.com. Without unboxing video a refund will not be issued.</b></p>
+                <p>Once a return is raised we will get the return order picked up from the same address as the address of delivery.</p>
+                <p class="mb-4">You can expect the refund/replacement within 5-30 days of handing over the package for return, in most cases you will receive a refund more quickly. This time period includes the transit time for us to receive your return order (5 to 10 business days) + the time it takes for us to process your return once we receive it (3 to 5 business days) + the time it takes for the bank to process the refund request (5 to 10 business days).</p>
+                </div>
+                <div class="font-bold text-xl">Shipping</div>
+                <div class="space-y-4">
+                <p class="mt-4">We can ship to majority countries across the world provided there are no restrictions on the products in the destinations country.</p>
+                <p>When you place an order, we will estimate shipping cost for you.</p>
+                <p>Please also note that the shipping rates for many items we sell are weight-based. The weight of any such item can be found on its detail page.</p>
+                </div>`,
     },
   ];
 
@@ -140,6 +152,10 @@ function ProductsDetails() {
     },
   ];
 
+  useEffect(() => {
+    setNoOfRatings(reviewContent.length);
+  }, [reviewContent]);
+
   const breadcrumbs = [
     <Link
       key="1"
@@ -189,7 +205,7 @@ function ProductsDetails() {
         initial="hidden"
         whileInView="show"
         viewport={{ once: true }}
-        className={`mt-5 ${isMobile ? "p-3" : "p-5"}`}
+        className="mt-5 p-3 md:!p-4 lg:!p-5"
       >
         <div className={`mb-4 py-24 ${isMobile ? "" : "px-5"} font-poppins`}>
           <Breadcrumbs separator="›" aria-label="breadcrumb" className="mb-4">
@@ -218,25 +234,37 @@ function ProductsDetails() {
             <div className={`${isMobile ? "mt-5" : "ml-5"}`}>
               <p className="text-3xl font-bold">{productName}</p>
               <div className="flex flex-col">
-                <Box
-                  sx={{
-                    width: 200,
-                    display: "flex",
-                    alignItems: "center",
-                    marginTop: "1rem",
-                  }}
-                >
-                  <Rating
-                    name="text-feedback"
-                    value={4}
-                    readOnly
-                    precision={0.5}
-                    emptyIcon={
-                      <StarIcon style={{ opacity: 0.55 }} fontSize="inherit" />
-                    }
+                <div className="flex flex-col md:flex-row gap-2 items-center mt-4">
+                  <Box
+                    sx={{
+                      display: "flex",
+                      alignItems: "center",
+                    }}
+                  >
+                    <Rating
+                      name="text-feedback"
+                      value={4}
+                      readOnly
+                      precision={0.5}
+                      emptyIcon={
+                        <StarIcon
+                          style={{ opacity: 0.55 }}
+                          fontSize="inherit"
+                        />
+                      }
+                    />
+                    <Box sx={{ ml: 2 }}>{4}/5</Box>
+                  </Box>
+                  <Divider
+                    orientation="vertical"
+                    flexItem
+                    className="!border-black border border-r-0 border-opacity-30 hidden md:!block"
                   />
-                  <Box sx={{ ml: 2 }}>{4}</Box>
-                </Box>
+                  <span className="flex items-center justify-center gap-2 text-coal font-medium">
+                    <MdVerified size="1rem" fill="#EE6503" /> Based on{" "}
+                    {noOfRatings} reviews
+                  </span>
+                </div>
                 <FadedLineBreak />
                 <div className="flex items-center md:!items-start lg:!items-center flex-col md:!flex-row gap-2">
                   <div>
@@ -340,7 +368,6 @@ function ProductsDetails() {
                   placeholderClasses="placeholder:!opacity-30 !text-licorice"
                   className="h-12 rounded-md !bg-transparent"
                   placeholder="Enter"
-                  requiredStar
                   labelToShow="Check Pincode"
                   maxLength={6}
                   regex={regex.numeric}
@@ -365,7 +392,7 @@ function ProductsDetails() {
                         Free Shipping
                       </span>
                       <span className="text-sm text-kashmirBlue ml-2">
-                        Free standard shipping on orders over 1000rs
+                        Free standard shipping on orders over ₹500
                       </span>
                     </div>
                   </div>
@@ -404,14 +431,15 @@ function ProductsDetails() {
                   ))}
                 </ul>
                 {selectedItem && (
-                  <div className="p-4">
-                    <p>{selectedContent}</p>
-                  </div>
+                  <div
+                    className="p-4"
+                    dangerouslySetInnerHTML={{ __html: selectedContent }}
+                  />
                 )}
               </div>
             )}
             {!isLargeScreen && (
-              <div>
+              <div className="mb-5">
                 {productContent.map((item) => (
                   <Accordion defaultExpanded={item.id === 1} key={item.id}>
                     <AccordionSummary
@@ -443,16 +471,6 @@ function ProductsDetails() {
             )}
           </motion.div>
           <FadedLineBreak />
-          {/* Product Reviews */}
-          <motion.div
-            variants={FadeInWrapper("right", 0.1)}
-            initial="hidden"
-            whileInView="show"
-            viewport={{ once: true }}
-          >
-            <ProductReviews ReviewContent={reviewContent} />
-          </motion.div>
-          <FadedLineBreak />
           {/* More Product */}
           <motion.div
             variants={FadeInWrapper("left", 0.1)}
@@ -461,6 +479,16 @@ function ProductsDetails() {
             viewport={{ once: true }}
           >
             <BuyMoreProducts />
+          </motion.div>
+          <FadedLineBreak />
+          {/* Product Reviews */}
+          <motion.div
+            variants={FadeInWrapper("right", 0.1)}
+            initial="hidden"
+            whileInView="show"
+            viewport={{ once: true }}
+          >
+            <ProductReviews reviewContent={reviewContent} />
           </motion.div>
           <FadedLineBreak />
         </div>

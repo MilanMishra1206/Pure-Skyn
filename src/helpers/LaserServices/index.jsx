@@ -363,7 +363,7 @@ export const servicesCardDetails = [
       "Quick and comfortable sessions",
     ],
     image: `${Resources.images.Services.LaserHairRemoval.laserHairRemovalCard}`,
-    linkTo: "/laser-hair-removal",
+    linkTo: "/services/laser-hair-removal",
   },
   {
     id: 2,
@@ -377,7 +377,7 @@ export const servicesCardDetails = [
       "Safe for sensitive skin",
     ],
     image: `${Resources.images.Services.OxyHydra.oxyHydraCard}`,
-    linkTo: "skin/medi-facial/oxy-hydra-facial",
+    linkTo: "/services/skin/medi-facial/oxy-hydra-facial",
   },
   {
     id: 3,
@@ -391,7 +391,7 @@ export const servicesCardDetails = [
       "Targets fine lines and sagging skin",
     ],
     image: `${Resources.images.Services.SkinTightening.skinTighteningCard}`,
-    linkTo: "skin/medi-facial/skin-tightening",
+    linkTo: "/services/skin/medi-facial/skin-tightening",
   },
   {
     id: 4,
@@ -404,7 +404,7 @@ export const servicesCardDetails = [
       "Quick recovery with glowing, refreshed skin",
     ],
     image: `${Resources.images.Services.Dermafrac.dermafracCard}`,
-    linkTo: "skin/medi-facial/dermafrac-infusion-facial",
+    linkTo: "/services/skin/medi-facial/dermafrac-infusion-facial",
   },
   {
     id: 5,
@@ -418,6 +418,6 @@ export const servicesCardDetails = [
       "Targets uneven skin tone, fine lines, and texture",
     ],
     image: `${Resources.images.Services.OxyGeneo.oxygeneoCard}`,
-    linkTo: "skin/medi-facial/oxygeneo",
+    linkTo: "/services/skin/medi-facial/oxygeneo",
   },
 ];

@@ -1,4 +1,4 @@
-import React, { lazy, Suspense, useState } from "react";
+import React, { lazy, Suspense, useEffect, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import { Box, Rating } from "@mui/material";
 import StarIcon from "@mui/icons-material/Star";
@@ -12,10 +12,50 @@ const CustomTextField = lazy(
   () => import("../../../../shared/CustomTextField")
 );
 
-export const ProductReviews = ({ ReviewContent }) => {
+export const ProductReviews = ({ reviewContent }) => {
+  const [averageRating, setAverageRating] = useState(0);
+
+  useEffect(() => {
+    const ratingArr = reviewContent.map((item) => item.rating);
+    const sum = ratingArr.reduce((acc, num) => acc + num, 0);
+    const average = sum / ratingArr.length;
+    setAverageRating(average);
+  }, [reviewContent]);
+
   return (
     <div className="py-12 text-zinc-50 cursor-pointer">
-      <CustomRevealHeading heading="Reviews" />
+      <div className="flex flex-col md:!flex-row md:gap-2 justify-center mb-4">
+        <CustomRevealHeading heading="Customer" />
+        <CustomRevealHeading heading="Reviews" />
+      </div>
+      <div className="flex flex-col md:!flex-row justify-between items-center mx-auto max-w-4xl">
+        <div className="flex items-center gap-2">
+          <span className="text-5xl text-skyn font-bold">
+            {averageRating.toFixed(1)}
+          </span>
+          <div className="flex flex-col gap-1">
+            <Box
+              sx={{
+                width: 200,
+                display: "flex",
+                alignItems: "center",
+              }}
+            >
+              <Rating
+                name="text-feedback"
+                value={+averageRating.toFixed(1)}
+                readOnly
+                precision={0.5}
+                emptyIcon={
+                  <StarIcon style={{ opacity: 0.55 }} fontSize="inherit" />
+                }
+              />
+            </Box>
+            <p className="text-coal">Based on {reviewContent.length} reviews</p>
+          </div>
+        </div>
+        <AddReviewBlock />
+      </div>
       <motion.div
         initial="initial"
         animate="animate"
@@ -24,8 +64,7 @@ export const ProductReviews = ({ ReviewContent }) => {
         }}
         className="mx-auto grid max-w-4xl grid-flow-dense md:!grid-cols-12 gap-4"
       >
-        <ReviewBlock ReviewContent={ReviewContent} />
-        <AddReviewBlock />
+        <ReviewBlock reviewContent={reviewContent} />
       </motion.div>
     </div>
   );
@@ -58,9 +97,9 @@ const Block = ({ className, ...rest }) => {
   );
 };
 
-const ReviewBlock = ({ ReviewContent }) => (
+const ReviewBlock = ({ reviewContent }) => (
   <>
-    {ReviewContent.map((item) => (
+    {reviewContent?.map((item) => (
       <Block
         whileHover={{
           rotate: "-2.5deg",

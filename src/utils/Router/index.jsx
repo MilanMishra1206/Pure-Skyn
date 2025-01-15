@@ -125,7 +125,7 @@ function Router() {
   const isAdmin = false;
 
   const location = useLocation();
-  const showNavAndFooter = !["/login", "sign-up"].includes(location.pathname);
+  const showNavAndFooter = !["/login", "/sign-up"].includes(location.pathname);
 
   const showCarousel = ["/"].includes(location.pathname);
 
