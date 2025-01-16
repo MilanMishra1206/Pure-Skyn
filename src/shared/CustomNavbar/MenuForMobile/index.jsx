@@ -22,6 +22,7 @@ const MenuForMobile = ({
   packageButtonRefForMobile,
   isAdmin,
   isLoggedIn,
+  handleLogout
 }) => {
   return (
     <div
@@ -218,10 +219,18 @@ const MenuForMobile = ({
         {isLoggedIn && (
           <button
             className="navbar-links !text-black !ml-0 hover:bg-skyn hover:rounded-3xl hover:!text-white"
-            onClick={() => console.log("Logout")}
+            onClick={handleLogout}
           >
             Logout
           </button>
+        )}
+        {!isLoggedIn && (
+          <Link
+            className="navbar-links !text-black !ml-0 hover:bg-skyn hover:rounded-3xl hover:!text-white"
+            to="/login"
+          >
+            Login
+          </Link>
         )}
       </div>
     </div>

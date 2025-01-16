@@ -217,6 +217,7 @@ function CustomNavbar() {
             packageButtonRefForMobile={packageButtonRefForMobile}
             isAdmin={isAdmin}
             isLoggedIn={isLoggedIn}
+            handleLogout={handleLogout}
           />
         )}
       </div>

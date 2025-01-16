@@ -1,5 +1,5 @@
-// const base = `${process.env.REACT_APP_BASE_API_URL}/shared/images`;
-const base = "http://localhost:5000/images";
+const base = `${process.env.PUBLIC_URL}/images`;
+// const base = "http://localhost:5000/images";
 
 const Resources = {
   images: {
@@ -91,16 +91,16 @@ const Resources = {
         },
       },
       OxyGeneo: {
-        header: `${base}/Services/OxyGeneo/header.jpg`,
-        oxygeneoCard: `${base}/Services/OxyGeneo/oxygeneoCard.jpg`,
-        img1: `${base}/Services/OxyGeneo/img1.jpg`,
-        img2: `${base}/Services/OxyGeneo/img2.jpg`,
-        img4: `${base}/Services/OxyGeneo/img4.png`,
-        img5: `${base}/Services/OxyGeneo/img5.png`,
-        img6: `${base}/Services/OxyGeneo/img6.jpg`,
-        exfoliate: `${base}/Services/OxyGeneo/exfoliate.png`,
-        infuse: `${base}/Services/OxyGeneo/infuse.png`,
-        oxygenate: `${base}/Services/OxyGeneo/oxygenate.png`,
+        header: `${base}/Services/Oxygeneo/header.jpg`,
+        oxygeneoCard: `${base}/Services/Oxygeneo/oxygeneoCard.jpg`,
+        img1: `${base}/Services/Oxygeneo/img1.jpg`,
+        img2: `${base}/Services/Oxygeneo/img2.jpg`,
+        img4: `${base}/Services/Oxygeneo/img4.png`,
+        img5: `${base}/Services/Oxygeneo/img5.png`,
+        img6: `${base}/Services/Oxygeneo/img6.jpg`,
+        exfoliate: `${base}/Services/Oxygeneo/exfoliate.png`,
+        infuse: `${base}/Services/Oxygeneo/infuse.png`,
+        oxygenate: `${base}/Services/Oxygeneo/oxygenate.png`,
       },
       OxyHydra: {
         oxyHydraCard: `${base}/Services/OxyHydra/oxyHydra.jpg`,
