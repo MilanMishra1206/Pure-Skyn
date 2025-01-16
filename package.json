@@ -2,7 +2,7 @@
   "name": "pure-skyn",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://milanmishra1206.github.io",
+  "homepage": "https://MilanMishra1206.github.io/Pure-Skyn",
   "dependencies": {
     "@emotion/react": "^11.13.0",
     "@emotion/styled": "^11.13.0",
@@ -63,7 +63,7 @@
     "format:fix": "npm run prettier -- --write",
     "type:check": "tsc",
     "predeploy": "npm run build",
-    "deploy": "gh-pages -d build -b deploy-branch"
+    "deploy": "gh-pages -d build -b gh-pages"
   },
   "eslintConfig": {
     "extends": [
