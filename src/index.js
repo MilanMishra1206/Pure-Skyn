@@ -8,7 +8,7 @@ import "slick-carousel/slick/slick-theme.css";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 import { QueryClient, QueryClientProvider } from "react-query";
-import { BrowserRouter } from "react-router-dom";
+import { HashRouter as BrowserRouter} from "react-router-dom";
 import { store } from "./redux/store";
 import { Provider } from "react-redux";
 

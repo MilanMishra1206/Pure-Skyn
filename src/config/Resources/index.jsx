@@ -1,5 +1,5 @@
 // const base = `${process.env.REACT_APP_BASE_API_URL}/shared/images`;
-const base = "http://localhost:5000/images";
+const base = "../../../public/images";
 
 const Resources = {
   images: {
