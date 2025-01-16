@@ -1,5 +1,5 @@
 // const base = `${process.env.REACT_APP_BASE_API_URL}/shared/images`;
-const base = "../../../public/images";
+const base = "Pure-Skyn/images";
 
 const Resources = {
   images: {
