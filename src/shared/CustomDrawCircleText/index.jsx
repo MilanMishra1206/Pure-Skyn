@@ -1,6 +1,7 @@
 import React from "react";
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
+import { useMediaQuery } from "@mui/material";
 
 const DrawCircleText = ({
   headerText,
@@ -9,6 +10,7 @@ const DrawCircleText = ({
   link,
   subText,
 }) => {
+  const isSmallerDevice = useMediaQuery("(max-width: 393px)")
   // bg-gradient-to-br from-[#313440] to-[#4F585A]
   // bg-gradient-to-b from-[#313440] to-[#1F3A3B]
   // bg-gradient-to-b from-[#313440] to-[#3C3F52]
@@ -21,12 +23,12 @@ const DrawCircleText = ({
       className="grid place-content-center bg-gradient-to-r from-[#313440] to-[#1F3A3B] px-4 py-24 text-yellow-50"
     >
       <h1 className="max-w-2xl text-center text-5xl leading-snug">
-        <span className="relative">
+        <span className={`relative ${isSmallerDevice ? "flex text-center" : ""}`}>
           {headerText}
           <svg
             viewBox="0 0 286 73"
             fill="none"
-            className="absolute -left-2 bottom-0 translate-y-1"
+            className={`absolute -left-2 bottom-0 ${isSmallerDevice ? "" : "translate-y-1"}`}
           >
             <motion.path
               initial={{ pathLength: 0 }}
@@ -43,7 +45,7 @@ const DrawCircleText = ({
         </span>{" "}
         {serviceName}
       </h1>
-      <p className="font-bold font-poppins text-center mt-4">
+      <p className="font-bold font-poppins text-center mt-4 mb-4">
         100% Satisfaction Guaranteed
       </p>
       {subText && (

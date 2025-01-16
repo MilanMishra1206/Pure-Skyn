@@ -161,14 +161,14 @@ function BookNow() {
             subText={"Pay 50% after the service!!"}
           />
         </motion.div>
-        <div className={`${isMobile ? "" : "px-4"} rounded shadow-lg mt-4 p-4`}>
+        <div className={`${isMobile ? "" : "px-4"} rounded shadow-lg mt-4 py-4`}>
           <form className="w-full">
             <div className="rounded-3xl p-8">
               <div className="text-3xl font-poppins text-center font-extrabold mb-5">
                 Please Share Booking Details
               </div>
               <FadedLineBreak />
-              <div className="grid md:!grid-cols-2 xl:!grid-cols-3 gap-4 p-5">
+              <div className="grid md:!grid-cols-2 xl:!grid-cols-3 gap-4 md:p-5">
                 <Suspense fallback={<div />}>
                   <CustomTextField
                     textClassOverride="!text-kashmirBlue"
@@ -361,13 +361,13 @@ function BookNow() {
                   >
                     Select Appointment Time
                   </label>
-                  <div className="grid grid-cols-3 gap-4 mt-2">
+                  <div className="grid grid-cols-2 lg:!grid-cols-3 gap-4 mt-2">
                     {timeSlots.map((slot, index) => (
                       <button
                         key={index}
                         type="button"
                         onClick={() => formik.setFieldValue("timeSlot", slot)}
-                        className={`py-2 px-4 rounded text-sm font-bold transition-all shadow-md ${
+                        className={`p-2 rounded text-sm font-bold transition-all shadow-md ${
                           formik.values.timeSlot === slot
                             ? "bg-skyn text-white border-skyn"
                             : "bg-white text-gray-700 hover:!bg-gray-100"
