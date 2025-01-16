@@ -1,5 +1,5 @@
-// const base = `${process.env.REACT_APP_BASE_API_URL}/shared/images`;
-const base = "/images";
+const base = `${process.env.PUBLIC_URL}/images`;
+// const base = "/images";
 
 const Resources = {
   images: {
