@@ -1,7 +1,6 @@
 import React from "react";
 import Slider from "react-slick";
 import ProductCard from "../ProductCard";
-import "../../../../index.css";
 
 function ProductCarousel({ carouselContent }) {
   const settings = {

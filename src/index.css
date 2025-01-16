@@ -140,6 +140,7 @@ code {
 .slick-track {
   display: flex;
 }
+
 .slick-slider {
   display: flex;
   align-items: center;
@@ -173,7 +174,6 @@ code {
 
 .slick-next {
   right: -8px !important;
-  top: 20%;
   position: absolute;
   right: -25px !important;
   z-index: 1;

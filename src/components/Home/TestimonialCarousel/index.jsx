@@ -15,7 +15,7 @@ const TestimonialCarousel = ({ isMobile }) => {
     speed: 500,
     slidesToShow: 1,
     slidesToScroll: 1,
-    autoplay: true,
+    autoplay: false,
     autoplaySpeed: 3000,
   };
 
@@ -36,7 +36,7 @@ const TestimonialCarousel = ({ isMobile }) => {
           />
         </div>
         <div
-          className={`mt-5 bg-coal rounded shadow-lg text-white w-auto ${isMobile ? "p-2" : "p-5"}`}
+          className={`text-white w-auto ${isMobile ? "p-1" : "p-5"}`}
         >
           <Slider {...settings}>
             {testimonialsCarousel.map((testimonial) => (
