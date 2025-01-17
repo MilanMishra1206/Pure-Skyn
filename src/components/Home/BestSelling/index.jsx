@@ -7,7 +7,7 @@ import { motion } from "framer-motion";
 import DrawCircleText from "../../../shared/CustomDrawCircleText";
 import { MdKeyboardDoubleArrowRight } from "react-icons/md";
 
-function BestSelling({ isMobile }) {
+function BestSelling({ isMobile, isLargeScreen }) {
   const services = [
     {
       id: 1,
@@ -50,7 +50,7 @@ function BestSelling({ isMobile }) {
         </Link>
       </div>
       <div
-        className={`grid grid-cols-1 md:!grid-cols-2 lg:!grid-cols-3 place-items-center gap-4 ${isMobile ? "p-2" : "p-5"}`}
+        className={`grid grid-cols-1 md:!grid-cols-2 lg:!grid-cols-3 place-items-center gap-4 mb-5 xl:!px-4 ${isLargeScreen ? "mt-5" : "p-2"}`}
       >
         {services.map((item) => (
           <CustomCards

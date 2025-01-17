@@ -1,42 +1,44 @@
 import Resources from "../../../config/Resources";
 import { Link } from "react-router-dom";
-import { useMediaQuery } from "@mui/material";
 import BookNowForm from "../../BookNow/BookNowForm";
 import CustomHeader from "../../../shared/CustomHeader";
 import CustomCards from "../../../shared/CustomCards";
 import { MdKeyboardDoubleArrowRight } from "react-icons/md";
 
-function ServicesOffered() {
-  const isMobile = useMediaQuery("(max-width: 767px)");
-  const isLaptop = useMediaQuery("(min-width: 1336px)");
-
+function ServicesOffered({ isMobile, isLargeScreen, isLaptop }) {
   const services = [
     {
       id: 1,
-      title: "Laser Hair Removal",
-      image: `${Resources.images.Services.LaserHairRemoval.laserHairRemovalCard}`,
-      linkTo: "services/laser-hair-removal",
+      title: "Laser Hair Removal Women",
+      image: `${Resources.images.Services.LaserHairRemoval.Women.imageOne}`,
+      linkTo: "services/laser-hair-removal/women",
     },
     {
       id: 2,
+      title: "Laser Hair Removal Men",
+      image: `${Resources.images.Services.LaserHairRemoval.Men.image5}`,
+      linkTo: "services/laser-hair-removal/men",
+    },
+    {
+      id: 3,
       title: "Oxy Hydra Facial",
       image: `${Resources.images.Services.OxyHydra.img4}`,
       linkTo: "services/skin/medi-facial/oxy-hydra-facial",
     },
     {
-      id: 3,
+      id: 4,
       title: "RF Skin Tightening",
       image: `${Resources.images.Services.SkinTightening.img7}`,
       linkTo: "services/skin/medi-facial/skin-tightening",
     },
     {
-      id: 4,
+      id: 5,
       title: "Dermafrac Infusion Facial",
       image: `${Resources.images.Services.Dermafrac.img6}`,
       linkTo: "services/skin/medi-facial/dermafrac-infusion-facial",
     },
     {
-      id: 5,
+      id: 6,
       title: "Oxygeneo",
       image: `${Resources.images.Services.OxyGeneo.img6}`,
       linkTo: "services/skin/medi-facial/oxygeneo",
@@ -94,7 +96,7 @@ function ServicesOffered() {
           </div>
         </div>
         <div
-          className={`grid grid-cols-1 md:!grid-cols-2 lg:!grid-cols-3 gap-4 place-items-center ${isMobile ? "p-2" : "mt-5 px-4"}`}
+          className={`grid grid-cols-1 md:!grid-cols-2 lg:!grid-cols-3 gap-4 place-items-center ${isLargeScreen ? "mt-5 px-4" : "p-2"}`}
         >
           {services.map((item) => (
             <CustomCards

@@ -1,20 +1,17 @@
-import React, { useState, useEffect } from "react";
+import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import FadeInWrapper from "../../config/MotionFramer/FadeInWrapper";
+import { Link } from "react-router-dom";
 
-const ScrollToTopButton = () => {
+function CustomFloatingBookNowButton({ treatmentName }) {
   const [isVisible, setIsVisible] = useState(false);
 
   const handleScroll = () => {
-    if (window.scrollY > 300) {
+    if (window.scrollY > 500) {
       setIsVisible(true);
     } else {
       setIsVisible(false);
     }
-  };
-
-  const scrollToTop = () => {
-    window.scrollTo({ top: 0, behavior: "smooth" });
   };
 
   useEffect(() => {
@@ -32,13 +29,17 @@ const ScrollToTopButton = () => {
         initial="hidden"
         whileInView="show"
         viewport={{ once: true }}
-        onClick={scrollToTop}
-        className="fixed !bottom-[100px] !right-[50px] p-3 bg-skyn text-white font-bold text-2xl rounded-full shadow-lg transition-opacity duration-300 hover:!scale-110"
+        className="fixed !bottom-[180px] !right-[50px] px-3 py-2 bg-skyn text-white font-bold text-2xl rounded-full shadow-lg transition-opacity duration-300 hover:!scale-110"
       >
-        ↑
+        <Link
+          to={`/book-now?treatment=${treatmentName}`}
+          className="no-underline text-white"
+        >
+          Book Now
+        </Link>
       </motion.button>
     )
   );
-};
+}
 
-export default ScrollToTopButton;
+export default CustomFloatingBookNowButton;

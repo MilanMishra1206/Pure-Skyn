@@ -6,6 +6,7 @@ import regex from "../../../helpers/Regex";
 import Resources from "../../../config/Resources";
 import { motion } from "framer-motion";
 import FadeInWrapper from "../../../config/MotionFramer/FadeInWrapper";
+import TermsAndConditions from "../TermsAndConditions";
 
 const CustomTextField = lazy(() => import("../../../shared/CustomTextField"));
 
@@ -191,59 +192,13 @@ function SignUpForm({ formik, handleSubmit, mobileClass }) {
         </p>
       </div>
       {isOpen && (
-        <CustomModal isOpen={isOpen} setIsOpen={setIsOpen} buttonText={"Okay"}>
-          <div className="mt-5">
-            <h3 className="text-coal text-center font-bold md:text-1xl text-md font-poppins">
-              Terms & Conditions
-            </h3>
-            <div className="pt-3 ml-4 text-coal font-poppins text-justify">
-              <div>
-                For the purpose of procuring business for Pure Skyn, Pure Skyn
-                may be required to furnish confidential information, materials,
-                documents and policies regarding their various products which
-                inter- alia may contain innovative products and further Pure
-                Skyn may also be required to furnish various details regarding
-                marketing, pricing etc. in respect of such products. Considering
-                the confidentiality to be maintained the Agent has expressly
-                agreed to maintain complete confidentiality of all such
-                confidential information, documents, policies, etc. as may be
-                submitted to them by Pure Skyn.
-              </div>
-              <div className="mt-3">
-                The term "Confidential Information" does not include information
-                which
-                <ol className="!pl-0 mt-2 mb-2">
-                  <li>i. is already in the Agent's possession or</li>
-                  <li>
-                    ii. becomes generally available to the public other than as
-                    a result of a disclosure by Agent or Agent's officers,
-                    employees, Agents, advisors, or representatives of such
-                    advisors or
-                  </li>
-                  <li>
-                    iii. becomes available to Agent on a non-confidential basis
-                    from a source other than Pure Skyn provided such source is
-                    not known by Agent to be bound by a confidentiality
-                    agreement with or other obligation of secrecy to Pure Skyn
-                    or another party.
-                  </li>
-                  <li>
-                    ii. becomes generally available to the public other than as
-                    a result of a disclosure by Agent or Agent's officers,
-                    employees, Agents, advisors, or representatives of such
-                    advisors or
-                  </li>
-                  <li>
-                    iii. becomes available to Agent on a non-confidential basis
-                    from a source other than Pure Skyn provided such source is
-                    not known by Agent to be bound by a confidentiality
-                    agreement with or other obligation of secrecy to Pure Skyn
-                    or another party.
-                  </li>
-                </ol>
-              </div>
-            </div>
-          </div>
+        <CustomModal
+          isOpen={isOpen}
+          setIsOpen={setIsOpen}
+          buttonText={"I Agree"}
+          classes="!px-3 !text-justify"
+        >
+          <TermsAndConditions />
         </CustomModal>
       )}
     </motion.div>

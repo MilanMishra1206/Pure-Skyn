@@ -19,7 +19,7 @@ function LaserServices() {
           navigateTo={"/"}
         />
         <div className="text-justify font-poppins text-cello">
-          <p>
+          <p className="mb-4">
             At <strong>Pure Skyn</strong>, we believe in the power of self-care
             and rejuvenation, offering cutting-edge, non-invasive beauty and
             wellness treatments that bring out the best version of yourself. Our
@@ -51,13 +51,14 @@ function LaserServices() {
                   </div>
                   <div className="flex items-center">
                     <CustomCards
+                      key={service.id}
                       title={service.cardTitle}
                       imgSrc={service.image}
                       linkTo={service.linkTo}
                     />
                   </div>
                 </div>
-                {index < servicesCardDetails.length - 1 && <FadedLineBreak /> }
+                {index < servicesCardDetails.length - 1 && <FadedLineBreak />}
               </div>
             </motion.div>
           ))}

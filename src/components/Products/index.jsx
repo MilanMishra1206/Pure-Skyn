@@ -24,6 +24,16 @@ function Products() {
   const productList = [
     {
       id: 1,
+      productName: "Dermatica Aze Proactive Lotion",
+      imgSrc: Resources.images.Products.dermaticaAzeProactiveLotion.img1,
+      productDescription:
+        "At Pureskyn, we believe that the foundation of real beauty is flawless, clear skin. We are thrilled to present Dermatica Aze Proactive Lotion, a revolutionary skincare solution created to effectively and gently treat acne, acne scars, and acne marks. With Dermatica Aze, your secret to bright, glowing skin, bid adieu to the aggravation of acne and the scarring that follows.",
+      ratings: 4,
+      productPrice: "1080",
+      category: "Dermat",
+    },
+    {
+      id: 2,
       productName: "BP Machine",
       imgSrc: Resources.images.Products.img1,
       productDescription:
@@ -34,7 +44,7 @@ function Products() {
       category: "Machine",
     },
     {
-      id: 2,
+      id: 3,
       productName: "Crepe Bandage",
       imgSrc: Resources.images.Products.img2,
       productDescription:
@@ -44,7 +54,7 @@ function Products() {
       category: "Bandages",
     },
     {
-      id: 3,
+      id: 4,
       productName: "Stethoscope",
       imgSrc: Resources.images.Products.img3,
       productDescription:
@@ -55,7 +65,7 @@ function Products() {
       category: "Machine",
     },
     {
-      id: 4,
+      id: 5,
       productName: "N-96 Mask",
       imgSrc: Resources.images.Products.img4,
       productDescription:
@@ -65,7 +75,7 @@ function Products() {
       category: "Bla Bla",
     },
     {
-      id: 5,
+      id: 6,
       productName: "Sugar Machine",
       imgSrc: Resources.images.Products.img5,
       productDescription:
@@ -76,7 +86,7 @@ function Products() {
       category: "Machine",
     },
     {
-      id: 6,
+      id: 7,
       productName: "Scissors",
       imgSrc: Resources.images.Products.img6,
       productDescription:
@@ -167,7 +177,7 @@ function Products() {
               <img
                 src={product.imgSrc}
                 alt={product.productName}
-                className="w-full"
+                className="w-full rounded-2xl"
                 onClick={() => navigate(`/products/${product.productName}`)}
               />
               <FadedLineBreak />

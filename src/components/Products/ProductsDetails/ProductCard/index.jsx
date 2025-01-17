@@ -40,7 +40,7 @@ function ProductCard({ product }) {
         <Card.Body>
           <Card.Title>
             <Link
-              className="font-bold text-coal text-xl mt-4 hover:text-skyn no-underline"
+              className="font-bold text-coal text-xl mt-4 hover:text-skyn no-underline "
               to={`/products/${product.productName}`}
             >
               {product.productName}

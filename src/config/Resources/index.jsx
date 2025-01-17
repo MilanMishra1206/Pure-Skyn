@@ -152,7 +152,13 @@ const Resources = {
       img4: `${base}/Products/img4.jpg`,
       img5: `${base}/Products/img5.jpg`,
       img6: `${base}/Products/img6.jpg`,
-    }
+      dermaticaAzeProactiveLotion: {
+        img1: `${base}/Products/dermatica-aze-proactive-lotion/img1.jpeg`,
+        img2: `${base}/Products/dermatica-aze-proactive-lotion/img2.jpeg`,
+        img3: `${base}/Products/dermatica-aze-proactive-lotion/img3.jpeg`,
+        img4: `${base}/Products/dermatica-aze-proactive-lotion/img4.jpeg`,
+      },
+    },
   },
 };
 

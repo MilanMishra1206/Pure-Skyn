@@ -70,26 +70,31 @@ function CustomNavbar() {
   const serviceItemForMobile = [
     {
       id: 1,
-      label: "Laser Hair Removal",
-      link: "/services/laser-hair-removal",
+      label: "Laser Hair Removal Women",
+      link: "/services/laser-hair-removal/women",
     },
     {
       id: 2,
+      label: "Laser Hair Removal Men",
+      link: "/services/laser-hair-removal/men",
+    },
+    {
+      id: 3,
       label: "Oxy Hydra Facial",
       link: "/services/skin/medi-facial/oxy-hydra-facial",
     },
     {
-      id: 3,
+      id: 4,
       label: "RF Skin Tightening",
       link: "/services/skin/medi-facial/skin-tightening",
     },
     {
-      id: 4,
+      id: 5,
       label: "Dermafrac Infusion Facial",
       link: "/services/skin/medi-facial/dermafrac-infusion-facial",
     },
     {
-      id: 5,
+      id: 6,
       label: "Oxygeneo",
       link: "/services/skin/medi-facial/oxygeneo",
     },
@@ -111,34 +116,41 @@ function CustomNavbar() {
   const serviceItem = [
     {
       id: 1,
-      label: "Laser Hair Removal",
+      label: "Laser Hair Removal Women",
       action: () => {
-        navigate("/services/laser-hair-removal");
+        navigate("/services/laser-hair-removal/women");
       },
     },
     {
       id: 2,
+      label: "Laser Hair Removal Men",
+      action: () => {
+        navigate("/services/laser-hair-removal/men");
+      },
+    },
+    {
+      id: 3,
       label: "Oxy Hydra Facial",
       action: () => {
         navigate("/services/skin/medi-facial/oxy-hydra-facial");
       },
     },
     {
-      id: 3,
+      id: 4,
       label: "RF Skin Tightening",
       action: () => {
         navigate("/services/skin/medi-facial/skin-tightening");
       },
     },
     {
-      id: 4,
+      id: 5,
       label: "Dermafrac Infusion Facial",
       action: () => {
         navigate("/services/skin/medi-facial/dermafrac-infusion-facial");
       },
     },
     {
-      id: 5,
+      id: 6,
       label: "Oxygeneo",
       action: () => {
         navigate("/services/skin/medi-facial/oxygeneo");

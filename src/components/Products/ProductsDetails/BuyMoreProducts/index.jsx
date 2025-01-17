@@ -53,17 +53,6 @@ function BuyMoreProducts() {
     },
     {
       id: 5,
-      productName: "Scissors",
-      imgSrc: Resources.images.Products.img6,
-      productDescription:
-        "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat",
-      ratings: 3.5,
-      productPrice: "250",
-      category: "Bla Bla",
-      quantity: 1,
-    },
-    {
-      id: 6,
       productName: "Sugar Machine",
       imgSrc: Resources.images.Products.img5,
       productDescription:
@@ -72,6 +61,17 @@ function BuyMoreProducts() {
       strikePrice: "2000",
       productPrice: "1500",
       category: "Machine",
+      quantity: 1,
+    },
+    {
+      id: 6,
+      productName: "Scissors",
+      imgSrc: Resources.images.Products.img6,
+      productDescription:
+        "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat",
+      ratings: 3.5,
+      productPrice: "250",
+      category: "Bla Bla",
       quantity: 1,
     },
   ];
