@@ -9,6 +9,7 @@ import CustomAccordion from "../../../../../shared/CustomAccordion";
 import CustomHeader from "../../../../../shared/CustomHeader";
 import FadedLineBreak from "../../../../../shared/CustomHrTag";
 import DrawCircleText from "../../../../../shared/CustomDrawCircleText";
+import CustomFloatingBookNowButton from "../../../../../shared/CustomFloatingBookNowButton";
 
 function OxyHydra({ type }) {
   const isMobile = useMediaQuery("(max-width: 767px)");
@@ -367,38 +368,7 @@ function OxyHydra({ type }) {
               </div>
             </div>
           </motion.div>
-          <Box
-            sx={{
-              position: "sticky",
-              bottom: "16px",
-              right: "16px",
-              zIndex: 49,
-              display: "flex",
-              justifyContent: "end",
-              padding: "1rem",
-            }}
-          >
-            <Link to="/book-now?treatment=Oxy Hydra Facial">
-              <Fab
-                variant="extended"
-                size="large"
-                color="warning"
-                aria-label="Book Now"
-                className="!bg-skyn"
-                sx={{
-                  fontSize: "22px",
-                  boxShadow: "0px 4px 10px rgba(0, 0, 0, 0.2)",
-                  transition: "transform 0.2s ease-in-out",
-                  "&:hover": {
-                    transform: "scale(1.1)",
-                  },
-                  backgroundColor: "none",
-                }}
-              >
-                Book Now
-              </Fab>
-            </Link>
-          </Box>
+          <CustomFloatingBookNowButton treatmentName="Oxy Hydra Facial" />
         </div>
       )}
     </div>

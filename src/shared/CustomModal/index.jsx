@@ -8,6 +8,7 @@ export default function CustomModal({
   buttonText,
   antiButtonText,
   children,
+  classes,
 }) {
   return (
     <AnimatePresence>
@@ -25,7 +26,7 @@ export default function CustomModal({
             exit={{ scale: 0, rotate: "-12.5deg" }}
             onClick={(e) => e.stopPropagation()}
             transition={{ duration: 0.35 }}
-            className="bg-gradient-to-br bg-white text-white px-5 rounded-lg w-full max-w-lg shadow-xl cursor-default relative h-100 overflow-scroll"
+            className={`bg-gradient-to-br bg-white text-white px-5 rounded-lg w-full max-w-lg shadow-xl cursor-default relative h-100 overflow-scroll ${classes}`}
           >
             <div className="relative z-10">
               <div className="bg-skyn w-16 h-16 mb-2 rounded-full text-3xl text-white grid place-items-center mx-auto mt-4">

@@ -4,6 +4,8 @@ import CustomHeader from "../../../shared/CustomHeader";
 import FadeInWrapper from "../../../config/MotionFramer/FadeInWrapper";
 import { motion } from "framer-motion";
 import CustomHrTag from "../../../shared/CustomHrTag";
+import { Link } from "react-router-dom";
+import { MdKeyboardDoubleArrowRight } from "react-icons/md";
 
 function AboutUs() {
   const isTablet = useMediaQuery("(max-width: 1023px)");
@@ -51,6 +53,13 @@ function AboutUs() {
           have the expertise and technology to get you the smooth skin you've
           always dreamed of.
         </p>
+        <Link
+          to="/services/laser-hair-removal"
+          className="flex items-center mt-2 w-32 md:!w-25 group text-skyn font-bold font-poppins no-underline hover:opacity-80"
+        >
+          Explore More
+          <MdKeyboardDoubleArrowRight className="hidden group-hover:!block text-xl text-skyn duration-3000" />
+        </Link>
         <CustomHrTag />
         <span className="mt-4 font-poppins text-kashmirBlue font-bold text-2xl">
           Medi Facial Treatments
@@ -62,6 +71,13 @@ function AboutUs() {
           treatments use the latest skincare technologies to deliver immediate
           results and long-lasting benefits.
         </p>
+        <Link
+          to="/services/skin/medi-facial"
+          className="flex items-center mt-2 w-32 md:!w-25 group text-skyn font-bold font-poppins no-underline hover:opacity-80"
+        >
+          Explore More
+          <MdKeyboardDoubleArrowRight className="hidden group-hover:!block text-xl text-skyn duration-3000" />
+        </Link>
         <CustomHrTag />
       </div>
     </motion.div>

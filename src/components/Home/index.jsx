@@ -13,6 +13,8 @@ const AboutUs = lazy(() => import("./AboutUs"));
 
 function Home() {
   const isMobile = useMediaQuery("(max-width: 767px)");
+  const isLargeScreen = useMediaQuery("(min-width: 1023px)");
+  const isLaptop = useMediaQuery("(min-width: 1336px)");
 
   return (
     <div className="mt-3">
@@ -22,27 +24,31 @@ function Home() {
             <AboutUs />
           </MotionWrapper>
         </Suspense>
-        <Suspense fallback={<CustomLoader open={true}/>}>
+        <Suspense fallback={<CustomLoader open={true} />}>
           <MotionWrapper>
-            <ServicesOffered isMobile={isMobile} />
+            <ServicesOffered
+              isMobile={isMobile}
+              isLargeScreen={isLargeScreen}
+              isLaptop={isLaptop}
+            />
           </MotionWrapper>
         </Suspense>
-        <Suspense fallback={<CustomLoader open={true}/>}>
+        <Suspense fallback={<CustomLoader open={true} />}>
           <MotionWrapper>
             <WhyUs isMobile={isMobile} />
           </MotionWrapper>
         </Suspense>
-        <Suspense fallback={<CustomLoader open={true}/>}>
+        <Suspense fallback={<CustomLoader open={true} />}>
           <MotionWrapper>
-            <BestSelling isMobile={isMobile} />
+            <BestSelling isMobile={isMobile} isLargeScreen={isLargeScreen} />
           </MotionWrapper>
         </Suspense>
-        <Suspense fallback={<CustomLoader open={true}/>}>
+        <Suspense fallback={<CustomLoader open={true} />}>
           <MotionWrapper>
             <TestimonialCarousel isMobile={isMobile} />
           </MotionWrapper>
         </Suspense>
-        <Suspense fallback={<CustomLoader open={true}/>}>
+        <Suspense fallback={<CustomLoader open={true} />}>
           <MotionWrapper>
             <ContactUs isMobile={isMobile} />
           </MotionWrapper>
