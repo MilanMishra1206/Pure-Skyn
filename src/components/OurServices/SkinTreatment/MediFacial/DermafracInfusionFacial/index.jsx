@@ -1,10 +1,11 @@
-import Resources from "../../../../../config/Resources";
-import { Box, Fab, useMediaQuery } from "@mui/material";
+import { lazy, Suspense } from "react";
+import { useMediaQuery } from "@mui/material";
 import { Link } from "react-router-dom";
-import { MdKeyboardDoubleArrowRight } from "react-icons/md";
+import { motion } from "framer-motion";
+
+import Resources from "../../../../../config/Resources";
 import { dermaFracMicroneedling } from "../../../../../helpers/MediFacial";
 import { dermoFracAccordianContent } from "../../../../../helpers/AccordianContent";
-import { motion } from "framer-motion";
 import FadeInWrapper from "../../../../../config/MotionFramer/FadeInWrapper";
 import CustomAccordion from "../../../../../shared/CustomAccordion";
 import CustomHeader from "../../../../../shared/CustomHeader";
@@ -12,12 +13,14 @@ import FadedLineBreak from "../../../../../shared/CustomHrTag";
 import DrawCircleText from "../../../../../shared/CustomDrawCircleText";
 import CustomFloatingBookNowButton from "../../../../../shared/CustomFloatingBookNowButton";
 
+const CommonHeader = lazy(() => import("../../../CommonHeader"));
+
 function DermafracInfusionFacial({ type }) {
   const isMobile = useMediaQuery("(max-width: 767px)");
   const isTablet = useMediaQuery("(max-width: 1023px)");
 
   return (
-    <div className="mt-4">
+    <div className={`${type ? "mt-5" : "mt-0"}`}>
       <motion.div
         variants={FadeInWrapper("left", 0.1)}
         initial="hidden"
@@ -25,62 +28,34 @@ function DermafracInfusionFacial({ type }) {
         viewport={{ once: true }}
         className={`${isMobile ? "px-3" : "p-3"}`}
       >
-        <CustomHeader
-          heading={"Dermafrac Infusion Facial"}
-          showBackButton={type}
-          navigateTo={"/services/skin/medi-facial"}
-          headerClass={!type && "!text-2xl"}
-        />
+        {!type && (
+          <CustomHeader
+            heading={"Dermafrac Infusion Facial"}
+            showBackButton={type}
+            navigateTo={"/services/skin/medi-facial"}
+            headerClass={!type && "!text-2xl"}
+          />
+        )}
       </motion.div>
       {type && (
         <div className="text-justify">
-          <motion.div
-            variants={FadeInWrapper("up", 0.1)}
-            initial="hidden"
-            whileInView="show"
-            viewport={{ once: true }}
-            className={`w-full ${isTablet ? "h-96" : "h-[30rem]"} bg-cover bg-center relative`}
-            style={{
-              backgroundImage: `url(${!isMobile ? Resources.images.Services.Dermafrac.header : Resources.images.Services.Dermafrac.dermafracCard})`,
-            }}
-          >
-            {!isMobile && (
-              <div className="absolute inset-0 flex items-center justify-end mr-5 bg-opacity-40">
-                <div className="flex flex-col w-50">
-                  <div className="font-extrabold text-3xl">
-                    Dermafrac Treatment at Your Home
-                  </div>
-                  <Link
-                    to={"/book-now?treatment=Dermafrac Infusion"}
-                    className="flex items-center font-poppins text-3xl no-underline space-x-3 font-bold text-skyn transition-colors duration-300 ease-in-out hover:!opacity-80 hover:!tracking-widest"
-                  >
-                    Book Now{" "}
-                    <MdKeyboardDoubleArrowRight className="ml-2 text-3xl text-skyn" />
-                  </Link>
-                </div>
-              </div>
-            )}
-          </motion.div>
-          {isMobile && (
-            <motion.div
-              variants={FadeInWrapper("up", 0.1)}
-              initial="hidden"
-              whileInView="show"
-              viewport={{ once: true }}
-              className="flex flex-col items-center bg-coal text-white p-5"
-            >
-              <div className="font-extrabold text-3xl text-center">
-                Dermafrac Treatment at Your Home
-              </div>
-              <Link
-                to={"/book-now?treatment=Dermafrac Infusion"}
-                className="border duration-300 ease-in-out flex font-bold font-poppins hover:!opacity-80 hover:!tracking-widest items-center mt-4 no-underline p-3 rounded-2 space-x-3 text-3xl text-white transition-colors"
-              >
-                Book Now{" "}
-                <MdKeyboardDoubleArrowRight className="ml-2 text-3xl text-white" />
-              </Link>
-            </motion.div>
-          )}
+          <Suspense fallback={<div>Loading...</div>}>
+            <CommonHeader
+              isTablet={isTablet}
+              imgSrcLaptop={Resources.images.Home.dermfrac}
+              imgSrcTablet={Resources.images.Home.dermfracMobile}
+              linkTo="/services/skin/medi-facial-packages"
+              heading="DERMAFRAC INFUSION FACIAL"
+              breadcrumbs1="Medi Facial"
+              route1="/services/skin/medi-facial"
+              breadcrumbs2="Dermafrac"
+              content="DermaFrac treatment at PureSkyn in India offers a revolutionary at-home skincare solution that combines microneedling and infusion therapy for 
+                    radiant, rejuvenated skin. This non-invasive procedure stimulates collagen production and enhances product absorption, delivering potent serums 
+                    deep into the skin. Designed for all skin types, DermaFrac helps reduce fine lines, improve texture, and boost hydration, providing visible results 
+                    from the comfort of your home. Experience the luxury of professional skincare with the convenience of at-home treatments, and unlock 
+                    your skin's true potential with PureSkyn."
+            />
+          </Suspense>
           <motion.div
             variants={FadeInWrapper("right", 0.1)}
             initial="hidden"

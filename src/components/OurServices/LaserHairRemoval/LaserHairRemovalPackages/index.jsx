@@ -1,7 +1,8 @@
 import { MdKeyboardDoubleArrowRight } from "react-icons/md";
-import Resources from "../../../../config/Resources";
 import { Link, useNavigate } from "react-router-dom";
 import { useMediaQuery } from "@mui/material";
+
+import Resources from "../../../../config/Resources";
 import {
   fullBodyLaserContent,
   laserServicePackages,
@@ -141,7 +142,7 @@ function LaserHairRemovalPackages() {
                     <div className="relative overflow-hidden rounded-tl-[1rem] rounded-tr-[1rem] shadow-lg group cursor-pointer">
                       <img
                         src={item.imgSrc}
-                        className="transition-transform group-hover:scale-110 duration-500 w-full h-96"
+                        className="transition-transform group-hover:scale-110 duration-500 w-full h-96 p-4"
                         alt={item.packageName}
                       />
                     </div>

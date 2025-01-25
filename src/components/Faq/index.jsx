@@ -1,11 +1,12 @@
 import { useEffect, useState } from "react";
 import {
-  dermoFracAccordianFaqContent,
-  laserHairRemovalFaq,
+  dermoFracAccordianContent,
+  LHRMenAccordianContent,
+  LHRWomenAccordianContent,
   mediFacialFaq,
   oxygeneoFaqAccordianContent,
-  OxyHydraAccordianFaqContent,
-  SkinTighteningFaqAccordianContent,
+  oxyHydraAccordianContent,
+  skinTighteningFaqAccordianContent,
 } from "../../helpers/AccordianContent";
 import { useLocation, useNavigate } from "react-router-dom";
 import { Button, useMediaQuery } from "@mui/material";
@@ -23,10 +24,16 @@ function Faq() {
 
   const faqData = [
     {
-      label: "Laser Hair Removal",
-      id: "laser-hair-removal",
-      title: "Laser Hair Removal - FAQs",
-      content: laserHairRemovalFaq,
+      label: "Laser Hair Removal Men",
+      id: "laser-hair-removal-men",
+      title: "Laser Hair Removal Men - FAQs",
+      content: LHRMenAccordianContent,
+    },
+    {
+      label: "Laser Hair Removal Women",
+      id: "laser-hair-removal-women",
+      title: "Laser Hair Removal Women - FAQs",
+      content: LHRWomenAccordianContent,
     },
     {
       label: "Medi Facial",
@@ -38,13 +45,13 @@ function Faq() {
       label: "Dermafrac Infusion Facial",
       id: "dermaFraq",
       title: "Dermafrac Infusion Facial - FAQs",
-      content: dermoFracAccordianFaqContent,
+      content: dermoFracAccordianContent,
     },
     {
       label: "Oxy Hydra Facial",
       id: "oxy-hydra",
       title: "Oxy Hydra Facial + Glow Peel - FAQs",
-      content: OxyHydraAccordianFaqContent,
+      content: oxyHydraAccordianContent,
     },
     {
       label: "Oxygeneo",
@@ -56,7 +63,7 @@ function Faq() {
       label: "RF Skin Tightening",
       id: "skin-tightening",
       title: "RF Skin Tightening - FAQs",
-      content: SkinTighteningFaqAccordianContent,
+      content: skinTighteningFaqAccordianContent,
     },
   ];
 

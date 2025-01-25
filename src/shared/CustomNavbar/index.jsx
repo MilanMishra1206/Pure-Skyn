@@ -25,7 +25,7 @@ function CustomNavbar() {
 
   const isActive = (path) => location.pathname === path;
   const toggleMenu = () => setMenuOpen(!menuOpen);
-  const isTablet = useMediaQuery("(max-width: 768px)");
+  const isTablet = useMediaQuery("(max-width: 935px)");
   const showSnackbar = useAppSnackbar();
   const cartItems = useSelector((state) => state.cart.items);
   const totalItems = cartItems.length;
@@ -180,21 +180,24 @@ function CustomNavbar() {
       <div>
         <nav className="flex items-center justify-between gap-2">
           <button
-            className="lg:hidden text-white focus:outline-none"
+            className={`${isTablet ? "block" : "hidden"} text-white focus:outline-none`}
             onClick={toggleMenu}
           >
             <GiHamburgerMenu size={"2rem"} />
           </button>
-          <div className="flex lg:hidden">
+          <div className={`${isTablet ? "flex" : "hidden"}`}>
             <Link to="/" className="no-underline font-bold">
               <img
                 src={Resources.images.NavBar.branding}
                 alt="branding"
-                style={{ width: "10rem" }}
+                className="w-32"
               />
             </Link>
           </div>
-          <Link to="/cart" className="navbar-links mr-4 relative lg:hidden">
+          <Link
+            to="/cart"
+            className={`navbar-links mr-4 relative ${isTablet ? "block" : "hidden"}`}
+          >
             <FaCartShopping size="1.8rem" />
             {totalItems > 0 && (
               <span className="absolute left-1/2 bottom-50 text-xs bg-skyn text-white rounded-full px-2 py-1">
@@ -212,6 +215,7 @@ function CustomNavbar() {
             packagesItem={packagesItem}
             isAdmin={isAdmin}
             isLoggedIn={isLoggedIn}
+            isTablet={isTablet}
           />
         ) : (
           <MenuForMobile
@@ -230,6 +234,7 @@ function CustomNavbar() {
             isAdmin={isAdmin}
             isLoggedIn={isLoggedIn}
             handleLogout={handleLogout}
+            isTablet={isTablet}
           />
         )}
       </div>

@@ -1,15 +1,21 @@
-import { MdKeyboardDoubleArrowRight } from "react-icons/md";
-import Resources from "../../../../config/Resources";
 import { Link } from "react-router-dom";
 import { useMediaQuery } from "@mui/material";
+import { motion } from "framer-motion";
+import { lazy, Suspense } from "react";
+
+import Resources from "../../../../config/Resources";
 import { laserServiceForWomenContent } from "../../../../helpers/LaserServices";
 import MotionWrapper from "../../../../config/MotionFramer/MotionWrapper";
-import { motion } from "framer-motion";
 import FadeInWrapper from "../../../../config/MotionFramer/FadeInWrapper";
 import CustomHeader from "../../../../shared/CustomHeader";
 import FadedLineBreak from "../../../../shared/CustomHrTag";
+import CustomAccordion from "../../../../shared/CustomAccordion";
+import { LHRWomenAccordianContent } from "../../../../helpers/AccordianContent";
+import DrawCircleText from "../../../../shared/CustomDrawCircleText";
 
-function LaserHairRemovalForWomen({ category, isMobile }) {
+const CommonHeader = lazy(() => import("../../CommonHeader"));
+
+function LaserHairRemovalForWomen({ category, isMobile, isTablet }) {
   const isLaptop = useMediaQuery("(min-width: 1023px)");
 
   return (
@@ -22,52 +28,38 @@ function LaserHairRemovalForWomen({ category, isMobile }) {
           viewport={{ once: true }}
           className={`${category ? "mt-5" : "mt-0"} ${isMobile ? "px-3" : "p-3"}`}
         >
-          <CustomHeader
-            heading={"Laser Hair Removal For Women"}
-            showBackButton={category}
-            navigateTo={"/services/laser-hair-removal"}
-            headerClass={`${!category ? "!text-center" : ""}`}
-          />
+          {!category && (
+            <CustomHeader
+              heading={"Laser Hair Removal For Women"}
+              headerClass={`${!category ? "!text-center" : ""}`}
+            />
+          )}
         </motion.div>
         {category && (
           <div>
-            <div
-              className={`w-full h-[30rem] bg-cover ${isMobile ? "" : "bg-center"} relative`}
-              style={{
-                backgroundImage: `url(${!isMobile ? Resources.images.Services.LaserHairRemoval.Women.headerWomen : Resources.images.Services.LaserHairRemoval.Women.headerWomen})`,
-              }}
-            >
-              {!isMobile && (
-                <div className="absolute inset-0 flex items-center justify-end bg-opacity-40">
-                  <div className="flex flex-col w-50 p-5">
-                    <div className="font-extrabold text-3xl">
-                      GET AFFORDABLE LASER HAIR REMOVAL NOW!
-                    </div>
-                    <Link
-                      to={"/book-now?treatment=Laser Hair Removal"}
-                      className="flex items-center font-poppins text-3xl no-underline space-x-3 font-bold text-white transition-colors duration-300 ease-in-out hover:!opacity-80 hover:!tracking-widest"
-                    >
-                      Book Now{" "}
-                      <MdKeyboardDoubleArrowRight className="ml-2 text-3xl text-white" />
-                    </Link>
-                  </div>
-                </div>
-              )}
-            </div>
-            {isMobile && (
-              <div className="flex flex-col items-center bg-coal text-white p-5">
-                <div className="font-extrabold text-3xl text-center">
-                  GET AFFORDABLE LASER HAIR REMOVAL NOW!
-                </div>
-                <Link
-                  to={"/book-now?treatment=Laser Hair Removal"}
-                  className="border duration-300 ease-in-out flex font-bold font-poppins hover:!opacity-80 hover:!tracking-widest items-center mt-4 no-underline p-3 rounded-2 space-x-3 text-3xl text-white transition-colors"
-                >
-                  Book Now{" "}
-                  <MdKeyboardDoubleArrowRight className="ml-2 text-3xl text-white" />
-                </Link>
-              </div>
-            )}
+            <Suspense fallback={<div>Loading...</div>}>
+              <CommonHeader
+                isTablet={isTablet}
+                imgSrcLaptop={Resources.images.Home.lhrWomen}
+                imgSrcTablet={Resources.images.Home.lhrWomenMobile}
+                linkTo="/services/laser-hair-removal-packages"
+                heading="LASER HAIR REMOVAL FOR WOMEN"
+                breadcrumbs1="Laser Hair Removal"
+                route1="/services/laser-hair-removal"
+                breadcrumbs2="Women"
+                content="Discover the convenience of at-home laser hair removal for
+                      women with PureSkyn in India. Our advanced, user-friendly
+                      devices provide an effective and safe solution for
+                      achieving silky-smooth skin from the comfort of your own
+                      home. Designed to target unwanted hair with precision,
+                      PureSkyn's innovative technology ensures lasting results
+                      while minimizing discomfort. Say goodbye to traditional
+                      hair removal methods and embrace the ease of laser hair
+                      removal with PureSkyn, empowering you to feel confident
+                      and radiant every day. Experience the future of skincare
+                      today!"
+              />
+            </Suspense>
             <div
               className={`grid grid-cols-1 mt-3 place-items-center ${isMobile ? "p-2" : ""} text-justify`}
             >
@@ -117,6 +109,50 @@ function LaserHairRemovalForWomen({ category, isMobile }) {
                 </motion.div>
               ))}
             </div>
+            {category === "women" && (
+              <motion.div
+                variants={FadeInWrapper("up", 0.1)}
+                initial="hidden"
+                whileInView="show"
+                viewport={{ once: true }}
+              >
+                <FadedLineBreak />
+                <DrawCircleText
+                  headerText={"70% OFF -"}
+                  serviceName={"Laser Hair Removal Packages!"}
+                  buttonText="Check Now"
+                  link="/services/laser-hair-removal-packages"
+                />
+                <div className="text-center text-skyn font-bold text-3xl px-4">
+                  <p>Frequently Asked Questions(FAQs)</p>
+                </div>
+                <div
+                  className={`flex justify-center items-center ${isTablet ? "p-3 flex-col" : "flex-row"}`}
+                >
+                  <div className={`mt-4 w-full ${!isTablet ? "px-5" : ""}`}>
+                    <CustomAccordion accordionData={LHRWomenAccordianContent} />
+                    <Link
+                      to="/faq#Laser Hair Removal Men"
+                      className="text-skyn hover:opacity-80 text-xl font-bold"
+                    >
+                      Show More FAQs
+                    </Link>
+                  </div>
+                  <div
+                    className={`flex justify-center items-center ${!isTablet ? "p-5" : ""}`}
+                  >
+                    <img
+                      src={
+                        Resources.images.Services.LaserHairRemoval
+                          .laserHairRemovalCard
+                      }
+                      alt="laser-Hair-Removal-Card"
+                      className={`rounded-xl shadow mt-4 ${!isMobile ? "h-75" : ""}`}
+                    />
+                  </div>
+                </div>
+              </motion.div>
+            )}
           </div>
         )}
       </div>

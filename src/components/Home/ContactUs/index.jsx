@@ -2,13 +2,13 @@ import { FaPhoneAlt, FaRegAddressBook } from "react-icons/fa";
 import { IoPhonePortraitOutline } from "react-icons/io5";
 import { MdOutlineMail } from "react-icons/md";
 import Resources from "../../../config/Resources";
-import CustomHeader from "../../../shared/CustomHeader";
+import CustomHomeHeader from "../../../shared/CustomHomeHeader";
 
 function ContactUs({ isMobile }) {
   return (
     <div className="px-4 mb-5">
       <div className={`${isMobile ? "" : "px-4"}`}>
-        <CustomHeader heading={"Contact Us"} />
+        <CustomHomeHeader heading="Contact Us" />
       </div>
       <div className={`${isMobile ? "p-2" : "px-5"}`}>
         <div className="flex flex-col md:!flex-row md:!justify-between items-center">

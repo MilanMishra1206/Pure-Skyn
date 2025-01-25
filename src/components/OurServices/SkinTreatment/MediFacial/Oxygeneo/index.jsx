@@ -1,13 +1,14 @@
-import Resources from "../../../../../config/Resources";
-import { Box, Fab, useMediaQuery } from "@mui/material";
+import { useMediaQuery } from "@mui/material";
 import { Link } from "react-router-dom";
-import { MdKeyboardDoubleArrowRight } from "react-icons/md";
-import { oxygeneoFaq } from "../../../../../helpers/AccordianContent";
+import { motion } from "framer-motion";
+import { lazy, Suspense } from "react";
+
+import Resources from "../../../../../config/Resources";
+import { oxygeneoFaqAccordianContent } from "../../../../../helpers/AccordianContent";
 import {
   OxyGeneoContent,
   oxygeneoThreeSteps,
 } from "../../../../../helpers/MediFacial";
-import { motion } from "framer-motion";
 import FadeInWrapper from "../../../../../config/MotionFramer/FadeInWrapper";
 import CustomAccordion from "../../../../../shared/CustomAccordion";
 import CustomHeader from "../../../../../shared/CustomHeader";
@@ -15,12 +16,14 @@ import FadedLineBreak from "../../../../../shared/CustomHrTag";
 import DrawCircleText from "../../../../../shared/CustomDrawCircleText";
 import CustomFloatingBookNowButton from "../../../../../shared/CustomFloatingBookNowButton";
 
+const CommonHeader = lazy(() => import("../../../CommonHeader"));
+
 function Oxygeneo({ type }) {
   const isMobile = useMediaQuery("(max-width: 767px)");
   const isTablet = useMediaQuery("(max-width: 1023px)");
 
   return (
-    <div className="mt-4">
+    <div className={`${type ? "mt-5" : "mt-0"}`}>
       <motion.div
         variants={FadeInWrapper("left", 0.1)}
         initial="hidden"
@@ -28,62 +31,32 @@ function Oxygeneo({ type }) {
         viewport={{ once: true }}
         className={`${isMobile ? "px-3" : "p-3"}`}
       >
-        <CustomHeader
-          heading={"Oxygeneo"}
-          showBackButton={type}
-          navigateTo={"/services/skin/medi-facial"}
-          headerClass={!type && "!text-2xl"}
-        />
+        {!type && (
+          <CustomHeader
+            heading={"Oxygeneo"}
+            headerClass={!type && "!text-2xl"}
+          />
+        )}
       </motion.div>
+
       {type && (
         <div className="text-justify">
-          <motion.div
-            variants={FadeInWrapper("up", 0.1)}
-            initial="hidden"
-            whileInView="show"
-            viewport={{ once: true }}
-            className={`w-full ${isTablet ? "h-96" : "h-[40rem]"} bg-cover bg-center relative`}
-            style={{
-              backgroundImage: `url(${!isMobile ? Resources.images.Services.OxyGeneo.header : Resources.images.Services.OxyGeneo.img1})`,
-            }}
-          >
-            {!isMobile && (
-              <div className="absolute inset-0 flex items-center justify-end mr-5 bg-opacity-40">
-                <div className="flex flex-col w-50">
-                  <div className="font-extrabold text-3xl">
-                    Oxygeneo Facial at Your Home
-                  </div>
-                  <Link
-                    to={"/book-now?treatment=OxygeneoFacial"}
-                    className="flex items-center font-poppins text-3xl no-underline space-x-3 font-bold text-skyn transition-colors duration-300 ease-in-out hover:!opacity-80 hover:!tracking-widest"
-                  >
-                    Book Now{" "}
-                    <MdKeyboardDoubleArrowRight className="ml-2 text-3xl text-skyn" />
-                  </Link>
-                </div>
-              </div>
-            )}
-          </motion.div>
-          {isMobile && (
-            <motion.div
-              variants={FadeInWrapper("up", 0.1)}
-              initial="hidden"
-              whileInView="show"
-              viewport={{ once: true }}
-              className="flex flex-col items-center bg-coal text-white p-5"
-            >
-              <div className="font-extrabold text-3xl text-center">
-                Oxygeneo Facial at Your Home
-              </div>
-              <Link
-                to={"/book-now?treatment=OxygeneoFacial"}
-                className="border duration-300 ease-in-out flex font-bold font-poppins hover:!opacity-80 hover:!tracking-widest items-center mt-4 no-underline p-3 rounded-2 space-x-3 text-3xl text-white transition-colors"
-              >
-                Book Now{" "}
-                <MdKeyboardDoubleArrowRight className="ml-2 text-3xl text-white" />
-              </Link>
-            </motion.div>
-          )}
+          <Suspense fallback={<div>Loading...</div>}>
+            <CommonHeader
+              isTablet={isTablet}
+              imgSrcLaptop={Resources.images.Home.oxygeneo}
+              imgSrcTablet={Resources.images.Home.oxygeneoMobile}
+              linkTo="/services/laser-hair-removal-packages"
+              heading="OXYGENEO"
+              breadcrumbs1="Medi Facial"
+              route1="/services/skin/medi-facial"
+              breadcrumbs2="Oxygeneo"
+              content="Experience radiant skin with the Oxygeno treatment at home from PureSkyn in India. This innovative skincare solution combines the power of oxygenation 
+              with advanced exfoliation techniques, promoting healthier and rejuvenated skin. Our Oxygeno treatment is designed to enhance blood circulation, reduce fine lines, 
+              and improve overall skin texture, all in the comfort of your home. With easy-to-follow instructions and premium-quality products, you can achieve a spa-like experience 
+              and unveil your skin's natural glow. Discover the perfect blend of luxury and convenience with PureSkyn's Oxygeno treatment today!"
+            />
+          </Suspense>
           <motion.div
             variants={FadeInWrapper("right", 0.1)}
             initial="hidden"
@@ -222,7 +195,7 @@ function Oxygeneo({ type }) {
               <div
                 className={`mt-4 w-full xl:!w-1/2 ${!isTablet ? "px-5" : ""}`}
               >
-                <CustomAccordion accordionData={oxygeneoFaq} />
+                <CustomAccordion accordionData={oxygeneoFaqAccordianContent} />
                 <Link
                   to="/faq#Oxygeneo"
                   className="text-skyn hover:opacity-80 text-xl font-bold"

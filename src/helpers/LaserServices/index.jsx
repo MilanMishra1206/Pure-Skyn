@@ -78,7 +78,7 @@ export const laserServiceForWomenContent = [
     sectionOne:
       "Everyone's hair is different. Generally, once a session is completed, it can last for years, even in some cases forever. 4-8 treatments are required at 4-6 week intervals. To maintain the results of your laser hair removal treatment, regrowth can be controlled with touch-ups every 6 to 12 months, depending on how quickly the hair grows back. These touch-ups keep your skin smooth and hair-free.",
     sectionTwo:
-      "Since each hair is in a different stage of growth and the laser can only target actively growing hairs, it is not possible to remove the hair completely in one session.",
+      "Since each hair is in a different stage of growth and the laser can only target actively growing hair, it is not possible to remove the hair completely in one session.",
     img: Resources.images.Services.LaserHairRemoval.Women.imageFour,
   },
 ];
@@ -92,7 +92,7 @@ export const laserServicePackages = [
     sessions: "(4 + 1) Session",
     perSessionPrice: "₹15,000",
     hours: "5",
-    laserOption: "",
+    label: "",
     imgSrc: Resources.images.Services.LaserHairRemoval.Women.imageTwo,
   },
   {
@@ -102,7 +102,7 @@ export const laserServicePackages = [
     sessions: "(4 + 1) Session",
     perSessionPrice: "₹5,000",
     hours: "1.5",
-    laserOption: "Face And Neck",
+    label: "Face And Neck",
     imgSrc: Resources.images.Services.LaserHairRemoval.faceAndNeck,
   },
   {
@@ -112,7 +112,7 @@ export const laserServicePackages = [
     sessions: "(4 + 1) Session",
     perSessionPrice: "₹6,000",
     hours: "1.30",
-    laserOption: "Bikini And Buttocks",
+    label: "Bikini And Buttocks",
     imgSrc: Resources.images.Services.LaserHairRemoval.bikiniAndButtocks,
   },
   {
@@ -122,7 +122,7 @@ export const laserServicePackages = [
     sessions: "(4 + 1) Session",
     perSessionPrice: "₹6,500",
     hours: "2",
-    laserOption: "Arms And Underarms",
+    label: "Arms And Underarms",
     imgSrc: Resources.images.Services.LaserHairRemoval.underarms,
   },
 ];
@@ -355,8 +355,10 @@ export const servicesCardDetails = [
     id: 1,
     title: "Laser Hair Removal: Silky Smooth, Hassle-Free Skin",
     cardTitle: "Laser Hair Removal",
-    description:
-      "Say goodbye to the hassle of traditional hair removal methods with our advanced Laser Hair Removal treatments. Using state-of-the-art technology, we offer a safe, effective, and virtually painless solution to permanently reduce unwanted hair. Whether it's your face, arms, legs, or sensitive areas, our team ensures a smooth, long-lasting result that leaves your skin feeling soft and hair-free. No more waxing, shaving, or ingrown hairs—just beautifully smooth skin.",
+    description: `Say goodbye to the hassle of traditional hair removal methods with our advanced Laser Hair Removal treatments. 
+      Using state-of-the-art technology, we offer a safe, effective, and virtually painless solution to 
+      permanently reduce unwanted hair. Whether it's your face, arms, legs, or sensitive areas, our team ensures a smooth, 
+      long-lasting result that leaves your skin feeling soft and hair-free. No more waxing, shaving, or ingrown hair—just beautifully smooth skin.`,
     benefits: [
       "Permanent hair reduction",
       "Safe for all skin types",
@@ -369,8 +371,11 @@ export const servicesCardDetails = [
     id: 2,
     title: "Oxy Hydra Facial: Oxygen-Infused Hydration for Radiant Skin",
     cardTitle: "Oxy Hydra Facial",
-    description:
-      "Replenish and rejuvenate your skin with our luxurious Oxy Hydra Facial. This deeply hydrating facial combines oxygen therapy with advanced hydradermabrasion to exfoliate, hydrate, and infuse your skin with essential nutrients. It effectively removes dead skin cells, unclogs pores, and promotes circulation, leaving you with a dewy, glowing complexion. It's the perfect solution for anyone seeking to combat dryness, dullness, or skin congestion.",
+    description: `The Oxy Hydra Facial is a cutting-edge, non-invasive treatment designed to cleanse,
+      exfoliate, hydrate, and oxygenate the skin. This facial uses advanced technologies to deliver
+      nutrients and oxygen deeply into the skin, promoting a glowing, rejuvenated appearance. It is
+      suitable for all skin types and helps address issues like dryness, dullness, fine lines, and acne,
+      leaving the skin refreshed, smooth, and radiant.`,
     benefits: [
       "Deep hydration and nourishment",
       "Revitalizes tired, dull skin",
@@ -383,8 +388,12 @@ export const servicesCardDetails = [
     id: 3,
     title: "RF Skin Tightening: Lift, Firm, and Renew Your Skin",
     cardTitle: "RF Skin Tightening",
-    description:
-      "Achieve firmer, tighter, and more youthful skin with our RF (Radiofrequency) Skin Tightening treatment. Using radiofrequency energy, this treatment stimulates collagen production deep within your skin, tightening loose or sagging areas and reducing the appearance of fine lines and wrinkles. It's non-invasive, painless, and highly effective in restoring your skin's natural elasticity and firmness without any downtime.",
+    description: `RF (Radiofrequency) Skin Tightening is a non-invasive cosmetic treatment that uses
+      radiofrequency energy to stimulate collagen and elastin production in the skin. This treatment
+      helps improve skin elasticity, reduce fine lines and wrinkles, and tighten loose or sagging
+      skin. RF energy penetrates deep into the dermis, gently heating the tissue to trigger natural
+      skin rejuvenation without damaging the surface. It is suitable for areas like the face, neck,
+      abdomen, and thighs, offering a more youthful and lifted appearance.`,
     benefits: [
       "Non-invasive and painless",
       "Improves skin elasticity and tone",
@@ -397,8 +406,12 @@ export const servicesCardDetails = [
     id: 4,
     title: "Dermafrac Infusion Facial: Advanced Skin Rejuvenation",
     cardTitle: "Dermafrac Infusion Facial",
-    description:
-      "The Dermafrac Infusion Facial combines microneedling with the infusion of targeted serums to deeply rejuvenate your skin. This non-invasive treatment stimulates collagen production while addressing skin concerns like fine lines, acne scars, uneven tone, and dryness. The result is smoother, more youthful skin with improved texture and hydration.",
+    description: `DermaFrac Infusion is a non-invasive treatment that combines microneedling with the
+      infusion of customized serums to rejuvenate the skin. It is a non-invasive procedure that helps
+      address various skin concerns, including fine lines, acne scars, hyperpigmentation, and
+      dehydration. The microchannels created during the treatment allow for the deep penetration
+      of serums into the dermis, enhancing their effectiveness. DermaFrac is suitable for all skin
+      types and has no downtime, making it a popular choice for skin rejuvenation.`,
     benefits: [
       "Reduces fine lines, brightens skin, improves acne scars, and hydrates deeply",
       "Quick recovery with glowing, refreshed skin",
@@ -410,8 +423,10 @@ export const servicesCardDetails = [
     id: 5,
     title: "Oxygeneo: 3-in-1 Facial for Ultimate Skin Rejuvenation",
     cardTitle: "Oxygeneo",
-    description:
-      "Experience the power of three skin treatments in one with Oxygeneo. This innovative facial combines exfoliation, oxygenation, and infusion to promote healthy, glowing skin. The treatment gently exfoliates the outer layers of the skin, infuses it with nourishing serums, and enhances oxygen delivery, resulting in radiant, plump skin. It's perfect for those looking to brighten, hydrate, and rejuvenate their skin in a single session.",
+    description: `OxyGeneo is an advanced 3-in-1 facial treatment that combines exfoliation, oxygenation, and
+      infusion to rejuvenate the skin. This non-invasive procedure enhances skin texture, tone, and
+      hydration while stimulating natural oxygenation from within. It's non-invasive, suitable for
+      all skin types, and targets concerns like dullness, fine lines, and uneven tone.`,
     benefits: [
       "3-in-1 rejuvenation: Exfoliation, oxygenation, and infusion",
       "Instantly refreshes and revitalizes skin",
@@ -419,5 +434,188 @@ export const servicesCardDetails = [
     ],
     image: `${Resources.images.Services.OxyGeneo.oxygeneoCard}`,
     linkTo: "/services/skin/medi-facial/oxygeneo",
+  },
+];
+
+export const servicesOffered = [
+  {
+    id: 1,
+    title: "Laser Hair Removal Women",
+    image: `${Resources.images.Services.LaserHairRemoval.Women.imageOne}`,
+    description: `Laser hair removal is a cosmetic procedure that uses concentrated light beams to target hair follicles. It effectively removes unwanted hair by inhibiting future growth, leaving the skin smooth and hair-free. This treatment is ideal for various body areas and provides long-lasting results.`,
+    linkTo: "services/laser-hair-removal/women",
+  },
+  {
+    id: 2,
+    title: "Laser Hair Removal Men",
+    image: `${Resources.images.Services.LaserHairRemoval.Men.image5}`,
+    description: `Laser hair removal for men targets hair follicles using focused laser light, reducing unwanted hair. This non-invasive treatment is perfect for areas like the back, chest, or face. It’s effective, quick, and helps achieve smooth, well-groomed skin without the hassle of shaving.`,
+    linkTo: "services/laser-hair-removal/men",
+  },
+  {
+    id: 3,
+    title: "Oxy Hydra Facial",
+    image: `${Resources.images.Services.OxyHydra.img4}`,
+    description: `The Oxy Hydra Facial is a rejuvenating facial that cleanses, exfoliates, and hydrates the skin. Using advanced technology, it delivers nutrients and oxygen deep into the skin, leaving it smooth and glowing. It addresses skin concerns like dryness, fine lines, and dullness for all skin types.`,
+    linkTo: "services/skin/medi-facial/oxy-hydra-facial",
+  },
+  {
+    id: 4,
+    title: "RF Skin Tightening",
+    image: `${Resources.images.Services.SkinTightening.img7}`,
+    description: `RF Skin Tightening is a non-invasive procedure that uses radiofrequency energy to stimulate collagen production. This treatment helps reduce fine lines, wrinkles, and sagging skin, improving skin elasticity. It’s commonly used on the face, neck, abdomen, and thighs for a youthful, lifted appearance.`,
+    linkTo: "services/skin/medi-facial/skin-tightening",
+  },
+  {
+    id: 5,
+    title: "Dermafrac Infusion Facial",
+    image: `${Resources.images.Services.Dermafrac.img6}`,
+    description: `DermaFrac is a microneedling treatment that infuses the skin with customized serums, targeting various skin concerns. It’s effective for fine lines, acne scars, hyperpigmentation, and dehydration. This non-invasive procedure has no downtime and works for all skin types, making it a popular choice for rejuvenation.`,
+    linkTo: "services/skin/medi-facial/dermafrac-infusion-facial",
+  },
+  {
+    id: 6,
+    title: "Oxygeneo",
+    image: `${Resources.images.Services.OxyGeneo.img6}`,
+    description: `OxyGeneo is an advanced 3-in-1 facial treatment that combines exfoliation, oxygenation, and infusion. This non-invasive procedure improves skin texture, tone, and hydration, while stimulating natural oxygenation from within. It is suitable for all skin types and addresses concerns like dullness and fine lines.`,
+    linkTo: "services/skin/medi-facial/oxygeneo",
+  },
+];
+
+export const laserHairWomenPackage = [
+  {
+    id: 1,
+    packageName: "Full Body",
+    label: "Full Body Women",
+    imgSrc: Resources.images.Services.LaserHairRemoval.Women.imageTwo,
+  },
+  {
+    id: 2,
+    packageName: "Face & Neck",
+    label: "Face And Neck",
+    imgSrc: Resources.images.Services.LaserHairRemoval.Women.imageOne,
+  },
+  {
+    id: 3,
+    packageName: "Bikini & Buttocks",
+    label: "Bikini And Buttocks",
+    imgSrc: Resources.images.Services.LaserHairRemoval.bikiniAndButtocks,
+  },
+  {
+    id: 4,
+    packageName: "Arms & Underarms",
+    label: "Arms And Underarms",
+    imgSrc: Resources.images.Services.LaserHairRemoval.underarms,
+  },
+  {
+    id: 5,
+    packageName: "Half Legs",
+    label: "Half Legs",
+    imgSrc: Resources.images.Services.LaserHairRemoval.fullLegs,
+  },
+  {
+    id: 6,
+    packageName: "Full Legs",
+    label: "Full Legs",
+    imgSrc: Resources.images.Services.LaserHairRemoval.fullLegs,
+  },
+  {
+    id: 7,
+    packageName: "Back",
+    label: "Back",
+    imgSrc: Resources.images.Services.LaserHairRemoval.back,
+  },
+  {
+    id: 8,
+    packageName: "Chest",
+    label: "Chest",
+    imgSrc: Resources.images.Services.LaserHairRemoval.chest,
+  },
+  {
+    id: 9,
+    packageName: "Bikini",
+    label: "Bikini",
+    imgSrc: Resources.images.Services.LaserHairRemoval.bikini,
+  },
+];
+
+export const laserHairMenPackage = [
+  {
+    id: 1,
+    packageName: "Full Body",
+    label: "Full Body Men",
+    imgSrc: Resources.images.Services.LaserHairRemoval.Men.imageTwo,
+  },
+  {
+    id: 2,
+    packageName: "Face & Neck",
+    label: "Face And Neck",
+    imgSrc: Resources.images.Services.LaserHairRemoval.faceAndNeck,
+  },
+  {
+    id: 3,
+    packageName: "Arms & Underarms",
+    label: "Arms And Underarms",
+    imgSrc: Resources.images.Services.LaserHairRemoval.Men.imageOne,
+  },
+  {
+    id: 4,
+    packageName: "Half Legs",
+    label: "Half Legs",
+    imgSrc: Resources.images.Services.LaserHairRemoval.fullLegs,
+  },
+  {
+    id: 5,
+    packageName: "Full Legs",
+    label: "Full Legs",
+    imgSrc: Resources.images.Services.LaserHairRemoval.fullLegs,
+  },
+  {
+    id: 6,
+    packageName: "Back",
+    label: "Back",
+    imgSrc: Resources.images.Services.LaserHairRemoval.back,
+  },
+  {
+    id: 7,
+    packageName: "Chest",
+    label: "Chest",
+    imgSrc: Resources.images.Services.LaserHairRemoval.chest,
+  },
+];
+
+export const oxyHydraPackage = [
+  {
+    id: 1,
+    packageName: "Oxy Hydra Facial",
+    label: "Oxy Hydra Facial",
+    imgSrc: Resources.images.Services.OxyHydra.oxyPackage,
+  },
+];
+
+export const oxygeneoPackage = [
+  {
+    id: 1,
+    packageName: "Oxygeneo",
+    label: "Oxygeneo",
+    imgSrc: Resources.images.Services.mediFacialPackage,
+  },
+];
+
+export const skinTighteningPackage = [
+  {
+    id: 1,
+    packageName: "RF Skin Tightening",
+    label: "RF Skin Tightening",
+    imgSrc: Resources.images.Services.SkinTightening.skinPackage,
+  },
+];
+
+export const dermafraqPackage = [
+  {
+    id: 1,
+    packageName: "Dermafrac Infusion Facial",
+    label: "Dermafrac Infusion Facial",
+    imgSrc: Resources.images.Services.Dermafrac.dermaPackage,
   },
 ];

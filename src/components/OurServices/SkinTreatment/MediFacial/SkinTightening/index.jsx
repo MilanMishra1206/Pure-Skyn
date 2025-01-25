@@ -1,9 +1,10 @@
-import Resources from "../../../../../config/Resources";
-import { Box, Fab, useMediaQuery } from "@mui/material";
+import { useMediaQuery } from "@mui/material";
 import { Link } from "react-router-dom";
-import { MdKeyboardDoubleArrowRight } from "react-icons/md";
-import { SkinTighteningFaq } from "../../../../../helpers/AccordianContent";
+import { lazy, Suspense } from "react";
 import { motion } from "framer-motion";
+
+import Resources from "../../../../../config/Resources";
+import { skinTighteningFaqAccordianContent } from "../../../../../helpers/AccordianContent";
 import FadeInWrapper from "../../../../../config/MotionFramer/FadeInWrapper";
 import CustomAccordion from "../../../../../shared/CustomAccordion";
 import CustomHeader from "../../../../../shared/CustomHeader";
@@ -11,12 +12,14 @@ import FadedLineBreak from "../../../../../shared/CustomHrTag";
 import DrawCircleText from "../../../../../shared/CustomDrawCircleText";
 import CustomFloatingBookNowButton from "../../../../../shared/CustomFloatingBookNowButton";
 
+const CommonHeader = lazy(() => import("../../../CommonHeader"));
+
 function SkinTightening({ type }) {
   const isMobile = useMediaQuery("(max-width: 767px)");
   const isTablet = useMediaQuery("(max-width: 1023px)");
 
   return (
-    <div className="mt-4">
+    <div className={`${type ? "mt-5" : "mt-0"}`}>
       <motion.div
         variants={FadeInWrapper("left", 0.1)}
         initial="hidden"
@@ -24,62 +27,29 @@ function SkinTightening({ type }) {
         viewport={{ once: true }}
         className={`${isMobile ? "px-3" : "p-3"}`}
       >
-        <CustomHeader
-          heading={"RF Skin Tightening"}
-          showBackButton={type}
-          navigateTo={"/services/skin/medi-facial"}
-          headerClass={!type && "!text-2xl !text-left"}
-        />
+        {!type && (
+          <CustomHeader
+            heading={"RF Skin Tightening"}
+            headerClass={!type && "!text-2xl !text-left"}
+          />
+        )}
       </motion.div>
       {type && (
         <div>
-          <motion.div
-            variants={FadeInWrapper("up", 0.1)}
-            initial="hidden"
-            whileInView="show"
-            viewport={{ once: true }}
-            className={`w-full ${isTablet ? "h-96" : "h-[30rem]"} bg-cover bg-center relative`}
-            style={{
-              backgroundImage: `url(${!isMobile ? Resources.images.Services.SkinTightening.header : Resources.images.Services.SkinTightening.skinTighteningCard})`,
-            }}
-          >
-            {!isMobile && (
-              <div className="absolute inset-0 flex items-center justify-end mr-5 bg-opacity-40">
-                <div className="flex flex-col w-50">
-                  <div className="font-extrabold text-3xl">
-                    Hifu Skin Tightening at Your Home
-                  </div>
-                  <Link
-                    to={"/book-now?treatment=RF Skin Tightening"}
-                    className="flex items-center font-poppins text-3xl no-underline space-x-3 font-bold text-skyn transition-colors duration-300 ease-in-out hover:!opacity-80 hover:!tracking-widest"
-                  >
-                    Book Now{" "}
-                    <MdKeyboardDoubleArrowRight className="ml-2 text-3xl text-skyn" />
-                  </Link>
-                </div>
-              </div>
-            )}
-          </motion.div>
-          {isMobile && (
-            <motion.div
-              variants={FadeInWrapper("up", 0.1)}
-              initial="hidden"
-              whileInView="show"
-              viewport={{ once: true }}
-              className="flex flex-col items-center bg-coal text-white p-5"
-            >
-              <div className="font-extrabold text-3xl text-center">
-                Hifu Skin Tightening at Your Home
-              </div>
-              <Link
-                to={"/book-now?treatment=RF Skin Tightening"}
-                className="border duration-300 ease-in-out flex font-bold font-poppins hover:!opacity-80 hover:!tracking-widest items-center mt-4 no-underline p-3 rounded-2 space-x-3 text-3xl text-white transition-colors"
-              >
-                Book Now{" "}
-                <MdKeyboardDoubleArrowRight className="ml-2 text-3xl text-white" />
-              </Link>
-            </motion.div>
-          )}
+          <Suspense fallback={<div>Loading...</div>}>
+            <CommonHeader
+              isTablet={isTablet}
+              imgSrcLaptop={Resources.images.Home.skinTightening}
+              imgSrcTablet={Resources.images.Home.skinTighteningMobile}
+              linkTo="/services/laser-hair-removal-packages"
+              heading="RF SKIN TIGHTENING"
+              breadcrumbs1="Medi Facial"
+              route1="/services/skin/medi-facial"
+              breadcrumbs2="Skin Tightening"
+              content="Get professional-grade skin tightening treatments from the comfort of your own home with PureSkyn's advanced Radio Frequency (RF) treatment. Our expertly trained therapists will visit you at your home to administer a personalized RF skin tightening session, tailored to your specific skin concerns and needs.
+                     This non-invasive, pain-free treatment uses controlled RF energy to stimulate collagen production, tighten loose skin, and improve skin texture. It's ideal for addressing signs of aging, sagging skin, fine lines, and wrinkles. With consistent treatments, you can achieve:"
+            />
+          </Suspense>
           <motion.div
             variants={FadeInWrapper("right", 0.1)}
             initial="hidden"
@@ -330,7 +300,9 @@ function SkinTightening({ type }) {
               <div
                 className={`mt-4 w-full lg:!w-1/2 ${!isTablet ? "px-5" : ""}`}
               >
-                <CustomAccordion accordionData={SkinTighteningFaq} />
+                <CustomAccordion
+                  accordionData={skinTighteningFaqAccordianContent}
+                />
                 <Link
                   to="/faq#RF Skin Tightening"
                   className="text-skyn hover:opacity-80 text-xl font-bold"

@@ -14,12 +14,15 @@ const MenuForDesktop = ({
   packagesItem,
   isAdmin,
   isLoggedIn,
+  isTablet,
 }) => {
   const cartItems = useSelector((state) => state.cart.items);
   const totalItems = cartItems.length;
 
   return (
-    <div className="hidden lg:flex lg:justify-between items-center">
+    <div
+      className={`${isTablet ? "hidden" : "flex justify-between"} items-center`}
+    >
       <Link to="/" className="ml-4 xl:!ml-16 no-underline font-bold">
         <img
           src={Resources.images.NavBar.branding}
@@ -39,7 +42,7 @@ const MenuForDesktop = ({
         </FlyoutLink>
         {!isAdmin && (
           <div className="flex items-center gap-2">
-            <div className="flex items-center navbar-links">
+            <div className="flex items-center navbar-links p-1 xl:!px-4">
               <Dropdown
                 header={"Services"}
                 items={serviceItem}
@@ -52,7 +55,7 @@ const MenuForDesktop = ({
                 )}
               />
             </div>
-            <div className="flex items-center navbar-links">
+            <div className="flex items-center navbar-links !p-1 xl:!px-4">
               <Dropdown
                 header={"Packages"}
                 items={packagesItem}
@@ -65,10 +68,10 @@ const MenuForDesktop = ({
               />
             </div>
             <FlyoutLink href="/book-now" isActive={isActive("/book-now")}>
-              Book Now
+              Book
             </FlyoutLink>
             <FlyoutLink href="/products" isActive={isActive("/products")}>
-              Products
+              Shop
             </FlyoutLink>
           </div>
         )}

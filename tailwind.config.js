@@ -29,6 +29,7 @@ module.exports = {
         coal: "#313440",
         skyn: "#EE6503",
         lightYellow: "#E2C9AB",
+        coffee: "#B18260",
         linkWater: "#C5CFDE",
         kashmirBlue: "#607083",
         solitude: { 1: "#ECF2FB", 2: "#DBE9FF" },

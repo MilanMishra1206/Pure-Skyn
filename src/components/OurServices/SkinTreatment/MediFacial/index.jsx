@@ -1,10 +1,11 @@
 import { lazy, Suspense } from "react";
+import { motion } from "framer-motion";
 import { Link, useLocation, useParams } from "react-router-dom";
-import Resources from "../../../../config/Resources";
 import { useMediaQuery } from "@mui/material";
+
+import Resources from "../../../../config/Resources";
 import { mediFacialAccordianContent } from "../../../../helpers/AccordianContent";
 import { useRouteStatus } from "../../../../config/Context/RouteContext";
-import { motion } from "framer-motion";
 import FadeInWrapper from "../../../../config/MotionFramer/FadeInWrapper";
 import CustomLoader from "../../../../shared/CustomLoader";
 import CustomHeader from "../../../../shared/CustomHeader";
@@ -54,7 +55,7 @@ function MediFacial() {
   ];
   return (
     <div className="mt-5">
-      {pathname === "/services/skin/medi-facial" && (
+      {!type && (
         <motion.div
           variants={FadeInWrapper("left", 0.1)}
           initial="hidden"

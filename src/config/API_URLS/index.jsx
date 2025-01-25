@@ -1,9 +1,8 @@
 const API_URLS = {
-  baseURL: "https://pureSkyn.com/api/v1/",
+  baseURL: "https://pureSkyn.com/api/v1",
   Auth: {
     login: "auth/login",
-    registerUser: "auth/register/user",
-    registerAdmin: "auth/register/admin",
+    registerUser: "auth/register",
   },
   Services: {
     getAllServices: "services/all",
@@ -12,8 +11,12 @@ const API_URLS = {
   Booking: {
     createBooking: "booking/create",
   },
+  Users: {
+    getUserAddress: "users/address"
+  },
   Admin: {
-    getAllUsers: "/users/all",
+    getAllUsers: "users/all",
+    availableTechnicians: "admin/available-technicians",
   },
 };
 

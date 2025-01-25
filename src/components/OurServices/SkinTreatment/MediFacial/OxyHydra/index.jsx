@@ -1,9 +1,10 @@
-import Resources from "../../../../../config/Resources";
-import { Box, Fab, useMediaQuery } from "@mui/material";
+import { lazy, Suspense } from "react";
+import { useMediaQuery } from "@mui/material";
 import { Link } from "react-router-dom";
-import { MdKeyboardDoubleArrowRight } from "react-icons/md";
-import { OxyHydraAccordianContent } from "../../../../../helpers/AccordianContent";
 import { motion } from "framer-motion";
+
+import Resources from "../../../../../config/Resources";
+import { oxyHydraAccordianContent } from "../../../../../helpers/AccordianContent";
 import FadeInWrapper from "../../../../../config/MotionFramer/FadeInWrapper";
 import CustomAccordion from "../../../../../shared/CustomAccordion";
 import CustomHeader from "../../../../../shared/CustomHeader";
@@ -11,12 +12,14 @@ import FadedLineBreak from "../../../../../shared/CustomHrTag";
 import DrawCircleText from "../../../../../shared/CustomDrawCircleText";
 import CustomFloatingBookNowButton from "../../../../../shared/CustomFloatingBookNowButton";
 
+const CommonHeader = lazy(() => import("../../../CommonHeader"));
+
 function OxyHydra({ type }) {
   const isMobile = useMediaQuery("(max-width: 767px)");
   const isTablet = useMediaQuery("(max-width: 1023px)");
 
   return (
-    <div className="mt-4">
+    <div className={`${type ? "mt-5" : "mt-0"}`}>
       <motion.div
         variants={FadeInWrapper("left", 0.1)}
         initial="hidden"
@@ -24,62 +27,34 @@ function OxyHydra({ type }) {
         viewport={{ once: true }}
         className={`${isMobile ? "px-3" : "p-3"}`}
       >
-        <CustomHeader
-          heading={"Oxy Hydra Facial"}
-          showBackButton={type}
-          navigateTo={"/services/skin/medi-facial"}
-          headerClass={!type && "!text-2xl"}
-        />
+        {!type && (
+          <CustomHeader
+            heading={"Oxy Hydra Facial"}
+            showBackButton={type}
+            navigateTo={"/services/skin/medi-facial"}
+            headerClass={!type && "!text-2xl"}
+          />
+        )}
       </motion.div>
       {type && (
         <div className="text-justify">
-          <motion.div
-            variants={FadeInWrapper("up", 0.1)}
-            initial="hidden"
-            whileInView="show"
-            viewport={{ once: true }}
-            className="w-full h-[30rem] bg-cover bg-center relative"
-            style={{
-              backgroundImage: `url(${!isMobile ? Resources.images.Services.OxyHydra.header : Resources.images.Services.OxyHydra.oxyHydraCard})`,
-            }}
-          >
-            {!isMobile && (
-              <div className="absolute inset-0 flex items-center justify-end mr-5 bg-opacity-40">
-                <div className="flex flex-col w-50">
-                  <div className="font-extrabold text-3xl">
-                    Hydrafacial Treatment at Your Home
-                  </div>
-                  <Link
-                    to={"/book-now?treatment=Oxy Hydra Facial"}
-                    className="flex items-center font-poppins text-3xl no-underline space-x-3 font-bold text-skyn transition-colors duration-300 ease-in-out hover:!opacity-80 hover:!tracking-widest"
-                  >
-                    Book Now{" "}
-                    <MdKeyboardDoubleArrowRight className="ml-2 text-3xl text-skyn" />
-                  </Link>
-                </div>
-              </div>
-            )}
-          </motion.div>
-          {isMobile && (
-            <motion.div
-              variants={FadeInWrapper("up", 0.1)}
-              initial="hidden"
-              whileInView="show"
-              viewport={{ once: true }}
-              className="flex flex-col items-center bg-coal text-white p-5"
-            >
-              <div className="font-extrabold text-3xl text-center">
-                Hydrafacial Treatment at Your Home
-              </div>
-              <Link
-                to={"/book-now?treatment=Oxy Hydra Facial"}
-                className="border duration-300 ease-in-out flex font-bold font-poppins hover:!opacity-80 hover:!tracking-widest items-center mt-4 no-underline p-3 rounded-2 space-x-3 text-3xl text-white transition-colors"
-              >
-                Book Now{" "}
-                <MdKeyboardDoubleArrowRight className="ml-2 text-3xl text-white" />
-              </Link>
-            </motion.div>
-          )}
+          <Suspense fallback={<div>Loading...</div>}>
+            <CommonHeader
+              isTablet={isTablet}
+              imgSrcLaptop={Resources.images.Home.oxyhydra}
+              imgSrcTablet={Resources.images.Home.oxyhydraMoble}
+              linkTo="/services/laser-hair-removal-packages"
+              heading="OXY HYDRA FACIAL"
+              breadcrumbs1="Medi Facial"
+              route1="/services/skin/medi-facial"
+              breadcrumbs2="Oxy Hydra Facial"
+              content="Experience radiant skin with the Oxy Hydra Facial at PureSkyn, India's premier destination for at-home skincare treatments. 
+              Our Oxy Hydra Facial combines the power of oxygen and hydrating serums to deeply cleanse, exfoliate, and rejuvenate your skin, 
+              all from the comfort of your home. This advanced treatment enhances hydration, boosts collagen production, and reduces the appearance 
+              of fine lines, leaving your skin feeling fresh, revitalized, and glowing. Indulge in a spa-like experience tailored to your unique skin needs, 
+              and unveil your natural beauty with PureSkyn. Your journey to healthier skin begins here!"
+            />
+          </Suspense>
           <motion.div
             variants={FadeInWrapper("right", 0.1)}
             initial="hidden"
@@ -349,7 +324,7 @@ function OxyHydra({ type }) {
               <div
                 className={`mt-4 w-full lg:!w-1/2 ${!isTablet ? "px-5" : ""}`}
               >
-                <CustomAccordion accordionData={OxyHydraAccordianContent} />
+                <CustomAccordion accordionData={oxyHydraAccordianContent} />
                 <Link
                   to="/faq#Oxy Hydra Facial"
                   className="text-skyn hover:opacity-80 text-xl font-bold"

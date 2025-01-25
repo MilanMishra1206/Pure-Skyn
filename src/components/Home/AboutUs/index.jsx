@@ -1,17 +1,15 @@
 import { useMediaQuery } from "@mui/material";
-import { useRouteStatus } from "../../../config/Context/RouteContext";
-import CustomHeader from "../../../shared/CustomHeader";
 import FadeInWrapper from "../../../config/MotionFramer/FadeInWrapper";
 import { motion } from "framer-motion";
 import CustomHrTag from "../../../shared/CustomHrTag";
 import { Link } from "react-router-dom";
 import { MdKeyboardDoubleArrowRight } from "react-icons/md";
+import CustomHomeHeader from "../../../shared/CustomHomeHeader";
 
 function AboutUs() {
   const isTablet = useMediaQuery("(max-width: 1023px)");
   const isMobile = useMediaQuery("(max-width: 767px)");
 
-  const { isHomePage } = useRouteStatus();
   return (
     <motion.div
       variants={FadeInWrapper("left", 0.1)}
@@ -21,12 +19,7 @@ function AboutUs() {
       className={`mt-3 ${isTablet ? "py-3" : ""}`}
     >
       <div className={`mt-5 ${isMobile ? "px-4" : "px-5"}`}>
-        <CustomHeader
-          heading={"About Us"}
-          subHeading={"WHO WE ARE"}
-          showBackButton={!isHomePage}
-          navigateTo={"/"}
-        />
+        <CustomHomeHeader heading="About Us" />
         <p className="mt-4 font-poppins text-cello font-medium">
           At Pure Skyn we are focused on providing you with the permanent laser
           hair removal results that you have always wanted and nothing less. We

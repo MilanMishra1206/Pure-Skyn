@@ -1,16 +1,15 @@
 import Resources from "../../../config/Resources";
 import { whyUsContent } from "../../../helpers/AccordianContent";
 import CustomAccordion from "../../../shared/CustomAccordion";
-import CustomHeader from "../../../shared/CustomHeader";
+import CustomHomeHeader from "../../../shared/CustomHomeHeader";
 
 function WhyUs({ isMobile }) {
   return (
     <div className="px-4 mb-5">
       <div className={`${isMobile ? "" : "px-4"}`}>
-        <CustomHeader
-          heading={"Why Pure Skyn?"}
-          subHeading={
-            "Give your clients the silky smooth skin they crave with Pure Skyn"
+        <CustomHomeHeader
+          heading={
+            "Why Pure Skyn? - Give your clients the silky smooth skin they crave with Pure Skyn"
           }
         />
       </div>

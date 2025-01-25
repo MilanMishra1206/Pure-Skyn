@@ -1,11 +1,11 @@
 import { Link } from "react-router-dom";
 import Resources from "../../../config/Resources";
-import CustomHeader from "../../../shared/CustomHeader";
 import CustomCards from "../../../shared/CustomCards";
 import FadeInWrapper from "../../../config/MotionFramer/FadeInWrapper";
 import { motion } from "framer-motion";
 import DrawCircleText from "../../../shared/CustomDrawCircleText";
 import { MdKeyboardDoubleArrowRight } from "react-icons/md";
+import CustomHomeHeader from "../../../shared/CustomHomeHeader";
 
 function BestSelling({ isMobile, isLargeScreen }) {
   const services = [
@@ -35,10 +35,7 @@ function BestSelling({ isMobile, isLargeScreen }) {
   return (
     <div className="px-4">
       <div className={`${isMobile ? "" : "px-4"}`}>
-        <CustomHeader
-          heading={"Most Popular"}
-          subHeading={"Laser Hair Removal"}
-        />
+        <CustomHomeHeader heading="Most Popular - Laser Hair Removal" />
       </div>
       <div className="flex justify-end px-5">
         <Link

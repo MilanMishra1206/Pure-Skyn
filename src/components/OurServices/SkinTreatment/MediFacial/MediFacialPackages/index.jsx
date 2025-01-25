@@ -1,8 +1,9 @@
-import { MdKeyboardDoubleArrowRight } from "react-icons/md";
 import { Link } from "react-router-dom";
 import { useMediaQuery } from "@mui/material";
-import { mediFacialPrimePackages } from "../../../../../helpers/LaserServices";
 import { motion } from "framer-motion";
+import { MdKeyboardDoubleArrowRight } from "react-icons/md";
+
+import { mediFacialPrimePackages } from "../../../../../helpers/LaserServices";
 import MotionWrapper from "../../../../../config/MotionFramer/MotionWrapper";
 import FadeInWrapper from "../../../../../config/MotionFramer/FadeInWrapper";
 import CustomHeader from "../../../../../shared/CustomHeader";
