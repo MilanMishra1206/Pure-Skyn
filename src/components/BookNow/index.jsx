@@ -1,7 +1,6 @@
 import {
   Box,
   Breadcrumbs,
-  Button,
   Step,
   StepLabel,
   Stepper,
@@ -18,7 +17,7 @@ import { motion } from "framer-motion";
 import { Link, useLocation } from "react-router-dom";
 import { useMutation } from "react-query";
 import createNewBooking from "../../services/Booking";
-import BookNowForm from "./BookNowForm";
+import BookNowDetails from "./BookNowDetails";
 import Resources from "../../config/Resources";
 import BookNowOptions from "./BookNowOptions";
 
@@ -196,10 +195,15 @@ function BookNow() {
 
   const handleTreatmentClick = (treatmentName) => {
     setCurrentStep(currentStep + 1);
-    if (!treatmentName.includes("Laser")) {
+    if (
+      ["Oxy Hydra Facial", "Dermafrac Infustion Facial", "Oxygeneo"].includes(
+        treatmentName
+      )
+    ) {
       setCurrentStep(currentStep + 2);
     }
     setStepHeading(treatmentName);
+    sessionStorage.setItem("treatmentName", treatmentName);
   };
 
   const handleStepClick = (currentStep, stepIndex) => {
@@ -299,17 +303,17 @@ function BookNow() {
           <BookNowOptions
             heading={stepHeading}
             setTreatmentPackage={setTreatmentPackage}
+            treatmentPackage={treatmentPackage}
             setCurrentStep={setCurrentStep}
           />
         )}
         {currentStep === 2 && (
-          <BookNowForm
+          <BookNowDetails
             formik={formik}
             isMobile={isMobile}
             laserHairRemovalOptions={laserHairRemovalOptions}
             timeSlots={timeSlots}
             handleSubmit={handleSubmit}
-            treatmentPackage={treatmentPackage}
           />
         )}
       </div>

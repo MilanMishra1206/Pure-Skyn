@@ -487,55 +487,71 @@ export const laserHairWomenPackage = [
     id: 1,
     packageName: "Full Body",
     label: "Full Body Women",
-    imgSrc: Resources.images.Services.LaserHairRemoval.Women.imageTwo,
+    featureName: "fullBodyWomen",
+    imgSrc: Resources.images.Home.lhr.fullBodyPackage,
   },
   {
     id: 2,
     packageName: "Face & Neck",
     label: "Face And Neck",
-    imgSrc: Resources.images.Services.LaserHairRemoval.Women.imageOne,
+    featureName: "faceAndNeck",
+    imgSrc: Resources.images.Home.lhr.facePackage,
   },
   {
     id: 3,
     packageName: "Bikini & Buttocks",
     label: "Bikini And Buttocks",
-    imgSrc: Resources.images.Services.LaserHairRemoval.bikiniAndButtocks,
+    featureName: "bikiniAndButtocks",
+    imgSrc: Resources.images.Home.lhr.bikiniPackage,
   },
   {
     id: 4,
     packageName: "Arms & Underarms",
     label: "Arms And Underarms",
-    imgSrc: Resources.images.Services.LaserHairRemoval.underarms,
+    featureName: "armsAndUnderarms",
+    imgSrc: Resources.images.Home.lhr.armsPackage,
   },
   {
     id: 5,
-    packageName: "Half Legs",
-    label: "Half Legs",
-    imgSrc: Resources.images.Services.LaserHairRemoval.fullLegs,
+    packageName: "Chest & Back",
+    label: "Chest And UndeBackrarms",
+    featureName: "chestAndBack",
+    imgSrc: Resources.images.Home.lhr.chestPackage,
   },
   {
     id: 6,
-    packageName: "Full Legs",
-    label: "Full Legs",
-    imgSrc: Resources.images.Services.LaserHairRemoval.fullLegs,
+    packageName: "Half Legs",
+    label: "Half Legs",
+    featureName: "halfLegs",
+    imgSrc: Resources.images.Home.lhr.fullLegsPackage,
   },
   {
     id: 7,
-    packageName: "Back",
-    label: "Back",
-    imgSrc: Resources.images.Services.LaserHairRemoval.back,
+    packageName: "Full Legs",
+    label: "Full Legs",
+    featureName: "fullLegs",
+    imgSrc: Resources.images.Home.lhr.fullLegsPackage,
   },
   {
     id: 8,
-    packageName: "Chest",
-    label: "Chest",
-    imgSrc: Resources.images.Services.LaserHairRemoval.chest,
+    packageName: "Back",
+    label: "Back",
+    featureName: "back",
+    imgSrc: Resources.images.Home.lhr.backPackage,
   },
   {
     id: 9,
+    packageName: "Chest",
+    label: "Chest",
+    featureName: "chest",
+    imgSrc: Resources.images.Home.lhr.chestPackage,
+  },
+  {
+    id: 10,
     packageName: "Bikini",
     label: "Bikini",
-    imgSrc: Resources.images.Services.LaserHairRemoval.bikini,
+    featureName: "bikini",
+    imgSrc: Resources.images.Home.lhr.bikiniPackage,
   },
 ];
 
@@ -544,43 +560,50 @@ export const laserHairMenPackage = [
     id: 1,
     packageName: "Full Body",
     label: "Full Body Men",
-    imgSrc: Resources.images.Services.LaserHairRemoval.Men.imageTwo,
+    featureName: "fullBodyMen",
+    imgSrc: Resources.images.Home.lhr.fullBodyPackage,
   },
   {
     id: 2,
     packageName: "Face & Neck",
     label: "Face And Neck",
-    imgSrc: Resources.images.Services.LaserHairRemoval.faceAndNeck,
+    featureName: "faceAndNeck",
+    imgSrc: Resources.images.Home.lhr.facePackage,
   },
   {
     id: 3,
     packageName: "Arms & Underarms",
     label: "Arms And Underarms",
-    imgSrc: Resources.images.Services.LaserHairRemoval.Men.imageOne,
+    featureName: "armsAndUnderarms",
+    imgSrc: Resources.images.Home.lhr.armsPackage,
   },
   {
     id: 4,
     packageName: "Half Legs",
     label: "Half Legs",
-    imgSrc: Resources.images.Services.LaserHairRemoval.fullLegs,
+    featureName: "halfLegs",
+    imgSrc: Resources.images.Home.lhr.fullLegsPackage,
   },
   {
     id: 5,
     packageName: "Full Legs",
     label: "Full Legs",
-    imgSrc: Resources.images.Services.LaserHairRemoval.fullLegs,
+    featureName: "fullLegs",
+    imgSrc: Resources.images.Home.lhr.fullLegsPackage,
   },
   {
     id: 6,
     packageName: "Back",
     label: "Back",
-    imgSrc: Resources.images.Services.LaserHairRemoval.back,
+    featureName: "back",
+    imgSrc: Resources.images.Home.lhr.backPackage,
   },
   {
     id: 7,
     packageName: "Chest",
     label: "Chest",
-    imgSrc: Resources.images.Services.LaserHairRemoval.chest,
+    featureName: "chest",
+    imgSrc: Resources.images.Home.lhr.chestPackage,
   },
 ];
 
@@ -589,7 +612,8 @@ export const oxyHydraPackage = [
     id: 1,
     packageName: "Oxy Hydra Facial",
     label: "Oxy Hydra Facial",
-    imgSrc: Resources.images.Services.OxyHydra.oxyPackage,
+    featureName: "oxyhydraFacial",
+    imgSrc: Resources.images.Home.oxyhydraPackage,
   },
 ];
 
@@ -598,16 +622,67 @@ export const oxygeneoPackage = [
     id: 1,
     packageName: "Oxygeneo",
     label: "Oxygeneo",
-    imgSrc: Resources.images.Services.mediFacialPackage,
+    featureName: "oxygeneo",
+    imgSrc: Resources.images.Home.oxygeneoPackage,
   },
 ];
 
 export const skinTighteningPackage = [
   {
     id: 1,
-    packageName: "RF Skin Tightening",
-    label: "RF Skin Tightening",
-    imgSrc: Resources.images.Services.SkinTightening.skinPackage,
+    packageName: "Abdomen",
+    label: "Abdomen",
+    featureName: "abdomen",
+    imgSrc: Resources.images.Home.skinTighteningPackage.STAbdomenPackage,
+  },
+  {
+    id: 2,
+    packageName: "Ankles, Feet and Knee",
+    label: "Ankles-Feet-Knee",
+    featureName: "anklesFeetKnee",
+    imgSrc: Resources.images.Home.skinTighteningPackage.STAnklesFeetKneePackage,
+  },
+  {
+    id: 3,
+    packageName: "Arms",
+    label: "Arms",
+    featureName: "arms",
+    imgSrc: Resources.images.Home.skinTighteningPackage.STArmsPackage,
+  },
+  {
+    id: 4,
+    packageName: "Chin",
+    label: "Chin",
+    featureName: "chin",
+    imgSrc: Resources.images.Home.skinTighteningPackage.STChinPackage,
+  },
+  {
+    id: 5,
+    packageName: "Upper Chest",
+    label: "Upper Chest",
+    featureName: "upperChest",
+    imgSrc: Resources.images.Home.skinTighteningPackage.STDColletPackage,
+  },
+  {
+    id: 6,
+    packageName: "Full Face",
+    label: "Full Face",
+    featureName: "fullFace",
+    imgSrc: Resources.images.Home.skinTighteningPackage.STFullFace,
+  },
+  {
+    id: 7,
+    packageName: "Inner Thighs",
+    label: "Inner Thighs",
+    featureName: "innerThighs",
+    imgSrc: Resources.images.Home.skinTighteningPackage.STInnerThighPackage,
+  },
+  {
+    id: 8,
+    packageName: "Outer Thighs",
+    label: "Outer Thighs",
+    featureName: "outerThighs",
+    imgSrc: Resources.images.Home.skinTighteningPackage.STOuterThighs,
   },
 ];
 
@@ -616,6 +691,270 @@ export const dermafraqPackage = [
     id: 1,
     packageName: "Dermafrac Infusion Facial",
     label: "Dermafrac Infusion Facial",
-    imgSrc: Resources.images.Services.Dermafrac.dermaPackage,
+    featureName: "dermafrac",
+    imgSrc: Resources.images.Home.dermafracPackage,
   },
 ];
+
+export const allPackageDetails = {
+  LHRWomen: {
+    fullBodyWomen: [
+      {
+        id: 1,
+        name: "Full Body - (4+1) Session",
+        price: 60000,
+      },
+      {
+        id: 2,
+        name: "Full Body - Single Session",
+        price: 15000,
+      },
+    ],
+    faceAndNeck: [
+      {
+        id: 1,
+        name: "Face and Neck - (4+1) Session",
+        price: 20000,
+      },
+      {
+        id: 2,
+        name: "Face and Neck - Single Session",
+        price: 5000,
+      },
+    ],
+    bikiniAndButtocks: [
+      {
+        id: 1,
+        name: "Bikini and Buttocks - (4+1) Session",
+        price: 24000,
+      },
+      {
+        id: 2,
+        name: "Bikini and Buttocks - Single Session",
+        price: 6000,
+      },
+    ],
+    armsAndUnderarms: [
+      {
+        id: 1,
+        name: "Arms and Underarms - (4+1) Session",
+        price: 26000,
+      },
+      {
+        id: 2,
+        name: "Arms and Underarms - Single Session",
+        price: 6500,
+      },
+    ],
+    checkAndBack: [
+      {
+        id: 1,
+        name: "Chest and Back - (4+1) Session",
+        price: 32000,
+      },
+      {
+        id: 2,
+        name: "Arms and Underarms - Single Session",
+        price: 8000,
+      },
+    ],
+    halfLegs: [
+      {
+        id: 1,
+        name: "Half Legs - Single Session",
+        price: 5000,
+      },
+    ],
+    fullLegs: [
+      {
+        id: 1,
+        name: "Full Legs - Single Session",
+        price: 8000,
+      },
+    ],
+    back: [
+      {
+        id: 1,
+        name: "Back - Single Session",
+        price: 5000,
+      },
+    ],
+    chest: [
+      {
+        id: 1,
+        name: "Chest - Single Session",
+        price: 5000,
+      },
+    ],
+    bikini: [
+      {
+        id: 1,
+        name: "Bikini - Single Session",
+        price: 5000,
+      },
+    ],
+  },
+  LHRMen: {
+    fullBodyMen: [
+      {
+        id: 1,
+        name: "Full Body - (4+1) Session",
+        price: 60000,
+      },
+      {
+        id: 2,
+        name: "Full Body - Single Session",
+        price: 15000,
+      },
+    ],
+    faceAndNeck: [
+      {
+        id: 1,
+        name: "Face and Neck - (4+1) Session",
+        price: 20000,
+      },
+      {
+        id: 2,
+        name: "Face and Neck - Single Session",
+        price: 5000,
+      },
+    ],
+    armsAndUnderarms: [
+      {
+        id: 1,
+        name: "Arms and Underarms - (4+1) Session",
+        price: 26000,
+      },
+      {
+        id: 2,
+        name: "Arms and Underarms - Single Session",
+        price: 6500,
+      },
+    ],
+    checkAndBack: [
+      {
+        id: 1,
+        name: "Chest and Back - (4+1) Session",
+        price: 32000,
+      },
+      {
+        id: 2,
+        name: "Arms and Underarms - Single Session",
+        price: 8000,
+      },
+    ],
+    halfLegs: [
+      {
+        id: 1,
+        name: "Half Legs - Single Session",
+        price: 5000,
+      },
+    ],
+    fullLegs: [
+      {
+        id: 1,
+        name: "Full Legs - Single Session",
+        price: 8000,
+      },
+    ],
+    back: [
+      {
+        id: 1,
+        name: "Back - Single Session",
+        price: 5000,
+      },
+    ],
+    chest: [
+      {
+        id: 1,
+        name: "Chest - Single Session",
+        price: 5000,
+      },
+    ],
+  },
+  skinTightening: {
+    abdomen: [
+      {
+        id: 1,
+        name: "Abdoment - Single Session",
+        price: 5000,
+      },
+    ],
+    anklesFeetKnee: [
+      {
+        id: 1,
+        name: "Ankles, Feet and Knee - Single Session",
+        price: 5000,
+      },
+    ],
+    arms: [
+      {
+        id: 1,
+        name: "Arms - Single Session",
+        price: 5000,
+      },
+    ],
+    chin: [
+      {
+        id: 1,
+        name: "Chin - Single Session",
+        price: 5000,
+      },
+    ],
+    upperChest: [
+      {
+        id: 1,
+        name: "Upper Chest - Single Session",
+        price: 5000,
+      },
+    ],
+    fullFace: [
+      {
+        id: 1,
+        name: "Full Face - Single Session",
+        price: 5000,
+      },
+    ],
+    innerThighs: [
+      {
+        id: 1,
+        name: "Inner Thighs - Single Session",
+        price: 5000,
+      },
+    ],
+    outerThighs: [
+      {
+        id: 1,
+        name: "Outer Thighs - Single Session",
+        price: 5000,
+      },
+    ],
+  },
+  oxyHydra: {
+    oxyHdra: [
+      {
+        id: 1,
+        name: "Oxy Hydra - Single Session",
+        price: 5000,
+      },
+    ],
+  },
+  oxyGeneo: {
+    oxyGeneo: [
+      {
+        id: 1,
+        name: "Oxy Geneo - Single Session",
+        price: 5000,
+      },
+    ],
+  },
+  dermafrac: {
+    dermafrac: [
+      {
+        id: 1,
+        name: "Dermafrac Infusion Facial - Single Session",
+        price: 10000,
+      },
+    ],
+  },
+};

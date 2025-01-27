@@ -60,13 +60,13 @@ function ServicesOffered({ isMobile, isLargeScreen, isLaptop }) {
               <div className="grid grid-cols-1 lg:!grid-cols-2 space-y-4 lg:!space-x-4 lg:!space-y-0 mt-4 lg:!mt-0">
                 <Link
                   to="/book-now"
-                  className="w-full no-underline text-center rounded-xl shadow md:p-2 lg:!p-3 duration-500 text-coffee hover:!bg-coffee hover:!text-white hover:!shadow-lg"
+                  className="w-full no-underline text-center rounded-3xl border-1 !border-[#B18260] shadow md:p-2 lg:!p-3 duration-500 text-coffee hover:!bg-coffee hover:!text-white hover:!shadow-lg"
                 >
                   Book Now
                 </Link>
                 <Link
                   to="/services"
-                  className="w-full no-underline text-center rounded-xl shadow md:p-2 lg:!p-3 duration-500 text-coffee hover:!bg-coffee hover:!text-white hover:!shadow-lg"
+                  className="w-full no-underline text-center rounded-3xl border-1 !border-[#B18260] shadow md:p-2 lg:!p-3 duration-500 text-coffee hover:!bg-coffee hover:!text-white hover:!shadow-lg"
                 >
                   Explore More
                 </Link>
@@ -99,13 +99,13 @@ function ServicesOffered({ isMobile, isLargeScreen, isLaptop }) {
               <div className="grid grid-cols-1 lg:!grid-cols-2 space-y-4 lg:!space-x-4 lg:!space-y-0 mt-4 lg:!mt-0">
                 <Link
                   to="/book-now"
-                  className="w-full no-underline text-center rounded-xl shadow p-2 lg:!p-3  text-coffee hover:!bg-coffee hover:!text-white hover:!shadow-lg"
+                  className="w-full no-underline text-center rounded-3xl border-1 !border-[#B18260] shadow p-2 lg:!p-3  text-coffee hover:!bg-coffee hover:!text-white hover:!shadow-lg"
                 >
                   Book Now
                 </Link>
                 <Link
                   to="/services"
-                  className="w-full no-underline text-center rounded-xl shadow p-2 lg:!p-3  text-coffee hover:!bg-coffee hover:!text-white hover:!shadow-lg"
+                  className="w-full no-underline text-center rounded-3xl border-1 !border-[#B18260] shadow p-2 lg:!p-3  text-coffee hover:!bg-coffee hover:!text-white hover:!shadow-lg"
                 >
                   Explore More
                 </Link>
