@@ -12,7 +12,6 @@ import DrawCircleText from "../../../../shared/CustomDrawCircleText";
 import { LHRMenAccordianContent } from "../../../../helpers/AccordianContent";
 import CustomAccordion from "../../../../shared/CustomAccordion";
 
-
 const CommonHeader = lazy(() => import("../../CommonHeader"));
 
 function LaserHairRemovalForMen({ category, isMobile, isTablet, isLaptop }) {
@@ -40,8 +39,8 @@ function LaserHairRemovalForMen({ category, isMobile, isTablet, isLaptop }) {
                 isTablet={isTablet}
                 imgSrcLaptop={Resources.images.Home.lhrMen}
                 imgSrcTablet={Resources.images.Home.lhrMenMobile}
-                linkTo="/services/laser-hair-removal-packages"
-                heading="LASER HAIR REMOVAL FOR MEN"
+                linkTo="/book-now"
+                heading="Laser Hair Removal Men"
                 breadcrumbs1="Laser Hair Removal"
                 route1="/services/laser-hair-removal"
                 breadcrumbs2="Men"

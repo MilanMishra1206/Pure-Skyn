@@ -1,4 +1,4 @@
-import { lazy, Suspense } from "react";
+import { lazy, Suspense, useEffect } from "react";
 import { motion } from "framer-motion";
 import { Link, useLocation, useParams } from "react-router-dom";
 import { useMediaQuery } from "@mui/material";
@@ -19,6 +19,14 @@ const OxyHydra = lazy(() => import("./OxyHydra"));
 const SkinTightening = lazy(() => import("./SkinTightening"));
 
 function MediFacial() {
+
+  useEffect(() => {
+    sessionStorage.removeItem("currentBookStep");
+    sessionStorage.removeItem("treatmentName");
+    sessionStorage.removeItem("packageName");
+    sessionStorage.removeItem("packagePrice");
+  }, []);
+
   const { type } = useParams();
   const { pathname } = useLocation();
   const { isMedifacialPage } = useRouteStatus();

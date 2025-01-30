@@ -42,8 +42,8 @@ function LaserHairRemovalForWomen({ category, isMobile, isTablet }) {
                 isTablet={isTablet}
                 imgSrcLaptop={Resources.images.Home.lhrWomen}
                 imgSrcTablet={Resources.images.Home.lhrWomenMobile}
-                linkTo="/services/laser-hair-removal-packages"
-                heading="LASER HAIR REMOVAL FOR WOMEN"
+                linkTo="/book-now"
+                heading="Laser Hair Removal Women"
                 breadcrumbs1="Laser Hair Removal"
                 route1="/services/laser-hair-removal"
                 breadcrumbs2="Women"

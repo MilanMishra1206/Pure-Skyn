@@ -44,8 +44,8 @@ function DermafracInfusionFacial({ type }) {
               isTablet={isTablet}
               imgSrcLaptop={Resources.images.Home.dermfrac}
               imgSrcTablet={Resources.images.Home.dermfracMobile}
-              linkTo="/services/skin/medi-facial-packages"
-              heading="DERMAFRAC INFUSION FACIAL"
+              linkTo="/book-now"
+              heading="Dermafrac Infusion Facial"
               breadcrumbs1="Medi Facial"
               route1="/services/skin/medi-facial"
               breadcrumbs2="Dermafrac"
@@ -303,7 +303,7 @@ function DermafracInfusionFacial({ type }) {
               </div>
             </div>
           </motion.div>
-          <CustomFloatingBookNowButton treatmentName="Dermafrac Infusion Facial" />
+          <CustomFloatingBookNowButton treatmentName="Dermafrac Infusion Facial" goToStep={1}/>
         </div>
       )}
     </div>

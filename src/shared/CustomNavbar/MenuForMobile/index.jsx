@@ -30,7 +30,7 @@ const MenuForMobile = ({
         <div className="fixed inset-0 bg-black bg-opacity-50 backdrop-blur-sm z-40"></div>
       )}
       <div
-        className={`fixed top-0 left-0 w-4/5 md:!w-3/5 bg-[#FAFAFA] z-50 transform ${
+        className={`fixed top-0 left-0 w-4/5 md:!w-3/5 bg-[#FAFAFA] z-50 transform h-full ${
           menuOpen ? "translate-x-0" : "-translate-x-full"
         } ${isTablet ? "block" : "hidden"} transition-all duration-500 ease-in-out overflow-scroll`}
       >

@@ -12,13 +12,7 @@ const CustomDatePicker = lazy(
 );
 const CustomCheckBox = lazy(() => import("../../../../shared/CustomCheckbox"));
 
-function BookNowForm({
-  formik,
-  laserHairRemovalOptions,
-  timeSlots,
-  handleSubmit,
-  treatmentName,
-}) {
+function BookNowForm({ formik, timeSlots, handleSubmit, treatmentName }) {
   const [checked, setChecked] = useState(true);
   return (
     <form className="w-full">
@@ -148,63 +142,6 @@ function BookNowForm({
               touched={getIn(formik.touched, "city")}
             />
           </Suspense>
-          <Suspense fallback={<div />}>
-            <CustomDropdown
-              textClassOverride="!text-kashmirBlue"
-              classes="!rounded-md !mb-4"
-              requiredStar
-              labelToShow="Select Treatment"
-              name="treatment"
-              showIconOutline
-              options={[
-                {
-                  label: "Laser Hair Removal",
-                  value: "Laser Hair Removal",
-                },
-                {
-                  label: "Oxy Hydra Facial",
-                  value: "Oxy Hydra Facial",
-                },
-                {
-                  label: "RF Skin Tightening",
-                  value: "RF Skin Tightening",
-                },
-                {
-                  label: "Dermafrac Infusion Facial",
-                  value: "Dermafrac Infusion Facial",
-                },
-                {
-                  label: "Oxygeneo",
-                  value: "Oxygeneo",
-                },
-              ]}
-              value={formik.values.treatment}
-              handleBlur={formik.handleBlur}
-              handleChange={formik.handleChange}
-              errorMessage={getIn(formik.errors, "treatment")}
-              error={getIn(formik.errors, "treatment")}
-              touched={getIn(formik.touched, "treatment")}
-            />
-          </Suspense>
-          {formik.values.treatment === "Laser Hair Removal" && (
-            <Suspense fallback={<div />}>
-              <CustomDropdown
-                textClassOverride="!text-kashmirBlue"
-                classes="!rounded-md !mb-4"
-                requiredStar
-                labelToShow="Select Laser Hair Removal Option"
-                name="laserOption"
-                showIconOutline
-                options={laserHairRemovalOptions}
-                value={formik.values.laserOption}
-                handleBlur={formik.handleBlur}
-                handleChange={formik.handleChange}
-                errorMessage={getIn(formik.errors, "laserOption")}
-                error={getIn(formik.errors, "laserOption")}
-                touched={getIn(formik.touched, "laserOption")}
-              />
-            </Suspense>
-          )}
           <div className="mb-4">
             <Suspense fallback={<div />}>
               <CustomDatePicker

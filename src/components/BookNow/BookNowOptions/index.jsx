@@ -33,8 +33,8 @@ function BookNowOptions({ heading, setTreatmentPackage, setCurrentStep }) {
       setIsMultiplePackage(false);
     } else if (heading === "RF Skin Tightening") {
       setPackageDetails(skinTighteningPackage);
-      setIsMultiplePackage(true);
-    } else if (heading === "Dermafrac Infustion Facial") {
+      setIsMultiplePackage(false);
+    } else if (heading === "Dermafrac Infusion Facial") {
       setPackageDetails(dermafraqPackage);
       setIsMultiplePackage(false);
     } else if (heading === "Oxygeneo") {
@@ -59,9 +59,9 @@ function BookNowOptions({ heading, setTreatmentPackage, setCurrentStep }) {
     } else if (heading.includes("Skin")) {
       setTreatmentPackageDetails(allPackageDetails.skinTightening[packageName]);
     } else if (heading.includes("Oxygeneo")) {
-      setTreatmentPackageDetails(allPackageDetails.oxyGeneo[packageName]);
+      setTreatmentPackageDetails(allPackageDetails.oxygeneo[packageName]);
     } else if (heading.includes("Oxy Hydra")) {
-      setTreatmentPackageDetails(allPackageDetails.oxyHydra[packageName]);
+      setTreatmentPackageDetails(allPackageDetails.oxyhydraFacial[packageName]);
     }
   };
 
@@ -80,7 +80,7 @@ function BookNowOptions({ heading, setTreatmentPackage, setCurrentStep }) {
   const bookNowClick = () => {
     setOpenModal(false);
     setTreatmentPackageDetails([]);
-    setCurrentStep(2);
+    setCurrentStep(2);        
   };
 
   return (

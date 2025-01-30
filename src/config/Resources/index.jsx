@@ -45,7 +45,7 @@ const Resources = {
       oxyhydraMoble: `${base}/Home/oxyhydra-mobile.png`,
       oxyhydra: `${base}/Home/oxyhydra.png`,
       oxyhydraHeader: `${base}/Home/oxyhydraHeader.png`,
-      oxyhydraPackage: `${base}/Home/oxyhydraPackage.png`,
+      oxyhydraPackage: `${base}/Home/oxyhydraPackage.jpg`,
       skinTighteningMobile: `${base}/Home/skin-tightening-mobile.png`,
       skinTightening: `${base}/Home/skin-tightening.png`,
       skinTighteningHeader: `${base}/Home/skinTighteningHeader.png`,
@@ -62,13 +62,17 @@ const Resources = {
       },
       lhr: {
         armsPackage: `${base}/Home/armsPackage.png`,
-        fullBodyPackage: `${base}/Home/fullBodyPackage.png`,
+        fullBodyFemalePackage: `${base}/Home/full-body-female-package.png`,
+        fullBodyMalePackage: `${base}/Home/full-body-male-package.png`,
         facePackage: `${base}/Home/facePackage.png`,
         fullLegsPackage: `${base}/Home/fullLegsPackage.png`,
+        halfLegsPackage: `${base}/Home/halfLegsPackage.png`,
         backPackage: `${base}/Home/fullBackPackage.png`,
         chestPackage: `${base}/Home/chestPackage.png`,
+        chestMenPackage: `${base}/Home/chestMenPackage.png`,
         bikiniPackage: `${base}/Home/bikiniPackage.png`,
-      }
+        underarmsPackage: `${base}/Home/underarmsPackage.png`,
+      },
     },
     NavBar: {
       notificationIcon: `${base}/NavBar/notification.svg`,

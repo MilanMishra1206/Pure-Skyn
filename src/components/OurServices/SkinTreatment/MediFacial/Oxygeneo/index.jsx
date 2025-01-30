@@ -46,8 +46,8 @@ function Oxygeneo({ type }) {
               isTablet={isTablet}
               imgSrcLaptop={Resources.images.Home.oxygeneo}
               imgSrcTablet={Resources.images.Home.oxygeneoMobile}
-              linkTo="/services/laser-hair-removal-packages"
-              heading="OXYGENEO"
+              linkTo="/book-now"
+              heading="Oxygeneo"
               breadcrumbs1="Medi Facial"
               route1="/services/skin/medi-facial"
               breadcrumbs2="Oxygeneo"
@@ -214,7 +214,7 @@ function Oxygeneo({ type }) {
               </div>
             </div>
           </motion.div>
-          <CustomFloatingBookNowButton treatmentName="Oxygeneo" />
+          <CustomFloatingBookNowButton treatmentName="Oxygeneo" goToStep={1}/>
         </div>
       )}
     </div>

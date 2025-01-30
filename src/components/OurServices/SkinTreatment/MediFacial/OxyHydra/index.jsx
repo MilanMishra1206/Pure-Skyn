@@ -43,8 +43,8 @@ function OxyHydra({ type }) {
               isTablet={isTablet}
               imgSrcLaptop={Resources.images.Home.oxyhydra}
               imgSrcTablet={Resources.images.Home.oxyhydraMoble}
-              linkTo="/services/laser-hair-removal-packages"
-              heading="OXY HYDRA FACIAL"
+              linkTo="/book-now"
+              heading="Oxy Hydra Facial"
               breadcrumbs1="Medi Facial"
               route1="/services/skin/medi-facial"
               breadcrumbs2="Oxy Hydra Facial"
@@ -343,7 +343,7 @@ function OxyHydra({ type }) {
               </div>
             </div>
           </motion.div>
-          <CustomFloatingBookNowButton treatmentName="Oxy Hydra Facial" />
+          <CustomFloatingBookNowButton treatmentName="Oxy Hydra Facial" goToStep={1} />
         </div>
       )}
     </div>

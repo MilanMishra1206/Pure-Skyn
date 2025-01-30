@@ -1,4 +1,4 @@
-import { lazy, Suspense } from "react";
+import { lazy, Suspense, useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import { useMediaQuery } from "@mui/material";
 import { Link, useLocation, useParams } from "react-router-dom";
@@ -22,9 +22,20 @@ const LaserHairRemovalForWomen = lazy(
 function LaserHairRemoval() {
   const { category } = useParams();
   const { pathname } = useLocation();
+  const [treatmentName, setTreatmentName] = useState("");
   const isMobile = useMediaQuery("(max-width: 767px)");
   const isTablet = useMediaQuery("(max-width: 1023px)");
   const isLaptop = useMediaQuery("(min-width: 1023px)");
+
+  useEffect(() => {
+    sessionStorage.removeItem("currentBookStep");
+    sessionStorage.removeItem("treatmentName");
+    sessionStorage.removeItem("packageName");
+    sessionStorage.removeItem("packagePrice");
+    setTreatmentName(
+      category === "men" ? "Laser Hair Removal Men" : "Laser Hair Removal Women"
+    );
+  }, []);
 
   const services = [
     {
@@ -304,7 +315,7 @@ function LaserHairRemoval() {
             </div>
           </motion.div>
         )}
-        <CustomFloatingBookNowButton treatmentName="Laser Hair Removal" />
+        <CustomFloatingBookNowButton treatmentName={treatmentName} goToStep={1} />
       </div>
     </MotionWrapper>
   );

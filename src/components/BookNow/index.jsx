@@ -32,6 +32,15 @@ function BookNow() {
   const [stepHeading, setStepHeading] = useState("Choose Options");
   const [treatmentPackage, setTreatmentPackage] = useState("");
 
+  useEffect(() => {
+    const currentBookStep = JSON.parse(sessionStorage.getItem("currentBookStep"));
+    const treatmentName = sessionStorage.getItem("treatmentName");
+    if (sessionStorage.getItem("currentBookStep")) {
+      setCurrentStep(currentBookStep);
+      setStepHeading(treatmentName);
+    }
+  }, [sessionStorage.getItem("currentStep")]);
+
   const treatmentList = [
     {
       id: 1,
@@ -59,7 +68,7 @@ function BookNow() {
     },
     {
       id: 5,
-      treatmentName: "Dermafrac Infustion Facial",
+      treatmentName: "Dermafrac Infusion Facial",
       imgSrc: Resources.images.Home.dermafracHeader,
       label: "dermafrac",
     },
@@ -96,8 +105,6 @@ function BookNow() {
       treatmentDate: "",
       timeSlot: "",
       city: location.state?.city || "",
-      treatment: location.state?.treatment || "",
-      laserOption: "",
     },
     validationSchema: getBookNowFormValidation,
     onSubmit: (value) => {
@@ -111,8 +118,6 @@ function BookNow() {
         treatmentDate: value.treatmentDate,
         timeSlot: value.treatment,
         pinCode: "342001", //to be fetched from Address API
-        treatment: value.treatment,
-        laserOption: value.laserOption,
       });
     },
   });
@@ -184,24 +189,17 @@ function BookNow() {
     <Link
       key="1"
       to="/"
-      className="text-skyn no-underline font-poppins hover:opacity-80 text-lg"
+      className="text-skyn no-underline !font-poppins hover:opacity-80 text-lg"
     >
       Home
     </Link>,
-    <Typography key="2" className="text-cello font-poppins text-lg">
+    <Typography key="2" className="text-cello !font-poppins text-lg">
       Book
     </Typography>,
   ];
 
   const handleTreatmentClick = (treatmentName) => {
     setCurrentStep(currentStep + 1);
-    if (
-      ["Oxy Hydra Facial", "Dermafrac Infustion Facial", "Oxygeneo"].includes(
-        treatmentName
-      )
-    ) {
-      setCurrentStep(currentStep + 2);
-    }
     setStepHeading(treatmentName);
     sessionStorage.setItem("treatmentName", treatmentName);
   };

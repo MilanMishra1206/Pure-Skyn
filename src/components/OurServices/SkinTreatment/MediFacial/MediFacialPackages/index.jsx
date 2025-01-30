@@ -11,10 +11,18 @@ import FuzzyPricingOverlay from "../../../../../shared/CustomFuzzyPricingOverlay
 import Resources from "../../../../../config/Resources";
 import CustomPricingTable from "../../../../../shared/CustomPricingTable";
 import FadedLineBreak from "../../../../../shared/CustomHrTag";
+import { useEffect } from "react";
 
 function MediFacialPackages() {
   const isTablet = useMediaQuery("(max-width: 1023px)");
   const isMobile = useMediaQuery("(max-width: 767px)");
+
+  useEffect(() => {
+    sessionStorage.removeItem("currentBookStep");
+    sessionStorage.removeItem("treatmentName");
+    sessionStorage.removeItem("packageName");
+    sessionStorage.removeItem("packagePrice");
+  }, []);
 
   return (
     <MotionWrapper>

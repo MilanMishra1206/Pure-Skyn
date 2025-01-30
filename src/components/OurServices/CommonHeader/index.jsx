@@ -53,7 +53,7 @@ function CommonHeader({
           >
             <div className="flex flex-col gap-4 lg:!gap-5 w-50 p-5">
               <div className="text-coffee font-extrabold text-4xl xl:!text-6xl">
-                {heading}
+                {heading.toUpperCase()}
               </div>
               <div>
                 <p className="font-bold text-coal text-justify text-sm xl:!text-lg xl:mt-[20px]">
@@ -62,6 +62,10 @@ function CommonHeader({
               </div>
               <Link
                 to={linkTo}
+                onClick={() => {
+                  sessionStorage.setItem("treatmentName", heading);
+                  sessionStorage.setItem("currentBookStep", 1);
+                }}
                 className="flex justify-center rounded-3 shadow-sm hover:!shadow-2xl xl:mt-[30px] bg-coffee text-white font-bold font-poppins items-center no-underline p-3 rounded-xl space-x-3  xl:text-xl w-full xl:!w-1/3"
               >
                 Book Now{" "}
@@ -77,8 +81,8 @@ function CommonHeader({
       {isTablet && (
         <div className="flex flex-col bg-[#FFF9EA]">
           <div>
-            <div className="text-skyn font-extrabold text-center text-3xl md:!text-5xl xl:!text-6xl p-4">
-              {heading}
+            <div className="text-coffee font-extrabold text-center text-3xl md:!text-5xl xl:!text-6xl p-4">
+              {heading.toUpperCase()}
             </div>
             <img src={imgSrcTablet} alt="laser-hair-removal-men" />
           </div>
@@ -97,7 +101,11 @@ function CommonHeader({
               </div>
               <Link
                 to={linkTo}
-                className="flex justify-center rounded-3 shadow-sm hover:!shadow-2xl xl:mt-[30px] bg-skyn text-white font-bold font-poppins items-center no-underline p-3 rounded-xl space-x-3  xl:text-xl w-full md:!w-1/3"
+                onClick={() => {
+                  sessionStorage.setItem("treatmentName", heading);
+                  sessionStorage.setItem("currentBookStep", 1);
+                }}
+                className="flex justify-center rounded-3 shadow-sm hover:!shadow-2xl xl:mt-[30px] bg-coffee text-white font-bold font-poppins items-center no-underline p-3 rounded-xl space-x-3  xl:text-xl w-full md:!w-1/3"
               >
                 Book Now{" "}
                 <MdKeyboardDoubleArrowRight

@@ -26,7 +26,6 @@ const BookNowDetails = ({
           <div className="flow-root border shadow rounded md:p-4 lg:!pl-1 xl:!p-4 self-start w-full">
             <BookNowForm
               formik={formik}
-              laserHairRemovalOptions={laserHairRemovalOptions}
               timeSlots={timeSlots}
               handleSubmit={handleSubmit}
               treatmentName={treatmentName}

@@ -41,8 +41,8 @@ function SkinTightening({ type }) {
               isTablet={isTablet}
               imgSrcLaptop={Resources.images.Home.skinTightening}
               imgSrcTablet={Resources.images.Home.skinTighteningMobile}
-              linkTo="/services/laser-hair-removal-packages"
-              heading="RF SKIN TIGHTENING"
+              linkTo="/Book-now"
+              heading="RF Skin Tightening"
               breadcrumbs1="Medi Facial"
               route1="/services/skin/medi-facial"
               breadcrumbs2="Skin Tightening"
@@ -321,7 +321,7 @@ function SkinTightening({ type }) {
               </div>
             </div>
           </motion.div>
-          <CustomFloatingBookNowButton treatmentName="RF Skin Tightening" />
+          <CustomFloatingBookNowButton treatmentName="RF Skin Tightening" goToStep={1}/>
         </div>
       )}
     </div>
