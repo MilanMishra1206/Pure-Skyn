@@ -1,4 +1,3 @@
-// import API_URLS from "../../config/API_URLS";
 import API_URLS from "../../config/API_URLS";
 import { axiosInstance } from "../../utils/Axios";
 

@@ -1,4 +1,10 @@
-import { Box, Rating, useMediaQuery } from "@mui/material";
+import {
+  Box,
+  Breadcrumbs,
+  Rating,
+  Typography,
+  useMediaQuery,
+} from "@mui/material";
 import { motion } from "framer-motion";
 import FadeInWrapper from "../../config/MotionFramer/FadeInWrapper";
 import CustomHeader from "../../shared/CustomHeader";
@@ -114,6 +120,19 @@ function Products() {
     showSnackbar("Product Added to Cart", "success");
   };
 
+  const breadcrumbs = [
+    <Link
+      key="1"
+      to="/"
+      className="text-skyn no-underline font-poppins hover:opacity-80 text-lg"
+    >
+      Home
+    </Link>,
+    <Typography key="2" className="text-coal font-poppins cursor-pointer text-lg">
+      Products
+    </Typography>,
+  ];
+
   return (
     <div className="mt-5">
       <motion.div
@@ -123,19 +142,19 @@ function Products() {
         viewport={{ once: true }}
         className={`mt-5 ${isMobile ? "p-3" : "p-5"}`}
       >
-        <CustomHeader
-          heading={"Products"}
-          showBackButton={true}
-          navigateTo={"/"}
-        />
-        <div className="flex justify-end px-4">
-          <Link
-            to={"/cart"}
-            className="flex items-center text-skyn hover:opacity-80 font-bold no-underline hover:scale-110 text-2xl"
-          >
-            Go To Cart
-            <MdKeyboardDoubleArrowRight className="text-3xl text-skyn" />
-          </Link>
+        <div className={`mb-4 py-4 font-poppins`}>
+          <Breadcrumbs separator=">" aria-label="breadcrumb">
+            {breadcrumbs}
+          </Breadcrumbs>
+          <div className="flex justify-end px-4">
+            <Link
+              to={"/cart"}
+              className="flex items-center text-skyn hover:opacity-80 font-bold no-underline hover:scale-110 text-2xl"
+            >
+              Go To Cart
+              <MdKeyboardDoubleArrowRight className="text-3xl text-skyn" />
+            </Link>
+          </div>
         </div>
       </motion.div>
       {/* <motion.div

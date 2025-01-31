@@ -78,52 +78,8 @@ export const laserServiceForWomenContent = [
     sectionOne:
       "Everyone's hair is different. Generally, once a session is completed, it can last for years, even in some cases forever. 4-8 treatments are required at 4-6 week intervals. To maintain the results of your laser hair removal treatment, regrowth can be controlled with touch-ups every 6 to 12 months, depending on how quickly the hair grows back. These touch-ups keep your skin smooth and hair-free.",
     sectionTwo:
-      "Since each hair is in a different stage of growth and the laser can only target actively growing hairs, it is not possible to remove the hair completely in one session.",
+      "Since each hair is in a different stage of growth and the laser can only target actively growing hair, it is not possible to remove the hair completely in one session.",
     img: Resources.images.Services.LaserHairRemoval.Women.imageFour,
-  },
-];
-
-export const laserServicePackages = [
-  {
-    id: 1,
-    packageName: "Full Body",
-    subText: "Excluding Bikini",
-    pricing: "₹60,000",
-    sessions: "(4 + 1) Session",
-    perSessionPrice: "₹15,000",
-    hours: "5",
-    laserOption: "",
-    imgSrc: Resources.images.Services.LaserHairRemoval.Women.imageTwo,
-  },
-  {
-    id: 2,
-    packageName: "Face & Neck",
-    pricing: "₹20,000",
-    sessions: "(4 + 1) Session",
-    perSessionPrice: "₹5,000",
-    hours: "1.5",
-    laserOption: "Face And Neck",
-    imgSrc: Resources.images.Services.LaserHairRemoval.faceAndNeck,
-  },
-  {
-    id: 3,
-    packageName: "Bikini & Buttocks",
-    pricing: "₹24,000",
-    sessions: "(4 + 1) Session",
-    perSessionPrice: "₹6,000",
-    hours: "1.30",
-    laserOption: "Bikini And Buttocks",
-    imgSrc: Resources.images.Services.LaserHairRemoval.bikiniAndButtocks,
-  },
-  {
-    id: 4,
-    packageName: "Arms & Underarms",
-    pricing: "₹26,000",
-    sessions: "(4 + 1) Session",
-    perSessionPrice: "₹6,500",
-    hours: "2",
-    laserOption: "Arms And Underarms",
-    imgSrc: Resources.images.Services.LaserHairRemoval.underarms,
   },
 ];
 
@@ -154,134 +110,46 @@ export const LHRBenefits = [
   },
 ];
 
-export const LHRWomenPricing = [
-  {
-    id: 1,
-    name: "Full Body (excluding Bikini)",
-    price: "₹15,000 per session",
-    route: `/book-now?treatment=Laser Hair Removal&laserType=Full Body (excluding Bikini) - Women`,
-  },
-];
-
-export const LHRMenPricing = [
-  {
-    id: 1,
-    name: "Full Body (excluding private Parts)",
-    price: "₹15,000 per session",
-    route: `/book-now?treatment=Laser Hair Removal&laserType=Full Body (excluding private Parts) - Men`,
-  },
-];
-
-export const LHRPrimePackages = [
-  {
-    id: 1,
-    name: "Face & Neck (4+1 Session)",
-    price: "₹5,000 per session",
-    route: `/book-now?treatment=Laser Hair Removal&laserType=Face And Neck`,
-  },
-  {
-    id: 2,
-    name: "Arms + Underarms (4+1 Session)",
-    price: "₹6,500 per session",
-    route: `/book-now?treatment=Laser Hair Removal&laserType=Arms And Underarms`,
-  },
-  {
-    id: 3,
-    name: "Bikini & Buttocks (Only Women) (4+1 Session)",
-    price: "₹6,000 per session",
-    route: `/book-now?treatment=Laser Hair Removal&laserType=Bikini And Buttocks`,
-  },
-  {
-    id: 4,
-    name: "Chest & Back (4+1 Session)",
-    price: "₹8,000 per session",
-    route: `/book-now?treatment=Laser Hair Removal&laserType=Chest And Back`,
-  },
-];
-
-export const LHRRemovalArea = [
-  {
-    id: 1,
-    name: "Half Legs",
-    price: "₹5,000 per session",
-    route: `/book-now?treatment=Laser Hair Removal&laserType=Half Legs`,
-  },
-  {
-    id: 2,
-    name: "Full Legs",
-    price: "₹8,000 per session",
-    route: `/book-now?treatment=Laser Hair Removal&laserType=Full Legs`,
-  },
-  {
-    id: 3,
-    name: "Back",
-    price: "₹5,000 per session",
-    route: `/book-now?treatment=Laser Hair Removal&laserType=Back`,
-  },
-  {
-    id: 4,
-    name: "Chest",
-    price: "₹5,000 per session",
-    route: `/book-now?treatment=Laser Hair Removal&laserType=Chest`,
-  },
-  {
-    id: 5,
-    name: "Bikini",
-    price: "₹5,000 per session",
-    route: `/book-now?treatment=Laser Hair Removal&laserType=Bikini`,
-  },
-];
-
 export const fullBodyLaserContent = [
   {
     id: 1,
     header: "FULL BODY LASER HAIR REMOVAL FOR FEMALE",
+    label: "Laser Hair Removal Women",
+    pricingContent: [
+      {
+        label: "Laser Hair Removal Women - (4+1) Session",
+        packageName: "Full Body - (4+1) Session",
+        Step3: true,
+        pricing: 60000,
+      },
+      {
+        label: "Laser Hair Removal Women - Single Session",
+        packageName: "Full Body - Single Session",
+        Step3: true,
+        pricing: 15000,
+      },
+    ],
     imgSrc: Resources.images.Services.LaserHairRemoval.fullBodyWomenLHR,
-    pricingContent: LHRWomenPricing,
   },
   {
     id: 2,
     header: "FULL BODY LASER HAIR REMOVAL FOR MALE",
+    label: "Laser Hair Removal Men",
+    pricingContent: [
+      {
+        label: "Laser Hair Removal Men - (4+1) Session",
+        packageName: "Full Body - (4+1) Session",
+        Step3: true,
+        pricing: 60000,
+      },
+      {
+        label: "Laser Hair Removal Men - Single Session",
+        packageName: "Full Body - Single Session",
+        Step3: true,
+        pricing: 15000,
+      },
+    ],
     imgSrc: Resources.images.Services.LaserHairRemoval.fullBodyMenLHR,
-    pricingContent: LHRMenPricing,
-  },
-];
-
-export const LHRPrimePackageImg = [
-  {
-    id: 1,
-    imgSrc: Resources.images.Services.LaserHairRemoval.faceAndNeck,
-  },
-  {
-    id: 2,
-    imgSrc: Resources.images.Services.LaserHairRemoval.underarms,
-  },
-  {
-    id: 3,
-    imgSrc: Resources.images.Services.LaserHairRemoval.bikiniAndButtocks,
-  },
-  {
-    id: 4,
-    imgSrc: Resources.images.Services.LaserHairRemoval.chestAndBack,
-  },
-];
-
-export const LHRAreaImg = [
-  {
-    id: 1,
-    imgSrc: Resources.images.Services.LaserHairRemoval.fullLegs,
-  },
-  {
-    id: 2,
-    imgSrc: Resources.images.Services.LaserHairRemoval.back,
-  },
-  {
-    id: 3,
-    imgSrc: Resources.images.Services.LaserHairRemoval.chest,
-  },
-  {
-    id: 4,
-    imgSrc: Resources.images.Services.LaserHairRemoval.bikini,
   },
 ];
 
@@ -326,27 +194,27 @@ export const sessionWiseHairReduction = [
 export const mediFacialPrimePackages = [
   {
     id: 1,
-    name: "Oxy Hydra Facial + Glow Peel",
-    price: "₹6,500",
-    route: "/book-now?treatment=Oxy Hydra Facial",
+    label: "Oxy Hydra Facial",
+    isMedifacialPackage: true,
+    pricing: 5000,
   },
   {
     id: 2,
-    name: "RF Skin Tightening",
-    price: "₹5,000",
-    route: "/book-now?treatment=RF Skin Tightening",
+    label: "RF Skin Tightening",
+    isMedifacialPackage: true,
+    pricing: 5000,
   },
   {
     id: 3,
-    name: "Dermafrac Infusion Facial",
-    price: "₹10,000",
-    route: "/book-now?treatment=Dermafrac Infusion Facial",
+    label: "Dermafrac Infusion Facial",
+    isMedifacialPackage: true,
+    pricing: 10000,
   },
   {
     id: 4,
-    name: "Oxygeneo",
-    price: "₹6,500",
-    route: "/book-now?treatment=Oxygeneo",
+    label: "Oxygeneo",
+    isMedifacialPackage: true,
+    pricing: 5000,
   },
 ];
 
@@ -355,8 +223,10 @@ export const servicesCardDetails = [
     id: 1,
     title: "Laser Hair Removal: Silky Smooth, Hassle-Free Skin",
     cardTitle: "Laser Hair Removal",
-    description:
-      "Say goodbye to the hassle of traditional hair removal methods with our advanced Laser Hair Removal treatments. Using state-of-the-art technology, we offer a safe, effective, and virtually painless solution to permanently reduce unwanted hair. Whether it's your face, arms, legs, or sensitive areas, our team ensures a smooth, long-lasting result that leaves your skin feeling soft and hair-free. No more waxing, shaving, or ingrown hairs—just beautifully smooth skin.",
+    description: `Say goodbye to the hassle of traditional hair removal methods with our advanced Laser Hair Removal treatments. 
+      Using state-of-the-art technology, we offer a safe, effective, and virtually painless solution to 
+      permanently reduce unwanted hair. Whether it's your face, arms, legs, or sensitive areas, our team ensures a smooth, 
+      long-lasting result that leaves your skin feeling soft and hair-free. No more waxing, shaving, or ingrown hair—just beautifully smooth skin.`,
     benefits: [
       "Permanent hair reduction",
       "Safe for all skin types",
@@ -369,8 +239,11 @@ export const servicesCardDetails = [
     id: 2,
     title: "Oxy Hydra Facial: Oxygen-Infused Hydration for Radiant Skin",
     cardTitle: "Oxy Hydra Facial",
-    description:
-      "Replenish and rejuvenate your skin with our luxurious Oxy Hydra Facial. This deeply hydrating facial combines oxygen therapy with advanced hydradermabrasion to exfoliate, hydrate, and infuse your skin with essential nutrients. It effectively removes dead skin cells, unclogs pores, and promotes circulation, leaving you with a dewy, glowing complexion. It's the perfect solution for anyone seeking to combat dryness, dullness, or skin congestion.",
+    description: `The Oxy Hydra Facial is a cutting-edge, non-invasive treatment designed to cleanse,
+      exfoliate, hydrate, and oxygenate the skin. This facial uses advanced technologies to deliver
+      nutrients and oxygen deeply into the skin, promoting a glowing, rejuvenated appearance. It is
+      suitable for all skin types and helps address issues like dryness, dullness, fine lines, and acne,
+      leaving the skin refreshed, smooth, and radiant.`,
     benefits: [
       "Deep hydration and nourishment",
       "Revitalizes tired, dull skin",
@@ -383,8 +256,12 @@ export const servicesCardDetails = [
     id: 3,
     title: "RF Skin Tightening: Lift, Firm, and Renew Your Skin",
     cardTitle: "RF Skin Tightening",
-    description:
-      "Achieve firmer, tighter, and more youthful skin with our RF (Radiofrequency) Skin Tightening treatment. Using radiofrequency energy, this treatment stimulates collagen production deep within your skin, tightening loose or sagging areas and reducing the appearance of fine lines and wrinkles. It's non-invasive, painless, and highly effective in restoring your skin's natural elasticity and firmness without any downtime.",
+    description: `RF (Radiofrequency) Skin Tightening is a non-invasive cosmetic treatment that uses
+      radiofrequency energy to stimulate collagen and elastin production in the skin. This treatment
+      helps improve skin elasticity, reduce fine lines and wrinkles, and tighten loose or sagging
+      skin. RF energy penetrates deep into the dermis, gently heating the tissue to trigger natural
+      skin rejuvenation without damaging the surface. It is suitable for areas like the face, neck,
+      abdomen, and thighs, offering a more youthful and lifted appearance.`,
     benefits: [
       "Non-invasive and painless",
       "Improves skin elasticity and tone",
@@ -397,8 +274,12 @@ export const servicesCardDetails = [
     id: 4,
     title: "Dermafrac Infusion Facial: Advanced Skin Rejuvenation",
     cardTitle: "Dermafrac Infusion Facial",
-    description:
-      "The Dermafrac Infusion Facial combines microneedling with the infusion of targeted serums to deeply rejuvenate your skin. This non-invasive treatment stimulates collagen production while addressing skin concerns like fine lines, acne scars, uneven tone, and dryness. The result is smoother, more youthful skin with improved texture and hydration.",
+    description: `DermaFrac Infusion is a non-invasive treatment that combines microneedling with the
+      infusion of customized serums to rejuvenate the skin. It is a non-invasive procedure that helps
+      address various skin concerns, including fine lines, acne scars, hyperpigmentation, and
+      dehydration. The microchannels created during the treatment allow for the deep penetration
+      of serums into the dermis, enhancing their effectiveness. DermaFrac is suitable for all skin
+      types and has no downtime, making it a popular choice for skin rejuvenation.`,
     benefits: [
       "Reduces fine lines, brightens skin, improves acne scars, and hydrates deeply",
       "Quick recovery with glowing, refreshed skin",
@@ -410,8 +291,10 @@ export const servicesCardDetails = [
     id: 5,
     title: "Oxygeneo: 3-in-1 Facial for Ultimate Skin Rejuvenation",
     cardTitle: "Oxygeneo",
-    description:
-      "Experience the power of three skin treatments in one with Oxygeneo. This innovative facial combines exfoliation, oxygenation, and infusion to promote healthy, glowing skin. The treatment gently exfoliates the outer layers of the skin, infuses it with nourishing serums, and enhances oxygen delivery, resulting in radiant, plump skin. It's perfect for those looking to brighten, hydrate, and rejuvenate their skin in a single session.",
+    description: `OxyGeneo is an advanced 3-in-1 facial treatment that combines exfoliation, oxygenation, and
+      infusion to rejuvenate the skin. This non-invasive procedure enhances skin texture, tone, and
+      hydration while stimulating natural oxygenation from within. It's non-invasive, suitable for
+      all skin types, and targets concerns like dullness, fine lines, and uneven tone.`,
     benefits: [
       "3-in-1 rejuvenation: Exfoliation, oxygenation, and infusion",
       "Instantly refreshes and revitalizes skin",
@@ -421,3 +304,461 @@ export const servicesCardDetails = [
     linkTo: "/services/skin/medi-facial/oxygeneo",
   },
 ];
+
+export const servicesOffered = [
+  {
+    id: 1,
+    title: "Laser Hair Removal Women",
+    image: `${Resources.images.Services.LaserHairRemoval.Women.imageOne}`,
+    description: `Laser hair removal is a cosmetic procedure that uses concentrated light beams to target hair follicles. It effectively removes unwanted hair by inhibiting future growth, leaving the skin smooth and hair-free. This treatment is ideal for various body areas and provides long-lasting results.`,
+    linkTo: "services/laser-hair-removal/women",
+  },
+  {
+    id: 2,
+    title: "Laser Hair Removal Men",
+    image: `${Resources.images.Services.LaserHairRemoval.Men.image5}`,
+    description: `Laser hair removal for men targets hair follicles using focused laser light, reducing unwanted hair. This non-invasive treatment is perfect for areas like the back, chest, or face. It’s effective, quick, and helps achieve smooth, well-groomed skin without the hassle of shaving.`,
+    linkTo: "services/laser-hair-removal/men",
+  },
+  {
+    id: 3,
+    title: "Oxy Hydra Facial",
+    image: `${Resources.images.Services.OxyHydra.img4}`,
+    description: `The Oxy Hydra Facial is a rejuvenating facial that cleanses, exfoliates, and hydrates the skin. Using advanced technology, it delivers nutrients and oxygen deep into the skin, leaving it smooth and glowing. It addresses skin concerns like dryness, fine lines, and dullness for all skin types.`,
+    linkTo: "services/skin/medi-facial/oxy-hydra-facial",
+  },
+  {
+    id: 4,
+    title: "RF Skin Tightening",
+    image: `${Resources.images.Services.SkinTightening.img7}`,
+    description: `RF Skin Tightening is a non-invasive procedure that uses radiofrequency energy to stimulate collagen production. This treatment helps reduce fine lines, wrinkles, and sagging skin, improving skin elasticity. It’s commonly used on the face, neck, abdomen, and thighs for a youthful, lifted appearance.`,
+    linkTo: "services/skin/medi-facial/skin-tightening",
+  },
+  {
+    id: 5,
+    title: "Dermafrac Infusion Facial",
+    image: `${Resources.images.Services.Dermafrac.img6}`,
+    description: `DermaFrac is a microneedling treatment that infuses the skin with customized serums, targeting various skin concerns. It’s effective for fine lines, acne scars, hyperpigmentation, and dehydration. This non-invasive procedure has no downtime and works for all skin types, making it a popular choice for rejuvenation.`,
+    linkTo: "services/skin/medi-facial/dermafrac-infusion-facial",
+  },
+  {
+    id: 6,
+    title: "Oxygeneo",
+    image: `${Resources.images.Services.OxyGeneo.img6}`,
+    description: `OxyGeneo is an advanced 3-in-1 facial treatment that combines exfoliation, oxygenation, and infusion. This non-invasive procedure improves skin texture, tone, and hydration, while stimulating natural oxygenation from within. It is suitable for all skin types and addresses concerns like dullness and fine lines.`,
+    linkTo: "services/skin/medi-facial/oxygeneo",
+  },
+];
+
+export const laserHairWomenPackage = [
+  {
+    id: 1,
+    packageName: "Full Body",
+    label: "Full Body Women",
+    featureName: "fullBodyWomen",
+    multiplSessions: true,
+    pricing: 60000,
+    imgSrc: Resources.images.Home.lhr.fullBodyFemalePackage,
+  },
+  {
+    id: 2,
+    packageName: "Face & Neck",
+    label: "Face And Neck",
+    featureName: "faceAndNeck",
+    multiplSessions: true,
+    pricing: 20000,
+    imgSrc: Resources.images.Home.lhr.facePackage,
+  },
+  {
+    id: 3,
+    packageName: "Bikini & Buttocks",
+    label: "Bikini And Buttocks",
+    featureName: "bikiniAndButtocks",
+    multiplSessions: true,
+    pricing: 24000,
+    imgSrc: Resources.images.Home.lhr.bikiniPackage,
+  },
+  {
+    id: 4,
+    packageName: "Arms & Underarms",
+    label: "Arms And Underarms",
+    featureName: "armsAndUnderarms",
+    multiplSessions: true,
+    pricing: 26000,
+    imgSrc: Resources.images.Home.lhr.armsPackage,
+  },
+  {
+    id: 5,
+    packageName: "Chest & Back",
+    label: "Chest And Back",
+    featureName: "chestAndBack",
+    multiplSessions: true,
+    pricing: 32000,
+    imgSrc: Resources.images.Home.lhr.chestPackage,
+  },
+  {
+    id: 6,
+    packageName: "Half Legs",
+    label: "Half Legs",
+    featureName: "halfLegs",
+    pricing: 5000,
+    imgSrc: Resources.images.Home.lhr.halfLegsPackage,
+  },
+  {
+    id: 7,
+    packageName: "Full Legs",
+    label: "Full Legs",
+    featureName: "fullLegs",
+    pricing: 8000,
+    imgSrc: Resources.images.Home.lhr.fullLegsPackage,
+  },
+  {
+    id: 8,
+    packageName: "Back",
+    label: "Back",
+    featureName: "back",
+    pricing: 5000,
+    imgSrc: Resources.images.Home.lhr.backPackage,
+  },
+  {
+    id: 9,
+    packageName: "Chest",
+    label: "Chest",
+    featureName: "chest",
+    pricing: 5000,
+    imgSrc: Resources.images.Home.lhr.chestPackage,
+  },
+  {
+    id: 10,
+    packageName: "Bikini",
+    label: "Bikini",
+    featureName: "bikini",
+    pricing: 5000,
+    imgSrc: Resources.images.Home.lhr.bikiniPackage,
+  },
+];
+
+export const laserHairMenPackage = [
+  {
+    id: 1,
+    packageName: "Full Body",
+    label: "Full Body Men",
+    featureName: "fullBodyMen",
+    multiplSessions: true,
+    pricing: 60000,
+    imgSrc: Resources.images.Home.lhr.fullBodyMalePackage,
+  },
+  {
+    id: 2,
+    packageName: "Face & Neck",
+    label: "Face And Neck",
+    featureName: "faceAndNeck",
+    multiplSessions: true,
+    pricing: 20000,
+    imgSrc: Resources.images.Home.lhr.facePackage,
+  },
+  {
+    id: 3,
+    packageName: "Arms & Underarms",
+    label: "Arms And Underarms",
+    featureName: "armsAndUnderarms",
+    multiplSessions: true,
+    pricing: 26000,
+    imgSrc: Resources.images.Home.lhr.armsPackage,
+  },
+  {
+    id: 4,
+    packageName: "Chest & Back",
+    label: "Chest And Back",
+    featureName: "chestAndBack",
+    multiplSessions: true,
+    pricing: 32000,
+    imgSrc: Resources.images.Home.lhr.armsPackage,
+  },
+  {
+    id: 5,
+    packageName: "Half Legs",
+    label: "Half Legs",
+    featureName: "halfLegs",
+    pricing: 5000,
+    imgSrc: Resources.images.Home.lhr.halfLegsPackage,
+  },
+  {
+    id: 6,
+    packageName: "Full Legs",
+    label: "Full Legs",
+    featureName: "fullLegs",
+    pricing: 8000,
+    imgSrc: Resources.images.Home.lhr.fullLegsPackage,
+  },
+  {
+    id: 7,
+    packageName: "Back",
+    label: "Back",
+    featureName: "back",
+    pricing: 5000,
+    imgSrc: Resources.images.Home.lhr.backPackage,
+  },
+  {
+    id: 8,
+    packageName: "Chest",
+    label: "Chest",
+    featureName: "chest",
+    pricing: 5000,
+    imgSrc: Resources.images.Home.lhr.chestMenPackage,
+  },
+];
+
+export const oxyHydraPackage = [
+  {
+    id: 1,
+    packageName: "Oxy Hydra Facial",
+    label: "Oxy Hydra Facial",
+    featureName: "oxyhydraFacial",
+    imgSrc: Resources.images.Home.oxyhydraPackage,
+  },
+];
+
+export const oxygeneoPackage = [
+  {
+    id: 1,
+    packageName: "Oxygeneo",
+    label: "Oxygeneo",
+    featureName: "oxygeneo",
+    imgSrc: Resources.images.Home.oxygeneoPackage,
+  },
+];
+
+export const skinTighteningPackage = [
+  {
+    id: 1,
+    packageName: "Full Face",
+    label: "Full Face",
+    featureName: "fullFace",
+    imgSrc: Resources.images.Home.skinTighteningPackage.STFullFace,
+  },
+];
+
+export const dermafraqPackage = [
+  {
+    id: 1,
+    packageName: "Dermafrac Infusion Facial",
+    label: "Dermafrac Infusion Facial",
+    featureName: "dermafrac",
+    imgSrc: Resources.images.Home.dermafracPackage,
+  },
+];
+
+export const allPackageDetails = {
+  LHRWomen: {
+    fullBodyWomen: [
+      {
+        id: 1,
+        name: "Full Body - (4+1) Session",
+        price: 60000,
+      },
+      {
+        id: 2,
+        name: "Full Body - Single Session",
+        price: 15000,
+      },
+    ],
+    faceAndNeck: [
+      {
+        id: 1,
+        name: "Face and Neck - (4+1) Session",
+        price: 20000,
+      },
+      {
+        id: 2,
+        name: "Face and Neck - Single Session",
+        price: 5000,
+      },
+    ],
+    bikiniAndButtocks: [
+      {
+        id: 1,
+        name: "Bikini and Buttocks - (4+1) Session",
+        price: 24000,
+      },
+      {
+        id: 2,
+        name: "Bikini and Buttocks - Single Session",
+        price: 6000,
+      },
+    ],
+    armsAndUnderarms: [
+      {
+        id: 1,
+        name: "Arms and Underarms - (4+1) Session",
+        price: 26000,
+      },
+      {
+        id: 2,
+        name: "Arms and Underarms - Single Session",
+        price: 6500,
+      },
+    ],
+    chestAndBack: [
+      {
+        id: 1,
+        name: "Chest and Back - (4+1) Session",
+        price: 32000,
+      },
+      {
+        id: 2,
+        name: "Chest and Back - Single Session",
+        price: 8000,
+      },
+    ],
+    halfLegs: [
+      {
+        id: 1,
+        name: "Half Legs - Single Session",
+        price: 5000,
+      },
+    ],
+    fullLegs: [
+      {
+        id: 1,
+        name: "Full Legs - Single Session",
+        price: 8000,
+      },
+    ],
+    back: [
+      {
+        id: 1,
+        name: "Back - Single Session",
+        price: 5000,
+      },
+    ],
+    chest: [
+      {
+        id: 1,
+        name: "Chest - Single Session",
+        price: 5000,
+      },
+    ],
+    bikini: [
+      {
+        id: 1,
+        name: "Bikini - Single Session",
+        price: 5000,
+      },
+    ],
+  },
+  LHRMen: {
+    fullBodyMen: [
+      {
+        id: 1,
+        name: "Full Body - (4+1) Session",
+        price: 60000,
+      },
+      {
+        id: 2,
+        name: "Full Body - Single Session",
+        price: 15000,
+      },
+    ],
+    faceAndNeck: [
+      {
+        id: 1,
+        name: "Face and Neck - (4+1) Session",
+        price: 20000,
+      },
+      {
+        id: 2,
+        name: "Face and Neck - Single Session",
+        price: 5000,
+      },
+    ],
+    armsAndUnderarms: [
+      {
+        id: 1,
+        name: "Arms and Underarms - (4+1) Session",
+        price: 26000,
+      },
+      {
+        id: 2,
+        name: "Arms and Underarms - Single Session",
+        price: 6500,
+      },
+    ],
+    checkAndBack: [
+      {
+        id: 1,
+        name: "Chest and Back - (4+1) Session",
+        price: 32000,
+      },
+      {
+        id: 2,
+        name: "Arms and Underarms - Single Session",
+        price: 8000,
+      },
+    ],
+    halfLegs: [
+      {
+        id: 1,
+        name: "Half Legs - Single Session",
+        price: 5000,
+      },
+    ],
+    fullLegs: [
+      {
+        id: 1,
+        name: "Full Legs - Single Session",
+        price: 8000,
+      },
+    ],
+    back: [
+      {
+        id: 1,
+        name: "Back - Single Session",
+        price: 5000,
+      },
+    ],
+    chest: [
+      {
+        id: 1,
+        name: "Chest - Single Session",
+        price: 5000,
+      },
+    ],
+  },
+  skinTightening: {
+    fullFace: [
+      {
+        id: 1,
+        name: "Full Face - Single Session",
+        price: 5000,
+      },
+    ],
+  },
+  oxyhydraFacial: {
+    oxyhydraFacial: [
+      {
+        id: 1,
+        name: "Oxy Hydra - Single Session",
+        price: 5000,
+      },
+    ],
+  },
+  oxygeneo: {
+    oxygeneo: [
+      {
+        id: 1,
+        name: "Oxy Geneo - Single Session",
+        price: 5000,
+      },
+    ],
+  },
+  dermafrac: {
+    dermafrac: [
+      {
+        id: 1,
+        name: "Dermafrac Infusion Facial - Single Session",
+        price: 10000,
+      },
+    ],
+  },
+};

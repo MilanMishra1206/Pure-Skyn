@@ -1,11 +1,11 @@
-import { MdKeyboardDoubleArrowRight } from "react-icons/md";
 import { Link } from "react-router-dom";
-import { useMediaQuery } from "@mui/material";
-import { mediFacialPrimePackages } from "../../../../../helpers/LaserServices";
+import { useEffect } from "react";
+import { Breadcrumbs, Typography, useMediaQuery } from "@mui/material";
 import { motion } from "framer-motion";
+
+import { mediFacialPrimePackages } from "../../../../../helpers/LaserServices";
 import MotionWrapper from "../../../../../config/MotionFramer/MotionWrapper";
 import FadeInWrapper from "../../../../../config/MotionFramer/FadeInWrapper";
-import CustomHeader from "../../../../../shared/CustomHeader";
 import FuzzyPricingOverlay from "../../../../../shared/CustomFuzzyPricingOverlay";
 import Resources from "../../../../../config/Resources";
 import CustomPricingTable from "../../../../../shared/CustomPricingTable";
@@ -14,6 +14,26 @@ import FadedLineBreak from "../../../../../shared/CustomHrTag";
 function MediFacialPackages() {
   const isTablet = useMediaQuery("(max-width: 1023px)");
   const isMobile = useMediaQuery("(max-width: 767px)");
+
+  useEffect(() => {
+    sessionStorage.removeItem("currentBookStep");
+    sessionStorage.removeItem("treatmentName");
+    sessionStorage.removeItem("packageName");
+    sessionStorage.removeItem("packagePrice");
+  }, []);
+
+  const breadcrumbs = [
+    <Link
+      key="1"
+      to="/"
+      className="text-skyn no-underline !font-poppins hover:opacity-80 text-lg"
+    >
+      Home
+    </Link>,
+    <Typography key="3" className="text-cello font-poppins text-lg">
+      Medi-Facial Packages
+    </Typography>,
+  ];
 
   return (
     <MotionWrapper>
@@ -25,49 +45,30 @@ function MediFacialPackages() {
           viewport={{ once: true }}
           className={`mt-5 ${isMobile ? "px-1" : "px-5"}`}
         >
-          <CustomHeader
-            heading={"Medi-Facial Packages"}
-            showBackButton={true}
-            navigateTo={"/services/skin/medi-facial"}
-          />
           <div>
-            <div
-              className={`w-full h-96 md:!h-[650px] xl:!h-screen bg-cover bg-center relative`}
-              style={{
-                backgroundImage: `url(${!isTablet ? Resources.images.Services.OxyHydra.header2 : Resources.images.Services.Dermafrac.dermafracCard})`,
-              }}
+            <Breadcrumbs
+              separator=">"
+              aria-label="breadcrumb"
+              className="mb-4 px-1"
             >
-              {!isTablet && (
-                <div className="absolute inset-0 flex items-center justify-end mr-5 bg-opacity-40">
-                  <div className="flex flex-col w-50">
-                    <div className="font-extrabold text-3xl">
-                      GET AFFORDABLE MEDI-FACIAL TREATMENTS NOW!
-                    </div>
-                    <Link
-                      to={"/book-now"}
-                      className="flex items-center font-poppins text-3xl no-underline space-x-3 font-bold text-skyn transition-colors duration-300 ease-in-out hover:!opacity-80 hover:!tracking-widest"
-                    >
-                      Book Now{" "}
-                      <MdKeyboardDoubleArrowRight className="ml-2 text-3xl text-skyn" />
-                    </Link>
-                  </div>
-                </div>
+              {breadcrumbs}
+            </Breadcrumbs>
+            <div className="font-bold text-coffee text-4xl xl:!text-6xl mb-4">
+              Medi-Facial Packages
+            </div>
+            <div className="relative">
+              {isMobile ? (
+                <img
+                  src={Resources.images.Services.lhrPackagesMobile}
+                  alt="LHR-Packages"
+                />
+              ) : (
+                <img
+                  src={Resources.images.Services.lhrPackages}
+                  alt="LHR-Packages"
+                />
               )}
             </div>
-            {isTablet && (
-              <div className="flex flex-col items-center bg-coal text-white p-5">
-                <div className="font-extrabold text-3xl text-center">
-                  GET AFFORDABLE MEDI-FACIAL TREATMENTS NOW!
-                </div>
-                <Link
-                  to={"/book-now"}
-                  className="border duration-300 ease-in-out flex font-bold font-poppins hover:!opacity-80 hover:!tracking-widest items-center mt-4 no-underline p-3 rounded-2 space-x-3 text-3xl text-white transition-colors"
-                >
-                  Book Now{" "}
-                  <MdKeyboardDoubleArrowRight className="ml-2 text-3xl text-white" />
-                </Link>
-              </div>
-            )}
             <motion.div
               variants={FadeInWrapper("left", 0.1)}
               initial="hidden"
@@ -158,7 +159,7 @@ function MediFacialPackages() {
                 <div className="flex items-center flex-col p-2">
                   <img
                     src={Resources.images.Services.SkinTightening.img4}
-                    className="mb-5 h-75"
+                    className="mb-5 h-56"
                   />
                   <div className="text-coal text-center">
                     <p className="text-xl font-extrabold">
@@ -166,10 +167,10 @@ function MediFacialPackages() {
                     </p>
                   </div>
                 </div>
-                <div className="flex flex-col p-2">
+                <div className="flex flex-col items-center p-2">
                   <img
                     src={Resources.images.Common.dermat}
-                    className="mb-5 h-75"
+                    className="mb-5 h-56 w-56"
                   />
                   <div className="text-coal text-center">
                     <p className="text-xl font-extrabold">
@@ -180,7 +181,7 @@ function MediFacialPackages() {
                 <div className="flex flex-col p-2">
                   <img
                     src={Resources.images.Common.personalisedPlanning}
-                    className="mb-5 h-75"
+                    className="mb-5 h-56"
                   />
                   <div className="text-coal text-center">
                     <p className="text-xl font-extrabold">
@@ -191,7 +192,7 @@ function MediFacialPackages() {
                 <div className="flex items-center flex-col p-2">
                   <img
                     src={Resources.images.Common.serviceAtHome}
-                    className="mb-5 h-75"
+                    className="mb-5 h-56"
                   />
                   <div className="text-coal text-center">
                     <p className="text-xl font-extrabold">

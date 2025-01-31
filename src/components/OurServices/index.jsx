@@ -1,9 +1,10 @@
 import { useMediaQuery } from "@mui/material";
+import { motion } from "framer-motion";
+
 import CustomCards from "../../shared/CustomCards";
 import CustomHeader from "../../shared/CustomHeader";
 import { servicesCardDetails } from "../../helpers/LaserServices";
 import FadeInWrapper from "../../config/MotionFramer/FadeInWrapper";
-import { motion } from "framer-motion";
 import FadedLineBreak from "../../shared/CustomHrTag";
 
 function LaserServices() {
@@ -36,10 +37,10 @@ function LaserServices() {
               whileInView="show"
               viewport={{ once: true }}
             >
-              <div key={service.id}>
+              <div key={index}>
                 <div className="gap-5 grid grid-cols-1 md:grid-cols-2 place-items-center">
                   <div>
-                    <p className="font-bold">
+                    <p className="font-bold mb-2">
                       {index + 1}. {service.title}
                     </p>
                     <span>{service.description}</span>
@@ -51,7 +52,7 @@ function LaserServices() {
                   </div>
                   <div className="flex items-center">
                     <CustomCards
-                      key={service.id}
+                      key={index}
                       title={service.cardTitle}
                       imgSrc={service.image}
                       linkTo={service.linkTo}

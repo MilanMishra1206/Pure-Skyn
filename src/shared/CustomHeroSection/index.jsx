@@ -20,9 +20,21 @@ const CustomHeroSection = () => {
             className={`${isTablet ? "w-4/5" : "w-3/5"}`}
           />
         </span>
-        <p className="text-base md:text-lg text-coal my-4 md:my-6 px-3 lg:!mx-5 font-poppins text-center">
-          Download our app to stay connected
-        </p>
+        <div className="text-base md:text-lg text-cello my-4 md:my-6 px-3 lg:!mx-5 font-poppins text-center">
+          <p>Get the best deals from our latest promotions.</p>
+          <p>
+            <strong className="text-coffee">
+              Pure Skyn is more than just Laser Hair Removal and Medifacial.
+            </strong>{" "}
+            We offer laser skin treatments with the use of the most advanced
+            technology like Candela GentleMax Pro and Morpheus8, as well as hair
+            regrowth solutions, especially for men. Treatments are suitable for
+            any skin type.
+          </p>
+          <p className="text-coffee font-bold">
+            Book and save up to 50% when you purchase your treatment packages.
+          </p>
+        </div>
         <div className="flex justify-center">
           <CustomButton2
             buttonText="Download App"

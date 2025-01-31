@@ -47,7 +47,7 @@ function LoginPage() {
   };
 
   return (
-    <div className="flex justify-center items-center min-h-screen relative">
+    <div className="md:flex md:justify-center md:items-center min-h-screen relative bg-[#FAFAFA]">
       <Suspense>
         <CustomLoader open={isLoading} />
       </Suspense>

@@ -1,10 +1,11 @@
-import { lazy, Suspense } from "react";
+import { lazy, Suspense, useEffect, useState } from "react";
+import { motion } from "framer-motion";
+import { useMediaQuery } from "@mui/material";
 import { Link, useLocation, useParams } from "react-router-dom";
+
 import Resources from "../../../config/Resources";
-import { Box, Fab, useMediaQuery } from "@mui/material";
 import CustomCards from "../../../shared/CustomCards";
 import { LHRAccordianContent } from "../../../helpers/AccordianContent";
-import { motion } from "framer-motion";
 import MotionWrapper from "../../../config/MotionFramer/MotionWrapper";
 import FadeInWrapper from "../../../config/MotionFramer/FadeInWrapper";
 import CustomHeader from "../../../shared/CustomHeader";
@@ -21,8 +22,20 @@ const LaserHairRemovalForWomen = lazy(
 function LaserHairRemoval() {
   const { category } = useParams();
   const { pathname } = useLocation();
+  const [treatmentName, setTreatmentName] = useState("");
   const isMobile = useMediaQuery("(max-width: 767px)");
   const isTablet = useMediaQuery("(max-width: 1023px)");
+  const isLaptop = useMediaQuery("(min-width: 1023px)");
+
+  useEffect(() => {
+    sessionStorage.removeItem("currentBookStep");
+    sessionStorage.removeItem("treatmentName");
+    sessionStorage.removeItem("packageName");
+    sessionStorage.removeItem("packagePrice");
+    setTreatmentName(
+      category === "men" ? "Laser Hair Removal Men" : "Laser Hair Removal Women"
+    );
+  }, []);
 
   const services = [
     {
@@ -189,7 +202,7 @@ function LaserHairRemoval() {
                 </li>
                 <li>
                   <strong>Efficiency:</strong> Each pulse of the laser takes
-                  only a fraction of a second and can treat multiple hairs
+                  only a fraction of a second and can treat multiple hair
                   simultaneously.
                 </li>
                 <li>
@@ -211,6 +224,8 @@ function LaserHairRemoval() {
                 <LaserHairRemovalForMen
                   category={category}
                   isMobile={isMobile}
+                  isTablet={isTablet}
+                  isLaptop={isLaptop}
                 />
               </Suspense>
               {pathname !== "/services/laser-hair-removal/men" && (
@@ -231,6 +246,7 @@ function LaserHairRemoval() {
                 <LaserHairRemovalForWomen
                   category={category}
                   isMobile={isMobile}
+                  isTablet={isTablet}
                 />
               </Suspense>
               {pathname !== "/services/laser-hair-removal/women" && (
@@ -246,56 +262,60 @@ function LaserHairRemoval() {
             </div>
           )}{" "}
         </div>
-        <motion.div
-          variants={FadeInWrapper("up", 0.1)}
-          initial="hidden"
-          whileInView="show"
-          viewport={{ once: true }}
-        >
-          <DrawCircleText
-            headerText={"70% OFF -"}
-            serviceName={"Laser Hair Removal Packages!"}
-            buttonText="Check Now"
-            link="/services/laser-hair-removal-packages"
-          />
-        </motion.div>
-        <motion.div
-          variants={FadeInWrapper("up", 0.1)}
-          initial="hidden"
-          whileInView="show"
-          viewport={{ once: true }}
-        >
-          <FadedLineBreak />
-          <div className="text-center text-skyn font-bold text-3xl px-4">
-            <p>Frequently Asked Questions(FAQs)</p>
-          </div>
-          <div
-            className={`flex justify-center items-center ${isTablet ? "p-3 flex-col" : "flex-row"}`}
+        {!category && (
+          <motion.div
+            variants={FadeInWrapper("up", 0.1)}
+            initial="hidden"
+            whileInView="show"
+            viewport={{ once: true }}
           >
-            <div className={`mt-4 w-full ${!isTablet ? "px-5" : ""}`}>
-              <CustomAccordion accordionData={LHRAccordianContent} />
-              <Link
-                to="/faq#Laser Hair Removal"
-                className="text-skyn hover:opacity-80 text-xl font-bold"
-              >
-                Show More FAQs
-              </Link>
+            <DrawCircleText
+              headerText={"70% OFF -"}
+              serviceName={"Laser Hair Removal Packages!"}
+              buttonText="Check Now"
+              link="/services/laser-hair-removal-packages"
+            />
+          </motion.div>
+        )}
+        {!category && (
+          <motion.div
+            variants={FadeInWrapper("up", 0.1)}
+            initial="hidden"
+            whileInView="show"
+            viewport={{ once: true }}
+          >
+            <FadedLineBreak />
+            <div className="text-center text-skyn font-bold text-3xl px-4">
+              <p>Frequently Asked Questions(FAQs)</p>
             </div>
             <div
-              className={`flex justify-center items-center ${!isTablet ? "p-5" : ""}`}
+              className={`flex justify-center items-center ${isTablet ? "p-3 flex-col" : "flex-row"}`}
             >
-              <img
-                src={
-                  Resources.images.Services.LaserHairRemoval
-                    .laserHairRemovalCard
-                }
-                alt="laser-Hair-Removal-Card"
-                className={`rounded-xl shadow mt-4 ${!isMobile ? "h-75" : ""}`}
-              />
+              <div className={`mt-4 w-full ${!isTablet ? "px-5" : ""}`}>
+                <CustomAccordion accordionData={LHRAccordianContent} />
+                <Link
+                  to="/faq#Laser Hair Removal"
+                  className="text-skyn hover:opacity-80 text-xl font-bold"
+                >
+                  Show More FAQs
+                </Link>
+              </div>
+              <div
+                className={`flex justify-center items-center ${!isTablet ? "p-5" : ""}`}
+              >
+                <img
+                  src={
+                    Resources.images.Services.LaserHairRemoval
+                      .laserHairRemovalCard
+                  }
+                  alt="laser-Hair-Removal-Card"
+                  className={`rounded-xl shadow mt-4 ${!isMobile ? "h-75" : ""}`}
+                />
+              </div>
             </div>
-          </div>
-        </motion.div>
-        <CustomFloatingBookNowButton treatmentName="Laser Hair Removal" />
+          </motion.div>
+        )}
+        <CustomFloatingBookNowButton treatmentName={treatmentName} goToStep={1} />
       </div>
     </MotionWrapper>
   );

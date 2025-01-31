@@ -1,14 +1,14 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 
-const FlyoutLink = ({ children, href, isActive }) => {
+const FlyoutLink = ({ children, href, isActive, classes }) => {
   const [hover, setHover] = useState(false);
 
   return (
     <div
       onMouseEnter={() => setHover(true)}
       onMouseLeave={() => setHover(false)}
-      className="relative w-fit h-fit navbar-links"
+      className={`relative w-fit h-fit navbar-links ${classes}`}
     >
       <Link to={href} className="relative text-white no-underline">
         {children}

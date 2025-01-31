@@ -22,7 +22,7 @@ export const LHRAccordianContent = [
   {
     id: 4,
     title: "HOW LONG DOES IT TAKE TO SEE RESULTS?",
-    content: `The hair growth cycles are different with men, and this is why you will need more than one treatment to remove the hairs.
+    content: `The hair growth cycles are different with men, and this is why you will need more than one treatment to remove the hair.
                       We can discuss your desired hair removal goals during a free consultation and create a suitable treatment plan.
                       For long-term results, we usually recommend 8-12 treatments 4-6 weeks apart.`,
   },
@@ -50,307 +50,256 @@ export const laserHairRemovalFaq = [
   },
 ];
 
-export const whyUsContent = [
+export const LHRMenAccordianContent = [
   {
     id: 1,
-    title: "1. ADVANCED DIODE LASER TECHNOLOGY",
-    content: `Our diode 808nm laser technology offers the gold standard in permanent hair removal. 
-        Its unique wavelength penetrates the hair follicles while protecting the skin around it.`,
+    title: "HOW DOES LASER HAIR REMOVAL WORK?",
+    content: `Laser hair removal uses concentrated light to target the melanin in hair. The energy from the laser damages the hair follicle, slowing & stopping future hair growth.`,
   },
   {
     id: 2,
-    title: "2. PAINLESS LASER HAIR REMOVAL",
-    content: `Your clients want to feel comfortable and confident during their treatment. we use contact cooling technology, 
-        which cools the skin to minimise any risk of side effects.`,
+    title: "IS IT EFFECTIVE FOR THICK, COARSE HAIR?",
+    content: `Yes, laser hair removal is highly effective for thick, coarse hair, which is common in men. The laser targets the dark pigment in the hair.`,
   },
   {
     id: 3,
-    title: "3. MEDICAL- GRADE LASER HAIR REMOVAL",
-    content: `Our devices that are medically registered are registered in the uk with the MHRA - Our device has been subject to strict clinical and technical trials - completing these we can gain the correct certification 
-                to meet the requirements to register our device with the MHRA. It's a real no brainer when advertising medical-grade laser services in your area and to stand out from the crowd!`,
+    title: "HOW MANY SESSIONS DO I NEED?",
+    content: `Typically, 6-8 sessions are required for optimal results. These sessions are spaced about 4-6 weeks apart.`,
   },
   {
     id: 4,
-    title: "4. VASTLY REDUCED HAIR REGROWTH",
-    content: `Our laser hair removal device gently heats the hair follicles under the skin to make them dormant. 
-                  Any regrowth will be finer and lighter - and the results last far longer than your clients could achieve with waxing or shaving.`,
+    title: "WHAT AREAS CAN BE TREATED AT PURESKYN?",
+    content: `Men commonly treat the following areas: 
+    - Back
+    - Chest
+    - Shoulders
+    - Arms
+    - Beard line (to create a sharp, clean edge)
+    - Neck (to reduce razor bumps)
+    - Legs
+    - Buttocks`,
   },
   {
     id: 5,
-    title: "5. TRUSTED TECHNOLOGY",
-    content:
-      "With over 15 years of success in the beauty industry, LumiSKN has developed a range of aesthetic devices that are trusted in salons and clinics across Europe.",
+    title: "CAN LASER HAIR REMOVAL BE USED FOR SHAPING OR GROOMING?",
+    content: `Yes, many men use laser hair removal to shape areas like the beard line, achieving a well-defined and clean look.`,
+  },
+  {
+    id: 6,
+    title: "ARE THERE ANY SIDE EFFECTS?",
+    content: `Side effects are minimal and may include:
+    1. Temporary redness or swelling
+    2. Mild irritation or sensitivity
+    3. Rarely, skin pigmentation changes (more common for darker skin tones)`,
+  },
+];
+
+export const LHRWomenAccordianContent = [
+  {
+    id: 1,
+    title: "IS LASER HAIR REMOVAL SAFE?",
+    content: `Yes, laser hair removal AT PureSkyn is considered safe when performed by our professionals. It is important to follow pre- and post-treatment instructions to minimize risks like skin irritation.`,
+  },
+  {
+    id: 2,
+    title: "DOES IT HURT?",
+    content: `The pain level varies depending on individual tolerance, but most people describe it as a mild stinging or snapping sensation.`,
+  },
+  {
+    id: 3,
+    title: "HOW MANY SESSIONS DO I NEED?",
+    content: `Typically, 6-8 sessions are required for optimal results. These sessions are spaced about 4-6 weeks apart.`,
+  },
+  {
+    id: 4,
+    title: "IS LASER HAIR REMOVAL PERMANENT?",
+    content: `Laser hair removal provides long-lasting results, but it may not be permanent. Some hair may regrow, so maintenance treatments may be needed.`,
+  },
+  {
+    id: 5,
+    title: "ARE THERE ANY SIDE EFFECTS?",
+    content: `Common side effects include temporary redness, swelling, or irritation around the treatment area.`,
+  },
+  {
+    id: 6,
+    title: "IS THERE ANY DOWNTIME AFTER THE TREATMENT?",
+    content: `Most women experience little to no downtime. You may return to daily activities immediately, but you should avoid sun exposure, hot showers, and vigorous exercise for 24-48 hours.`,
+  },
+  {
+    id: 7,
+    title: "WHAT AREAS CAN BE TREATED?",
+    content: `Laser hair removal can treat almost any area of the body, including the face, underarms, legs, bikini line, back, and even the sensitive areas around the upper lip or chin.`,
   },
 ];
 
 export const dermoFracAccordianContent = [
   {
     id: 1,
-    title: "How Many Treatments Will You Need?",
-    content:
-      "Because microneedling treatments are non-surgical and largely non-invasive, they typically require multiple treatment sessions to make a significant impact. It’s common for patients to require three to six initial appointments to see optimal results. The number of initial appointments you will need may depend on factors such as your age, your skin type and tone, and the conditions you are trying to treat. For example, treating scars will require more treatments than treating dry skin.",
+    title: "HOW DOES IT WORK?",
+    content: `It uses a microneedling device to create tiny channels in the skin. Simultaneously, customized serums are infused directly into the deeper layers of the skin.`,
   },
   {
     id: 2,
-    title: "How Frequently Should You Have Treatments?",
-    content:
-      "During your initial treatments, your appointments will be spaced two to four weeks apart. Your treatment frequency may depend on your skin type, particularly the sensitivity of your skin. For those who are using this treatment to rebuild collagen, it’s sometimes best to allow for more collagen maturation between treatments, which is why your frequency may be every month for your first appointments. After your optimal results have been achieved, you will need to keep up with maintenance appointments to keep collagen production high. Most of the time, your maintenance appointments will be two to three months apart, depending on your skin needs and how long your results last. We will advise you on the best treatment frequency for your skin goals.",
+    title: "IS THE TREATMENT PAINFUL?",
+    content: `The procedure is generally painless. A slight tingling or mild scratching sensation may be felt during the microneedling process.`,
   },
   {
     id: 3,
-    title: "Is There a Best Time for Treatments?",
-    content:
-      "No, you can have this treatment at any time of the year and at any age. Microneedling is a universal treatment that does not require any preparation or significant aftercare. However, if you are preparing your appearance for a special life event, then you may want to schedule your first treatments at least six months before your event so your skin will be in the best possible condition.",
+    title: "HOW MANY SESSIONS ARE REQUIRED?",
+    content: `A series of 4-6 sessions, spaced 2-4 weeks apart, is typically recommended for optimal results.`,
   },
   {
     id: 4,
-    title: "How Soon Will You See Results?",
-    content:
-      "It will take several days or sometimes weeks to see the results of your treatment. For superficial concerns, like dry skin, fine lines, minor scarring, and some pigmented lesions, it’s possible you will see the results of your treatment one to two weeks after your first appointment. However, for the treatment of more complex skin concerns, such as wrinkles, deep acne scarring, and stretch marks, it will likely take more than four weeks to see your ideal results. Ultimately, how soon you will see results will depend on the severity of your skin concerns, as well as how well your skin responds to this treatment.",
+    title: "WHAT ARE THE BENEFITS OF DERMAFRAC INFUSION?",
+    content: `The main benefits of DermaFrac include:
+    1. Improves skin texture and elasticity
+    2. Hydrates and nourishes the skin
+    3. Reduces fine lines and wrinkles
+    4. Fades pigmentation and acne scars
+    5. Boosts collagen production`,
   },
   {
     id: 5,
-    title: "How Long Will Results Last?",
-    content:
-      "Much of the time, the majority of the results accomplished with this treatment can be considered permanent. For example, the treatment of deep acne scars and pigmentation concerns like dark spots often produce long-lasting results since cellular turnover and collagen restoration is complete with this system. However, for troubles like fine lines and wrinkles, the results of this treatment will only be temporary. This is because the effects of time on the skin can only be postponed for so long. Because the results of this treatment can be semi-permanent, it’s very important that you attend all of your regularly scheduled appointments so you can enjoy your results for the long term. Even if your results are lasting longer than expected, your maintenance appointments will ensure that these results continue to last.",
+    title: "HOW LONG DO THE RESULTS LAST?",
+    content: `Results can last several months with proper skincare and regular maintenance treatments.`,
   },
   {
     id: 6,
-    title: "Can You Enhance Results?",
-    content:
-      "Yes, you can enhance the results of your treatment when you use the right skin care after your treatment is complete. The skincare products you use after your treatment will be your best tool to ensure your results last for as long as possible. For age-related concerns, the use of anti-aging products can fortify your collagen production. If you are managing acne breakouts, then it’s important you are using the correct acne-fighting products to minimize breakouts.",
+    title: "ARE THERE ANY SIDE EFFECTS?",
+    content: `Side effects are rare but may include mild redness or sensitivity, which typically resolves within a few hours.`,
   },
   {
     id: 7,
-    title: "Can You Combine This Treatment?",
-    content:
-      "Yes, this treatment is very easily combined with other aesthetic treatments. For example, many patients combine microneedling treatments with aesthetic treatments like HydraFacial and microdermabrasion. If you want to combine this treatment with other aesthetic services, please let us know so we can help you build your ideal treatment plan.",
-  },
-  {
-    id: 8,
-    title: "What Are the Benefits of DermaFrac Microneedling?",
-    content:
-      "Microneedling is one of the current golden standards of aesthetic treatments because it is so universal. However, there are other important benefits for this treatment. For example, this is a non-surgical treatment, which makes it a good choice for patients who are not qualified for surgery or who do not want to undergo plastic procedures.",
+    title: "IS DERMAFRAC INFUSION SAFE?",
+    content: `Yes, it is a safe and non-invasive treatment performed by trained professionals. It is suitable for all skin types.`,
   },
 ];
 
-export const dermoFracAccordianFaqContent = [
-  ...dermoFracAccordianContent,
+export const oxyHydraAccordianContent = [
+  {
+    id: 1,
+    title: "WHAT IS AN OXY HYDRA FACIAL?",
+    content: `It is a multi-step skin treatment that combines exfoliation, hydration, and oxygen infusion to improve skin texture, tone, and hydration.`,
+  },
+  {
+    id: 2,
+    title: "IS IT SUITABLE FOR ALL SKIN TYPES?",
+    content: `Yes, it is safe and effective for all skin types, including sensitive skin.`,
+  },
+  {
+    id: 3,
+    title: "HOW LONG DOES THE TREATMENT TAKE?",
+    content: `A typical Oxy Hydra Facial session lasts around 45-60 minutes.`,
+  },
+  {
+    id: 4,
+    title: "IS THERE ANY DOWNTIME?",
+    content: `No, there is no downtime. You can return to your daily activities immediately after the treatment.`,
+  },
+  {
+    id: 5,
+    title: "HOW SOON WILL I SEE RESULTS?",
+    content: `Results are visible immediately after the first session, with glowing and hydrated skin.`,
+  },
+  {
+    id: 6,
+    title: "WHO SHOULD AVOID THE TREATMENT?",
+    content: `People with active skin infections, severe acne, or open wounds should consult with a dermatologist before undergoing the procedure.`,
+  },
+  {
+    id: 7,
+    title: "WHAT SKIN CONCERNS CAN IT ADDRESS?",
+    content: `It helps with:
+    1. Dullness and dehydration
+    2. Fine lines and wrinkles
+    3. Uneven skin tone and texture
+    4. Acne and clogged pores`,
+  },
+  {
+    id: 8,
+    title: "DOES IT HURT?",
+    content: `No, the procedure is painless and often described as relaxing.`,
+  },
   {
     id: 9,
-    title: "Is DermaFrac Better Than Traditional Microneedling?",
-    content:
-      "It's hard to say whether one microneedling technique is better than another. While DermaFrac uses a unique rolling system to glide over skin to create precisely-spaced microchannels, traditional microneedling sometimes has a higher level of precision because of how closely the microneedles are clustered. In general, traditional microneedling also has slightly more depth for the needles – although to be sure, both of these techniques offer better penetration than at-home derma rollers. That said, the microneedling technique that is best for your skin will depend on your skin’s needs. For the treatment of acne scarring and other shallow scarring, traditional microneedling may be effective, particularly for boxcar scars and rolling scars. All other skin concerns can be treated effectively with DermaFrac microneedling system and when combined with PRP.",
-  },
-  {
-    id: 10,
-    title: "Are At-Home Derma Rollers Just As Effective?",
-    content:
-      "To put it simply, no, any at-home derma roller won't be as effective as a professional aesthetic service. For one thing, at-home derma rollers typically have a very shallow penetration that makes it difficult to treat issues like scarring and fine lines or wrinkles; this is because microneedles with depths over 1 mm must be used by professionals. The greater the depth of penetration, the more effective the treatment will be. That said, at-home derma rollers can serve their own purposes. For example, many people use at-home derma rollers nightly or several times a week before applying active skin ingredients like Retinol, since even small micro-channels in the skin will aid in product absorption. However, please discuss the use of an at-home derma roller alongside professional microneedling treatments during your consultation. Our skin experts will give you the advice that is best for your skin type and needs.",
-  },
-  {
-    id: 11,
-    title: "Are You a Good Candidate?",
-    content:
-      "If you are dealing with superficial skin concerns like wrinkles, acne scarring, and dark spots, then you are likely a good candidate for this treatment. Whether you are using this system alone or combining this treatment with PRP, you can count on reliable skin-perfecting results.",
-  },
-  {
-    id: 12,
-    title: "How Does It Work?",
-    content:
-      "The precision controlled Dermafrac hand piece uses vacuum to pull the skin into contact with hundreds of microneedles. The microneedles create pathways for the infusion of targeted serums by penetrating the epidermis above capillaries and nerve endings, ensuring no bleeding and pain. Designed to improve overall appearance of your skin, the procedure results in optimal absorption of serum and stimulates a natural positive response by the body which may increase collagen and fibroblast activity",
-  },
-  {
-    id: 13,
-    title: "Is Their Any Downtime?",
-    content:
-      "No. Dermafrac allows you to return to your normal activities immediately after procedure. There will be mild redness which resolves within few hours. If you desire you may reapply make up immediately after the procedure. This effectively leaves your skin with a glowing complexion and instant results; you can apply mineral makeup immediately, and then sit back and feel and see your skin improve daily.",
-  },
-  {
-    id: 14,
-    title: "Will it Hurt?",
-    content:
-      "Dermafrac feels wonderful. Precise engineering of hand piece prevents any bleeding or pain and instead provides a pleasant client experience with no downtime.",
-  },
-  {
-    id: 15,
-    title: "How many treatment will I need?",
-    content:
-      "Dermafrac is typically administered in six treatments every 2 weeks followed by maintenance visits every one or two months.",
-  },
-  {
-    id: 16,
-    title: "Does Dermafrac Works for acne?",
-    content:
-      "Yes for certain types of acne it may be beneficial and be a useful part of a treatment program.",
-  },
-  {
-    id: 17,
-    title: "Does Dermafrac Imporve acne scars?",
-    content:
-      "Some scars may respond to DermaFrac™ and the response varies based on several factors such as the age of the scar, depth of the scar tissue, individual skin types, location and the care given to the area between treatments. Deeper scars are better treated with fractional lasers.",
-  },
-  {
-    id: 18,
-    title: "Does Dermafrac Works on Wrinkles?",
-    content:
-      "Superficial fine lines and wrinkles may be reduced using DermaFrac™. Deep wrinkles or dynamic lines may be softened somewhat, but cannot be completely resolved and are typically better treated with fillers, neuromodulators or laser skin resurfacing.",
-  },
-];
-
-export const OxyHydraAccordianContent = [
-  {
-    id: 1,
-    title: "How Many Treatments Will You Need?",
-    content:
-      "Because microneedling treatments are non-surgical and largely non-invasive, they typically require multiple treatment sessions to make a significant impact. It’s common for patients to require three to six initial appointments to see optimal results. The number of initial appointments you will need may depend on factors such as your age, your skin type and tone, and the conditions you are trying to treat. For example, treating scars will require more treatments than treating dry skin.",
-  },
-  {
-    id: 2,
-    title: "What is Hydradermabrasion?",
-    content:
-      "Hydradermabrasion uses water and oxygen to exfoliate the skin, leaving it feeling clean, smooth, and refreshed.",
-  },
-  {
-    id: 3,
-    title:
-      "Which one is better for skin rejuvenation or HydraFacial or Laser Treatment?",
-    content:
-      "The HydraFacial is an effective skin rejuvenation option for those who do not want the downtime that is usually associated with laser treatments. You will be able to see results instantly after your HydraFacial, leaving you with clean, glowing skin.",
-  },
-  {
-    id: 4,
-    title: "What areas can be treated with a HydraFacial?",
-    content:
-      "All areas are treatable with the HydraFacial! Most commonly treated are the face, neck, and décolletage.",
-  },
-  {
-    id: 5,
-    title: "How Long Will Results Last?",
-    content:
-      "Much of the time, the majority of the results accomplished with this treatment can be considered permanent. For example, the treatment of deep acne scars and pigmentation concerns like dark spots often produce long-lasting results since cellular turnover and collagen restoration is complete with this system. However, for troubles like fine lines and wrinkles, the results of this treatment will only be temporary. This is because the effects of time on the skin can only be postponed for so long. Because the results of this treatment can be semi-permanent, it’s very important that you attend all of your regularly scheduled appointments so you can enjoy your results for the long term. Even if your results are lasting longer than expected, your maintenance appointments will ensure that these results continue to last.",
-  },
-];
-
-export const OxyHydraAccordianFaqContent = [
-  ...OxyHydraAccordianContent,
-  {
-    id: 6,
-    title: "Do I need to stop using facial products before my HydraFacial?",
-    content:
-      "Any form of Retin- A (Tretinoin) or Alpha-Hydroxy acids should be stopped three nights before your HydraFacial.",
-  },
-  {
-    id: 7,
-    title: "How often should I get a HydraFacial?",
-    content: "One treatment a month is recommended for optimal results.",
-  },
-  {
-    id: 8,
-    title: "Is a HydraFacial painful?",
-    content: "No, most say it feels like a cool, wet paintbrush on the face.",
-  },
-];
-
-export const oxygeneoFaq = [
-  {
-    id: 1,
-    title: "How OxyGeneo Works",
-    content: `OxyGeneo works by exfoliating the top layer of skin cells, which allows for better penetration of oxygen and nutrients. The OxyGeneo treatment also includes a facial massage, which helps to increase blood circulation and promote lymphatic drainage.
-              The OxyGeneo treatment is painless and has no downtime. Most people report feeling a mild tingling sensation during the treatment, but this is usually well tolerated. A single OxyGeneo session lasts 45 minutes, and the results are immediately visible.
-              Most people see a significant improvement in their skin's appearance after just one treatment. The OxyGeneo treatment is known to be safe for all skin types, including sensitive skin. It is also suitable for people of all ages.`,
-  },
-  {
-    id: 2,
-    title: "OxyGeneo vs. Other Facial Treatments",
-    content: `OxyGeneo is different from other treatments because it uses oxygen to deliver nutrients deep into your skin. This unique feature allows OxyGeneo to address issues like sun damage, fine lines and wrinkles, acne scars, and more.
-              Laser Genesis uses light energy to stimulate collagen production in your skin for a younger appearance. It's excellent for treating sun damage, wrinkles, or mild acne scars.
-              LED Light Therapy uses light energy to kill bacteria on the surface of your skin so that it heals faster and reduces inflammation caused by acne breakouts. It's ideal for helping with mild acne and improving skin tone, texture, and clarity.
-              OxyGeneo stands out among the rest by using an Oxygen-Infusion process to deeply cleanse, exfoliate, and nourish the skin. OxyGeneo is also unique because it uses a patented NeoGlow™ device which has three different tips that can be used depending on your skin type and needs.
-              Even though all methods mentioned are undoubtedly effective, OxyGeneo is the better choice because it offers a complete solution for skin concerns. It can deeply cleanse, exfoliate, and nourish the skin while infusing it with oxygen for a more youthful appearance.`,
-  },
-  {
-    id: 3,
-    title: "What Should I Avoid After the Treatment?",
-    content: `After the OxyGeneo treatment, avoiding sun exposure and wearing sunscreen when you go outside is essential. OxyGeneo makes your skin more sensitive to sunlight, so it is essential to take precautions to prevent any damage.
-              It is also essential to avoid wearing makeup for at least 12 hours after the treatment. This will give your skin more than enough time to heal and allow the OxyGeneo treatment to work its magic. A pro-tip: book your OxyGeneo session in the morning if you have plans to go out in the evening so that once the 12 hours are up, you’re good to go!
-              OxyGeneo is an excellent choice for anyone looking for a complete facial treatment that offers immediate results.`,
-  },
-  {
-    id: 4,
-    title: "Benefits to Enjoy",
-    content: `One of the most outstanding benefits of getting OxyGeneo facial treatment is that it exfoliates your skin without being harsh. Most people avoid chemical peels because of the burning sensation that it gives. OxyGeneo, on the other hand, uses a bubbles’ oxygenation process to deeply cleanse your skin.
-              It also comes with a facial massage, which is beneficial in many ways. It helps promote blood circulation and drainage of lymph nodes. As a result, you get to enjoy plump and healthy skin. It also helps get rid of toxins from your body, which can contribute to developing many skin problems.
-              OxyGeneo is also an excellent choice for people who have sensitive skin because it is gentle and has no downtime. Most people only report feeling a mild tingling sensation during the treatment. OxyGeneo is also suitable for all skin types and can be used to address various concerns like sun damage, fine lines, wrinkles, acne scars, and more.
-              With consistent OxyGeneo treatments, you can expect to improve your skin's appearance significantly. OxyGeneo is a safe and effective way to achieve beautiful and healthy skin.`,
-  },
-  {
-    id: 5,
-    title: "Is Oxygeneo Safe?",
-    content: `As mentioned, OxyGeneo is approved by various health authorities like the FDA. OxyGeneo is a non-invasive procedure that uses patented technologies to deliver better results. OxyGeneo is also clinically proven to be safe and effective.
-              One of the great things about OxyGeneo is that it has little to no downtime. Most people only report feeling a mild tingling sensation during the treatment. OxyGeneo is also suitable for all skin types and can be used to address various concerns like hyperpigmentation, sun damage, and more.`,
+    title: "CAN IT BE COMBINED WITH OTHER TREATMENTS?",
+    content: `Yes, the Oxy Hydra Facial can be combined with other skincare treatments like chemical peels or LED light therapy for enhanced results.`,
   },
 ];
 
 export const oxygeneoFaqAccordianContent = [
-  ...oxygeneoFaq,
-  {
-    id: 6,
-    title: "How Often should i get Oxygeneo?",
-    content: `How frequent can I have OxyGeneo treatment. To treat skin issues such as sun damage or acne, once a week treatments are recommended. Scheduling an OxyGeneo treatment once a month to treat the skin is the perfect long term anti-aging maintenance program.`,
-  },
-  {
-    id: 7,
-    title: "Is there downtime for Oxygeneo",
-    content: `The OxyGeneo™ treatment has no downtime and the skin looks and feels great right after, so the OxyGeneo™ is an ideal “Red Carpet” treatment. If you have an upcoming event, schedule your OxyGeneo™ treatment on the same day or a day before and everyone will be sure to notice how radiant your skin looks during the event.`,
-  },
-];
-
-export const SkinTighteningFaq = [
   {
     id: 1,
-    title: "Does the procedure hurt?",
-    content:
-      "This process of radiofrequency is non-surgical and causes minimal discomfort to the patient. There will be slight discomfort as the process involves the heat generated by the radiofrequency (RF) to fix the tissue. One can compare the heat involved in the 'hot stone massage'.",
+    title: "HOW DOES IT WORK?",
+    content: `It exfoliates dead skin cells, oxygenates the skin by stimulating natural oxygenation from within, and infuses active ingredients like vitamins and antioxidants.`,
   },
   {
     id: 2,
-    title: "How much time does Radiofrequency take?",
-    content:
-      "Radiofrequency tightening is the best fit around a busy lifestyle schedule. In case of face treatment under this process, the procedure will take about 30 to 45 minutes. When one goes for a full-face treatment, it takes up to two hours. After the laser procedure, the doctor will bandage the treated area.",
+    title: "IS IT SAFE FOR ALL SKIN TYPES?",
+    content: `Yes, OxyGeneo is safe and effective for all skin types, including sensitive skin.`,
   },
   {
     id: 3,
-    title: "Is there any other process except Radiofrequency?",
-    content:
-      "Yes, apart from Radio Frequency skin tightening, there are other processes as well, such as Ultrasound skin tightening, Micro-needling with other technologies, surgical skin tightening, Spillover skin tightening. But radiofrequency remains the king of skin tightening methods as it is less time consuming and the process is nearly painless.",
+    title: "WHAT MAKES OXYGENEO BY PURESKYN UNIQUE?",
+    content: `OxyGeneo combines oxygenation with exfoliation and infusion, making it more effective than traditional facials.`,
   },
   {
     id: 4,
-    title: "Will there be any scars after skin tightening?",
-    content: "No. This process is completely scar-free.",
+    title: "CAN IT BE COMBINED WITH OTHER TREATMENTS?",
+    content: `Yes, it pairs well with treatments like LED therapy or RF skin tightening for enhanced results.`,
   },
   {
     id: 5,
-    title: "What to expect during and after the procedure",
-    content:
-      "A plastic surgeon or dermatologist does radiofrequency skin treatment. It's an instant procedure, meaning one will not have to stay overnight. Wrinkles around the eyes, mouth, and forehead may be treated individually, or the entire face will be treated depending on the procedure selected mutually by the doctor and the patient. General anaesthesia and local anaesthesia will be given for small areas or the whole face accordingly. For small area treatment, a local anaesthetic will be needed, and the doctor may also sedate the patient. When the whole face is being treated, one may require general anaesthesia.",
+    title: "HOW LONG DO THE RESULTS LAST?",
+    content: `Results can last up to 4-6 weeks, with maintenance sessions recommended for prolonged benefits.`,
+  },
+  {
+    id: 6,
+    title: "HOW MANY SESSIONS ARE NEEDED?",
+    content: `For optimal results, 4-6 sessions spaced 2-4 weeks apart are recommended.`,
   },
 ];
 
-export const SkinTighteningFaqAccordianContent = [
-  ...SkinTighteningFaq,
+export const skinTighteningFaqAccordianContent = [
+  {
+    id: 1,
+    title: "HOW DOES RF SKIN TIGHTENING WORK?",
+    content: `The RF device emits energy that heats the deeper layers of the skin, promoting collagen and elastin production. This leads to tighter, firmer skin over time.`,
+  },
+  {
+    id: 2,
+    title: "IS RF SKIN TIGHTENING SAFE?",
+    content: `Yes, RF Skin Tightening at PureSkyn is safe, when performed by our trained professionals. It is non-invasive with minimal risk.`,
+  },
+  {
+    id: 3,
+    title: "HOW MANY SESSIONS ARE REQUIRED?",
+    content: `Typically, 4-8 sessions are recommended, spaced 1-2 weeks apart, depending on the area treated and individual goals.`,
+  },
+  {
+    id: 4,
+    title: "IS THERE ANY DOWNTIME?",
+    content: `No, there is no downtime. You can return to your daily activities immediately after the treatment.`,
+  },
+  {
+    id: 5,
+    title: "HOW SOON WILL I SEE RESULTS?",
+    content: `Some improvement may be visible immediately after the first session. However, full results develop gradually over 2–3 months as collagen production increases.`,
+  },
   {
     id: 6,
-    title: "What results one can expect?",
-    content:
-      "After the treatment, the skin will look more fresh and youthful. As circulation improves in the treated area, the skin looks more refreshed. Skin pores become less visible. Wrinkles and fine lines are reduced and the skin will pump up!",
+    title: "WHO SHOULD AVOID THE TREATMENT?",
+    content: `People with active skin infections, severe acne, or open wounds should consult with a dermatologist before undergoing the procedure.`,
   },
   {
     id: 7,
-    title: "How long does the treatment last?",
-    content:
-      "Doctors recommend going through RF skin tightening for several months for optimum results. The course is of approximately six sittings. The treatment will improve the skin condition for up to 12 weeks post-treatment so we can say that the skin will keep on improving for months after completing the duration of treatment.",
+    title: "WHO IS A GOOD CANDIDATE FOR RF SKIN TIGHTENING?",
+    content: `It is suitable for individuals experiencing mild to moderate skin laxity who want a non-surgical option for tightening and rejuvenating their skin.`,
+  },
+  {
+    id: 8,
+    title: "ARE THERE ANY SIDE EFFECTS?",
+    content: `Side effects are minimal and may include mild redness, swelling, or warmth in the treated area, which typically subsides within a few hours.`,
   },
 ];
 
@@ -403,6 +352,38 @@ export const mediFacialFaq = [
   },
 ];
 
+export const whyUsContent = [
+  {
+    id: 1,
+    title: "1. ADVANCED DIODE LASER TECHNOLOGY",
+    content: `Our diode 808nm laser technology offers the gold standard in permanent hair removal. 
+        Its unique wavelength penetrates the hair follicles while protecting the skin around it.`,
+  },
+  {
+    id: 2,
+    title: "2. PAINLESS LASER HAIR REMOVAL",
+    content: `Your clients want to feel comfortable and confident during their treatment. we use contact cooling technology, 
+        which cools the skin to minimise any risk of side effects.`,
+  },
+  {
+    id: 3,
+    title: "3. MEDICAL- GRADE LASER HAIR REMOVAL",
+    content: `Our devices that are medically registered are registered in the uk with the MHRA - Our device has been subject to strict clinical and technical trials - completing these we can gain the correct certification 
+                to meet the requirements to register our device with the MHRA. It's a real no brainer when advertising medical-grade laser services in your area and to stand out from the crowd!`,
+  },
+  {
+    id: 4,
+    title: "4. VASTLY REDUCED HAIR REGROWTH",
+    content: `Our laser hair removal device gently heats the hair follicles under the skin to make them dormant. 
+                  Any regrowth will be finer and lighter - and the results last far longer than your clients could achieve with waxing or shaving.`,
+  },
+  {
+    id: 5,
+    title: "5. TRUSTED TECHNOLOGY",
+    content:
+      "With over 15 years of success in the beauty industry, LumiSKN has developed a range of aesthetic devices that are trusted in salons and clinics across Europe.",
+  },
+];
 
 export const testimonialsCarousel = [
   {

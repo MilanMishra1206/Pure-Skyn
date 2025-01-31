@@ -1,17 +1,20 @@
-import { MdKeyboardDoubleArrowRight } from "react-icons/md";
-import Resources from "../../../../config/Resources";
 import { Link } from "react-router-dom";
-import { useMediaQuery } from "@mui/material";
+import { lazy, Suspense } from "react";
+import { motion } from "framer-motion";
+
+import Resources from "../../../../config/Resources";
 import { laserServiceForMenContent } from "../../../../helpers/LaserServices";
 import MotionWrapper from "../../../../config/MotionFramer/MotionWrapper";
-import { motion } from "framer-motion";
 import FadeInWrapper from "../../../../config/MotionFramer/FadeInWrapper";
 import CustomHeader from "../../../../shared/CustomHeader";
 import FadedLineBreak from "../../../../shared/CustomHrTag";
+import DrawCircleText from "../../../../shared/CustomDrawCircleText";
+import { LHRMenAccordianContent } from "../../../../helpers/AccordianContent";
+import CustomAccordion from "../../../../shared/CustomAccordion";
 
-function LaserHairRemovalForMen({ category, isMobile }) {
-  const isLaptop = useMediaQuery("(min-width: 1023px)");
+const CommonHeader = lazy(() => import("../../CommonHeader"));
 
+function LaserHairRemovalForMen({ category, isMobile, isTablet, isLaptop }) {
   return (
     <MotionWrapper>
       <div className={`${category ? "mt-5" : "mt-0"}`}>
@@ -20,54 +23,40 @@ function LaserHairRemovalForMen({ category, isMobile }) {
           initial="hidden"
           whileInView="show"
           viewport={{ once: true }}
-          className={`${category ? "mt-5" : "mt-0"} ${isMobile ? "px-3" : "p-3"}`}
+          className={`${category ? "" : "mt-0"} ${isMobile ? "px-3" : "p-3"}`}
         >
-          <CustomHeader
-            heading={"Laser Hair Removal For Men"}
-            showBackButton={category}
-            navigateTo={"/services/laser-hair-removal"}
-            headerClass={`${!category ? "!text-center" : ""}`}
-          />
+          {!category && (
+            <CustomHeader
+              heading={"Laser Hair Removal For Men"}
+              headerClass={`${!category ? "!text-center" : ""}`}
+            />
+          )}
         </motion.div>
         {category && (
           <div>
-            <div
-              className="h-[30rem] bg-cover bg-center relative"
-              style={{
-                backgroundImage: `url(${!isMobile ? Resources.images.Services.LaserHairRemoval.Men.headerMen : Resources.images.Services.LaserHairRemoval.Men.headerMenMobile})`,
-              }}
-            >
-              {!isMobile && (
-                <div className="absolute inset-0 flex items-center justify-end mr-5 bg-opacity-40">
-                  <div className="flex flex-col w-50">
-                    <div className="font-extrabold text-3xl">
-                      GET AFFORDABLE LASER HAIR REMOVAL NOW!
-                    </div>
-                    <Link
-                      to={"/book-now?treatment=Laser Hair Removal"}
-                      className="flex items-center font-poppins text-3xl no-underline space-x-3 font-bold text-skyn transition-colors duration-300 ease-in-out hover:!opacity-80 hover:!tracking-widest"
-                    >
-                      Book Now{" "}
-                      <MdKeyboardDoubleArrowRight className="ml-2 text-3xl text-skyn" />
-                    </Link>
-                  </div>
-                </div>
-              )}
-            </div>
-            {isMobile && (
-              <div className="flex flex-col items-center bg-coal text-white p-5">
-                <div className="font-extrabold text-3xl text-center">
-                  GET AFFORDABLE LASER HAIR REMOVAL NOW!
-                </div>
-                <Link
-                  to={"/book-now?treatment=Laser Hair Removal"}
-                  className="border duration-300 ease-in-out flex font-bold font-poppins hover:!opacity-80 hover:!tracking-widestitems-center mt-4 no-underline p-3 rounded-2 space-x-3 text-3xl text-white transition-colors"
-                >
-                  Book Now{" "}
-                  <MdKeyboardDoubleArrowRight className="ml-2 text-3xl text-white" />
-                </Link>
-              </div>
-            )}
+            <Suspense fallback={<div>Loading...</div>}>
+              <CommonHeader
+                isTablet={isTablet}
+                imgSrcLaptop={Resources.images.Home.lhrMen}
+                imgSrcTablet={Resources.images.Home.lhrMenMobile}
+                linkTo="/book-now"
+                heading="Laser Hair Removal Men"
+                breadcrumbs1="Laser Hair Removal"
+                route1="/services/laser-hair-removal"
+                breadcrumbs2="Men"
+                content="Experience the freedom of smooth skin with PureSkyn's at-home
+                  laser hair removal for men in India. Our advanced, easy-to-use
+                  devices bring professional-grade hair removal right to your
+                  doorstep. Designed for comfort and effectiveness, our laser
+                  technology targets hair follicles, providing long-lasting
+                  results while minimizing discomfort. Say goodbye to the hassle
+                  of shaving and waxing, and embrace a confident, hair-free
+                  look. Join countless satisfied customers who have transformed
+                  their grooming routine with PureSkyn's reliable and safe
+                  at-home solutions. Achieve the skin you desire, all in the
+                  comfort of your home!"
+              />
+            </Suspense>
             <div
               className={`grid grid-cols-1 mt-3 place-items-center ${isMobile ? "p-2" : ""} text-justify`}
             >
@@ -82,7 +71,11 @@ function LaserHairRemovalForMen({ category, isMobile }) {
                 >
                   {isLaptop && item.id % 2 === 0 && (
                     <div className="flex justify-center w-full lg:!w-1/2 mr-0 lg:!mr-5">
-                      <img src={item.img} className="rounded-2xl h-75" />
+                      <img
+                        src={item.img}
+                        alt={item.header.toLowerCase()}
+                        className="rounded-2xl h-75"
+                      />
                     </div>
                   )}
                   <div className="font-poppins w-full lg:!w-1/2 mr-0 lg:!mr-5">
@@ -99,24 +92,78 @@ function LaserHairRemovalForMen({ category, isMobile }) {
                       </h4>
                     )}
                     <p className="font-medium text-cello">{item.sectionOne}</p>
-                    <p className="font-medium text-cello mb-2">{item.sectionTwo}</p>
+                    <p className="font-medium text-cello mb-2">
+                      {item.sectionTwo}
+                    </p>
                   </div>
                   {!isLaptop && (
                     <div className="flex flex-col w-full">
                       <div className="flex justify-center w-full lg:!w-1/2">
-                        <img src={item.img} className="rounded-2xl h-75" />
+                        <img
+                          src={item.img}
+                          alt={item.header.toLowerCase()}
+                          className="rounded-2xl h-75"
+                        />
                       </div>
                       <FadedLineBreak />
                     </div>
                   )}
                   {isLaptop && item.id % 2 !== 0 && (
                     <div className="flex justify-center w-full lg:!w-1/2">
-                      <img src={item.img} className="rounded-2xl h-75" />
+                      <img
+                        src={item.img}
+                        alt={item.header.toLowerCase()}
+                        className="rounded-2xl h-75"
+                      />
                     </div>
                   )}
                 </motion.div>
               ))}
             </div>
+            {category === "men" && (
+              <motion.div
+                variants={FadeInWrapper("up", 0.1)}
+                initial="hidden"
+                whileInView="show"
+                viewport={{ once: true }}
+              >
+                <DrawCircleText
+                  headerText={"70% OFF -"}
+                  serviceName={"Laser Hair Removal Packages!"}
+                  buttonText="Check Now"
+                  link="/services/laser-hair-removal-packages"
+                />
+                <FadedLineBreak />
+                <div className="text-center text-skyn font-bold text-3xl px-4">
+                  <p>Frequently Asked Questions(FAQs)</p>
+                </div>
+                <div
+                  className={`flex justify-center items-center ${isTablet ? "p-3 flex-col" : "flex-row"}`}
+                >
+                  <div className={`mt-4 w-full ${!isTablet ? "px-5" : ""}`}>
+                    <CustomAccordion accordionData={LHRMenAccordianContent} />
+                    <Link
+                      to="/faq#Laser Hair Removal Men"
+                      className="text-skyn hover:opacity-80 text-xl font-bold"
+                    >
+                      Show More FAQs
+                    </Link>
+                  </div>
+                  <div
+                    className={`flex justify-center items-center ${!isTablet ? "p-5" : ""}`}
+                  >
+                    <img
+                      src={
+                        Resources.images.Services.LaserHairRemoval
+                          .laserHairRemovalCard
+                      }
+                      alt="laser-Hair-Removal-Card"
+                      className={`rounded-xl shadow mt-4 ${!isMobile ? "h-75" : ""}`}
+                    />
+                  </div>
+                </div>
+              </motion.div>
+            )}
           </div>
         )}
       </div>
