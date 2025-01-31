@@ -1,5 +1,5 @@
 const API_URLS = {
-  baseURL: "https://pureSkyn.com/api/v1",
+  baseURL: "http://13.233.199.108:8080/api/v1",
   Auth: {
     login: "auth/login",
     registerUser: "auth/register",

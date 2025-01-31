@@ -125,6 +125,7 @@ function Oxygeneo({ type }) {
                     <div className="flex flex-col justify-center items-center gap-5">
                       <img
                         src={item.imgSrc}
+                        alt={item.title}
                         className="h-[150px] md:!h-75 rounded md:w-50"
                       />
                       <p className="text-center">{item.content}</p>

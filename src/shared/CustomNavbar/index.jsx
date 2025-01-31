@@ -43,6 +43,7 @@ function CustomNavbar() {
   const confirmLogout = () => {
     setIsLoggedIn(false);
     setIsConfirmingLogout(false);
+    navigate("/");
     showSnackbar("Logged-out successfully!", "success");
   };
 

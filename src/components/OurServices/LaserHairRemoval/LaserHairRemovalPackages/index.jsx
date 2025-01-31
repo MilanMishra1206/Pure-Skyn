@@ -1,30 +1,22 @@
-import { MdKeyboardDoubleArrowRight } from "react-icons/md";
 import { Link, useNavigate } from "react-router-dom";
-import { useMediaQuery } from "@mui/material";
+import { Breadcrumbs, Typography, useMediaQuery } from "@mui/material";
+import { useEffect } from "react";
 
 import Resources from "../../../../config/Resources";
 import {
   fullBodyLaserContent,
   laserHairMenPackage,
   laserHairWomenPackage,
-  laserServicePackages,
-  LHRAreaImg,
   LHRBenefits,
-  LHRPrimePackageImg,
-  LHRPrimePackages,
-  LHRRemovalArea,
   sessionWiseHairReduction,
 } from "../../../../helpers/LaserServices";
 import MotionWrapper from "../../../../config/MotionFramer/MotionWrapper";
 import { motion } from "framer-motion";
 import FadeInWrapper from "../../../../config/MotionFramer/FadeInWrapper";
-import CustomHeader from "../../../../shared/CustomHeader";
 import FuzzyPricingOverlay from "../../../../shared/CustomFuzzyPricingOverlay";
 import DrawCircleText from "../../../../shared/CustomDrawCircleText";
 import CustomPricingTable from "../../../../shared/CustomPricingTable";
 import FadedLineBreak from "../../../../shared/CustomHrTag";
-import CustomButton2 from "../../../../shared/CustomButton2";
-import { useEffect } from "react";
 
 function LaserHairRemovalPackages() {
   const isTablet = useMediaQuery("(max-width: 1023px)");
@@ -38,9 +30,18 @@ function LaserHairRemovalPackages() {
     sessionStorage.removeItem("packagePrice");
   }, []);
 
-  const handleBookNowClick = (laserOption) => {
-    navigate(`/book-now`);
-  };
+  const breadcrumbs = [
+    <Link
+      key="1"
+      to="/"
+      className="text-skyn no-underline !font-poppins hover:opacity-80 text-lg"
+    >
+      Home
+    </Link>,
+    <Typography key="3" className="text-cello font-poppins text-lg">
+      Laser Hair Removal Packages
+    </Typography>,
+  ];
 
   return (
     <MotionWrapper>
@@ -52,49 +53,30 @@ function LaserHairRemovalPackages() {
           viewport={{ once: true }}
           className={`mt-5 ${isMobile ? "px-1" : "px-5"}`}
         >
-          <CustomHeader
-            heading={"Laser Hair Removal Packages"}
-            showBackButton={true}
-            navigateTo={"/services/laser-hair-removal"}
-          />
-          <div>
-            <div
-              className="w-full h-96 bg-cover bg-center relative"
-              style={{
-                backgroundImage: `url(${!isTablet ? Resources.images.Common.bookNowBanner : Resources.images.Services.LaserHairRemoval.laserHairRemovalCard})`,
-              }}
-            >
-              {!isTablet && (
-                <div className="absolute inset-0 flex items-center justify-end mr-5 bg-opacity-40">
-                  <div className="flex flex-col w-50">
-                    <div className="font-extrabold text-3xl">
-                      GET AFFORDABLE LASER HAIR REMOVAL NOW!
-                    </div>
-                    <button
-                      className="flex items-center font-poppins text-3xl no-underline space-x-3 font-bold text-skyn transition-colors duration-300 ease-in-out hover:!opacity-80 hover:!tracking-widest"
-                      onClick={() => navigate("/book-now")}
-                    >
-                      Book Now{" "}
-                      <MdKeyboardDoubleArrowRight className="ml-2 text-3xl text-skyn" />
-                    </button>
-                  </div>
-                </div>
-              )}
-            </div>
-            {isTablet && (
-              <div className="flex flex-col items-center bg-coal text-white p-5">
-                <div className="font-extrabold text-3xl text-center">
-                  GET AFFORDABLE LASER HAIR REMOVAL NOW!
-                </div>
-                <Link
-                  to={"/book-now?treatment=Laser Hair Removal"}
-                  className="border duration-300 ease-in-out flex font-bold font-poppins hover:!opacity-80 hover:!tracking-widest items-center mt-4 no-underline p-3 rounded-2 space-x-3 text-3xl text-white transition-colors"
-                >
-                  Book Now{" "}
-                  <MdKeyboardDoubleArrowRight className="ml-2 text-3xl text-white" />
-                </Link>
-              </div>
+          <Breadcrumbs
+            separator=">"
+            aria-label="breadcrumb"
+            className="mb-4 px-1"
+          >
+            {breadcrumbs}
+          </Breadcrumbs>
+          <div className="font-bold text-coffee text-4xl xl:!text-6xl mb-4">
+            Laser Hair Removal Packages
+          </div>
+          <div className="relative">
+            {isMobile ? (
+              <img
+                src={Resources.images.Services.lhrPackagesMobile}
+                alt="LHR-Packages"
+              />
+            ) : (
+              <img
+                src={Resources.images.Services.lhrPackages}
+                alt="LHR-Packages"
+              />
             )}
+          </div>
+          <div>
             <motion.div
               variants={FadeInWrapper("up", 0.1)}
               initial="hidden"
@@ -143,25 +125,38 @@ function LaserHairRemovalPackages() {
               <p className="font-bold text-center text-4xl mb-5 mt-3 text-coffee">
                 Laser Hair Removal For Women
               </p>
-              <motion.div
-                variants={FadeInWrapper("left", 0.1)}
-                initial="hidden"
-                whileInView="show"
-                viewport={{ once: true }}
-                className="grid grid-cols-1 md:!grid-cols-4 xl:!grid-cols-5 gap-4"
+              <div
+                className="bg-cover bg-center bg-repeat flex p-5 place-content-center w-full"
+                style={{
+                  backgroundImage: `url(${Resources.images.Common.cardBg2})`,
+                }}
               >
-                {laserHairWomenPackage.map((item) => (
-                  <div key={item.id}>
-                    <div className="relative overflow-hidden rounded-sm shadow-lg group cursor-pointer h-56 place-items-center">
+                <motion.div
+                  variants={FadeInWrapper("left", 0.1)}
+                  initial="hidden"
+                  whileInView="show"
+                  viewport={{ once: true }}
+                  className="grid grid-cols-1 md:!grid-cols-2 xl:!grid-cols-5 gap-4 bg-[#FAFAFA]"
+                >
+                  {laserHairWomenPackage.map((item) => (
+                    <div
+                      key={item.id}
+                      className="overflow-hidden rounded-md shadow-lg place-items-center"
+                    >
                       <img
                         src={item.imgSrc}
-                        className="transition-transform group-hover:scale-110 duration-500 h-52 object-cover p-3"
+                        className="h-52 object-cover p-3"
                         alt={item.packageName}
                       />
+                      <div className="w-full p-2 backdrop-blur-sm text-center">
+                        <span className="font-poppins text-coffee font-bold text-lg text-center">
+                          {item.packageName}
+                        </span>
+                      </div>
                     </div>
-                  </div>
-                ))}
-              </motion.div>
+                  ))}
+                </motion.div>
+              </div>
               <CustomPricingTable
                 pricingContent={laserHairWomenPackage}
                 treatmentName="Laser Hair Removal Women"
@@ -177,25 +172,40 @@ function LaserHairRemovalPackages() {
               <p className="font-bold text-center text-4xl mb-5 mt-3 text-coffee">
                 Laser Hair Removal For Men
               </p>
-              <motion.div
-                variants={FadeInWrapper("left", 0.1)}
-                initial="hidden"
-                whileInView="show"
-                viewport={{ once: true }}
-                className="grid grid-cols-1 md:!grid-cols-4 xl:!grid-cols-5 gap-4"
+              <div
+                className="bg-cover bg-center bg-repeat flex p-5 place-content-center w-full"
+                style={{
+                  backgroundImage: `url(${Resources.images.Common.cardBg2})`,
+                }}
               >
-                {laserHairMenPackage.map((item) => (
-                  <div key={item.id}>
-                    <div className="relative overflow-hidden rounded-sm shadow-lg group cursor-pointer h-56 place-items-center">
-                      <img
-                        src={item.imgSrc}
-                        className="transition-transform group-hover:scale-110 duration-500 h-52 object-cover p-3"
-                        alt={item.packageName}
-                      />
-                    </div>
+                <motion.div
+                  variants={FadeInWrapper("left", 0.1)}
+                  initial="hidden"
+                  whileInView="show"
+                  viewport={{ once: true }}
+                  className="space-y-4"
+                >
+                  <div className="grid grid-cols-1 md:grid-cols-3 lg:!grid-cols-4 gap-4 bg-[#FAFAFA]">
+                    {laserHairMenPackage.map((item) => (
+                      <div
+                        key={item.id}
+                        className="overflow-hidden rounded-md shadow place-items-center"
+                      >
+                        <img
+                          src={item.imgSrc}
+                          className="h-52 object-cover p-3"
+                          alt={item.packageName}
+                        />
+                        <div className="w-full p-2 backdrop-blur-sm text-center">
+                          <span className="font-poppins text-coffee font-bold text-lg text-center">
+                            {item.packageName}
+                          </span>
+                        </div>
+                      </div>
+                    ))}
                   </div>
-                ))}
-              </motion.div>
+                </motion.div>
+              </div>
               <CustomPricingTable
                 pricingContent={laserHairMenPackage}
                 treatmentName="Laser Hair Removal Men"
@@ -255,9 +265,10 @@ function LaserHairRemovalPackages() {
                 key={item.id}
                 className={`flex flex-col items-center justify-center font-poppins ${isMobile ? "p-1" : "p-4"}`}
               >
-                <div className="font-extrabold text-4xl">{item.header}</div>
+                <div className="font-extrabold text-4xl text-coffee">{item.header}</div>
                 <img
                   src={item.imgSrc}
+                  alt={item.label}
                   className={`${isTablet ? "" : "w-3/5"}`}
                 />
                 <CustomPricingTable
@@ -325,7 +336,8 @@ function LaserHairRemovalPackages() {
                 <div className="flex items-center flex-col p-2">
                   <img
                     src={Resources.images.Services.LaserHairRemoval.machine}
-                    className="mb-5 h-75"
+                    alt="expertise"
+                    className="mb-5 h-56"
                   />
                   <div className="text-coal text-center">
                     <p className="text-xl font-extrabold">
@@ -333,10 +345,11 @@ function LaserHairRemovalPackages() {
                     </p>
                   </div>
                 </div>
-                <div className="flex flex-col p-2">
+                <div className="flex flex-col p-2 items-center">
                   <img
                     src={Resources.images.Common.dermat}
-                    className="mb-5 h-75"
+                    alt="fda-approved-machine"
+                    className="mb-5 h-56 w-56"
                   />
                   <div className="text-coal text-center">
                     <p className="text-xl font-extrabold">
@@ -347,7 +360,8 @@ function LaserHairRemovalPackages() {
                 <div className="flex flex-col p-2">
                   <img
                     src={Resources.images.Common.personalDr}
-                    className="mb-5 h-75"
+                    alt="experienced-doctor"
+                    className="mb-5 h-56"
                   />
                   <div className="text-coal text-center">
                     <p className="text-xl font-extrabold">
@@ -358,7 +372,8 @@ function LaserHairRemovalPackages() {
                 <div className="flex items-center flex-col p-2">
                   <img
                     src={Resources.images.Common.serviceAtHome}
-                    className="mb-5 h-75"
+                    alt="service-at-home"
+                    className="mb-5 h-56"
                   />
                   <div className="text-coal text-center">
                     <p className="text-xl font-extrabold">

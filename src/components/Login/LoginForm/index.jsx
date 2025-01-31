@@ -16,7 +16,7 @@ function LoginForm({ formik, handleSubmit, mobileClass }) {
       initial="hidden"
       whileInView="show"
       viewport={{ once: true }}
-      className={`w-full max-w-md mx-auto bg-[#FAFAFA] shadow-lg rounded-3xl p-8 ${mobileClass}`}
+      className={`w-full max-w-md mx-auto bg-[#FAFAFA] md:shadow-lg md:rounded-3xl p-8 ${mobileClass}`}
     >
       <div className="flex justify-center">
         <img

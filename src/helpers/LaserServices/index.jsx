@@ -83,29 +83,6 @@ export const laserServiceForWomenContent = [
   },
 ];
 
-export const laserServicePackages = [
-  {
-    id: 1,
-    packageName: "Full Body (4+1)",
-    pricing: 60000,
-  },
-  {
-    id: 2,
-    packageName: "Face & Neck (4+1)",
-    pricing: 20000,
-  },
-  {
-    id: 3,
-    packageName: "Bikini & Buttocks (4+1)",
-    pricing: 24000,
-  },
-  {
-    id: 4,
-    packageName: "Arms & Underarms (4+1)",
-    pricing: 26000,
-  },
-];
-
 export const LHRBenefits = [
   {
     id: 1,
@@ -133,84 +110,6 @@ export const LHRBenefits = [
   },
 ];
 
-export const LHRWomenPricing = [
-  {
-    id: 1,
-    name: "Full Body (excluding Bikini)",
-    price: 15000,
-    route: `/book-now`,
-  },
-];
-
-export const LHRMenPricing = [
-  {
-    id: 1,
-    name: "Full Body (excluding private Parts)",
-    price: 15000,
-    route: `/book-now`,
-  },
-];
-
-export const LHRPrimePackages = [
-  {
-    id: 1,
-    name: "Face & Neck (4+1 Session)",
-    price: 5000,
-    route: `/book-now`,
-  },
-  {
-    id: 2,
-    name: "Arms + Underarms (4+1 Session)",
-    price: 6500,
-    route: `/book-now`,
-  },
-  {
-    id: 3,
-    name: "Bikini & Buttocks (Only Women) (4+1 Session)",
-    price: 6000,
-    route: `/book-now`,
-  },
-  {
-    id: 4,
-    name: "Chest & Back (4+1 Session)",
-    price: 8000,
-    route: `/book-now`,
-  },
-];
-
-export const LHRRemovalArea = [
-  {
-    id: 1,
-    name: "Half Legs",
-    price: 5000,
-    route: `/book-now`,
-  },
-  {
-    id: 2,
-    name: "Full Legs",
-    price: 8000,
-    route: `/book-now`,
-  },
-  {
-    id: 3,
-    name: "Back",
-    price: 5000,
-    route: `/book-now`,
-  },
-  {
-    id: 4,
-    name: "Chest",
-    price: 5000,
-    route: `/book-now`,
-  },
-  {
-    id: 5,
-    name: "Bikini",
-    price: 5000,
-    route: `/book-now`,
-  },
-];
-
 export const fullBodyLaserContent = [
   {
     id: 1,
@@ -218,10 +117,16 @@ export const fullBodyLaserContent = [
     label: "Laser Hair Removal Women",
     pricingContent: [
       {
-        label: "Laser Hair Removal Women",
+        label: "Laser Hair Removal Women - (4+1) Session",
         packageName: "Full Body - (4+1) Session",
         Step3: true,
         pricing: 60000,
+      },
+      {
+        label: "Laser Hair Removal Women - Single Session",
+        packageName: "Full Body - Single Session",
+        Step3: true,
+        pricing: 15000,
       },
     ],
     imgSrc: Resources.images.Services.LaserHairRemoval.fullBodyWomenLHR,
@@ -232,51 +137,19 @@ export const fullBodyLaserContent = [
     label: "Laser Hair Removal Men",
     pricingContent: [
       {
-        label: "Laser Hair Removal Men",
+        label: "Laser Hair Removal Men - (4+1) Session",
         packageName: "Full Body - (4+1) Session",
         Step3: true,
         pricing: 60000,
       },
+      {
+        label: "Laser Hair Removal Men - Single Session",
+        packageName: "Full Body - Single Session",
+        Step3: true,
+        pricing: 15000,
+      },
     ],
     imgSrc: Resources.images.Services.LaserHairRemoval.fullBodyMenLHR,
-  },
-];
-
-export const LHRPrimePackageImg = [
-  {
-    id: 1,
-    imgSrc: Resources.images.Home.lhr.facePackage,
-  },
-  {
-    id: 2,
-    imgSrc: Resources.images.Home.lhr.underarmsPackage,
-  },
-  {
-    id: 3,
-    imgSrc: Resources.images.Home.lhr.bikiniPackage,
-  },
-  {
-    id: 4,
-    imgSrc: Resources.images.Home.lhr.chestMenPackage,
-  },
-];
-
-export const LHRAreaImg = [
-  {
-    id: 1,
-    imgSrc: Resources.images.Home.lhr.fullLegsPackage,
-  },
-  {
-    id: 2,
-    imgSrc: Resources.images.Home.lhr.backPackage,
-  },
-  {
-    id: 3,
-    imgSrc: Resources.images.Home.lhr.chestPackage,
-  },
-  {
-    id: 4,
-    imgSrc: Resources.images.Home.lhr.bikiniPackage,
   },
 ];
 
@@ -517,7 +390,7 @@ export const laserHairWomenPackage = [
   {
     id: 5,
     packageName: "Chest & Back",
-    label: "Chest And UndeBackrarms",
+    label: "Chest And Back",
     featureName: "chestAndBack",
     multiplSessions: true,
     pricing: 32000,
@@ -596,7 +469,7 @@ export const laserHairMenPackage = [
   {
     id: 4,
     packageName: "Chest & Back",
-    label: "Chest And UndeBackrarms",
+    label: "Chest And Back",
     featureName: "chestAndBack",
     multiplSessions: true,
     pricing: 32000,

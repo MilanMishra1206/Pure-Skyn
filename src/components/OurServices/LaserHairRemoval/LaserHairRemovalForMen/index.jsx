@@ -71,7 +71,11 @@ function LaserHairRemovalForMen({ category, isMobile, isTablet, isLaptop }) {
                 >
                   {isLaptop && item.id % 2 === 0 && (
                     <div className="flex justify-center w-full lg:!w-1/2 mr-0 lg:!mr-5">
-                      <img src={item.img} className="rounded-2xl h-75" />
+                      <img
+                        src={item.img}
+                        alt={item.header.toLowerCase()}
+                        className="rounded-2xl h-75"
+                      />
                     </div>
                   )}
                   <div className="font-poppins w-full lg:!w-1/2 mr-0 lg:!mr-5">
@@ -95,14 +99,22 @@ function LaserHairRemovalForMen({ category, isMobile, isTablet, isLaptop }) {
                   {!isLaptop && (
                     <div className="flex flex-col w-full">
                       <div className="flex justify-center w-full lg:!w-1/2">
-                        <img src={item.img} className="rounded-2xl h-75" />
+                        <img
+                          src={item.img}
+                          alt={item.header.toLowerCase()}
+                          className="rounded-2xl h-75"
+                        />
                       </div>
                       <FadedLineBreak />
                     </div>
                   )}
                   {isLaptop && item.id % 2 !== 0 && (
                     <div className="flex justify-center w-full lg:!w-1/2">
-                      <img src={item.img} className="rounded-2xl h-75" />
+                      <img
+                        src={item.img}
+                        alt={item.header.toLowerCase()}
+                        className="rounded-2xl h-75"
+                      />
                     </div>
                   )}
                 </motion.div>

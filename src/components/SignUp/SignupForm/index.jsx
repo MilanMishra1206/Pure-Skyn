@@ -21,141 +21,147 @@ function SignUpForm({ formik, handleSubmit, mobileClass }) {
       initial="hidden"
       whileInView="show"
       viewport={{ once: true }}
-      className={`w-full max-w-md mx-auto bg-[#FAFAFA] shadow-lg rounded-3xl p-8 ${mobileClass}`}
+      className={`w-full max-w-md mx-auto bg-[#FAFAFA] md:shadow-lg md:rounded-3xl px-4 py-3 ${mobileClass}`}
     >
-      <div className="flex justify-center mb-3">
+      <div className="flex justify-center">
         <img
           src={Resources.images.NavBar.logo1}
           alt="branding"
-          style={{ width: "10rem" }}
+          style={{ width: "8rem" }}
         />
       </div>
-      <h2 className="font-extrabold font-poppins mb-6 text-center text-kashmirBlue text-3xl">
+      <h2 className="font-extrabold font-poppins text-2xl mb-4 text-center text-kashmirBlue">
         Create an Account
       </h2>
       <form className="w-full">
-        <Suspense fallback={<div />}>
-          <CustomTextField
-            textClassOverride="!text-kashmirBlue"
-            placeholderClasses="placeholder:!opacity-30 !text-licorice"
-            className="h-12 rounded-md !bg-transparent"
-            placeholder="Enter"
-            requiredStar
-            labelToShow="First Name"
-            name="firstName"
-            textFieldColorClass="shadow-insetLight"
-            inputClassName="!bg-transparent"
-            fieldWidth="w-full !mb-4"
-            value={formik.values?.firstName}
-            onChange={formik.handleChange}
-            handleBlur={formik.handleBlur}
-            error={formik.errors.firstName}
-            touched={formik.touched.firstName}
-          />
-        </Suspense>
-        <Suspense fallback={<div />}>
-          <CustomTextField
-            textClassOverride="!text-kashmirBlue"
-            placeholderClasses="placeholder:!opacity-30 !text-licorice"
-            className="h-12 rounded-md !bg-transparent"
-            placeholder="Enter"
-            requiredStar
-            labelToShow="Last Name"
-            name="lastName"
-            textFieldColorClass="shadow-insetLight"
-            inputClassName="!bg-transparent"
-            fieldWidth="w-full !mb-4"
-            value={formik.values?.lastName}
-            onChange={formik.handleChange}
-            handleBlur={formik.handleBlur}
-            error={formik.errors.lastName}
-            touched={formik.touched.lastName}
-          />
-        </Suspense>
-        <Suspense fallback={<div />}>
-          <CustomTextField
-            textClassOverride="!text-kashmirBlue"
-            placeholderClasses="placeholder:!opacity-30 !text-licorice"
-            className="h-12 rounded-md !bg-transparent"
-            placeholder="Enter"
-            requiredStar
-            labelToShow="Contact Number"
-            name="phone"
-            maxLength={10}
-            regex={regex.numeric}
-            textFieldColorClass="shadow-insetLight"
-            inputClassName="!bg-transparent"
-            fieldWidth="w-full !mb-4"
-            value={formik.values?.phone}
-            onChange={formik.handleChange}
-            handleBlur={formik.handleBlur}
-            error={formik.errors.phone}
-            touched={formik.touched.phone}
-          />
-        </Suspense>
-        <Suspense fallback={<div />}>
-          <CustomTextField
-            textClassOverride="!text-kashmirBlue"
-            placeholderClasses="placeholder:!opacity-30 !text-licorice"
-            className="h-12 rounded-md !bg-transparent"
-            placeholder="Enter"
-            requiredStar
-            labelToShow="Email Id"
-            name="email"
-            textFieldColorClass="shadow-insetLight"
-            inputClassName="!bg-transparent"
-            fieldWidth="w-full !mb-4"
-            value={formik.values?.email}
-            onChange={formik.handleChange}
-            handleBlur={formik.handleBlur}
-            error={formik.errors.email}
-            touched={formik.touched.email}
-          />
-        </Suspense>
-        <Suspense fallback={<div />}>
-          <CustomTextField
-            textClassOverride="!text-kashmirBlue"
-            type={showPassword ? "text" : "password"}
-            placeholderClasses="placeholder:!opacity-30 !text-licorice"
-            className="h-12 rounded-md !bg-transparent"
-            placeholder="Enter"
-            requiredStar
-            labelToShow="Password"
-            name="password"
-            textFieldColorClass="shadow-insetLight"
-            inputClassName="!bg-transparent"
-            fieldWidth="w-full !mb-4"
-            value={formik.values?.password}
-            onChange={formik.handleChange}
-            handleBlur={formik.handleBlur}
-            error={formik.errors.password}
-            touched={formik.touched.password}
-            iconEnd={showPassword ? <FaEye /> : <FaEyeSlash />}
-            iconOnClick={() => setShowPassword(!showPassword)}
-          />
-        </Suspense>
-        <Suspense fallback={<div />}>
-          <CustomTextField
-            textClassOverride="!text-kashmirBlue"
-            type={showConfirmPassword ? "text" : "password"}
-            placeholderClasses="placeholder:!opacity-30 !text-licorice"
-            className="h-12 rounded-md !bg-transparent"
-            placeholder="Enter"
-            requiredStar
-            labelToShow="Confirm Password"
-            name="confirmPassword"
-            textFieldColorClass="shadow-insetLight"
-            inputClassName="!bg-transparent"
-            fieldWidth="w-full !mb-4"
-            value={formik.values?.confirmPassword}
-            onChange={formik.handleChange}
-            handleBlur={formik.handleBlur}
-            error={formik.errors.confirmPassword}
-            touched={formik.touched.confirmPassword}
-            iconEnd={showConfirmPassword ? <FaEye /> : <FaEyeSlash />}
-            iconOnClick={() => setShowConfirmPassword(!showConfirmPassword)}
-          />
-        </Suspense>
+        <div className="flex gap-2">
+          <Suspense fallback={<div />}>
+            <CustomTextField
+              textClassOverride="!text-kashmirBlue"
+              placeholderClasses="placeholder:!opacity-30 !text-licorice"
+              className="h-12 rounded-md !bg-transparent"
+              placeholder="Enter"
+              requiredStar
+              labelToShow="First Name"
+              name="firstName"
+              textFieldColorClass="shadow-insetLight"
+              inputClassName="!bg-transparent"
+              fieldWidth="w-full !mb-4"
+              value={formik.values?.firstName}
+              onChange={formik.handleChange}
+              handleBlur={formik.handleBlur}
+              error={formik.errors.firstName}
+              touched={formik.touched.firstName}
+            />
+          </Suspense>
+          <Suspense fallback={<div />}>
+            <CustomTextField
+              textClassOverride="!text-kashmirBlue"
+              placeholderClasses="placeholder:!opacity-30 !text-licorice"
+              className="h-12 rounded-md !bg-transparent"
+              placeholder="Enter"
+              requiredStar
+              labelToShow="Last Name"
+              name="lastName"
+              textFieldColorClass="shadow-insetLight"
+              inputClassName="!bg-transparent"
+              fieldWidth="w-full !mb-4"
+              value={formik.values?.lastName}
+              onChange={formik.handleChange}
+              handleBlur={formik.handleBlur}
+              error={formik.errors.lastName}
+              touched={formik.touched.lastName}
+            />
+          </Suspense>
+        </div>
+        <div className="flex gap-2">
+          <Suspense fallback={<div />}>
+            <CustomTextField
+              textClassOverride="!text-kashmirBlue"
+              placeholderClasses="placeholder:!opacity-30 !text-licorice"
+              className="h-12 rounded-md !bg-transparent"
+              placeholder="Enter"
+              requiredStar
+              labelToShow="Contact Number"
+              name="phone"
+              maxLength={10}
+              regex={regex.numeric}
+              textFieldColorClass="shadow-insetLight"
+              inputClassName="!bg-transparent"
+              fieldWidth="w-full !mb-4"
+              value={formik.values?.phone}
+              onChange={formik.handleChange}
+              handleBlur={formik.handleBlur}
+              error={formik.errors.phone}
+              touched={formik.touched.phone}
+            />
+          </Suspense>
+          <Suspense fallback={<div />}>
+            <CustomTextField
+              textClassOverride="!text-kashmirBlue"
+              placeholderClasses="placeholder:!opacity-30 !text-licorice"
+              className="h-12 rounded-md !bg-transparent"
+              placeholder="Enter"
+              requiredStar
+              labelToShow="Email Id"
+              name="email"
+              textFieldColorClass="shadow-insetLight"
+              inputClassName="!bg-transparent"
+              fieldWidth="w-full !mb-4"
+              value={formik.values?.email}
+              onChange={formik.handleChange}
+              handleBlur={formik.handleBlur}
+              error={formik.errors.email}
+              touched={formik.touched.email}
+            />
+          </Suspense>
+        </div>
+        <div className="flex gap-2">
+          <Suspense fallback={<div />}>
+            <CustomTextField
+              textClassOverride="!text-kashmirBlue"
+              type={showPassword ? "text" : "password"}
+              placeholderClasses="placeholder:!opacity-30 !text-licorice"
+              className="h-12 rounded-md !bg-transparent"
+              placeholder="Enter"
+              requiredStar
+              labelToShow="Password"
+              name="password"
+              textFieldColorClass="shadow-insetLight"
+              inputClassName="!bg-transparent"
+              fieldWidth="w-full !mb-4"
+              value={formik.values?.password}
+              onChange={formik.handleChange}
+              handleBlur={formik.handleBlur}
+              error={formik.errors.password}
+              touched={formik.touched.password}
+              iconEnd={showPassword ? <FaEye /> : <FaEyeSlash />}
+              iconOnClick={() => setShowPassword(!showPassword)}
+            />
+          </Suspense>
+          <Suspense fallback={<div />}>
+            <CustomTextField
+              textClassOverride="!text-kashmirBlue"
+              type={showConfirmPassword ? "text" : "password"}
+              placeholderClasses="placeholder:!opacity-30 !text-licorice"
+              className="h-12 rounded-md !bg-transparent"
+              placeholder="Enter"
+              requiredStar
+              labelToShow="Confirm Password"
+              name="confirmPassword"
+              textFieldColorClass="shadow-insetLight"
+              inputClassName="!bg-transparent"
+              fieldWidth="w-full !mb-4"
+              value={formik.values?.confirmPassword}
+              onChange={formik.handleChange}
+              handleBlur={formik.handleBlur}
+              error={formik.errors.confirmPassword}
+              touched={formik.touched.confirmPassword}
+              iconEnd={showConfirmPassword ? <FaEye /> : <FaEyeSlash />}
+              iconOnClick={() => setShowConfirmPassword(!showConfirmPassword)}
+            />
+          </Suspense>
+        </div>
         <div className="mt-4">
           <p>
             By signing-up you agree to our{" "}

@@ -23,9 +23,9 @@ const Resources = {
       personalisedPlanning: `${base}/Common/personalized-planning.png`,
       serviceAtHome: `${base}/Common/service-at-home.svg`,
       personalDr: `${base}/Common/personalised-doctor.svg`,
-      // homeHeader: `${base}/Common/home-header.webp`
       homeHeader: `${base}/Common/homeHeader.jpg`,
       homeHeaderMobile: `${base}/Common/home-header-mobile.jpg`,
+      dotsBg: `${base}/Common/dotsbg.svg`,
     },
     Home: {
       dermfracMobile: `${base}/Home/dermfrac-mobile.png`,
@@ -102,6 +102,8 @@ const Resources = {
       mediFacialPackage: `${base}/Services/medi-facial-package.jpg`,
       whyUs: `${base}/Services/why-us.jpg`,
       feedback: `${base}/Services/feedback.jpg`,
+      lhrPackages: `${base}/Services/LHR-Packages.jpg`,
+      lhrPackagesMobile: `${base}/Services/LHR-Packages-Mobile.jpg`,
       LaserHairRemoval: {
         laserHairSelectedPart: `${base}/Services/LaserHairRemoval/Women/img7.webp`,
         hairRemovalBookNow: `${base}/Services/LaserHairRemoval/HairRemovalBookNow.jpg`,

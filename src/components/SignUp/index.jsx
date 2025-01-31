@@ -48,7 +48,7 @@ function SignUpPage() {
   };
 
   return (
-    <div className="flex justify-center items-center min-h-screen relative">
+    <div className="md:flex justify-center items-center min-h-screen relative bg-[#FAFAFA]">
       <Suspense>
         <CustomLoader open={isLoading} />
       </Suspense>
@@ -58,12 +58,12 @@ function SignUpPage() {
           backgroundImage: `url(${Resources.images.Login.signupBg})`,
         }}
       />
-      <div className="w-full h-full flex flex-col md:flex-row justify-end items-center z-10 relative">
-        <div className="hidden md:flex w-full md:w-1/2 p-8 flex-col justify-center items-center">
+      <div className="w-full h-full flex flex-col md:flex-row justify-center lg:!justify-end items-center z-10 relative">
+        <div className="hidden md:flex w-full md:w-1/2 flex-col justify-center items-center">
           <SignUpForm formik={formik} handleSubmit={handleSubmit} />
         </div>
       </div>
-      <div className="md:hidden w-full h-full absolute">
+      <div className="flex md:hidden w-full h-full absolute">
         <SignUpForm
           formik={formik}
           handleSubmit={handleSubmit}

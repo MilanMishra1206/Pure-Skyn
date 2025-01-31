@@ -19,14 +19,14 @@ function CommonHeader({
     <Link
       key="1"
       to="/"
-      className="text-skyn no-underline font-poppins hover:opacity-80 text-lg"
+      className="text-skyn no-underline !font-poppins hover:opacity-80 text-lg"
     >
       Home
     </Link>,
     <Link
       key="2"
       to={route1}
-      className="text-skyn no-underline font-poppins hover:opacity-80 text-lg"
+      className="text-skyn no-underline !font-poppins hover:opacity-80 text-lg"
     >
       {breadcrumbs1}
     </Link>,
@@ -52,28 +52,32 @@ function CommonHeader({
             className="absolute inset-0 flex mt-[150px] xl:!mt-[180px] bg-opacity-40 lg:mr-22"
           >
             <div className="flex flex-col gap-4 lg:!gap-5 w-50 p-5">
-              <div className="text-coffee font-extrabold text-4xl xl:!text-6xl">
-                {heading.toUpperCase()}
-              </div>
+              {heading && (
+                <div className="text-coffee font-extrabold text-4xl xl:!text-6xl">
+                  {heading.toUpperCase()}
+                </div>
+              )}
               <div>
                 <p className="font-bold text-coal text-justify text-sm xl:!text-lg xl:mt-[20px]">
                   {content}
                 </p>
               </div>
-              <Link
-                to={linkTo}
-                onClick={() => {
-                  sessionStorage.setItem("treatmentName", heading);
-                  sessionStorage.setItem("currentBookStep", 1);
-                }}
-                className="flex justify-center rounded-3 shadow-sm hover:!shadow-2xl xl:mt-[30px] bg-coffee text-white font-bold font-poppins items-center no-underline p-3 rounded-xl space-x-3  xl:text-xl w-full xl:!w-1/3"
-              >
-                Book Now{" "}
-                <MdKeyboardDoubleArrowRight
-                  size="1.5rem"
-                  className="ml-2 text-white"
-                />
-              </Link>
+              {linkTo && (
+                <Link
+                  to={linkTo}
+                  onClick={() => {
+                    sessionStorage.setItem("treatmentName", heading);
+                    sessionStorage.setItem("currentBookStep", 1);
+                  }}
+                  className="flex justify-center rounded-3 shadow-sm hover:!shadow-2xl xl:mt-[30px] bg-coffee text-white font-bold font-poppins items-center no-underline p-3 rounded-xl space-x-3  xl:text-xl w-full xl:!w-1/3"
+                >
+                  Book Now{" "}
+                  <MdKeyboardDoubleArrowRight
+                    size="1.5rem"
+                    className="ml-2 text-white"
+                  />
+                </Link>
+              )}
             </div>
           </motion.div>
         </>
