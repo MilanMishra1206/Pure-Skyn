@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/Pure-Skyn/static/css/main.b3ddb1e1.css",
-    "main.js": "/Pure-Skyn/static/js/main.4a8be30d.js",
+    "main.js": "/Pure-Skyn/static/js/main.4567679c.js",
     "static/js/7668.34442e39.chunk.js": "/Pure-Skyn/static/js/7668.34442e39.chunk.js",
     "static/js/9905.f5a3cdc0.chunk.js": "/Pure-Skyn/static/js/9905.f5a3cdc0.chunk.js",
     "static/js/6139.2d748b4c.chunk.js": "/Pure-Skyn/static/js/6139.2d748b4c.chunk.js",
@@ -84,7 +84,7 @@
     "static/media/slick.woff": "/Pure-Skyn/static/media/slick.295183786cd8a1389865.woff",
     "index.html": "/Pure-Skyn/index.html",
     "main.b3ddb1e1.css.map": "/Pure-Skyn/static/css/main.b3ddb1e1.css.map",
-    "main.4a8be30d.js.map": "/Pure-Skyn/static/js/main.4a8be30d.js.map",
+    "main.4567679c.js.map": "/Pure-Skyn/static/js/main.4567679c.js.map",
     "7668.34442e39.chunk.js.map": "/Pure-Skyn/static/js/7668.34442e39.chunk.js.map",
     "9905.f5a3cdc0.chunk.js.map": "/Pure-Skyn/static/js/9905.f5a3cdc0.chunk.js.map",
     "6139.2d748b4c.chunk.js.map": "/Pure-Skyn/static/js/6139.2d748b4c.chunk.js.map",
@@ -164,6 +164,6 @@
   },
   "entrypoints": [
     "static/css/main.b3ddb1e1.css",
-    "static/js/main.4a8be30d.js"
+    "static/js/main.4567679c.js"
   ]
 }
