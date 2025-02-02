@@ -1,6 +1,5 @@
 import { useMediaQuery } from "@mui/material";
 import { motion } from "framer-motion";
-
 import CustomCards from "../../shared/CustomCards";
 import CustomHeader from "../../shared/CustomHeader";
 import { servicesCardDetails } from "../../helpers/LaserServices";

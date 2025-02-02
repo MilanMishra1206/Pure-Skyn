@@ -2,7 +2,6 @@ import { Link } from "react-router-dom";
 import { useMediaQuery } from "@mui/material";
 import { motion } from "framer-motion";
 import { lazy, Suspense } from "react";
-
 import Resources from "../../../../config/Resources";
 import { laserServiceForWomenContent } from "../../../../helpers/LaserServices";
 import MotionWrapper from "../../../../config/MotionFramer/MotionWrapper";

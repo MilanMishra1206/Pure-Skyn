@@ -9,13 +9,13 @@ import {
 } from "@mui/material";
 import { lazy, Suspense, useEffect, useState } from "react";
 import { useFormik } from "formik";
+import { motion } from "framer-motion";
+import { Link } from "react-router-dom";
+import { useMutation } from "react-query";
 import { getBookNowFormValidation } from "../../helpers/Login";
 import { useAppSnackbar } from "../../config/Context/SnackbarContext";
 import DrawCircleText from "../../shared/CustomDrawCircleText";
 import FadeInWrapper from "../../config/MotionFramer/FadeInWrapper";
-import { motion } from "framer-motion";
-import { Link, useLocation } from "react-router-dom";
-import { useMutation } from "react-query";
 import createNewBooking from "../../services/Booking";
 import BookNowDetails from "./BookNowDetails";
 import Resources from "../../config/Resources";
@@ -27,13 +27,42 @@ function BookNow() {
   const isTablet = useMediaQuery("(max-width: 1023px)");
   const isMobile = useMediaQuery("(max-width: 767px)");
   const showSnackbar = useAppSnackbar();
-  const location = useLocation();
   const [currentStep, setCurrentStep] = useState(0);
   const [stepHeading, setStepHeading] = useState("Choose Options");
   const [treatmentPackage, setTreatmentPackage] = useState("");
+  const [checked, setChecked] = useState(true);
+  const [initialValues, setInitialValues] = useState({
+    name: "",
+    email: "",
+    mobile: "",
+    address: "",
+    treatmentDate: "",
+    timeSlot: "",
+    city: "",
+  });
 
   useEffect(() => {
-    const currentBookStep = JSON.parse(sessionStorage.getItem("currentBookStep"));
+    checked
+      ? setInitialValues({
+          name: "Milan Mishra",
+          email: "milanmishra11@gmaal.com",
+          mobile: "8769261422",
+          address: "Malibu Town",
+          city: "Gurgaon",
+        })
+      : setInitialValues({
+          name: "",
+          email: "",
+          mobile: "",
+          address: "",
+          city: "",
+        });
+  }, [checked]);
+
+  useEffect(() => {
+    const currentBookStep = JSON.parse(
+      sessionStorage.getItem("currentBookStep")
+    );
     const treatmentName = sessionStorage.getItem("treatmentName");
     if (sessionStorage.getItem("currentBookStep")) {
       setCurrentStep(currentBookStep);
@@ -45,37 +74,37 @@ function BookNow() {
     {
       id: 1,
       treatmentName: "Laser Hair Removal Women",
-      imgSrc: Resources.images.Home.lhrWomenHeader,
+      imgSrc: Resources.images.Home.lhrWomenMobile,
       label: "lhrWomen",
     },
     {
       id: 2,
       treatmentName: "Laser Hair Removal Men",
-      imgSrc: Resources.images.Home.lhrMenHeader,
+      imgSrc: Resources.images.Home.lhrMenMobile,
       label: "lhrMen",
     },
     {
       id: 3,
       treatmentName: "Oxy Hydra Facial",
-      imgSrc: Resources.images.Home.oxyhydraHeader,
+      imgSrc: Resources.images.Home.oxyhydraMoble,
       label: "oxyHydraFacial",
     },
     {
       id: 4,
       treatmentName: "RF Skin Tightening",
-      imgSrc: Resources.images.Home.skinTighteningHeader,
+      imgSrc: Resources.images.Home.skinTighteningMobile,
       label: "skinTightening",
     },
     {
       id: 5,
       treatmentName: "Dermafrac Infusion Facial",
-      imgSrc: Resources.images.Home.dermafracHeader,
+      imgSrc: Resources.images.Home.dermfracMobile,
       label: "dermafrac",
     },
     {
       id: 6,
       treatmentName: "Oxygeneo",
-      imgSrc: Resources.images.Home.oxyhydraHeader,
+      imgSrc: Resources.images.Home.oxygeneoMobile,
       label: "oxygeneo",
     },
   ];
@@ -97,15 +126,7 @@ function BookNow() {
     enableReinitialize: true,
     validateOnMount: true,
     validateOnChange: true,
-    initialValues: {
-      name: location.state?.name || "",
-      email: location.state?.email || "",
-      mobile: location.state?.mobile || "",
-      address: "",
-      treatmentDate: "",
-      timeSlot: "",
-      city: location.state?.city || "",
-    },
+    initialValues,
     validationSchema: getBookNowFormValidation,
     onSubmit: (value) => {
       createBooking({
@@ -122,51 +143,7 @@ function BookNow() {
     },
   });
 
-  const getQueryParam = (param) => {
-    const params = new URLSearchParams(location.search);
-    const value = params.get(param);
-    return value ? decodeURIComponent(value) : null;
-  };
-
   const steps = ["Choose Your Treatment", stepHeading, "Book Now"];
-
-  useEffect(() => {
-    const treatmentQueryParam = getQueryParam("treatment");
-    const laserTypeQueryParam = getQueryParam("laserType");
-
-    if (treatmentQueryParam) {
-      formik.setFieldValue("treatment", treatmentQueryParam);
-    }
-    if (laserTypeQueryParam) {
-      formik.setFieldValue("laserOption", laserTypeQueryParam);
-    }
-  }, [location.search]);
-
-  const laserHairRemovalOptions = [
-    {
-      label: "Full Body (excluding Bikini) - Women",
-      value: "Full Body (excluding Bikini) - Women",
-    },
-    {
-      label: "Full Body (excluding private Parts) - Men",
-      value: "Full Body (excluding private Parts) - Men",
-    },
-    { label: "Face & Neck (4+1 Session)", value: "Face And Neck" },
-    {
-      label: "Arms + Underarms (4+1 Session)",
-      value: "Arms And Underarms",
-    },
-    {
-      label: "Bikini & Buttocks (4+1 Session) - Women",
-      value: "Bikini And Buttocks",
-    },
-    { label: "Chest & Back (4+1 Session)", value: "Chest And Back" },
-    { label: "Half Legs", value: "Half Legs" },
-    { label: "Full Legs", value: "Full Legs" },
-    { label: "Back", value: "Back" },
-    { label: "Chest", value: "Chest" },
-    { label: "Bikini", value: "Bikini" },
-  ];
 
   const timeSlots = [
     "10:00 AM",
@@ -309,9 +286,10 @@ function BookNow() {
           <BookNowDetails
             formik={formik}
             isMobile={isMobile}
-            laserHairRemovalOptions={laserHairRemovalOptions}
             timeSlots={timeSlots}
             handleSubmit={handleSubmit}
+            checked={checked}
+            setChecked={setChecked}
           />
         )}
       </div>

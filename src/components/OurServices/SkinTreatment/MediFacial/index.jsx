@@ -2,7 +2,6 @@ import { lazy, Suspense, useEffect } from "react";
 import { motion } from "framer-motion";
 import { Link, useLocation, useParams } from "react-router-dom";
 import { useMediaQuery } from "@mui/material";
-
 import Resources from "../../../../config/Resources";
 import { mediFacialAccordianContent } from "../../../../helpers/AccordianContent";
 import { useRouteStatus } from "../../../../config/Context/RouteContext";

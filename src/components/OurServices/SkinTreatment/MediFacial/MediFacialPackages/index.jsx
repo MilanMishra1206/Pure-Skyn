@@ -2,7 +2,6 @@ import { Link } from "react-router-dom";
 import { useEffect } from "react";
 import { Breadcrumbs, Typography, useMediaQuery } from "@mui/material";
 import { motion } from "framer-motion";
-
 import { mediFacialPrimePackages } from "../../../../../helpers/LaserServices";
 import MotionWrapper from "../../../../../config/MotionFramer/MotionWrapper";
 import FadeInWrapper from "../../../../../config/MotionFramer/FadeInWrapper";
@@ -59,13 +58,13 @@ function MediFacialPackages() {
             <div className="relative">
               {isMobile ? (
                 <img
-                  src={Resources.images.Services.lhrPackagesMobile}
-                  alt="LHR-Packages"
+                  src={Resources.images.Services.mediFacialPackageMobile}
+                  alt="Medi-facial-packages"
                 />
               ) : (
                 <img
-                  src={Resources.images.Services.lhrPackages}
-                  alt="LHR-Packages"
+                  src={Resources.images.Services.mediFacialPackage}
+                  alt="Medi-facial-packages"
                 />
               )}
             </div>
@@ -118,25 +117,25 @@ function MediFacialPackages() {
             <div className="grid grid-cols-2 lg:grid-cols-4 place-content-center place-items-center gap-4 mt-4">
               <div className="p-2 rounded shadow-lg">
                 <img
-                  src={Resources.images.Services.Dermafrac.dermaPackage}
+                  src={Resources.images.Home.oxyhydraMoble}
                   className="mb-5"
                 />
               </div>
               <div className="p-2 rounded shadow-lg">
                 <img
-                  src={Resources.images.Services.OxyHydra.oxyPackage}
+                  src={Resources.images.Home.skinTighteningMobile}
                   className="mb-5"
                 />
               </div>
               <div className="p-2 rounded shadow-lg">
                 <img
-                  src={Resources.images.Services.SkinTightening.skinPackage}
+                  src={Resources.images.Home.dermfracMobile}
                   className="mb-5"
                 />
               </div>
               <div className="p-2 rounded shadow-lg">
                 <img
-                  src={Resources.images.Services.mediFacialPackage}
+                  src={Resources.images.Home.oxygeneoMobile}
                   className="mb-5"
                 />
               </div>

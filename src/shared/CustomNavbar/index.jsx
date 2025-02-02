@@ -1,14 +1,16 @@
-import { useEffect, useRef, useState } from "react";
+import { lazy, useEffect, useRef, useState } from "react";
+import { AnimatePresence, motion } from "framer-motion";
 import { Link, useLocation, useNavigate } from "react-router-dom";
-import Resources from "../../config/Resources";
+import { FaCartShopping } from "react-icons/fa6";
+import { useSelector } from "react-redux";
 import { GiHamburgerMenu } from "react-icons/gi";
 import { useMediaQuery } from "@mui/material";
 import MenuForDesktop from "./MenuForDesktop";
 import MenuForMobile from "./MenuForMobile";
-import { AnimatePresence, motion } from "framer-motion";
+import Resources from "../../config/Resources";
 import { useAppSnackbar } from "../../config/Context/SnackbarContext";
-import { FaCartShopping } from "react-icons/fa6";
-import { useSelector } from "react-redux";
+
+const CartDrawer = lazy(() => import("../../components/Cart/CartDrawer"));
 
 function CustomNavbar() {
   const location = useLocation();
@@ -49,6 +51,12 @@ function CustomNavbar() {
 
   const cancelLogout = () => {
     setIsConfirmingLogout(false);
+  };
+
+  const [openCart, setOpenCart] = useState(false);
+
+  const handleOpenCart = () => {
+    setOpenCart(!openCart);
   };
 
   const profileItem = [
@@ -195,8 +203,8 @@ function CustomNavbar() {
               />
             </Link>
           </div>
-          <Link
-            to="/cart"
+          <button
+            onClick={handleOpenCart}
             className={`navbar-links mr-4 relative ${isTablet ? "block" : "hidden"}`}
           >
             <FaCartShopping size="1.8rem" />
@@ -205,7 +213,7 @@ function CustomNavbar() {
                 {totalItems}
               </span>
             )}
-          </Link>
+          </button>
         </nav>
         {!isTablet ? (
           <MenuForDesktop
@@ -276,6 +284,11 @@ function CustomNavbar() {
           </motion.div>
         )}
       </AnimatePresence>
+      {openCart && (
+        <AnimatePresence>
+          <CartDrawer openCart={openCart} handleOpenCart={handleOpenCart} />
+        </AnimatePresence>
+      )}
     </div>
   );
 }

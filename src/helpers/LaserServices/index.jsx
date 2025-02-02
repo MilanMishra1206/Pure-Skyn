@@ -163,7 +163,7 @@ export const sessionWiseHairReduction = [
     id: 2,
     mainText: "2nd and 3rd session",
     content: `<p><strong><u>2nd session (Week 7)</u></strong></p>
-              <p>You will notice reduction in one of the following parameters: thickness, colour, density, frequency of hair growth. Keep going!</p>
+              <p class="mb-4">You will notice reduction in one of the following parameters: thickness, colour, density, frequency of hair growth. Keep going!</p>
               <p><strong><u>3rd session (Week 11)</u></strong></p>
               <p>You will notice hairless patches. Don't stop now. Great work!</p>`,
   },

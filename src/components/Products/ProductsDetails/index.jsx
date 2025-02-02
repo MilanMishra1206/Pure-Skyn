@@ -12,6 +12,9 @@ import {
 import { motion } from "framer-motion";
 import { Link, useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
+import { useDispatch } from "react-redux";
+import { MdVerified } from "react-icons/md";
+import { FaSquareCheck } from "react-icons/fa6";
 import { FaShippingFast, FaShieldAlt, FaCartPlus } from "react-icons/fa";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import StarIcon from "@mui/icons-material/Star";
@@ -26,9 +29,7 @@ import CustomDropdown from "../../../shared/CustomDropdown";
 import CustomButton2 from "../../../shared/CustomButton2";
 import { useAppSnackbar } from "../../../config/Context/SnackbarContext";
 import { addToCart } from "../../../redux/Actions";
-import { useDispatch } from "react-redux";
-import { MdVerified } from "react-icons/md";
-import { FaSquareCheck } from "react-icons/fa6";
+
 import ProductDescriptionImage from "./ProductDescriptionImage";
 
 function ProductsDetails() {

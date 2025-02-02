@@ -2,7 +2,6 @@ import { useMediaQuery } from "@mui/material";
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import { lazy, Suspense } from "react";
-
 import Resources from "../../../../../config/Resources";
 import { oxygeneoFaqAccordianContent } from "../../../../../helpers/AccordianContent";
 import {

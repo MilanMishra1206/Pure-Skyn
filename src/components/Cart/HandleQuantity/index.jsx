@@ -8,7 +8,7 @@ function HandleQuantity({
 }) {
   return (
     <>
-      <div className="mx-auto flex h-8 items-stretch text-gray-600">
+      <div className="flex h-8 items-stretch text-gray-600">
         <button
           className="flex items-center justify-center rounded-l-md bg-gray-200 px-4 transition hover:bg-coal hover:!text-white disabled:!cursor-not-allowed disabled:!bg-gray-200 disabled:!text-black"
           disabled={item.quantity === 1}

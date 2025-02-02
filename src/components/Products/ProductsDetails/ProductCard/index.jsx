@@ -1,13 +1,13 @@
 import { Card } from "react-bootstrap";
-import FadedLineBreak from "../../../../shared/CustomHrTag";
-import { Link, useNavigate } from "react-router-dom";
-import { Box, Rating } from "@mui/material";
-import StarIcon from "@mui/icons-material/Star";
+import { useDispatch } from "react-redux";
 import { FaCartPlus } from "react-icons/fa";
+import { Box, Rating } from "@mui/material";
+import { Link, useNavigate } from "react-router-dom";
+import StarIcon from "@mui/icons-material/Star";
+import FadedLineBreak from "../../../../shared/CustomHrTag";
 import CustomButton2 from "../../../../shared/CustomButton2";
 import { useAppSnackbar } from "../../../../config/Context/SnackbarContext";
 import { addToCart } from "../../../../redux/Actions";
-import { useDispatch } from "react-redux";
 
 function ProductCard({ product }) {
   const navigate = useNavigate();

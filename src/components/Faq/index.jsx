@@ -1,4 +1,7 @@
 import { useEffect, useState } from "react";
+import { useLocation, useNavigate } from "react-router-dom";
+import { Button, useMediaQuery } from "@mui/material";
+import { motion } from "framer-motion";
 import {
   dermoFracAccordianContent,
   LHRMenAccordianContent,
@@ -8,9 +11,6 @@ import {
   oxyHydraAccordianContent,
   skinTighteningFaqAccordianContent,
 } from "../../helpers/AccordianContent";
-import { useLocation, useNavigate } from "react-router-dom";
-import { Button, useMediaQuery } from "@mui/material";
-import { motion } from "framer-motion";
 import FadeInWrapper from "../../config/MotionFramer/FadeInWrapper";
 import CustomHeader from "../../shared/CustomHeader";
 import CustomAccordion from "../../shared/CustomAccordion";

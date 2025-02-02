@@ -99,11 +99,12 @@ const Resources = {
     },
     Services: {
       mediFacial: `${base}/Services/medi-facial.jpeg`,
-      mediFacialPackage: `${base}/Services/medi-facial-package.jpg`,
       whyUs: `${base}/Services/why-us.jpg`,
       feedback: `${base}/Services/feedback.jpg`,
       lhrPackages: `${base}/Services/LHR-Packages.jpg`,
       lhrPackagesMobile: `${base}/Services/LHR-Packages-Mobile.jpg`,
+      mediFacialPackage: `${base}/Services/medi-facial-package-header.jpg`,
+      mediFacialPackageMobile: `${base}/Services/medi-facial-package-mobile.jpg`,
       LaserHairRemoval: {
         laserHairSelectedPart: `${base}/Services/LaserHairRemoval/Women/img7.webp`,
         hairRemovalBookNow: `${base}/Services/LaserHairRemoval/HairRemovalBookNow.jpg`,

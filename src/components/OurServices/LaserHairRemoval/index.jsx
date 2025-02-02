@@ -2,7 +2,6 @@ import { lazy, Suspense, useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import { useMediaQuery } from "@mui/material";
 import { Link, useLocation, useParams } from "react-router-dom";
-
 import Resources from "../../../config/Resources";
 import CustomCards from "../../../shared/CustomCards";
 import { LHRAccordianContent } from "../../../helpers/AccordianContent";

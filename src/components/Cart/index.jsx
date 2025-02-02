@@ -1,7 +1,6 @@
-import { useMediaQuery } from "@mui/material";
+import { Breadcrumbs, Typography, useMediaQuery } from "@mui/material";
 import { motion } from "framer-motion";
 import FadeInWrapper from "../../config/MotionFramer/FadeInWrapper";
-import CustomHeader from "../../shared/CustomHeader";
 import { useSelector } from "react-redux";
 import {
   MdKeyboardDoubleArrowRight,
@@ -185,6 +184,22 @@ function Cart() {
     }
   }, [originalCartValue]);
 
+  const breadcrumbs = [
+    <Link
+      key="1"
+      to="/"
+      className="text-skyn no-underline font-poppins hover:opacity-80 text-lg"
+    >
+      Home
+    </Link>,
+    <Typography
+      key="2"
+      className="text-coal font-poppins cursor-pointer text-lg"
+    >
+      Cart
+    </Typography>,
+  ];
+
   return (
     <motion.div
       variants={FadeInWrapper("left", 0.1)}
@@ -194,8 +209,14 @@ function Cart() {
       className={`mt-3 ${isTablet ? "py-3" : "py-4 mt-4"}`}
     >
       <div className={`mt-5 ${isMobile ? "px-1" : "px-4"}`}>
-        <div className="px-2">
-          <CustomHeader heading={"Shopping Cart"} showBackButton={true} />
+        <div className="px-4">
+          <Breadcrumbs
+            separator=">"
+            aria-label="breadcrumb"
+            className="mb-4 px-1"
+          >
+            {breadcrumbs}
+          </Breadcrumbs>
         </div>
         {cartItems?.length === 0 ? (
           <div className="flex flex-col items-center justify-center px-2 md:!px-5 pb-5">
@@ -373,7 +394,7 @@ function Cart() {
                       </small>
                     )}
                   </div>
-                  <div className="p-2 text-lg bg-slate-50 text-skyn shadow rounded-xl text-center font-bold">
+                  <div className="p-2 text-lg bg-emerald-800 text-white shadow rounded-xl text-center font-bold">
                     {freeDeliveryStatus()}
                   </div>
                   <div className="mt-6 border-t border-b py-2">

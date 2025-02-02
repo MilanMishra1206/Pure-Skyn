@@ -1,7 +1,7 @@
 import React, { lazy, Suspense } from "react";
 import { useFormik } from "formik";
-import CustomCheckBox from "../../../shared/CustomCheckbox";
 import { motion } from "framer-motion";
+import CustomCheckBox from "../../../shared/CustomCheckbox";
 import FadeInWrapper from "../../../config/MotionFramer/FadeInWrapper";
 
 const CustomDatePicker = lazy(() => import("../../../shared/CustomDatePicker"));

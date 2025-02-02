@@ -1,7 +1,6 @@
 import React from "react";
 import Slider from "react-slick";
 import { FaQuoteLeft, FaQuoteRight } from "react-icons/fa";
-
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import Resources from "../../../config/Resources";

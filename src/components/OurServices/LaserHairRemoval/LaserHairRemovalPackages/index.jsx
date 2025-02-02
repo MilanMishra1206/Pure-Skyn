@@ -1,7 +1,7 @@
 import { Link, useNavigate } from "react-router-dom";
 import { Breadcrumbs, Typography, useMediaQuery } from "@mui/material";
 import { useEffect } from "react";
-
+import { motion } from "framer-motion";
 import Resources from "../../../../config/Resources";
 import {
   fullBodyLaserContent,
@@ -11,7 +11,6 @@ import {
   sessionWiseHairReduction,
 } from "../../../../helpers/LaserServices";
 import MotionWrapper from "../../../../config/MotionFramer/MotionWrapper";
-import { motion } from "framer-motion";
 import FadeInWrapper from "../../../../config/MotionFramer/FadeInWrapper";
 import FuzzyPricingOverlay from "../../../../shared/CustomFuzzyPricingOverlay";
 import DrawCircleText from "../../../../shared/CustomDrawCircleText";
@@ -136,7 +135,7 @@ function LaserHairRemovalPackages() {
                   initial="hidden"
                   whileInView="show"
                   viewport={{ once: true }}
-                  className="grid grid-cols-1 md:!grid-cols-2 xl:!grid-cols-5 gap-4 bg-[#FAFAFA]"
+                  className="grid grid-cols-2 lg:!grid-cols-5 gap-4 bg-[#FAFAFA]"
                 >
                   {laserHairWomenPackage.map((item) => (
                     <div
@@ -145,11 +144,11 @@ function LaserHairRemovalPackages() {
                     >
                       <img
                         src={item.imgSrc}
-                        className="h-52 object-cover p-3"
+                        className="h-32 md:!h-50 xl:!h-32 object-cover p-3"
                         alt={item.packageName}
                       />
                       <div className="w-full p-2 backdrop-blur-sm text-center">
-                        <span className="font-poppins text-coffee font-bold text-lg text-center">
+                        <span className="font-poppins text-coffee font-bold text-base text-center">
                           {item.packageName}
                         </span>
                       </div>
@@ -185,7 +184,7 @@ function LaserHairRemovalPackages() {
                   viewport={{ once: true }}
                   className="space-y-4"
                 >
-                  <div className="grid grid-cols-1 md:grid-cols-3 lg:!grid-cols-4 gap-4 bg-[#FAFAFA]">
+                  <div className="grid grid-cols-2 md:grid-cols-4 gap-4 bg-[#FAFAFA]">
                     {laserHairMenPackage.map((item) => (
                       <div
                         key={item.id}
@@ -193,11 +192,11 @@ function LaserHairRemovalPackages() {
                       >
                         <img
                           src={item.imgSrc}
-                          className="h-52 object-cover p-3"
+                          className="h-32 object-cover p-3"
                           alt={item.packageName}
                         />
                         <div className="w-full p-2 backdrop-blur-sm text-center">
-                          <span className="font-poppins text-coffee font-bold text-lg text-center">
+                          <span className="font-poppins text-coffee font-bold text-base text-center">
                             {item.packageName}
                           </span>
                         </div>
@@ -265,7 +264,9 @@ function LaserHairRemovalPackages() {
                 key={item.id}
                 className={`flex flex-col items-center justify-center font-poppins ${isMobile ? "p-1" : "p-4"}`}
               >
-                <div className="font-extrabold text-4xl text-coffee">{item.header}</div>
+                <div className="font-extrabold text-4xl text-coffee">
+                  {item.header}
+                </div>
                 <img
                   src={item.imgSrc}
                   alt={item.label}

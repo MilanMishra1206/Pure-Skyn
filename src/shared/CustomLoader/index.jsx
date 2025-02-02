@@ -1,6 +1,6 @@
 import React from "react";
-import "./SkeletonLoader.css";
 import { Backdrop } from "@mui/material";
+import "./SkeletonLoader.css";
 
 const CustomLoader = ({ open }) => {
   return (

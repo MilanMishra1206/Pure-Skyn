@@ -1,8 +1,7 @@
 import { Suspense, useEffect, useState } from "react";
 import { useDebounce } from "use-debounce";
-import DataTable from "./DataTable";
-import { useQuery } from "react-query";
 import { Divider } from "@mui/material";
+import DataTable from "./DataTable";
 import CustomPagination from "../../../shared/CustomDashboardTable/CustomPagination";
 import { locationDropdownValues } from "../../../helpers/Admin";
 import DataTableFilter from "../TableContent/DataTableFilter";

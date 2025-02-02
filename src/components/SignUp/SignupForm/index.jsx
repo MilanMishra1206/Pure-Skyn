@@ -1,10 +1,10 @@
 import React, { lazy, Suspense, useState } from "react";
 import { Link } from "react-router-dom";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
+import { motion } from "framer-motion";
 import CustomModal from "../../../shared/CustomModal";
 import regex from "../../../helpers/Regex";
 import Resources from "../../../config/Resources";
-import { motion } from "framer-motion";
 import FadeInWrapper from "../../../config/MotionFramer/FadeInWrapper";
 import TermsAndConditions from "../TermsAndConditions";
 

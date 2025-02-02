@@ -1,7 +1,7 @@
 import { motion } from "framer-motion";
 import { useEffect, useRef, useState } from "react";
-import Resources from "../../config/Resources";
 import { useMediaQuery } from "@mui/material";
+import Resources from "../../config/Resources";
 import CustomButton2 from "../CustomButton2";
 
 const CustomHeroSection = () => {

@@ -1,14 +1,15 @@
 import React, { useEffect, useState } from "react";
-import CustomButton2 from "../../../shared/CustomButton2";
 import { MdOutlineShoppingCartCheckout } from "react-icons/md";
+import CustomButton2 from "../../../shared/CustomButton2";
 import BookNowForm from "./BookNowForm";
 
 const BookNowDetails = ({
   formik,
   isMobile,
-  laserHairRemovalOptions,
   timeSlots,
   handleSubmit,
+  checked,
+  setChecked,
 }) => {
   const [treatmentName, setTreatmentName] = useState("");
   const [packageName, setPackageName] = useState("");
@@ -29,6 +30,8 @@ const BookNowDetails = ({
               timeSlots={timeSlots}
               handleSubmit={handleSubmit}
               treatmentName={treatmentName}
+              checked={checked}
+              setChecked={setChecked}
             />
           </div>
           <div className="flex flex-col border shadow rounded p-4 xl:self-start font-poppins">

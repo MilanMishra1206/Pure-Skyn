@@ -1,9 +1,9 @@
-import Resources from "../../../config/Resources";
-import { Link } from "react-router-dom";
-import CustomCards from "../../../shared/CustomCards";
-import { MdKeyboardDoubleArrowRight } from "react-icons/md";
-import { servicesOffered } from "../../../helpers/LaserServices";
 import React from "react";
+import { MdKeyboardDoubleArrowRight } from "react-icons/md";
+import { Link } from "react-router-dom";
+import Resources from "../../../config/Resources";
+import CustomCards from "../../../shared/CustomCards";
+import { servicesOffered } from "../../../helpers/LaserServices";
 import CustomHomeHeader from "../../../shared/CustomHomeHeader";
 
 function ServicesOffered({ isMobile, isLargeScreen, isLaptop }) {
@@ -17,34 +17,6 @@ function ServicesOffered({ isMobile, isLargeScreen, isLaptop }) {
         </div>
       </div>
       <div>
-        {/* {isLaptop && (
-          <div
-            className="h-screen bg-cover bg-no-repeat bg-center relative p-5 bg-[#F7D9CB]"
-            style={{
-              backgroundImage: `url(${Resources.images.Common.bookNow})`,
-            }}
-          >
-            <div className="flex items-center absolute inset-0 bg-opacity-40 justify-center mr-5">
-              <div className="flex flex-col w-50">
-                <BookNowForm />
-              </div>
-            </div>
-          </div>
-        )}
-        {!isLaptop && (
-          <div
-            className="h-screen bg-cover bg-no-repeat bg-center relative p-5 bg-[#F7D9CB]"
-            style={{
-              backgroundImage: `url(${Resources.images.Common.BookNowTabletView})`,
-            }}
-          >
-            <div className="flex items-center absolute inset-0 bg-opacity-40 justify-center backdrop-blur">
-              <div className="flex flex-col">
-                <BookNowForm />
-              </div>
-            </div>
-          </div>
-        )} */}
         {isLargeScreen && (
           <div className="grid grid-cols-2 font-poppins mb-5 h-96">
             <div className="flex flex-col justify-between p-5 bg-[#FFF7E9]">

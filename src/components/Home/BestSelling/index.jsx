@@ -1,10 +1,10 @@
 import { Link } from "react-router-dom";
+import { MdKeyboardDoubleArrowRight } from "react-icons/md";
+import { motion } from "framer-motion";
 import Resources from "../../../config/Resources";
 import CustomCards from "../../../shared/CustomCards";
 import FadeInWrapper from "../../../config/MotionFramer/FadeInWrapper";
-import { motion } from "framer-motion";
 import DrawCircleText from "../../../shared/CustomDrawCircleText";
-import { MdKeyboardDoubleArrowRight } from "react-icons/md";
 import CustomHomeHeader from "../../../shared/CustomHomeHeader";
 
 function BestSelling({ isMobile, isLargeScreen }) {

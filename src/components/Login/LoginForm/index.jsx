@@ -1,8 +1,8 @@
 import React, { lazy, Suspense, useState } from "react";
 import { Link } from "react-router-dom";
-import Resources from "../../../config/Resources";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
 import { motion } from "framer-motion";
+import Resources from "../../../config/Resources";
 import FadeInWrapper from "../../../config/MotionFramer/FadeInWrapper";
 
 const CustomTextField = lazy(() => import("../../../shared/CustomTextField"));

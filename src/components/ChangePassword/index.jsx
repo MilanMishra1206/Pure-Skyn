@@ -1,12 +1,13 @@
 import { useFormik } from "formik";
 import * as yup from "yup";
-import CustomHeader from "../../shared/CustomHeader";
-import { lazy, Suspense, useState } from "react";
-import { useNavigate } from "react-router-dom";
-import regex from "../../helpers/Regex";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
 import { useMediaQuery } from "@mui/material";
 import { motion } from "framer-motion";
+import { lazy, Suspense, useState } from "react";
+import { useNavigate } from "react-router-dom";
+import CustomHeader from "../../shared/CustomHeader";
+import regex from "../../helpers/Regex";
+
 import FadeInWrapper from "../../config/MotionFramer/FadeInWrapper";
 
 const CustomTextField = lazy(() => import("../../shared/CustomTextField"));

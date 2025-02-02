@@ -1,9 +1,10 @@
 import { useMediaQuery } from "@mui/material";
-import FadeInWrapper from "../../../config/MotionFramer/FadeInWrapper";
-import { motion } from "framer-motion";
-import CustomHrTag from "../../../shared/CustomHrTag";
 import { Link } from "react-router-dom";
 import { MdKeyboardDoubleArrowRight } from "react-icons/md";
+import { motion } from "framer-motion";
+import FadeInWrapper from "../../../config/MotionFramer/FadeInWrapper";
+import CustomHrTag from "../../../shared/CustomHrTag";
+
 import CustomHomeHeader from "../../../shared/CustomHomeHeader";
 
 function AboutUs() {

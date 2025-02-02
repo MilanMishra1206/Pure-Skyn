@@ -1,10 +1,14 @@
 import { Link } from "react-router-dom";
+import { FaCartShopping } from "react-icons/fa6";
+import { useSelector } from "react-redux";
+import { lazy, useState } from "react";
+import { AnimatePresence } from "framer-motion";
 import Resources from "../../../config/Resources";
 import FlyoutLink from "../FlayoutLink";
 import Dropdown from "../Dropdown";
 import DropdownContent, { handleKeyPress } from "../Dropdown/DropdownContent";
-import { FaCartShopping } from "react-icons/fa6";
-import { useSelector } from "react-redux";
+
+const CartDrawer = lazy(() => import("../../../components/Cart/CartDrawer"));
 
 const MenuForDesktop = ({
   isActive,
@@ -17,7 +21,12 @@ const MenuForDesktop = ({
   isTablet,
 }) => {
   const cartItems = useSelector((state) => state.cart.items);
+  const [openCart, setOpenCart] = useState(false);
   const totalItems = cartItems.length;
+
+  const handleOpenCart = () => {
+    setOpenCart(!openCart);
+  };
 
   return (
     <div
@@ -78,8 +87,8 @@ const MenuForDesktop = ({
       </div>
       <div className="flex items-center navbar-links">
         {!isAdmin && (
-          <Link
-            to="/cart"
+          <button
+            onClick={handleOpenCart}
             className="mr-5 hover:opacity-80 text-white relative"
           >
             <FaCartShopping size={"2rem"} />
@@ -88,7 +97,7 @@ const MenuForDesktop = ({
                 {totalItems}
               </span>
             )}
-          </Link>
+          </button>
         )}
         {isLoggedIn && (
           <div className="flex">
@@ -106,6 +115,11 @@ const MenuForDesktop = ({
         )}
       </div>
       {!isLoggedIn && <FlyoutLink href="/login">Login</FlyoutLink>}
+      {openCart && (
+        <AnimatePresence>
+          <CartDrawer openCart={openCart} handleOpenCart={handleOpenCart} />
+        </AnimatePresence>
+      )}
     </div>
   );
 };

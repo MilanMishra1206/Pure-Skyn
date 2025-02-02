@@ -1,10 +1,10 @@
 import { Chip, FormControl, TextField } from "@mui/material";
 import Autocomplete, { createFilterOptions } from "@mui/material/Autocomplete";
 import classNames from "classnames";
-import { useEffect, useState, useRef } from "react";
+import { useEffect, useState } from "react";
+import { MdClose } from "react-icons/md";
 import "tailwindcss/tailwind.css";
 import CustomCheckBox from "../CustomCheckbox";
-import { MdClose } from "react-icons/md";
 import Resources from "../../config/Resources";
 
 function AutoComplete({

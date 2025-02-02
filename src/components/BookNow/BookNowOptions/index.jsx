@@ -1,4 +1,6 @@
 import { motion } from "framer-motion";
+import { useEffect, useState } from "react";
+import { IoIosCloseCircle } from "react-icons/io";
 import FadeInWrapper from "../../../config/MotionFramer/FadeInWrapper";
 import {
   allPackageDetails,
@@ -10,9 +12,6 @@ import {
   skinTighteningPackage,
 } from "../../../helpers/LaserServices";
 import BookNowPackageCards from "./BookNowPackageCards";
-import { useEffect, useState } from "react";
-import { IoIosCloseCircle } from "react-icons/io";
-import { Link } from "react-router-dom";
 
 function BookNowOptions({ heading, setTreatmentPackage, setCurrentStep }) {
   const [packageDetails, setPackageDetails] = useState([]);
@@ -80,7 +79,7 @@ function BookNowOptions({ heading, setTreatmentPackage, setCurrentStep }) {
   const bookNowClick = () => {
     setOpenModal(false);
     setTreatmentPackageDetails([]);
-    setCurrentStep(2);        
+    setCurrentStep(2);
   };
 
   return (
@@ -135,12 +134,13 @@ function BookNowOptions({ heading, setTreatmentPackage, setCurrentStep }) {
                   </span>
                 </div>
               ))}
-              <Link
-                className="no-underline p-3 rounded bg-coffee text-white text-center font-bold mt-5 hover:shadow-xl"
+              <button
+                className="no-underline p-3 rounded bg-coffee text-white text-center font-bold mt-5 hover:shadow-xl disabled:cursor-not-allowed disabled:opacity-80"
+                disabled={!selectedPackage}
                 onClick={() => bookNowClick()}
               >
                 Book Now
-              </Link>
+              </button>
             </div>
           </div>
         </>

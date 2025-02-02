@@ -1,11 +1,11 @@
 import React, { lazy, Suspense } from "react";
-import Resources from "../../config/Resources";
 import { useFormik } from "formik";
+import { useNavigate } from "react-router-dom";
+import { useMutation } from "react-query";
+import Resources from "../../config/Resources";
 import { getLoginValidation, loginInitialValues } from "../../helpers/Login";
 import LoginForm from "./LoginForm";
 import { useAppSnackbar } from "../../config/Context/SnackbarContext";
-import { useNavigate } from "react-router-dom";
-import { useMutation } from "react-query";
 import { loginUser } from "../../services/LoginAndRegister";
 
 const CustomLoader = lazy(() => import("../../shared/CustomLoader"));

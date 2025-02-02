@@ -1,9 +1,9 @@
 import { useMediaQuery } from "@mui/material";
-import MotionWrapper from "../../config/MotionFramer/MotionWrapper";
-import Appointments from "./Appointments";
 import { useState } from "react";
 import { FaUser } from "react-icons/fa6";
 import { AiOutlineSchedule } from "react-icons/ai";
+import MotionWrapper from "../../config/MotionFramer/MotionWrapper";
+import Appointments from "./Appointments";
 import Schedule from "./Schedule";
 import { PiUserList } from "react-icons/pi";
 import TechniciansList from "./TechniciansList";

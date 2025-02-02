@@ -1,5 +1,4 @@
 import { Link } from "react-router-dom";
-import Resources from "../../config/Resources";
 import { FaInstagram } from "react-icons/fa";
 import { IoLogoFacebook } from "react-icons/io5";
 import { FaXTwitter } from "react-icons/fa6";
@@ -8,6 +7,7 @@ import { IoPhonePortraitOutline } from "react-icons/io5";
 import { FaPhoneAlt } from "react-icons/fa";
 import { MdOutlineMail } from "react-icons/md";
 import { FaRegAddressBook } from "react-icons/fa";
+import Resources from "../../config/Resources";
 
 function CustomFooter() {
   const isAdmin = false;

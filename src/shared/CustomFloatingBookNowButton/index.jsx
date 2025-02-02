@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
-import FadeInWrapper from "../../config/MotionFramer/FadeInWrapper";
 import { Link } from "react-router-dom";
+import FadeInWrapper from "../../config/MotionFramer/FadeInWrapper";
 
 function CustomFloatingBookNowButton({ treatmentName, goToStep }) {
   const [isVisible, setIsVisible] = useState(false);

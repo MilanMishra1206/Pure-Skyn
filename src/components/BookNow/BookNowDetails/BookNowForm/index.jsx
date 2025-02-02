@@ -1,7 +1,8 @@
-import { lazy, Suspense, useState } from "react";
+import { lazy, Suspense } from "react";
+import { getIn } from "formik";
+import { Link } from "react-router-dom";
 import FadedLineBreak from "../../../../shared/CustomHrTag";
 import regex from "../../../../helpers/Regex";
-import { getIn } from "formik";
 
 const CustomTextField = lazy(
   () => import("../../../../shared/CustomTextField")
@@ -12,8 +13,14 @@ const CustomDatePicker = lazy(
 );
 const CustomCheckBox = lazy(() => import("../../../../shared/CustomCheckbox"));
 
-function BookNowForm({ formik, timeSlots, handleSubmit, treatmentName }) {
-  const [checked, setChecked] = useState(true);
+function BookNowForm({
+  formik,
+  timeSlots,
+  handleSubmit,
+  treatmentName,
+  checked,
+  setChecked,
+}) {
   return (
     <form className="w-full">
       <div className="rounded-3xl p-8">
@@ -97,27 +104,37 @@ function BookNowForm({ formik, timeSlots, handleSubmit, treatmentName }) {
             />
           </Suspense>
           <Suspense fallback={<div />}>
-            <CustomDropdown
-              textClassOverride="!text-kashmirBlue"
-              classes="!rounded-md !mb-4"
-              requiredStar
-              labelToShow="Select Address"
-              name="address"
-              showIconOutline
-              options={[
-                { label: "Gurgaon", value: "Gurgaon" },
-                {
-                  label: "South Delhi",
-                  value: "South Delhi",
-                },
-              ]}
-              value={formik.values.address}
-              handleBlur={formik.handleBlur}
-              handleChange={formik.handleChange}
-              errorMessage={getIn(formik.errors, "address")}
-              error={getIn(formik.errors, "address")}
-              touched={getIn(formik.touched, "address")}
-            />
+            <div>
+              <CustomDropdown
+                textClassOverride="!text-kashmirBlue"
+                classes="!rounded-md !mb-4"
+                requiredStar
+                labelToShow="Select Address"
+                name="address"
+                showIconOutline
+                options={[
+                  { label: "Malibu Town", value: "Malibu Town" },
+                  {
+                    label: "South Delhi",
+                    value: "South Delhi",
+                  },
+                ]}
+                value={formik.values.address}
+                handleBlur={formik.handleBlur}
+                handleChange={formik.handleChange}
+                errorMessage={getIn(formik.errors, "address")}
+                error={getIn(formik.errors, "address")}
+                touched={getIn(formik.touched, "address")}
+              />
+              <div>
+                <Link
+                  className="text-sm underline text-skyn hover:opacity-80"
+                  to="/user-profile#Address"
+                >
+                  Add Address
+                </Link>
+              </div>
+            </div>
           </Suspense>
           <Suspense fallback={<div />}>
             <CustomDropdown

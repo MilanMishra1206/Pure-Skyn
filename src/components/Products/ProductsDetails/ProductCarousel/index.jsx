@@ -1,6 +1,7 @@
 import React from "react";
 import Slider from "react-slick";
 import ProductCard from "../ProductCard";
+import { CustomRevealHeading } from "../../../../shared/CustomRevealHeading";
 
 function ProductCarousel({ carouselContent }) {
   const settings = {
@@ -39,6 +40,10 @@ function ProductCarousel({ carouselContent }) {
 
   return (
     <div className="p-4 w-auto">
+      <div className="flex flex-col md:!flex-row md:gap-2 justify-center mb-4 cursor-pointer">
+        <CustomRevealHeading heading="Similar" />
+        <CustomRevealHeading heading="Products" />
+      </div>
       <Slider {...settings}>
         {carouselContent.map((item, index) => (
           <div key={index}>

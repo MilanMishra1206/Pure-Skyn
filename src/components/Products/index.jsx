@@ -6,20 +6,17 @@ import {
   useMediaQuery,
 } from "@mui/material";
 import { motion } from "framer-motion";
+import { useDispatch } from "react-redux";
+import { Link, useNavigate } from "react-router-dom";
+import { FaCartPlus } from "react-icons/fa";
+import { IoFilterSharp } from "react-icons/io5";
+import { FaSort } from "react-icons/fa";
 import FadeInWrapper from "../../config/MotionFramer/FadeInWrapper";
-import CustomHeader from "../../shared/CustomHeader";
 import Resources from "../../config/Resources";
 import FadedLineBreak from "../../shared/CustomHrTag";
 import StarIcon from "@mui/icons-material/Star";
-import { Link, useNavigate } from "react-router-dom";
-import { FaCartPlus } from "react-icons/fa";
-import CustomButton2 from "../../shared/CustomButton2";
-import { IoFilterSharp } from "react-icons/io5";
-import { FaSort } from "react-icons/fa";
 import { useAppSnackbar } from "../../config/Context/SnackbarContext";
-import { useDispatch } from "react-redux";
 import { addToCart } from "../../redux/Actions";
-import { MdKeyboardDoubleArrowRight } from "react-icons/md";
 
 function Products() {
   const isMobile = useMediaQuery("(max-width: 767px)");
@@ -128,7 +125,10 @@ function Products() {
     >
       Home
     </Link>,
-    <Typography key="2" className="text-coal font-poppins cursor-pointer text-lg">
+    <Typography
+      key="2"
+      className="text-coal font-poppins cursor-pointer text-lg"
+    >
       Products
     </Typography>,
   ];
@@ -146,15 +146,6 @@ function Products() {
           <Breadcrumbs separator=">" aria-label="breadcrumb">
             {breadcrumbs}
           </Breadcrumbs>
-          <div className="flex justify-end px-4">
-            <Link
-              to={"/cart"}
-              className="flex items-center text-skyn hover:opacity-80 font-bold no-underline hover:scale-110 text-2xl"
-            >
-              Go To Cart
-              <MdKeyboardDoubleArrowRight className="text-3xl text-skyn" />
-            </Link>
-          </div>
         </div>
       </motion.div>
       {/* <motion.div
@@ -182,7 +173,7 @@ function Products() {
         >
           {productList.map((product) => (
             <div
-              className="p-4 shadow-lg rounded-2xl font-poppins relative"
+              className="flex flex-col p-4 shadow-lg rounded-2xl font-poppins relative"
               key={product.id}
             >
               {product.strikePrice && (
@@ -200,53 +191,56 @@ function Products() {
                 onClick={() => navigate(`/products/${product.productName}`)}
               />
               <FadedLineBreak />
-              <Link
-                className="font-bold text-xl mt-4 text-coal hover:text-skyn no-underline"
-                to={`/products/${product.productName}`}
-              >
-                {product.productName}
-              </Link>
-              <Box
-                sx={{
-                  width: 200,
-                  display: "flex",
-                  alignItems: "center",
-                  marginTop: "1rem",
-                }}
-              >
-                <Rating
-                  name="text-feedback"
-                  value={product.ratings}
-                  readOnly
-                  precision={0.5}
-                  emptyIcon={
-                    <StarIcon style={{ opacity: 0.55 }} fontSize="inherit" />
-                  }
-                />
-                <Box sx={{ ml: 2 }}>{product.ratings}</Box>
-              </Box>
-              <p className="text-sm text-justify !text-kashmirBlue !cursor-default mt-4 mb-4">
-                {truncateText(product.productDescription, 12)}{" "}
+              <div className="flex-1">
                 <Link
-                  className="underline !text-skyn hover:!opacity-80"
+                  className="font-bold text-lg mt-4 text-coal hover:text-skyn no-underline"
                   to={`/products/${product.productName}`}
                 >
-                  Read More
+                  {product.productName}
                 </Link>
-              </p>
-              {product.strikePrice && (
-                <span className="mt-4 text-left text-slate-400 line-through font-bold mr-4">
-                  ₹{product.strikePrice}
+                <Box
+                  sx={{
+                    width: 200,
+                    display: "flex",
+                    alignItems: "center",
+                    marginTop: "1rem",
+                  }}
+                >
+                  <Rating
+                    name="text-feedback"
+                    value={product.ratings}
+                    readOnly
+                    precision={0.5}
+                    emptyIcon={
+                      <StarIcon style={{ opacity: 0.55 }} fontSize="inherit" />
+                    }
+                  />
+                  <Box sx={{ ml: 2 }}>{product.ratings}</Box>
+                </Box>
+                <p className="text-sm text-justify !text-kashmirBlue !cursor-default mt-4 mb-4">
+                  {truncateText(product.productDescription, 18)}{" "}
+                  <Link
+                    className="underline !text-skyn hover:!opacity-80"
+                    to={`/products/${product.productName}`}
+                  >
+                    Read More
+                  </Link>
+                </p>
+                {product.strikePrice && (
+                  <span className="mt-4 text-left text-slate-400 line-through font-bold mr-4">
+                    ₹{product.strikePrice}
+                  </span>
+                )}
+                <span className="mt-4 text-left text-skyn font-bold text-lg">
+                  ₹{product.productPrice}
                 </span>
-              )}
-              <span className="mt-4 text-left text-skyn font-bold">
-                ₹{product.productPrice}
-              </span>
-              <CustomButton2
-                buttonText="Add to Cart"
-                faIcon={<FaCartPlus size="1.5rem" />}
-                handleSubmit={() => handleAddToCart(product)}
-              />
+              </div>
+              <button
+                className="flex items-center gap-2 rounded-3xl font-bold bg-skyn text-white border hover:!border-black w-full justify-center hover:!border hover:!bg-white hover:!text-skyn p-3 mt-4 transition duration-500"
+                onClick={() => handleAddToCart(product)}
+              >
+                Add To Cart <FaCartPlus size="1.2rem" />
+              </button>
             </div>
           ))}
         </div>

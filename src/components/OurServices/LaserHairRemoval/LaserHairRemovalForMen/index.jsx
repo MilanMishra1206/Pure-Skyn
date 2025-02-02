@@ -1,7 +1,6 @@
 import { Link } from "react-router-dom";
 import { lazy, Suspense } from "react";
 import { motion } from "framer-motion";
-
 import Resources from "../../../../config/Resources";
 import { laserServiceForMenContent } from "../../../../helpers/LaserServices";
 import MotionWrapper from "../../../../config/MotionFramer/MotionWrapper";

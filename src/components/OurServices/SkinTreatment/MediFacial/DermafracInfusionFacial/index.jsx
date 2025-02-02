@@ -2,7 +2,6 @@ import { lazy, Suspense } from "react";
 import { useMediaQuery } from "@mui/material";
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
-
 import Resources from "../../../../../config/Resources";
 import { dermaFracMicroneedling } from "../../../../../helpers/MediFacial";
 import { dermoFracAccordianContent } from "../../../../../helpers/AccordianContent";

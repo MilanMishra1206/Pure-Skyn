@@ -30,7 +30,7 @@ function ConfirmationModal({
               className="h-16 mb-3"
             />
           </div>
-          <h3 className="font-bold text-lg mb-4 text-center">
+          <h3 className="font-bold text-lg mb-4 text-center text-coal">
             {removeMessage}
           </h3>
           <div className="flex flex-col md:!flex-row justify-center gap-4 mt-4">

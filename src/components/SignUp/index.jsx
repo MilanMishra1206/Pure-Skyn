@@ -1,10 +1,10 @@
 import React, { lazy, Suspense } from "react";
 import { useFormik } from "formik";
+import { useMutation } from "react-query";
 import { signUpInitialValue, getSignUpValidation } from "../../helpers/Login";
 import SignUpForm from "./SignupForm";
 import Resources from "../../config/Resources";
 import { useAppSnackbar } from "../../config/Context/SnackbarContext";
-import { useMutation } from "react-query";
 import { registerUser } from "../../services/LoginAndRegister";
 
 const CustomLoader = lazy(() => import("../../shared/CustomLoader"));

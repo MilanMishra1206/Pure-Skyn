@@ -1,9 +1,9 @@
 import React, { lazy, Suspense, useState } from "react";
 import { AiOutlinePlus } from "react-icons/ai";
 import { FiEdit2, FiTrash2 } from "react-icons/fi";
+import { AnimatePresence, motion } from "framer-motion";
 import regex from "../../../helpers/Regex";
 import { useAppSnackbar } from "../../../config/Context/SnackbarContext";
-import { AnimatePresence, motion } from "framer-motion";
 import FadedLineBreak from "../../../shared/CustomHrTag";
 
 const CustomTextField = lazy(() => import("../../../shared/CustomTextField"));

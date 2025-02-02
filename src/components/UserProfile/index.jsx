@@ -1,16 +1,16 @@
-import React, { lazy, Suspense, useState } from "react";
+import React, {Suspense, useEffect, useState } from "react";
 import { useFormik } from "formik";
 import {
   addressInitialValues,
   getAddressValidationSchema,
 } from "../../helpers/UserProfile";
-import { useAppSnackbar } from "../../config/Context/SnackbarContext";
 import { useMediaQuery } from "@mui/material";
 import { FaMapLocationDot } from "react-icons/fa6";
 import { FaUser } from "react-icons/fa";
 import { FaShoppingCart } from "react-icons/fa";
 import { MdOutlineMedicalServices } from "react-icons/md";
-
+import { useLocation, useNavigate } from "react-router-dom";
+import { useAppSnackbar } from "../../config/Context/SnackbarContext";
 import PersonalInformation from "./PersonalInformation";
 import OrderHistory from "./OrderHistory";
 import AppointmentDetails from "./AppointmentDetails";
@@ -21,9 +21,23 @@ import CustomHeader from "../../shared/CustomHeader";
 function UserProfile() {
   const isAdmin = false;
   const showSnackbar = useAppSnackbar();
+  const location = useLocation();
+  const navigate = useNavigate();
   const [addresses, setAddresses] = useState([]);
   const [isAdding, setIsAdding] = useState(false);
   const [selectedSection, setSelectedSection] = useState("Profile");
+
+  useEffect(() => {
+    const targetSection = decodeURIComponent(location.hash.replace("#", ""));
+    if (targetSection) {
+      setSelectedSection(targetSection);
+    }
+  }, [location.hash]);
+
+  const handleSectionClick = (sectionId) => {
+    setSelectedSection(sectionId);
+    navigate("/user-profile", { replace: true });
+  };
 
   const fullName = "Milan Mishra";
   const phoneNumber = "8767898766";
@@ -65,7 +79,6 @@ function UserProfile() {
     initialValues: addressInitialValues,
     validationSchema: getAddressValidationSchema,
     onSubmit: (values, { resetForm }) => {
-      console.log(values)
       showSnackbar("Address Added", "success");
       setAddresses([...addresses, values]);
       setIsAdding(false);
@@ -77,7 +90,6 @@ function UserProfile() {
     if (!addressFormik.isValid) {
       showSnackbar("Please fill all the required fields", "error");
     } else {
-      console.log("here!!")
       addressFormik.handleSubmit();
     }
   };
@@ -112,7 +124,7 @@ function UserProfile() {
                       ? "!bg-slate-300"
                       : "hover:!bg-slate-300"
                   }`}
-                  onClick={() => setSelectedSection(item.id)}
+                  onClick={() => handleSectionClick(item.id)}
                 >
                   {item.icon}
                   <div className="flex-1">{item.label}</div>
