@@ -14,6 +14,7 @@ const CustomDatePicker = lazy(
 const CustomCheckBox = lazy(() => import("../../../../shared/CustomCheckbox"));
 
 function BookNowForm({
+  isLoggedIn,
   formik,
   timeSlots,
   handleSubmit,
@@ -31,15 +32,21 @@ function BookNowForm({
         </div>
         <FadedLineBreak />
         <div className="text-left text-lg md:p-5 ml-2 mb-4 md:!mb-0">
-          <CustomCheckBox
-            checked={checked}
-            checkBoxClasses="!p-0"
-            label="Booking for self?"
-            labelClasses="!ml-2"
-            handleChange={(e) => {
-              setChecked((prev) => !prev);
-            }}
-          />
+          {isLoggedIn ? (
+            <CustomCheckBox
+              checked={checked}
+              checkBoxClasses="!p-0"
+              label="Booking for self?"
+              labelClasses="!ml-2"
+              handleChange={(e) => {
+                setChecked((prev) => !prev);
+              }}
+            />
+          ) : (
+            <p className="text-sm font-bold">
+              <Link to="/login" className="text-[#175EC3] hover:opacity-80">Login</Link> to fetch your details
+            </p>
+          )}
         </div>
         <div className="grid md:grid-cols-2 lg:!grid-cols-3 gap-4 md:p-5">
           <Suspense fallback={<div />}>

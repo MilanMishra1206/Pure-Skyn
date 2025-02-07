@@ -4,6 +4,7 @@ import CustomButton2 from "../../../shared/CustomButton2";
 import BookNowForm from "./BookNowForm";
 
 const BookNowDetails = ({
+  isLoggedIn,
   formik,
   isMobile,
   timeSlots,
@@ -26,6 +27,7 @@ const BookNowDetails = ({
         <div className="flex flex-col xl:!flex-row gap-4 place-content-center px-2 py-6 md:!px-4 sm:py-10">
           <div className="flow-root border shadow rounded md:p-4 lg:!pl-1 xl:!p-4 self-start w-full">
             <BookNowForm
+              isLoggedIn={isLoggedIn}
               formik={formik}
               timeSlots={timeSlots}
               handleSubmit={handleSubmit}

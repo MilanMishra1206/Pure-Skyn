@@ -726,7 +726,7 @@ export const allPackageDetails = {
         price: 6500,
       },
     ],
-    checkAndBack: [
+    chestAndBack: [
       {
         id: 1,
         serviceId: "2",

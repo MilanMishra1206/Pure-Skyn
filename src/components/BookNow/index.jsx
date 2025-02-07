@@ -31,6 +31,7 @@ function BookNow() {
   const [stepHeading, setStepHeading] = useState("Choose Options");
   const [treatmentPackage, setTreatmentPackage] = useState("");
   const [checked, setChecked] = useState(true);
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [initialValues, setInitialValues] = useState({
     name: "",
     email: "",
@@ -44,6 +45,17 @@ function BookNow() {
   const steps = ["Choose Your Treatment", stepHeading, "Book Now"];
   const storedTimeSlots = sessionStorage.getItem("availableTimeSlots");
   const timeSlots = storedTimeSlots ? JSON.parse(storedTimeSlots) : [];
+
+  useEffect(() => {
+    const token = sessionStorage.getItem("token");
+    if (token) {
+      setIsLoggedIn(true);
+      setChecked(true);
+    } else {
+      setIsLoggedIn(false);
+      setChecked(false);
+    }
+  }, []);
 
   useEffect(() => {
     checked
@@ -277,6 +289,7 @@ function BookNow() {
         )}
         {currentStep === 2 && (
           <BookNowDetails
+            isLoggedIn={isLoggedIn}
             formik={formik}
             isMobile={isMobile}
             timeSlots={timeSlots}

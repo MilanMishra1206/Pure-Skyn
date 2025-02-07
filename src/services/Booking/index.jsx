@@ -1,5 +1,5 @@
 import API_URLS from "../../config/API_URLS";
-import { axiosInstance } from "../../utils/Axios";
+import { axiosInstanceLogin } from "../../utils/Axios";
 
 const requestBooking = async ({ serviceId, subServiceId, date }) => {
   const reqBody = {
@@ -9,7 +9,10 @@ const requestBooking = async ({ serviceId, subServiceId, date }) => {
   };
 
   try {
-    const data = await axiosInstance.post(API_URLS.Booking.reqBooking, reqBody);
+    const data = await axiosInstanceLogin.post(
+      API_URLS.Booking.reqBooking,
+      reqBody
+    );
     return data;
   } catch (error) {
     console.log(error);
@@ -44,7 +47,7 @@ const createNewBooking = async ({
     laserOption,
   };
   try {
-    const data = await axiosInstance.post(
+    const data = await axiosInstanceLogin.post(
       API_URLS.Booking.createBooking,
       reqBody
     );
