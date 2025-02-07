@@ -141,7 +141,7 @@ const MenuForMobile = ({
 
   const menuItems = [
     { name: "Home", link: "/" },
-    ...(isAdmin
+    ...(!isAdmin
       ? [
           {
             name: "Services",
