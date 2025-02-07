@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { MdOutlineShoppingCartCheckout } from "react-icons/md";
 import CustomButton2 from "../../../shared/CustomButton2";
 import BookNowForm from "./BookNowForm";
+import LoginModal from "../LoginModal";
 
 const BookNowDetails = ({
   isLoggedIn,
@@ -15,12 +16,23 @@ const BookNowDetails = ({
   const [treatmentName, setTreatmentName] = useState("");
   const [packageName, setPackageName] = useState("");
   const [packagePrice, setPackagePrice] = useState("");
+  const [openLoginModal, setOpenLoginModal] = useState(false);
 
   useEffect(() => {
     setTreatmentName(sessionStorage.getItem("treatmentName"));
     setPackageName(sessionStorage.getItem("packageName"));
     setPackagePrice(sessionStorage.getItem("packagePrice"));
   }, []);
+
+  const handleServiceBooking = () => {
+    if (!isLoggedIn) {
+      setOpenLoginModal(true);
+    } else {
+      window.prompt("Booking Success");
+      //api call for booking and payment
+    }
+  };
+
   return (
     <div className={`${isMobile ? "" : "px-4"} mt-4 py-4`}>
       <div className="md:px-5 xl:!mx-5">
@@ -74,11 +86,13 @@ const BookNowDetails = ({
                   />
                 }
                 buttonClass="!w-96 !justify-end !text-xl"
+                handleSubmit={handleServiceBooking}
               />
             </div>
           </div>
         </div>
       </div>
+      {openLoginModal && <LoginModal setOpenLoginModal={setOpenLoginModal} />}
     </div>
   );
 };

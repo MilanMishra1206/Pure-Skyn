@@ -185,8 +185,8 @@ export default function Address({
           </button>
         )}
       </div>
-      <AnimatePresence>
-        {isConfirmingDelete && (
+      {isConfirmingDelete && (
+        <AnimatePresence>
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
@@ -220,10 +220,10 @@ export default function Address({
               </div>
             </motion.div>
           </motion.div>
-        )}
-      </AnimatePresence>
-      <AnimatePresence>
-        {isAdding && (
+        </AnimatePresence>
+      )}
+      {isAdding && (
+        <AnimatePresence>
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
@@ -409,8 +409,8 @@ export default function Address({
               </div>
             </motion.div>
           </motion.div>
-        )}
-      </AnimatePresence>
+        </AnimatePresence>
+      )}
     </div>
   );
 }
