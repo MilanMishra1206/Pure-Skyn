@@ -51,3 +51,29 @@ export const registerAdmin = async ({
     throw new Error();
   }
 };
+
+export const requestChangePassword = async ({ email }) => {
+  try {
+    const data = await axiosInstanceLogin.post(
+      `${API_URLS.Auth.requestChangePassword}${email}`
+    );
+    return data;
+  } catch (error) {
+    console.log(error);
+    throw new Error();
+  }
+};
+
+export const changePassword = async ({ token, oldPassword, newPassword }) => {
+  const reqBody = { token, oldPassword, newPassword };
+  try {
+    const data = await axiosInstanceLogin.post(
+      API_URLS.Auth.changePassword,
+      reqBody
+    );
+    return data;
+  } catch (error) {
+    console.log(error);
+    throw new Error();
+  }
+};

@@ -1,4 +1,4 @@
-import React, {Suspense, useEffect, useState } from "react";
+import React, { lazy, Suspense, useEffect, useState } from "react";
 import { useFormik } from "formik";
 import {
   addressInitialValues,
@@ -17,12 +17,19 @@ import AppointmentDetails from "./AppointmentDetails";
 import Address from "./Address";
 import MotionWrapper from "../../config/MotionFramer/MotionWrapper";
 import CustomHeader from "../../shared/CustomHeader";
+import { useMutation } from "react-query";
+import { addUserAddress, getUserAddress } from "../../services/Users";
+import { useSelector } from "react-redux";
+
+const CustomLoader = lazy(() => import("../../shared/CustomLoader"));
 
 function UserProfile() {
   const isAdmin = false;
   const showSnackbar = useAppSnackbar();
   const location = useLocation();
   const navigate = useNavigate();
+  const userProfile = useSelector((state) => state.userProfile.userProfile);
+
   const [addresses, setAddresses] = useState([]);
   const [isAdding, setIsAdding] = useState(false);
   const [selectedSection, setSelectedSection] = useState("Profile");
@@ -72,6 +79,56 @@ function UserProfile() {
     { id: "Orders", label: "My Orders", icon: <FaShoppingCart /> },
   ];
 
+  const { mutate: addAddress, isLoading } = useMutation(addUserAddress, {
+    onSuccess(res) {
+      if (res?.status === "SUCCESS") {
+        showSnackbar(res.message, "success");
+        setAddresses([
+          ...addresses,
+          res?.data?.addresses.map((item) => ({
+            name: item.name || "",
+            contactNumber: item.phone || "",
+            addressLine1: item.addressLine1 || "",
+            addressLine2: item.addressLine2 || "",
+            city: item.city || "",
+            state: item.state || "",
+            pinCode: item.pinCode || "",
+            addressName: "Home",
+          })),
+        ]);
+        setIsAdding(false);
+        getUserAddresses({ userId: userProfile.userId });
+      } else {
+        showSnackbar(res.message, "error");
+      }
+    },
+    onError(err) {
+      showSnackbar(err.message, "error");
+    },
+  });
+
+  const { mutate: getUserAddresses, isFetching } = useMutation(getUserAddress, {
+    onSuccess(res) {
+      if (res?.status === "SUCCESS") {
+        showSnackbar(res.message, "success");
+        res?.data?.address.map((item) =>
+          addressFormik.setValues({
+            fullName: item.fullName || "",
+            contactNumber: item.phone || "",
+            addressLine1: item.addressLine1 || "",
+            addressLine2: item.addressLine2 || "",
+            city: item.city || "",
+            state: item.state || "",
+            pinCode: item.pinCode || "",
+          })
+        );
+      }
+    },
+    onError(err) {
+      showSnackbar(err.message, "error");
+    },
+  });
+
   const addressFormik = useFormik({
     enableReinitialize: true,
     validateOnMount: true,
@@ -79,9 +136,20 @@ function UserProfile() {
     initialValues: addressInitialValues,
     validationSchema: getAddressValidationSchema,
     onSubmit: (values, { resetForm }) => {
-      showSnackbar("Address Added", "success");
-      setAddresses([...addresses, values]);
-      setIsAdding(false);
+      addAddress({
+        userId: userProfile.userId,
+        addressDetails: {
+          userId: userProfile.userId,
+          fullName: values?.fullName,
+          phone: values?.contactNumber,
+          addressLine1: values?.addressLine1,
+          addressLine2: values?.addressLine2,
+          city: values?.city,
+          state: values?.state,
+          pinCode: values?.pinCode,
+          country: "India",
+        },
+      });
       resetForm();
     },
   });
@@ -96,6 +164,9 @@ function UserProfile() {
 
   return (
     <MotionWrapper>
+      <Suspense>
+        <CustomLoader open={isLoading || isFetching} />
+      </Suspense>
       <div className={`mt-3 ${isTablet ? "py-3" : "py-4 mt-4"}`}>
         <div className={`mt-5 ${isMobile ? "px-4" : "px-5"}`}>
           <CustomHeader
@@ -137,12 +208,7 @@ function UserProfile() {
           <div className="shadow p-5 rounded w-full">
             {selectedSection === "Profile" && (
               <Suspense fallback={<div />}>
-                <PersonalInformation
-                  fullName={fullName}
-                  emailAddress={emailAddress}
-                  gender={gender}
-                  phoneNumber={phoneNumber}
-                />
+                <PersonalInformation userProfile={userProfile} />
               </Suspense>
             )}
             {selectedSection === "Address" && (

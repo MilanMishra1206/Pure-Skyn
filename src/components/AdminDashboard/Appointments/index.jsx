@@ -1,4 +1,4 @@
-import { Suspense, useEffect, useState } from "react";
+import { lazy, Suspense, useEffect, useState } from "react";
 import { useDebounce } from "use-debounce";
 import { Divider } from "@mui/material";
 import DataTable from "./DataTable";
@@ -6,13 +6,17 @@ import CustomPagination from "../../../shared/CustomDashboardTable/CustomPaginat
 import { locationDropdownValues } from "../../../helpers/Admin";
 import DataTableFilter from "../TableContent/DataTableFilter";
 import DataTableHeader from "../TableContent/DataTableHeader";
+import { useQuery } from "react-query";
+import { getAllUsers } from "../../../services/Admin";
 
-function Appointments({ isTablet, isMobile }) {
+const CustomLoader = lazy(() => import("../../../shared/CustomLoader"));
+
+function Appointments({ isMobile }) {
   const [rowsPerPage, setRowsPerPage] = useState("25");
   const [pageNumber, setPageNumber] = useState(1);
   const [totalCount, setTotalCount] = useState(0);
 
-  const [ApplicationData, setApplicationData] = useState([]);
+  const [applicationData, setApplicationData] = useState([]);
   const [filters, setFilters] = useState({
     search: "",
     location: [],
@@ -21,42 +25,57 @@ function Appointments({ isTablet, isMobile }) {
   const debouncedSearchTerm = useDebounce(filters.search, 500);
   const debounceLocation = useDebounce(filters.location, 500);
 
-  //   const { isFetching, refetch } = useQuery(
-  //     [
-  //       "fetchApplications",
-  //       debouncedSearchTerm,
-  //       debounceLocation,
-  //       rowsPerPage,
-  //       pageNumber,
-  //     ],
-  //     () =>
-  //       fetchApplications({
-  //         page: pageNumber,
-  //         limit: Number(rowsPerPage),
-  //         location: filters.location,
-  //         searchTerm: filters.search,
-  //       }),
-  //     {
-  //       refetchOnMount: true,
-  //       refetchOnWindowFocus: false,
-  //       refetchOnReconnect: false,
-  //       retry: false,
-  //       enabled: statusDops === "",
-  //       onSuccess: (response) => {
-  //         const transformedData =
-  //           response?.data?.data?.leads?.map((lead) => ({
-  //             email: lead?.basicDetails?.emailAddress,
-  //             candidateName: lead?.basicDetails?.fullName,
-  //             mobile: lead?.basicDetails?.primaryMobile,
-  //             location: lead?.additionalDetails?.location,
-  //             userId: lead?.applicationId,
-  //           }));
-  //         const totalCounts = response?.data?.data?.pagination?.totalCount;
-  //         setTotalCount(totalCounts);
-  //         setApplicationData(transformedData);
-  //       },
-  //     }
-  //   );
+  const { isFetching } = useQuery(
+    ["getAllUsers"],
+    () => getAllUsers(),
+    {
+      refetchOnMount: true,
+      refetchOnWindowFocus: false,
+      refetchOnReconnect: false,
+      retry: false,
+      onSuccess: (response) => {
+        setTotalCount(response?.length);
+        setApplicationData(response);
+      },
+    }
+  );
+
+  // const { isFetching, refetch } = useQuery(
+  //   [
+  //     "fetchApplications",
+  //     debouncedSearchTerm,
+  //     debounceLocation,
+  //     rowsPerPage,
+  //     pageNumber,
+  //   ],
+  //   () =>
+  //     getAllUsers({
+  //       page: pageNumber,
+  //       limit: Number(rowsPerPage),
+  //       location: filters.location,
+  //       searchTerm: filters.search,
+  //     }),
+  //   {
+  //     refetchOnMount: true,
+  //     refetchOnWindowFocus: false,
+  //     refetchOnReconnect: false,
+  //     retry: false,
+  //     enabled: statusDops === "",
+  //     onSuccess: (response) => {
+  //       const transformedData =
+  //         response?.data?.data?.leads?.map((lead) => ({
+  //           email: lead?.basicDetails?.emailAddress,
+  //           candidateName: lead?.basicDetails?.fullName,
+  //           mobile: lead?.basicDetails?.primaryMobile,
+  //           location: lead?.additionalDetails?.location,
+  //           userId: lead?.applicationId,
+  //         }));
+  //       const totalCounts = response?.data?.data?.pagination?.totalCount;
+  //       setTotalCount(totalCounts);
+  //       setApplicationData(transformedData);
+  //     },
+  //   }
+  // );
 
   useEffect(() => {
     if (totalCount > 0) {
@@ -66,6 +85,9 @@ function Appointments({ isTablet, isMobile }) {
 
   return (
     <div className="p-3 md:!p-5">
+      <Suspense fallback={<div>Loading...</div>}>
+        <CustomLoader open={isFetching} />
+      </Suspense>
       <div className="mb-3">
         <DataTableFilter
           filters={filters}
@@ -94,7 +116,7 @@ function Appointments({ isTablet, isMobile }) {
             setRowsPerPage={setRowsPerPage}
             setPageNumber={setPageNumber}
           >
-            <DataTable data={ApplicationData} totalCount={totalCount} />
+            <DataTable data={applicationData} totalCount={totalCount} />
           </CustomPagination>
         </Suspense>
       </div>

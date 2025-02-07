@@ -17,8 +17,7 @@ const getLoginValidation = () =>
   });
 
 const signUpInitialValue = {
-  firstName: "",
-  lastName: "",
+  name: "",
   email: "",
   phone: "",
   password: "",
@@ -27,8 +26,7 @@ const signUpInitialValue = {
 
 const getSignUpValidation = () =>
   yup.object().shape({
-    firstName: yup.string().required("First name is required"),
-    lastName: yup.string().required("Last name is required"),
+    name: yup.string().required("Name is required"),
     email: yup
       .string()
       .email("Please Enter Valid Email")
@@ -156,5 +154,5 @@ export {
   bookNowInitialValues,
   getBookNowValidation,
   getBookNowFormValidation,
-  getAddReviewValidation
+  getAddReviewValidation,
 };

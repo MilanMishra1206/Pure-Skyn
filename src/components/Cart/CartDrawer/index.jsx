@@ -140,7 +140,7 @@ function CartDrawer({ openCart, handleOpenCart }) {
                   Your cart is empty. Let's add some items! ⚡
                 </p>
                 <button
-                  className="flex gap-2 items-center justify-center rounded-3xl px-4 active:!bg-white active:!text-skyn bg-skyn text-white hover:!bg-white hover:!text-skyn hover:!border hover:!border-black  active:!border-none transition duration-300"
+                  className="flex gap-2 items-center justify-center rounded-3xl font-medium px-4 active:!bg-white active:!text-skyn bg-skyn text-white hover:!opacity-80 active:!border-none transition duration-500 py-2 mt-4"
                   onClick={() => {
                     navigate("/products");
                     handleOpenCart();

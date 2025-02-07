@@ -3,10 +3,10 @@ import { Route, Routes, useLocation, Navigate } from "react-router-dom";
 import { useRouteStatus } from "../../config/Context/RouteContext";
 import ScrollToTopButton from "../../shared/CustomBackToTopButton";
 import CustomLoader from "../../shared/CustomLoader";
+import PureSkynLogin from "../../pages/PureSkynLogin";
 
 // Lazy Loaded Routes
 const PureSkynHome = lazy(() => import("../../pages/PureSkynHome"));
-const PureSkynLogin = lazy(() => import("../../pages/PureSkynLogin"));
 const PureSkynLogout = lazy(() => import("../../pages/PureSkynLogout"));
 const PureSkynServices = lazy(() => import("../../pages/PureSkynServices"));
 const PureSkynProducts = lazy(() => import("../../pages/PureSkynProducts"));
@@ -40,93 +40,119 @@ const CustomHeroSection = lazy(() => import("../../shared/CustomHeroSection"));
 const PageNotFound = lazy(() => import("../../shared/PageNotFound"));
 const CustomFooter = lazy(() => import("../../shared/CustomFooter"));
 
-function RedirectToLogin() {
-  return <Navigate to="/pureSkyn/login" />;
-}
-
 const routesConfig = [
   {
     path: "/login",
     Component: PureSkynLogin,
-  },
-  {
-    path: "/",
-    Component: PureSkynHome,
-  },
-  {
-    path: "/services",
-    Component: PureSkynServices,
-  },
-  {
-    path: "/services/laser-hair-removal",
-    Component: PureSkynLaserHairRemoval,
-  },
-  {
-    path: "/services/laser-hair-removal/:category",
-    Component: PureSkynLaserHairRemoval,
-  },
-  {
-    path: "/services/laser-hair-removal-packages",
-    Component: PureSkynLHRPackages,
-  },
-  {
-    path: "/services/skin/medi-facial",
-    Component: PureSkynSkinTreatment,
-  },
-  {
-    path: "/services/skin/medi-facial-packages",
-    Component: PureSkynMediFacialPackages,
-  },
-  {
-    path: "/services/skin/medi-facial/:type",
-    Component: PureSkynSkinTreatment,
-  },
-  {
-    path: "/products",
-    Component: PureSkynProducts,
-  },
-  {
-    path: "/products/:productName",
-    Component: PureSkynProductDetails,
+    accessRule: "redirectIfAuth",
   },
   {
     path: "/sign-up",
     Component: PureSkynSignUp,
+    accessRule: "redirectIfAuth",
+  },
+  {
+    path: "/",
+    Component: PureSkynHome,
+    accessRule: "public",
+  },
+  {
+    path: "/services",
+    Component: PureSkynServices,
+    accessRule: "public",
+  },
+  {
+    path: "/services/laser-hair-removal",
+    Component: PureSkynLaserHairRemoval,
+    accessRule: "public",
+  },
+  {
+    path: "/services/laser-hair-removal/:category",
+    Component: PureSkynLaserHairRemoval,
+    accessRule: "public",
+  },
+  {
+    path: "/services/laser-hair-removal-packages",
+    Component: PureSkynLHRPackages,
+    accessRule: "public",
+  },
+  {
+    path: "/services/skin/medi-facial",
+    Component: PureSkynSkinTreatment,
+    accessRule: "public",
+  },
+  {
+    path: "/services/skin/medi-facial-packages",
+    Component: PureSkynMediFacialPackages,
+    accessRule: "public",
+  },
+  {
+    path: "/services/skin/medi-facial/:type",
+    Component: PureSkynSkinTreatment,
+    accessRule: "public",
+  },
+  {
+    path: "/products",
+    Component: PureSkynProducts,
+    accessRule: "public",
+  },
+  {
+    path: "/products/:productName",
+    Component: PureSkynProductDetails,
+    accessRule: "public",
   },
   {
     path: "/faq",
     Component: PureSkynFaq,
+    accessRule: "public",
   },
   {
     path: "/user-profile",
     Component: PureSkynUserProfile,
+    accessRule: "requireAuth",
   },
   {
     path: "/change-password",
     Component: PureSkynChangePassword,
+    accessRule: "public",
   },
   {
     path: "/book-now",
     Component: PureSkynBookNow,
+    accessRule: "public",
   },
   {
     path: "/cart",
     Component: PureSkynCart,
+    accessRule: "public",
   },
   {
     path: "/logout",
     Component: PureSkynLogout,
+    accessRule: "public",
   },
 ];
 
+const RouteWrapper = ({ Component, accessRule }) => {
+  const token = sessionStorage.getItem("token");
+
+  switch (accessRule) {
+    case "requireAuth":
+      return token ? <Component /> : <Navigate to="/login" />;
+    case "redirectIfAuth":
+      return !token ? <Component /> : <Navigate to="/" />;
+    case "public":
+    default:
+      return <Component />;
+  }
+};
+
 function Router() {
   const { setIsHomePage, setIsMedifacialPage } = useRouteStatus();
-  const token = sessionStorage.getItem("token");
   const isAdmin = false;
-
   const location = useLocation();
-  const showNavAndFooter = !["/login", "/sign-up"].includes(location.pathname);
 
+  const showNavAndFooter = !["/login", "/sign-up"].includes(location.pathname);
   const showCarousel = ["/"].includes(location.pathname);
 
   useEffect(() => {
@@ -163,19 +189,15 @@ function Router() {
         </Suspense>
       )}
       <Routes>
-        {routesConfig.map(({ path, Component }, index) => {
+        {routesConfig.map(({ path, Component, accessRule }, index) => {
           return (
             <Route
               key={index}
               path={path}
               element={
-                true ? (
-                  <Suspense fallback={<CustomLoader open={true} />}>
-                    <Component />
-                  </Suspense>
-                ) : (
-                  <RedirectToLogin />
-                )
+                <Suspense fallback={<CustomLoader open={true} />}>
+                  <RouteWrapper Component={Component} accessRule={accessRule} />
+                </Suspense>
               }
             />
           );
@@ -189,7 +211,9 @@ function Router() {
           }
         />
       </Routes>
+
       <ScrollToTopButton />
+
       {showNavAndFooter && (
         <Suspense fallback={<CustomLoader open={true} />}>
           <CustomFooter />

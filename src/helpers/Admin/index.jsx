@@ -17,24 +17,8 @@ export const headers = [
     label: "Email",
   },
   {
-    key: "mobile",
-    label: "Mobile No",
-  },
-  {
-    key: "appointmentName",
-    label: "Appointment Name",
-  },
-  {
-    key: "price",
-    label: "Price",
-  },
-  {
-    key: "technicianAssigned",
-    label: "Technician Assigned",
-  },
-  {
-    key: "appointmentSlot",
-    label: "Appointment Slot",
+    key: "phone",
+    label: "Phone No",
   },
   {
     key: "actions",

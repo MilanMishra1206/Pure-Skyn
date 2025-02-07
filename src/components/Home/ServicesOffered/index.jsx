@@ -1,10 +1,12 @@
 import React from "react";
 import { MdKeyboardDoubleArrowRight } from "react-icons/md";
 import { Link } from "react-router-dom";
+import { motion } from "framer-motion";
 import Resources from "../../../config/Resources";
 import CustomCards from "../../../shared/CustomCards";
 import { servicesOffered } from "../../../helpers/LaserServices";
 import CustomHomeHeader from "../../../shared/CustomHomeHeader";
+import FadeInWrapper from "../../../config/MotionFramer/FadeInWrapper";
 
 function ServicesOffered({ isMobile, isLargeScreen, isLaptop }) {
   return (
@@ -96,7 +98,11 @@ function ServicesOffered({ isMobile, isLargeScreen, isLaptop }) {
             </Link>
           </div>
         </div>
-        <div
+        <motion.div
+          variants={FadeInWrapper("up", 0.2)}
+          initial="hidden"
+          whileInView="show"
+          viewport={{ once: true }}
           className={`grid grid-cols-1 md:!grid-cols-2 xl:!grid-cols-4 ${isLargeScreen ? "mt-5 p-5" : "p-4"}`}
         >
           <div className="bg-coffee text-white text-center p-4 shadow-lg min-h-96">
@@ -233,7 +239,7 @@ function ServicesOffered({ isMobile, isLargeScreen, isLaptop }) {
             alt={servicesOffered[5].title}
             className="block md:!hidden xl:!block shadow-lg object-cover w-full h-96"
           />
-        </div>
+        </motion.div>
         <div
           className={`grid grid-cols-1 md:!grid-cols-2 lg:!grid-cols-3 gap-4 place-items-center ${isLargeScreen ? "mt-5 px-4" : "p-2"}`}
         >
@@ -246,71 +252,6 @@ function ServicesOffered({ isMobile, isLargeScreen, isLaptop }) {
             />
           ))}
         </div>
-        {/* <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 font-poppins p-5">
-          {servicesOffered.map((service, index) => (
-            <React.Fragment key={index}>
-              {index % 4 === 0 || index % 4 === 2 ? (
-                <>
-                  <div
-                    className={`${
-                      index % 4 === 0
-                        ? "bg-skyn text-white"
-                        : "bg-[#F7D9CB] text-coal"
-                    } text-center p-4 shadow-lg min-h-96`}
-                  >
-                    <div className="flex flex-col items-center justify-between h-full">
-                      <p className="text-lg font-bold">{service.title}</p>
-                      <p className="text-sm">{service.description}</p>
-                      <button
-                        className={`border font-medium w-full md:w-1/2 mt-2 p-2 ${
-                          index % 4 === 0
-                            ? "bg-skyn text-white hover:bg-white hover:text-skyn"
-                            : "bg-[#F7D9CB] text-coal border-coal hover:bg-white"
-                        } transition-colors duration-500`}
-                      >
-                        See Prices
-                      </Link>
-                    </div>
-                  </div>
-                  <img
-                    src={service.image}
-                    alt={service.title}
-                    className="shadow-lg object-cover w-full h-72 md:h-80"
-                  />
-                </>
-              ) : (
-                <>
-                  <img
-                    src={service.image}
-                    alt={service.title}
-                    className="shadow-lg object-cover w-full h-72 md:h-80"
-                  />
-                  <div
-                    className={`${
-                      index % 4 === 1
-                        ? "bg-skyn text-white"
-                        : "bg-[#F7D9CB] text-coal"
-                    } text-center p-4 shadow-lg min-h-96`}
-                  >
-                    <div className="flex flex-col items-center justify-between h-full">
-                      <p className="text-lg font-bold">{service.title}</p>
-                      <p className="text-sm">{service.description}</p>
-                      <button
-                        className={`border font-medium w-full md:w-1/2 mt-2 p-2 ${
-                          index % 4 === 1
-                            ? "bg-skyn text-white hover:bg-white hover:text-skyn"
-                            : "bg-[#F7D9CB] text-coal border-coal hover:bg-white"
-                        } transition-colors duration-500`}
-                      >
-                        See Prices
-                      </Link>
-                    </div>
-                  </div>
-                </>
-              )}
-            </React.Fragment>
-          ))}
-        </div> */}
       </div>
     </div>
   );

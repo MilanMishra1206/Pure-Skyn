@@ -1,5 +1,10 @@
 import * as types from "../Types";
 
+export const setUserProfile = (userProfile) => ({
+  type: types.SET_USER_PROFILE,
+  payload: userProfile,
+});
+
 export const addToCart = (product) => ({
   type: types.ADD_TO_CART,
   payload: product,

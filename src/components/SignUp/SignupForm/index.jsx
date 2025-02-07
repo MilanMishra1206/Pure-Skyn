@@ -42,35 +42,16 @@ function SignUpForm({ formik, handleSubmit, mobileClass }) {
               className="h-12 rounded-md !bg-transparent"
               placeholder="Enter"
               requiredStar
-              labelToShow="First Name"
-              name="firstName"
+              labelToShow="Full Name"
+              name="name"
               textFieldColorClass="shadow-insetLight"
               inputClassName="!bg-transparent"
               fieldWidth="w-full !mb-4"
-              value={formik.values?.firstName}
+              value={formik.values?.name}
               onChange={formik.handleChange}
               handleBlur={formik.handleBlur}
-              error={formik.errors.firstName}
-              touched={formik.touched.firstName}
-            />
-          </Suspense>
-          <Suspense fallback={<div />}>
-            <CustomTextField
-              textClassOverride="!text-kashmirBlue"
-              placeholderClasses="placeholder:!opacity-30 !text-licorice"
-              className="h-12 rounded-md !bg-transparent"
-              placeholder="Enter"
-              requiredStar
-              labelToShow="Last Name"
-              name="lastName"
-              textFieldColorClass="shadow-insetLight"
-              inputClassName="!bg-transparent"
-              fieldWidth="w-full !mb-4"
-              value={formik.values?.lastName}
-              onChange={formik.handleChange}
-              handleBlur={formik.handleBlur}
-              error={formik.errors.lastName}
-              touched={formik.touched.lastName}
+              error={formik.errors.name}
+              touched={formik.touched.name}
             />
           </Suspense>
         </div>

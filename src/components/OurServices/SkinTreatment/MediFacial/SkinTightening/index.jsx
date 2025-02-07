@@ -10,6 +10,8 @@ import CustomHeader from "../../../../../shared/CustomHeader";
 import FadedLineBreak from "../../../../../shared/CustomHrTag";
 import DrawCircleText from "../../../../../shared/CustomDrawCircleText";
 import CustomFloatingBookNowButton from "../../../../../shared/CustomFloatingBookNowButton";
+import BeforeAfterCarousel from "../../../BeforeAfterCarousel";
+import { beforeAfterCarouselContent } from "../../../../../helpers/LaserServices";
 
 const CommonHeader = lazy(() => import("../../../CommonHeader"));
 
@@ -289,6 +291,10 @@ function SkinTightening({ type }) {
           >
             <div className="px-4">
               <FadedLineBreak />
+              <BeforeAfterCarousel
+                carouselContent={beforeAfterCarouselContent.skinTightening}
+              />
+              <FadedLineBreak />
             </div>
             <div className="text-center text-skyn font-bold text-3xl px-4">
               <p>Frequently Asked Questions(FAQs)</p>
@@ -320,7 +326,10 @@ function SkinTightening({ type }) {
               </div>
             </div>
           </motion.div>
-          <CustomFloatingBookNowButton treatmentName="RF Skin Tightening" goToStep={1}/>
+          <CustomFloatingBookNowButton
+            treatmentName="RF Skin Tightening"
+            goToStep={1}
+          />
         </div>
       )}
     </div>

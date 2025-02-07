@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { useEffect, useState } from "react";
+import { lazy, Suspense, useEffect, useState } from "react";
 import { IoIosCloseCircle } from "react-icons/io";
 import FadeInWrapper from "../../../config/MotionFramer/FadeInWrapper";
 import {
@@ -12,6 +12,12 @@ import {
   skinTighteningPackage,
 } from "../../../helpers/LaserServices";
 import BookNowPackageCards from "./BookNowPackageCards";
+import { useMutation } from "react-query";
+import { requestBooking } from "../../../services/Booking";
+import { useAppSnackbar } from "../../../config/Context/SnackbarContext";
+import dayjs from "dayjs";
+
+const CustomLoader = lazy(() => import("../../../shared/CustomLoader"));
 
 function BookNowOptions({ heading, setTreatmentPackage, setCurrentStep }) {
   const [packageDetails, setPackageDetails] = useState([]);
@@ -19,6 +25,9 @@ function BookNowOptions({ heading, setTreatmentPackage, setCurrentStep }) {
   const [openModal, setOpenModal] = useState(false);
   const [treatmentPackageDetails, setTreatmentPackageDetails] = useState([]);
   const [selectedPackage, setSelectedPackage] = useState(null);
+  const [serviceId, setServiceId] = useState("");
+  const [subServiceId, setSubServiceId] = useState("");
+  const showSnackbar = useAppSnackbar();
 
   useEffect(() => {
     if (heading === "Laser Hair Removal Women") {
@@ -70,20 +79,45 @@ function BookNowOptions({ heading, setTreatmentPackage, setCurrentStep }) {
     setSelectedPackage(null);
   };
 
-  const handlePackageSelect = (packageName, price) => {
+  const handlePackageSelect = (packageName, price, serviceId, subServiceId) => {
     setSelectedPackage({ packageName, price });
     sessionStorage.setItem("packageName", packageName);
     sessionStorage.setItem("packagePrice", price);
+    setServiceId(serviceId);
+    setSubServiceId(subServiceId);
   };
 
+  const { mutate: reqBooking, isLoading } = useMutation(requestBooking, {
+    onSuccess(res) {
+      if (res?.status === "SUCCESS") {
+        setOpenModal(false);
+        setTreatmentPackageDetails([]);
+        setCurrentStep(2);
+        showSnackbar(res.message, "success");
+        sessionStorage.setItem(
+          "availableTimeSlots",
+          JSON.stringify(res?.data?.availableTimeSlots)
+        );
+      }
+    },
+    onError(err) {
+      showSnackbar(err.message, "error");
+    },
+  });
+
   const bookNowClick = () => {
-    setOpenModal(false);
-    setTreatmentPackageDetails([]);
-    setCurrentStep(2);
+    reqBooking({
+      serviceId,
+      subServiceId,
+      date: dayjs().format("YYYY-MM-DD"),
+    });
   };
 
   return (
     <div className="py-5">
+      <Suspense fallback={<div />}>
+        <CustomLoader open={isLoading} />
+      </Suspense>
       <p className="font-bold text-4xl text-coffee text-center">{heading}</p>
       <motion.div
         variants={FadeInWrapper("left", 0.1)}
@@ -123,7 +157,14 @@ function BookNowOptions({ heading, setTreatmentPackage, setCurrentStep }) {
                 <div
                   className={`flex flex-col lg:!flex-row md:justify-between gap-3 p-4 rounded cursor-pointer border-2
                   ${selectedPackage?.packageName === item.name ? "!border-black" : "!border-black] hover:!shadow-lg"}`}
-                  onClick={() => handlePackageSelect(item.name, item.price)}
+                  onClick={() =>
+                    handlePackageSelect(
+                      item.name,
+                      item.price,
+                      item.serviceId,
+                      item.subServiceId
+                    )
+                  }
                   key={index}
                 >
                   <span className={`font-extrabold font-xl text-coffee`}>
@@ -137,7 +178,7 @@ function BookNowOptions({ heading, setTreatmentPackage, setCurrentStep }) {
               <button
                 className="no-underline p-3 rounded bg-coffee text-white text-center font-bold mt-5 hover:shadow-xl disabled:cursor-not-allowed disabled:opacity-80"
                 disabled={!selectedPackage}
-                onClick={() => bookNowClick()}
+                onClick={bookNowClick}
               >
                 Book Now
               </button>

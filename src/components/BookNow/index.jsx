@@ -16,7 +16,7 @@ import { getBookNowFormValidation } from "../../helpers/Login";
 import { useAppSnackbar } from "../../config/Context/SnackbarContext";
 import DrawCircleText from "../../shared/CustomDrawCircleText";
 import FadeInWrapper from "../../config/MotionFramer/FadeInWrapper";
-import createNewBooking from "../../services/Booking";
+import { createNewBooking } from "../../services/Booking";
 import BookNowDetails from "./BookNowDetails";
 import Resources from "../../config/Resources";
 import BookNowOptions from "./BookNowOptions";
@@ -40,6 +40,10 @@ function BookNow() {
     timeSlot: "",
     city: "",
   });
+
+  const steps = ["Choose Your Treatment", stepHeading, "Book Now"];
+  const storedTimeSlots = sessionStorage.getItem("availableTimeSlots");
+  const timeSlots = storedTimeSlots ? JSON.parse(storedTimeSlots) : [];
 
   useEffect(() => {
     checked
@@ -142,17 +146,6 @@ function BookNow() {
       });
     },
   });
-
-  const steps = ["Choose Your Treatment", stepHeading, "Book Now"];
-
-  const timeSlots = [
-    "10:00 AM",
-    "11:00 AM",
-    "12:00 PM",
-    "2:00 PM",
-    "4:00 PM",
-    "6:00 PM",
-  ];
 
   const handleSubmit = () => {
     if (!formik.isValid) {

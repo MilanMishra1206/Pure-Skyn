@@ -1,7 +1,7 @@
 import { useNavigate } from "react-router-dom";
 import { useEffect } from "react";
 
-function PureSkynLogin() {
+function PureSkynLogout() {
   const nav = useNavigate();
   useEffect(() => {
     sessionStorage.clear();
@@ -14,4 +14,4 @@ function PureSkynLogin() {
   );
 }
 
-export default PureSkynLogin;
+export default PureSkynLogout;

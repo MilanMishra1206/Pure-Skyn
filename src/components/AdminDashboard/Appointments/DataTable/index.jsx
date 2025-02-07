@@ -42,11 +42,11 @@ function DataTable({ data, totalCount }) {
                         onClick={() => navigate(`/application/${item.userId}`)}
                         underline="always"
                       >
-                        {item?.userId}
+                        {item?.id}
                       </Link>
                     </TableCell>
                     <TableCellText
-                      text={item?.userName}
+                      text={item?.firstName + item?.lastName}
                       className={`${isMobile && "!hidden"}`}
                     />
                     <TableCellText
@@ -54,10 +54,10 @@ function DataTable({ data, totalCount }) {
                       className={`${isMobile && "!hidden"}`}
                     />
                     <TableCellText
-                      text={item?.mobile}
+                      text={item?.phone}
                       className={`${isMobile && "!hidden"}`}
                     />
-                    <TableCellText
+                    {/* <TableCellText
                       text={item?.appointmentName}
                       className={`${isMobile && "!hidden"}`}
                     />
@@ -76,7 +76,7 @@ function DataTable({ data, totalCount }) {
                     <TableCellText
                       text={item?.appointmentSlot}
                       className={`${isMobile && "!hidden"} min-w-[125px]`}
-                    />
+                    /> */}
                     <TableCell className={`${isMobile && "!hidden"}`}>
                       <> - </>
                     </TableCell>
@@ -125,9 +125,7 @@ function DataTable({ data, totalCount }) {
                               <p className="!text-cello !text-sm !font-poppins !font-medium">
                                 {heading.label}:
                               </p>
-                              <p
-                                className={`!font-poppins !text-sm !text-kashmirBlue ${["Candidate's Name", "Appointment Name", "Technician Assigned"].includes(heading.label) ? "" : "break-all"}`}
-                              >
+                              <p className="!font-poppins !text-sm !text-kashmirBlue break-all">
                                 {heading.label !== "Action" &&
                                   item?.[heading.key]}{" "}
                                 {heading.label === "Action" && <> - </>}

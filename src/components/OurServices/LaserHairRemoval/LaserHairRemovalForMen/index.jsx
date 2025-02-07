@@ -2,7 +2,10 @@ import { Link } from "react-router-dom";
 import { lazy, Suspense } from "react";
 import { motion } from "framer-motion";
 import Resources from "../../../../config/Resources";
-import { laserServiceForMenContent } from "../../../../helpers/LaserServices";
+import {
+  beforeAfterCarouselContent,
+  laserServiceForMenContent,
+} from "../../../../helpers/LaserServices";
 import MotionWrapper from "../../../../config/MotionFramer/MotionWrapper";
 import FadeInWrapper from "../../../../config/MotionFramer/FadeInWrapper";
 import CustomHeader from "../../../../shared/CustomHeader";
@@ -10,6 +13,7 @@ import FadedLineBreak from "../../../../shared/CustomHrTag";
 import DrawCircleText from "../../../../shared/CustomDrawCircleText";
 import { LHRMenAccordianContent } from "../../../../helpers/AccordianContent";
 import CustomAccordion from "../../../../shared/CustomAccordion";
+import BeforeAfterCarousel from "../../BeforeAfterCarousel";
 
 const CommonHeader = lazy(() => import("../../CommonHeader"));
 
@@ -27,7 +31,7 @@ function LaserHairRemovalForMen({ category, isMobile, isTablet, isLaptop }) {
           {!category && (
             <CustomHeader
               heading={"Laser Hair Removal For Men"}
-              headerClass={`${!category ? "!text-center" : ""}`}
+              headerClass={!category && "!text-2xl"}
             />
           )}
         </motion.div>
@@ -131,6 +135,10 @@ function LaserHairRemovalForMen({ category, isMobile, isTablet, isLaptop }) {
                   serviceName={"Laser Hair Removal Packages!"}
                   buttonText="Check Now"
                   link="/services/laser-hair-removal-packages"
+                />
+                <FadedLineBreak />
+                <BeforeAfterCarousel
+                  carouselContent={beforeAfterCarouselContent.lhrMale}
                 />
                 <FadedLineBreak />
                 <div className="text-center text-skyn font-bold text-3xl px-4">

@@ -1,6 +1,22 @@
 import API_URLS from "../../config/API_URLS";
 import { axiosInstance } from "../../utils/Axios";
 
+const requestBooking = async ({ serviceId, subServiceId, date }) => {
+  const reqBody = {
+    serviceId,
+    subServiceId,
+    date,
+  };
+
+  try {
+    const data = await axiosInstance.post(API_URLS.Booking.reqBooking, reqBody);
+    return data;
+  } catch (error) {
+    console.log(error);
+    throw new Error();
+  }
+};
+
 const createNewBooking = async ({
   userId,
   serviceId,
@@ -39,4 +55,4 @@ const createNewBooking = async ({
   }
 };
 
-export default createNewBooking;
+export { requestBooking, createNewBooking };

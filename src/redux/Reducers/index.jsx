@@ -52,8 +52,25 @@ const cartReducer = (state = initialState, action) => {
   }
 };
 
+const userInitialState = {
+  userProfile: {},
+};
+
+const userReducer = (state = userInitialState, action) => {
+  switch (action.type) {
+    case "SET_CANDIDATE_PROFILE":
+      return {
+        ...state,
+        userProfile: action.payload,
+      };
+    default:
+      return state;
+  }
+};
+
 const appReducer = combineReducers({
   cart: cartReducer,
+  userProfile: userReducer,
 });
 
 export default appReducer;

@@ -11,6 +11,8 @@ import CustomHeader from "../../../../../shared/CustomHeader";
 import FadedLineBreak from "../../../../../shared/CustomHrTag";
 import DrawCircleText from "../../../../../shared/CustomDrawCircleText";
 import CustomFloatingBookNowButton from "../../../../../shared/CustomFloatingBookNowButton";
+import BeforeAfterCarousel from "../../../BeforeAfterCarousel";
+import { beforeAfterCarouselContent } from "../../../../../helpers/LaserServices";
 
 const CommonHeader = lazy(() => import("../../../CommonHeader"));
 
@@ -274,6 +276,10 @@ function DermafracInfusionFacial({ type }) {
             viewport={{ once: true }}
           >
             <FadedLineBreak />
+            <BeforeAfterCarousel
+                  carouselContent={beforeAfterCarouselContent.dermafrac}
+                />
+                <FadedLineBreak />
             <div className="text-center text-skyn font-bold text-3xl px-4">
               <p>Frequently Asked Questions(FAQs)</p>
             </div>

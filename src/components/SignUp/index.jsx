@@ -6,15 +6,32 @@ import SignUpForm from "./SignupForm";
 import Resources from "../../config/Resources";
 import { useAppSnackbar } from "../../config/Context/SnackbarContext";
 import { registerUser } from "../../services/LoginAndRegister";
+import { useDispatch } from "react-redux";
+import { setUserProfile } from "../../redux/Actions";
 
 const CustomLoader = lazy(() => import("../../shared/CustomLoader"));
 
 function SignUpPage() {
   const showSnackbar = useAppSnackbar();
+  const dispatch = useDispatch();
 
   const { mutate: signupUser, isLoading } = useMutation(registerUser, {
     onSuccess(res) {
-      showSnackbar(res.message, "success");
+      if (res?.status === "SUCCESS") {
+        showSnackbar(res?.message, "success");
+        const data = res?.data;
+        sessionStorage.setItem("token", data?.token);
+        dispatch(
+          setUserProfile({
+            userId: data?.id,
+            email: data?.email,
+            name: data?.name,
+            phone: data?.phone,
+          })
+        );
+      } else {
+        showSnackbar(`${res?.message}. Please try again!`, "error");
+      }
     },
     onError(err) {
       showSnackbar(err.message, "error");
@@ -29,11 +46,11 @@ function SignUpPage() {
     validationSchema: getSignUpValidation,
     onSubmit: (value) => {
       signupUser({
-        firstName: value.firstName,
+        name: value.name,
         lastName: value.lastName,
         email: value.email,
         password: value.password,
-        email: value.email,
+        phone: value.phone,
       });
     },
   });
@@ -67,7 +84,7 @@ function SignUpPage() {
         <SignUpForm
           formik={formik}
           handleSubmit={handleSubmit}
-          mobileClass="flex flex-col justify-center items-center"
+          mobileClass="flex flex-col items-center"
         />
       </div>
     </div>

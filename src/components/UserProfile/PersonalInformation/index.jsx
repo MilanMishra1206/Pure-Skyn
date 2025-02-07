@@ -5,35 +5,56 @@ import { getPersonalInfoValidationSchema } from "../../../helpers/UserProfile";
 import { useAppSnackbar } from "../../../config/Context/SnackbarContext";
 import regex from "../../../helpers/Regex";
 import FadedLineBreak from "../../../shared/CustomHrTag";
+import { useMutation } from "react-query";
+import { updateUserDetails } from "../../../services/Users";
 
 const CustomTextField = lazy(() => import("../../../shared/CustomTextField"));
+const CustomLoader = lazy(() => import("../../../shared/CustomLoader"));
 
-export default function PersonalInformation({
-  fullName: initialFullName,
-  phoneNumber: initialPhoneNumber,
-  emailAddress: initialEmailAddress,
-  gender: initialGender,
-}) {
+export default function PersonalInformation({ userProfile }) {
   const showSnackbar = useAppSnackbar();
   const [editMode, setEditMode] = useState(false);
-  const [formikInitialValues, serFormikInitialValues] = useState({
-    fullName: initialFullName,
-    contactNumber: initialPhoneNumber,
-    emailAddress: initialEmailAddress,
-    gender: initialGender,
-  });
+  const formikInitialValues = {
+    name: userProfile?.name || "",
+    phone: userProfile?.phone || "",
+    email: userProfile?.email || "",
+    gender: userProfile?.gender || "",
+  };
   const genders = ["Male", "Female", "Others"];
+
+  const { mutate: updateDetails, isLoading } = useMutation(updateUserDetails, {
+    onSuccess(res) {
+      if (res?.status === "SUCCESS") {
+        setEditMode(false);
+        showSnackbar(res?.message, "success");
+      } else {
+        setEditMode(true);
+        showSnackbar(res?.message, "error");
+      }
+    },
+    onError(err) {
+      setEditMode(true);
+      showSnackbar(err?.message, "error");
+    },
+  });
 
   const personalInfoFormik = useFormik({
     enableReinitialize: true,
     validateOnMount: true,
     validateOnChange: true,
-    initialValues: formikInitialValues,
+    initialValues: {
+      name: userProfile?.name || "",
+      phone: userProfile?.phone || "",
+      email: userProfile?.email || "",
+      gender: userProfile?.gender || "",
+    },
     validationSchema: getPersonalInfoValidationSchema,
     onSubmit: (value) => {
-      console.log("Personal Info Values", value);
-      setEditMode(false);
-      showSnackbar("Personal Information Updated", "success");
+      const reqBody = {
+        id: userProfile?.userId || "",
+        ...value,
+      };
+      updateDetails({ reqBody });
     },
   });
 
@@ -56,6 +77,9 @@ export default function PersonalInformation({
 
   return (
     <div className="w-full">
+      <Suspense fallback={<div>Loading...</div>}>
+        <CustomLoader open={isLoading} />
+      </Suspense>
       <form>
         <div className="flex items-center gap-4 mb-4 justify-center">
           <span className="font-semibold text-cello font-poppins text-xl">
@@ -79,15 +103,15 @@ export default function PersonalInformation({
                   placeholder="Enter"
                   requiredStar
                   labelToShow="Full Name"
-                  name="fullName"
+                  name="name"
                   textFieldColorClass="shadow-insetLight"
                   inputClassName="!bg-transparent"
                   fieldWidth="!mb-4"
-                  value={personalInfoFormik.values.fullName}
+                  value={personalInfoFormik.values.name}
                   onChange={personalInfoFormik.handleChange}
                   handleBlur={personalInfoFormik.handleBlur}
-                  error={personalInfoFormik.errors.fullName}
-                  touched={personalInfoFormik.touched.fullName}
+                  error={personalInfoFormik.errors.name}
+                  touched={personalInfoFormik.touched.name}
                 />
               </Suspense>
             ) : (
@@ -95,7 +119,7 @@ export default function PersonalInformation({
                 <span className="text-black font-medium">Full Name</span>
                 <span className="text-kashmirBlue">
                   {" "}
-                  {personalInfoFormik.values.fullName}
+                  {personalInfoFormik.values.name}
                 </span>
               </div>
             )}
@@ -112,23 +136,23 @@ export default function PersonalInformation({
                   labelToShow="Contact Number"
                   maxLength={10}
                   regex={regex.numeric}
-                  name="contactNumber"
+                  name="phone"
                   textFieldColorClass="shadow-insetLight"
                   inputClassName="!bg-transparent"
                   fieldWidth="!mb-4"
-                  value={personalInfoFormik.values.contactNumber}
+                  value={personalInfoFormik.values.phone}
                   onChange={personalInfoFormik.handleChange}
                   handleBlur={personalInfoFormik.handleBlur}
-                  error={personalInfoFormik.errors.contactNumber}
-                  touched={personalInfoFormik.touched.contactNumber}
+                  error={personalInfoFormik.errors.phone}
+                  touched={personalInfoFormik.touched.phone}
                 />
               </Suspense>
             ) : (
               <div className="flex flex-col">
-                <span className="text-black font-medium">Contact Number</span>
+                <span className="text-black font-medium">Phone</span>
                 <span className="text-cello font-poppins">
                   {" "}
-                  {personalInfoFormik.values.contactNumber}
+                  {personalInfoFormik.values.phone}
                 </span>
               </div>
             )}
@@ -144,16 +168,16 @@ export default function PersonalInformation({
                   requiredStar
                   regex={/^[^!#$%^&*()=+{}[\]:;<>,?/~`|"\\ ]*$/}
                   labelToShow="Email Id"
-                  name="emailAddress"
+                  name="email"
                   textFieldColorClass="shadow-insetLight"
                   inputClassName="!bg-transparent"
                   fieldWidth="!mb-4"
                   maxLength={50}
-                  value={personalInfoFormik.values?.emailAddress}
+                  value={personalInfoFormik.values?.email}
                   onChange={personalInfoFormik.handleChange}
                   handleBlur={personalInfoFormik.handleBlur}
-                  error={personalInfoFormik.errors?.emailAddress}
-                  touched={personalInfoFormik.touched?.emailAddress}
+                  error={personalInfoFormik.errors?.email}
+                  touched={personalInfoFormik.touched?.email}
                 />
               </Suspense>
             ) : (
@@ -161,7 +185,7 @@ export default function PersonalInformation({
                 {" "}
                 <span className="text-black font-medium">Email Id</span>
                 <span className="text-cello">
-                  {personalInfoFormik.values.emailAddress}
+                  {personalInfoFormik.values.email}
                 </span>
               </div>
             )}

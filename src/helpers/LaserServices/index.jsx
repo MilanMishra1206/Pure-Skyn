@@ -554,11 +554,15 @@ export const allPackageDetails = {
     fullBodyWomen: [
       {
         id: 1,
+        serviceId: "1",
+        subServiceId: "1-1",
         name: "Full Body - (4+1) Session",
         price: 60000,
       },
       {
         id: 2,
+        serviceId: "1",
+        subServiceId: "1-2",
         name: "Full Body - Single Session",
         price: 15000,
       },
@@ -566,11 +570,15 @@ export const allPackageDetails = {
     faceAndNeck: [
       {
         id: 1,
+        serviceId: "1",
+        subServiceId: "1-3",
         name: "Face and Neck - (4+1) Session",
         price: 20000,
       },
       {
         id: 2,
+        serviceId: "1",
+        subServiceId: "1-4",
         name: "Face and Neck - Single Session",
         price: 5000,
       },
@@ -578,11 +586,15 @@ export const allPackageDetails = {
     bikiniAndButtocks: [
       {
         id: 1,
+        serviceId: "1",
+        subServiceId: "1-5",
         name: "Bikini and Buttocks - (4+1) Session",
         price: 24000,
       },
       {
         id: 2,
+        serviceId: "1",
+        subServiceId: "1-6",
         name: "Bikini and Buttocks - Single Session",
         price: 6000,
       },
@@ -590,11 +602,15 @@ export const allPackageDetails = {
     armsAndUnderarms: [
       {
         id: 1,
+        serviceId: "1",
+        subServiceId: "1-7",
         name: "Arms and Underarms - (4+1) Session",
         price: 26000,
       },
       {
         id: 2,
+        serviceId: "1",
+        subServiceId: "1-8",
         name: "Arms and Underarms - Single Session",
         price: 6500,
       },
@@ -602,11 +618,15 @@ export const allPackageDetails = {
     chestAndBack: [
       {
         id: 1,
+        serviceId: "1",
+        subServiceId: "1-9",
         name: "Chest and Back - (4+1) Session",
         price: 32000,
       },
       {
         id: 2,
+        serviceId: "1",
+        subServiceId: "1-10",
         name: "Chest and Back - Single Session",
         price: 8000,
       },
@@ -614,6 +634,8 @@ export const allPackageDetails = {
     halfLegs: [
       {
         id: 1,
+        serviceId: "1",
+        subServiceId: "1-11",
         name: "Half Legs - Single Session",
         price: 5000,
       },
@@ -621,6 +643,8 @@ export const allPackageDetails = {
     fullLegs: [
       {
         id: 1,
+        serviceId: "1",
+        subServiceId: "1-12",
         name: "Full Legs - Single Session",
         price: 8000,
       },
@@ -628,6 +652,8 @@ export const allPackageDetails = {
     back: [
       {
         id: 1,
+        serviceId: "1",
+        subServiceId: "1-13",
         name: "Back - Single Session",
         price: 5000,
       },
@@ -635,6 +661,8 @@ export const allPackageDetails = {
     chest: [
       {
         id: 1,
+        serviceId: "1",
+        subServiceId: "1-14",
         name: "Chest - Single Session",
         price: 5000,
       },
@@ -642,6 +670,8 @@ export const allPackageDetails = {
     bikini: [
       {
         id: 1,
+        serviceId: "1",
+        subServiceId: "1-15",
         name: "Bikini - Single Session",
         price: 5000,
       },
@@ -651,11 +681,15 @@ export const allPackageDetails = {
     fullBodyMen: [
       {
         id: 1,
+        serviceId: "2",
+        subServiceId: "2-1",
         name: "Full Body - (4+1) Session",
         price: 60000,
       },
       {
         id: 2,
+        serviceId: "2",
+        subServiceId: "2-2",
         name: "Full Body - Single Session",
         price: 15000,
       },
@@ -663,11 +697,15 @@ export const allPackageDetails = {
     faceAndNeck: [
       {
         id: 1,
+        serviceId: "2",
+        subServiceId: "2-3",
         name: "Face and Neck - (4+1) Session",
         price: 20000,
       },
       {
         id: 2,
+        serviceId: "2",
+        subServiceId: "2-4",
         name: "Face and Neck - Single Session",
         price: 5000,
       },
@@ -675,11 +713,15 @@ export const allPackageDetails = {
     armsAndUnderarms: [
       {
         id: 1,
+        serviceId: "2",
+        subServiceId: "2-5",
         name: "Arms and Underarms - (4+1) Session",
         price: 26000,
       },
       {
         id: 2,
+        serviceId: "2",
+        subServiceId: "2-6",
         name: "Arms and Underarms - Single Session",
         price: 6500,
       },
@@ -687,11 +729,15 @@ export const allPackageDetails = {
     checkAndBack: [
       {
         id: 1,
+        serviceId: "2",
+        subServiceId: "2-7",
         name: "Chest and Back - (4+1) Session",
         price: 32000,
       },
       {
         id: 2,
+        serviceId: "2",
+        subServiceId: "2-8",
         name: "Arms and Underarms - Single Session",
         price: 8000,
       },
@@ -699,6 +745,8 @@ export const allPackageDetails = {
     halfLegs: [
       {
         id: 1,
+        serviceId: "2",
+        subServiceId: "2-9",
         name: "Half Legs - Single Session",
         price: 5000,
       },
@@ -706,6 +754,8 @@ export const allPackageDetails = {
     fullLegs: [
       {
         id: 1,
+        serviceId: "2",
+        subServiceId: "2-10",
         name: "Full Legs - Single Session",
         price: 8000,
       },
@@ -713,6 +763,8 @@ export const allPackageDetails = {
     back: [
       {
         id: 1,
+        serviceId: "2",
+        subServiceId: "2-11",
         name: "Back - Single Session",
         price: 5000,
       },
@@ -720,6 +772,8 @@ export const allPackageDetails = {
     chest: [
       {
         id: 1,
+        serviceId: "2",
+        subServiceId: "2-12",
         name: "Chest - Single Session",
         price: 5000,
       },
@@ -729,6 +783,8 @@ export const allPackageDetails = {
     fullFace: [
       {
         id: 1,
+        serviceId: "3",
+        subServiceId: "3-1",
         name: "Full Face - Single Session",
         price: 5000,
       },
@@ -738,6 +794,8 @@ export const allPackageDetails = {
     oxyhydraFacial: [
       {
         id: 1,
+        serviceId: "4",
+        subServiceId: "4-1",
         name: "Oxy Hydra - Single Session",
         price: 5000,
       },
@@ -747,6 +805,8 @@ export const allPackageDetails = {
     oxygeneo: [
       {
         id: 1,
+        serviceId: "5",
+        subServiceId: "5-1",
         name: "Oxy Geneo - Single Session",
         price: 5000,
       },
@@ -756,9 +816,151 @@ export const allPackageDetails = {
     dermafrac: [
       {
         id: 1,
+        serviceId: "6",
+        subServiceId: "6-1",
         name: "Dermafrac Infusion Facial - Single Session",
         price: 10000,
       },
     ],
   },
+};
+
+export const beforeAfterCarouselContent = {
+  lhrFemale: [
+    {
+      id: 1,
+      beforeImg: Resources.images.Services.BeforeAfter.lhrFemale.img1Before,
+      afterImg: Resources.images.Services.BeforeAfter.lhrFemale.img1After,
+    },
+    {
+      id: 2,
+      beforeImg: Resources.images.Services.BeforeAfter.lhrFemale.img2Before,
+      afterImg: Resources.images.Services.BeforeAfter.lhrFemale.img2After,
+    },
+    {
+      id: 3,
+      beforeImg: Resources.images.Services.BeforeAfter.lhrFemale.img3Before,
+      afterImg: Resources.images.Services.BeforeAfter.lhrFemale.img3After,
+    },
+    {
+      id: 4,
+      beforeImg: Resources.images.Services.BeforeAfter.lhrFemale.img4Before,
+      afterImg: Resources.images.Services.BeforeAfter.lhrFemale.img4After,
+    },
+    {
+      id: 5,
+      beforeImg: Resources.images.Services.BeforeAfter.lhrFemale.img5Before,
+      afterImg: Resources.images.Services.BeforeAfter.lhrFemale.img5After,
+    },
+    {
+      id: 6,
+      beforeImg: Resources.images.Services.BeforeAfter.lhrFemale.img6Before,
+      afterImg: Resources.images.Services.BeforeAfter.lhrFemale.img6After,
+    },
+  ],
+  lhrMale: [
+    {
+      id: 1,
+      beforeImg: Resources.images.Services.BeforeAfter.lhrMale.img1Before,
+      afterImg: Resources.images.Services.BeforeAfter.lhrMale.img1After,
+    },
+    {
+      id: 2,
+      beforeImg: Resources.images.Services.BeforeAfter.lhrMale.img2Before,
+      afterImg: Resources.images.Services.BeforeAfter.lhrMale.img2After,
+    },
+    {
+      id: 3,
+      beforeImg: Resources.images.Services.BeforeAfter.lhrMale.img3Before,
+      afterImg: Resources.images.Services.BeforeAfter.lhrMale.img3After,
+    },
+  ],
+  skinTightening: [
+    {
+      id: 1,
+      beforeImg:
+        Resources.images.Services.BeforeAfter.skinTightening.img1Before,
+      afterImg: Resources.images.Services.BeforeAfter.skinTightening.img1After,
+    },
+    {
+      id: 2,
+      beforeImg:
+        Resources.images.Services.BeforeAfter.skinTightening.img2Before,
+      afterImg: Resources.images.Services.BeforeAfter.skinTightening.img2After,
+    },
+    {
+      id: 3,
+      beforeImg:
+        Resources.images.Services.BeforeAfter.skinTightening.img3Before,
+      afterImg: Resources.images.Services.BeforeAfter.skinTightening.img3After,
+    },
+    {
+      id: 4,
+      beforeImg:
+        Resources.images.Services.BeforeAfter.skinTightening.img4Before,
+      afterImg: Resources.images.Services.BeforeAfter.skinTightening.img4After,
+    },
+    {
+      id: 5,
+      beforeImg:
+        Resources.images.Services.BeforeAfter.skinTightening.img5Before,
+      afterImg: Resources.images.Services.BeforeAfter.skinTightening.img5After,
+    },
+  ],
+  oxygeneo: [
+    {
+      id: 1,
+      beforeImg: Resources.images.Services.BeforeAfter.oxygeneo.img1Before,
+      afterImg: Resources.images.Services.BeforeAfter.oxygeneo.img1After,
+    },
+    {
+      id: 2,
+      beforeImg: Resources.images.Services.BeforeAfter.oxygeneo.img2Before,
+      afterImg: Resources.images.Services.BeforeAfter.oxygeneo.img2After,
+    },
+    {
+      id: 3,
+      beforeImg: Resources.images.Services.BeforeAfter.oxygeneo.img3Before,
+      afterImg: Resources.images.Services.BeforeAfter.oxygeneo.img3After,
+    },
+  ],
+  oxyhydra: [
+    {
+      id: 1,
+      beforeImg: Resources.images.Services.BeforeAfter.oxyhydra.img1Before,
+      afterImg: Resources.images.Services.BeforeAfter.oxyhydra.img1After,
+    },
+    {
+      id: 2,
+      beforeImg: Resources.images.Services.BeforeAfter.oxyhydra.img2Before,
+      afterImg: Resources.images.Services.BeforeAfter.oxyhydra.img2After,
+    },
+    {
+      id: 3,
+      beforeImg: Resources.images.Services.BeforeAfter.oxyhydra.img3Before,
+      afterImg: Resources.images.Services.BeforeAfter.oxyhydra.img3After,
+    },
+    {
+      id: 4,
+      beforeImg: Resources.images.Services.BeforeAfter.oxyhydra.img4Before,
+      afterImg: Resources.images.Services.BeforeAfter.oxyhydra.img4After,
+    },
+  ],
+  dermafrac: [
+    {
+      id: 1,
+      beforeImg: Resources.images.Services.BeforeAfter.dermafrac.img1Before,
+      afterImg: Resources.images.Services.BeforeAfter.dermafrac.img1After,
+    },
+    {
+      id: 2,
+      beforeImg: Resources.images.Services.BeforeAfter.dermafrac.img2Before,
+      afterImg: Resources.images.Services.BeforeAfter.dermafrac.img2After,
+    },
+    {
+      id: 3,
+      beforeImg: Resources.images.Services.BeforeAfter.dermafrac.img3Before,
+      afterImg: Resources.images.Services.BeforeAfter.dermafrac.img3After,
+    },
+  ],
 };

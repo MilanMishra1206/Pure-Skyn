@@ -5,8 +5,12 @@ import { AnimatePresence, motion } from "framer-motion";
 import regex from "../../../helpers/Regex";
 import { useAppSnackbar } from "../../../config/Context/SnackbarContext";
 import FadedLineBreak from "../../../shared/CustomHrTag";
+import { useQuery } from "react-query";
+import { getUserAddress } from "../../../services/Users";
+import { useSelector } from "react-redux";
 
 const CustomTextField = lazy(() => import("../../../shared/CustomTextField"));
+const CustomLoader = lazy(() => import("../../../shared/CustomLoader"));
 
 export default function Address({
   addresses,
@@ -16,11 +20,36 @@ export default function Address({
   setIsAdding,
   handleAddressSubmit,
 }) {
-  const addressTypes = ["Home", "Office", "Others"];
   const [editingAddressIndex, setEditingAddressIndex] = useState(null);
   const [isConfirmingDelete, setIsConfirmingDelete] = useState(false);
   const [deleteAddressIndex, setDeleteAddressIndex] = useState(null);
   const showSnackbar = useAppSnackbar();
+
+  const userProfile = useSelector((state) => state.userProfile.userProfile);
+
+  const { isFetching, refetch } = useQuery(
+    ["getAllUsers"],
+    () => getUserAddress({ userId: userProfile.userId }),
+    {
+      refetchOnMount: true,
+      refetchOnWindowFocus: false,
+      refetchOnReconnect: false,
+      retry: false,
+      onSuccess: (response) => {
+        response?.data?.address.map((item) =>
+          addressFormik.setValues({
+            fullName: item.fullName || "",
+            contactNumber: item.phone || "",
+            addressLine1: item.addressLine1 || "",
+            addressLine2: item.addressLine2 || "",
+            city: item.city || "",
+            state: item.state || "",
+            pinCode: item.pinCode || "",
+          })
+        );
+      },
+    }
+  );
 
   const handleEdit = (index) => {
     const address = addresses[index];
@@ -98,6 +127,9 @@ export default function Address({
 
   return (
     <div>
+      <Suspense fallback={<div />}>
+        <CustomLoader open={isFetching} />
+      </Suspense>
       <p className="font-semibold text-cello font-poppins text-xl text-center">
         Address Details
       </p>
@@ -355,28 +387,6 @@ export default function Address({
                       touched={addressFormik.touched.state}
                     />
                   </Suspense>
-                </div>
-                <h2 className="font-bold mb-4 text-lg">
-                  Save Address As
-                  <span className="text-xs text-bitterSweet">*</span>
-                </h2>
-                <div className="flex flex-col gap-2 md:!flex-row md:!space-x-4">
-                  {addressTypes.map((type, idx) => (
-                    <button
-                      key={idx}
-                      type="button"
-                      onClick={() =>
-                        addressFormik.setFieldValue("addressName", type)
-                      }
-                      className={`py-2 px-4 rounded-md text-sm font-medium transition-all shadow-md ${
-                        addressFormik.values.addressName === type
-                          ? "bg-skyn text-white"
-                          : "bg-white text-gray-700 hover:!bg-gray-100"
-                      }`}
-                    >
-                      {type}
-                    </button>
-                  ))}
                 </div>
               </form>
               <div className="flex flex-col md:!flex-row justify-end gap-4 mt-5">

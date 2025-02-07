@@ -8,7 +8,6 @@ export const addressInitialValues = {
   city: "",
   state: "",
   pinCode: "",
-  addressName: "",
   isDefault: false,
 };
 
@@ -28,20 +27,16 @@ export const getAddressValidationSchema = () =>
       .required("Pincode is required"),
     city: yup.string().required("City is required"),
     state: yup.string().required("State is required"),
-    addressName: yup
-      .string()
-      .oneOf(["Home", "Office", "Others", ""], "Select a valid address type")
-      .required("Address type is required"),
     isDefault: yup.boolean().default(false),
   });
 
 export const getPersonalInfoValidationSchema = () =>
   yup.object().shape({
     fullName: yup.string().required("Name is required"),
-    contactNumber: yup
+    phone: yup
       .string()
       .matches(/^[0-9]{10}$/, "Enter a valid 10-digit contact number")
       .required("Mobile number is required"),
-    emailAddress: yup.string().email("Please Enter Valid Email").required("Required"),
+    email: yup.string().email("Please Enter Valid Email").required("Required"),
     gender: yup.string().required("Please select a gender")
   });

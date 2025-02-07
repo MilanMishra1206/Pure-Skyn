@@ -13,7 +13,7 @@ function AboutUs() {
 
   return (
     <motion.div
-      variants={FadeInWrapper("left", 0.1)}
+      variants={FadeInWrapper("up", 0.2)}
       initial="hidden"
       whileInView="show"
       viewport={{ once: true }}

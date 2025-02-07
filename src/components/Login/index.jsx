@@ -7,17 +7,34 @@ import { getLoginValidation, loginInitialValues } from "../../helpers/Login";
 import LoginForm from "./LoginForm";
 import { useAppSnackbar } from "../../config/Context/SnackbarContext";
 import { loginUser } from "../../services/LoginAndRegister";
+import { useDispatch } from "react-redux";
+import { setUserProfile } from "../../redux/Actions";
 
 const CustomLoader = lazy(() => import("../../shared/CustomLoader"));
 
 function LoginPage() {
   const showSnackbar = useAppSnackbar();
   const navigate = useNavigate();
+  const dispatch = useDispatch();
 
   const { mutate: loginUsers, isLoading } = useMutation(loginUser, {
     onSuccess(res) {
-      navigate("/");
-      showSnackbar(res?.messag, "success");
+      if (res?.status === "SUCCESS") {
+        const data = res?.data;
+        showSnackbar(res?.message, "success");
+        sessionStorage.setItem("token", data?.token);
+        dispatch(
+          setUserProfile({
+            userId: data?.id,
+            email: data?.email,
+            name: data?.name,
+            phone: data?.phone,
+          })
+        );
+        navigate("/");
+      } else {
+        showSnackbar(`${res?.message}. Please try again!`, "error");
+      }
     },
     onError(error) {
       showSnackbar(error, "error");
@@ -66,7 +83,7 @@ function LoginPage() {
         <LoginForm
           formik={formik}
           handleSubmit={handleSubmit}
-          mobileClass="flex flex-col justify-center items-center"
+          mobileClass="flex flex-col items-center"
         />
       </div>
     </div>

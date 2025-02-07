@@ -14,6 +14,8 @@ import CustomHeader from "../../../../../shared/CustomHeader";
 import FadedLineBreak from "../../../../../shared/CustomHrTag";
 import DrawCircleText from "../../../../../shared/CustomDrawCircleText";
 import CustomFloatingBookNowButton from "../../../../../shared/CustomFloatingBookNowButton";
+import BeforeAfterCarousel from "../../../BeforeAfterCarousel";
+import { beforeAfterCarouselContent } from "../../../../../helpers/LaserServices";
 
 const CommonHeader = lazy(() => import("../../../CommonHeader"));
 
@@ -186,6 +188,10 @@ function Oxygeneo({ type }) {
             className="px-4"
           >
             <FadedLineBreak />
+            <BeforeAfterCarousel
+              carouselContent={beforeAfterCarouselContent.oxygeneo}
+            />
+            <FadedLineBreak />
             <div className="text-center text-skyn font-bold text-3xl px-4">
               <p>Frequently Asked Questions(FAQs)</p>
             </div>
@@ -214,7 +220,7 @@ function Oxygeneo({ type }) {
               </div>
             </div>
           </motion.div>
-          <CustomFloatingBookNowButton treatmentName="Oxygeneo" goToStep={1}/>
+          <CustomFloatingBookNowButton treatmentName="Oxygeneo" goToStep={1} />
         </div>
       )}
     </div>

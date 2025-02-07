@@ -10,6 +10,8 @@ import CustomHeader from "../../../../../shared/CustomHeader";
 import FadedLineBreak from "../../../../../shared/CustomHrTag";
 import DrawCircleText from "../../../../../shared/CustomDrawCircleText";
 import CustomFloatingBookNowButton from "../../../../../shared/CustomFloatingBookNowButton";
+import BeforeAfterCarousel from "../../../BeforeAfterCarousel";
+import { beforeAfterCarouselContent } from "../../../../../helpers/LaserServices";
 
 const CommonHeader = lazy(() => import("../../../CommonHeader"));
 
@@ -29,8 +31,6 @@ function OxyHydra({ type }) {
         {!type && (
           <CustomHeader
             heading={"Oxy Hydra Facial"}
-            showBackButton={type}
-            navigateTo={"/services/skin/medi-facial"}
             headerClass={!type && "!text-2xl"}
           />
         )}
@@ -311,9 +311,11 @@ function OxyHydra({ type }) {
             whileInView="show"
             viewport={{ once: true }}
           >
-            <div className="px-4">
-              <FadedLineBreak />
-            </div>
+            <FadedLineBreak />
+            <BeforeAfterCarousel
+              carouselContent={beforeAfterCarouselContent.oxyhydra}
+            />
+            <FadedLineBreak />
             <div className="text-center text-skyn font-bold text-3xl px-4">
               <p>Frequently Asked Questions(FAQs)</p>
             </div>
@@ -342,7 +344,10 @@ function OxyHydra({ type }) {
               </div>
             </div>
           </motion.div>
-          <CustomFloatingBookNowButton treatmentName="Oxy Hydra Facial" goToStep={1} />
+          <CustomFloatingBookNowButton
+            treatmentName="Oxy Hydra Facial"
+            goToStep={1}
+          />
         </div>
       )}
     </div>

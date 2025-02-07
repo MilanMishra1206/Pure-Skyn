@@ -15,26 +15,30 @@ const CartDrawer = lazy(() => import("../../components/Cart/CartDrawer"));
 function CustomNavbar() {
   const location = useLocation();
   const navigate = useNavigate();
+  const showSnackbar = useAppSnackbar();
+  const isTablet = useMediaQuery("(max-width: 935px)");
+
   const [menuOpen, setMenuOpen] = useState(false);
-  const packageButtonRefForMobile = useRef(null);
-  const serviceButtonRefForMobile = useRef(null);
   const [isLoggedIn, setIsLoggedIn] = useState(true);
-  const [isOpenPackageForMobile, setIsOpenPackageForMobile] = useState(false);
-  const [isOpenServicesForMobile, setIsOpenServicesForMobile] = useState(false);
   const [isConfirmingLogout, setIsConfirmingLogout] = useState(false);
   const [userName, setUserName] = useState("");
   const isAdmin = false;
-
   const isActive = (path) => location.pathname === path;
   const toggleMenu = () => setMenuOpen(!menuOpen);
-  const isTablet = useMediaQuery("(max-width: 935px)");
-  const showSnackbar = useAppSnackbar();
+
   const cartItems = useSelector((state) => state.cart.items);
+  const userProfile = useSelector((state) => state.userProfile.userProfile);
+
   const totalItems = cartItems.length;
 
   useEffect(() => {
-    // setIsLoggedIn(true);
-    setUserName("Milan");
+    if(sessionStorage.getItem("token")) {
+      setIsLoggedIn(true);
+      const name = userProfile?.name?.split(" ")[0];
+      setUserName(name);  
+    } else {
+      setIsLoggedIn(false);
+    }
   }, []);
 
   const handleLogout = () => {
@@ -45,6 +49,7 @@ function CustomNavbar() {
   const confirmLogout = () => {
     setIsLoggedIn(false);
     setIsConfirmingLogout(false);
+    sessionStorage.clear();
     navigate("/");
     showSnackbar("Logged-out successfully!", "success");
   };
@@ -73,52 +78,6 @@ function CustomNavbar() {
       label: "Logout",
       icon: Resources.images.NavBar.logout,
       action: handleLogout,
-    },
-  ];
-
-  const serviceItemForMobile = [
-    {
-      id: 1,
-      label: "Laser Hair Removal Women",
-      link: "/services/laser-hair-removal/women",
-    },
-    {
-      id: 2,
-      label: "Laser Hair Removal Men",
-      link: "/services/laser-hair-removal/men",
-    },
-    {
-      id: 3,
-      label: "Oxy Hydra Facial",
-      link: "/services/skin/medi-facial/oxy-hydra-facial",
-    },
-    {
-      id: 4,
-      label: "RF Skin Tightening",
-      link: "/services/skin/medi-facial/skin-tightening",
-    },
-    {
-      id: 5,
-      label: "Dermafrac Infusion Facial",
-      link: "/services/skin/medi-facial/dermafrac-infusion-facial",
-    },
-    {
-      id: 6,
-      label: "Oxygeneo",
-      link: "/services/skin/medi-facial/oxygeneo",
-    },
-  ];
-
-  const packagesItemForMobile = [
-    {
-      id: 1,
-      label: "Laser Hair Removal Packages",
-      link: "/services/laser-hair-removal-packages",
-    },
-    {
-      id: 2,
-      label: "Medi Facial",
-      link: "/services/skin/medi-facial-packages",
     },
   ];
 
@@ -228,18 +187,9 @@ function CustomNavbar() {
           />
         ) : (
           <MenuForMobile
-            isActive={isActive}
             userName={userName}
-            serviceItemForMobile={serviceItemForMobile}
-            packagesItemForMobile={packagesItemForMobile}
             toggleMenu={() => setMenuOpen(!menuOpen)}
             menuOpen={menuOpen}
-            setIsOpenServicesForMobile={setIsOpenServicesForMobile}
-            isOpenServicesForMobile={isOpenServicesForMobile}
-            serviceButtonRefForMobile={serviceButtonRefForMobile}
-            isOpenPackageForMobile={isOpenPackageForMobile}
-            setIsOpenPackageForMobile={setIsOpenPackageForMobile}
-            packageButtonRefForMobile={packageButtonRefForMobile}
             isAdmin={isAdmin}
             isLoggedIn={isLoggedIn}
             handleLogout={handleLogout}

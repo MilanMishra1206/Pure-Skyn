@@ -1,18 +1,23 @@
 const API_URLS = {
   baseURL: "http://13.233.199.108:8080/api/v1",
   Auth: {
-    login: "auth/login",
-    registerUser: "auth/register",
+    login: "/auth/login",
+    registerUser: "/auth/register",
+    requestChangePassword: "/auth/request-password-change?email=",
+    changePassword: "/auth/change-password",
   },
   Services: {
-    getAllServices: "services/all",
-    createService: "services/create",
+    getAllServices: "/services/all",
+    createService: "/services/create",
   },
   Booking: {
-    createBooking: "booking/create",
+    reqBooking: "/booking/request",
+    createBooking: "/booking/create",
   },
   Users: {
-    getUserAddress: "users/address"
+    addAddress: "/auth/user/add-address",
+    getUserAddress: "/users/address",
+    updateUserDetails: "/auth/update",
   },
   Admin: {
     getAllUsers: "users/all",

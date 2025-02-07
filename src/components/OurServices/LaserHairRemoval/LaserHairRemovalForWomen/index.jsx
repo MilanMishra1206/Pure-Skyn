@@ -3,7 +3,10 @@ import { useMediaQuery } from "@mui/material";
 import { motion } from "framer-motion";
 import { lazy, Suspense } from "react";
 import Resources from "../../../../config/Resources";
-import { laserServiceForWomenContent } from "../../../../helpers/LaserServices";
+import {
+  beforeAfterCarouselContent,
+  laserServiceForWomenContent,
+} from "../../../../helpers/LaserServices";
 import MotionWrapper from "../../../../config/MotionFramer/MotionWrapper";
 import FadeInWrapper from "../../../../config/MotionFramer/FadeInWrapper";
 import CustomHeader from "../../../../shared/CustomHeader";
@@ -11,6 +14,7 @@ import FadedLineBreak from "../../../../shared/CustomHrTag";
 import CustomAccordion from "../../../../shared/CustomAccordion";
 import { LHRWomenAccordianContent } from "../../../../helpers/AccordianContent";
 import DrawCircleText from "../../../../shared/CustomDrawCircleText";
+import BeforeAfterCarousel from "../../BeforeAfterCarousel";
 
 const CommonHeader = lazy(() => import("../../CommonHeader"));
 
@@ -127,6 +131,10 @@ function LaserHairRemovalForWomen({ category, isMobile, isTablet }) {
                 whileInView="show"
                 viewport={{ once: true }}
               >
+                <FadedLineBreak />
+                <BeforeAfterCarousel
+                  carouselContent={beforeAfterCarouselContent.lhrFemale}
+                />
                 <FadedLineBreak />
                 <DrawCircleText
                   headerText={"70% OFF -"}
