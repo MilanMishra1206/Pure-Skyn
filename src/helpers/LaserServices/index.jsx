@@ -284,7 +284,7 @@ export const servicesCardDetails = [
       "Reduces fine lines, brightens skin, improves acne scars, and hydrates deeply",
       "Quick recovery with glowing, refreshed skin",
     ],
-    image: `${Resources.images.Services.Dermafrac.dermafracCard}`,
+    image: `${Resources.images.Services.Dermafrac.imageOne}`,
     linkTo: "/services/skin/medi-facial/dermafrac-infusion-facial",
   },
   {
@@ -300,7 +300,7 @@ export const servicesCardDetails = [
       "Instantly refreshes and revitalizes skin",
       "Targets uneven skin tone, fine lines, and texture",
     ],
-    image: `${Resources.images.Services.OxyGeneo.oxygeneoCard}`,
+    image: `${Resources.images.Services.OxyGeneo.img6}`,
     linkTo: "/services/skin/medi-facial/oxygeneo",
   },
 ];
@@ -964,3 +964,42 @@ export const beforeAfterCarouselContent = {
     },
   ],
 };
+
+export const treatmentList = [
+  {
+    id: 1,
+    treatmentName: "Laser Hair Removal Women",
+    imgSrc: Resources.images.Home.lhrWomenMobile,
+    label: "lhrWomen",
+  },
+  {
+    id: 2,
+    treatmentName: "Laser Hair Removal Men",
+    imgSrc: Resources.images.Home.lhrMenMobile,
+    label: "lhrMen",
+  },
+  {
+    id: 3,
+    treatmentName: "Oxy Hydra Facial",
+    imgSrc: Resources.images.Home.oxyhydraMoble,
+    label: "oxyHydraFacial",
+  },
+  {
+    id: 4,
+    treatmentName: "RF Skin Tightening",
+    imgSrc: Resources.images.Home.skinTighteningMobile,
+    label: "skinTightening",
+  },
+  {
+    id: 5,
+    treatmentName: "Dermafrac Infusion Facial",
+    imgSrc: Resources.images.Home.dermfracMobile,
+    label: "dermafrac",
+  },
+  {
+    id: 6,
+    treatmentName: "Oxygeneo",
+    imgSrc: Resources.images.Home.oxygeneoMobile,
+    label: "oxygeneo",
+  },
+];

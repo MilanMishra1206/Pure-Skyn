@@ -19,7 +19,7 @@ function AboutUs() {
       viewport={{ once: true }}
       className={`mt-3 ${isTablet ? "py-3" : ""}`}
     >
-      <div className={`mt-5 ${isMobile ? "px-4" : "px-5"}`}>
+      <div className={`${isMobile ? "px-4" : "px-5"}`}>
         <CustomHomeHeader heading="About Us" />
         <p className="mt-4 font-poppins text-cello font-medium">
           At Pure Skyn we are focused on providing you with the permanent laser

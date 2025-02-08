@@ -36,7 +36,6 @@ const PureSkynMediFacialPackages = lazy(
 );
 const PureSkynCart = lazy(() => import("../../pages/PureSkynCart"));
 const CustomNavbar = lazy(() => import("../../shared/CustomNavbar"));
-const CustomHeroSection = lazy(() => import("../../shared/CustomHeroSection"));
 const PageNotFound = lazy(() => import("../../shared/PageNotFound"));
 const CustomFooter = lazy(() => import("../../shared/CustomFooter"));
 
@@ -149,11 +148,9 @@ const RouteWrapper = ({ Component, accessRule }) => {
 
 function Router() {
   const { setIsHomePage, setIsMedifacialPage } = useRouteStatus();
-  const isAdmin = false;
   const location = useLocation();
 
   const showNavAndFooter = !["/login", "/sign-up"].includes(location.pathname);
-  const showCarousel = ["/"].includes(location.pathname);
 
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -178,13 +175,6 @@ function Router() {
         <Suspense fallback={<CustomLoader open={true} />}>
           <div className="mb-5">
             <CustomNavbar />
-          </div>
-        </Suspense>
-      )}
-      {showCarousel && !isAdmin && (
-        <Suspense fallback={<CustomLoader open={true} />}>
-          <div className="mt-5 flex flex-col">
-            <CustomHeroSection />
           </div>
         </Suspense>
       )}

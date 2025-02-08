@@ -10,6 +10,7 @@ const ServicesOffered = lazy(() => import("./ServicesOffered"));
 const WhyUs = lazy(() => import("./WhyUs"));
 const ContactUs = lazy(() => import("./ContactUs"));
 const AboutUs = lazy(() => import("./AboutUs"));
+const CustomHeroSection = lazy(() => import("../../shared/CustomHeroSection"));
 
 function Home() {
   const isMobile = useMediaQuery("(max-width: 767px)");
@@ -19,6 +20,11 @@ function Home() {
   return (
     <div className="mt-3">
       <div>
+        <Suspense fallback={<CustomLoader open={true} />}>
+          <div className="mt-5 flex flex-col">
+            <CustomHeroSection />
+          </div>
+        </Suspense>
         <Suspense fallback={<CustomLoader open={true} />}>
           <MotionWrapper>
             <AboutUs />

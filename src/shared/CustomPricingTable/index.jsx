@@ -44,8 +44,7 @@ const CustomPricingTable = ({ pricingContent, treatmentName }) => {
                 {treatment.label}
               </td>
               <td className="px-4 py-2 border-b border-gray-300 text-coal">
-                ₹{treatment.pricing}{" "}
-                {treatment.multiplSessions && "- (4+1) session"}
+                ₹{treatment.pricing}
               </td>
               <td className="px-4 py-2 border-b border-gray-300 text-coal">
                 <button

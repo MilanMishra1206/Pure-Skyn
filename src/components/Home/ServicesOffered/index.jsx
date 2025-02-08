@@ -2,7 +2,6 @@ import React from "react";
 import { MdKeyboardDoubleArrowRight } from "react-icons/md";
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
-import Resources from "../../../config/Resources";
 import CustomCards from "../../../shared/CustomCards";
 import { servicesOffered } from "../../../helpers/LaserServices";
 import CustomHomeHeader from "../../../shared/CustomHomeHeader";
@@ -19,74 +18,6 @@ function ServicesOffered({ isMobile, isLargeScreen, isLaptop }) {
         </div>
       </div>
       <div>
-        {isLargeScreen && (
-          <div className="grid grid-cols-2 font-poppins mb-5 h-96">
-            <div className="flex flex-col justify-between p-5 bg-[#FFF7E9]">
-              <div className="space-y-10 text-center lg:mb-5">
-                <div className="text-4xl xl:!text-6xl font-medium text-center text-coal">
-                  <p>It's All About </p> <p className="mt-3">The Results!</p>
-                </div>
-                <p className="text-center text-coal text-xl">
-                  Laser Hair Removal, Oxy Hydra Facial, RF Skin Tightening,
-                  Dermafrac Infusion, Oxygenero & More.
-                </p>
-              </div>
-              <div className="grid grid-cols-1 lg:!grid-cols-2 space-y-4 lg:!space-x-4 lg:!space-y-0 mt-4 lg:!mt-0">
-                <Link
-                  to="/book-now"
-                  className="w-full no-underline text-center rounded-3xl border-1 !border-[#B18260] shadow md:p-2 lg:!p-3 duration-500 text-coffee hover:!bg-coffee hover:!text-white hover:!shadow-lg"
-                >
-                  Book Now
-                </Link>
-                <Link
-                  to="/services"
-                  className="w-full no-underline text-center rounded-3xl border-1 !border-[#B18260] shadow md:p-2 lg:!p-3 duration-500 text-coffee hover:!bg-coffee hover:!text-white hover:!shadow-lg"
-                >
-                  Explore More
-                </Link>
-              </div>
-            </div>
-            <img
-              src={Resources.images.Common.homeHeader}
-              className="h-100 w-full"
-              alt="Banner"
-            />
-          </div>
-        )}
-        {!isLargeScreen && (
-          <div className="grid md:!grid-cols-2 font-poppins mb-5">
-            <img
-              src={Resources.images.Common.homeHeaderMobile}
-              className="h-100 w-full"
-              alt="Banner"
-            />
-            <div className="flex flex-col justify-between p-5 bg-[#FFF7E9]">
-              <div className="space-y-10 text-center lg:mb-5">
-                <div className="text-4xl xl:!text-6xl font-medium text-center text-coal">
-                  <p>It's All About </p> <p className="mt-3">The Results!</p>
-                </div>
-                <p className="text-center text-coal text-xl">
-                  Laser Hair Removal, Oxy Hydra Facial, RF Skin Tightening,
-                  Dermafrac Infusion, Oxygenero & More.
-                </p>
-              </div>
-              <div className="grid grid-cols-1 lg:!grid-cols-2 space-y-4 lg:!space-x-4 lg:!space-y-0 mt-4 lg:!mt-0">
-                <Link
-                  to="/book-now"
-                  className="w-full no-underline text-center rounded-3xl border-1 !border-[#B18260] shadow p-2 lg:!p-3  text-coffee hover:!bg-coffee hover:!text-white hover:!shadow-lg"
-                >
-                  Book Now
-                </Link>
-                <Link
-                  to="/services"
-                  className="w-full no-underline text-center rounded-3xl border-1 !border-[#B18260] shadow p-2 lg:!p-3  text-coffee hover:!bg-coffee hover:!text-white hover:!shadow-lg"
-                >
-                  Explore More
-                </Link>
-              </div>
-            </div>
-          </div>
-        )}
         <div className="px-5 mt-5">
           <div className="flex justify-end px-5">
             <Link
@@ -103,7 +34,7 @@ function ServicesOffered({ isMobile, isLargeScreen, isLaptop }) {
           initial="hidden"
           whileInView="show"
           viewport={{ once: true }}
-          className={`grid grid-cols-1 md:!grid-cols-2 xl:!grid-cols-4 ${isLargeScreen ? "mt-5 p-5" : "p-4"}`}
+          className={`grid grid-cols-1 md:!grid-cols-2 xl:!grid-cols-4 ${isLargeScreen ? "p-5" : "p-4"}`}
         >
           <div className="bg-coffee text-white text-center p-4 shadow-lg min-h-96">
             <div className="flex flex-col items-center justify-between h-full">

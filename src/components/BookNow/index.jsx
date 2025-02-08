@@ -18,8 +18,8 @@ import DrawCircleText from "../../shared/CustomDrawCircleText";
 import FadeInWrapper from "../../config/MotionFramer/FadeInWrapper";
 import { createNewBooking } from "../../services/Booking";
 import BookNowDetails from "./BookNowDetails";
-import Resources from "../../config/Resources";
 import BookNowOptions from "./BookNowOptions";
+import { treatmentList } from "../../helpers/LaserServices";
 
 const CustomLoader = lazy(() => import("../../shared/CustomLoader"));
 
@@ -85,45 +85,6 @@ function BookNow() {
       setStepHeading(treatmentName);
     }
   }, [sessionStorage.getItem("currentStep")]);
-
-  const treatmentList = [
-    {
-      id: 1,
-      treatmentName: "Laser Hair Removal Women",
-      imgSrc: Resources.images.Home.lhrWomenMobile,
-      label: "lhrWomen",
-    },
-    {
-      id: 2,
-      treatmentName: "Laser Hair Removal Men",
-      imgSrc: Resources.images.Home.lhrMenMobile,
-      label: "lhrMen",
-    },
-    {
-      id: 3,
-      treatmentName: "Oxy Hydra Facial",
-      imgSrc: Resources.images.Home.oxyhydraMoble,
-      label: "oxyHydraFacial",
-    },
-    {
-      id: 4,
-      treatmentName: "RF Skin Tightening",
-      imgSrc: Resources.images.Home.skinTighteningMobile,
-      label: "skinTightening",
-    },
-    {
-      id: 5,
-      treatmentName: "Dermafrac Infusion Facial",
-      imgSrc: Resources.images.Home.dermfracMobile,
-      label: "dermafrac",
-    },
-    {
-      id: 6,
-      treatmentName: "Oxygeneo",
-      imgSrc: Resources.images.Home.oxygeneoMobile,
-      label: "oxygeneo",
-    },
-  ];
 
   const { mutate: createBooking, isLoading } = useMutation(createNewBooking, {
     onSuccess(res) {

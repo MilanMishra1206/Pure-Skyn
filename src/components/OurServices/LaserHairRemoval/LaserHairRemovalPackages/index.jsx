@@ -4,6 +4,7 @@ import { useEffect } from "react";
 import { motion } from "framer-motion";
 import Resources from "../../../../config/Resources";
 import {
+  allPackageDetails,
   fullBodyLaserContent,
   laserHairMenPackage,
   laserHairWomenPackage,
@@ -20,7 +21,6 @@ import FadedLineBreak from "../../../../shared/CustomHrTag";
 function LaserHairRemovalPackages() {
   const isTablet = useMediaQuery("(max-width: 1023px)");
   const isMobile = useMediaQuery("(max-width: 767px)");
-  const navigate = useNavigate();
 
   useEffect(() => {
     sessionStorage.removeItem("currentBookStep");
@@ -41,6 +41,28 @@ function LaserHairRemovalPackages() {
       Laser Hair Removal Packages
     </Typography>,
   ];
+
+  const createPricingContent = (data) => {
+    let pricingContent = [];
+    Object.keys(data).forEach((category) => {
+      const treatments = data[category];
+      treatments.forEach((treatment) => {
+        pricingContent.push({
+          label: treatment.name,
+          pricing: treatment.price,
+          packageName: treatment.name,
+          Step3: true,
+          isMedifacialPackage: false,
+          multiplSessions: treatment.name.includes("(4+1)"),
+        });
+      });
+    });
+
+    return pricingContent;
+  };
+
+  const womenPricingContent = createPricingContent(allPackageDetails.LHRWomen);
+  const menPricingContent = createPricingContent(allPackageDetails.LHRMen);
 
   return (
     <MotionWrapper>
@@ -157,7 +179,7 @@ function LaserHairRemovalPackages() {
                 </motion.div>
               </div>
               <CustomPricingTable
-                pricingContent={laserHairWomenPackage}
+                pricingContent={womenPricingContent}
                 treatmentName="Laser Hair Removal Women"
               />
             </motion.div>
@@ -206,7 +228,7 @@ function LaserHairRemovalPackages() {
                 </motion.div>
               </div>
               <CustomPricingTable
-                pricingContent={laserHairMenPackage}
+                pricingContent={menPricingContent}
                 treatmentName="Laser Hair Removal Men"
               />
             </motion.div>
