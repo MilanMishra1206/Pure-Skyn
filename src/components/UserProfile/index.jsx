@@ -24,7 +24,7 @@ import { useSelector } from "react-redux";
 const CustomLoader = lazy(() => import("../../shared/CustomLoader"));
 
 function UserProfile() {
-  const isAdmin = true;
+  const isAdmin = false;
   const showSnackbar = useAppSnackbar();
   const location = useLocation();
   const navigate = useNavigate();

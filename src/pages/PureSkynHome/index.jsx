@@ -6,7 +6,7 @@ const AdminDashboard = lazy(() => import("../../components/AdminDashboard"));
 
 function PureSkynHome() {
   // const [isAdmin, setIsAdmin] = useState(false);
-  const isAdmin = true;
+  const isAdmin = false;
 
   return (
     <div>
