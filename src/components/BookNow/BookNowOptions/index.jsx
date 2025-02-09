@@ -106,15 +106,15 @@ function BookNowOptions({ heading, setTreatmentPackage, setCurrentStep }) {
   });
 
   const bookNowClick = () => {
-    // reqBooking({
-    //   serviceId,
-    //   subServiceId,
-    //   date: dayjs().format("YYYY-MM-DD"),
-    // });
+    reqBooking({
+      serviceId,
+      subServiceId,
+      date: dayjs().format("YYYY-MM-DD"),
+    });
     //will revert the changes post API calls are fixed
-    setOpenModal(false);
-    setTreatmentPackageDetails([]);
-    setCurrentStep(2);
+    // setOpenModal(false);
+    // setTreatmentPackageDetails([]);
+    // setCurrentStep(2);
   };
 
   return (
