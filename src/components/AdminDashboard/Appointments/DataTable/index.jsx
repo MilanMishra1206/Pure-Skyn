@@ -46,7 +46,7 @@ function DataTable({ data, totalCount }) {
                       </Link>
                     </TableCell>
                     <TableCellText
-                      text={item?.firstName + item?.lastName}
+                      text={item?.name}
                       className={`${isMobile && "!hidden"}`}
                     />
                     <TableCellText

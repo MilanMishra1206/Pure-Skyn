@@ -35,7 +35,7 @@ function Appointments({ isMobile }) {
       retry: false,
       onSuccess: (response) => {
         setTotalCount(response?.length);
-        setApplicationData(response);
+        setApplicationData(response?.data);
       },
     }
   );
