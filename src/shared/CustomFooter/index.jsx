@@ -10,7 +10,7 @@ import { FaRegAddressBook } from "react-icons/fa";
 import Resources from "../../config/Resources";
 
 function CustomFooter() {
-  const isAdmin = false;
+  const isAdmin = true;
   return (
     <div className="bottom-0 left-0 w-full bg-coal text-white p-8 font-poppins">
       <div className="flex flex-col px-4">
