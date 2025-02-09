@@ -37,7 +37,7 @@ function LaserHairRemovalPackages() {
     >
       Home
     </Link>,
-    <Typography key="3" className="text-cello font-poppins text-lg">
+    <Typography key="2" className="!text-cello !font-poppins !text-lg">
       Laser Hair Removal Packages
     </Typography>,
   ];

@@ -20,7 +20,7 @@ function LaserServices() {
     >
       Home
     </Link>,
-    <Typography key="3" className="text-cello font-poppins text-lg">
+    <Typography key="2" className="!text-cello !font-poppins !text-lg">
       Services
     </Typography>,
   ];
@@ -42,7 +42,7 @@ function LaserServices() {
           {breadcrumbs}
         </Breadcrumbs>
         {isLargeScreen && (
-          <div className="grid grid-cols-2 font-poppins h-96">
+          <div className="grid grid-cols-2 font-poppins">
             <div className="flex flex-col justify-between p-5 bg-[#FFF7E9]">
               <div className="space-y-10 text-center lg:mb-5">
                 <div className="text-4xl xl:!text-6xl font-medium text-center text-coal">
@@ -116,8 +116,9 @@ function LaserServices() {
               initial="hidden"
               whileInView="show"
               viewport={{ once: true }}
+              key={index}
             >
-              <div key={index}>
+              <div>
                 <div className="gap-5 grid grid-cols-1 md:grid-cols-2 place-items-center">
                   <div>
                     <p className="font-bold mb-2">

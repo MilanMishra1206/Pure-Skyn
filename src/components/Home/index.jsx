@@ -1,4 +1,4 @@
-import { Suspense } from "react";
+import { Suspense, useEffect } from "react";
 import { lazy } from "react";
 import { useMediaQuery } from "@mui/material";
 import MotionWrapper from "../../config/MotionFramer/MotionWrapper";
@@ -16,6 +16,13 @@ function Home() {
   const isMobile = useMediaQuery("(max-width: 767px)");
   const isLargeScreen = useMediaQuery("(min-width: 1023px)");
   const isLaptop = useMediaQuery("(min-width: 1336px)");
+
+  useEffect(() => {
+    sessionStorage.removeItem("currentBookStep");
+    sessionStorage.removeItem("packageName");
+    sessionStorage.removeItem("packagePrice");
+    sessionStorage.removeItem("treatmentName");
+  }, [])
 
   return (
     <div className="mt-3">

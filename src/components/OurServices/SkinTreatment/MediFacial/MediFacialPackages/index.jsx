@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 import { useEffect } from "react";
 import { Breadcrumbs, Typography, useMediaQuery } from "@mui/material";
 import { motion } from "framer-motion";
-import { mediFacialPrimePackages } from "../../../../../helpers/LaserServices";
+import { allPackageDetails } from "../../../../../helpers/LaserServices";
 import MotionWrapper from "../../../../../config/MotionFramer/MotionWrapper";
 import FadeInWrapper from "../../../../../config/MotionFramer/FadeInWrapper";
 import FuzzyPricingOverlay from "../../../../../shared/CustomFuzzyPricingOverlay";
@@ -29,10 +29,40 @@ function MediFacialPackages() {
     >
       Home
     </Link>,
-    <Typography key="3" className="text-cello font-poppins text-lg">
+    <Typography key="2" className="!text-cello !font-poppins !text-lg">
       Medi-Facial Packages
     </Typography>,
   ];
+
+  const createPricingContent = (data) => {
+    let pricingContent = [];
+    const targetCategories = [
+      "skinTightening",
+      "oxyhydraFacial",
+      "oxygeneo",
+      "dermafrac",
+    ];
+    targetCategories.forEach((category) => {
+      const subCategories = data[category];
+
+      Object.values(subCategories).forEach((treatments) => {
+        treatments.forEach((treatment) => {
+          pricingContent.push({
+            label: treatment.label,
+            pricing: treatment.price,
+            packageName: treatment.name,
+            Step3: true,
+            isMedifacialPackage: true,
+            multiplSessions: treatment.name.includes("(4+1)"),
+          });
+        });
+      });
+    });
+
+    return pricingContent;
+  };
+
+  const mediFacialPrimePackages = createPricingContent(allPackageDetails);
 
   return (
     <MotionWrapper>
@@ -140,7 +170,9 @@ function MediFacialPackages() {
                 />
               </div>
             </div>
-            <CustomPricingTable pricingContent={mediFacialPrimePackages} />
+            <CustomPricingTable
+              pricingContent={mediFacialPrimePackages}
+            />
           </motion.div>
           <FadedLineBreak />
           <motion.div

@@ -26,11 +26,11 @@ function CommonHeader({
     <Link
       key="2"
       to={route1}
-      className="text-skyn no-underline !font-poppins hover:opacity-80 text-lg"
+      className="text-skyn no-underline !font-poppins hover:!opacity-80 !text-lg"
     >
       {breadcrumbs1}
     </Link>,
-    <Typography key="3" className="text-cello font-poppins text-lg">
+    <Typography key="3" className="!text-cello !font-poppins !text-lg">
       {breadcrumbs2}
     </Typography>,
   ];

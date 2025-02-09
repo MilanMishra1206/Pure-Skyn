@@ -191,33 +191,6 @@ export const sessionWiseHairReduction = [
   },
 ];
 
-export const mediFacialPrimePackages = [
-  {
-    id: 1,
-    label: "Oxy Hydra Facial",
-    isMedifacialPackage: true,
-    pricing: 5000,
-  },
-  {
-    id: 2,
-    label: "RF Skin Tightening",
-    isMedifacialPackage: true,
-    pricing: 5000,
-  },
-  {
-    id: 3,
-    label: "Dermafrac Infusion Facial",
-    isMedifacialPackage: true,
-    pricing: 10000,
-  },
-  {
-    id: 4,
-    label: "Oxygeneo",
-    isMedifacialPackage: true,
-    pricing: 5000,
-  },
-];
-
 export const servicesCardDetails = [
   {
     id: 1,
@@ -785,6 +758,7 @@ export const allPackageDetails = {
         id: 1,
         serviceId: "3",
         subServiceId: "3-1",
+        label: "RF Skin Tightening",
         name: "Full Face - Single Session",
         price: 5000,
       },
@@ -796,6 +770,7 @@ export const allPackageDetails = {
         id: 1,
         serviceId: "4",
         subServiceId: "4-1",
+        label: "Oxy Hydra Facial",
         name: "Oxy Hydra - Single Session",
         price: 5000,
       },
@@ -807,6 +782,7 @@ export const allPackageDetails = {
         id: 1,
         serviceId: "5",
         subServiceId: "5-1",
+        label: "Oxygeneo",
         name: "Oxy Geneo - Single Session",
         price: 5000,
       },
@@ -818,6 +794,7 @@ export const allPackageDetails = {
         id: 1,
         serviceId: "6",
         subServiceId: "6-1",
+        label: "Dermafrac Infusion Facial",
         name: "Dermafrac Infusion Facial - Single Session",
         price: 10000,
       },

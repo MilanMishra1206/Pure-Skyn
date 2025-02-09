@@ -194,7 +194,7 @@ function Cart() {
     </Link>,
     <Typography
       key="2"
-      className="text-coal font-poppins cursor-pointer text-lg"
+      className="!text-coal !font-poppins !text-lg"
     >
       Cart
     </Typography>,

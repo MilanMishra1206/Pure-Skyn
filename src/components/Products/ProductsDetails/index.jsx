@@ -192,17 +192,17 @@ function ProductsDetails() {
   }, [reviewContent]);
 
   const breadcrumbs = [
-    <Link key="1" to="/" className="text-skyn  font-poppins hover:opacity-80">
+    <Link key="1" to="/" className="text-skyn font-poppins hover:opacity-80">
       Home
     </Link>,
     <Link
       key="2"
       to="/products"
-      className="text-skyn font-poppins hover:opacity-80"
+      className="text-skyn !font-poppins hover:!opacity-80"
     >
       Products
     </Link>,
-    <Typography key="3" className="text-coal font-poppins cursor-pointer">
+    <Typography key="3" className="!text-coal !font-poppins">
       {products.productName}
     </Typography>,
   ];

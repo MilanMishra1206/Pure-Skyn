@@ -136,7 +136,7 @@ function BookNow() {
     >
       Home
     </Link>,
-    <Typography key="2" className="text-cello !font-poppins text-lg">
+    <Typography key="2" className="!text-cello !font-poppins !text-lg">
       Book
     </Typography>,
   ];
