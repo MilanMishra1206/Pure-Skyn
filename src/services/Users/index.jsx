@@ -1,10 +1,10 @@
 import API_URLS from "../../config/API_URLS";
-import { axiosInstance } from "../../utils/Axios";
+import { axiosInstanceLogin } from "../../utils/Axios";
 
 const addUserAddress = async ({ userId, addressDetails }) => {
   const reqBody = { userId, address: addressDetails };
   try {
-    const data = await axiosInstance.put(
+    const data = await axiosInstanceLogin.put(
       `${API_URLS.Users.addAddress}`,
       reqBody
     );
@@ -16,7 +16,7 @@ const addUserAddress = async ({ userId, addressDetails }) => {
 
 const getUserAddress = async ({ userId }) => {
   try {
-    const data = await axiosInstance.get(
+    const data = await axiosInstanceLogin.get(
       `${API_URLS.Users.getUserAddress}/${userId}`
     );
     return data;
@@ -27,7 +27,7 @@ const getUserAddress = async ({ userId }) => {
 
 const updateUserDetails = async ({ reqBody }) => {
   try {
-    const data = await axiosInstance.put(
+    const data = await axiosInstanceLogin.put(
       API_URLS.Users.updateUserDetails,
       reqBody
     );
