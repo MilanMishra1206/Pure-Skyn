@@ -25,7 +25,6 @@ import { BiSolidOffer } from "react-icons/bi";
 import { ProductReviews } from "./ProductReviews";
 import BuyMoreProducts from "./BuyMoreProducts";
 import Resources from "../../../config/Resources";
-import FadedLineBreak from "../../../shared/CustomHrTag";
 import FadeInWrapper from "../../../config/MotionFramer/FadeInWrapper";
 import regex from "../../../helpers/Regex";
 import CustomTextField from "../../../shared/CustomTextField";
@@ -35,11 +34,13 @@ import { useAppSnackbar } from "../../../config/Context/SnackbarContext";
 import { addToCart } from "../../../redux/Actions";
 import ProductDescriptionImage from "./ProductDescriptionImage";
 import OffersCarousel from "./OffersCarousel";
+import DisplaySection from "../DisplaySection";
 
 function ProductsDetails() {
   const { productName } = useParams();
   const showSnackbar = useAppSnackbar();
   const dispatch = useDispatch();
+  const isSmallestDevice = useMediaQuery("(max-width: 330px)");
   const isMobile = useMediaQuery("(max-width: 767px)");
   const isLargeScreen = useMediaQuery("(min-width: 1438px)");
   const [quantity, setQuantity] = useState("1");
@@ -189,6 +190,76 @@ function ProductsDetails() {
       rating: 4,
       review: "Good for sensitive skin. Leaves my face soft and moisturized.",
     },
+    {
+      id: 8,
+      name: "Isabella",
+      date: "19-12-2025",
+      rating: 1,
+      review: "Caused me a lot of breakouts. I wouldn't recommend it.",
+    },
+    {
+      id: 9,
+      name: "James",
+      date: "20-12-2025",
+      rating: 2,
+      review: "Not the best for my skin, it left it feeling oily.",
+    },
+    {
+      id: 10,
+      name: "Amelia",
+      date: "21-12-2025",
+      rating: 3,
+      review: "Decent product, but nothing special for my dry skin.",
+    },
+    {
+      id: 11,
+      name: "Benjamin",
+      date: "22-12-2025",
+      rating: 5,
+      review: "Amazing! My skin feels so soft and smooth after using this.",
+    },
+    {
+      id: 12,
+      name: "Charlotte",
+      date: "23-12-2025",
+      rating: 4,
+      review: "Great for daily use. Helps keep my skin hydrated and soft.",
+    },
+    {
+      id: 13,
+      name: "Oliver",
+      date: "24-12-2025",
+      rating: 3,
+      review: "Works fine, but I didn't see any big improvement.",
+    },
+    {
+      id: 14,
+      name: "Mia",
+      date: "25-12-2025",
+      rating: 5,
+      review: "Best product I've tried in a long time. Skin feels amazing!",
+    },
+    {
+      id: 15,
+      name: "Noah",
+      date: "26-12-2025",
+      rating: 4,
+      review: "I like it, but I wish it would last a bit longer on my face.",
+    },
+    {
+      id: 16,
+      name: "Liam",
+      date: "27-12-2025",
+      rating: 5,
+      review: "Perfect for my sensitive skin. My face feels so refreshed!",
+    },
+    {
+      id: 17,
+      name: "Ella",
+      date: "28-12-2025",
+      rating: 2,
+      review: "Didn't work for me. It caused irritation after a few uses.",
+    },
   ];
 
   useEffect(() => {
@@ -240,13 +311,13 @@ function ProductsDetails() {
         initial="hidden"
         whileInView="show"
         viewport={{ once: true }}
-        className="mt-5 p-3 md:!p-4 lg:!p-5"
+        className={`mt-5 ${isSmallestDevice ? "p-2" : "p-3"} md:!p-4 lg:!p-5`}
       >
         <div className={`mb-4 py-12 ${isMobile ? "" : "px-5"} font-poppins`}>
           <Breadcrumbs separator="›" aria-label="breadcrumb" className="mb-4">
             {breadcrumbs}
           </Breadcrumbs>
-          <div className="grid lg:grid-cols-2 gap-4 bg-[#FAFAFA] p-4">
+          <div className="grid lg:grid-cols-2 gap-4 bg-[#FAFAFA] p-0 md:!p-4">
             <ProductDescriptionImage productName={productName} />
             <div className={`${isMobile ? "mt-5" : "ml-5"}`}>
               <div>
@@ -354,6 +425,27 @@ function ProductsDetails() {
                   handleSubmit={handleAddToCart}
                 />
               </div>
+              <div className="flex gap-4 place-items-center w-100 md:!w-96 my-6">
+                <CustomTextField
+                  textClassOverride="!text-kashmirBlue"
+                  placeholderClasses="placeholder:!opacity-30 !text-licorice"
+                  className="h-12 rounded-md !bg-transparent"
+                  placeholder="Enter"
+                  labelToShow="Check Pincode"
+                  maxLength={6}
+                  regex={regex.numeric}
+                  name="pinCode"
+                  textFieldColorClass="shadow-insetLight"
+                  inputClassName="!bg-transparent"
+                  fieldWidth="w-full"
+                  value={pinCode}
+                  onChange={(e) => setPinCode(e.target.value)}
+                />
+                <CustomButton2
+                  buttonText="Check"
+                  handleSubmit={handlePincodeCheck}
+                />
+              </div>
               {/* <div className="flex flex-col gap-4 mt-5">
                 <div className="flex gap-3">
                   <button
@@ -406,33 +498,14 @@ function ProductsDetails() {
                   </span>
                 </div>
               </div>
-              <div className="hidden xl:!flex flex-col font-bold mb-5">
-                <div className="flex items-center gap-2">
+              <div className="flex flex-col font-bold mb-5">
+                <div className="flex justify-center items-center gap-2">
                   <BiSolidOffer size="1.5rem" fill="#EE6503" />
-                  <span className="text-lg text-coal">Available Offers</span>
+                  <span className="text-2xl font-semibold">
+                    Special Offers & Coupons
+                  </span>
                 </div>
                 <OffersCarousel />
-              </div>
-              <div className="flex gap-4 place-items-center w-100 md:!w-96 my-6">
-                <CustomTextField
-                  textClassOverride="!text-kashmirBlue"
-                  placeholderClasses="placeholder:!opacity-30 !text-licorice"
-                  className="h-12 rounded-md !bg-transparent"
-                  placeholder="Enter"
-                  labelToShow="Check Pincode"
-                  maxLength={6}
-                  regex={regex.numeric}
-                  name="pinCode"
-                  textFieldColorClass="shadow-insetLight"
-                  inputClassName="!bg-transparent"
-                  fieldWidth="w-full"
-                  value={pinCode}
-                  onChange={(e) => setPinCode(e.target.value)}
-                />
-                <CustomButton2
-                  buttonText="Check"
-                  handleSubmit={handlePincodeCheck}
-                />
               </div>
             </div>
           </div>
@@ -501,61 +574,7 @@ function ProductsDetails() {
             )}
           </motion.div>
           <hr />
-          <motion.div
-            variants={FadeInWrapper("top", 0.2)}
-            initial="hidden"
-            whileInView="show"
-            viewport={{ once: true }}
-            className="flex gap-6 p-5 justify-center"
-          >
-            <div className="flex justify-between rounded-2xl">
-              <div className="flex justify-center items-center p-3 border-r-2">
-                <img
-                  src={Resources.images.Products.certified}
-                  className="h-20"
-                />
-                <div className="flex flex-col">
-                  <span className="text-md font-bold ml-2">100% Certified</span>
-                  <span className="text-sm text-kashmirBlue font-bold ml-2">
-                    Products
-                  </span>
-                </div>
-              </div>
-              <div className="flex justify-center items-center p-3 border-r-2">
-                <img
-                  src={Resources.images.Products.cod_available}
-                  className="h-20"
-                />
-                <div className="flex flex-col">
-                  <span className="text-md font-bold ml-2">COD</span>
-                  <span className="text-sm text-kashmirBlue font-bold ml-2">
-                    PAN-India
-                  </span>
-                </div>
-              </div>
-              <div className="flex justify-center items-center p-3 border-r-2">
-                <img
-                  src={Resources.images.Products.free_delivery}
-                  className="h-20"
-                />
-                <div className="flex flex-col">
-                  <span className="text-md font-bold ml-2">Free Delivery</span>
-                  <span className="text-sm text-kashmirBlue font-bold ml-2">
-                    Above ₹599
-                  </span>
-                </div>
-              </div>
-              <div className="flex justify-center items-center p-3">
-                <img src={Resources.images.Products.dermat} className="h-20" />
-                <div className="flex flex-col">
-                  <span className="text-md font-bold ml-2">Dermatologist</span>
-                  <span className="text-sm text-kashmirBlue font-bold ml-2">
-                    Approved
-                  </span>
-                </div>
-              </div>
-            </div>
-          </motion.div>
+          <DisplaySection />
           <hr className="" />
           {/* More Product */}
           <motion.div
@@ -566,7 +585,7 @@ function ProductsDetails() {
           >
             <BuyMoreProducts />
           </motion.div>
-          <FadedLineBreak />
+          <hr />
           {/* Product Reviews */}
           <motion.div
             variants={FadeInWrapper("right", 0.1)}
@@ -576,7 +595,7 @@ function ProductsDetails() {
           >
             <ProductReviews reviewContent={reviewContent} />
           </motion.div>
-          <FadedLineBreak />
+          <hr />
         </div>
       </motion.div>
     </div>

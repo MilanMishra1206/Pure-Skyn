@@ -17,6 +17,7 @@ import FuzzyPricingOverlay from "../../../../shared/CustomFuzzyPricingOverlay";
 import DrawCircleText from "../../../../shared/CustomDrawCircleText";
 import CustomPricingTable from "../../../../shared/CustomPricingTable";
 import FadedLineBreak from "../../../../shared/CustomHrTag";
+import WomenAndMenTabs from "./WomenAndMenTabs";
 
 function LaserHairRemovalPackages() {
   const isTablet = useMediaQuery("(max-width: 1023px)");
@@ -41,28 +42,6 @@ function LaserHairRemovalPackages() {
       Laser Hair Removal Packages
     </Typography>,
   ];
-
-  const createPricingContent = (data) => {
-    let pricingContent = [];
-    Object.keys(data).forEach((category) => {
-      const treatments = data[category];
-      treatments.forEach((treatment) => {
-        pricingContent.push({
-          label: treatment.name,
-          pricing: treatment.price,
-          packageName: treatment.name,
-          Step3: true,
-          isMedifacialPackage: false,
-          multiplSessions: treatment.name.includes("(4+1)"),
-        });
-      });
-    });
-
-    return pricingContent;
-  };
-
-  const womenPricingContent = createPricingContent(allPackageDetails.LHRWomen);
-  const menPricingContent = createPricingContent(allPackageDetails.LHRMen);
 
   return (
     <MotionWrapper>
@@ -133,105 +112,7 @@ function LaserHairRemovalPackages() {
               </p>
             </motion.div>
             <FadedLineBreak />
-            <motion.div
-              variants={FadeInWrapper("up", 0.1)}
-              initial="hidden"
-              whileInView="show"
-              viewport={{ once: true }}
-              className={`flex flex-col items-center justify-center font-poppins mt-5 ${isMobile ? "p-1" : "p-4"}`}
-            >
-              <p className="font-bold text-center text-3xl mb-5 mt-3">
-                Book Your Package Today!!
-              </p>
-              <p className="font-bold text-center text-4xl mb-5 mt-3 text-coffee">
-                Laser Hair Removal For Women
-              </p>
-              <div
-                className="bg-cover bg-center bg-repeat flex p-5 place-content-center w-full"
-                style={{
-                  backgroundImage: `url(${Resources.images.Common.cardBg2})`,
-                }}
-              >
-                <motion.div
-                  variants={FadeInWrapper("left", 0.1)}
-                  initial="hidden"
-                  whileInView="show"
-                  viewport={{ once: true }}
-                  className="grid grid-cols-2 lg:!grid-cols-5 gap-4 bg-[#FAFAFA]"
-                >
-                  {laserHairWomenPackage.map((item) => (
-                    <div
-                      key={item.id}
-                      className="overflow-hidden rounded-md shadow-lg place-items-center"
-                    >
-                      <img
-                        src={item.imgSrc}
-                        className="h-32 md:!h-50 xl:!h-32 object-cover p-3"
-                        alt={item.packageName}
-                      />
-                      <div className="w-full p-2 backdrop-blur-sm text-center">
-                        <span className="font-poppins text-coffee font-bold text-base text-center">
-                          {item.packageName}
-                        </span>
-                      </div>
-                    </div>
-                  ))}
-                </motion.div>
-              </div>
-              <CustomPricingTable
-                pricingContent={womenPricingContent}
-                treatmentName="Laser Hair Removal Women"
-              />
-            </motion.div>
-            <motion.div
-              variants={FadeInWrapper("up", 0.1)}
-              initial="hidden"
-              whileInView="show"
-              viewport={{ once: true }}
-              className={`flex flex-col items-center justify-center font-poppins ${isMobile ? "p-1" : "p-4"}`}
-            >
-              <p className="font-bold text-center text-4xl mb-5 mt-3 text-coffee">
-                Laser Hair Removal For Men
-              </p>
-              <div
-                className="bg-cover bg-center bg-repeat flex p-5 place-content-center w-full"
-                style={{
-                  backgroundImage: `url(${Resources.images.Common.cardBg2})`,
-                }}
-              >
-                <motion.div
-                  variants={FadeInWrapper("left", 0.1)}
-                  initial="hidden"
-                  whileInView="show"
-                  viewport={{ once: true }}
-                  className="space-y-4"
-                >
-                  <div className="grid grid-cols-2 md:grid-cols-4 gap-4 bg-[#FAFAFA]">
-                    {laserHairMenPackage.map((item) => (
-                      <div
-                        key={item.id}
-                        className="overflow-hidden rounded-md shadow place-items-center"
-                      >
-                        <img
-                          src={item.imgSrc}
-                          className="h-32 object-cover p-3"
-                          alt={item.packageName}
-                        />
-                        <div className="w-full p-2 backdrop-blur-sm text-center">
-                          <span className="font-poppins text-coffee font-bold text-base text-center">
-                            {item.packageName}
-                          </span>
-                        </div>
-                      </div>
-                    ))}
-                  </div>
-                </motion.div>
-              </div>
-              <CustomPricingTable
-                pricingContent={menPricingContent}
-                treatmentName="Laser Hair Removal Men"
-              />
-            </motion.div>
+            <WomenAndMenTabs isMobile={isMobile} />
           </div>
           <motion.div
             variants={FadeInWrapper("right", 0.1)}

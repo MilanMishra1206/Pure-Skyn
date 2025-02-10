@@ -1,19 +1,24 @@
-import React, { lazy, Suspense, useEffect, useState } from "react";
-import { AnimatePresence, motion } from "framer-motion";
-import { Box, Rating } from "@mui/material";
+import React, { useEffect, useState } from "react";
+import { motion } from "framer-motion";
+import { Box, Rating, LinearProgress } from "@mui/material";
 import StarIcon from "@mui/icons-material/Star";
-import { useFormik } from "formik";
-import FadedLineBreak from "../../../../shared/CustomHrTag";
-import { getAddReviewValidation } from "../../../../helpers/Login";
-import { useAppSnackbar } from "../../../../config/Context/SnackbarContext";
-import { CustomRevealHeading } from "../../../../shared/CustomRevealHeading";
-
-const CustomTextField = lazy(
-  () => import("../../../../shared/CustomTextField")
-);
+import AddReviewSection from "./AddReviewSection";
 
 export const ProductReviews = ({ reviewContent }) => {
+  const [currentPage, setCurrentPage] = useState(1);
   const [averageRating, setAverageRating] = useState(0);
+  const reviewsPerPage = 6;
+
+  const indexOfLastReview = currentPage * reviewsPerPage;
+  const indexOfFirstReview = indexOfLastReview - reviewsPerPage;
+
+  const currentReviews = reviewContent.slice(
+    indexOfFirstReview,
+    indexOfLastReview
+  );
+  const totalPages = Math.ceil(reviewContent.length / reviewsPerPage);
+
+  const paginate = (pageNumber) => setCurrentPage(pageNumber);
 
   useEffect(() => {
     const ratingArr = reviewContent.map((item) => item.rating);
@@ -22,39 +27,105 @@ export const ProductReviews = ({ reviewContent }) => {
     setAverageRating(average);
   }, [reviewContent]);
 
+  const ratingCount = [0, 0, 0, 0, 0];
+
+  reviewContent.forEach((review) => {
+    if (review.rating >= 1 && review.rating <= 5) {
+      ratingCount[review.rating - 1] += 1;
+    }
+  });
+
+  const totalReviews = reviewContent.length;
+
   return (
-    <div className="py-12 text-zinc-50 cursor-pointer">
-      <div className="flex flex-col md:!flex-row md:gap-2 justify-center mb-4">
-        <CustomRevealHeading heading="Customer" />
-        <CustomRevealHeading heading="Reviews" />
+    <div className="py-12 text-zinc-50 bg-[#FAFAFA]">
+      <div className="flex flex-col gap-4 md:!flex-row justify-between md:gap-2 px-1 md:!px-5 mb-4">
+        <h2 className="text-4xl font-bold text-skyn text-center">
+          Customer Reviews
+        </h2>
+        <AddReviewSection />
       </div>
-      <div className="flex flex-col md:!flex-row justify-between items-center mx-auto max-w-4xl">
-        <div className="flex items-center gap-2">
-          <span className="text-5xl text-skyn font-bold">
-            {averageRating.toFixed(1)}
-          </span>
-          <div className="flex flex-col gap-1">
-            <Box
-              sx={{
-                width: 200,
-                display: "flex",
-                alignItems: "center",
-              }}
-            >
-              <Rating
-                name="text-feedback"
-                value={+averageRating.toFixed(1)}
-                readOnly
-                precision={0.5}
-                emptyIcon={
-                  <StarIcon style={{ opacity: 0.55 }} fontSize="inherit" />
-                }
-              />
-            </Box>
-            <p className="text-coal">Based on {reviewContent.length} reviews</p>
+      <div className="flex flex-col lg:!flex-row gap-2 px-1 md:!px-5">
+        <div className="mb-4 lg:border-r-2">
+          <div className="flex items-center gap-2">
+            <span className="text-5xl text-skyn font-bold">
+              {averageRating.toFixed(1)}
+            </span>
+            <div className="flex flex-col gap-1">
+              <Box
+                sx={{
+                  width: 200,
+                  display: "flex",
+                  alignItems: "center",
+                }}
+              >
+                <Rating
+                  name="text-feedback"
+                  value={+averageRating.toFixed(1)}
+                  readOnly
+                  precision={0.5}
+                  emptyIcon={
+                    <StarIcon style={{ opacity: 0.55 }} fontSize="inherit" />
+                  }
+                />
+              </Box>
+              <p className="text-coal">
+                Based on {reviewContent.length} reviews
+              </p>
+            </div>
           </div>
         </div>
-        <AddReviewBlock />
+        <div className="mb-6 lg:ml-5">
+          {[4, 3, 2, 1, 0].map((index) => {
+            const count = ratingCount[index];
+            const percentage = (count / totalReviews) * 100;
+            return (
+              <div key={index} className="flex items-center gap-2 mb-2">
+                <Box
+                  sx={{
+                    width: 150,
+                    display: "flex",
+                    alignItems: "center",
+                  }}
+                >
+                  <Rating
+                    name="text-feedback"
+                    value={index + 1}
+                    readOnly
+                    precision={0.5}
+                    emptyIcon={
+                      <StarIcon style={{ opacity: 0.55 }} fontSize="inherit" />
+                    }
+                  />
+                </Box>
+                <Box
+                  sx={{
+                    width: 120,
+                    display: "flex",
+                    alignItems: "center",
+                  }}
+                >
+                  <LinearProgress
+                    variant="determinate"
+                    value={percentage}
+                    sx={{
+                      height: 16,
+                      border: 1,
+                      backgroundColor: "#E0E0E0",
+                      "& .MuiLinearProgress-bar": {
+                        backgroundColor: "#EE6503",
+                      },
+                      width: "100px",
+                    }}
+                  />
+                </Box>
+                <div className="text-coal font-poppins">
+                  <span>{count}</span> <span>({percentage.toFixed(1)}%)</span>
+                </div>
+              </div>
+            );
+          })}
+        </div>
       </div>
       <motion.div
         initial="initial"
@@ -62,239 +133,65 @@ export const ProductReviews = ({ reviewContent }) => {
         transition={{
           staggerChildren: 0.05,
         }}
-        className="mx-auto grid max-w-4xl grid-flow-dense md:!grid-cols-12 gap-4"
+        className="mx-auto grid px-1 md:!px-5 grid-flow-dense md:!grid-cols-12 gap-4"
       >
-        <ReviewBlock reviewContent={reviewContent} />
-      </motion.div>
-    </div>
-  );
-};
-
-const Block = ({ className, ...rest }) => {
-  return (
-    <motion.div
-      variants={{
-        initial: {
-          scale: 0.5,
-          y: 50,
-          opacity: 0,
-        },
-        animate: {
-          scale: 1,
-          y: 0,
-          opacity: 1,
-        },
-      }}
-      transition={{
-        type: "spring",
-        mass: 3,
-        stiffness: 400,
-        damping: 50,
-      }}
-      className={`col-span-4 p-6 font-poppins ${className}`}
-      {...rest}
-    />
-  );
-};
-
-const ReviewBlock = ({ reviewContent }) => (
-  <>
-    {reviewContent?.map((item) => (
-      <Block
-        whileHover={{
-          rotate: "-2.5deg",
-          scale: 1.1,
-        }}
-        className="col-span-6 bg-coal md:col-span-4 rounded-lg border"
-        key={item.id}
-      >
-        <p className="font-bold">{item.name}</p>
-        <p className="text-aliceBlue-1 text-sm">{item.date}</p>
-        <Box
-          sx={{
-            width: 200,
-            display: "flex",
-            alignItems: "center",
-            marginTop: "1rem",
-          }}
-        >
-          <Rating
-            name="text-feedback"
-            value={item.rating}
-            readOnly
-            precision={0.5}
-            emptyIcon={
-              <StarIcon style={{ opacity: 0.55 }} fontSize="inherit" />
-            }
-          />
-          <Box sx={{ ml: 2 }}>{item.rating}</Box>
-        </Box>
-        <p className="grid place-content-center text-sm !text-white mt-4">
-          {item.review}
-        </p>
-      </Block>
-    ))}
-  </>
-);
-
-const AddReviewBlock = () => {
-  const showSnackbar = useAppSnackbar();
-  const [showAddReviewModal, setShowAddReviewModal] = useState(false);
-
-  const reviewFormik = useFormik({
-    enableReinitialize: true,
-    validateOnMount: true,
-    validateOnChange: true,
-    initialValues: {
-      fullName: "",
-      email: "",
-      rating: 5,
-      description: "",
-    },
-    validationSchema: getAddReviewValidation,
-    onSubmit: (value) => {
-      console.log("Reviews", value);
-      setShowAddReviewModal(false);
-      showSnackbar("Thanks for your valuable feedback!", "success");
-      reviewFormik.resetForm();
-    },
-  });
-
-  const handleSubmit = () => {
-    if (!reviewFormik.isValid) {
-      showSnackbar("Please enter all the required fields!", "error");
-      return;
-    } else {
-      reviewFormik.handleSubmit();
-    }
-  };
-
-  const handleCancel = () => {
-    setShowAddReviewModal(false);
-    reviewFormik.resetForm();
-  };
-
-  return (
-    <Block className="col-span-12 md:col-span-9">
-      <button
-        className="w-full bg-skyn text-white py-2 px-4 rounded-md hover:bg-skyn-dark focus:outline-none focus:ring-2 focus:ring-skyn transition-all shadow-[3px_3px_0px_#313440] hover:shadow-none hover:translate-x-[3px] hover:translate-y-[3px]"
-        onClick={() => setShowAddReviewModal(true)}
-      >
-        Write a Review
-      </button>
-      {showAddReviewModal && (
-        <AnimatePresence>
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            transition={{ duration: 0.45 }}
-            className="bg-slate-900/20 backdrop-blur p-4 fixed inset-0 z-50 md:grid place-items-center overflow-scroll"
+        {currentReviews.map((item) => (
+          <div
+            key={item.id}
+            className="col-span-6 lg:!col-span-4 rounded-lg border p-4"
           >
-            <motion.div
-              initial={{ scale: 0, rotate: "12.5deg" }}
-              animate={{ scale: 1, rotate: "0deg" }}
-              exit={{ scale: 0, rotate: "-12.5deg" }}
-              transition={{ duration: 0.45 }}
-              onClick={(e) => e.stopPropagation()}
-              className="bg-white p-6 rounded-lg w-full max-w-lg"
-            >
-              <div className="text-skyn text-center font-poppins font-bold text-2xl mb-4">
-                Review
+            <div className="flex gap-2 items-center">
+              <div className="bg-coal text-white w-8 h-8 rounded-full flex items-center justify-center">
+                {item.name[0]}
               </div>
-              <FadedLineBreak />
-              <form className="w-full">
-                <Suspense fallback={<div />}>
-                  <CustomTextField
-                    textClassOverride="!text-kashmirBlue"
-                    placeholderClasses="placeholder:!opacity-30 !text-licorice"
-                    className="h-12 rounded-md !bg-transparent"
-                    placeholder="Enter"
-                    requiredStar
-                    labelToShow="Full Name"
-                    name="fullName"
-                    textFieldColorClass="shadow-insetLight"
-                    inputClassName="!bg-transparent"
-                    fieldWidth="w-full !mb-4"
-                    value={reviewFormik.values?.fullName}
-                    onChange={reviewFormik.handleChange}
-                    handleBlur={reviewFormik.handleBlur}
-                    error={reviewFormik.errors.fullName}
-                    touched={reviewFormik.touched.fullName}
-                  />
-                </Suspense>
-                <Suspense fallback={<div />}>
-                  <CustomTextField
-                    textClassOverride="!text-kashmirBlue"
-                    placeholderClasses="placeholder:!opacity-30 !text-licorice"
-                    className="h-12 rounded-md !bg-transparent"
-                    placeholder="Enter"
-                    requiredStar
-                    labelToShow="Email Id"
-                    name="email"
-                    textFieldColorClass="shadow-insetLight"
-                    inputClassName="!bg-transparent"
-                    fieldWidth="w-full !mb-4"
-                    value={reviewFormik.values?.email}
-                    onChange={reviewFormik.handleChange}
-                    handleBlur={reviewFormik.handleBlur}
-                    error={reviewFormik.errors.email}
-                    touched={reviewFormik.touched.email}
-                  />
-                </Suspense>
-                <div className="flex flex-col gap-1 mb-2">
-                  <label htmlFor="rating" className="text-kashmirBlue text-sm">
-                    Rating<span className="text-bitterSweet">*</span>
-                  </label>
-                  <Rating
-                    name="rating"
-                    defaultValue={5}
-                    precision={0.5}
-                    value={reviewFormik.values?.rating}
-                    onChange={reviewFormik.handleChange}
-                  />
-                </div>
-                <Suspense fallback={<div />}>
-                  <CustomTextField
-                    textClassOverride="!text-kashmirBlue"
-                    placeholderClasses="placeholder:!opacity-30 !text-licorice"
-                    className="h-12 rounded-md !bg-transparent"
-                    placeholder="Enter"
-                    requiredStar
-                    labelToShow="Description"
-                    name="description"
-                    textFieldColorClass="shadow-insetLight"
-                    inputClassName="!bg-transparent"
-                    fieldWidth="w-full !mb-4"
-                    value={reviewFormik.values?.description}
-                    onChange={reviewFormik.handleChange}
-                    handleBlur={reviewFormik.handleBlur}
-                    error={reviewFormik.errors.description}
-                    touched={reviewFormik.touched.description}
-                    multiline
-                  />
-                </Suspense>
-              </form>
-              <div className="flex flex-col md:!flex-row justify-end gap-4 mt-5">
-                <button
-                  type="button"
-                  onClick={handleCancel}
-                  className="bg-gray-200 text-gray-700 px-4 py-2 rounded-md hover:bg-gray-300 shadow-md"
-                >
-                  Cancel
-                </button>
-                <button
-                  type="button"
-                  className="bg-skyn text-white px-4 py-2 rounded-md hover:bg-skyn-dark hover:opacity-80 shadow-md"
-                  onClick={handleSubmit}
-                >
-                  Submit Review
-                </button>
-              </div>
-            </motion.div>
-          </motion.div>
-        </AnimatePresence>
-      )}
-    </Block>
+              <p className="font-bold text-coal">{item.name}</p>
+              <Box sx={{ ml: 2 }}>
+                <Rating
+                  name="text-feedback"
+                  value={item.rating}
+                  readOnly
+                  precision={0.5}
+                  emptyIcon={
+                    <StarIcon style={{ opacity: 0.55 }} fontSize="inherit" />
+                  }
+                />
+              </Box>
+            </div>
+            <p className="text-coal text-sm mt-2">{item.review}</p>
+            <p className="text-cello text-xs mt-2">{item.date}</p>
+          </div>
+        ))}
+      </motion.div>
+
+      <div className="flex justify-center gap-2 mt-6">
+        <button
+          onClick={() => paginate(currentPage - 1)}
+          disabled={currentPage === 1}
+          className="px-4 py-2 bg-coal text-white rounded-md disabled:bg-gray-300"
+        >
+          Prev
+        </button>
+        {[...Array(totalPages)].map((_, index) => (
+          <button
+            key={index}
+            onClick={() => paginate(index + 1)}
+            className={`px-4 py-2 rounded-md ${
+              currentPage === index + 1
+                ? "bg-coal text-white"
+                : "bg-[#FAFAFA] text-coal"
+            }`}
+          >
+            {index + 1}
+          </button>
+        ))}
+        <button
+          onClick={() => paginate(currentPage + 1)}
+          disabled={currentPage === totalPages}
+          className="px-4 py-2 bg-coal text-white rounded-md disabled:bg-gray-300"
+        >
+          Next
+        </button>
+      </div>
+    </div>
   );
 };

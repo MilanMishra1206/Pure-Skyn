@@ -35,7 +35,7 @@ const TestimonialCarousel = ({ isMobile }) => {
           <Slider {...settings}>
             {testimonialsCarousel.map((testimonial) => (
               <div key={testimonial.id} className="px-4">
-                <div className="bg-white shadow-lg rounded-3xl p-6 max-w-md mx-auto">
+                <div className="bg-white border shadow rounded-2xl p-6 max-w-md mx-auto">
                   <div className="flex items-center justify-center mb-4">
                     <FaQuoteLeft className="text-gray-400 text-4xl" />
                   </div>

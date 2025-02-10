@@ -62,33 +62,7 @@ function ProductDescriptionImage({ productName }) {
               &#8594;
             </button>
           </div>
-          <div>
-            <div className="mt-6 flex gap-6 justify-center">
-              <div className="mt-6 flex justify-between border-2 !border-skyn rounded-2xl">
-                <div className="flex flex-col justify-center items-center p-3 border-r-2 !border-skyn">
-                  <img
-                    src={Resources.images.Products.free_shipping_img}
-                    className="h-8"
-                  />
-                  <span className="text-md font-bold ml-2">Free Shipping</span>
-                </div>
-                <div className="flex flex-col justify-center items-center p-3 border-r-2 !border-skyn">
-                  <img
-                    src={Resources.images.Products.lowest_price_img}
-                    className="h-8"
-                  />
-                  <span className="text-md font-bold ml-2">Lowest Price</span>
-                </div>
-                <div className="flex flex-col justify-center items-center p-3 !border-skyn">
-                  <img
-                    src={Resources.images.Products.original_img}
-                    className="h-8"
-                  />
-                  <span className="text-md font-bold ml-2">100% Original</span>
-                </div>
-              </div>
-            </div>
-          </div>
+          {Tabs()}
         </div>
       </div>
       <div className="grid md:!hidden lg:!grid lg:!grid-cols-1 xl:!hidden">
@@ -118,12 +92,46 @@ function ProductDescriptionImage({ productName }) {
             />
           ))}
         </div>
+        <div>{Tabs()}</div>
       </div>
     </>
   );
 }
 
 export default ProductDescriptionImage;
+
+function Tabs() {
+  return (
+    <div className="mt-6 w-full">
+      <div className="grid grid-cols-3 justify-between border-2 !border-skyn rounded">
+        <div className="flex flex-col justify-center items-center p-1 md:!p-2 border-r-2 !border-skyn">
+          <img
+            src={Resources.images.Products.free_shipping_img}
+            className="h-8"
+          />
+          <span className="text-sm md:!text-lg font-bold xl:!ml-2 text-center">
+            Free Shipping
+          </span>
+        </div>
+        <div className="flex flex-col justify-center items-center p-1 md:!p-2 border-r-2 !border-skyn">
+          <img
+            src={Resources.images.Products.lowest_price_img}
+            className="h-8"
+          />
+          <span className="text-sm md:!text-lg font-bold xl:!ml-2 text-center">
+            Lowest Price
+          </span>
+        </div>
+        <div className="flex flex-col justify-center items-center p-1 md:!p-2 !border-skyn">
+          <img src={Resources.images.Products.original_img} className="h-8" />
+          <span className="text-sm md:!text-lg font-bold xl:!ml-2 text-center">
+            100% Original
+          </span>
+        </div>
+      </div>
+    </div>
+  );
+}
 
 // <div className="flex gap-6">
 // {/* Small images (thumbnails) on the left */}

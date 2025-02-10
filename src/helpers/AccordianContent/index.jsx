@@ -391,55 +391,55 @@ export const testimonialsCarousel = [
     name: "Deepika Rathore",
     title: "Satisfied Client",
     content:
-      "I have been very happy with my results as They takes extra care and time with every spot. Highly recommend 🙂",
+      "I have been very happy with my results as they take extra care and time with every spot. Highly recommend 🙂",
   },
   {
     id: 2,
     name: "Shalini Ranawat",
     title: "Happy with the Results",
     content:
-      "Love love loooove Pure Skyn ❤️ It was a quick and nice experience at my first laser session . My treatment specialist, Pure Skyn was nice and gentle. I will definitely be back for my next session, also I recommend her to anyone who want to get laser hair removal done.",
+      "Love love loooove Pure Skyn ❤️ My first laser session was quick and nice. My treatment specialist was gentle. I will definitely be back for my next session, and I recommend her to anyone who wants to get laser hair removal done.",
   },
   {
     id: 3,
     name: "Rohit",
     title: "Remarkable Difference",
     content:
-      "I had my first laser hair removal chest and back with Pure Skyn. They Are amazing, very friendly and compassionate, and did an incredible job. They always ensures that I'm not feeling much pain and goes above and beyond. I'm so glad that found Pure Skyn it was really a blessing! I would definitely recommend to anyone considering laser hair removal.",
+      "I had my first laser hair removal session for chest and back with Pure Skyn. They were amazing, friendly, and compassionate. They always ensured I was comfortable and went above and beyond. I'm so glad I found them and would recommend Pure Skyn to anyone considering laser hair removal.",
   },
   {
     id: 4,
     name: "Sharleen",
     title: "Amazing Experience",
     content:
-      "Pure Skyn is professional, friendly and very sweet. I had my second session with her; Expert is great! She takes time to answer all of your questions and does not rush; she is deligent. My session with her at Pure Skyn was completely painless. I'm a big fan of the Venus machine she uses as it's cold to the touch, compared to other places I've been to that uses machines with heat. I highly recommend if you looking to get laser hair removal, you will receive an exceptional experience.",
+      "Pure Skyn is professional, friendly, and sweet. My second session was great—completely painless. She takes time to answer all questions. I highly recommend them if you're looking for a top-notch laser hair removal experience.",
   },
   {
     id: 5,
     name: "Naina",
-    title: "Thankfull!!",
+    title: "Thankful!!",
     content:
-      "Thank you so much Pure Skyn! My experience with Pure Skyn was wonderful. They made me feel so relax and special, she also provided detailed instructions and information, customer skills are superior! Highly recommend ! Best laser technician with commitment to wellbeing of customers!",
+      "Thank you so much, Pure Skyn! My experience was wonderful. They made me feel special and relaxed. The customer service is excellent, and I highly recommend them!",
   },
   {
     id: 6,
     name: "Sneha Bhatt",
     title: "Highly Recommended",
     content:
-      "Pure Skyn was great. I had my first session. staff was very thorough and cognizant on my face and neck while receiving laser hair removal treatment. Every we've dealt with has been super friendly, informative & really nice. The space has fantastic customer service. Would highly recommend!",
+      "Pure Skyn was fantastic. My first session was thorough, and the staff was friendly and informative. I highly recommend their service.",
   },
   {
     id: 7,
     name: "Shikander",
     title: "Great Experience",
     content:
-      "I had a great experience with Pure Skyn. They gave me a very welcoming environment, and my laser hair removal treatment was really calming and nice and totally painless. I'm sure to get my next session from her again. Highly recommended Pure Skyn.",
+      "I had a great experience with Pure Skyn. My treatment was calming and painless. I'll definitely be back. Highly recommended!",
   },
   {
     id: 8,
     name: "Rajiv Jain",
     title: "Enjoyable",
     content:
-      "Pure Skyn is incredible! I've been seeing her for my treatments for a while and now I see her for my maintenance. Highly recommend if you want someone who's detailed, professional and extremely skilled!! They also such a caring and loving provider and makes my sessions so enjoyable.",
+      "Pure Skyn is amazing! I've been coming for a while and now for maintenance. They are detailed, professional, and caring. I highly recommend them for an enjoyable experience.",
   },
 ];
