@@ -37,14 +37,6 @@ function DataTable({ data, totalCount }) {
                     className={`cursor-pointer h-14 ${(index + 1) % 2 === 0 ? "bg-gray-100" : "bg-white"}`}
                   >
                     <TableCell className="font-poppins text-sm text-blue">
-                      {/* <Link
-                        onClick={() =>
-                          navigate(`/application/${item.techId}`)
-                        }
-                        underline="always"
-                      >
-                        {item?.techId}
-                      </Link> */}
                       <TableCellText text={item?.adminId} />
                     </TableCell>
                     <TableCellText
@@ -103,9 +95,9 @@ function DataTable({ data, totalCount }) {
                                 (mobileCell) => mobileCell.key === obj.key
                               )
                           )
-                          ?.map((heading) => (
+                          ?.map((heading, idx) => (
                             <div
-                              key={heading.key}
+                              key={idx}
                               className="grid grid-cols-1 md:!grid-cols-2 col-auto p-2 items-center"
                             >
                               <p className="!text-cello !text-sm !font-poppins !font-medium">

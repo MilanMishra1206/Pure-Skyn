@@ -12,8 +12,8 @@ import CustomCheckBox from "../../CustomCheckbox";
 function CustomTable({
   headCells,
   children,
-  tableContainerClasses,
-  headClass,
+  tableContainerClasses = "",
+  headClass = "",
   tableScrollbarWidth,
 }) {
   const [pinnedStyles, setPinnedStyles] = useState({});
@@ -23,13 +23,15 @@ function CustomTable({
     if (headRef.current) {
       const pinnedOffsets = {};
       let offset = -18;
-      headCells.forEach((cell, index) => {
-        const th = headRef.current?.querySelectorAll("th")[index];
+
+      headCells?.forEach((cell, index) => {
+        const th = headRef.current.querySelectorAll("th")[index];
         if (th && cell.pinned) {
           pinnedOffsets[cell.key] = { left: `${offset + 18}px` };
           offset += th.offsetWidth;
         }
       });
+
       setPinnedStyles(pinnedOffsets);
     }
   }, [headCells]);
@@ -61,7 +63,7 @@ function CustomTable({
       <Table aria-label="simple table" size="small">
         <TableHead ref={headRef} className="bg-solitude-1 h-14 sticky top-0">
           <TableRow>
-            {headCells.map(
+            {headCells?.map(
               ({
                 key,
                 label,
@@ -78,7 +80,7 @@ function CustomTable({
                 <TableCell
                   key={key}
                   style={pinned ? pinnedStyles[key] : {}}
-                  className={`!text-cello !text-sm  !font-poppins !font-medium ${className} ${headClass} ${
+                  className={`!text-cello !text-sm !font-poppins !font-medium ${className} ${headClass} ${
                     pinned ? `static md:!sticky z-10 bg-[#ecf2fb] ${left}` : ""
                   }`}
                 >
@@ -95,12 +97,10 @@ function CustomTable({
                         />
                       )}
                       {label}
-                      {sortIcon ? (
+                      {sortIcon && (
                         <p className="mx-1" onClick={onClickSortIcon}>
                           {sortIcon}
                         </p>
-                      ) : (
-                        ""
                       )}
                     </span>
                   ) : (
@@ -111,13 +111,15 @@ function CustomTable({
             )}
           </TableRow>
         </TableHead>
-        {React.Children.map(children, (child) =>
-          React.isValidElement(child) && typeof child.type === "function"
+        {React.Children.map(children, (child) => {
+          return React.isValidElement(child) &&
+            typeof child.type === "function" &&
+            child.props.columnKey
             ? React.cloneElement(child, {
                 pinnedStyle: pinnedStyles[child.props.columnKey],
               })
-            : child
-        )}
+            : child;
+        })}
       </Table>
     </TableContainer>
   );

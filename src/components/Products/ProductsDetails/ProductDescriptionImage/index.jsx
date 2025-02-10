@@ -1,100 +1,203 @@
 import { useState } from "react";
 import Resources from "../../../../config/Resources";
+import { FaShieldAlt, FaShippingFast } from "react-icons/fa";
 
 function ProductDescriptionImage({ productName }) {
-  const initialSmallImages = [
-    Resources.images.Products.dermaticaAzeProactiveLotion.img2,
-    Resources.images.Products.dermaticaAzeProactiveLotion.img3,
-    Resources.images.Products.dermaticaAzeProactiveLotion.img4,
-  ];
-  const [bigImage, setBigImage] = useState(
-    Resources.images.Products.dermaticaAzeProactiveLotion.img1
+  const allImages = Object.values(
+    Resources.images.Products.dermaticaAzeProactiveLotion
   );
-  const [smallImages, setSmallImages] = useState(initialSmallImages);
+
+  const [bigImage, setBigImage] = useState(allImages[0]);
+  const [smallImages, setSmallImages] = useState(allImages);
 
   const handleImageClick = (clickedImage) => {
-    const newSmallImages = [...smallImages, bigImage];
-    const updatedSmallImages = newSmallImages.filter(
-      (image) => image !== clickedImage
-    );
     setBigImage(clickedImage);
-    setSmallImages(updatedSmallImages);
   };
 
   const handleBackClick = () => {
-    const currentIndex = Object.values(
-      Resources.images.Products.dermaticaAzeProactiveLotion
-    ).indexOf(bigImage);
+    const currentIndex = allImages.indexOf(bigImage);
     const newIndex =
-      currentIndex === 0
-        ? Object.values(Resources.images.Products.dermaticaAzeProactiveLotion)
-            .length - 1
-        : currentIndex - 1;
-    setBigImage(
-      Object.values(Resources.images.Products.dermaticaAzeProactiveLotion)[
-        newIndex
-      ]
-    );
-
-    const newSmallImages = [...smallImages];
-    const movedImage = newSmallImages.pop();
-    newSmallImages.unshift(movedImage);
-    setSmallImages(newSmallImages);
+      currentIndex === 0 ? allImages.length - 1 : currentIndex - 1;
+    setBigImage(allImages[newIndex]);
   };
 
   const handleForwardClick = () => {
-    const currentIndex = Object.values(
-      Resources.images.Products.dermaticaAzeProactiveLotion
-    ).indexOf(bigImage);
+    const currentIndex = allImages.indexOf(bigImage);
     const newIndex =
-      currentIndex ===
-      Object.values(Resources.images.Products.dermaticaAzeProactiveLotion)
-        .length -
-        1
-        ? 0
-        : currentIndex + 1;
-    setBigImage(
-      Object.values(Resources.images.Products.dermaticaAzeProactiveLotion)[
-        newIndex
-      ]
-    );
-
-    const newSmallImages = [...smallImages];
-    const movedImage = newSmallImages.shift();
-    newSmallImages.push(movedImage);
-    setSmallImages(newSmallImages);
+      currentIndex === allImages.length - 1 ? 0 : currentIndex + 1;
+    setBigImage(allImages[newIndex]);
   };
 
   return (
-    <div className="grid grid-cols-1">
-      <div className="rounded-lg shadow-lg flex justify-center self-start relative">
-        <img src={bigImage} alt={productName} className="rounded-lg" />
-        <button
-          onClick={handleBackClick}
-          className="absolute left-0 top-1/2 transform -translate-y-1/2 text-white bg-gray-800 px-2 py-1 text-2xl hover:opacity-80 rounded-full"
-        >
-          &#8592;
-        </button>
-        <button
-          onClick={handleForwardClick}
-          className="absolute right-0 top-1/2 transform -translate-y-1/2 text-white bg-gray-800 px-2 py-1 text-2xl hover:opacity-80 rounded-full"
-        >
-          &#8594;
-        </button>
+    <>
+      <div className="hidden md:!flex gap-6 lg:!hidden xl:!flex">
+        <div className="flex flex-col gap-4 justify-center py-3 self-start">
+          {smallImages.map((image, index) => (
+            <img
+              key={index}
+              src={image}
+              alt={productName}
+              className={`rounded-lg shadow-lg border w-26 cursor-pointer ${bigImage === image ? "border-2 !border-skyn" : ""}`}
+              onClick={() => handleImageClick(image)}
+            />
+          ))}
+        </div>
+        <div className="flex flex-col flex-grow items-center justify-center w-1/2 self-start">
+          <div className="relative rounded-lg shadow-lg">
+            <img
+              src={bigImage}
+              alt={productName}
+              className="rounded-lg w-full max-w-lg"
+            />
+            <button
+              onClick={handleBackClick}
+              className="absolute left-0 top-1/2 transform -translate-y-1/2 text-white bg-gray-800 px-2 py-1 text-2xl hover:opacity-80 rounded-full"
+            >
+              &#8592;
+            </button>
+            <button
+              onClick={handleForwardClick}
+              className="absolute right-0 top-1/2 transform -translate-y-1/2 text-white bg-gray-800 px-2 py-1 text-2xl hover:opacity-80 rounded-full"
+            >
+              &#8594;
+            </button>
+          </div>
+          <div>
+            <div className="mt-6 flex gap-6 justify-center">
+              <div className="mt-6 flex justify-between border-2 !border-skyn rounded-2xl">
+                <div className="flex flex-col justify-center items-center p-3 border-r-2 !border-skyn">
+                  <img
+                    src={Resources.images.Products.free_shipping_img}
+                    className="h-8"
+                  />
+                  <span className="text-md font-bold ml-2">Free Shipping</span>
+                </div>
+                <div className="flex flex-col justify-center items-center p-3 border-r-2 !border-skyn">
+                  <img
+                    src={Resources.images.Products.lowest_price_img}
+                    className="h-8"
+                  />
+                  <span className="text-md font-bold ml-2">Lowest Price</span>
+                </div>
+                <div className="flex flex-col justify-center items-center p-3 !border-skyn">
+                  <img
+                    src={Resources.images.Products.original_img}
+                    className="h-8"
+                  />
+                  <span className="text-md font-bold ml-2">100% Original</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
-      <div className="grid grid-cols-3 md:px-5 py-3 gap-2 cursor-pointer">
+      <div className="grid md:!hidden lg:!grid lg:!grid-cols-1 xl:!hidden">
+        <div className="rounded-lg shadow-lg flex justify-center self-start relative">
+          <img src={bigImage} alt={productName} className="rounded-lg" />
+          <button
+            onClick={handleBackClick}
+            className="absolute left-0 top-1/2 transform -translate-y-1/2 text-white bg-gray-800 px-2 py-1 text-2xl hover:opacity-80 rounded-full"
+          >
+            &#8592;
+          </button>
+          <button
+            onClick={handleForwardClick}
+            className="absolute right-0 top-1/2 transform -translate-y-1/2 text-white bg-gray-800 px-2 py-1 text-2xl hover:opacity-80 rounded-full"
+          >
+            &#8594;
+          </button>
+        </div>
+        <div className="grid grid-cols-4 md:px-5 py-3 gap-2 cursor-pointer">
+          {smallImages.map((image, index) => (
+            <img
+              key={index}
+              src={image}
+              alt={productName}
+              className={`rounded-lg shadow-lg border w-26 cursor-pointer ${bigImage === image ? "border-2 !border-skyn" : ""}`} // Add conditional border
+              onClick={() => handleImageClick(image)}
+            />
+          ))}
+        </div>
+      </div>
+    </>
+  );
+}
+
+export default ProductDescriptionImage;
+
+// <div className="flex gap-6">
+// {/* Small images (thumbnails) on the left */}
+// <div className="flex flex-col gap-4 justify-between py-3 h-full">
+//   {" "}
+//   {/* Set h-full here */}
+//   {smallImages.map((image, index) => (
+//     <img
+//       key={index}
+//       src={image}
+//       alt={productName}
+//       className="rounded-lg shadow-lg border w-32 h-full object-cover cursor-pointer" // Make images take full height
+//       onClick={() => handleImageClick(image)}
+//     />
+//   ))}
+// </div>
+
+// {/* Large image on the right */}
+// <div className="flex flex-grow items-center justify-center w-1/2 h-full">
+//   {" "}
+//   {/* Set h-full here */}
+//   <div className="relative rounded-lg shadow-lg w-full h-full">
+//     <img
+//       src={bigImage}
+//       alt={productName}
+//       className="rounded-lg w-full h-full object-cover"
+//     />{" "}
+//     {/* Make image take full height and width */}
+//     {/* Navigation buttons for large image */}
+//     <button
+//       onClick={handleBackClick}
+//       className="absolute left-0 top-1/2 transform -translate-y-1/2 text-white bg-gray-800 px-2 py-1 text-2xl hover:opacity-80 rounded-full"
+//     >
+//       &#8592;
+//     </button>
+//     <button
+//       onClick={handleForwardClick}
+//       className="absolute right-0 top-1/2 transform -translate-y-1/2 text-white bg-gray-800 px-2 py-1 text-2xl hover:opacity-80 rounded-full"
+//     >
+//       &#8594;
+//     </button>
+//   </div>
+// </div>
+// </div>
+
+{
+  /* <div className="flex gap-6">
+      <div className="flex flex-col gap-4 justify-center py-3 self-start">
         {smallImages.map((image, index) => (
           <img
             key={index}
             src={image}
             alt={productName}
-            className="rounded-lg shadow-lg border"
+            className="rounded-lg shadow-lg border w-26 cursor-pointer"
             onClick={() => handleImageClick(image)}
           />
         ))}
       </div>
-    </div>
-  );
+      <div className="flex flex-grow items-center justify-center w-1/2 self-start">
+        <div className="relative rounded-lg shadow-lg">
+          <img src={bigImage} alt={productName} className="rounded-lg w-full" />
+          <button
+            onClick={handleBackClick}
+            className="absolute left-0 top-1/2 transform -translate-y-1/2 text-white bg-gray-800 px-2 py-1 text-2xl hover:opacity-80 rounded-full"
+          >
+            &#8592;
+          </button>
+          <button
+            onClick={handleForwardClick}
+            className="absolute right-0 top-1/2 transform -translate-y-1/2 text-white bg-gray-800 px-2 py-1 text-2xl hover:opacity-80 rounded-full"
+          >
+            &#8594;
+          </button>
+        </div>
+      </div>
+    </div> */
 }
-
-export default ProductDescriptionImage;

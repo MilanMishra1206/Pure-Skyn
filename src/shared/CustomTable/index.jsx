@@ -88,12 +88,12 @@ const Table = ({
           ))}
         </thead>
         <tbody {...getTableBodyProps()}>
-          {currentPageRows.map((row) => {
+          {currentPageRows.map((row, index) => {
             prepareRow(row);
             return (
-              <tr {...row.getRowProps()} className="border-t">
-                {row.cells.map((cell, index) => (
-                  <td {...cell.getCellProps()} className="px-6 py-3" key={index}>
+              <tr {...row.getRowProps()} className="border-t" key={index}>
+                {row.cells.map((cell, idx) => (
+                  <td {...cell.getCellProps()} className="px-6 py-3" key={idx}>
                     {cell.render("Cell")}
                   </td>
                 ))}

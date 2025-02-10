@@ -22,7 +22,7 @@ function CustomNavbar() {
   const [isLoggedIn, setIsLoggedIn] = useState(true);
   const [isConfirmingLogout, setIsConfirmingLogout] = useState(false);
   const [userName, setUserName] = useState("");
-  const isAdmin = true;
+  const isAdmin = false;
   const isActive = (path) => location.pathname === path;
   const toggleMenu = () => setMenuOpen(!menuOpen);
 

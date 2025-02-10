@@ -14,10 +14,14 @@ import { Link, useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 import { MdVerified } from "react-icons/md";
-import { FaSquareCheck } from "react-icons/fa6";
-import { FaShippingFast, FaShieldAlt, FaCartPlus } from "react-icons/fa";
+import { FaCircleCheck } from "react-icons/fa6";
+import { FaCartPlus } from "react-icons/fa";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import StarIcon from "@mui/icons-material/Star";
+import { BsFillCartCheckFill } from "react-icons/bs";
+import { FaShippingFast } from "react-icons/fa";
+import { BiSolidOffer } from "react-icons/bi";
+
 import { ProductReviews } from "./ProductReviews";
 import BuyMoreProducts from "./BuyMoreProducts";
 import Resources from "../../../config/Resources";
@@ -29,8 +33,8 @@ import CustomDropdown from "../../../shared/CustomDropdown";
 import CustomButton2 from "../../../shared/CustomButton2";
 import { useAppSnackbar } from "../../../config/Context/SnackbarContext";
 import { addToCart } from "../../../redux/Actions";
-
 import ProductDescriptionImage from "./ProductDescriptionImage";
+import OffersCarousel from "./OffersCarousel";
 
 function ProductsDetails() {
   const { productName } = useParams();
@@ -238,16 +242,28 @@ function ProductsDetails() {
         viewport={{ once: true }}
         className="mt-5 p-3 md:!p-4 lg:!p-5"
       >
-        <div className={`mb-4 py-24 ${isMobile ? "" : "px-5"} font-poppins`}>
+        <div className={`mb-4 py-12 ${isMobile ? "" : "px-5"} font-poppins`}>
           <Breadcrumbs separator="›" aria-label="breadcrumb" className="mb-4">
             {breadcrumbs}
           </Breadcrumbs>
-          <div className="grid lg:grid-cols-2 gap-4">
+          <div className="grid lg:grid-cols-2 gap-4 bg-[#FAFAFA] p-4">
             <ProductDescriptionImage productName={productName} />
             <div className={`${isMobile ? "mt-5" : "ml-5"}`}>
-              <p className="text-3xl font-bold">{productName}</p>
+              <div>
+                <p className="text-3xl font-bold">{productName}</p>
+                <div className="flex gap-2">
+                  {products.smallDescription.map((desc) => (
+                    <div key={desc.id} className="flex items-center gap-2">
+                      <FaCircleCheck fill="green" size="1rem" />
+                      <p className="!font-poppins text-sm text-green-700">
+                        {desc.content}
+                      </p>
+                    </div>
+                  ))}
+                </div>
+              </div>
               <div className="flex flex-col">
-                <div className="flex flex-col md:flex-row gap-2 items-center mt-4">
+                <div className="flex flex-col md:flex-row gap-2 md:items-center mt-4">
                   <Box
                     sx={{
                       display: "flex",
@@ -273,14 +289,14 @@ function ProductsDetails() {
                     flexItem
                     className="!border-black border border-r-0 border-opacity-30 hidden md:!block"
                   />
-                  <span className="flex items-center justify-center gap-2 text-coal font-medium">
+                  <span className="flex items-center gap-2 text-coal font-medium">
                     <MdVerified size="1rem" fill="#EE6503" /> Based on{" "}
                     {noOfRatings} reviews
                   </span>
                 </div>
-                <FadedLineBreak />
-                <div className="flex items-center md:!items-start lg:!items-center flex-col md:!flex-row gap-2">
-                  <div>
+                <hr className="!my-6" />
+                <div className="flex md:!items-start lg:!items-center flex-col md:!flex-row gap-2">
+                  <div className="flex flex-col">
                     {products.strikePrice && (
                       <span className="text-left text-sm text-slate-400 line-through font-bold mr-4">
                         ₹{products.strikePrice}
@@ -300,16 +316,8 @@ function ProductsDetails() {
                     </button>
                   )}
                 </div>
-                <div className="flex flex-col mt-4">
-                  {products.smallDescription.map((desc) => (
-                    <div key={desc.id} className="flex items-center gap-2">
-                      <FaSquareCheck fill="green" size="1.2rem" />
-                      <p className="text-xl !font-poppins">{desc.content}</p>
-                    </div>
-                  ))}
-                </div>
               </div>
-              <div className="grid grid-cols-1 md:w-52 gap-4 place-items-center mt-5">
+              <div className="grid md:grid-cols-2 w-100 md:!w-96 gap-4 place-items-center mt-4">
                 <CustomDropdown
                   textClassOverride="!text-kashmirBlue"
                   classes="!rounded-md !mb-4"
@@ -383,8 +391,29 @@ function ProductsDetails() {
                   handleSubmit={handleAddToCart}
                 />
               </div> */}
-              <FadedLineBreak />
-              <div className="flex gap-4 place-items-center w-100 md:!w-96">
+              <hr className="!my-6" />
+              <div className="flex flex-col md:!flex-row md:justify-between font-poppins my-6">
+                <div className="flex items-center gap-2">
+                  <BsFillCartCheckFill fill="#064e3b" size="1.5rem" />
+                  <span className="text-lg text-emerald-900 font-medium">
+                    Recently in 12 carts
+                  </span>
+                </div>
+                <div className="flex items-center gap-2">
+                  <FaShippingFast fill="#EE6503" size="1.5rem" />
+                  <span className="text-lg text-coal font-medium">
+                    Shipping by 14th Feb
+                  </span>
+                </div>
+              </div>
+              <div className="hidden xl:!flex flex-col font-bold mb-5">
+                <div className="flex items-center gap-2">
+                  <BiSolidOffer size="1.5rem" fill="#EE6503" />
+                  <span className="text-lg text-coal">Available Offers</span>
+                </div>
+                <OffersCarousel />
+              </div>
+              <div className="flex gap-4 place-items-center w-100 md:!w-96 my-6">
                 <CustomTextField
                   textClassOverride="!text-kashmirBlue"
                   placeholderClasses="placeholder:!opacity-30 !text-licorice"
@@ -405,26 +434,6 @@ function ProductsDetails() {
                   handleSubmit={handlePincodeCheck}
                 />
               </div>
-              <div className="flex flex-col mt-5 gap-3">
-                <div className="flex flex-col">
-                  <div className="flex items-center">
-                    <FaShippingFast size="2rem" className="flex self-start" />
-                    <div className="flex flex-col">
-                      <span className="text-lg font-bold ml-2">
-                        Free Shipping
-                      </span>
-                      <span className="text-sm text-kashmirBlue ml-2">
-                        Free standard shipping on orders over ₹500
-                      </span>
-                    </div>
-                  </div>
-                </div>
-                <div className="flex items-center">
-                  <FaShieldAlt size="1.5rem" className="flex self-start" />
-                  <span className="text-lg font-bold ml-4">100% Original</span>
-                </div>
-              </div>
-              <FadedLineBreak />
             </div>
           </div>
           {/* Product Details */}
@@ -491,7 +500,63 @@ function ProductsDetails() {
               </div>
             )}
           </motion.div>
-          <FadedLineBreak />
+          <hr />
+          <motion.div
+            variants={FadeInWrapper("top", 0.2)}
+            initial="hidden"
+            whileInView="show"
+            viewport={{ once: true }}
+            className="flex gap-6 p-5 justify-center"
+          >
+            <div className="flex justify-between rounded-2xl">
+              <div className="flex justify-center items-center p-3 border-r-2">
+                <img
+                  src={Resources.images.Products.certified}
+                  className="h-20"
+                />
+                <div className="flex flex-col">
+                  <span className="text-md font-bold ml-2">100% Certified</span>
+                  <span className="text-sm text-kashmirBlue font-bold ml-2">
+                    Products
+                  </span>
+                </div>
+              </div>
+              <div className="flex justify-center items-center p-3 border-r-2">
+                <img
+                  src={Resources.images.Products.cod_available}
+                  className="h-20"
+                />
+                <div className="flex flex-col">
+                  <span className="text-md font-bold ml-2">COD</span>
+                  <span className="text-sm text-kashmirBlue font-bold ml-2">
+                    PAN-India
+                  </span>
+                </div>
+              </div>
+              <div className="flex justify-center items-center p-3 border-r-2">
+                <img
+                  src={Resources.images.Products.free_delivery}
+                  className="h-20"
+                />
+                <div className="flex flex-col">
+                  <span className="text-md font-bold ml-2">Free Delivery</span>
+                  <span className="text-sm text-kashmirBlue font-bold ml-2">
+                    Above ₹599
+                  </span>
+                </div>
+              </div>
+              <div className="flex justify-center items-center p-3">
+                <img src={Resources.images.Products.dermat} className="h-20" />
+                <div className="flex flex-col">
+                  <span className="text-md font-bold ml-2">Dermatologist</span>
+                  <span className="text-sm text-kashmirBlue font-bold ml-2">
+                    Approved
+                  </span>
+                </div>
+              </div>
+            </div>
+          </motion.div>
+          <hr className="" />
           {/* More Product */}
           <motion.div
             variants={FadeInWrapper("left", 0.1)}

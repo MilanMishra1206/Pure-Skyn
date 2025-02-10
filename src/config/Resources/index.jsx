@@ -261,6 +261,13 @@ const Resources = {
       contactUs: `${base}/ContactUs/contactUs.jpg`,
     },
     Products: {
+      original_img: `${base}/Products/original_img.webp`,
+      lowest_price_img: `${base}/Products/lowest_price_img.avif`,
+      free_shipping_img: `${base}/Products/free_shipping_img.png`,
+      certified: `${base}/Products/certified.png`,
+      cod_available: `${base}/Products/cod_available.png`,
+      dermat: `${base}/Products/dermat.png`,
+      free_delivery: `${base}/Products/free_delivery.png`,
       img1: `${base}/Products/img1.jpg`,
       img2: `${base}/Products/img2.jpg`,
       img3: `${base}/Products/img3.jpg`,

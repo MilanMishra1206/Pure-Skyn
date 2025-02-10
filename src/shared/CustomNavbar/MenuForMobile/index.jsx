@@ -133,7 +133,6 @@ const MenuForMobile = ({
   const navigate = useNavigate();
 
   const handleClick = (itemName, link, hasSubNav) => {
-    console.log("hasSubNav", hasSubNav);
     setActiveItem(activeItem === itemName ? "" : itemName);
     navigate(link);
     !hasSubNav && toggleMenu();

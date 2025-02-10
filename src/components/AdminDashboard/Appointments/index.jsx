@@ -34,7 +34,7 @@ function Appointments({ isMobile }) {
       refetchOnReconnect: false,
       retry: false,
       onSuccess: (response) => {
-        setTotalCount(response?.length);
+        setTotalCount(response?.data?.length);
         setApplicationData(response?.data);
       },
     }
