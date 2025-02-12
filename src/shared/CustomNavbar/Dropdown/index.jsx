@@ -13,7 +13,6 @@ const Dropdown = ({ header, items, FlyoutContent, href = "#" }) => {
     <div
       onMouseEnter={() => setOpen(true)}
       onMouseLeave={() => setOpen(false)}
-      onClick={() => setOpen(false)}
       className="relative w-fit h-fit"
     >
       <Link to={href} className="relative text-white no-underline">
