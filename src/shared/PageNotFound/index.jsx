@@ -1,45 +1,24 @@
-/* eslint-disable import/extensions */
-/* eslint-disable import/no-unresolved */
-import Button from "@mui/material/Button";
-import Resources from "../../config/Resources";
-import "tailwindcss/tailwind.css";
+import CustomButton2 from "../CustomButton2";
+import { useNavigate } from "react-router-dom";
 
 function PageNotFound() {
+  const navigate = useNavigate();
   return (
-    <div className="bg-solitude-3 h-screen flex flex-col md:!flex-row">
-      <img
-        className="w-24/100"
-        src={Resources.images.PageNotFound.Crack1}
-        alt="Crack1"
-      />
-      <div className="flex flex-col items-center w-4/5 mx-auto my-auto md:!w-52/100">
-        <img
-          className="h-[30%] w-3/5"
-          src={Resources.images.PageNotFound.NotFound}
-          alt=""
-        />
-        <p className="font-poppins font-bold text-4xl md:!text-4.3xl text-veniceBlue">
-          Page Not Found
+    <div className="grid h-screen place-content-center bg-white px-4">
+      <div className="text-center">
+        <h1 className="text-9xl font-black text-gray-200">404</h1>
+        <p className="text-2xl font-bold tracking-tight text-gray-900 sm:text-4xl">
+          Uh-oh!
         </p>
-        <p className="font-poppins font-medium text-center my-2 text-lg md:!text-xl text-cello">
-          We Can&apos;t Seem To Find The Page You Are Looking For.
-        </p>
-        <p className="font-poppins font-medium text-xl text-cello">
-          Sorry For The Inconvenince!
-        </p>
-        <Button
-          variant="contained"
-          onClick={() => window.history.go(-1)}
-          className="!h-12 !w-32 !mt-4 !bg-funBlue !font-medium text-white !rounded-1.25lg"
-        >
-          Go Back
-        </Button>
+        <p className="mt-4 text-gray-500">We can't find that page.</p>
+        <div className="flex justify-center">
+          <CustomButton2
+            buttonText="Go Back Home"
+            buttonClass=""
+            handleSubmit={() => navigate("/")}
+          />
+        </div>
       </div>
-      <img
-        className="w-24/100 h-72 mt-auto ml-auto md:!relative md:!left-20"
-        src={Resources.images.PageNotFound.Crack2}
-        alt="Crack2"
-      />
     </div>
   );
 }

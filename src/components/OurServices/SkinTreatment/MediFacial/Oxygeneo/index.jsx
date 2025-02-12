@@ -35,7 +35,7 @@ function Oxygeneo({ type }) {
         {!type && (
           <CustomHeader
             heading={"Oxygeneo"}
-            headerClass={!type && "!text-2xl"}
+            headerClass={!type && "!text-xl"}
           />
         )}
       </motion.div>

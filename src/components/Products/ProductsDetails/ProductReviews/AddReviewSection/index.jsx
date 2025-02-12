@@ -26,7 +26,6 @@ function AddReviewSection() {
     },
     validationSchema: getAddReviewValidation,
     onSubmit: (value) => {
-      console.log("Reviews", value);
       setShowAddReviewModal(false);
       showSnackbar("Thanks for your valuable feedback!", "success");
       reviewFormik.resetForm();
@@ -127,26 +126,36 @@ function AddReviewSection() {
                     onChange={reviewFormik.handleChange}
                   />
                 </div>
-                <Suspense fallback={<div />}>
-                  <CustomTextField
-                    textClassOverride="!text-kashmirBlue"
-                    placeholderClasses="placeholder:!opacity-30 !text-licorice"
-                    className="h-12 rounded-md !bg-transparent"
-                    placeholder="Enter"
-                    requiredStar
-                    labelToShow="Description"
+                <div>
+                  <label
+                    htmlFor="description"
+                    className="block text-sm font-medium text-gray-700"
+                  >
+                    Description<small className="text-bitterSweet">*</small>
+                  </label>
+
+                  <textarea
+                    id="description"
                     name="description"
-                    textFieldColorClass="shadow-insetLight"
-                    inputClassName="!bg-transparent"
-                    fieldWidth="w-full !mb-4"
-                    value={reviewFormik.values?.description}
+                    className={`mt-2 w-full rounded-lg border-gray-200 text-coal outline-none align-top shadow-xs sm:text-sm border p-2 ${
+                      reviewFormik.touched.description &&
+                      reviewFormik.errors.description
+                        ? "!border-red-600"
+                        : ""
+                    }`}
+                    rows="4"
+                    placeholder="Write Your Review"
+                    value={reviewFormik.values.description}
                     onChange={reviewFormik.handleChange}
-                    handleBlur={reviewFormik.handleBlur}
-                    error={reviewFormik.errors.description}
-                    touched={reviewFormik.touched.description}
-                    multiline
+                    onBlur={reviewFormik.handleBlur}
                   />
-                </Suspense>
+                  {reviewFormik.touched.description &&
+                    reviewFormik.errors.description && (
+                      <div className="text-bitterSweet text-xs">
+                        {reviewFormik.errors.description}
+                      </div>
+                    )}
+                </div>
               </form>
               <div className="flex flex-col md:!flex-row justify-end gap-4 mt-5">
                 <button

@@ -31,7 +31,7 @@ function SkinTightening({ type }) {
         {!type && (
           <CustomHeader
             heading={"RF Skin Tightening"}
-            headerClass={!type && "!text-2xl !text-left"}
+            headerClass={!type && "!text-xl !text-left"}
           />
         )}
       </motion.div>

@@ -84,19 +84,6 @@ const Resources = {
       logo1: `${base}/NavBar/Logo1.png`,
       logo2: `${base}/NavBar/Logo1.svg`,
     },
-    PageNotFound: {
-      Crack1: `${base}/PageNotFound/Crack1.svg`,
-      Crack2: `${base}/PageNotFound/Crack2.svg`,
-      NotFound: `${base}/PageNotFound/NotFound.svg`,
-    },
-    Warning: {
-      error: `${base}/Warning/Error.svg`,
-      warning: `${base}/Warning/Warning.svg`,
-      information: `${base}/Warning/Information.svg`,
-    },
-    Carousel: {
-      headerOne: `${base}/Carousel/carousel-img-1.jpeg`,
-    },
     Services: {
       mediFacial: `${base}/Services/medi-facial.jpeg`,
       whyUs: `${base}/Services/why-us.jpg`,

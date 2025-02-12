@@ -34,7 +34,7 @@ function DermafracInfusionFacial({ type }) {
             heading={"Dermafrac Infusion Facial"}
             showBackButton={type}
             navigateTo={"/services/skin/medi-facial"}
-            headerClass={!type && "!text-2xl"}
+            headerClass={!type && "!text-xl"}
           />
         )}
       </motion.div>
