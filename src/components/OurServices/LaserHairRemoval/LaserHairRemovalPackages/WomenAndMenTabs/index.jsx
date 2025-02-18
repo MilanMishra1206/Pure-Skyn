@@ -25,9 +25,11 @@ const WomenAndMenTabs = ({ isMobile }) => {
           label: treatment.name,
           pricing: treatment.price,
           packageName: treatment.name,
-          Step3: true,
-          isMedifacialPackage: false,
-          multiplSessions: treatment.name.includes("(4+1)"),
+          serviceId: treatment.serviceId,
+          subServiceId: treatment.subServiceId,
+          featureName: treatment.featureName,
+          selectedPackageImg: treatment.imgSrc,
+          isMediFacial: false,
         });
       });
     });

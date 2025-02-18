@@ -51,9 +51,11 @@ function MediFacialPackages() {
             label: treatment.label,
             pricing: treatment.price,
             packageName: treatment.name,
-            Step3: true,
-            isMedifacialPackage: true,
-            multiplSessions: treatment.name.includes("(4+1)"),
+            serviceId: treatment.serviceId,
+            subServiceId: treatment.subServiceId,
+            featureName: treatment.featureName,
+            selectedPackageImg: treatment.imgSrc,
+            isMediFacial: true,
           });
         });
       });
@@ -170,9 +172,7 @@ function MediFacialPackages() {
                 />
               </div>
             </div>
-            <CustomPricingTable
-              pricingContent={mediFacialPrimePackages}
-            />
+            <CustomPricingTable pricingContent={mediFacialPrimePackages} />
           </motion.div>
           <FadedLineBreak />
           <motion.div

@@ -532,6 +532,7 @@ export const allPackageDetails = {
         name: "Full Body - (4+1) Session",
         featureName: "fullBodyWomen",
         price: 60000,
+        imgSrc: Resources.images.Home.lhr.fullBodyFemalePackage,
       },
       {
         id: 2,
@@ -540,6 +541,7 @@ export const allPackageDetails = {
         name: "Full Body - Single Session",
         featureName: "fullBodyWomen",
         price: 15000,
+        imgSrc: Resources.images.Home.lhr.fullBodyFemalePackage,
       },
     ],
     faceAndNeckWomen: [
@@ -550,6 +552,7 @@ export const allPackageDetails = {
         name: "Face and Neck - (4+1) Session",
         featureName: "faceAndNeckWomen",
         price: 20000,
+        imgSrc: Resources.images.Home.lhr.facePackage,
       },
       {
         id: 2,
@@ -558,6 +561,7 @@ export const allPackageDetails = {
         name: "Face and Neck - Single Session",
         featureName: "faceAndNeckWomen",
         price: 5000,
+        imgSrc: Resources.images.Home.lhr.facePackage,
       },
     ],
     bikiniAndButtocksWomen: [
@@ -568,6 +572,7 @@ export const allPackageDetails = {
         featureName: "bikiniAndButtocksWomen",
         name: "Bikini and Buttocks - (4+1) Session",
         price: 24000,
+        imgSrc: Resources.images.Home.lhr.bikiniPackage,
       },
       {
         id: 2,
@@ -576,6 +581,7 @@ export const allPackageDetails = {
         featureName: "bikiniAndButtocksWomen",
         name: "Bikini and Buttocks - Single Session",
         price: 6000,
+        imgSrc: Resources.images.Home.lhr.bikiniPackage,
       },
     ],
     armsAndUnderarmsWomen: [
@@ -586,6 +592,7 @@ export const allPackageDetails = {
         featureName: "armsAndUnderarmsWomen",
         name: "Arms and Underarms - (4+1) Session",
         price: 26000,
+        imgSrc: Resources.images.Home.lhr.armsPackage,
       },
       {
         id: 2,
@@ -594,6 +601,7 @@ export const allPackageDetails = {
         featureName: "armsAndUnderarmsWomen",
         name: "Arms and Underarms - Single Session",
         price: 6500,
+        imgSrc: Resources.images.Home.lhr.armsPackage,
       },
     ],
     chestAndBackWomen: [
@@ -604,6 +612,7 @@ export const allPackageDetails = {
         featureName: "chestAndBackWomen",
         name: "Chest and Back - (4+1) Session",
         price: 32000,
+        imgSrc: Resources.images.Home.lhr.chestPackage,
       },
       {
         id: 2,
@@ -612,6 +621,7 @@ export const allPackageDetails = {
         featureName: "chestAndBackWomen",
         name: "Chest and Back - Single Session",
         price: 8000,
+        imgSrc: Resources.images.Home.lhr.chestPackage,
       },
     ],
     halfLegsWomen: [
@@ -622,6 +632,7 @@ export const allPackageDetails = {
         featureName: "halfLegsWomen",
         name: "Half Legs - Single Session",
         price: 5000,
+        imgSrc: Resources.images.Home.lhr.halfLegsPackage,
       },
     ],
     fullLegsWomen: [
@@ -632,6 +643,7 @@ export const allPackageDetails = {
         name: "Full Legs - Single Session",
         featureName: "fullLegsWomen",
         price: 8000,
+        imgSrc: Resources.images.Home.lhr.fullLegsPackage,
       },
     ],
     backWomen: [
@@ -642,6 +654,7 @@ export const allPackageDetails = {
         featureName: "backWomen",
         name: "Back - Single Session",
         price: 5000,
+        imgSrc: Resources.images.Home.lhr.backPackage,
       },
     ],
     chestWomen: [
@@ -652,6 +665,7 @@ export const allPackageDetails = {
         featureName: "chestWomen",
         name: "Chest - Single Session",
         price: 5000,
+        imgSrc: Resources.images.Home.lhr.chestPackage,
       },
     ],
     bikiniWomen: [
@@ -662,6 +676,7 @@ export const allPackageDetails = {
         featureName: "bikiniWomen",
         name: "Bikini - Single Session",
         price: 5000,
+        imgSrc: Resources.images.Home.lhr.bikiniPackage,
       },
     ],
   },
@@ -674,6 +689,7 @@ export const allPackageDetails = {
         featureName: "fullBodyMen",
         name: "Full Body - (4+1) Session",
         price: 60000,
+        imgSrc: Resources.images.Home.lhr.fullBodyMalePackage,
       },
       {
         id: 2,
@@ -682,6 +698,7 @@ export const allPackageDetails = {
         featureName: "fullBodyMen",
         name: "Full Body - Single Session",
         price: 15000,
+        imgSrc: Resources.images.Home.lhr.fullBodyMalePackage,
       },
     ],
     faceAndNeckMen: [
@@ -692,6 +709,7 @@ export const allPackageDetails = {
         featureName: "faceAndNeckMen",
         name: "Face and Neck - (4+1) Session",
         price: 20000,
+        imgSrc: Resources.images.Home.lhr.facePackage,
       },
       {
         id: 2,
@@ -700,6 +718,7 @@ export const allPackageDetails = {
         featureName: "faceAndNeckMen",
         name: "Face and Neck - Single Session",
         price: 5000,
+        imgSrc: Resources.images.Home.lhr.facePackage,
       },
     ],
     armsAndUnderarmsMen: [
@@ -710,6 +729,7 @@ export const allPackageDetails = {
         featureName: "armsAndUnderarmsMen",
         name: "Arms and Underarms - (4+1) Session",
         price: 26000,
+        imgSrc: Resources.images.Home.lhr.armsPackage,
       },
       {
         id: 2,
@@ -718,6 +738,7 @@ export const allPackageDetails = {
         featureName: "armsAndUnderarmsMen",
         name: "Arms and Underarms - Single Session",
         price: 6500,
+        imgSrc: Resources.images.Home.lhr.armsPackage,
       },
     ],
     chestAndBackMen: [
@@ -728,6 +749,7 @@ export const allPackageDetails = {
         featureName: "chestAndBackMen",
         name: "Chest and Back - (4+1) Session",
         price: 32000,
+        imgSrc: Resources.images.Home.lhr.chestBackPackage,
       },
       {
         id: 2,
@@ -736,6 +758,7 @@ export const allPackageDetails = {
         featureName: "chestAndBackMen",
         name: "Chest and Back - Single Session",
         price: 8000,
+        imgSrc: Resources.images.Home.lhr.chestBackPackage,
       },
     ],
     halfLegsMen: [
@@ -746,6 +769,7 @@ export const allPackageDetails = {
         featureName: "halfLegsMen",
         name: "Half Legs - Single Session",
         price: 5000,
+        imgSrc: Resources.images.Home.lhr.halfLegsPackage,
       },
     ],
     fullLegsMen: [
@@ -756,6 +780,7 @@ export const allPackageDetails = {
         featureName: "fullLegsMen",
         name: "Full Legs - Single Session",
         price: 8000,
+        imgSrc: Resources.images.Home.lhr.fullLegsPackage,
       },
     ],
     backMen: [
@@ -766,6 +791,7 @@ export const allPackageDetails = {
         featureName: "backMen",
         name: "Back - Single Session",
         price: 5000,
+        imgSrc: Resources.images.Home.lhr.backPackage,
       },
     ],
     chestMen: [
@@ -776,6 +802,7 @@ export const allPackageDetails = {
         featureName: "chestMen",
         name: "Chest - Single Session",
         price: 5000,
+        imgSrc: Resources.images.Home.lhr.chestMenPackage,
       },
     ],
   },
@@ -788,6 +815,7 @@ export const allPackageDetails = {
         label: "RF Skin Tightening",
         featureName: "stFullFace",
         name: "Full Face - Single Session",
+        imgSrc: Resources.images.Home.skinTighteningPackage.STFullFace,
         price: 5000,
       },
     ],
@@ -801,6 +829,7 @@ export const allPackageDetails = {
         label: "Oxy Hydra Facial",
         featureName: "oxyhydraFacial",
         name: "Oxy Hydra - Single Session",
+        imgSrc: Resources.images.Home.oxyhydraPackage,
         price: 5000,
       },
     ],
@@ -814,6 +843,7 @@ export const allPackageDetails = {
         label: "Oxygeneo",
         featureName: "oxygeneo",
         name: "Oxy Geneo - Single Session",
+        imgSrc: Resources.images.Home.oxygeneoPackage,
         price: 5000,
       },
     ],
@@ -827,6 +857,7 @@ export const allPackageDetails = {
         label: "Dermafrac Infusion Facial",
         featureName: "dermafrac",
         name: "Dermafrac Infusion Facial - Single Session",
+        imgSrc: Resources.images.Home.dermafracPackage,
         price: 10000,
       },
     ],

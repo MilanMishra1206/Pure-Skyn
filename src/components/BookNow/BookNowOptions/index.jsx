@@ -1,6 +1,9 @@
 import { motion } from "framer-motion";
 import { lazy, Suspense, useEffect, useState } from "react";
 import { IoIosCloseCircle } from "react-icons/io";
+import { useMutation } from "react-query";
+import dayjs from "dayjs";
+import { useDispatch, useSelector } from "react-redux";
 import FadeInWrapper from "../../../config/MotionFramer/FadeInWrapper";
 import {
   allPackageDetails,
@@ -12,13 +15,9 @@ import {
   skinTighteningPackage,
 } from "../../../helpers/LaserServices";
 import BookNowPackageCards from "./BookNowPackageCards";
-import { useMutation } from "react-query";
 import { requestBooking } from "../../../services/Booking";
 import { useAppSnackbar } from "../../../config/Context/SnackbarContext";
-import dayjs from "dayjs";
-import { useDispatch } from "react-redux";
-import { addToServicesCart, emptyServiceCart } from "../../../redux/Actions";
-import { useSelector } from "react-redux";
+import { addToServicesCart } from "../../../redux/Actions";
 
 const CustomLoader = lazy(() => import("../../../shared/CustomLoader"));
 
@@ -36,13 +35,35 @@ function BookNowOptions({ heading, setTreatmentPackage, setCurrentStep }) {
   const [packageName, setPackageName] = useState("");
   const [packagePrice, setPackagePrice] = useState("");
   const [featureName, setFeatureName] = useState("");
-  const [selectedPackagesCart, setSelectedPackagesCart] = useState([]);
+  const [selectedPackageImg, setSelectedPackageImg] = useState("");
+  const [isButtonDisabled, setIsButtonDisabled] = useState(false);
   const showSnackbar = useAppSnackbar();
+
+  const handlePackageCardClick = (featureName, imgSrc) => {
+    serviceCartItems.map((service) => {
+      if (service.featureName === featureName) {
+        setSelectedPackages({
+          packageName: service.packageName,
+          price: service.packagePrice,
+        });
+      }
+    });
+    setTreatmentPackage(selectedPackages);
+    setOpenModal(true);
+    getTreatmentPackage(featureName);
+    setSelectedPackageImg(imgSrc);
+    serviceCartItems.map((service) => {
+      if (service.subServiceId === subServiceId) {
+        setIsButtonDisabled(true);
+      } else {
+        setIsButtonDisabled(false);
+      }
+    });
+  };
 
   const closeModal = () => {
     setOpenModal(false);
     setTreatmentPackageDetails([]);
-    setSelectedPackages(null);
   };
 
   const handlePackageSelect = (
@@ -58,12 +79,13 @@ function BookNowOptions({ heading, setTreatmentPackage, setCurrentStep }) {
     setFeatureName(featureName);
     setServiceId(serviceId);
     setSubServiceId(subServiceId);
-  };
-
-  const handlePackageCardClick = (featureName, openModal) => {
-    setTreatmentPackage(selectedPackages);
-    setOpenModal(openModal);
-    getTreatmentPackage(featureName);
+    serviceCartItems.map((service) => {
+      if (service.subServiceId === subServiceId) {
+        setIsButtonDisabled(false);
+      } else {
+        setIsButtonDisabled(true);
+      }
+    });
   };
 
   const getTreatmentPackage = (featureName) => {
@@ -112,10 +134,6 @@ function BookNowOptions({ heading, setTreatmentPackage, setCurrentStep }) {
     setCurrentStep(2);
   };
 
-  const onEmptyCart = () => {
-    dispatch(emptyServiceCart());
-  };
-
   const addToCart = () => {
     const treatmentName = sessionStorage.getItem("treatmentName");
     const newPackage = {
@@ -125,6 +143,7 @@ function BookNowOptions({ heading, setTreatmentPackage, setCurrentStep }) {
       serviceId,
       subServiceId,
       featureName,
+      selectedPackageImg,
     };
     dispatch(addToServicesCart(newPackage));
     setOpenModal(false);
@@ -233,20 +252,19 @@ function BookNowOptions({ heading, setTreatmentPackage, setCurrentStep }) {
                     {item.name}
                   </span>
                   <span className={`font-bold font-xl text-Green`}>
-                    ₹ {item.price}
+                    ₹{item.price}
                   </span>
                 </div>
               ))}
               <button
                 className="no-underline p-3 rounded bg-coffee text-white text-center font-bold mt-5 hover:shadow-xl disabled:cursor-not-allowed disabled:opacity-80"
-                disabled={!selectedPackages}
+                disabled={!isButtonDisabled}
                 onClick={addToCart}
               >
                 Add To Cart
               </button>
               <button
                 className="no-underline p-3 rounded bg-coffee text-white text-center font-bold hover:shadow-xl disabled:cursor-not-allowed disabled:opacity-80"
-                disabled={!selectedPackages}
                 onClick={viewCartClick}
               >
                 View Cart

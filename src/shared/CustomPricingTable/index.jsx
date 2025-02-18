@@ -1,24 +1,49 @@
-import React from "react";
-import { useNavigate } from "react-router-dom";
+import React, { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { addToServicesCart } from "../../redux/Actions";
+import { useAppSnackbar } from "../../config/Context/SnackbarContext";
 
 const CustomPricingTable = ({ pricingContent, treatmentName }) => {
-  const navigate = useNavigate();
+  const showSnackbar = useAppSnackbar();
+  const [disabledButtons, setDisabledButtons] = useState({});
+  const servicesCart = useSelector((state) => state.servicesCart.services);
+  const dispatch = useDispatch();
 
-  const handleBookNow = (
-    goToStep,
-    packageName,
-    isMedifacialPackage,
+  useEffect(() => {
+    const updatedDisabledButtons = {};
+
+    pricingContent.forEach((treatment) => {
+      const isAlreadyInCart = servicesCart.some(
+        (item) => item.subServiceId === treatment.subServiceId
+      );
+
+      updatedDisabledButtons[treatment.subServiceId] = isAlreadyInCart;
+    });
+
+    setDisabledButtons(updatedDisabledButtons);
+  }, [servicesCart, pricingContent]);
+
+  const handleAddToCart = (
     label,
-    packagePrice
+    packageName,
+    packagePrice,
+    serviceId,
+    subServiceId,
+    featureName,
+    selectedPackageImg,
+    isMediFacial
   ) => {
-    sessionStorage.setItem(
-      "treatmentName",
-      isMedifacialPackage ? label : treatmentName
-    );
-    sessionStorage.setItem("packageName", packageName);
-    sessionStorage.setItem("packagePrice", packagePrice);
-    sessionStorage.setItem("currentBookStep", goToStep ? 2 : 1);
-    navigate("/book-now");
+    const newPackage = {
+      treatmentName: isMediFacial ? label : treatmentName,
+      packageName,
+      packagePrice,
+      serviceId,
+      subServiceId,
+      featureName,
+      selectedPackageImg,
+    };
+    dispatch(addToServicesCart(newPackage));
+    showSnackbar("Service Added to Cart", "success");
   };
 
   return (
@@ -48,18 +73,28 @@ const CustomPricingTable = ({ pricingContent, treatmentName }) => {
               </td>
               <td className="px-4 py-2 border-b border-gray-300 text-coal">
                 <button
-                  className="bg-skyn text-white px-4 py-1 rounded hover:opacity-80 shadow-lg"
+                  className={`bg-skyn text-white px-4 py-1 rounded hover:opacity-80 shadow-lg ${
+                    disabledButtons[treatment.subServiceId]
+                      ? "opacity-50 cursor-not-allowed"
+                      : ""
+                  }`}
+                  disabled={disabledButtons[treatment.subServiceId]}
                   onClick={() =>
-                    handleBookNow(
-                      treatment.Step3,
-                      treatment.packageName,
-                      treatment.isMedifacialPackage,
+                    handleAddToCart(
                       treatment.label,
-                      treatment.pricing
+                      treatment.packageName,
+                      treatment.pricing,
+                      treatment.serviceId,
+                      treatment.subServiceId,
+                      treatment.featureName,
+                      treatment.selectedPackageImg,
+                      treatment.isMediFacial ?? false
                     )
                   }
                 >
-                  Book Now
+                  {disabledButtons[treatment.featureName]
+                    ? "Added to Cart"
+                    : "Add To Cart"}
                 </button>
               </td>
             </tr>

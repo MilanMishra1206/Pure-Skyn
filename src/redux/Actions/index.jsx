@@ -29,9 +29,9 @@ export const addToServicesCart = (service) => ({
   payload: service,
 });
 
-export const removeFromServicesCart = (serviceId) => ({
+export const removeFromServicesCart = (subServiceId) => ({
   type: types.REMOVE_FROM_SERVICE_CART,
-  payload: serviceId,
+  payload: subServiceId,
 });
 
 export const emptyServiceCart = () => ({

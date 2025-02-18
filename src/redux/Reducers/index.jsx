@@ -75,17 +75,32 @@ const servicesInitialState = {
 const servicesCartReducer = (state = servicesInitialState, action) => {
   switch (action.type) {
     case "ADD_TO_SERVICE_CART":
-      const newState = {
-        ...state,
-        services: [...state.services, { ...action.payload, quantity: 1 }],
-      };
-      return newState;
+      const existingIndex = state.services.findIndex(
+        (service) => service.featureName === action.payload.featureName
+      );
+      if (existingIndex !== -1) {
+        const updatedServices = [...state.services];
+        updatedServices[existingIndex] = {
+          ...updatedServices[existingIndex],
+          ...action.payload,
+        };
+
+        return {
+          ...state,
+          services: updatedServices,
+        };
+      } else {
+        return {
+          ...state,
+          services: [...state.services, { ...action.payload, quantity: 1 }],
+        };
+      }
 
     case "REMOVE_FROM_SERVICE_CART":
       return {
         ...state,
         services: state.services.filter(
-          (service) => service.id !== action.payload
+          (service) => service.subServiceId !== action.payload
         ),
       };
 
@@ -94,6 +109,7 @@ const servicesCartReducer = (state = servicesInitialState, action) => {
         ...state,
         services: [],
       };
+
     default:
       return state;
   }

@@ -139,8 +139,8 @@ const MenuForMobile = ({
   };
 
   const navigateToServicesCart = () => {
-    sessionStorage.setItem("currentBookStep", 2);
-    navigate("/book-now");
+    sessionStorage.removeItem("currentBookStep");
+    navigate("/book-now/services-cart");
     toggleMenu();
   };
 

@@ -82,7 +82,7 @@ function BookNow() {
     const treatmentName = sessionStorage.getItem("treatmentName");
     if (sessionStorage.getItem("currentBookStep")) {
       setCurrentStep(currentBookStep);
-      setStepHeading(treatmentName || "Services");
+      setStepHeading(treatmentName || "Choose Your Services");
     }
   }, [sessionStorage.getItem("currentStep")]);
 
@@ -153,9 +153,19 @@ function BookNow() {
     }
     if (currentStep === 1) {
       setCurrentStep(0);
+      sessionStorage.removeItem("treatmentName");
+      sessionStorage.setItem("currentBookStep", 0);
       setStepHeading("Choose Option");
     } else if (currentStep === 2) {
-      setCurrentStep(1);
+      if (stepIndex === 0) {
+        setCurrentStep(0);
+        sessionStorage.removeItem("treatmentName");
+        sessionStorage.setItem("currentBookStep", 0);
+        setStepHeading("Choose Option");
+      } else {
+        setCurrentStep(1);
+        sessionStorage.setItem("currentBookStep", 1);
+      }
     }
   };
 
@@ -218,21 +228,21 @@ function BookNow() {
             initial="hidden"
             whileInView="show"
             viewport={{ once: true }}
-            className="grid md:grid-cols-2 xl:!grid-cols-3 gap-5 py-5"
+            className="grid md:grid-cols-2 xl:!grid-cols-3 gap-5 py-5 place-items-center"
           >
             {treatmentList.map((item) => (
               <div
                 key={item.id}
-                className="cursor-pointer hover:scale-105 duration-500 relative"
+                className="cursor-pointer hover:scale-105 duration-500 w-full lg:!w-96"
                 onClick={() => handleTreatmentClick(item.treatmentName)}
               >
                 <img
                   src={item.imgSrc}
-                  className="w-full h-full object-cover shadow-lg rounded-lg"
+                  className="w-full h-full object-cover shadow-lg rounded-t-md"
                   alt={item.treatmentName}
                 />
-                <div className="absolute bottom-0 left-0 w-full p-4 bg-coffee bg-opacity-60 backdrop-blur-md rounded-b-lg  text-center">
-                  <span className="font-poppins text-white font-bold text-xl">
+                <div className="bottom-0 left-0 w-full p-3 md:!p-4 bg-coffee bg-opacity-60 backdrop-blur-md rounded-b-lg text-center">
+                  <span className="font-poppins text-white font-bold md:!text-xl">
                     {item.treatmentName}
                   </span>
                 </div>

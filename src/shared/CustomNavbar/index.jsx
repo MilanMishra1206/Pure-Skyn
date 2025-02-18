@@ -77,8 +77,8 @@ function CustomNavbar() {
   };
 
   const navigateToServicesCart = () => {
-    sessionStorage.setItem("currentBookStep", 2);
-    navigate("/book-now");
+    sessionStorage.removeItem("currentBookStep");
+    navigate("/book-now/services-cart");
   };
 
   const profileItem = [
