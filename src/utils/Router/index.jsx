@@ -121,7 +121,7 @@ const routesConfig = [
     accessRule: "public",
   },
   {
-    path: "/cart",
+    path: "/products/product-cart",
     Component: PureSkynCart,
     accessRule: "public",
   },

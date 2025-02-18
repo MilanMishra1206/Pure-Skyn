@@ -138,6 +138,12 @@ const MenuForMobile = ({
     !hasSubNav && toggleMenu();
   };
 
+  const navigateToServicesCart = () => {
+    sessionStorage.setItem("currentBookStep", 2);
+    navigate("/book-now");
+    toggleMenu();
+  };
+
   const menuItems = [
     { name: "Home", link: "/" },
     ...(!isAdmin
@@ -152,7 +158,8 @@ const MenuForMobile = ({
           },
           { name: "Book", link: "/book-now" },
           { name: "Shop", link: "/products" },
-          { name: "Cart", link: "/cart" },
+          { name: "Products Cart", link: "/products/product-cart" },
+          { name: "Services Cart", link: "#", onClick: navigateToServicesCart },
         ]
       : []),
 

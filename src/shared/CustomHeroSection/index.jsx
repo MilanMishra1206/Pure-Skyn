@@ -1,14 +1,46 @@
 import { motion } from "framer-motion";
-import { useEffect, useRef, useState } from "react";
+import { lazy, Suspense, useEffect, useRef, useState } from "react";
 import { useMediaQuery } from "@mui/material";
 import Resources from "../../config/Resources";
 import CustomButton2 from "../CustomButton2";
 import { Link } from "react-router-dom";
 import FadeInWrapper from "../../config/MotionFramer/FadeInWrapper";
+import { useFormik } from "formik";
+import { getQueryValidation } from "../../helpers/Login";
+import { useAppSnackbar } from "../../config/Context/SnackbarContext";
+
+const CustomTextField = lazy(() => import("../CustomTextField"));
 
 const CustomHeroSection = () => {
   const isTablet = useMediaQuery("(max-width: 1023px)");
   const isLargeScreen = useMediaQuery("(min-width: 1023px)");
+  const showSnackbar = useAppSnackbar();
+
+  const queryFormik = useFormik({
+    enableReinitialize: true,
+    validateOnMount: true,
+    validateOnChange: true,
+    initialValues: {
+      fullName: "",
+      phoneNumber: "",
+      email: "",
+      query: "",
+    },
+    validationSchema: getQueryValidation,
+    onSubmit: (value) => {
+      showSnackbar("We will give you a call!", "success");
+      queryFormik.resetForm();
+    },
+  });
+
+  const handleQueryFormSubmit = () => {
+    if (!queryFormik.isValid) {
+      showSnackbar("Please enter all the required fields!", "error");
+      return;
+    } else {
+      queryFormik.handleSubmit();
+    }
+  };
 
   const handleDownloadApp = () => {
     console.log("Download app button clicked");
@@ -90,14 +122,115 @@ const CustomHeroSection = () => {
           </div>
         </div>
       )}
-      <section className="w-full bg-[#FAFAFA] px-8 py-12 grid grid-cols-1 md:grid-cols-2 items-center gap-8 mx-auto shadow-lg">
-        <div>
+      <section className="w-full bg-[#FAFAFA] px-8 py-12 grid md:grid-cols-2 gap-8 mx-auto shadow-lg">
+        <div className="flex flex-col items-center">
           <span className="flex justify-center mb-4 text-xs md:text-sm font-medium">
             <img
               src={Resources.images.NavBar.logo2}
-              className={`${isTablet ? "w-4/5" : "w-3/5"}`}
+              className={`${isTablet ? "w-3/5" : "w-2/5"}`}
             />
           </span>
+          <div className="flex lg:w-4/5 xl:!w-3/5 flex-col shadow rounded-lg p-4 border">
+            <span className="text-lg font-bold font-poppins text-center mb-4">
+              Have Query? We will give a call!
+            </span>
+            <hr />
+            <form className="w-full mt-4">
+              <Suspense fallback={<div />}>
+                <CustomTextField
+                  textClassOverride="!text-cello"
+                  placeholderClasses="placeholder:!opacity-30 !text-licorice"
+                  className="h-12 rounded-md !bg-transparent"
+                  placeholder="Enter Your Name"
+                  requiredStar
+                  labelToShow="Name"
+                  name="fullName"
+                  textFieldColorClass="shadow-insetLight"
+                  inputClassName="!bg-transparent"
+                  fieldWidth="w-full !mb-4"
+                  value={queryFormik.values?.fullName}
+                  onChange={queryFormik.handleChange}
+                  handleBlur={queryFormik.handleBlur}
+                  error={queryFormik.errors.fullName}
+                  touched={queryFormik.touched.fullName}
+                />
+              </Suspense>
+              <Suspense fallback={<div />}>
+                <CustomTextField
+                  textClassOverride="!text-cello"
+                  placeholderClasses="placeholder:!opacity-30 !text-licorice"
+                  className="h-12 rounded-md !bg-transparent"
+                  placeholder="Enter Your Number"
+                  requiredStar
+                  labelToShow="Phone Number"
+                  name="phoneNumber"
+                  textFieldColorClass="shadow-insetLight"
+                  inputClassName="!bg-transparent"
+                  fieldWidth="w-full !mb-4"
+                  value={queryFormik.values?.phoneNumber}
+                  onChange={queryFormik.handleChange}
+                  handleBlur={queryFormik.handleBlur}
+                  error={queryFormik.errors.phoneNumber}
+                  touched={queryFormik.touched.phoneNumber}
+                />
+              </Suspense>
+              <Suspense fallback={<div />}>
+                <CustomTextField
+                  textClassOverride="!text-cello"
+                  placeholderClasses="placeholder:!opacity-30 !text-licorice"
+                  className="h-12 rounded-md !bg-transparent"
+                  placeholder="Enter"
+                  requiredStar
+                  labelToShow="Email Id"
+                  name="email"
+                  textFieldColorClass="shadow-insetLight"
+                  inputClassName="!bg-transparent"
+                  fieldWidth="w-full !mb-4"
+                  value={queryFormik.values?.email}
+                  onChange={queryFormik.handleChange}
+                  handleBlur={queryFormik.handleBlur}
+                  error={queryFormik.errors.email}
+                  touched={queryFormik.touched.email}
+                />
+              </Suspense>
+              <div>
+                <label
+                  htmlFor="query"
+                  className="block text-sm font-medium text-cello"
+                >
+                  Query<small className="text-bitterSweet">*</small>
+                </label>
+                <textarea
+                  id="query"
+                  name="query"
+                  className={`mt-2 w-full rounded-lg border-gray-200 text-coal outline-none align-top shadow-xs sm:text-sm border p-2 ${
+                    queryFormik.touched.query && queryFormik.errors.query
+                      ? "!border-red-600"
+                      : ""
+                  }`}
+                  rows="4"
+                  placeholder="Ask Your Query"
+                  value={queryFormik.values.query}
+                  onChange={queryFormik.handleChange}
+                  onBlur={queryFormik.handleBlur}
+                />
+                {queryFormik.touched.query && queryFormik.errors.query && (
+                  <div className="text-bitterSweet text-xs">
+                    {queryFormik.errors.query}
+                  </div>
+                )}
+              </div>
+            </form>
+            <div className="flex justify-center">
+              <CustomButton2
+                buttonText="Submit"
+                handleSubmit={handleQueryFormSubmit}
+              />
+            </div>
+          </div>
+        </div>
+        <div>
+          <ShuffleGrid />
           <div className="text-base md:text-lg text-cello my-4 md:my-6 px-3 lg:!mx-5 font-poppins text-center">
             <p>Get the best deals from our latest promotions.</p>
             <p>
@@ -121,7 +254,6 @@ const CustomHeroSection = () => {
             />
           </div>
         </div>
-        <ShuffleGrid />
       </section>
     </motion.div>
   );
@@ -147,67 +279,55 @@ const shuffle = (array) => {
 const squareData = [
   {
     id: 1,
-    src: `${Resources.images.Services.LaserHairRemoval.laserHairSelectedPart}`,
-  },
-  {
-    id: 2,
     src: `${Resources.images.Services.LaserHairRemoval.Men.imageTwo}`,
   },
   {
-    id: 3,
+    id: 2,
     src: `${Resources.images.Services.LaserHairRemoval.Women.headerWomen}`,
   },
   {
-    id: 4,
+    id: 3,
     src: `${Resources.images.Services.OxyGeneo.header}`,
   },
   {
-    id: 5,
-    src: `${Resources.images.Services.OxyGeneo.img2}`,
-  },
-  {
-    id: 6,
+    id: 4,
     src: `${Resources.images.Services.OxyGeneo.oxygeneoCard}`,
   },
   {
-    id: 7,
-    src: `${Resources.images.Services.OxyHydra.header}`,
-  },
-  {
-    id: 8,
+    id: 5,
     src: `${Resources.images.Services.OxyHydra.img3}`,
   },
   {
-    id: 9,
-    src: `${Resources.images.Services.OxyHydra.header2}`,
-  },
-  {
-    id: 10,
-    src: `${Resources.images.Services.LaserHairRemoval.Men.headerMen}`,
-  },
-  {
-    id: 11,
+    id: 6,
     src: `${Resources.images.Services.Dermafrac.imageFour}`,
   },
   {
-    id: 12,
+    id: 7,
     src: `${Resources.images.Services.Dermafrac.dermafracCard}`,
   },
   {
-    id: 13,
-    src: `${Resources.images.Services.SkinTightening.header}`,
-  },
-  {
-    id: 14,
-    src: `${Resources.images.Services.SkinTightening.img2}`,
-  },
-  {
-    id: 15,
+    id: 8,
     src: `${Resources.images.Services.SkinTightening.img3}`,
   },
   {
-    id: 16,
+    id: 9,
     src: `${Resources.images.Services.SkinTightening.img5}`,
+  },
+  {
+    id: 10,
+    src: `${Resources.images.Services.LaserHairRemoval.laserHairSelectedPart}`,
+  },
+  {
+    id: 11,
+    src: `${Resources.images.Services.OxyHydra.img2}`,
+  },
+  {
+    id: 12,
+    src: `${Resources.images.Services.SkinTightening.img2}`,
+  },
+  {
+    id: 13,
+    src: `${Resources.images.Services.OxyGeneo.img2}`,
   },
 ];
 
@@ -243,7 +363,7 @@ const ShuffleGrid = () => {
   };
 
   return (
-    <div className="grid grid-cols-2 xl:!grid-cols-4 grid-rows-4 h-[650px] gap-1">
+    <div className="grid grid-cols-2 md:!grid-cols-3 xl:!grid-cols-4 grid-rows-3 h-[450px] xl:!h-[550px] gap-1">
       {squares.map((sq) => sq)}
     </div>
   );

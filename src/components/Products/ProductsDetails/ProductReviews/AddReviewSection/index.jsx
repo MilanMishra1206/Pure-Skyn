@@ -133,7 +133,6 @@ function AddReviewSection() {
                   >
                     Description<small className="text-bitterSweet">*</small>
                   </label>
-
                   <textarea
                     id="description"
                     name="description"

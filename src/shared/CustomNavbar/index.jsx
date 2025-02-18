@@ -9,6 +9,7 @@ import MenuForDesktop from "./MenuForDesktop";
 import MenuForMobile from "./MenuForMobile";
 import Resources from "../../config/Resources";
 import { useAppSnackbar } from "../../config/Context/SnackbarContext";
+import { MdShoppingCartCheckout } from "react-icons/md";
 
 const CartDrawer = lazy(() => import("../../components/Cart/CartDrawer"));
 
@@ -22,24 +23,35 @@ function CustomNavbar() {
   const [isLoggedIn, setIsLoggedIn] = useState(true);
   const [isConfirmingLogout, setIsConfirmingLogout] = useState(false);
   const [userName, setUserName] = useState("");
+  const [isProductsPage, setIsProductsPage] = useState(false);
   const isAdmin = false;
   const isActive = (path) => location.pathname === path;
   const toggleMenu = () => setMenuOpen(!menuOpen);
 
   const cartItems = useSelector((state) => state.cart.items);
+  const servicesItems = useSelector((state) => state.servicesCart.services);
   const userProfile = useSelector((state) => state.userProfile.userProfile);
 
-  const totalItems = cartItems.length;
+  const totalProductsItems = cartItems.length;
+  const totalServicesItems = servicesItems.length;
 
   useEffect(() => {
-    if(sessionStorage.getItem("token")) {
+    if (sessionStorage.getItem("token")) {
       setIsLoggedIn(true);
       const name = userProfile?.name?.split(" ")[0];
-      setUserName(name);  
+      setUserName(name);
     } else {
       setIsLoggedIn(false);
     }
   }, []);
+
+  useEffect(() => {
+    if (location.pathname.includes("products")) {
+      setIsProductsPage(true);
+    } else {
+      setIsProductsPage(false);
+    }
+  }, [location.pathname]);
 
   const handleLogout = () => {
     setIsConfirmingLogout(true);
@@ -62,6 +74,11 @@ function CustomNavbar() {
 
   const handleOpenCart = () => {
     setOpenCart(!openCart);
+  };
+
+  const navigateToServicesCart = () => {
+    sessionStorage.setItem("currentBookStep", 2);
+    navigate("/book-now");
   };
 
   const profileItem = [
@@ -162,17 +179,31 @@ function CustomNavbar() {
               />
             </Link>
           </div>
-          <button
-            onClick={handleOpenCart}
-            className={`navbar-links mr-4 relative ${isTablet ? "block" : "hidden"}`}
-          >
-            <FaCartShopping size="1.8rem" />
-            {totalItems > 0 && (
-              <span className="absolute left-1/2 bottom-50 text-xs bg-skyn text-white rounded-full px-2 py-1">
-                {totalItems}
-              </span>
-            )}
-          </button>
+          {isProductsPage ? (
+            <button
+              onClick={handleOpenCart}
+              className={`navbar-links mr-4 relative ${isTablet ? "block" : "hidden"}`}
+            >
+              <FaCartShopping size="1.8rem" />
+              {totalProductsItems > 0 && (
+                <span className="absolute left-1/2 bottom-50 text-xs bg-skyn text-white rounded-full px-2 py-1">
+                  {totalProductsItems}
+                </span>
+              )}
+            </button>
+          ) : (
+            <button
+              onClick={navigateToServicesCart}
+              className={`navbar-links mr-4 relative ${isTablet ? "block" : "hidden"}`}
+            >
+              <MdShoppingCartCheckout size="2rem" />
+              {totalServicesItems > 0 && (
+                <span className="absolute top-0 text-sm bg-skyn text-white rounded-full px-2">
+                  {totalServicesItems}
+                </span>
+              )}
+            </button>
+          )}
         </nav>
         {!isTablet ? (
           <MenuForDesktop
@@ -181,7 +212,10 @@ function CustomNavbar() {
             serviceItem={serviceItem}
             profileItem={profileItem}
             packagesItem={packagesItem}
+            totalServicesItems={totalServicesItems}
+            totalProductsItems={totalProductsItems}
             isAdmin={isAdmin}
+            isProductsPage={isProductsPage}
             isLoggedIn={isLoggedIn}
             isTablet={isTablet}
           />

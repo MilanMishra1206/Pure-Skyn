@@ -68,9 +68,41 @@ const userReducer = (state = userInitialState, action) => {
   }
 };
 
+const servicesInitialState = {
+  services: [],
+};
+
+const servicesCartReducer = (state = servicesInitialState, action) => {
+  switch (action.type) {
+    case "ADD_TO_SERVICE_CART":
+      const newState = {
+        ...state,
+        services: [...state.services, { ...action.payload, quantity: 1 }],
+      };
+      return newState;
+
+    case "REMOVE_FROM_SERVICE_CART":
+      return {
+        ...state,
+        services: state.services.filter(
+          (service) => service.id !== action.payload
+        ),
+      };
+
+    case "EMPTY_SERVICE_CART":
+      return {
+        ...state,
+        services: [],
+      };
+    default:
+      return state;
+  }
+};
+
 const appReducer = combineReducers({
   cart: cartReducer,
   userProfile: userReducer,
+  servicesCart: servicesCartReducer,
 });
 
 export default appReducer;

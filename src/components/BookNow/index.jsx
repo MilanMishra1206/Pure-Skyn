@@ -82,7 +82,7 @@ function BookNow() {
     const treatmentName = sessionStorage.getItem("treatmentName");
     if (sessionStorage.getItem("currentBookStep")) {
       setCurrentStep(currentBookStep);
-      setStepHeading(treatmentName);
+      setStepHeading(treatmentName || "Services");
     }
   }, [sessionStorage.getItem("currentStep")]);
 
