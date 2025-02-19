@@ -98,13 +98,9 @@ function BestSelling({ isMobile, isLargeScreen }) {
         initial="hidden"
         whileInView="show"
         viewport={{ once: true }}
+        className="xl:!flex xl:!justify-center xl:!items-center"
       >
-        <DrawCircleText
-          headerText={"70% OFF -"}
-          serviceName={"Laser Hair Removal Packages!"}
-          buttonText="Check Now"
-          link="/services/laser-hair-removal-packages"
-        />
+        <img src={Resources.images.Common.offerBanner} alt="Offer" />
       </motion.div>
     </div>
   );

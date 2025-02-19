@@ -17,7 +17,7 @@ import {
 import BookNowPackageCards from "./BookNowPackageCards";
 import { requestBooking } from "../../../services/Booking";
 import { useAppSnackbar } from "../../../config/Context/SnackbarContext";
-import { addToServicesCart } from "../../../redux/Actions";
+import { addToServicesCart, emptyServiceCart } from "../../../redux/Actions";
 
 const CustomLoader = lazy(() => import("../../../shared/CustomLoader"));
 
@@ -36,7 +36,6 @@ function BookNowOptions({ heading, setTreatmentPackage, setCurrentStep }) {
   const [packagePrice, setPackagePrice] = useState("");
   const [featureName, setFeatureName] = useState("");
   const [selectedPackageImg, setSelectedPackageImg] = useState("");
-  const [isButtonDisabled, setIsButtonDisabled] = useState(false);
   const showSnackbar = useAppSnackbar();
 
   const handlePackageCardClick = (featureName, imgSrc) => {
@@ -49,16 +48,10 @@ function BookNowOptions({ heading, setTreatmentPackage, setCurrentStep }) {
       }
     });
     setTreatmentPackage(selectedPackages);
+    sessionStorage.setItem("selectedFeatureName", featureName);
     setOpenModal(true);
     getTreatmentPackage(featureName);
     setSelectedPackageImg(imgSrc);
-    serviceCartItems.map((service) => {
-      if (service.subServiceId === subServiceId) {
-        setIsButtonDisabled(true);
-      } else {
-        setIsButtonDisabled(false);
-      }
-    });
   };
 
   const closeModal = () => {
@@ -79,13 +72,6 @@ function BookNowOptions({ heading, setTreatmentPackage, setCurrentStep }) {
     setFeatureName(featureName);
     setServiceId(serviceId);
     setSubServiceId(subServiceId);
-    serviceCartItems.map((service) => {
-      if (service.subServiceId === subServiceId) {
-        setIsButtonDisabled(false);
-      } else {
-        setIsButtonDisabled(true);
-      }
-    });
   };
 
   const getTreatmentPackage = (featureName) => {
@@ -145,8 +131,14 @@ function BookNowOptions({ heading, setTreatmentPackage, setCurrentStep }) {
       featureName,
       selectedPackageImg,
     };
-    dispatch(addToServicesCart(newPackage));
-    setOpenModal(false);
+    const selectedFeatureName = sessionStorage.getItem("selectedFeatureName");
+    if (selectedFeatureName !== newPackage.featureName) {
+      showSnackbar("Please select the package option", "error");
+    } else {
+      showSnackbar("Package Added to the Cart", "success");
+      dispatch(addToServicesCart(newPackage));
+      setOpenModal(false);
+    }
   };
 
   useEffect(() => {
@@ -175,7 +167,7 @@ function BookNowOptions({ heading, setTreatmentPackage, setCurrentStep }) {
     if (selectedPackage) {
       const updatedPackages = selectedPackage.package.map((pkg) => ({
         ...pkg,
-        isDisabled: serviceCartItems.some(
+        isSelected: serviceCartItems.some(
           (cartPkg) => cartPkg.featureName === pkg.featureName
         ),
       }));
@@ -185,18 +177,29 @@ function BookNowOptions({ heading, setTreatmentPackage, setCurrentStep }) {
     }
   }, [heading, serviceCartItems]);
 
+  const emptyCart = () => {
+    dispatch(emptyServiceCart());
+  };
+
   return (
     <div className="py-5">
       <Suspense fallback={<div />}>
         <CustomLoader open={isLoading} />
       </Suspense>
       <p className="font-bold text-4xl text-coffee text-center">{heading}</p>
-      <div className="flex justify-end">
+      <div className="flex justify-end gap-2">
         <button
           className="p-3 rounded bg-coffee text-white font-bold hover:!opacity-80 hover:!shadow-lg"
           onClick={viewCartClick}
         >
           View Cart
+        </button>
+
+        <button
+          className="p-3 rounded bg-coffee text-white font-bold hover:!opacity-80 hover:!shadow-lg"
+          onClick={emptyCart}
+        >
+          Empty Cart
         </button>
       </div>
       <motion.div
@@ -205,6 +208,13 @@ function BookNowOptions({ heading, setTreatmentPackage, setCurrentStep }) {
         whileInView="show"
         viewport={{ once: true }}
       >
+        {heading.includes("Laser") && (
+          <p className="text-sm text-bitterSweet px-5">
+            <strong className="!text-coal">Note: </strong>Please select either
+            Full Body packages or Other Packages. You can't club Full Body
+            Package with Other Packages.
+          </p>
+        )}
         <BookNowPackageCards
           packageDetails={packageDetails}
           isMultiplePackage={isMultiplePackage}
@@ -258,7 +268,6 @@ function BookNowOptions({ heading, setTreatmentPackage, setCurrentStep }) {
               ))}
               <button
                 className="no-underline p-3 rounded bg-coffee text-white text-center font-bold mt-5 hover:shadow-xl disabled:cursor-not-allowed disabled:opacity-80"
-                disabled={!isButtonDisabled}
                 onClick={addToCart}
               >
                 Add To Cart

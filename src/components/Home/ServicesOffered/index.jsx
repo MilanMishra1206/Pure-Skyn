@@ -177,7 +177,7 @@ function ServicesOffered({ isMobile, isLargeScreen, isLaptop }) {
           {servicesOffered.map((item) => (
             <CustomCards
               title={item.title}
-              imgSrc={item.image}
+              imgSrc={item.imageSrc}
               linkTo={item.linkTo}
               key={item.id}
             />

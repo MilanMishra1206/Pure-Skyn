@@ -42,7 +42,7 @@ function BookNow() {
     city: "",
   });
 
-  const steps = ["Choose Your Treatment", stepHeading, "Book Now"];
+  const steps = ["Choose Your Treatment", "Choose Your Package", "Book Now"];
   const storedTimeSlots = sessionStorage.getItem("availableTimeSlots");
   const timeSlots = storedTimeSlots ? JSON.parse(storedTimeSlots) : [];
 

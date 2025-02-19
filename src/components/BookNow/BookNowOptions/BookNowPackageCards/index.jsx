@@ -12,10 +12,11 @@ function BookNowPackageCards({
       {packageDetails.map((item) => (
         <div
           key={item.id}
-          className={`relative overflow-hidden rounded-md shadow-lg cursor-pointer hover:!border hover:!border-black duration-500 w-96 place-items-center ${item.isDisabled ? "!border !border-emerald-900" : ""}`}
+          className={`relative overflow-hidden rounded-md shadow-lg cursor-pointer hover:!border hover:!border-black duration-500 w-96 place-items-center 
+            ${item.isSelected ? "!border !border-emerald-900" : ""}`}
           onClick={() => handlePackageCardClick(item.featureName, item.imgSrc)}
         >
-          {item.isDisabled && (
+          {item.isSelected && (
             <div className="absolute top-2 right-2">
               <FaCircleCheck fill="green" size="1.5rem" />
             </div>

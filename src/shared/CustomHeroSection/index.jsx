@@ -122,15 +122,15 @@ const CustomHeroSection = () => {
           </div>
         </div>
       )}
-      <section className="w-full bg-[#FAFAFA] px-8 py-12 grid md:grid-cols-2 gap-8 mx-auto shadow-lg">
-        <div className="flex flex-col items-center">
-          <span className="flex justify-center mb-4 text-xs md:text-sm font-medium">
-            <img
-              src={Resources.images.NavBar.logo2}
-              className={`${isTablet ? "w-3/5" : "w-2/5"}`}
-            />
-          </span>
+      <section className="w-full bg-[#FAFAFA] px-5 py-12 grid md:grid-cols-2 gap-8 mx-auto shadow-lg">
+        <div className="flex flex-col items-center order-2 lg:!order-1">
           <div className="flex lg:w-4/5 xl:!w-3/5 flex-col shadow rounded-lg p-4 border">
+            <div className="flex justify-center mb-4 text-xs md:text-sm font-medium">
+              <img
+                src={Resources.images.NavBar.logo2}
+                className={`${isTablet ? "w-3/5" : "w-2/5"}`}
+              />
+            </div>
             <span className="text-lg font-bold font-poppins text-center mb-4">
               Have Query? We will give a call!
             </span>
@@ -179,7 +179,7 @@ const CustomHeroSection = () => {
                   textClassOverride="!text-cello"
                   placeholderClasses="placeholder:!opacity-30 !text-licorice"
                   className="h-12 rounded-md !bg-transparent"
-                  placeholder="Enter"
+                  placeholder="Enter Your Email"
                   requiredStar
                   labelToShow="Email Id"
                   name="email"
@@ -229,7 +229,7 @@ const CustomHeroSection = () => {
             </div>
           </div>
         </div>
-        <div>
+        <div className="flex flex-col order-1 lg:!order-2">
           <ShuffleGrid />
           <div className="text-base md:text-lg text-cello my-4 md:my-6 px-3 lg:!mx-5 font-poppins text-center">
             <p>Get the best deals from our latest promotions.</p>
@@ -249,7 +249,7 @@ const CustomHeroSection = () => {
           <div className="flex justify-center">
             <CustomButton2
               buttonText="Download App"
-              buttonClass="md:!w-1/2"
+              buttonClass="lg:!w-1/2"
               handleSubmit={handleDownloadApp}
             />
           </div>
@@ -263,7 +263,7 @@ const shuffle = (array) => {
   let currentIndex = array.length,
     randomIndex;
 
-  while (currentIndex != 0) {
+  while (currentIndex !== 0) {
     randomIndex = Math.floor(Math.random() * currentIndex);
     currentIndex--;
 
@@ -363,7 +363,7 @@ const ShuffleGrid = () => {
   };
 
   return (
-    <div className="grid grid-cols-2 md:!grid-cols-3 xl:!grid-cols-4 grid-rows-3 h-[450px] xl:!h-[550px] gap-1">
+    <div className="grid grid-cols-2 lg:!grid-cols-3 xl:!grid-cols-4 grid-rows-3 h-[450px] xl:!h-[550px] gap-1">
       {squares.map((sq) => sq)}
     </div>
   );

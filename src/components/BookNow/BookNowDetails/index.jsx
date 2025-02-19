@@ -77,7 +77,7 @@ const BookNowDetails = ({
                     className="h-16 w-16 object-cover"
                     alt={service.packageName}
                   />
-                  <div className="flex flex-col sm:flex-grow sm:pl-4">
+                  <div className="flex flex-col sm:flex-grow sm:pl-4 text-center md:!text-left">
                     <span className="text-base text-kashmirBlue">
                       {service.treatmentName}
                     </span>

@@ -136,12 +136,9 @@ function LaserHairRemovalForWomen({ category, isMobile, isTablet }) {
                   carouselContent={beforeAfterCarouselContent.lhrFemale}
                 />
                 <FadedLineBreak />
-                <DrawCircleText
-                  headerText={"70% OFF -"}
-                  serviceName={"Laser Hair Removal Packages!"}
-                  buttonText="Check Now"
-                  link="/services/laser-hair-removal-packages"
-                />
+                <div className="xl:!flex xl:!justify-center xl:!items-center">
+                  <img src={Resources.images.Common.offerBanner} alt="Offer" />
+                </div>
                 <div className="text-center text-skyn font-bold text-3xl px-4">
                   <p>Frequently Asked Questions(FAQs)</p>
                 </div>

@@ -8,7 +8,7 @@ function CustomHomeHeader({ heading, headerClass }) {
       <div>
         <div className="flex flex-col font-poppins">
           <div
-            className={`text-4xl md:!text-5xl font-bold text-skyn mb-3 ${headerClass}`}
+            className={`text-3xl md:!text-5xl font-bold text-skyn mb-3 ${headerClass}`}
           >
             {heading}
           </div>
