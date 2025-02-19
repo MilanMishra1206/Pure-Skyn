@@ -8,7 +8,7 @@ import FlyoutLink from "../FlayoutLink";
 import Dropdown from "../Dropdown";
 import DropdownContent, { handleKeyPress } from "../Dropdown/DropdownContent";
 
-const CartDrawer = lazy(() => import("../../../components/Cart/CartDrawer"));
+const CartDrawer = lazy(() => import("../../../components/ProductsCart/CartDrawer"));
 
 const MenuForDesktop = ({
   isActive,

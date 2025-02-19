@@ -3,10 +3,9 @@ import { MdDeleteForever, MdOutlineShoppingCartCheckout } from "react-icons/md";
 import CustomButton2 from "../../../shared/CustomButton2";
 import BookNowForm from "./BookNowForm";
 import LoginModal from "../LoginModal";
-import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
 import { removeFromServicesCart } from "../../../redux/Actions";
-import ConfirmationModal from "../../Cart/ConfirmationModal";
+import ConfirmationModal from "../../ProductsCart/ConfirmationModal";
 import FadedLineBreak from "../../../shared/CustomHrTag";
 
 const BookNowDetails = ({
@@ -17,8 +16,8 @@ const BookNowDetails = ({
   handleSubmit,
   checked,
   setChecked,
+  servicesCart
 }) => {
-  const servicesCart = useSelector((state) => state.servicesCart.services);
   const dispatch = useDispatch();
   const [packagePrice, setPackagePrice] = useState(0);
   const [openLoginModal, setOpenLoginModal] = useState(false);

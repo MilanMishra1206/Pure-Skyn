@@ -3,6 +3,8 @@ import { lazy, Suspense, useEffect, useState } from "react";
 import { Breadcrumbs, Typography, useMediaQuery } from "@mui/material";
 import { motion } from "framer-motion";
 import { Link, useNavigate } from "react-router-dom";
+import { useSelector } from "react-redux";
+import { FaCartPlus } from "react-icons/fa";
 
 import BookNowDetails from "../BookNowDetails";
 import { getBookNowFormValidation } from "../../../helpers/Login";
@@ -10,12 +12,14 @@ import { createNewBooking } from "../../../services/Booking";
 import { useAppSnackbar } from "../../../config/Context/SnackbarContext";
 import FadeInWrapper from "../../../config/MotionFramer/FadeInWrapper";
 import DrawCircleText from "../../../shared/CustomDrawCircleText";
+import Resources from "../../../config/Resources";
 
 const CustomLoader = lazy(() => import("../../../shared/CustomLoader"));
 
 function ServicesCart() {
   const showSnackbar = useAppSnackbar();
   const navigate = useNavigate();
+  const servicesCart = useSelector((state) => state.servicesCart.services);
   const isMobile = useMediaQuery("(max-width: 767px)");
   const isTablet = useMediaQuery("(max-width: 1023px)");
 
@@ -150,15 +154,38 @@ function ServicesCart() {
             subText={"Pay 50% after the service!!"}
           />
         </motion.div>
-        <BookNowDetails
-          isLoggedIn={isLoggedIn}
-          formik={formik}
-          isMobile={isMobile}
-          timeSlots={timeSlots}
-          handleSubmit={handleSubmit}
-          checked={checked}
-          setChecked={setChecked}
-        />
+        {servicesCart.length > 0 ? (
+          <BookNowDetails
+            isLoggedIn={isLoggedIn}
+            formik={formik}
+            isMobile={isMobile}
+            timeSlots={timeSlots}
+            handleSubmit={handleSubmit}
+            checked={checked}
+            setChecked={setChecked}
+            servicesCart={servicesCart}
+          />
+        ) : (
+          <div className="flex flex-col items-center justify-center px-2 md:!px-5 pb-5">
+            <img
+              src={Resources.images.Common.emptyCart}
+              className="h-52 md:!h-96"
+              alt="Empty Cart"
+            />
+            <p className="text-xl font-bold text-center text-coal">
+              No Services Added. Let's add some! ⚡
+            </p>
+            <button
+              className="flex gap-2 items-center justify-center rounded-3xl font-medium px-4 active:!bg-white active:!text-skyn bg-skyn text-white hover:!opacity-80 active:!border-none transition duration-500 py-2 mt-4"
+              onClick={() => {
+                navigate("/book-now");
+              }}
+            >
+              <FaCartPlus size="1.2rem" />
+              Book Services
+            </button>
+          </div>
+        )}
       </div>
     </motion.div>
   );

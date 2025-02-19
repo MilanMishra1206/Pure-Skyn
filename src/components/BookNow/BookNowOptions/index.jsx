@@ -3,7 +3,7 @@ import { lazy, Suspense, useEffect, useState } from "react";
 import { IoIosCloseCircle } from "react-icons/io";
 import { useMutation } from "react-query";
 import dayjs from "dayjs";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import FadeInWrapper from "../../../config/MotionFramer/FadeInWrapper";
 import {
   allPackageDetails,
@@ -17,14 +17,21 @@ import {
 import BookNowPackageCards from "./BookNowPackageCards";
 import { requestBooking } from "../../../services/Booking";
 import { useAppSnackbar } from "../../../config/Context/SnackbarContext";
-import { addToServicesCart, emptyServiceCart } from "../../../redux/Actions";
+import {
+  addToServicesCart,
+  emptyServiceCart,
+  removeFromServicesCart,
+} from "../../../redux/Actions";
 
 const CustomLoader = lazy(() => import("../../../shared/CustomLoader"));
 
-function BookNowOptions({ heading, setTreatmentPackage, setCurrentStep }) {
+function BookNowOptions({
+  heading,
+  setTreatmentPackage,
+  setCurrentStep,
+  servicesCart,
+}) {
   const dispatch = useDispatch();
-  const serviceCartItems = useSelector((state) => state.servicesCart.services);
-
   const [packageDetails, setPackageDetails] = useState([]);
   const [isMultiplePackage, setIsMultiplePackage] = useState(false);
   const [openModal, setOpenModal] = useState(false);
@@ -39,7 +46,7 @@ function BookNowOptions({ heading, setTreatmentPackage, setCurrentStep }) {
   const showSnackbar = useAppSnackbar();
 
   const handlePackageCardClick = (featureName, imgSrc) => {
-    serviceCartItems.map((service) => {
+    servicesCart.map((service) => {
       if (service.featureName === featureName) {
         setSelectedPackages({
           packageName: service.packageName,
@@ -52,11 +59,6 @@ function BookNowOptions({ heading, setTreatmentPackage, setCurrentStep }) {
     setOpenModal(true);
     getTreatmentPackage(featureName);
     setSelectedPackageImg(imgSrc);
-  };
-
-  const closeModal = () => {
-    setOpenModal(false);
-    setTreatmentPackageDetails([]);
   };
 
   const handlePackageSelect = (
@@ -72,6 +74,12 @@ function BookNowOptions({ heading, setTreatmentPackage, setCurrentStep }) {
     setFeatureName(featureName);
     setServiceId(serviceId);
     setSubServiceId(subServiceId);
+  };
+
+  const closeModal = () => {
+    setSelectedPackages(null);
+    setOpenModal(false);
+    setTreatmentPackageDetails([]);
   };
 
   const getTreatmentPackage = (featureName) => {
@@ -133,11 +141,27 @@ function BookNowOptions({ heading, setTreatmentPackage, setCurrentStep }) {
     };
     const selectedFeatureName = sessionStorage.getItem("selectedFeatureName");
     if (selectedFeatureName !== newPackage.featureName) {
-      showSnackbar("Please select the package option", "error");
+      showSnackbar("Please select the service option", "error");
     } else {
-      showSnackbar("Package Added to the Cart", "success");
+      showSnackbar("Service added to the cart", "success");
       dispatch(addToServicesCart(newPackage));
       setOpenModal(false);
+    }
+  };
+
+  const removeFromCart = () => {
+    const selectedFeatureName = sessionStorage.getItem("selectedFeatureName");
+    const serviceToRemove = servicesCart.find(
+      (service) => service.featureName === selectedFeatureName
+    );
+
+    if (serviceToRemove) {
+      dispatch(removeFromServicesCart(serviceToRemove.subServiceId));
+      showSnackbar("Service removed from the cart", "success");
+      setOpenModal(false);
+      setSelectedPackages(null);
+    } else {
+      showSnackbar("Service not available in the cart", "error");
     }
   };
 
@@ -167,7 +191,7 @@ function BookNowOptions({ heading, setTreatmentPackage, setCurrentStep }) {
     if (selectedPackage) {
       const updatedPackages = selectedPackage.package.map((pkg) => ({
         ...pkg,
-        isSelected: serviceCartItems.some(
+        isSelected: servicesCart.some(
           (cartPkg) => cartPkg.featureName === pkg.featureName
         ),
       }));
@@ -175,7 +199,7 @@ function BookNowOptions({ heading, setTreatmentPackage, setCurrentStep }) {
       setPackageDetails(updatedPackages);
       setIsMultiplePackage(selectedPackage.isMultiple);
     }
-  }, [heading, serviceCartItems]);
+  }, [heading, servicesCart]);
 
   const emptyCart = () => {
     dispatch(emptyServiceCart());
@@ -209,11 +233,13 @@ function BookNowOptions({ heading, setTreatmentPackage, setCurrentStep }) {
         viewport={{ once: true }}
       >
         {heading.includes("Laser") && (
-          <p className="text-sm text-bitterSweet px-5">
-            <strong className="!text-coal">Note: </strong>Please select either
-            Full Body packages or Other Packages. You can't club Full Body
-            Package with Other Packages.
-          </p>
+          <div className="text-sm text-bitterSweet text-center">
+            <span>
+              <strong className="!text-coal">Note: </strong>Please select either
+              Full Body packages or Other Packages. You can't club Full Body
+              Package with Other Packages.
+            </span>
+          </div>
         )}
         <BookNowPackageCards
           packageDetails={packageDetails}
@@ -225,7 +251,7 @@ function BookNowOptions({ heading, setTreatmentPackage, setCurrentStep }) {
         <>
           <div className="fixed inset-0 bg-black bg-opacity-50 backdrop-blur-sm z-40"></div>
           <div
-            className={`fixed top-0 font-poppins right-0 h-full w-4/5 md:!w-3/5 lg:!w-1/2 xl:!w-1/3 bg-[#FAFAFA] z-50 transform ${
+            className={`fixed !overflow-y-auto max-h-screen top-0 font-poppins right-0 h-full w-80 md:!w-3/5 lg:!w-1/2 xl:!w-1/3 bg-[#FAFAFA] z-50 transform ${
               openModal ? "translate-x-0" : "-translate-x-full"
             }`}
           >
@@ -236,17 +262,17 @@ function BookNowOptions({ heading, setTreatmentPackage, setCurrentStep }) {
               <IoIosCloseCircle size={"2rem"} />
             </button>
             <div className="flex flex-col gap-3 p-4 mt-5">
-              <p className="text-2xl font-extrabold uppercase text-cello text-center">
+              <p className="text-lg md:!text-2xl font-extrabold uppercase text-cello text-center">
                 {heading} Package
               </p>
               <hr className="!p-0" />
-              <p className="text-xl font-bold uppercase text-center">
+              <p className="text-lg md:!text-xl font-bold uppercase text-center">
                 Select Your Package
               </p>
               {treatmentPackageDetails.map((item, index) => (
                 <div
                   className={`flex flex-col lg:!flex-row md:justify-between gap-3 p-4 rounded cursor-pointer border-2
-                  ${selectedPackages?.packageName === item.name ? "!border-black" : "!border-black] hover:!shadow-lg"}`}
+                  ${selectedPackages?.packageName === item.name ? "!border-black" : "hover:!shadow-lg"}`}
                   onClick={() =>
                     handlePackageSelect(
                       item.name,
@@ -277,6 +303,12 @@ function BookNowOptions({ heading, setTreatmentPackage, setCurrentStep }) {
                 onClick={viewCartClick}
               >
                 View Cart
+              </button>
+              <button
+                className="no-underline p-3 rounded bg-secondary text-white text-center font-bold hover:shadow-xl disabled:cursor-not-allowed disabled:opacity-80"
+                onClick={removeFromCart}
+              >
+                Remove From Cart
               </button>
             </div>
           </div>

@@ -11,7 +11,7 @@ import Resources from "../../config/Resources";
 import { useAppSnackbar } from "../../config/Context/SnackbarContext";
 import { MdShoppingCartCheckout } from "react-icons/md";
 
-const CartDrawer = lazy(() => import("../../components/Cart/CartDrawer"));
+const CartDrawer = lazy(() => import("../../components/ProductsCart/CartDrawer"));
 
 function CustomNavbar() {
   const location = useLocation();

@@ -1,11 +1,7 @@
 import ServicesCart from "../../components/BookNow/ServicesCart";
 
 function PureSkynServicesCart() {
-  return (
-    <div>
-      <ServicesCart />
-    </div>
-  );
+  return <ServicesCart />;
 }
 
 export default PureSkynServicesCart;
