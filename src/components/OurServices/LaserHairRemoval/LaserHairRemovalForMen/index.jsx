@@ -130,12 +130,18 @@ function LaserHairRemovalForMen({ category, isMobile, isTablet, isLaptop }) {
                 whileInView="show"
                 viewport={{ once: true }}
               >
-                <DrawCircleText
-                  headerText={"70% OFF -"}
-                  serviceName={"Laser Hair Removal Packages!"}
-                  buttonText="Check Now"
-                  link="/services/laser-hair-removal-packages"
-                />
+                <div className="xl:!flex xl:!justify-center xl:!items-center">
+                  <img
+                    src={Resources.images.Common.offerBannerMobile}
+                    alt="Offer"
+                    className="md:hidden"
+                  />
+                  <img
+                    src={Resources.images.Common.offerBannerLaptop}
+                    alt="Offer"
+                    className="hidden md:!block"
+                  />
+                </div>
                 <FadedLineBreak />
                 <BeforeAfterCarousel
                   carouselContent={beforeAfterCarouselContent.lhrMale}

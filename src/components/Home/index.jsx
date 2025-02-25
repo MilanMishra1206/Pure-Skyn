@@ -8,7 +8,7 @@ const BestSelling = lazy(() => import("./BestSelling"));
 const TestimonialCarousel = lazy(() => import("./TestimonialCarousel"));
 const ServicesOffered = lazy(() => import("./ServicesOffered"));
 const WhyUs = lazy(() => import("./WhyUs"));
-const ContactUs = lazy(() => import("./ContactUs"));
+// const ContactUs = lazy(() => import("./ContactUs"));
 const AboutUs = lazy(() => import("./AboutUs"));
 const CustomHeroSection = lazy(() => import("../../shared/CustomHeroSection"));
 
@@ -61,11 +61,11 @@ function Home() {
             <TestimonialCarousel isMobile={isMobile} />
           </MotionWrapper>
         </Suspense>
-        <Suspense fallback={<CustomLoader open={true} />}>
+        {/* <Suspense fallback={<CustomLoader open={true} />}>
           <MotionWrapper>
             <ContactUs isMobile={isMobile} />
           </MotionWrapper>
-        </Suspense>
+        </Suspense> */}
       </div>
     </div>
   );

@@ -19,7 +19,6 @@ function BookNowForm({
   formik,
   timeSlots,
   handleSubmit,
-  treatmentName,
   checked,
   setChecked,
 }) {
@@ -28,11 +27,9 @@ function BookNowForm({
   return (
     <>
       <form className="w-full">
-        <div className="rounded-3xl p-8">
-          <div className="text-3xl font-poppins text-center font-extrabold mb-5">
+        <div className="p-4">
+          <div className="text-2xl font-poppins text-center font-extrabold">
             Please Share Booking Details
-            <br />
-            <span className="text-coffee !text-2xl">{treatmentName}</span>
           </div>
           <FadedLineBreak />
           <div className="text-left text-lg md:p-5 ml-2 mb-4 md:!mb-0">
@@ -52,7 +49,7 @@ function BookNowForm({
                   className="text-[#175EC3] hover:opacity-80"
                   onClick={() => setOpenLoginModal(true)}
                 >
-                  Login
+                  Sign-In
                 </button>{" "}
                 to fetch your details
               </p>

@@ -1,20 +1,16 @@
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { Breadcrumbs, Typography, useMediaQuery } from "@mui/material";
 import { useEffect } from "react";
 import { motion } from "framer-motion";
 import Resources from "../../../../config/Resources";
 import {
-  allPackageDetails,
   fullBodyLaserContent,
-  laserHairMenPackage,
-  laserHairWomenPackage,
   LHRBenefits,
   sessionWiseHairReduction,
 } from "../../../../helpers/LaserServices";
 import MotionWrapper from "../../../../config/MotionFramer/MotionWrapper";
 import FadeInWrapper from "../../../../config/MotionFramer/FadeInWrapper";
 import FuzzyPricingOverlay from "../../../../shared/CustomFuzzyPricingOverlay";
-import DrawCircleText from "../../../../shared/CustomDrawCircleText";
 import CustomPricingTable from "../../../../shared/CustomPricingTable";
 import FadedLineBreak from "../../../../shared/CustomHrTag";
 import WomenAndMenTabs from "./WomenAndMenTabs";
@@ -78,23 +74,11 @@ function LaserHairRemovalPackages() {
           </div>
           <div>
             <motion.div
-              variants={FadeInWrapper("up", 0.1)}
-              initial="hidden"
-              whileInView="show"
-              viewport={{ once: true }}
-            >
-              <DrawCircleText
-                headerText={"70% OFF -"}
-                serviceName={"Laser Hair Removal Packages!"}
-              />
-            </motion.div>
-            <FadedLineBreak />
-            <motion.div
               variants={FadeInWrapper("right", 0.1)}
               initial="hidden"
               whileInView="show"
               viewport={{ once: true }}
-              className="flex flex-col gap-5 md:flex-row font-poppins font-medium text-lg text-center text-coal"
+              className="flex flex-col gap-5 mt-5 md:flex-row font-poppins font-medium text-lg text-center text-coal"
             >
               <p>
                 At Pure Skyn, we take pride in our commitment to delivering
@@ -110,6 +94,25 @@ function LaserHairRemovalPackages() {
                 secure your spot. Say goodbye to unwanted hair and hello to a
                 lifetime of effortless beauty.
               </p>
+            </motion.div>
+            <FadedLineBreak />
+            <motion.div
+              variants={FadeInWrapper("up", 0.1)}
+              initial="hidden"
+              whileInView="show"
+              viewport={{ once: true }}
+              className="xl:!flex xl:!justify-center xl:!items-center"
+            >
+              <img
+                src={Resources.images.Common.offerBannerMobile}
+                alt="Offer"
+                className="md:hidden"
+              />
+              <img
+                src={Resources.images.Common.offerBannerLaptop}
+                alt="Offer"
+                className="hidden md:!block"
+              />
             </motion.div>
             <FadedLineBreak />
             <WomenAndMenTabs isMobile={isMobile} />

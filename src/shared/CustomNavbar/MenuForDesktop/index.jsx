@@ -1,14 +1,14 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { FaCartShopping } from "react-icons/fa6";
-import { useSelector } from "react-redux";
 import { lazy, useState } from "react";
 import { AnimatePresence } from "framer-motion";
+import { MdShoppingCartCheckout } from "react-icons/md";
 import Resources from "../../../config/Resources";
 import FlyoutLink from "../FlayoutLink";
 import Dropdown from "../Dropdown";
 import DropdownContent, { handleKeyPress } from "../Dropdown/DropdownContent";
 
-const CartDrawer = lazy(() => import("../../../components/Cart/CartDrawer"));
+const CartDrawer = lazy(() => import("../../../components/ProductsCart/CartDrawer"));
 
 const MenuForDesktop = ({
   isActive,
@@ -16,16 +16,23 @@ const MenuForDesktop = ({
   serviceItem,
   profileItem,
   packagesItem,
+  totalServicesItems,
+  totalProductsItems,
   isAdmin,
+  isProductsPage,
   isLoggedIn,
   isTablet,
 }) => {
-  const cartItems = useSelector((state) => state.cart.items);
+  const navigate = useNavigate();
   const [openCart, setOpenCart] = useState(false);
-  const totalItems = cartItems.length;
 
   const handleOpenCart = () => {
     setOpenCart(!openCart);
+  };
+
+  const navigateToServicesCart = () => {
+    sessionStorage.removeItem("currentBookStep");
+    navigate("/book-now/services-cart");
   };
 
   return (
@@ -86,19 +93,32 @@ const MenuForDesktop = ({
         )}
       </div>
       <div className="flex items-center navbar-links">
-        {!isAdmin && (
-          <button
-            onClick={handleOpenCart}
-            className="mr-5 hover:opacity-80 text-white relative"
-          >
-            <FaCartShopping size={"2rem"} />
-            {totalItems > 0 && (
-              <span className="absolute left-1/2 bottom-50 text-xs bg-skyn text-white rounded-full px-2 py-1">
-                {totalItems}
-              </span>
-            )}
-          </button>
-        )}
+        {!isAdmin &&
+          (isProductsPage ? (
+            <button
+              onClick={handleOpenCart}
+              className="mr-5 hover:opacity-80 text-white relative"
+            >
+              <FaCartShopping size={"2rem"} />
+              {totalProductsItems > 0 && (
+                <span className="absolute left-1/2 bottom-50 text-xs bg-skyn text-white rounded-full px-2 py-1">
+                  {totalProductsItems}
+                </span>
+              )}
+            </button>
+          ) : (
+            <button
+              onClick={navigateToServicesCart}
+              className="mr-5 hover:opacity-80 text-white relative"
+            >
+              <MdShoppingCartCheckout size={"2rem"} />
+              {totalServicesItems > 0 && (
+                <span className="absolute bottom-50 text-xs bg-skyn text-white rounded-full px-2 py-1">
+                  {totalServicesItems}
+                </span>
+              )}
+            </button>
+          ))}
         {isLoggedIn && (
           <div className="flex">
             <Dropdown
@@ -114,7 +134,7 @@ const MenuForDesktop = ({
           </div>
         )}
       </div>
-      {!isLoggedIn && <FlyoutLink href="/login">Login</FlyoutLink>}
+      {!isLoggedIn && <FlyoutLink href="/login">Sign-In</FlyoutLink>}
       {openCart && (
         <AnimatePresence>
           <CartDrawer openCart={openCart} handleOpenCart={handleOpenCart} />

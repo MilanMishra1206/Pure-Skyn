@@ -5,15 +5,8 @@ const Resources = {
   images: {
     Common: {
       backArrow: `${base}/Common/backArrow.svg`,
-      bookNow: `${base}/Common/BookNow.jpg`,
-      bookNowBanner: `${base}/Common/BookNowBanner.jpg`,
-      bookNowBannerMobile: `${base}/Common/BookNowBannerMob.jpg`,
-      BookNowTabletView: `${base}/Common/BookNowTabletView.jpg`,
-      bookNowCard: `${base}/Common/bookNowCard.webp`,
       blackNoise: `${base}/Common/black-noise.png`,
-      cardBg1: `${base}/Common/cards-background.svg`,
       cardBg2: `${base}/Common/cards-bg-2.png`,
-      bookNowCard2: `${base}/Common/book-now.png`,
       searchIcon: `${base}/Common/searchIcon.svg`,
       filterIcon: `${base}/Common/Filter.svg`,
       dropdownIcon: `${base}/Common/DropdownIcon.svg`,
@@ -26,6 +19,11 @@ const Resources = {
       homeHeader: `${base}/Common/homeHeader.jpg`,
       homeHeaderMobile: `${base}/Common/home-header-mobile.jpg`,
       dotsBg: `${base}/Common/dotsbg.svg`,
+      offerBanner: `${base}/Common/offer_banner.jpg`,
+      newLogoBlack: `${base}/Common/new_log_black.png`,
+      newLogoWhite: `${base}/Common/new_log_white.png`,
+      offerBannerMobile: `${base}/Common/off_banner_mobile.jpg`,
+      offerBannerLaptop: `${base}/Common/off_banner_laptop.jpg`,
     },
     Home: {
       dermfracMobile: `${base}/Home/dermfrac-mobile.png`,
@@ -118,6 +116,7 @@ const Resources = {
           imageThree: `${base}/Services/LaserHairRemoval/Men/img3.webp`,
           imageFour: `${base}/Services/LaserHairRemoval/Men/img4.webp`,
           image5: `${base}/Services/LaserHairRemoval/Men/LHR-Men-img2.webp`,
+          LHRMenHomeCard: `${base}/Services/LaserHairRemoval/Men/LHRHomeCard.jpg`,
         },
         Women: {
           headerWomen: `${base}/Services/LaserHairRemoval/Women/header.jpg`,
@@ -128,6 +127,7 @@ const Resources = {
           imageFive: `${base}/Services/LaserHairRemoval/Women/img5.webp`,
           imageSix: `${base}/Services/LaserHairRemoval/Women/img6.webp`,
           imageSeven: `${base}/Services/LaserHairRemoval/Women/img7.webp`,
+          LHRWomenHomeCard: `${base}/Services/LaserHairRemoval/Women/LHRWomenHomeCard.png`,
         },
       },
       OxyGeneo: {
@@ -141,6 +141,7 @@ const Resources = {
         exfoliate: `${base}/Services/Oxygeneo/exfoliate.png`,
         infuse: `${base}/Services/Oxygeneo/infuse.png`,
         oxygenate: `${base}/Services/Oxygeneo/oxygenate.png`,
+        oxygenoHomeCard: `${base}/Services/Oxygeneo/oxygenoHomeCard.jpg`,
       },
       OxyHydra: {
         oxyHydraCard: `${base}/Services/OxyHydra/oxyHydra.jpg`,
@@ -152,6 +153,7 @@ const Resources = {
         img3: `${base}/Services/OxyHydra/img3.jpg`,
         img4: `${base}/Services/OxyHydra/img4.jpg`,
         oxyPackage: `${base}/Services/OxyHydra/oxy-package.jpg`,
+        oxyHydraHomeCard: `${base}/Services/OxyHydra/oxyHydraHomeCard.jpeg`,
       },
       SkinTightening: {
         skinTighteningCard: `${base}/Services/SkinTightening/skinTighteningCard.jpg`,
@@ -164,6 +166,7 @@ const Resources = {
         img6: `${base}/Services/SkinTightening/img6.jpg`,
         img7: `${base}/Services/SkinTightening/img7.jpg`,
         skinPackage: `${base}/Services/SkinTightening/skin-package.jpg`,
+        sTHomeCard: `${base}/Services/SkinTightening/sTHomeCard.webp`,
       },
       Dermafrac: {
         dermafracCard: `${base}/Services/Dermafrac/dermafracCard.jpg`,
@@ -175,6 +178,7 @@ const Resources = {
         image5: `${base}/Services/Dermafrac/img5.webp`,
         img6: `${base}/Services/Dermafrac/img6.jpg`,
         dermaPackage: `${base}/Services/Dermafrac/derma-package.jpg`,
+        dermafracHomeCard: `${base}/Services/Dermafrac/dermafracHomeCard.jpg`,
       },
       BeforeAfter: {
         lhrMale: {

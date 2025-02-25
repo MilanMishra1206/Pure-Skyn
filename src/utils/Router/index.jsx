@@ -34,6 +34,9 @@ const PureSkynLHRPackages = lazy(
 const PureSkynMediFacialPackages = lazy(
   () => import("../../pages/PureSkynMediFacialPackages")
 );
+const PureSkynServicesCart = lazy(
+  () => import("../../pages/PureSkynServicesCart")
+);
 const PureSkynCart = lazy(() => import("../../pages/PureSkynCart"));
 const CustomNavbar = lazy(() => import("../../shared/CustomNavbar"));
 const PageNotFound = lazy(() => import("../../shared/PageNotFound"));
@@ -121,8 +124,13 @@ const routesConfig = [
     accessRule: "public",
   },
   {
-    path: "/cart",
+    path: "/products/product-cart",
     Component: PureSkynCart,
+    accessRule: "public",
+  },
+  {
+    path: "/book-now/services-cart",
+    Component: PureSkynServicesCart,
     accessRule: "public",
   },
   {

@@ -21,13 +21,13 @@ function SignUpForm({ formik, handleSubmit, mobileClass }) {
       initial="hidden"
       whileInView="show"
       viewport={{ once: true }}
-      className={`w-full max-w-md mx-auto bg-[#FAFAFA] md:shadow-lg md:rounded-3xl px-4 py-3 ${mobileClass}`}
+      className={`w-full max-w-md mx-auto bg-[#FFFFFF] md:shadow-lg md:rounded-3xl px-4 py-6 ${mobileClass}`}
     >
-      <div className="flex justify-center">
+      <div className="flex justify-center p-4">
         <img
-          src={Resources.images.NavBar.logo1}
+          src={Resources.images.Common.newLogoWhite}
           alt="branding"
-          style={{ width: "8rem" }}
+          className="w-4/5 md:!w-3/5"
         />
       </div>
       <h2 className="font-extrabold font-poppins text-2xl mb-4 text-center text-kashmirBlue">
@@ -166,7 +166,7 @@ function SignUpForm({ formik, handleSubmit, mobileClass }) {
         <p>
           Already have an account?{" "}
           <Link to="/login" className="text-skyn hover:opacity-80 underline">
-            Login
+            Sign-In
           </Link>
         </p>
       </div>

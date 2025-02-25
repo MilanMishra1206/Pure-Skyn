@@ -52,17 +52,17 @@ const packagesItemForMobile = [
 const NavHeader = ({ toggleMenu, userName }) => (
   <header className="flex place-content-center items-center px-4 border-b border-gray-300">
     <button
-      className="absolute top-4 mr-5 right-4 text-2xl text-black"
+      className="absolute top-2 right-4 text-2xl text-black"
       onClick={toggleMenu}
     >
       <IoIosCloseCircle size={"2rem"} />
     </button>
-    <div className="flex flex-col">
+    <div className="flex flex-col p-4">
       <Link to="/" className="no-underline font-bold" onClick={toggleMenu}>
         <img
-          src={Resources.images.NavBar.logo2}
+          src={Resources.images.Common.newLogoWhite}
           alt="branding"
-          style={{ width: "10rem" }}
+          className="h-14 md:!h-16"
         />
       </Link>
       {userName && (
@@ -138,6 +138,12 @@ const MenuForMobile = ({
     !hasSubNav && toggleMenu();
   };
 
+  const navigateToServicesCart = () => {
+    sessionStorage.removeItem("currentBookStep");
+    navigate("/book-now/services-cart");
+    toggleMenu();
+  };
+
   const menuItems = [
     { name: "Home", link: "/" },
     ...(!isAdmin
@@ -152,7 +158,8 @@ const MenuForMobile = ({
           },
           { name: "Book", link: "/book-now" },
           { name: "Shop", link: "/products" },
-          { name: "Cart", link: "/cart" },
+          { name: "Products Cart", link: "/products/product-cart" },
+          { name: "Services Cart", link: "#", onClick: navigateToServicesCart },
         ]
       : []),
 
@@ -161,7 +168,7 @@ const MenuForMobile = ({
           { name: "Profile", link: "/user-profile" },
           { name: "Logout", link: "#", onClick: handleLogout },
         ]
-      : [{ name: "Login", link: "/login" }]),
+      : [{ name: "Sign-In", link: "/login" }]),
   ];
 
   return (
@@ -170,7 +177,7 @@ const MenuForMobile = ({
         <div className="fixed inset-0 bg-black bg-opacity-50 backdrop-blur-sm z-40"></div>
       )}
       <aside
-        className={`fixed font-poppins top-0 left-0 w-80 md:!w-1/2 bg-[#FAFAFA] z-50 transform h-full ${
+        className={`fixed font-poppins top-0 left-0 w-80 md:!w-1/2 bg-[#FFFF] z-50 transform h-full ${
           menuOpen ? "translate-x-0" : "-translate-x-full"
         } ${isTablet ? "block" : "hidden"} transition-all duration-500 ease-in-out overflow-scroll`}
       >

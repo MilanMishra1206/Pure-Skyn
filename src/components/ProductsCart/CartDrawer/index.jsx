@@ -65,7 +65,7 @@ function CartDrawer({ openCart, handleOpenCart }) {
   ];
 
   const handleCartSubmit = () => {
-    navigate("/cart");
+    navigate("/products/product-cart");
     handleOpenCart();
   };
 

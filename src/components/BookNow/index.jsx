@@ -12,6 +12,8 @@ import { useFormik } from "formik";
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
 import { useMutation } from "react-query";
+import { useSelector } from "react-redux";
+import { FaCartPlus } from "react-icons/fa";
 import { getBookNowFormValidation } from "../../helpers/Login";
 import { useAppSnackbar } from "../../config/Context/SnackbarContext";
 import DrawCircleText from "../../shared/CustomDrawCircleText";
@@ -20,6 +22,7 @@ import { createNewBooking } from "../../services/Booking";
 import BookNowDetails from "./BookNowDetails";
 import BookNowOptions from "./BookNowOptions";
 import { treatmentList } from "../../helpers/LaserServices";
+import Resources from "../../config/Resources";
 
 const CustomLoader = lazy(() => import("../../shared/CustomLoader"));
 
@@ -42,9 +45,12 @@ function BookNow() {
     city: "",
   });
 
-  const steps = ["Choose Your Treatment", stepHeading, "Book Now"];
+  const steps = ["Choose Your Treatment", "Choose Your Package", "Book Now"];
   const storedTimeSlots = sessionStorage.getItem("availableTimeSlots");
-  const timeSlots = storedTimeSlots ? JSON.parse(storedTimeSlots) : [];
+  const timeSlots = storedTimeSlots
+    ? JSON.parse(storedTimeSlots)
+    : ["10:00 AM", "12:00 PM", "2:00 PM", "4:00 PM"];
+  const servicesCart = useSelector((state) => state.servicesCart.services);
 
   useEffect(() => {
     const token = sessionStorage.getItem("token");
@@ -82,7 +88,7 @@ function BookNow() {
     const treatmentName = sessionStorage.getItem("treatmentName");
     if (sessionStorage.getItem("currentBookStep")) {
       setCurrentStep(currentBookStep);
-      setStepHeading(treatmentName);
+      setStepHeading(treatmentName || "Choose Your Services");
     }
   }, [sessionStorage.getItem("currentStep")]);
 
@@ -153,10 +159,26 @@ function BookNow() {
     }
     if (currentStep === 1) {
       setCurrentStep(0);
+      sessionStorage.removeItem("treatmentName");
+      sessionStorage.setItem("currentBookStep", 0);
       setStepHeading("Choose Option");
     } else if (currentStep === 2) {
-      setCurrentStep(1);
+      if (stepIndex === 0) {
+        setCurrentStep(0);
+        sessionStorage.removeItem("treatmentName");
+        sessionStorage.setItem("currentBookStep", 0);
+        setStepHeading("Choose Option");
+      } else {
+        setCurrentStep(1);
+        sessionStorage.setItem("currentBookStep", 1);
+      }
     }
+  };
+
+  const handleBookServices = () => {
+    setCurrentStep(0);
+    sessionStorage.removeItem("treatmentName");
+    sessionStorage.setItem("currentBookStep", 0);
   };
 
   return (
@@ -218,21 +240,21 @@ function BookNow() {
             initial="hidden"
             whileInView="show"
             viewport={{ once: true }}
-            className="grid md:grid-cols-2 xl:!grid-cols-3 gap-5 py-5"
+            className="grid md:grid-cols-2 xl:!grid-cols-3 gap-5 py-5 place-items-center"
           >
             {treatmentList.map((item) => (
               <div
                 key={item.id}
-                className="cursor-pointer hover:scale-105 duration-500 relative"
+                className="cursor-pointer hover:scale-105 duration-500 w-full lg:!w-96"
                 onClick={() => handleTreatmentClick(item.treatmentName)}
               >
                 <img
                   src={item.imgSrc}
-                  className="w-full h-full object-cover shadow-lg rounded-lg"
+                  className="w-full h-full object-cover shadow-lg rounded-t-md"
                   alt={item.treatmentName}
                 />
-                <div className="absolute bottom-0 left-0 w-full p-4 bg-coffee bg-opacity-60 backdrop-blur-md rounded-b-lg  text-center">
-                  <span className="font-poppins text-white font-bold text-xl">
+                <div className="bottom-0 left-0 w-full p-3 md:!p-4 bg-coffee bg-opacity-60 backdrop-blur-md rounded-b-lg text-center">
+                  <span className="font-poppins text-white font-bold md:!text-xl">
                     {item.treatmentName}
                   </span>
                 </div>
@@ -246,18 +268,42 @@ function BookNow() {
             setTreatmentPackage={setTreatmentPackage}
             treatmentPackage={treatmentPackage}
             setCurrentStep={setCurrentStep}
+            servicesCart={servicesCart}
           />
         )}
         {currentStep === 2 && (
-          <BookNowDetails
-            isLoggedIn={isLoggedIn}
-            formik={formik}
-            isMobile={isMobile}
-            timeSlots={timeSlots}
-            handleSubmit={handleSubmit}
-            checked={checked}
-            setChecked={setChecked}
-          />
+          <>
+            {servicesCart.length > 0 ? (
+              <BookNowDetails
+                isLoggedIn={isLoggedIn}
+                formik={formik}
+                isMobile={isMobile}
+                timeSlots={timeSlots}
+                handleSubmit={handleSubmit}
+                checked={checked}
+                setChecked={setChecked}
+                servicesCart={servicesCart}
+              />
+            ) : (
+              <div className="flex flex-col items-center justify-center px-2 md:!px-5 pb-5">
+                <img
+                  src={Resources.images.Common.emptyCart}
+                  className="h-52 md:!h-96"
+                  alt="Empty Cart"
+                />
+                <p className="text-xl font-bold text-center text-coal">
+                  No Services Added. Let's add some! ⚡
+                </p>
+                <button
+                  className="flex gap-2 items-center justify-center rounded-3xl font-medium px-4 active:!bg-white active:!text-skyn bg-skyn text-white hover:!opacity-80 active:!border-none transition duration-500 py-2 mt-4"
+                  onClick={handleBookServices}
+                >
+                  <FaCartPlus size="1.2rem" />
+                  Book Services
+                </button>
+              </div>
+            )}
+          </>
         )}
       </div>
     </motion.div>

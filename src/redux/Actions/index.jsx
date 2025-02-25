@@ -23,3 +23,17 @@ export const updateQuantity = (productId, quantity) => ({
   type: types.UPDATE_QUANTITY,
   payload: { productId, quantity },
 });
+
+export const addToServicesCart = (service) => ({
+  type: types.ADD_TO_SERVICE_CART,
+  payload: service,
+});
+
+export const removeFromServicesCart = (subServiceId) => ({
+  type: types.REMOVE_FROM_SERVICE_CART,
+  payload: subServiceId,
+});
+
+export const emptyServiceCart = () => ({
+  type: types.EMPTY_SERVICE_CART,
+});

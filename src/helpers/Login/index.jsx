@@ -157,6 +157,25 @@ const getAddReviewValidation = () =>
       ),
   });
 
+const getQueryValidation = () =>
+  yup.object().shape({
+    fullName: yup.string().required("Name is required"),
+    phoneNumber: yup.number().required("Phone Number is required"),
+    email: yup
+      .string()
+      .email("Please Enter Valid Email")
+      .required("Email is required"),
+    query: yup
+      .string()
+      .required("Query is required")
+      .min(10, "Query must be at least 10 characters")
+      .max(250, "Query cannot exceed 250 characters")
+      .test("word-count", "Query must be between 2 and 50 words", (value) => {
+        const wordCount = value ? value.trim().split(/\s+/).length : 0;
+        return wordCount >= 2 && wordCount <= 50;
+      }),
+  });
+
 export {
   loginInitialValues,
   getLoginValidation,
@@ -167,4 +186,5 @@ export {
   getBookNowValidation,
   getBookNowFormValidation,
   getAddReviewValidation,
+  getQueryValidation
 };
