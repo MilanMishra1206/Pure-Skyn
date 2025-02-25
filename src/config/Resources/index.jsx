@@ -6,7 +6,7 @@ const Resources = {
     Common: {
       backArrow: `${base}/Common/backArrow.svg`,
       blackNoise: `${base}/Common/black-noise.png`,
-      cardBg2: `${base}/Common/cards-bg-2.png`,      
+      cardBg2: `${base}/Common/cards-bg-2.png`,
       searchIcon: `${base}/Common/searchIcon.svg`,
       filterIcon: `${base}/Common/Filter.svg`,
       dropdownIcon: `${base}/Common/DropdownIcon.svg`,
@@ -20,6 +20,10 @@ const Resources = {
       homeHeaderMobile: `${base}/Common/home-header-mobile.jpg`,
       dotsBg: `${base}/Common/dotsbg.svg`,
       offerBanner: `${base}/Common/offer_banner.jpg`,
+      newLogoBlack: `${base}/Common/new_log_black.png`,
+      newLogoWhite: `${base}/Common/new_log_white.png`,
+      offerBannerMobile: `${base}/Common/off_banner_mobile.jpg`,
+      offerBannerLaptop: `${base}/Common/off_banner_laptop.jpg`,
     },
     Home: {
       dermfracMobile: `${base}/Home/dermfrac-mobile.png`,

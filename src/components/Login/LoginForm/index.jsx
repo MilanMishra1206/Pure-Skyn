@@ -23,7 +23,7 @@ function LoginForm({
       initial="hidden"
       whileInView="show"
       viewport={{ once: true }}
-      className={`w-full max-w-md mx-auto bg-[#FAFAFA] md:shadow-lg md:rounded-3xl p-8 ${mobileClass}`}
+      className={`w-full max-w-md mx-auto bg-[#FFFFFF] md:shadow-lg md:rounded-3xl p-8 ${mobileClass}`}
     >
       {isModal && (
         <div className="flex justify-end">
@@ -35,15 +35,15 @@ function LoginForm({
           </button>
         </div>
       )}
-      <div className="flex justify-center">
+      <div className="flex justify-center p-4">
         <img
-          src={Resources.images.NavBar.logo1}
+          src={Resources.images.Common.newLogoWhite}
           alt="branding"
-          style={{ width: "10rem" }}
+          className="w-4/5 md:!w-3/5"
         />
       </div>
       <div className="text-3xl font-poppins text-kashmirBlue font-extrabold mb-6 text-center">
-        LOGIN
+        SIGN IN
       </div>
       <form className="w-full">
         <Suspense fallback={<div />}>
@@ -103,7 +103,7 @@ function LoginForm({
         onClick={handleSubmit}
         className="mt-4 w-full bg-skyn text-white py-2 px-4 rounded-md hover:opacity-80 focus:outline-none focus:ring-2 focus:ring-skyn shadow-lg"
       >
-        Login
+        Sign In
       </button>
       <div className="mt-4 text-center">
         <p>

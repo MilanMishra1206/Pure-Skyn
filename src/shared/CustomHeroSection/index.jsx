@@ -122,13 +122,14 @@ const CustomHeroSection = () => {
           </div>
         </div>
       )}
-      <section className="w-full bg-[#FAFAFA] px-5 py-12 grid md:grid-cols-2 gap-8 mx-auto shadow-lg">
+      <section className="w-full bg-[#FFFFFF] px-5 py-12 grid md:grid-cols-2 gap-8 mx-auto shadow-lg">
         <div className="flex flex-col items-center order-2 lg:!order-1">
-          <div className="flex lg:w-4/5 xl:!w-3/5 flex-col shadow rounded-lg p-4 border">
-            <div className="flex justify-center mb-4 text-xs md:text-sm font-medium">
+          <div className="flex lg:w-4/5 xl:!w-3/5 flex-col shadow rounded-lg px-4 py-6 border">
+            <div className="flex justify-center p-4">
               <img
-                src={Resources.images.NavBar.logo2}
-                className={`${isTablet ? "w-3/5" : "w-2/5"}`}
+                src={Resources.images.Common.newLogoWhite}
+                alt="branding"
+                className="w-4/5 md:!w-3/5"
               />
             </div>
             <span className="text-lg font-bold font-poppins text-center mb-4">

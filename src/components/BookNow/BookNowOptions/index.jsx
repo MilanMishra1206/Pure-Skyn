@@ -251,7 +251,7 @@ function BookNowOptions({
         <>
           <div className="fixed inset-0 bg-black bg-opacity-50 backdrop-blur-sm z-40"></div>
           <div
-            className={`fixed !overflow-y-auto max-h-screen top-0 font-poppins right-0 h-full w-80 md:!w-3/5 lg:!w-1/2 xl:!w-1/3 bg-[#FAFAFA] z-50 transform ${
+            className={`fixed !overflow-y-auto max-h-screen top-0 font-poppins right-0 h-full w-80 md:!w-3/5 lg:!w-1/2 xl:!w-1/3 bg-[#FFFF] z-50 transform ${
               openModal ? "translate-x-0" : "-translate-x-full"
             }`}
           >

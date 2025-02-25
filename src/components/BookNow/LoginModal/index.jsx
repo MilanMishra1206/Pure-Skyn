@@ -35,7 +35,7 @@ function LoginModal({ setOpenLoginModal }) {
       }
     },
     onError() {
-      showSnackbar("Login Failed! Please try again.", "error");
+      showSnackbar("Sign-In Failed! Please try again.", "error");
     },
   });
   const formik = useFormik({

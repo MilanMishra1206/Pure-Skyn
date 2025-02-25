@@ -137,7 +137,16 @@ function LaserHairRemovalForWomen({ category, isMobile, isTablet }) {
                 />
                 <FadedLineBreak />
                 <div className="xl:!flex xl:!justify-center xl:!items-center">
-                  <img src={Resources.images.Common.offerBanner} alt="Offer" />
+                  <img
+                    src={Resources.images.Common.offerBannerMobile}
+                    alt="Offer"
+                    className="md:hidden"
+                  />
+                  <img
+                    src={Resources.images.Common.offerBannerLaptop}
+                    alt="Offer"
+                    className="hidden md:!block"
+                  />
                 </div>
                 <div className="text-center text-skyn font-bold text-3xl px-4">
                   <p>Frequently Asked Questions(FAQs)</p>

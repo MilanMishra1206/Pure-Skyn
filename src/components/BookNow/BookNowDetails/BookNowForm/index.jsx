@@ -49,7 +49,7 @@ function BookNowForm({
                   className="text-[#175EC3] hover:opacity-80"
                   onClick={() => setOpenLoginModal(true)}
                 >
-                  Login
+                  Sign-In
                 </button>{" "}
                 to fetch your details
               </p>

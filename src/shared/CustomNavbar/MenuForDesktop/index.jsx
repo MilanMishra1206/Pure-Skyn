@@ -134,7 +134,7 @@ const MenuForDesktop = ({
           </div>
         )}
       </div>
-      {!isLoggedIn && <FlyoutLink href="/login">Login</FlyoutLink>}
+      {!isLoggedIn && <FlyoutLink href="/login">Sign-In</FlyoutLink>}
       {openCart && (
         <AnimatePresence>
           <CartDrawer openCart={openCart} handleOpenCart={handleOpenCart} />
