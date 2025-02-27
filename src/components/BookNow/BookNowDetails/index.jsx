@@ -1,28 +1,122 @@
-import React, { useEffect, useState } from "react";
+import React, { lazy, Suspense, useEffect, useState } from "react";
 import { MdDeleteForever, MdOutlineShoppingCartCheckout } from "react-icons/md";
+import { useDispatch } from "react-redux";
+import { useNavigate } from "react-router-dom";
+import { useFormik } from "formik";
+import { useSelector } from "react-redux";
+import { useMutation } from "react-query";
+
 import CustomButton2 from "../../../shared/CustomButton2";
 import BookNowForm from "./BookNowForm";
 import LoginModal from "../LoginModal";
-import { useDispatch } from "react-redux";
 import { removeFromServicesCart } from "../../../redux/Actions";
 import ConfirmationModal from "../../ProductsCart/ConfirmationModal";
 import FadedLineBreak from "../../../shared/CustomHrTag";
+import { getBookNowFormValidation } from "../../../helpers/Login";
+import { createNewBooking } from "../../../services/Booking";
+import { useAppSnackbar } from "../../../config/Context/SnackbarContext";
 
-const BookNowDetails = ({
-  isLoggedIn,
-  formik,
-  isMobile,
-  timeSlots,
-  handleSubmit,
-  checked,
-  setChecked,
-  servicesCart
-}) => {
+const CustomLoader = lazy(() => import("../../../shared/CustomLoader"));
+
+const BookNowDetails = ({ isLoggedIn }) => {
+  const userProfile = useSelector((state) => state.userProfile.userProfile);
+  const servicesCart = useSelector((state) => state.servicesCart.services);
   const dispatch = useDispatch();
+  const navigate = useNavigate();
+  const showSnackbar = useAppSnackbar();
   const [packagePrice, setPackagePrice] = useState(0);
   const [openLoginModal, setOpenLoginModal] = useState(false);
   const [removeItem, setRemoveItem] = useState(false);
   const [subServiceId, setSubServiceId] = useState("");
+  const [checked, setChecked] = useState(true);
+  const [timeSlots, setTimeSlots] = useState([]);
+  const [initialValues, setInitialValues] = useState({
+    name: "",
+    email: "",
+    mobile: "",
+    address: "",
+    treatmentDate: "",
+    timeSlot: "",
+    city: "",
+  });
+
+  useEffect(() => {
+    const storedTimeSlots = sessionStorage.getItem("availableTimeSlots");
+    setTimeSlots(
+      storedTimeSlots
+        ? JSON.parse(storedTimeSlots)
+        : ["10:00 AM", "12:00 PM", "2:00 PM", "4:00 PM"]
+    );
+  }, [sessionStorage.getItem("availableTimeSlots")]);
+
+  useEffect(() => {
+    checked && isLoggedIn
+      ? setInitialValues({
+          name: userProfile.name || "",
+          email: userProfile.email || "",
+          mobile: userProfile.phone || "",
+          address: "Malibu Town",
+          city: "Gurgaon",
+          treatmentDate: "",
+          timeSlot: "",
+        })
+      : setInitialValues({
+          name: "",
+          email: "",
+          mobile: "",
+          address: "",
+          city: "",
+          treatmentDate: "",
+          timeSlot: "",
+        });
+  }, [checked, isLoggedIn]);
+
+  const { mutate: createBooking, isLoading } = useMutation(createNewBooking, {
+    onSuccess(res) {
+      if (res?.isError) {
+        showSnackbar(res?.message, "success");
+      } else {
+        showSnackbar(res?.message, "error");
+      }
+    },
+    onError(error) {
+      showSnackbar(error?.message, "error");
+    },
+  });
+
+  const formik = useFormik({
+    enableReinitialize: true,
+    validateOnMount: true,
+    validateOnChange: true,
+    initialValues,
+    validationSchema: getBookNowFormValidation,
+    onSubmit: (values) => {
+      // createBooking({
+      //   userId: "A12",
+      //   serviceId: "LHR",
+      //   name: value.name,
+      //   email: value.email,
+      //   mobile: value.mobile,
+      //   address: value.address,
+      //   treatmentDate: value.treatmentDate,
+      //   timeSlot: value.treatment,
+      //   pinCode: "342001", //to be fetched from Address API
+      // });
+      const servicesBooked = servicesCart.map(
+        ({ treatmentName, packageName, serviceId, subServiceId }) => ({
+          treatmentName,
+          packageName,
+          serviceId,
+          subServiceId,
+        })
+      );
+      const reqBody = {
+        userInfo: values,
+        servicesBooked,
+      };
+      console.log("reqBody", reqBody);
+    },
+  });
 
   useEffect(() => {
     const totalPackagePrice = servicesCart.reduce(
@@ -34,10 +128,12 @@ const BookNowDetails = ({
 
   const handleServiceBooking = () => {
     if (!isLoggedIn) {
-      setOpenLoginModal(true);
+      navigate("/login");
+    }
+    if (!formik.isValid && isLoggedIn) {
+      showSnackbar("Please fill all the required fields", "error");
     } else {
-      window.prompt("Booking Success");
-      //api call for booking and payment
+      formik.handleSubmit();
     }
   };
 
@@ -53,6 +149,9 @@ const BookNowDetails = ({
 
   return (
     <div>
+      <Suspense>
+        <CustomLoader open={isLoading} />
+      </Suspense>
       <div className="md:px-5 xl:!mx-5">
         <div className="flex flex-col xl:!flex-row gap-4 place-content-center px-2 py-6 md:!px-4 sm:py-10">
           <div className="flow-root border shadow rounded lg:!pl-1 self-start w-full xl:!w-3/5">
@@ -60,7 +159,6 @@ const BookNowDetails = ({
               isLoggedIn={isLoggedIn}
               formik={formik}
               timeSlots={timeSlots}
-              handleSubmit={handleSubmit}
               checked={checked}
               setChecked={setChecked}
             />

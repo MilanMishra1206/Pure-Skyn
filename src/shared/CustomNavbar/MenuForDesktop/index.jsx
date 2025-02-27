@@ -8,7 +8,9 @@ import FlyoutLink from "../FlayoutLink";
 import Dropdown from "../Dropdown";
 import DropdownContent, { handleKeyPress } from "../Dropdown/DropdownContent";
 
-const CartDrawer = lazy(() => import("../../../components/ProductsCart/CartDrawer"));
+const CartDrawer = lazy(
+  () => import("../../../components/ProductsCart/CartDrawer")
+);
 
 const MenuForDesktop = ({
   isActive,
@@ -37,9 +39,9 @@ const MenuForDesktop = ({
 
   return (
     <div
-      className={`${isTablet ? "hidden" : "flex justify-between"} items-center`}
+      className={`${isTablet ? "hidden" : "flex justify-between"} items-center px-8`}
     >
-      <Link to="/" className="ml-4 xl:!ml-16 no-underline font-bold">
+      <Link to="/" className="no-underline font-bold">
         <img
           src={Resources.images.NavBar.branding}
           alt="branding"
@@ -53,11 +55,16 @@ const MenuForDesktop = ({
             "inset 0 4px 6px rgba(0, 0, 0, 0.1), inset 0 2px 4px rgba(0, 0, 0, 0.06)",
         }}
       >
-        <FlyoutLink href="/" isActive={isActive("/")} className="mr-2">
-          Home
-        </FlyoutLink>
+        {isAdmin && (
+          <FlyoutLink href="/" isActive={isActive("/")} className="mr-2">
+            Home
+          </FlyoutLink>
+        )}
         {!isAdmin && (
           <div className="flex items-center gap-2">
+            <FlyoutLink href="/" isActive={isActive("/")} className="mr-2">
+              Home
+            </FlyoutLink>
             <div className="flex items-center navbar-links p-1 xl:!px-4">
               <Dropdown
                 header={"Services"}
@@ -92,12 +99,12 @@ const MenuForDesktop = ({
           </div>
         )}
       </div>
-      <div className="flex items-center navbar-links">
+      <div className="flex items-center navbar-links gap-4">
         {!isAdmin &&
           (isProductsPage ? (
             <button
               onClick={handleOpenCart}
-              className="mr-5 hover:opacity-80 text-white relative"
+              className="hover:opacity-80 text-white relative"
             >
               <FaCartShopping size={"2rem"} />
               {totalProductsItems > 0 && (
@@ -109,7 +116,7 @@ const MenuForDesktop = ({
           ) : (
             <button
               onClick={navigateToServicesCart}
-              className="mr-5 hover:opacity-80 text-white relative"
+              className="hover:opacity-80 text-white relative"
             >
               <MdShoppingCartCheckout size={"2rem"} />
               {totalServicesItems > 0 && (

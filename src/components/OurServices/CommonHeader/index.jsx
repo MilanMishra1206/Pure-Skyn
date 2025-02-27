@@ -53,7 +53,7 @@ function CommonHeader({
           >
             <div className="flex flex-col gap-4 lg:!gap-5 w-50 p-5">
               {heading && (
-                <div className="text-coffee font-extrabold text-4xl xl:!text-6xl">
+                <div className="text-coffee font-extrabold text-3xl xl:!text-4xl">
                   {heading.toUpperCase()}
                 </div>
               )}

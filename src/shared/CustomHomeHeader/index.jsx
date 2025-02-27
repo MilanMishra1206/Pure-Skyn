@@ -1,14 +1,10 @@
-import { useMediaQuery } from "@mui/material";
-
 function CustomHomeHeader({ heading, headerClass }) {
-  const isMobile = useMediaQuery("(max-width: 767px)");
-
   return (
-    <div className={`text-center py-4 ${isMobile ? "mt-5" : "mt-4"}`}>
+    <div className="text-center">
       <div>
         <div className="flex flex-col font-poppins">
           <div
-            className={`text-3xl md:!text-5xl font-bold text-skyn mb-3 ${headerClass}`}
+            className={`text-3xl md:!text-4xl font-bold text-skyn mb-2 ${headerClass}`}
           >
             {heading}
           </div>

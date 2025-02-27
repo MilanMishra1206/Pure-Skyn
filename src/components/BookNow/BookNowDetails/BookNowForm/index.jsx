@@ -1,6 +1,6 @@
 import { lazy, Suspense, useState } from "react";
 import { getIn } from "formik";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import FadedLineBreak from "../../../../shared/CustomHrTag";
 import regex from "../../../../helpers/Regex";
 import LoginModal from "../../LoginModal";
@@ -18,10 +18,10 @@ function BookNowForm({
   isLoggedIn,
   formik,
   timeSlots,
-  handleSubmit,
   checked,
   setChecked,
 }) {
+  const navigate = useNavigate();
   const [openLoginModal, setOpenLoginModal] = useState(false);
 
   return (
@@ -39,7 +39,7 @@ function BookNowForm({
                 checkBoxClasses="!p-0"
                 label="Booking for self?"
                 labelClasses="!ml-2"
-                handleChange={(e) => {
+                handleChange={() => {
                   setChecked((prev) => !prev);
                 }}
               />
@@ -47,7 +47,7 @@ function BookNowForm({
               <p className="text-sm font-bold">
                 <button
                   className="text-[#175EC3] hover:opacity-80"
-                  onClick={() => setOpenLoginModal(true)}
+                  onClick={() => navigate("/login")}
                 >
                   Sign-In
                 </button>{" "}
@@ -185,7 +185,7 @@ function BookNowForm({
                   fieldWidth="!w-full"
                   setFieldValue={formik.setFieldValue}
                   setFieldTouched={formik.setFieldTouched}
-                  value={formik.values.date}
+                  value={formik.values.treatmentDate}
                   error={formik.errors.treatmentDate}
                   touched={formik.touched.treatmentDate}
                   inputClassName="!text-kashmirBlue !font-poppins"
@@ -226,7 +226,12 @@ function BookNowForm({
           </div>
         </div>
       </form>
-      {openLoginModal && <LoginModal setOpenLoginModal={setOpenLoginModal} />}
+      {openLoginModal && (
+        <LoginModal
+          setOpenLoginModal={setOpenLoginModal}
+          setChecked={setChecked}
+        />
+      )}
     </>
   );
 }

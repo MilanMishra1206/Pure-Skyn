@@ -2,11 +2,13 @@ import Resources from "../../../config/Resources";
 import { whyUsContent } from "../../../helpers/AccordianContent";
 import CustomAccordion from "../../../shared/CustomAccordion";
 import CustomHomeHeader from "../../../shared/CustomHomeHeader";
+import FadedLineBreak from "../../../shared/CustomHrTag";
 
 function WhyUs({ isMobile }) {
   return (
     <div className="px-4 mb-5">
-      <div className={`${isMobile ? "" : "px-4"}`}>
+      <div className={`${isMobile ? "mt-4" : "mt-5"}`}>
+        <FadedLineBreak />
         <CustomHomeHeader
           heading={
             "Why Pure Skyn? - Give your clients the silky smooth skin they crave with Pure Skyn"

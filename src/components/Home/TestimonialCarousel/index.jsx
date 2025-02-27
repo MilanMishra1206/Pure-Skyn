@@ -6,6 +6,7 @@ import "slick-carousel/slick/slick-theme.css";
 import Resources from "../../../config/Resources";
 import { testimonialsCarousel } from "../../../helpers/AccordianContent";
 import CustomHomeHeader from "../../../shared/CustomHomeHeader";
+import FadedLineBreak from "../../../shared/CustomHrTag";
 
 const TestimonialCarousel = ({ isMobile }) => {
   const settings = {
@@ -21,6 +22,7 @@ const TestimonialCarousel = ({ isMobile }) => {
   return (
     <div className="px-4 mb-5">
       <div className={`${isMobile ? "" : "px-4"}`}>
+        <FadedLineBreak />
         <CustomHomeHeader heading="Testimonials - What they say about us" />
       </div>
       <div className="grid grid-cols-1 lg:!grid-cols-2 gap-5 items-center px-4">

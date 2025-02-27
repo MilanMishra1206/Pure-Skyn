@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useMediaQuery } from "@mui/material";
 import { motion } from "framer-motion";
 import { lazy, Suspense } from "react";
@@ -13,13 +13,13 @@ import CustomHeader from "../../../../shared/CustomHeader";
 import FadedLineBreak from "../../../../shared/CustomHrTag";
 import CustomAccordion from "../../../../shared/CustomAccordion";
 import { LHRWomenAccordianContent } from "../../../../helpers/AccordianContent";
-import DrawCircleText from "../../../../shared/CustomDrawCircleText";
 import BeforeAfterCarousel from "../../BeforeAfterCarousel";
 
 const CommonHeader = lazy(() => import("../../CommonHeader"));
 
 function LaserHairRemovalForWomen({ category, isMobile, isTablet }) {
   const isLaptop = useMediaQuery("(min-width: 1023px)");
+  const navigate = useNavigate();
 
   return (
     <MotionWrapper>
@@ -93,7 +93,7 @@ function LaserHairRemovalForWomen({ category, isMobile, isTablet }) {
                       <h4 className="font-medium">{item.subHeader}</h4>
                     )}
                     {item.subHeaderTwo && (
-                      <h4 className="font-semibold mt-5 !text-left">
+                      <h4 className="font-semibold mt-5 text-lg !text-left">
                         {item.subHeaderTwo}
                       </h4>
                     )}
@@ -136,7 +136,10 @@ function LaserHairRemovalForWomen({ category, isMobile, isTablet }) {
                   carouselContent={beforeAfterCarouselContent.lhrFemale}
                 />
                 <FadedLineBreak />
-                <div className="xl:!flex xl:!justify-center xl:!items-center">
+                <div
+                  className="xl:!flex xl:!justify-center xl:!items-center cursor-pointer"
+                  onClick={() => navigate("/book-now")}
+                >
                   <img
                     src={Resources.images.Common.offerBannerMobile}
                     alt="Offer"
@@ -148,7 +151,8 @@ function LaserHairRemovalForWomen({ category, isMobile, isTablet }) {
                     className="hidden md:!block"
                   />
                 </div>
-                <div className="text-center text-skyn font-bold text-3xl px-4">
+                <FadedLineBreak />
+                <div className="text-center text-skyn font-bold text-3xl px-4 mt-4">
                   <p>Frequently Asked Questions(FAQs)</p>
                 </div>
                 <div

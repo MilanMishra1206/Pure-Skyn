@@ -7,79 +7,37 @@ import {
   Typography,
   useMediaQuery,
 } from "@mui/material";
-import { lazy, Suspense, useEffect, useState } from "react";
-import { useFormik } from "formik";
+import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
-import { useMutation } from "react-query";
 import { useSelector } from "react-redux";
 import { FaCartPlus } from "react-icons/fa";
-import { getBookNowFormValidation } from "../../helpers/Login";
-import { useAppSnackbar } from "../../config/Context/SnackbarContext";
 import DrawCircleText from "../../shared/CustomDrawCircleText";
 import FadeInWrapper from "../../config/MotionFramer/FadeInWrapper";
-import { createNewBooking } from "../../services/Booking";
 import BookNowDetails from "./BookNowDetails";
 import BookNowOptions from "./BookNowOptions";
 import { treatmentList } from "../../helpers/LaserServices";
 import Resources from "../../config/Resources";
 
-const CustomLoader = lazy(() => import("../../shared/CustomLoader"));
-
 function BookNow() {
   const isTablet = useMediaQuery("(max-width: 1023px)");
   const isMobile = useMediaQuery("(max-width: 767px)");
-  const showSnackbar = useAppSnackbar();
   const [currentStep, setCurrentStep] = useState(0);
   const [stepHeading, setStepHeading] = useState("Choose Options");
   const [treatmentPackage, setTreatmentPackage] = useState("");
-  const [checked, setChecked] = useState(true);
   const [isLoggedIn, setIsLoggedIn] = useState(false);
-  const [initialValues, setInitialValues] = useState({
-    name: "",
-    email: "",
-    mobile: "",
-    address: "",
-    treatmentDate: "",
-    timeSlot: "",
-    city: "",
-  });
 
   const steps = ["Choose Your Treatment", "Choose Your Package", "Book Now"];
-  const storedTimeSlots = sessionStorage.getItem("availableTimeSlots");
-  const timeSlots = storedTimeSlots
-    ? JSON.parse(storedTimeSlots)
-    : ["10:00 AM", "12:00 PM", "2:00 PM", "4:00 PM"];
   const servicesCart = useSelector((state) => state.servicesCart.services);
 
   useEffect(() => {
     const token = sessionStorage.getItem("token");
     if (token) {
       setIsLoggedIn(true);
-      setChecked(true);
     } else {
       setIsLoggedIn(false);
-      setChecked(false);
     }
-  }, []);
-
-  useEffect(() => {
-    checked
-      ? setInitialValues({
-          name: "Milan Mishra",
-          email: "milanmishra11@gmaal.com",
-          mobile: "8769261422",
-          address: "Malibu Town",
-          city: "Gurgaon",
-        })
-      : setInitialValues({
-          name: "",
-          email: "",
-          mobile: "",
-          address: "",
-          city: "",
-        });
-  }, [checked]);
+  }, [sessionStorage.getItem("token")]);
 
   useEffect(() => {
     const currentBookStep = JSON.parse(
@@ -91,48 +49,6 @@ function BookNow() {
       setStepHeading(treatmentName || "Choose Your Services");
     }
   }, [sessionStorage.getItem("currentStep")]);
-
-  const { mutate: createBooking, isLoading } = useMutation(createNewBooking, {
-    onSuccess(res) {
-      if (res?.isError) {
-        showSnackbar(res?.message, "success");
-      } else {
-        showSnackbar(res?.message, "error");
-      }
-    },
-    onError(error) {
-      showSnackbar(error?.message, "error");
-    },
-  });
-
-  const formik = useFormik({
-    enableReinitialize: true,
-    validateOnMount: true,
-    validateOnChange: true,
-    initialValues,
-    validationSchema: getBookNowFormValidation,
-    onSubmit: (value) => {
-      createBooking({
-        userId: "A12",
-        serviceId: "LHR",
-        name: value.name,
-        email: value.email,
-        mobile: value.mobile,
-        address: value.address,
-        treatmentDate: value.treatmentDate,
-        timeSlot: value.treatment,
-        pinCode: "342001", //to be fetched from Address API
-      });
-    },
-  });
-
-  const handleSubmit = () => {
-    if (!formik.isValid) {
-      showSnackbar("Please fill all the required fields", "error");
-    } else {
-      formik.handleSubmit();
-    }
-  };
 
   const breadcrumbs = [
     <Link
@@ -189,9 +105,6 @@ function BookNow() {
       viewport={{ once: true }}
       className={`mt-3 ${isTablet ? "py-3" : "py-4 mt-4"}`}
     >
-      <Suspense>
-        <CustomLoader open={isLoading} />
-      </Suspense>
       <div className={`mt-5 ${isMobile ? "px-4" : "px-5"}`}>
         <Breadcrumbs
           separator=">"
@@ -274,16 +187,7 @@ function BookNow() {
         {currentStep === 2 && (
           <>
             {servicesCart.length > 0 ? (
-              <BookNowDetails
-                isLoggedIn={isLoggedIn}
-                formik={formik}
-                isMobile={isMobile}
-                timeSlots={timeSlots}
-                handleSubmit={handleSubmit}
-                checked={checked}
-                setChecked={setChecked}
-                servicesCart={servicesCart}
-              />
+              <BookNowDetails isLoggedIn={isLoggedIn} />
             ) : (
               <div className="flex flex-col items-center justify-center px-2 md:!px-5 pb-5">
                 <img

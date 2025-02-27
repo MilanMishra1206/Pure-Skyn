@@ -122,9 +122,9 @@ const CustomHeroSection = () => {
           </div>
         </div>
       )}
-      <section className="w-full bg-[#FFFFFF] px-5 py-12 grid md:grid-cols-2 gap-8 mx-auto shadow-lg">
+      <section className="w-full bg-[#FFFFFF] px-2 md:!px-5 py-12 grid md:grid-cols-2 gap-8 mx-auto shadow-lg font-poppins h-full">
         <div className="flex flex-col items-center order-2 lg:!order-1">
-          <div className="flex lg:w-4/5 xl:!w-3/5 flex-col shadow rounded-lg px-4 py-6 border">
+          <div className="flex lg:w-4/5 xl:!w-3/5 flex-col shadow rounded-lg px-4 py-6 border h-full">
             <div className="flex justify-center p-4">
               <img
                 src={Resources.images.Common.newLogoWhite}
@@ -132,11 +132,11 @@ const CustomHeroSection = () => {
                 className="w-4/5 md:!w-3/5"
               />
             </div>
-            <span className="text-lg font-bold font-poppins text-center mb-4">
-              Have Query? We will give a call!
+            <span className="text-lg font-poppins text-center mb-4">
+              Have Query? We will give a call!{" "}
             </span>
             <hr />
-            <form className="w-full mt-4">
+            <form className="w-full mt-4 h-full">
               <Suspense fallback={<div />}>
                 <CustomTextField
                   textClassOverride="!text-cello"
@@ -233,25 +233,20 @@ const CustomHeroSection = () => {
         <div className="flex flex-col order-1 lg:!order-2">
           <ShuffleGrid />
           <div className="text-base md:text-lg text-cello my-4 md:my-6 px-3 lg:!mx-5 font-poppins text-center">
-            <p>Get the best deals from our latest promotions.</p>
             <p>
               <strong className="text-coffee">
-                Pure Skyn is more than just Laser Hair Removal and Medifacial.
+                Get the Best Deals on Our Latest Promotions!
               </strong>{" "}
-              We offer laser skin treatments with the use of the most advanced
-              technology like Candela GentleMax Pro and Morpheus8, as well as
-              hair regrowth solutions, especially for men. Treatments are
-              suitable for any skin type.
-            </p>
-            <p className="text-coffee font-bold">
-              Book and save up to 50% when you purchase your treatment packages.
+              Book now and save up to 50% on Laser Hair Removal, Medifacials,
+              advanced skin treatments, and hair regrowth solutions for all skin
+              types.
             </p>
           </div>
           <div className="flex justify-center">
-            <CustomButton2
-              buttonText="Download App"
-              buttonClass="lg:!w-1/2"
-              handleSubmit={handleDownloadApp}
+            <img
+              src={Resources.images.Common.googlePlayButton}
+              alt="Google Play Button"
+              className="w-48 rounded-2 cursor-pointer"
             />
           </div>
         </div>

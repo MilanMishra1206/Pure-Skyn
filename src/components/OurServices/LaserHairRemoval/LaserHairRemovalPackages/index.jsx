@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { Breadcrumbs, Typography, useMediaQuery } from "@mui/material";
 import { useEffect } from "react";
 import { motion } from "framer-motion";
@@ -18,6 +18,7 @@ import WomenAndMenTabs from "./WomenAndMenTabs";
 function LaserHairRemovalPackages() {
   const isTablet = useMediaQuery("(max-width: 1023px)");
   const isMobile = useMediaQuery("(max-width: 767px)");
+  const navigate = useNavigate();
 
   useEffect(() => {
     sessionStorage.removeItem("currentBookStep");
@@ -60,17 +61,14 @@ function LaserHairRemovalPackages() {
             Laser Hair Removal Packages
           </div>
           <div className="relative">
-            {isMobile ? (
-              <img
-                src={Resources.images.Services.lhrPackagesMobile}
-                alt="LHR-Packages"
-              />
-            ) : (
-              <img
-                src={Resources.images.Services.lhrPackages}
-                alt="LHR-Packages"
-              />
-            )}
+            <img
+              src={
+                isMobile
+                  ? Resources.images.Services.lhrPackagesMobile
+                  : Resources.images.Services.lhrPackages
+              }
+              alt="LHR-Packages"
+            />
           </div>
           <div>
             <motion.div
@@ -101,7 +99,8 @@ function LaserHairRemovalPackages() {
               initial="hidden"
               whileInView="show"
               viewport={{ once: true }}
-              className="xl:!flex xl:!justify-center xl:!items-center"
+              className="xl:!flex xl:!justify-center xl:!items-center cursor-pointer"
+              onClick={() => navigate("/book-now")}
             >
               <img
                 src={Resources.images.Common.offerBannerMobile}

@@ -1,32 +1,65 @@
 import { useFormik } from "formik";
-import React, { lazy, Suspense, useState } from "react";
+import React, { lazy, Suspense, useEffect, useState } from "react";
 import { FiEdit3 } from "react-icons/fi";
+import { useDispatch } from "react-redux";
 import { getPersonalInfoValidationSchema } from "../../../helpers/UserProfile";
 import { useAppSnackbar } from "../../../config/Context/SnackbarContext";
 import regex from "../../../helpers/Regex";
 import FadedLineBreak from "../../../shared/CustomHrTag";
 import { useMutation } from "react-query";
 import { updateUserDetails } from "../../../services/Users";
+import { setUserProfile } from "../../../redux/Actions";
 
 const CustomTextField = lazy(() => import("../../../shared/CustomTextField"));
 const CustomLoader = lazy(() => import("../../../shared/CustomLoader"));
 
 export default function PersonalInformation({ userProfile }) {
   const showSnackbar = useAppSnackbar();
+  const dispatch = useDispatch();
   const [editMode, setEditMode] = useState(false);
-  const formikInitialValues = {
+  const [profileMessage, setProfileMessage] = useState("");
+  const [formikInitialValues, setFormikInitialValues] = useState({
     name: userProfile?.name || "",
     phone: userProfile?.phone || "",
     email: userProfile?.email || "",
     gender: userProfile?.gender || "",
-  };
+  });
+
   const genders = ["Male", "Female", "Others"];
+
+  useEffect(() => {
+    const isAnyFieldEmpty = Object.values(formikInitialValues).some(
+      (value) => value === ""
+    );
+
+    if (isAnyFieldEmpty) {
+      setProfileMessage("Please update your profile!");
+    } else {
+      setProfileMessage("");
+    }
+  }, [formikInitialValues]);
 
   const { mutate: updateDetails, isLoading } = useMutation(updateUserDetails, {
     onSuccess(res) {
+      const data = res?.data;
       if (res?.status === "SUCCESS") {
         setEditMode(false);
         showSnackbar(res?.message, "success");
+        dispatch(
+          setUserProfile({
+            userId: data?.id,
+            email: data?.email,
+            name: data?.name,
+            phone: data?.phone,
+            gender: data?.gender,
+          })
+        );
+        setFormikInitialValues({
+          name: data?.name,
+          phone: data?.phone,
+          email: data?.email,
+          gender: data?.gender,
+        });
       } else {
         setEditMode(true);
         showSnackbar(res?.message, "error");
@@ -80,6 +113,10 @@ export default function PersonalInformation({ userProfile }) {
       <Suspense fallback={<div>Loading...</div>}>
         <CustomLoader open={isLoading} />
       </Suspense>
+      <small className="text-bitterSweet">
+        <strong className="!text-black">Note: </strong>
+        {profileMessage}
+      </small>
       <form>
         <div className="flex items-center gap-4 mb-4 justify-center">
           <span className="font-semibold text-cello font-poppins text-xl">
@@ -192,24 +229,29 @@ export default function PersonalInformation({ userProfile }) {
           </div>
           <div className="flex flex-col">
             {editMode ? (
-              <div className="grid grid-cols-1 gap-2">
-                {genders.map((gender, index) => (
-                  <button
-                    key={index}
-                    type="button"
-                    className={`py-2 lg:px-4 rounded-lg text-sm font-medium transition-all border ${
-                      personalInfoFormik.values.gender === gender
-                        ? "bg-skyn text-white border-skyn shadow-md"
-                        : "bg-white text-gray-700 border-gray-300 hover:bg-gray-100"
-                    }`}
-                    onClick={() =>
-                      personalInfoFormik.setFieldValue("gender", gender)
-                    }
-                  >
-                    {gender}
-                  </button>
-                ))}
-              </div>
+              <>
+                <span className="text-sm font-medium pb-1 !text-cello">
+                  Gender<small className="text-bitterSweet">*</small>
+                </span>
+                <div className="grid grid-cols-1 gap-2">
+                  {genders.map((gender, index) => (
+                    <button
+                      key={index}
+                      type="button"
+                      className={`py-2 lg:px-4 rounded-lg text-sm font-medium transition-all border ${
+                        personalInfoFormik.values.gender === gender
+                          ? "bg-skyn text-white border-skyn shadow-md"
+                          : "bg-white text-gray-700 border-gray-300 hover:bg-gray-100"
+                      }`}
+                      onClick={() =>
+                        personalInfoFormik.setFieldValue("gender", gender)
+                      }
+                    >
+                      {gender}
+                    </button>
+                  ))}
+                </div>
+              </>
             ) : (
               <div className="flex flex-col">
                 {" "}
@@ -223,7 +265,7 @@ export default function PersonalInformation({ userProfile }) {
         </div>
       </form>
       {editMode && (
-        <div className="flex gap-4">
+        <div className="flex gap-5">
           <div className="mt-6 flex justify-end">
             <button
               type="button"

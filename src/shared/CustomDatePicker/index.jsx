@@ -27,12 +27,18 @@ function CustomDatePicker({
 }) {
   const [isIvalidDate, setIsInvalidDate] = useState(false);
 
-  // Calculate the date 15 days from today
-  const fifteenDaysFromNow = dayjs().add(15, "day");
+  // Calculate tomorrow's date
+  const tomorrow = dayjs().add(1, "day");
 
-  // Disable dates that are 15 days from today or less
+  // Calculate 15 days from tomorrow
+  const fifteenDaysFromTomorrow = tomorrow.add(15, "day");
+
+  // Disable today's date and dates 15 days from tomorrow
   const shouldDisableCustomDate = (date) => {
-    return dayjs(date).isAfter(fifteenDaysFromNow, "day");
+    return (
+      dayjs(date).isBefore(tomorrow, "day") || // Disable today
+      dayjs(date).isAfter(fifteenDaysFromTomorrow, "day") // Disable beyond 15 days
+    );
   };
 
   return (
@@ -54,7 +60,6 @@ function CustomDatePicker({
               disableFuture={disableFuture}
               disablePast={disablePast}
               shouldDisableDate={(date) => {
-                // Combine the custom logic with the passed `shouldDisableDate` prop (if any)
                 return (
                   shouldDisableCustomDate(date) || (shouldDisableDate && shouldDisableDate(date))
                 );

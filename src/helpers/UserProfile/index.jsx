@@ -32,7 +32,7 @@ export const getAddressValidationSchema = () =>
 
 export const getPersonalInfoValidationSchema = () =>
   yup.object().shape({
-    fullName: yup.string().required("Name is required"),
+    name: yup.string().required("Name is required"),
     phone: yup
       .string()
       .matches(/^[0-9]{10}$/, "Enter a valid 10-digit contact number")

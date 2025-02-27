@@ -1,7 +1,7 @@
 import { lazy, Suspense, useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import { useMediaQuery } from "@mui/material";
-import { Link, useLocation, useParams } from "react-router-dom";
+import { Link, useLocation, useNavigate, useParams } from "react-router-dom";
 import Resources from "../../../config/Resources";
 import CustomCards from "../../../shared/CustomCards";
 import { LHRAccordianContent } from "../../../helpers/AccordianContent";
@@ -9,7 +9,6 @@ import MotionWrapper from "../../../config/MotionFramer/MotionWrapper";
 import FadeInWrapper from "../../../config/MotionFramer/FadeInWrapper";
 import CustomHeader from "../../../shared/CustomHeader";
 import CustomAccordion from "../../../shared/CustomAccordion";
-import DrawCircleText from "../../../shared/CustomDrawCircleText";
 import FadedLineBreak from "../../../shared/CustomHrTag";
 import CustomFloatingBookNowButton from "../../../shared/CustomFloatingBookNowButton";
 
@@ -21,6 +20,7 @@ const LaserHairRemovalForWomen = lazy(
 function LaserHairRemoval() {
   const { category } = useParams();
   const { pathname } = useLocation();
+  const navigate = useNavigate();
   const [treatmentName, setTreatmentName] = useState("");
   const isMobile = useMediaQuery("(max-width: 767px)");
   const isTablet = useMediaQuery("(max-width: 1023px)");
@@ -267,7 +267,8 @@ function LaserHairRemoval() {
             initial="hidden"
             whileInView="show"
             viewport={{ once: true }}
-            className="xl:!flex xl:!justify-center xl:!items-center"
+            className="xl:!flex xl:!justify-center xl:!items-center cursor-pointer"
+            onClick={() => navigate("/book-now")}
           >
             <img
               src={Resources.images.Common.offerBannerMobile}

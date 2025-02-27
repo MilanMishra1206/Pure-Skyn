@@ -3,12 +3,10 @@ import { Link } from "react-router-dom";
 import { MdKeyboardDoubleArrowRight } from "react-icons/md";
 import { motion } from "framer-motion";
 import FadeInWrapper from "../../../config/MotionFramer/FadeInWrapper";
-import CustomHrTag from "../../../shared/CustomHrTag";
-
 import CustomHomeHeader from "../../../shared/CustomHomeHeader";
+import FadedLineBreak from "../../../shared/CustomHrTag";
 
 function AboutUs() {
-  const isTablet = useMediaQuery("(max-width: 1023px)");
   const isMobile = useMediaQuery("(max-width: 767px)");
 
   return (
@@ -17,9 +15,10 @@ function AboutUs() {
       initial="hidden"
       whileInView="show"
       viewport={{ once: true }}
-      className={`mt-3 ${isTablet ? "py-3" : ""}`}
+      className="mt-5"
     >
       <div className={`${isMobile ? "px-4" : "px-5"}`}>
+        <FadedLineBreak />
         <CustomHomeHeader heading="About Us" />
         <p className="mt-4 font-poppins text-cello font-medium">
           At Pure Skyn we are focused on providing you with the permanent laser
@@ -35,7 +34,7 @@ function AboutUs() {
           shine in every moment. We believe that everyone deserves to feel their
           best, and we're here to help you achieve just that.
         </p>
-        <CustomHrTag />
+
         <p className="mt-4 font-poppins text-kashmirBlue font-bold text-2xl">
           Laser Hair Removal
         </p>
@@ -54,10 +53,9 @@ function AboutUs() {
           Explore More
           <MdKeyboardDoubleArrowRight className="hidden group-hover:!block text-xl text-skyn duration-3000" />
         </Link>
-        <CustomHrTag />
-        <span className="mt-4 font-poppins text-kashmirBlue font-bold text-2xl">
+        <p className="mt-5 font-poppins text-kashmirBlue font-bold text-2xl">
           Medi Facial Treatments
-        </span>
+        </p>
         <p className="mt-4 font-poppins text-cello font-medium">
           Achieve glowing, healthy skin with our Medi Facial Treatments,
           customized to meet your specific skin care needs. From acne treatment
@@ -72,7 +70,6 @@ function AboutUs() {
           Explore More
           <MdKeyboardDoubleArrowRight className="hidden group-hover:!block text-xl text-skyn duration-3000" />
         </Link>
-        <CustomHrTag />
       </div>
     </motion.div>
   );

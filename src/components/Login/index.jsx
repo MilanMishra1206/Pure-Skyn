@@ -2,12 +2,12 @@ import React, { lazy, Suspense } from "react";
 import { useFormik } from "formik";
 import { useNavigate } from "react-router-dom";
 import { useMutation } from "react-query";
+import { useDispatch } from "react-redux";
 import Resources from "../../config/Resources";
 import { getLoginValidation, loginInitialValues } from "../../helpers/Login";
 import LoginForm from "./LoginForm";
 import { useAppSnackbar } from "../../config/Context/SnackbarContext";
 import { loginUser } from "../../services/LoginAndRegister";
-import { useDispatch } from "react-redux";
 import { setUserProfile } from "../../redux/Actions";
 
 const CustomLoader = lazy(() => import("../../shared/CustomLoader"));
@@ -49,7 +49,7 @@ function LoginPage() {
     validationSchema: getLoginValidation,
     onSubmit: (value) => {
       loginUsers({
-        email: value.email,
+        email: value.email.toLowerCase(),
         password: value.password,
       });
     },

@@ -1,17 +1,18 @@
 import { AnimatePresence, motion } from "framer-motion";
 import { lazy, Suspense } from "react";
-import LoginForm from "../../Login/LoginForm";
 import { useFormik } from "formik";
-import { getLoginValidation, loginInitialValues } from "../../../helpers/Login";
-import { useAppSnackbar } from "../../../config/Context/SnackbarContext";
 import { useDispatch } from "react-redux";
 import { useMutation } from "react-query";
+
+import LoginForm from "../../Login/LoginForm";
+import { getLoginValidation, loginInitialValues } from "../../../helpers/Login";
+import { useAppSnackbar } from "../../../config/Context/SnackbarContext";
 import { loginUser } from "../../../services/LoginAndRegister";
 import { setUserProfile } from "../../../redux/Actions";
 
 const CustomLoader = lazy(() => import("../../../shared/CustomLoader"));
 
-function LoginModal({ setOpenLoginModal }) {
+function LoginModal({ setOpenLoginModal, setChecked }) {
   const showSnackbar = useAppSnackbar();
   const dispatch = useDispatch();
 
@@ -30,6 +31,7 @@ function LoginModal({ setOpenLoginModal }) {
           })
         );
         setOpenLoginModal(false);
+        setChecked(true);
       } else {
         showSnackbar(`${res?.message}. Please try again!`, "error");
       }

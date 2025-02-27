@@ -4,8 +4,8 @@ import { motion } from "framer-motion";
 import Resources from "../../../config/Resources";
 import CustomCards from "../../../shared/CustomCards";
 import FadeInWrapper from "../../../config/MotionFramer/FadeInWrapper";
-import DrawCircleText from "../../../shared/CustomDrawCircleText";
 import CustomHomeHeader from "../../../shared/CustomHomeHeader";
+import FadedLineBreak from "../../../shared/CustomHrTag";
 
 function BestSelling({ isMobile, isLargeScreen }) {
   const navigate = useNavigate();
@@ -41,10 +41,9 @@ function BestSelling({ isMobile, isLargeScreen }) {
   };
 
   return (
-    <div className="px-4">
-      <div className={`${isMobile ? "" : "px-4"}`}>
-        <CustomHomeHeader heading="Most Popular - Laser Hair Removal" />
-      </div>
+    <div>
+      <FadedLineBreak />
+      <CustomHomeHeader heading="Most Popular - Laser Hair Removal" />
       <div className="flex justify-end px-5">
         <Link
           to="/services/laser-hair-removal"
@@ -55,7 +54,7 @@ function BestSelling({ isMobile, isLargeScreen }) {
         </Link>
       </div>
       <div
-        className={`grid grid-cols-1 xl:!grid-cols-2 gap-4 xl:!gap-0 place-items-center mb-5 xl:!px-5 ${isLargeScreen ? "mt-5" : "p-2"}`}
+        className={`grid grid-cols-1 xl:!grid-cols-2 gap-4 xl:!gap-0 place-items-center mb-5 ${isLargeScreen ? "mt-5" : "p-2"}`}
       >
         {services.map((item) => (
           <motion.div
@@ -72,7 +71,7 @@ function BestSelling({ isMobile, isLargeScreen }) {
               linkTo={item.linkTo}
               key={item.id}
               buttonText={item.buttonText}
-              customClass={`${isMobile ? "rounded-t-2xl" : "rounded-l-2xl"}  md:! w-80`}
+              customClass={`${isMobile ? "rounded-t-2xl" : "rounded-l-2xl"} md:! w-80`}
             />
             <div
               className={`flex flex-col justify-content-between shadow-lg bg-white ${isMobile ? "rounded-b-2xl" : "rounded-r-2xl"} p-4 w-80 md:!w-full`}
@@ -98,7 +97,8 @@ function BestSelling({ isMobile, isLargeScreen }) {
         initial="hidden"
         whileInView="show"
         viewport={{ once: true }}
-        className="xl:!flex xl:!justify-center xl:!items-center"
+        className="xl:!flex xl:!justify-center xl:!items-center cursor-pointer"
+        onClick={() => navigate("/book-now")}
       >
         <img
           src={Resources.images.Common.offerBannerMobile}

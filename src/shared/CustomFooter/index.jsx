@@ -23,8 +23,17 @@ function CustomFooter() {
                 src={Resources.images.NavBar.logo2}
                 alt="branding"
                 style={{ width: "9rem" }}
+                className="rounded-2"
               />
             </Link>
+            <div className="mt-2">
+              <img
+                src={Resources.images.Common.googlePlayButton}
+                alt="branding"
+                style={{ width: "9rem" }}
+                className="rounded-2"
+              />
+            </div>
           </div>
           {!isAdmin && (
             <div className="flex items-center md:items-start flex-col">

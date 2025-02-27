@@ -22,7 +22,7 @@ function Home() {
     sessionStorage.removeItem("packageName");
     sessionStorage.removeItem("packagePrice");
     sessionStorage.removeItem("treatmentName");
-  }, [])
+  }, []);
 
   return (
     <div className="mt-3">
@@ -31,11 +31,6 @@ function Home() {
           <div className="mt-5 flex flex-col">
             <CustomHeroSection />
           </div>
-        </Suspense>
-        <Suspense fallback={<CustomLoader open={true} />}>
-          <MotionWrapper>
-            <AboutUs />
-          </MotionWrapper>
         </Suspense>
         <Suspense fallback={<CustomLoader open={true} />}>
           <MotionWrapper>
@@ -48,7 +43,7 @@ function Home() {
         </Suspense>
         <Suspense fallback={<CustomLoader open={true} />}>
           <MotionWrapper>
-            <WhyUs isMobile={isMobile} />
+            <AboutUs />
           </MotionWrapper>
         </Suspense>
         <Suspense fallback={<CustomLoader open={true} />}>

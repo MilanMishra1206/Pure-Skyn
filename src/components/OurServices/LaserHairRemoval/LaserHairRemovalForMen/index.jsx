@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { lazy, Suspense } from "react";
 import { motion } from "framer-motion";
 import Resources from "../../../../config/Resources";
@@ -10,7 +10,6 @@ import MotionWrapper from "../../../../config/MotionFramer/MotionWrapper";
 import FadeInWrapper from "../../../../config/MotionFramer/FadeInWrapper";
 import CustomHeader from "../../../../shared/CustomHeader";
 import FadedLineBreak from "../../../../shared/CustomHrTag";
-import DrawCircleText from "../../../../shared/CustomDrawCircleText";
 import { LHRMenAccordianContent } from "../../../../helpers/AccordianContent";
 import CustomAccordion from "../../../../shared/CustomAccordion";
 import BeforeAfterCarousel from "../../BeforeAfterCarousel";
@@ -18,6 +17,7 @@ import BeforeAfterCarousel from "../../BeforeAfterCarousel";
 const CommonHeader = lazy(() => import("../../CommonHeader"));
 
 function LaserHairRemovalForMen({ category, isMobile, isTablet, isLaptop }) {
+  const navigate = useNavigate();
   return (
     <MotionWrapper>
       <div className={`${category ? "mt-5" : "mt-0"}`}>
@@ -130,7 +130,10 @@ function LaserHairRemovalForMen({ category, isMobile, isTablet, isLaptop }) {
                 whileInView="show"
                 viewport={{ once: true }}
               >
-                <div className="xl:!flex xl:!justify-center xl:!items-center">
+                <div
+                  className="xl:!flex xl:!justify-center xl:!items-center cursor-pointer"
+                  onClick={() => navigate("/book-now")}
+                >
                   <img
                     src={Resources.images.Common.offerBannerMobile}
                     alt="Offer"

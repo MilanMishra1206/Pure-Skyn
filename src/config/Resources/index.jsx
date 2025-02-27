@@ -19,11 +19,11 @@ const Resources = {
       homeHeader: `${base}/Common/homeHeader.jpg`,
       homeHeaderMobile: `${base}/Common/home-header-mobile.jpg`,
       dotsBg: `${base}/Common/dotsbg.svg`,
-      offerBanner: `${base}/Common/offer_banner.jpg`,
       newLogoBlack: `${base}/Common/new_log_black.png`,
       newLogoWhite: `${base}/Common/new_log_white.png`,
       offerBannerMobile: `${base}/Common/off_banner_mobile.jpg`,
       offerBannerLaptop: `${base}/Common/off_banner_laptop.jpg`,
+      googlePlayButton: `${base}/Common/google-play.png`,
     },
     Home: {
       dermfracMobile: `${base}/Home/dermfrac-mobile.png`,

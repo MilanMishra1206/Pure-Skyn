@@ -94,21 +94,6 @@ const bookNowInitialValues = {
   treatment: "",
 };
 
-const getBookNowValidation = () =>
-  yup.object().shape({
-    name: yup.string().required("Name is required"),
-    email: yup
-      .string()
-      .email("Please Enter Valid Email")
-      .required("Email is required"),
-    mobile: yup
-      .string()
-      .matches(regex.mobileNumber, "Please Enter Valid Mobile Number")
-      .required("Mobile number is required"),
-    city: yup.string().required("City is required"),
-    treatment: yup.string().required("Treatment is required"),
-  });
-
 const getBookNowFormValidation = () =>
   yup.object().shape({
     name: yup.string().required("Name is required"),
@@ -124,14 +109,6 @@ const getBookNowFormValidation = () =>
     treatmentDate: yup.string().required("Date is required"),
     timeSlot: yup.string().required("Please select a time slot"),
     city: yup.string().required("City is required"),
-    treatment: yup.string().required("Treatment is required"),
-    laserOption: yup
-      .string()
-      .when("treatment", ([treatment], schema) =>
-        treatment === "Laser Hair Removal"
-          ? schema.required("Required")
-          : schema.notRequired()
-      ),
   });
 
 const getAddReviewValidation = () =>
@@ -183,7 +160,6 @@ export {
   getSignUpValidation,
   getTandCContent,
   bookNowInitialValues,
-  getBookNowValidation,
   getBookNowFormValidation,
   getAddReviewValidation,
   getQueryValidation

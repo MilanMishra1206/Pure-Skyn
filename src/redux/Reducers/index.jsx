@@ -58,7 +58,7 @@ const userInitialState = {
 
 const userReducer = (state = userInitialState, action) => {
   switch (action.type) {
-    case "SET_CANDIDATE_PROFILE":
+    case "SET_USER_PROFILE":
       return {
         ...state,
         userProfile: action.payload,

@@ -4,14 +4,16 @@ import { Link, useLocation, useNavigate } from "react-router-dom";
 import { FaCartShopping } from "react-icons/fa6";
 import { useSelector } from "react-redux";
 import { GiHamburgerMenu } from "react-icons/gi";
+import { MdShoppingCartCheckout } from "react-icons/md";
 import { useMediaQuery } from "@mui/material";
 import MenuForDesktop from "./MenuForDesktop";
 import MenuForMobile from "./MenuForMobile";
 import Resources from "../../config/Resources";
 import { useAppSnackbar } from "../../config/Context/SnackbarContext";
-import { MdShoppingCartCheckout } from "react-icons/md";
 
-const CartDrawer = lazy(() => import("../../components/ProductsCart/CartDrawer"));
+const CartDrawer = lazy(
+  () => import("../../components/ProductsCart/CartDrawer")
+);
 
 function CustomNavbar() {
   const location = useLocation();
@@ -43,7 +45,7 @@ function CustomNavbar() {
     } else {
       setIsLoggedIn(false);
     }
-  }, []);
+  }, [sessionStorage.getItem("token")]);
 
   useEffect(() => {
     if (location.pathname.includes("products")) {
@@ -163,7 +165,7 @@ function CustomNavbar() {
   return (
     <div className="flex flex-col bg-coal !text-white p-3 fixed top-0 left-0 w-full z-50">
       <div>
-        <nav className="flex items-center justify-between gap-2">
+        <nav className="flex items-center justify-between px-2 md:!px-8">
           <button
             className={`${isTablet ? "block" : "hidden"} text-white focus:outline-none`}
             onClick={toggleMenu}
@@ -182,7 +184,7 @@ function CustomNavbar() {
           {isProductsPage ? (
             <button
               onClick={handleOpenCart}
-              className={`navbar-links mr-4 relative ${isTablet ? "block" : "hidden"}`}
+              className={`relative ${isTablet ? "block" : "hidden"}`}
             >
               <FaCartShopping size="1.8rem" />
               {totalProductsItems > 0 && (
@@ -194,7 +196,7 @@ function CustomNavbar() {
           ) : (
             <button
               onClick={navigateToServicesCart}
-              className={`navbar-links mr-4 relative ${isTablet ? "block" : "hidden"}`}
+              className={`relative ${isTablet ? "block" : "hidden"}`}
             >
               <MdShoppingCartCheckout size="2rem" />
               {totalServicesItems > 0 && (

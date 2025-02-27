@@ -66,7 +66,7 @@ const NavHeader = ({ toggleMenu, userName }) => (
         />
       </Link>
       {userName && (
-        <p className="text-coal text-xl font-bold text-center">
+        <p className="text-coal text-xl font-bold text-center mt-2">
           Welcome, {userName}
         </p>
       )}
