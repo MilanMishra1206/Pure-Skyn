@@ -124,7 +124,8 @@ export const fullBodyLaserContent = [
         subServiceId: "1-1",
         Step3: true,
         pricing: 60000,
-        selectedPackageImg: Resources.images.Services.LaserHairRemoval.fullBodyWomenLHR,
+        selectedPackageImg:
+          Resources.images.Services.LaserHairRemoval.fullBodyWomenLHR,
       },
       {
         label: "Laser Hair Removal Women - Single Session",
@@ -134,7 +135,8 @@ export const fullBodyLaserContent = [
         subServiceId: "1-2",
         Step3: true,
         pricing: 15000,
-        selectedPackageImg: Resources.images.Services.LaserHairRemoval.fullBodyWomenLHR,
+        selectedPackageImg:
+          Resources.images.Services.LaserHairRemoval.fullBodyWomenLHR,
       },
     ],
     imgSrc: Resources.images.Services.LaserHairRemoval.fullBodyWomenLHR,
@@ -152,7 +154,8 @@ export const fullBodyLaserContent = [
         subServiceId: "2-1",
         Step3: true,
         pricing: 60000,
-        selectedPackageImg: Resources.images.Services.LaserHairRemoval.fullBodyMenLHR,
+        selectedPackageImg:
+          Resources.images.Services.LaserHairRemoval.fullBodyMenLHR,
       },
       {
         label: "Laser Hair Removal Men - Single Session",
@@ -162,7 +165,8 @@ export const fullBodyLaserContent = [
         subServiceId: "2-2",
         Step3: true,
         pricing: 15000,
-        selectedPackageImg: Resources.images.Services.LaserHairRemoval.fullBodyMenLHR,
+        selectedPackageImg:
+          Resources.images.Services.LaserHairRemoval.fullBodyMenLHR,
       },
     ],
     imgSrc: Resources.images.Services.LaserHairRemoval.fullBodyMenLHR,
@@ -352,7 +356,8 @@ export const laserHairWomenPackage = [
     label: "Full Body Women",
     featureName: "fullBodyWomen",
     multiplSessions: true,
-    pricing: 60000,
+    singleSessionPricing: 15000,
+    mutlipleSessionPricing: 60000,
     imgSrc: Resources.images.Home.lhr.fullBodyFemalePackage,
   },
   {
@@ -361,7 +366,8 @@ export const laserHairWomenPackage = [
     label: "Face And Neck",
     featureName: "faceAndNeckWomen",
     multiplSessions: true,
-    pricing: 20000,
+    singleSessionPricing: 5000,
+    mutlipleSessionPricing: 20000,
     imgSrc: Resources.images.Home.lhr.facePackage,
   },
   {
@@ -370,7 +376,8 @@ export const laserHairWomenPackage = [
     label: "Bikini And Buttocks",
     featureName: "bikiniAndButtocksWomen",
     multiplSessions: true,
-    pricing: 24000,
+    singleSessionPricing: 6000,
+    mutlipleSessionPricing: 24000,
     imgSrc: Resources.images.Home.lhr.bikiniPackage,
   },
   {
@@ -379,7 +386,8 @@ export const laserHairWomenPackage = [
     label: "Arms And Underarms",
     featureName: "armsAndUnderarmsWomen",
     multiplSessions: true,
-    pricing: 26000,
+    singleSessionPricing: 6500,
+    mutlipleSessionPricing: 26000,
     imgSrc: Resources.images.Home.lhr.armsPackage,
   },
   {
@@ -388,7 +396,8 @@ export const laserHairWomenPackage = [
     label: "Chest And Back",
     featureName: "chestAndBackWomen",
     multiplSessions: true,
-    pricing: 32000,
+    singleSessionPricing: 8000,
+    mutlipleSessionPricing: 32000,
     imgSrc: Resources.images.Home.lhr.chestPackage,
   },
   {
@@ -396,7 +405,7 @@ export const laserHairWomenPackage = [
     packageName: "Half Legs",
     label: "Half Legs",
     featureName: "halfLegsWomen",
-    pricing: 5000,
+    singleSessionPricing: 5000,
     imgSrc: Resources.images.Home.lhr.halfLegsPackage,
   },
   {
@@ -404,7 +413,7 @@ export const laserHairWomenPackage = [
     packageName: "Full Legs",
     label: "Full Legs",
     featureName: "fullLegsWomen",
-    pricing: 8000,
+    singleSessionPricing: 8000,
     imgSrc: Resources.images.Home.lhr.fullLegsPackage,
   },
   {
@@ -412,7 +421,7 @@ export const laserHairWomenPackage = [
     packageName: "Back",
     label: "Back",
     featureName: "backWomen",
-    pricing: 5000,
+    singleSessionPricing: 5000,
     imgSrc: Resources.images.Home.lhr.backPackage,
   },
   {
@@ -420,7 +429,7 @@ export const laserHairWomenPackage = [
     packageName: "Chest",
     label: "Chest",
     featureName: "chestWomen",
-    pricing: 5000,
+    singleSessionPricing: 5000,
     imgSrc: Resources.images.Home.lhr.chestPackage,
   },
   {
@@ -428,7 +437,7 @@ export const laserHairWomenPackage = [
     packageName: "Bikini",
     label: "Bikini",
     featureName: "bikiniWomen",
-    pricing: 5000,
+    singleSessionPricing: 5000,
     imgSrc: Resources.images.Home.lhr.bikiniPackage,
   },
 ];
@@ -440,7 +449,8 @@ export const laserHairMenPackage = [
     label: "Full Body Men",
     featureName: "fullBodyMen",
     multiplSessions: true,
-    pricing: 60000,
+    singleSessionPricing: 15000,
+    mutlipleSessionPricing: 60000,
     imgSrc: Resources.images.Home.lhr.fullBodyMalePackage,
   },
   {
@@ -449,7 +459,8 @@ export const laserHairMenPackage = [
     label: "Face And Neck",
     featureName: "faceAndNeckMen",
     multiplSessions: true,
-    pricing: 20000,
+    singleSessionPricing: 5000,
+    mutlipleSessionPricing: 20000,
     imgSrc: Resources.images.Home.lhr.facePackage,
   },
   {
@@ -458,7 +469,8 @@ export const laserHairMenPackage = [
     label: "Arms And Underarms",
     featureName: "armsAndUnderarmsMen",
     multiplSessions: true,
-    pricing: 26000,
+    singleSessionPricing: 6500,
+    mutlipleSessionPricing: 26000,
     imgSrc: Resources.images.Home.lhr.armsPackage,
   },
   {
@@ -467,7 +479,8 @@ export const laserHairMenPackage = [
     label: "Chest And Back",
     featureName: "chestAndBackMen",
     multiplSessions: true,
-    pricing: 32000,
+    singleSessionPricing: 8000,
+    mutlipleSessionPricing: 32000,
     imgSrc: Resources.images.Home.lhr.armsPackage,
   },
   {
@@ -475,7 +488,7 @@ export const laserHairMenPackage = [
     packageName: "Half Legs",
     label: "Half Legs",
     featureName: "halfLegsMen",
-    pricing: 5000,
+    singleSessionPricing: 5000,
     imgSrc: Resources.images.Home.lhr.halfLegsPackage,
   },
   {
@@ -483,7 +496,7 @@ export const laserHairMenPackage = [
     packageName: "Full Legs",
     label: "Full Legs",
     featureName: "fullLegsMen",
-    pricing: 8000,
+    singleSessionPricing: 8000,
     imgSrc: Resources.images.Home.lhr.fullLegsPackage,
   },
   {
@@ -491,7 +504,7 @@ export const laserHairMenPackage = [
     packageName: "Back",
     label: "Back",
     featureName: "backMen",
-    pricing: 5000,
+    singleSessionPricing: 5000,
     imgSrc: Resources.images.Home.lhr.backPackage,
   },
   {
@@ -499,7 +512,7 @@ export const laserHairMenPackage = [
     packageName: "Chest",
     label: "Chest",
     featureName: "chestMen",
-    pricing: 5000,
+    singleSessionPricing: 5000,
     imgSrc: Resources.images.Home.lhr.chestMenPackage,
   },
 ];
@@ -510,6 +523,7 @@ export const oxyHydraPackage = [
     packageName: "Oxy Hydra Facial",
     label: "Oxy Hydra Facial",
     featureName: "oxyhydraFacial",
+    singleSessionPricing: 5000,
     imgSrc: Resources.images.Home.oxyhydraPackage,
   },
 ];
@@ -520,6 +534,7 @@ export const oxygeneoPackage = [
     packageName: "Oxygeneo",
     label: "Oxygeneo",
     featureName: "oxygeneo",
+    singleSessionPricing: 5000,
     imgSrc: Resources.images.Home.oxygeneoPackage,
   },
 ];
@@ -530,6 +545,7 @@ export const skinTighteningPackage = [
     packageName: "Full Face",
     label: "Full Face",
     featureName: "stFullFace",
+    singleSessionPricing: 5000,
     imgSrc: Resources.images.Home.skinTighteningPackage.STFullFace,
   },
 ];
@@ -540,6 +556,7 @@ export const dermafraqPackage = [
     packageName: "Dermafrac Infusion Facial",
     label: "Dermafrac Infusion Facial",
     featureName: "dermafrac",
+    singleSessionPricing: 10000,
     imgSrc: Resources.images.Home.dermafracPackage,
   },
 ];

@@ -28,6 +28,7 @@ function LoginModal({ setOpenLoginModal, setChecked }) {
             email: data?.email,
             name: data?.name,
             phone: data?.phone,
+            gender: data?.gender,
           })
         );
         setOpenLoginModal(false);

@@ -48,8 +48,6 @@ function UserProfile() {
 
   const fullName = "Milan Mishra";
   const phoneNumber = "8767898766";
-  const emailAddress = "test@mailer.com";
-  const gender = "Male";
 
   const isTablet = useMediaQuery("(max-width: 1023px)");
   const isMobile = useMediaQuery("(max-width: 767px)");
@@ -79,25 +77,10 @@ function UserProfile() {
     { id: "Orders", label: "My Orders", icon: <FaShoppingCart /> },
   ];
 
-  const { mutate: addAddress, isLoading } = useMutation(addUserAddress, {
+  const { mutate: getUserAddresses, isFetching } = useMutation(getUserAddress, {
     onSuccess(res) {
       if (res?.status === "SUCCESS") {
-        showSnackbar(res.message, "success");
-        setAddresses([
-          ...addresses,
-          res?.data?.addresses.map((item) => ({
-            name: item.name || "",
-            contactNumber: item.phone || "",
-            addressLine1: item.addressLine1 || "",
-            addressLine2: item.addressLine2 || "",
-            city: item.city || "",
-            state: item.state || "",
-            pinCode: item.pinCode || "",
-            addressName: "Home",
-          })),
-        ]);
-        setIsAdding(false);
-        getUserAddresses({ userId: userProfile.userId });
+        setAddresses(res?.data);
       } else {
         showSnackbar(res.message, "error");
       }
@@ -107,21 +90,27 @@ function UserProfile() {
     },
   });
 
-  const { mutate: getUserAddresses, isFetching } = useMutation(getUserAddress, {
+  const { mutate: addAddress, isLoading } = useMutation(addUserAddress, {
     onSuccess(res) {
       if (res?.status === "SUCCESS") {
         showSnackbar(res.message, "success");
-        res?.data?.address.map((item) =>
-          addressFormik.setValues({
-            fullName: item.fullName || "",
-            contactNumber: item.phone || "",
+        setAddresses([
+          ...addresses,
+          res?.data?.addresses.map((item) => ({
+            id: item.id || "",
+            name: item.name || "",
+            phone: item.phone || "",
             addressLine1: item.addressLine1 || "",
             addressLine2: item.addressLine2 || "",
             city: item.city || "",
             state: item.state || "",
             pinCode: item.pinCode || "",
-          })
-        );
+          })),
+        ]);
+        setIsAdding(false);
+        getUserAddresses({ userId: userProfile.userId });
+      } else {
+        showSnackbar(res.message, "error");
       }
     },
     onError(err) {
@@ -139,9 +128,8 @@ function UserProfile() {
       addAddress({
         userId: userProfile.userId,
         addressDetails: {
-          userId: userProfile.userId,
           fullName: values?.fullName,
-          phone: values?.contactNumber,
+          phone: values?.phone,
           addressLine1: values?.addressLine1,
           addressLine2: values?.addressLine2,
           city: values?.city,
@@ -205,7 +193,7 @@ function UserProfile() {
           </div>
 
           {/* Main Content */}
-          <div className="shadow p-5 rounded w-full">
+          <div className="shadow md:!p-5 rounded w-full">
             {selectedSection === "Profile" && (
               <Suspense fallback={<div />}>
                 <PersonalInformation userProfile={userProfile} />

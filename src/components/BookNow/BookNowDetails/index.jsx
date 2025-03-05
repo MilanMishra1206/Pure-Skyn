@@ -15,6 +15,7 @@ import FadedLineBreak from "../../../shared/CustomHrTag";
 import { getBookNowFormValidation } from "../../../helpers/Login";
 import { createNewBooking } from "../../../services/Booking";
 import { useAppSnackbar } from "../../../config/Context/SnackbarContext";
+import { INRCurrency } from "../../../helpers/Regex";
 
 const CustomLoader = lazy(() => import("../../../shared/CustomLoader"));
 
@@ -69,7 +70,7 @@ const BookNowDetails = ({ isLoggedIn }) => {
           treatmentDate: "",
           timeSlot: "",
         });
-  }, [checked, isLoggedIn]);
+  }, [checked, isLoggedIn, userProfile]);
 
   const { mutate: createBooking, isLoading } = useMutation(createNewBooking, {
     onSuccess(res) {
@@ -184,7 +185,7 @@ const BookNowDetails = ({ isLoggedIn }) => {
                   </div>
                   <div className="flex gap-2">
                     <span className="text-base text-coal font-semibold">
-                      ₹{service.packagePrice}
+                      {INRCurrency(service.packagePrice)}
                     </span>
                     <MdDeleteForever
                       size="1.5rem"
@@ -199,11 +200,11 @@ const BookNowDetails = ({ isLoggedIn }) => {
             <div className="px-4 py-2">
               <div className="flex justify-between py-2 text-lg text-coal">
                 <span>Total Package Price:</span>
-                <span>₹{packagePrice.toFixed(2)}</span>
+                <span>{INRCurrency(packagePrice)}</span>
               </div>
               <div className="flex justify-between font-semibold py-2 text-lg text-coal">
                 <span>Amount Payable:</span>
-                <span>₹{(packagePrice / 2).toFixed(2)}</span>
+                <span>{INRCurrency(packagePrice / 2)}</span>
               </div>
             </div>
             <small className="text-sm mt-4 text-Green">

@@ -9,6 +9,7 @@ import LoginForm from "./LoginForm";
 import { useAppSnackbar } from "../../config/Context/SnackbarContext";
 import { loginUser } from "../../services/LoginAndRegister";
 import { setUserProfile } from "../../redux/Actions";
+import { getServiceCart } from "../../services/Booking";
 
 const CustomLoader = lazy(() => import("../../shared/CustomLoader"));
 
@@ -29,6 +30,7 @@ function LoginPage() {
             email: data?.email,
             name: data?.name,
             phone: data?.phone,
+            gender: data?.gender,
           })
         );
         navigate("/");

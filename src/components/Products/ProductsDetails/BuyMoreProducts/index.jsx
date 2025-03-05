@@ -6,6 +6,7 @@ import Resources from "../../../../config/Resources";
 import ProductCarousel from "../ProductCarousel";
 import { addToCart } from "../../../../redux/Actions";
 import { useAppSnackbar } from "../../../../config/Context/SnackbarContext";
+import { INRCurrency } from "../../../../helpers/Regex";
 
 function BuyMoreProducts({ showCarousel = true, handleOpenCart }) {
   const dispatch = useDispatch();
@@ -135,11 +136,11 @@ function BuyMoreProducts({ showCarousel = true, handleOpenCart }) {
                   </Box>
                   <div className="flex gap-2 items-center">
                     <p className="text-emerald-900 font-bold">
-                      ₹{item.productPrice}
+                      {INRCurrency(item.productPrice)}
                     </p>
                     {item.strikePrice && (
                       <p className="text-slate-400 line-through">
-                        ₹{item.strikePrice}
+                        {INRCurrency(item.strikePrice)}
                       </p>
                     )}
                   </div>

@@ -11,12 +11,13 @@ import { Link, useNavigate } from "react-router-dom";
 import { FaCartPlus } from "react-icons/fa";
 import { IoFilterSharp } from "react-icons/io5";
 import { FaSort } from "react-icons/fa";
+import StarIcon from "@mui/icons-material/Star";
 import FadeInWrapper from "../../config/MotionFramer/FadeInWrapper";
 import Resources from "../../config/Resources";
 import FadedLineBreak from "../../shared/CustomHrTag";
-import StarIcon from "@mui/icons-material/Star";
 import { useAppSnackbar } from "../../config/Context/SnackbarContext";
 import { addToCart } from "../../redux/Actions";
+import { INRCurrency } from "../../helpers/Regex";
 
 function Products() {
   const isMobile = useMediaQuery("(max-width: 767px)");
@@ -125,10 +126,7 @@ function Products() {
     >
       Home
     </Link>,
-    <Typography
-      key="2"
-      className="!text-coal !font-poppins !text-lg"
-    >
+    <Typography key="2" className="!text-coal !font-poppins !text-lg">
       Products
     </Typography>,
   ];
@@ -228,11 +226,11 @@ function Products() {
                 </p>
                 {product.strikePrice && (
                   <span className="mt-4 text-left text-slate-400 line-through font-bold mr-4">
-                    ₹{product.strikePrice}
+                    {INRCurrency(product.strikePrice)}
                   </span>
                 )}
                 <span className="mt-4 text-left text-skyn font-bold text-lg">
-                  ₹{product.productPrice}
+                  {INRCurrency(product.productPrice)}
                 </span>
               </div>
               <button

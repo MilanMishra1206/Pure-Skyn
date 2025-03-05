@@ -2,12 +2,12 @@ import React, { lazy, Suspense, useState } from "react";
 import { AiOutlinePlus } from "react-icons/ai";
 import { FiEdit2, FiTrash2 } from "react-icons/fi";
 import { AnimatePresence, motion } from "framer-motion";
-import regex from "../../../helpers/Regex";
+import { useMutation, useQuery } from "react-query";
+import { useSelector } from "react-redux";
+import { regex } from "../../../helpers/Regex";
 import { useAppSnackbar } from "../../../config/Context/SnackbarContext";
 import FadedLineBreak from "../../../shared/CustomHrTag";
-import { useQuery } from "react-query";
-import { getUserAddress } from "../../../services/Users";
-import { useSelector } from "react-redux";
+import { getUserAddress, updateUserDetails } from "../../../services/Users";
 
 const CustomTextField = lazy(() => import("../../../shared/CustomTextField"));
 const CustomLoader = lazy(() => import("../../../shared/CustomLoader"));
@@ -28,7 +28,7 @@ export default function Address({
   const userProfile = useSelector((state) => state.userProfile.userProfile);
 
   const { isFetching, refetch } = useQuery(
-    ["getAllUsers"],
+    ["getUserAddress"],
     () => getUserAddress({ userId: userProfile.userId }),
     {
       refetchOnMount: true,
@@ -36,34 +36,61 @@ export default function Address({
       refetchOnReconnect: false,
       retry: false,
       onSuccess: (response) => {
-        response?.data?.address.map((item) =>
-          addressFormik.setValues({
-            fullName: item.fullName || "",
-            contactNumber: item.phone || "",
-            addressLine1: item.addressLine1 || "",
-            addressLine2: item.addressLine2 || "",
-            city: item.city || "",
-            state: item.state || "",
-            pinCode: item.pinCode || "",
-          })
-        );
+        if (response?.status === "SUCCESS") {
+          setAddresses(response?.data);
+          response?.data?.map((item) =>
+            addressFormik.setValues({
+              id: item.id || "",
+              fullName: item.fullName || "",
+              phone: item.phone || "",
+              addressLine1: item.addressLine1 || "",
+              addressLine2: item.addressLine2 || "",
+              city: item.city || "",
+              state: item.state || "",
+              pinCode: item.pinCode || "",
+              country: "India",
+            })
+          );
+        } else {
+          if (!response?.message.includes("No addresses found")) {
+            showSnackbar(response?.message, "error");
+          }
+        }
+      },
+      onError: (err) => {
+        showSnackbar(err?.message, "error");
       },
     }
   );
+
+  const { mutate: updateDetails, isLoading } = useMutation(updateUserDetails, {
+    onSuccess(res) {
+      if (res?.status === "SUCCESS") {
+        showSnackbar(res?.message, "success");
+        refetch();
+      } else {
+        showSnackbar(res?.message, "error");
+      }
+    },
+    onError(err) {
+      showSnackbar(err?.message, "error");
+    },
+  });
 
   const handleEdit = (index) => {
     const address = addresses[index];
     setIsAdding(true);
     setEditingAddressIndex(index);
     addressFormik.setValues({
+      id: address.id || "",
       fullName: address.fullName || "",
-      contactNumber: address.contactNumber || "",
+      phone: address.phone || "",
       addressLine1: address.addressLine1 || "",
       addressLine2: address.addressLine2 || "",
       city: address.city || "",
       state: address.state || "",
       pinCode: address.pinCode || "",
-      addressName: address.addressName || "",
+      country: "India",
     });
   };
 
@@ -73,31 +100,31 @@ export default function Address({
       return;
     }
     if (editingAddressIndex !== null) {
-      // will make API call here releated to update address -- PUT //
-      // updateAddressAPI(updatedAddress)
-      //   .then((updatedData) => {
-      //     const updatedAddresses = [...addresses];
-      //     updatedAddresses[editingAddressIndex] = updatedData;
-      //     setAddresses(updatedAddresses);
-      //     showSnackbar("Address updated successfully!", "success");
-      //   })
-      //   .catch((error) => {
-      //     showSnackbar("Failed to update address.", "error");
-      //   });
       const updatedAddress = {
         ...addresses[editingAddressIndex],
         ...addressFormik.values,
       };
-      const updatedAddresses = [...addresses];
-      updatedAddresses[editingAddressIndex] = updatedAddress;
-      setAddresses(updatedAddresses);
+      const reqBody = {
+        userId: userProfile.userId,
+        addressId: updatedAddress.id,
+        updatedAddress: {
+          id: updatedAddress.id,
+          fullName: updatedAddress.fullName,
+          phone: updatedAddress.phone,
+          addressLine1: updatedAddress.addressLine1,
+          addressLine2: updatedAddress.addressLine2,
+          city: updatedAddress.city,
+          state: updatedAddress.state,
+          pinCode: updatedAddress.pinCode,
+          country: "India",
+        },
+      };
+      updateDetails({ reqBody });
     } else {
       handleAddressSubmit();
     }
-
     setEditingAddressIndex(null);
     setIsAdding(false);
-    showSnackbar("Address updated successfully!", "success");
   };
 
   const handleCancel = () => {
@@ -128,43 +155,39 @@ export default function Address({
   return (
     <div>
       <Suspense fallback={<div />}>
-        <CustomLoader open={isFetching} />
+        <CustomLoader open={isFetching || isLoading} />
       </Suspense>
-      <p className="font-semibold text-cello font-poppins text-xl text-center">
+      <p className="font-semibold text-cello font-poppins text-xl text-center mt-4">
         Address Details
       </p>
       <FadedLineBreak />
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 mt-4 font-poppins">
+      <div className="grid xl:!grid-cols-2 gap-4 mt-4 font-poppins">
         {addresses.map((address, index) => (
           <div
             key={index}
-            className="bg-white p-5 rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 ease-in-out"
+            className="flex flex-col justify-between bg-white p-5 rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 ease-in-out"
           >
-            <h3 className="font-bold text-lg mb-2 text-skyn">
-              {address.addressName}
-            </h3>
-            <hr className="my-2 border-blue-gray-50 px-8" />
-            <p className="text-gray-600 font-bold">{address.fullName}</p>
-            <p className="text-gray-600 text-sm mt-2">
-              {address.contactNumber}
-            </p>
-            <p className="text-gray-600 text-sm">{address.addressLine1}</p>
-            <p className="text-gray-600 text-sm">{address.addressLine2}</p>
-            <p className="text-gray-600 text-sm">
-              {`${address.city}, ${address.state} - ${address.pinCode}`}
-            </p>
-            <hr className="my-4 border-blue-gray-50 px-8" />
-            <div className="flex space-x-4 mt-4">
+            <>
+              <p className="text-gray-600 font-bold">{address.fullName}</p>
+              <p className="text-gray-600 text-sm mt-2">{address.phone}</p>
+              <p className="text-gray-600 text-sm">{address.addressLine1}</p>
+              <p className="text-gray-600 text-sm">{address.addressLine2}</p>
+              <p className="text-gray-600 text-sm">
+                {`${address.city}, ${address.state} - ${address.pinCode}`}
+              </p>
+              <hr className="my-4 border-blue-gray-50 px-8" />
+            </>
+            <div className="flex flex-col lg:!flex-row gap-3 mt-4">
               <button
                 onClick={() => handleEdit(index)}
-                className="flex items-center space-x-1 text-sm bg-skyn text-white hover:opacity-80 transition-all duration-300 px-4 py-2 rounded shadow-lg"
+                className="flex items-center space-x-1 text-sm bg-skyn justify-center text-white hover:opacity-80 transition-all duration-300 px-4 py-2 rounded shadow-lg"
               >
                 <FiEdit2 />
                 <span>Edit</span>
               </button>
               <button
                 onClick={() => handleDelete(index)}
-                className="flex items-center space-x-1 text-sm bg-red-600 text-white hover:opacity-80 transition-all duration-300 px-4 py-2 rounded shadow-lg"
+                className="flex items-center space-x-1 text-sm justify-center bg-red-600 text-white hover:opacity-80 transition-all duration-300 px-4 py-2 rounded shadow-lg"
               >
                 <FiTrash2 />
                 <span>Delete</span>
@@ -270,17 +293,17 @@ export default function Address({
                       placeholder="Enter"
                       requiredStar
                       labelToShow="Contact Number"
-                      name="contactNumber"
+                      name="phone"
                       maxLength={10}
                       regex={regex.numeric}
                       textFieldColorClass="shadow-insetLight"
                       inputClassName="!bg-transparent"
                       fieldWidth="w-full !mb-4"
-                      value={addressFormik.values?.contactNumber}
+                      value={addressFormik.values?.phone}
                       onChange={addressFormik.handleChange}
                       handleBlur={addressFormik.handleBlur}
-                      error={addressFormik.errors.contactNumber}
-                      touched={addressFormik.touched.contactNumber}
+                      error={addressFormik.errors.phone}
+                      touched={addressFormik.touched.phone}
                     />
                   </Suspense>
                 </div>

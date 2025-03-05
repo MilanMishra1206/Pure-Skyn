@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { addToServicesCart } from "../../redux/Actions";
 import { useAppSnackbar } from "../../config/Context/SnackbarContext";
+import { INRCurrency } from "../../helpers/Regex";
 
 const CustomPricingTable = ({ pricingContent, treatmentName }) => {
   const showSnackbar = useAppSnackbar();
@@ -69,7 +70,7 @@ const CustomPricingTable = ({ pricingContent, treatmentName }) => {
                 {treatment.label}
               </td>
               <td className="px-4 py-2 border-b border-gray-300 text-coal">
-                ₹{treatment.pricing}
+                {INRCurrency(treatment.pricing)}
               </td>
               <td className="px-4 py-2 border-b border-gray-300 text-coal">
                 <button

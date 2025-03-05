@@ -7,7 +7,6 @@ import CustomLoader from "../../shared/CustomLoader";
 const BestSelling = lazy(() => import("./BestSelling"));
 const TestimonialCarousel = lazy(() => import("./TestimonialCarousel"));
 const ServicesOffered = lazy(() => import("./ServicesOffered"));
-const WhyUs = lazy(() => import("./WhyUs"));
 // const ContactUs = lazy(() => import("./ContactUs"));
 const AboutUs = lazy(() => import("./AboutUs"));
 const CustomHeroSection = lazy(() => import("../../shared/CustomHeroSection"));

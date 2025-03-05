@@ -7,6 +7,7 @@ import StarRateRoundedIcon from "@mui/icons-material/StarRateRounded";
 import { TbMoodSadSquint } from "react-icons/tb";
 import { MdOutlineShoppingCartCheckout } from "react-icons/md";
 import { IoIosCloseCircle } from "react-icons/io";
+import { FaCartPlus } from "react-icons/fa";
 import {
   emptyCart,
   removeFromCart,
@@ -14,12 +15,12 @@ import {
 } from "../../../redux/Actions";
 import FadeInWrapper from "../../../config/MotionFramer/FadeInWrapper";
 import Resources from "../../../config/Resources";
-import { FaCartPlus } from "react-icons/fa";
 import HandleQuantity from "../HandleQuantity";
 import FadedLineBreak from "../../../shared/CustomHrTag";
 import BuyMoreProducts from "../../Products/ProductsDetails/BuyMoreProducts";
 import ConfirmationModal from "../ConfirmationModal";
 import CustomButton2 from "../../../shared/CustomButton2";
+import { INRCurrency } from "../../../helpers/Regex";
 
 function CartDrawer({ openCart, handleOpenCart }) {
   const dispatch = useDispatch();
@@ -248,7 +249,10 @@ function CartDrawer({ openCart, handleOpenCart }) {
               whileInView="show"
               viewport={{ once: true }}
             >
-              <BuyMoreProducts showCarousel={false} handleOpenCart={handleOpenCart}/>
+              <BuyMoreProducts
+                showCarousel={false}
+                handleOpenCart={handleOpenCart}
+              />
             </motion.div>
           </div>
           {removeItem && (
@@ -263,9 +267,11 @@ function CartDrawer({ openCart, handleOpenCart }) {
         {cartItems?.length > 0 && (
           <div className="sticky flex flex-col bottom-0 shadow-lg p-4 bg-white z-50 mt-6 justify-content-center">
             <div className="flex items-center justify-between">
-              <p className="text-coal font-bold text-xl">Subtotal ({cartItems?.length})</p>
+              <p className="text-coal font-bold text-xl">
+                Subtotal ({cartItems?.length})
+              </p>
               <p className="text-xl font-semibold text-coal">
-                ₹{totalCartValue.toFixed(2)}
+                {INRCurrency(totalCartValue)}
               </p>
             </div>
             <CustomButton2

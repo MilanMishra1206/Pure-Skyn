@@ -1,7 +1,12 @@
+import { lazy, Suspense, useEffect, useState } from "react";
+import StarRateRoundedIcon from "@mui/icons-material/StarRateRounded";
+import { TbMoodSadSquint } from "react-icons/tb";
+import { Link, useNavigate } from "react-router-dom";
+import { FaCartPlus } from "react-icons/fa";
 import { Breadcrumbs, Typography, useMediaQuery } from "@mui/material";
 import { motion } from "framer-motion";
 import FadeInWrapper from "../../config/MotionFramer/FadeInWrapper";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import {
   MdKeyboardDoubleArrowRight,
   MdOutlineShoppingCartCheckout,
@@ -10,17 +15,12 @@ import { MdDeleteForever } from "react-icons/md";
 import CustomButton2 from "../../shared/CustomButton2";
 import FadedLineBreak from "../../shared/CustomHrTag";
 import BuyMoreProducts from "../Products/ProductsDetails/BuyMoreProducts";
-import { useDispatch } from "react-redux";
 import { emptyCart, removeFromCart, updateQuantity } from "../../redux/Actions";
-import { lazy, Suspense, useEffect, useState } from "react";
-import StarRateRoundedIcon from "@mui/icons-material/StarRateRounded";
-import { TbMoodSadSquint } from "react-icons/tb";
-import { Link, useNavigate } from "react-router-dom";
 import Resources from "../../config/Resources";
-import { FaCartPlus } from "react-icons/fa";
 import { FaCircleCheck } from "react-icons/fa6";
 import HandleQuantity from "./HandleQuantity";
 import ConfirmationModal from "./ConfirmationModal";
+import { INRCurrency } from "../../helpers/Regex";
 
 const CustomTextField = lazy(() => import("../../shared/CustomTextField"));
 
@@ -402,8 +402,8 @@ function Cart() {
                       <p className="text-kashmirBlue">Subtotal</p>
                       <p className="text-lg font-semibold text-cello">
                         {isCouponApplied
-                          ? `₹${originalCartValue}`
-                          : `₹${totalCartValue.toFixed(2)}`}
+                          ? `${INRCurrency(originalCartValue)}`
+                          : `${INRCurrency(totalCartValue)}`}
                       </p>
                     </div>
                     <div className="flex items-center justify-between">
@@ -438,7 +438,7 @@ function Cart() {
                           </button>
                         </div>
                         <span className="font-bold bg-emerald-700 text-white p-2 rounded text-ce">
-                          Congratulations! You got ₹{amountAfterCoupon} OFF
+                          Congratulations! You got {INRCurrency(amountAfterCoupon)} OFF
                         </span>
                       </div>
                     ) : (
@@ -475,7 +475,7 @@ function Cart() {
                   <div className="mt-6 flex items-center justify-between">
                     <p className="font-medium text-kashmirBlue">Total</p>
                     <p className="text-xl font-semibold text-coal">
-                      ₹{(totalCartValue + shippingCharges).toFixed(2)}
+                      {INRCurrency((totalCartValue + shippingCharges))}
                     </p>
                   </div>
                   <div className="mt-6 flex justify-end mb-5">

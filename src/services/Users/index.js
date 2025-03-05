@@ -27,7 +27,7 @@ const getUserAddress = async ({ userId }) => {
 
 const updateUserDetails = async ({ reqBody }) => {
   try {
-    const data = await axiosInstanceLogin.put(
+    const data = await axiosInstanceLogin.patch(
       API_URLS.Users.updateUserDetails,
       reqBody
     );

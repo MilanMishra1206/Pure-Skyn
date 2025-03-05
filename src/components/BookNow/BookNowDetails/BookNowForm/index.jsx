@@ -2,7 +2,7 @@ import { lazy, Suspense, useState } from "react";
 import { getIn } from "formik";
 import { Link, useNavigate } from "react-router-dom";
 import FadedLineBreak from "../../../../shared/CustomHrTag";
-import regex from "../../../../helpers/Regex";
+import { regex } from "../../../../helpers/Regex";
 import LoginModal from "../../LoginModal";
 
 const CustomTextField = lazy(
@@ -14,13 +14,7 @@ const CustomDatePicker = lazy(
 );
 const CustomCheckBox = lazy(() => import("../../../../shared/CustomCheckbox"));
 
-function BookNowForm({
-  isLoggedIn,
-  formik,
-  timeSlots,
-  checked,
-  setChecked,
-}) {
+function BookNowForm({ isLoggedIn, formik, timeSlots, checked, setChecked }) {
   const navigate = useNavigate();
   const [openLoginModal, setOpenLoginModal] = useState(false);
 
