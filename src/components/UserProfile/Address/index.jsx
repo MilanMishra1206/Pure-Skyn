@@ -7,7 +7,7 @@ import { useSelector } from "react-redux";
 import { regex } from "../../../helpers/Regex";
 import { useAppSnackbar } from "../../../config/Context/SnackbarContext";
 import FadedLineBreak from "../../../shared/CustomHrTag";
-import { getUserAddress, updateUserDetails } from "../../../services/Users";
+import { getUserAddress, updateUserAddress } from "../../../services/Users";
 
 const CustomTextField = lazy(() => import("../../../shared/CustomTextField"));
 const CustomLoader = lazy(() => import("../../../shared/CustomLoader"));
@@ -63,7 +63,7 @@ export default function Address({
     }
   );
 
-  const { mutate: updateDetails, isLoading } = useMutation(updateUserDetails, {
+  const { mutate: updateAddress, isLoading } = useMutation(updateUserAddress, {
     onSuccess(res) {
       if (res?.status === "SUCCESS") {
         showSnackbar(res?.message, "success");
@@ -119,7 +119,7 @@ export default function Address({
           country: "India",
         },
       };
-      updateDetails({ reqBody });
+      updateAddress({ reqBody });
     } else {
       handleAddressSubmit();
     }

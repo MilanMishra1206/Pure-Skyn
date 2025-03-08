@@ -6,6 +6,7 @@ import { motion } from "framer-motion";
 import { lazy, Suspense, useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import { useMutation } from "react-query";
+import { useDispatch } from "react-redux";
 import CustomHeader from "../../shared/CustomHeader";
 import FadeInWrapper from "../../config/MotionFramer/FadeInWrapper";
 import {
@@ -13,11 +14,13 @@ import {
   requestChangePassword,
 } from "../../services/LoginAndRegister";
 import { useAppSnackbar } from "../../config/Context/SnackbarContext";
+import { logoutUser } from "../../redux/Actions";
 
 const CustomTextField = lazy(() => import("../../shared/CustomTextField"));
 const CustomLoader = lazy(() => import("../../shared/CustomLoader"));
 
 function ChangePassword() {
+  const dispatch = useDispatch();
   const showSnackbar = useAppSnackbar();
   const navigate = useNavigate();
   const useQuery = () => {
@@ -59,7 +62,9 @@ function ChangePassword() {
           showSnackbar(`${res?.message}. Please try again!`, "error");
         } else {
           showSnackbar(res?.message, "success");
-          navigate("/logout");
+          sessionStorage.clear();
+          navigate("/login");
+          dispatch(logoutUser());
         }
       },
       onError(error) {

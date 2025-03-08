@@ -135,33 +135,33 @@ function BookNowOptions({
     setCurrentStep(2);
   };
 
-  const { mutate: addingServiceToCart, isLoading: addingToCart } = useMutation(
-    addServiceToCart,
-    {
-      onSuccess(res) {
-        if (res?.status === "SUCCESS") {
-          const treatmentName = sessionStorage.getItem("treatmentName");
-          const newPackage = {
-            treatmentName,
-            packageName,
-            packagePrice,
-            serviceId,
-            subServiceId,
-            featureName,
-            selectedPackageImg,
-          };
-          showSnackbar("Service added to the cart", "success");
-          dispatch(addToServicesCart(newPackage));
-          setOpenModal(false);
-        } else {
-          showSnackbar(res?.message, "error");
-        }
-      },
-      onError(err) {
-        showSnackbar(err?.message, "error");
-      },
-    }
-  );
+  // const { mutate: addingServiceToCart, isLoading: addingToCart } = useMutation(
+  //   addServiceToCart,
+  //   {
+  //     onSuccess(res) {
+  //       if (res?.status === "SUCCESS") {
+  //         const treatmentName = sessionStorage.getItem("treatmentName");
+  //         const newPackage = {
+  //           treatmentName,
+  //           packageName,
+  //           packagePrice,
+  //           serviceId,
+  //           subServiceId,
+  //           featureName,
+  //           selectedPackageImg,
+  //         };
+  //         showSnackbar("Service added to the cart", "success");
+  //         dispatch(addToServicesCart(newPackage));
+  //         setOpenModal(false);
+  //       } else {
+  //         showSnackbar(res?.message, "error");
+  //       }
+  //     },
+  //     onError(err) {
+  //       showSnackbar(err?.message, "error");
+  //     },
+  //   }
+  // );
 
   const { mutate: removingServiceToCart, isLoading: processingRemoveService } =
     useMutation(removeServiceFromCart, {
@@ -199,11 +199,14 @@ function BookNowOptions({
     if (selectedFeatureName !== newPackage.featureName) {
       showSnackbar("Please select the service option", "error");
     } else {
-      addingServiceToCart({
-        userId: userProfile.userId,
-        serviceId,
-        subServiceId,
-      });
+      // addingServiceToCart({
+      //   userId: userProfile.userId,
+      //   serviceId,
+      //   subServiceId,
+      // });
+      dispatch(addToServicesCart(newPackage));
+      showSnackbar("Service added to the cart", "success");
+      setOpenModal(false);
     }
   };
 
@@ -279,12 +282,7 @@ function BookNowOptions({
     <div className="py-5">
       <Suspense fallback={<div />}>
         <CustomLoader
-          open={
-            isLoading ||
-            addingToCart ||
-            clearingServiceCart ||
-            processingRemoveService
-          }
+          open={isLoading || clearingServiceCart || processingRemoveService}
         />
       </Suspense>
       <p className="font-bold text-4xl text-coffee text-center">{heading}</p>

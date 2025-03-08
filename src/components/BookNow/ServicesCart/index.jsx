@@ -81,10 +81,9 @@ function ServicesCart() {
           whileInView="show"
           viewport={{ once: true }}
         >
-          <DrawCircleText
-            headerText={"Exciting Offers"}
-            serviceName={"On All Our Services"}
-            subText={"Pay 50% after the service!!"}
+          <img
+            src={Resources.images.Common.fiftyPercentAfterServiceBanner}
+            alt="50% After Service Banner"
           />
         </motion.div>
         {servicesCart.length > 0 ? (

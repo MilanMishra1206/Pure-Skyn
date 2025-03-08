@@ -7,7 +7,6 @@ import PureSkynLogin from "../../pages/PureSkynLogin";
 
 // Lazy Loaded Routes
 const PureSkynHome = lazy(() => import("../../pages/PureSkynHome"));
-const PureSkynLogout = lazy(() => import("../../pages/PureSkynLogout"));
 const PureSkynServices = lazy(() => import("../../pages/PureSkynServices"));
 const PureSkynProducts = lazy(() => import("../../pages/PureSkynProducts"));
 const PureSkynProductDetails = lazy(
@@ -28,14 +27,11 @@ const PureSkynLaserHairRemoval = lazy(
 const PureSkynSkinTreatment = lazy(
   () => import("../../pages/PureSkynSkinTreatment")
 );
-const PureSkynLHRPackages = lazy(
-  () => import("../../pages/PureSkynLHRPackages")
-);
-const PureSkynMediFacialPackages = lazy(
-  () => import("../../pages/PureSkynMediFacialPackages")
-);
 const PureSkynServicesCart = lazy(
   () => import("../../pages/PureSkynServicesCart")
+);
+const PureSkynCustomPackages = lazy(
+  () => import("../../pages/PureSkynCustomPackages")
 );
 const PureSkynCart = lazy(() => import("../../pages/PureSkynCart"));
 const CustomNavbar = lazy(() => import("../../shared/CustomNavbar"));
@@ -64,6 +60,11 @@ const routesConfig = [
     accessRule: "public",
   },
   {
+    path: "/packages",
+    Component: PureSkynCustomPackages,
+    accessRule: "public",
+  },
+  {
     path: "/services/laser-hair-removal",
     Component: PureSkynLaserHairRemoval,
     accessRule: "public",
@@ -74,18 +75,8 @@ const routesConfig = [
     accessRule: "public",
   },
   {
-    path: "/services/laser-hair-removal-packages",
-    Component: PureSkynLHRPackages,
-    accessRule: "public",
-  },
-  {
     path: "/services/skin/medi-facial",
     Component: PureSkynSkinTreatment,
-    accessRule: "public",
-  },
-  {
-    path: "/services/skin/medi-facial-packages",
-    Component: PureSkynMediFacialPackages,
     accessRule: "public",
   },
   {
@@ -131,11 +122,6 @@ const routesConfig = [
   {
     path: "/book-now/services-cart",
     Component: PureSkynServicesCart,
-    accessRule: "public",
-  },
-  {
-    path: "/logout",
-    Component: PureSkynLogout,
     accessRule: "public",
   },
 ];

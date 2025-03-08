@@ -27,7 +27,7 @@ const getUserAddress = async ({ userId }) => {
 
 const updateUserDetails = async ({ reqBody }) => {
   try {
-    const data = await axiosInstanceLogin.patch(
+    const data = await axiosInstanceLogin.put(
       API_URLS.Users.updateUserDetails,
       reqBody
     );
@@ -37,4 +37,16 @@ const updateUserDetails = async ({ reqBody }) => {
   }
 };
 
-export { addUserAddress, getUserAddress, updateUserDetails };
+const updateUserAddress = async ({ reqBody }) => {
+  try {
+    const data = await axiosInstanceLogin.patch(
+      API_URLS.Users.updateUserAddress,
+      reqBody
+    );
+    return data;
+  } catch (response) {
+    throw new Error(response?.data?.error?.message);
+  }
+};
+
+export { addUserAddress, getUserAddress, updateUserDetails, updateUserAddress };

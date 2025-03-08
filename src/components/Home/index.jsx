@@ -36,7 +36,6 @@ function Home() {
             <ServicesOffered
               isMobile={isMobile}
               isLargeScreen={isLargeScreen}
-              isLaptop={isLaptop}
             />
           </MotionWrapper>
         </Suspense>

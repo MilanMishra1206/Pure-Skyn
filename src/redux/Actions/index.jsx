@@ -5,6 +5,16 @@ export const setUserProfile = (userProfile) => ({
   payload: userProfile,
 });
 
+export const setUserAddress = (addresses) => ({
+  type: types.SET_USER_ADDRESS,
+  payload: addresses
+})
+
+export const logoutUser = () => ({
+  type: types.LOGOUT_USER,
+});
+
+// actions for product cart
 export const addToCart = (product) => ({
   type: types.ADD_TO_CART,
   payload: product,
@@ -23,6 +33,8 @@ export const updateQuantity = (productId, quantity) => ({
   type: types.UPDATE_QUANTITY,
   payload: { productId, quantity },
 });
+
+// actions for services cart
 
 export const addToServicesCart = (service) => ({
   type: types.ADD_TO_SERVICE_CART,

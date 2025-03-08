@@ -32,12 +32,14 @@ const getToken = async () => {
   const accessToken = token();
   try {
     if (!accessToken) {
-      window.location.href = `${window.location.origin}/logout`;
+      sessionStorage.clear();
+      window.location.href = `${window.location.origin}/login`;
       return null;
     }
     return accessToken;
   } catch (error) {
-    window.location.href = `${window.location.origin}/logout`;
+    sessionStorage.clear();
+    window.location.href = `${window.location.origin}/login`;
     return null;
   }
 };

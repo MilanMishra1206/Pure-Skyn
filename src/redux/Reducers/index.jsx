@@ -1,4 +1,34 @@
 import { combineReducers } from "redux";
+import * as types from "../Types";
+
+const userInitialState = {
+  userProfile: {},
+};
+
+const userReducer = (state = userInitialState, action) => {
+  switch (action.type) {
+    case types.SET_USER_PROFILE:
+      return {
+        ...state,
+        userProfile: action.payload,
+      };
+    case types.SET_USER_ADDRESS:
+      return {
+        ...state,
+        userProfile: {
+          ...state.userProfile,
+          addresses: action.payload.addresses,
+        },
+      };
+    case types.LOGOUT_USER:
+      return {
+        ...state,
+        userProfile: {},
+      };
+    default:
+      return state;
+  }
+};
 
 const initialState = {
   items: [],
@@ -6,7 +36,7 @@ const initialState = {
 
 const cartReducer = (state = initialState, action) => {
   switch (action.type) {
-    case "ADD_TO_CART":
+    case types.ADD_TO_CART:
       const existingItem = state.items.find(
         (item) => item.id === action.payload.id
       );
@@ -26,19 +56,19 @@ const cartReducer = (state = initialState, action) => {
         };
       }
 
-    case "REMOVE_FROM_CART":
+    case types.REMOVE_FROM_CART:
       return {
         ...state,
         items: state.items.filter((item) => item.id !== action.payload),
       };
 
-    case "EMPTY_CART":
+    case types.EMPTY_CART:
       return {
         ...state,
         items: [],
       };
 
-    case "UPDATE_QUANTITY":
+    case types.UPDATE_QUANTITY:
       return {
         ...state,
         items: state.items.map((item) =>
@@ -52,29 +82,13 @@ const cartReducer = (state = initialState, action) => {
   }
 };
 
-const userInitialState = {
-  userProfile: {},
-};
-
-const userReducer = (state = userInitialState, action) => {
-  switch (action.type) {
-    case "SET_USER_PROFILE":
-      return {
-        ...state,
-        userProfile: action.payload,
-      };
-    default:
-      return state;
-  }
-};
-
 const servicesInitialState = {
   services: [],
 };
 
 const servicesCartReducer = (state = servicesInitialState, action) => {
   switch (action.type) {
-    case "ADD_TO_SERVICE_CART":
+    case types.ADD_TO_SERVICE_CART:
       const existingIndex = state.services.findIndex(
         (service) => service.featureName === action.payload.featureName
       );
@@ -96,7 +110,7 @@ const servicesCartReducer = (state = servicesInitialState, action) => {
         };
       }
 
-    case "REMOVE_FROM_SERVICE_CART":
+    case types.REMOVE_FROM_SERVICE_CART:
       return {
         ...state,
         services: state.services.filter(
@@ -104,7 +118,7 @@ const servicesCartReducer = (state = servicesInitialState, action) => {
         ),
       };
 
-    case "EMPTY_SERVICE_CART":
+    case types.EMPTY_SERVICE_CART:
       return {
         ...state,
         services: [],

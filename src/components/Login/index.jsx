@@ -8,8 +8,8 @@ import { getLoginValidation, loginInitialValues } from "../../helpers/Login";
 import LoginForm from "./LoginForm";
 import { useAppSnackbar } from "../../config/Context/SnackbarContext";
 import { loginUser } from "../../services/LoginAndRegister";
-import { setUserProfile } from "../../redux/Actions";
-import { getServiceCart } from "../../services/Booking";
+import { setUserAddress, setUserProfile } from "../../redux/Actions";
+import { getUserAddress } from "../../services/Users";
 
 const CustomLoader = lazy(() => import("../../shared/CustomLoader"));
 
@@ -17,6 +17,23 @@ function LoginPage() {
   const showSnackbar = useAppSnackbar();
   const navigate = useNavigate();
   const dispatch = useDispatch();
+
+  const { mutate: getUserAddresses } = useMutation(getUserAddress, {
+    onSuccess(res) {
+      if (res?.status === "SUCCESS") {
+        dispatch(
+          setUserAddress({
+            addresses: res?.data,
+          })
+        );
+      } else {
+        showSnackbar(res.message, "error");
+      }
+    },
+    onError(err) {
+      showSnackbar(err.message, "error");
+    },
+  });
 
   const { mutate: loginUsers, isLoading } = useMutation(loginUser, {
     onSuccess(res) {
@@ -33,6 +50,7 @@ function LoginPage() {
             gender: data?.gender,
           })
         );
+        getUserAddresses({ userId: data?.id });
         navigate("/");
       } else {
         showSnackbar(`${res?.message}. Please try again!`, "error");

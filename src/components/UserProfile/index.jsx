@@ -4,22 +4,22 @@ import {
   addressInitialValues,
   getAddressValidationSchema,
 } from "../../helpers/UserProfile";
-import { useMediaQuery } from "@mui/material";
+import { Breadcrumbs, Typography, useMediaQuery } from "@mui/material";
 import { FaMapLocationDot } from "react-icons/fa6";
 import { FaUser } from "react-icons/fa";
 import { FaShoppingCart } from "react-icons/fa";
 import { MdOutlineMedicalServices } from "react-icons/md";
-import { useLocation, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
+import { useMutation } from "react-query";
+import { useSelector, useDispatch } from "react-redux";
 import { useAppSnackbar } from "../../config/Context/SnackbarContext";
 import PersonalInformation from "./PersonalInformation";
 import OrderHistory from "./OrderHistory";
 import AppointmentDetails from "./AppointmentDetails";
 import Address from "./Address";
 import MotionWrapper from "../../config/MotionFramer/MotionWrapper";
-import CustomHeader from "../../shared/CustomHeader";
-import { useMutation } from "react-query";
 import { addUserAddress, getUserAddress } from "../../services/Users";
-import { useSelector } from "react-redux";
+import { setUserAddress } from "../../redux/Actions";
 
 const CustomLoader = lazy(() => import("../../shared/CustomLoader"));
 
@@ -28,6 +28,7 @@ function UserProfile() {
   const showSnackbar = useAppSnackbar();
   const location = useLocation();
   const navigate = useNavigate();
+  const dispatch = useDispatch();
   const userProfile = useSelector((state) => state.userProfile.userProfile);
 
   const [addresses, setAddresses] = useState([]);
@@ -80,9 +81,11 @@ function UserProfile() {
   const { mutate: getUserAddresses, isFetching } = useMutation(getUserAddress, {
     onSuccess(res) {
       if (res?.status === "SUCCESS") {
-        setAddresses(res?.data);
+        const addresses = res?.data;
+        setAddresses(addresses);
+        dispatch(setUserAddress({ addresses }));
       } else {
-        showSnackbar(res.message, "error");
+        showSnackbar(res?.message, "error");
       }
     },
     onError(err) {
@@ -150,21 +153,36 @@ function UserProfile() {
     }
   };
 
+  const breadcrumbs = [
+    <Link
+      key="1"
+      to="/"
+      className="text-skyn no-underline !font-poppins hover:opacity-80 text-lg"
+    >
+      Home
+    </Link>,
+    <Typography key="2" className="!text-cello !font-poppins !text-lg">
+      Profile
+    </Typography>,
+  ];
+
   return (
     <MotionWrapper>
       <Suspense>
         <CustomLoader open={isLoading || isFetching} />
       </Suspense>
       <div className={`mt-3 ${isTablet ? "py-3" : "py-4 mt-4"}`}>
-        <div className={`mt-5 ${isMobile ? "px-4" : "px-5"}`}>
-          <CustomHeader
-            heading={"Profile"}
-            showBackButton={true}
-            navigateTo={"/"}
-          />
+        <div className={`mt-5 ${isTablet ? "px-3" : "px-5"}`}>
+          <Breadcrumbs
+            separator=">"
+            aria-label="breadcrumb"
+            className="mb-4 py-2"
+          >
+            {breadcrumbs}
+          </Breadcrumbs>
         </div>
         <div
-          className={`flex flex-col md:!flex-row mt-3 md:!space-x-5 space-y-5 md:!space-y-0 ${isTablet ? "px-3" : "px-5 mr-22 ml-22"}`}
+          className={`flex flex-col md:!flex-row mt-3 md:!space-x-5 space-y-5 md:!space-y-0 ${isTablet ? "px-3" : "px-5"}`}
         >
           {/* Sidebar */}
           <div

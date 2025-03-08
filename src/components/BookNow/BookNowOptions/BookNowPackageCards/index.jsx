@@ -18,7 +18,7 @@ function BookNowPackageCards({
       {packageDetails.map((item) => (
         <div
           key={item.id}
-          className={`overflow-hidden ${isMobile && "w-100"} lg:!w-100 p-3 rounded-md cursor-pointer ${item.isSelected ? "border-1 !border-[#064e3b]" : "border-1 border-black"} `}
+          className={`overflow-hidden ${isMobile && "w-100"} lg:!w-100 p-3 rounded-2xl cursor-pointer ${item.isSelected ? "border-1 border-[#6b4f3f]" : "border border-[#d6c5b4]"} shadow-md hover:shadow-lg transition-all duration-300`}
         >
           <div
             className={`flex ${isSmallestScreen ? "" : "justify-between gap-2"}`}
@@ -27,7 +27,7 @@ function BookNowPackageCards({
               className={`flex flex-col ${isSmallestScreen ? "w-full" : "w-48 md:!w-4/6 lg:!w-3/5"}`}
             >
               <p
-                className={`font-poppins text-coffee font-bold text-2xl ${isSmallestScreen ? "text-center" : ""} `}
+                className={`font-poppins text-coffee font-bold text-xl ${isSmallestScreen ? "text-center" : "text-left"} `}
               >
                 {item.packageName}
               </p>
@@ -55,15 +55,13 @@ function BookNowPackageCards({
               </div>
               <div className="flex flex-col gap-2 text-justify">
                 <div className="flex gap-2">
-                  <FaCircleCheck fill="green" size="1.1rem" className="mt-1" />
-                  <span className="!font-poppins text-green-700">
-                    No more oohs & aahs while facial threading or waxing
+                  <span className="!font-poppins text-green-700 text-sm">
+                    ✅ No more oohs & aahs while facial threading or waxing
                   </span>
                 </div>
                 <div className="flex gap-2">
-                  <FaCircleCheck fill="green" size="1.1rem" className="mt-1" />
-                  <span className="!font-poppins text-green-700">
-                    Includes only upper lip, chin and lower chin areas
+                  <span className="!font-poppins text-green-700 text-sm">
+                    ✅ Includes only upper lip, chin and lower chin areas
                   </span>
                 </div>
               </div>

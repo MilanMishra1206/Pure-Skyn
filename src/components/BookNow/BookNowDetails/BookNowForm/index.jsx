@@ -1,9 +1,9 @@
-import { lazy, Suspense, useState } from "react";
+import { lazy, Suspense, useEffect, useState } from "react";
 import { getIn } from "formik";
 import { Link, useNavigate } from "react-router-dom";
 import FadedLineBreak from "../../../../shared/CustomHrTag";
 import { regex } from "../../../../helpers/Regex";
-import LoginModal from "../../LoginModal";
+import { useSelector } from "react-redux";
 
 const CustomTextField = lazy(
   () => import("../../../../shared/CustomTextField")
@@ -12,11 +12,21 @@ const CustomDropdown = lazy(() => import("../../../../shared/CustomDropdown"));
 const CustomDatePicker = lazy(
   () => import("../../../../shared/CustomDatePicker")
 );
-const CustomCheckBox = lazy(() => import("../../../../shared/CustomCheckbox"));
 
-function BookNowForm({ isLoggedIn, formik, timeSlots, checked, setChecked }) {
+function BookNowForm({ isLoggedIn, formik, timeSlots }) {
   const navigate = useNavigate();
-  const [openLoginModal, setOpenLoginModal] = useState(false);
+  const userProfile = useSelector((state) => state.userProfile.userProfile);
+
+  const [userAddressOptions, setUserAddressOptions] = useState([]);
+
+  useEffect(() => {
+    const userAddresses = userProfile.addresses.map((address) => ({
+      label: `${address.fullName}, ${address.addressLine1}, ${address.addressLine2}, 
+              ${address.city}, ${address.state} - ${address.pinCode}, ${address.phone}`,
+      value: address.id,
+    }));
+    setUserAddressOptions(userAddresses);
+  }, [userProfile]);
 
   return (
     <>
@@ -27,17 +37,7 @@ function BookNowForm({ isLoggedIn, formik, timeSlots, checked, setChecked }) {
           </div>
           <FadedLineBreak />
           <div className="text-left text-lg md:p-5 ml-2 mb-4 md:!mb-0">
-            {isLoggedIn ? (
-              <CustomCheckBox
-                checked={checked}
-                checkBoxClasses="!p-0"
-                label="Booking for self?"
-                labelClasses="!ml-2"
-                handleChange={() => {
-                  setChecked((prev) => !prev);
-                }}
-              />
-            ) : (
+            {!isLoggedIn && (
               <p className="text-sm font-bold">
                 <button
                   className="text-[#175EC3] hover:opacity-80"
@@ -49,7 +49,7 @@ function BookNowForm({ isLoggedIn, formik, timeSlots, checked, setChecked }) {
               </p>
             )}
           </div>
-          <div className="grid md:grid-cols-2 lg:!grid-cols-3 gap-4 md:p-5">
+          <div className="grid md:grid-cols-2 gap-4 md:p-5">
             <Suspense fallback={<div />}>
               <CustomTextField
                 textClassOverride="!text-kashmirBlue"
@@ -120,13 +120,7 @@ function BookNowForm({ isLoggedIn, formik, timeSlots, checked, setChecked }) {
                   labelToShow="Select Address"
                   name="address"
                   showIconOutline
-                  options={[
-                    { label: "Malibu Town", value: "Malibu Town" },
-                    {
-                      label: "South Delhi",
-                      value: "South Delhi",
-                    },
-                  ]}
+                  options={userAddressOptions}
                   value={formik.values.address}
                   handleBlur={formik.handleBlur}
                   handleChange={formik.handleChange}
@@ -191,9 +185,9 @@ function BookNowForm({ isLoggedIn, formik, timeSlots, checked, setChecked }) {
             <div className="mb-4">
               <label
                 htmlFor="timeSlot"
-                className="block text-sm font-bold text-cello"
+                className="text-sm font-medium pb-1 !text-kashmirBlue"
               >
-                Select Appointment Time
+                Select Appointment Time <span className="text-bitterSweet">*</span>
               </label>
               <div className="grid grid-cols-2 gap-2 mt-2">
                 {timeSlots.map((slot, index) => (
@@ -220,12 +214,6 @@ function BookNowForm({ isLoggedIn, formik, timeSlots, checked, setChecked }) {
           </div>
         </div>
       </form>
-      {openLoginModal && (
-        <LoginModal
-          setOpenLoginModal={setOpenLoginModal}
-          setChecked={setChecked}
-        />
-      )}
     </>
   );
 }

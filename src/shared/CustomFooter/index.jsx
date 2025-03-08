@@ -31,7 +31,7 @@ function CustomFooter() {
                 src={Resources.images.Common.googlePlayButton}
                 alt="branding"
                 style={{ width: "9rem" }}
-                className="rounded-2"
+                className="rounded-2 cursor-pointer"
               />
             </div>
           </div>
@@ -93,16 +93,10 @@ function CustomFooter() {
               </div>
               <div className="flex flex-col text-center md:!text-left mt-2">
                 <Link
-                  to="/services/laser-hair-removal-packages"
+                  to="/packages"
                   className="text-skyn transition-colors duration-300 no-underline hover:opacity-80"
                 >
-                  Laser Hair Removal Packages
-                </Link>
-                <Link
-                  to="/services/skin/medi-facial-packages"
-                  className="text-skyn transition-colors duration-300 no-underline hover:opacity-80"
-                >
-                  Medi Facial Packages
+                  Customised Packages
                 </Link>
               </div>
             </div>

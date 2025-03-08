@@ -4,17 +4,10 @@ import { FaEye, FaEyeSlash } from "react-icons/fa";
 import { motion } from "framer-motion";
 import Resources from "../../../config/Resources";
 import FadeInWrapper from "../../../config/MotionFramer/FadeInWrapper";
-import { IoIosCloseCircle } from "react-icons/io";
 
 const CustomTextField = lazy(() => import("../../../shared/CustomTextField"));
 
-function LoginForm({
-  formik,
-  handleSubmit,
-  mobileClass,
-  isModal = false,
-  setOpenLoginModal,
-}) {
+function LoginForm({ formik, handleSubmit, mobileClass }) {
   const [showPassword, setShowPassword] = useState(false);
 
   return (
@@ -25,16 +18,6 @@ function LoginForm({
       viewport={{ once: true }}
       className={`w-full max-w-md mx-auto bg-[#FFFFFF] md:shadow-lg md:rounded-3xl p-8 ${mobileClass}`}
     >
-      {isModal && (
-        <div className="flex justify-end">
-          <button
-            className="text-2xl text-coal"
-            onClick={() => setOpenLoginModal(false)}
-          >
-            <IoIosCloseCircle size={"2rem"} />
-          </button>
-        </div>
-      )}
       <div className="flex justify-center p-4">
         <img
           src={Resources.images.Common.newLogoWhite}
@@ -113,16 +96,14 @@ function LoginForm({
           </Link>
         </p>
       </div>
-      {!isModal && (
-        <div className="mt-4 text-center">
-          <p>
-            Go to{" "}
-            <Link to="/" className="underline text-skyn hover:!opacity-80">
-              Dashboard
-            </Link>
-          </p>
-        </div>
-      )}
+      <div className="mt-4 text-center">
+        <p>
+          Go to{" "}
+          <Link to="/" className="underline text-skyn hover:!opacity-80">
+            Dashboard
+          </Link>
+        </p>
+      </div>
     </motion.div>
   );
 }

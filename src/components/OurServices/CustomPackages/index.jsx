@@ -1,18 +1,28 @@
 import { Link } from "react-router-dom";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { Breadcrumbs, Typography, useMediaQuery } from "@mui/material";
 import { motion } from "framer-motion";
-import { allPackageDetails } from "../../../../../helpers/LaserServices";
-import MotionWrapper from "../../../../../config/MotionFramer/MotionWrapper";
-import FadeInWrapper from "../../../../../config/MotionFramer/FadeInWrapper";
-import FuzzyPricingOverlay from "../../../../../shared/CustomFuzzyPricingOverlay";
-import Resources from "../../../../../config/Resources";
-import CustomPricingTable from "../../../../../shared/CustomPricingTable";
-import FadedLineBreak from "../../../../../shared/CustomHrTag";
+import { useDispatch, useSelector } from "react-redux";
 
-function MediFacialPackages() {
+import { customPackageDetails } from "../../../helpers/LaserServices";
+import MotionWrapper from "../../../config/MotionFramer/MotionWrapper";
+import FadeInWrapper from "../../../config/MotionFramer/FadeInWrapper";
+import FuzzyPricingOverlay from "../../../shared/CustomFuzzyPricingOverlay";
+import Resources from "../../../config/Resources";
+import FadedLineBreak from "../../../shared/CustomHrTag";
+import CustomPackagesCards from "./PackagesCards";
+import { addToServicesCart } from "../../../redux/Actions";
+import { useAppSnackbar } from "../../../config/Context/SnackbarContext";
+
+function CustomPackages() {
+  const dispatch = useDispatch();
+  const showSnackbar = useAppSnackbar();
+  const servicesCart = useSelector((state) => state.servicesCart.services);
+
   const isTablet = useMediaQuery("(max-width: 1023px)");
   const isMobile = useMediaQuery("(max-width: 767px)");
+
+  const [addedToCart, setAddedToCart] = useState({});
 
   useEffect(() => {
     sessionStorage.removeItem("currentBookStep");
@@ -30,41 +40,25 @@ function MediFacialPackages() {
       Home
     </Link>,
     <Typography key="2" className="!text-cello !font-poppins !text-lg">
-      Medi-Facial Packages
+      Packages
     </Typography>,
   ];
 
-  const createPricingContent = (data) => {
-    let pricingContent = [];
-    const targetCategories = [
-      "skinTightening",
-      "oxyhydraFacial",
-      "oxygeneo",
-      "dermafrac",
-    ];
-    targetCategories.forEach((category) => {
-      const subCategories = data[category];
+  useEffect(() => {
+    const updatedCartStatus = customPackageDetails.reduce((acc, item) => {
+      acc[item.featureName] = servicesCart.some(
+        (cartItem) => cartItem.featureName === item.featureName
+      );
+      return acc;
+    }, {});
 
-      Object.values(subCategories).forEach((treatments) => {
-        treatments.forEach((treatment) => {
-          pricingContent.push({
-            label: treatment.label,
-            pricing: treatment.price,
-            packageName: treatment.name,
-            serviceId: treatment.serviceId,
-            subServiceId: treatment.subServiceId,
-            featureName: treatment.featureName,
-            selectedPackageImg: treatment.imgSrc,
-            isMediFacial: true,
-          });
-        });
-      });
-    });
+    setAddedToCart(updatedCartStatus);
+  }, [servicesCart, customPackageDetails]);
 
-    return pricingContent;
+  const handleAddToCart = (service) => {
+    dispatch(addToServicesCart(service));
+    showSnackbar("Service added to the cart", "success");
   };
-
-  const mediFacialPrimePackages = createPricingContent(allPackageDetails);
 
   return (
     <MotionWrapper>
@@ -85,7 +79,7 @@ function MediFacialPackages() {
               {breadcrumbs}
             </Breadcrumbs>
             <div className="font-bold text-coffee text-4xl xl:!text-6xl mb-4">
-              Medi-Facial Packages
+              Packages
             </div>
             <div className="relative">
               {isMobile ? (
@@ -107,7 +101,7 @@ function MediFacialPackages() {
               viewport={{ once: true }}
             >
               <FuzzyPricingOverlay
-                header={"EXCITING OFFERS - Medi-Facial Packages!"}
+                header={"Customised Packages Just For You!!"}
                 subText={"100% Satisfaction Guaranteed"}
                 buttonText={"Book Now"}
                 link="/book-now"
@@ -119,19 +113,27 @@ function MediFacialPackages() {
               initial="hidden"
               whileInView="show"
               viewport={{ once: true }}
-              className="flex flex-col font-poppins font-medium text-lg text-center text-coal"
+              className="flex flex-col gap-4 font-poppins font-medium text-lg text-center text-coal"
             >
               <p>
-                At Pure Skyn, we take pride in our commitment to delivering
-                exceptional results. Our highly trained professionals use
-                state-of-the-art Venus Velocity Diode laser hair removal machine
-                to ensure your comfort and satisfaction throughout your hair
-                removal journey.
+                At Pure Skyn, we take pride in offering premium skincare
+                services, including laser hair removal and Medi facials, to help
+                you achieve radiant, flawless skin. Our highly trained
+                professionals use the state-of-the-art Venus Velocity Diode
+                laser to provide a safe, comfortable, and effective hair removal
+                experience. Whether you're looking for the confidence of smooth,
+                hair-free skin or the rejuvenating benefits of a hydrating and
+                brightening Medi facial, we are here to help you look and feel
+                your best.
               </p>
               <p>
-                So if you are ready to have a satisfactory, long-lasting glow,
-                hydrating & brightened face, pamper your skin with a new age
-                Medi facial.
+                Don't miss the chance to experience the freedom and confidence
+                of smooth, hair-free skin. Our limited-time laser hair removal
+                packages provide the perfect opportunity to say goodbye to
+                unwanted hair and embrace effortless beauty. If you're looking
+                for a long-lasting glow, deep hydration, and a brighter
+                complexion, treat yourself to a rejuvenating Medi facial for
+                radiant, refreshed skin.
               </p>
             </motion.div>
           </div>
@@ -143,36 +145,14 @@ function MediFacialPackages() {
             viewport={{ once: true }}
             className={`flex flex-col items-center justify-center font-poppins mt-5 ${isMobile ? "p-1" : "p-4"}`}
           >
-            <div className="font-extrabold text-4xl">
-              MEDI-FACIAL PRIME PACKAGES
+            <div className="font-extrabold text-2xl lg:!text-4xl">
+              PRIME PACKAGES
             </div>
-            <div className="grid grid-cols-2 lg:grid-cols-4 place-content-center place-items-center gap-4 mt-4">
-              <div className="p-2 rounded shadow-lg">
-                <img
-                  src={Resources.images.Home.oxyhydraMoble}
-                  className="mb-5"
-                />
-              </div>
-              <div className="p-2 rounded shadow-lg">
-                <img
-                  src={Resources.images.Home.skinTighteningMobile}
-                  className="mb-5"
-                />
-              </div>
-              <div className="p-2 rounded shadow-lg">
-                <img
-                  src={Resources.images.Home.dermfracMobile}
-                  className="mb-5"
-                />
-              </div>
-              <div className="p-2 rounded shadow-lg">
-                <img
-                  src={Resources.images.Home.oxygeneoMobile}
-                  className="mb-5"
-                />
-              </div>
-            </div>
-            <CustomPricingTable pricingContent={mediFacialPrimePackages} />
+            <CustomPackagesCards
+              packageDetails={customPackageDetails}
+              handleAddToCart={handleAddToCart}
+              addedToCart={addedToCart}
+            />
           </motion.div>
           <FadedLineBreak />
           <motion.div
@@ -186,13 +166,20 @@ function MediFacialPackages() {
               <p className="font-extrabold text-3xl ">Pure Skyn Expertise</p>
             </div>
             <div>
-              <div className="grid grid-cols-1 md:grid-cols-4 font-medium text-start gap-4 bg-opacity-40 ">
+              <div className="grid md:grid-cols-2 xl:!grid-cols-4 font-medium text-start gap-4 bg-opacity-40 ">
                 <div className="flex items-center flex-col p-2">
-                  <img
-                    src={Resources.images.Services.SkinTightening.img4}
-                    className="mb-5 h-56"
-                  />
-                  <div className="text-coal text-center">
+                  <div className="flex gap-2 items-center mb-4">
+                    <img
+                      src={Resources.images.Services.SkinTightening.img4}
+                      className="h-48"
+                    />
+                    <img
+                      src={Resources.images.Services.LaserHairRemoval.machine}
+                      alt="expertise"
+                      className="mb-5 h-48"
+                    />
+                  </div>
+                  <div className="text-coal text-center mt-2">
                     <p className="text-xl font-extrabold">
                       FDA approved machine
                     </p>
@@ -240,4 +227,4 @@ function MediFacialPackages() {
   );
 }
 
-export default MediFacialPackages;
+export default CustomPackages;

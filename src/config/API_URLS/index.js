@@ -32,7 +32,8 @@ const API_URLS = {
   Users: {
     addAddress: "/auth/user/add-address",
     getUserAddress: "/users/address",
-    updateUserDetails: "/auth/update-address",
+    updateUserDetails: "/auth/update",
+    updateUserAddress: "/auth/update-address",
   },
 };
 
