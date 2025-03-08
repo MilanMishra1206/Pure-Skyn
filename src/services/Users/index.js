@@ -4,7 +4,7 @@ import { axiosInstanceLogin } from "../../utils/Axios";
 const addUserAddress = async ({ userId, addressDetails }) => {
   const reqBody = { userId, address: addressDetails };
   try {
-    const data = await axiosInstanceLogin.put(
+    const data = await axiosInstanceLogin.post(
       `${API_URLS.Users.addAddress}`,
       reqBody
     );
@@ -39,7 +39,7 @@ const updateUserDetails = async ({ reqBody }) => {
 
 const updateUserAddress = async ({ reqBody }) => {
   try {
-    const data = await axiosInstanceLogin.patch(
+    const data = await axiosInstanceLogin.put(
       API_URLS.Users.updateUserAddress,
       reqBody
     );
@@ -49,4 +49,21 @@ const updateUserAddress = async ({ reqBody }) => {
   }
 };
 
-export { addUserAddress, getUserAddress, updateUserDetails, updateUserAddress };
+const deleteUserAddress = async ({ userId, addressId }) => {
+  try {
+    const data = await axiosInstanceLogin.delete(
+      `${API_URLS.Users.deleteUserAddress}?userId=${userId}&addressId=${addressId}`
+    );
+    return data;
+  } catch (response) {
+    throw new Error(response?.data?.error?.message);
+  }
+};
+
+export {
+  addUserAddress,
+  getUserAddress,
+  updateUserDetails,
+  updateUserAddress,
+  deleteUserAddress,
+};

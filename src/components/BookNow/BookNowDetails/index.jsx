@@ -124,7 +124,7 @@ const BookNowDetails = ({ isLoggedIn }) => {
 
   useEffect(() => {
     const totalPackagePrice = servicesCart.reduce(
-      (total, service) => total + service.packagePrice,
+      (total, service) => total + +service.packagePrice,
       0
     );
     setPackagePrice(totalPackagePrice);

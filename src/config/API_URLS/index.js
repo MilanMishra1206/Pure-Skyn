@@ -19,6 +19,10 @@ const API_URLS = {
     reqBooking: "/booking/request",
     createBooking: "/booking/create",
   },
+  Cart: {
+    saveServiceCart: "/cart/add-update",
+    getServiceCart: "/cart/",
+  },
   Query: {
     newQuery: "/query/new",
     updateQueryStatus: "/query/",
@@ -32,8 +36,9 @@ const API_URLS = {
   Users: {
     addAddress: "/auth/user/add-address",
     getUserAddress: "/users/address",
-    updateUserDetails: "/auth/update",
+    updateUserDetails: "/auth/update-user",
     updateUserAddress: "/auth/update-address",
+    deleteUserAddress: "/auth/user/delete-address",
   },
 };
 

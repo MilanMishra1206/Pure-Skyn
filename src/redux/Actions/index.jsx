@@ -8,7 +8,12 @@ export const setUserProfile = (userProfile) => ({
 export const setUserAddress = (addresses) => ({
   type: types.SET_USER_ADDRESS,
   payload: addresses
-})
+});
+
+export const removeAddress = (currentAddresses) => ({
+  type: types.REMOVE_ADDRESS,
+  payload: currentAddresses,
+});
 
 export const logoutUser = () => ({
   type: types.LOGOUT_USER,
@@ -35,6 +40,11 @@ export const updateQuantity = (productId, quantity) => ({
 });
 
 // actions for services cart
+
+export const setServicesOnLogin = (services) => ({
+  type: types.SET_SERVICES_ON_LOGIN,
+  payload: services,
+});
 
 export const addToServicesCart = (service) => ({
   type: types.ADD_TO_SERVICE_CART,

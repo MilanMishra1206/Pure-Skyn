@@ -3,11 +3,16 @@ import { AiOutlinePlus } from "react-icons/ai";
 import { FiEdit2, FiTrash2 } from "react-icons/fi";
 import { AnimatePresence, motion } from "framer-motion";
 import { useMutation, useQuery } from "react-query";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import { regex } from "../../../helpers/Regex";
 import { useAppSnackbar } from "../../../config/Context/SnackbarContext";
 import FadedLineBreak from "../../../shared/CustomHrTag";
-import { getUserAddress, updateUserAddress } from "../../../services/Users";
+import {
+  deleteUserAddress,
+  getUserAddress,
+  updateUserAddress,
+} from "../../../services/Users";
+import { removeAddress } from "../../../redux/Actions";
 
 const CustomTextField = lazy(() => import("../../../shared/CustomTextField"));
 const CustomLoader = lazy(() => import("../../../shared/CustomLoader"));
@@ -22,8 +27,9 @@ export default function Address({
 }) {
   const [editingAddressIndex, setEditingAddressIndex] = useState(null);
   const [isConfirmingDelete, setIsConfirmingDelete] = useState(false);
-  const [deleteAddressIndex, setDeleteAddressIndex] = useState(null);
+  const [deleteAddress, setDeleteAddress] = useState({});
   const showSnackbar = useAppSnackbar();
+  const dispatch = useDispatch();
 
   const userProfile = useSelector((state) => state.userProfile.userProfile);
 
@@ -133,29 +139,45 @@ export default function Address({
     addressFormik.resetForm();
   };
 
-  const handleDelete = (index) => {
-    setDeleteAddressIndex(index);
+  const handleDelete = (address) => {
+    setDeleteAddress(address);
     setIsConfirmingDelete(true);
   };
 
+  const { mutate: delAddress, isLoading: isDeletingAddress } = useMutation(
+    deleteUserAddress,
+    {
+      onSuccess: (res) => {
+        if (res?.status === "SUCCESS") {
+          showSnackbar(res?.message, "success");
+          setIsConfirmingDelete(false);
+          const currentAddresses = res?.data?.addresses;
+          dispatch(removeAddress(currentAddresses));
+          refetch();
+        } else {
+          showSnackbar(res?.message, "error");
+        }
+      },
+      onError: (err) => {
+        showSnackbar(err?.message, "error");
+      },
+    }
+  );
+
   const confirmDelete = () => {
-    const updatedAddresses = addresses.filter(
-      (_, idx) => idx !== deleteAddressIndex
-    );
-    setAddresses(updatedAddresses);
-    setIsConfirmingDelete(false);
-    showSnackbar("Address deleted successfully!", "success");
+    delAddress({ userId: userProfile.userId, addressId: deleteAddress.id });
+    // setAddresses(updatedAddresses);
   };
 
   const cancelDelete = () => {
     setIsConfirmingDelete(false);
-    setDeleteAddressIndex(null);
+    setDeleteAddress(null);
   };
 
   return (
     <div>
       <Suspense fallback={<div />}>
-        <CustomLoader open={isFetching || isLoading} />
+        <CustomLoader open={isFetching || isLoading || isDeletingAddress} />
       </Suspense>
       <p className="font-semibold text-cello font-poppins text-xl text-center mt-4">
         Address Details
@@ -186,7 +208,7 @@ export default function Address({
                 <span>Edit</span>
               </button>
               <button
-                onClick={() => handleDelete(index)}
+                onClick={() => handleDelete(address)}
                 className="flex items-center space-x-1 text-sm justify-center bg-red-600 text-white hover:opacity-80 transition-all duration-300 px-4 py-2 rounded shadow-lg"
               >
                 <FiTrash2 />
@@ -375,7 +397,6 @@ export default function Address({
                       textClassOverride="!text-kashmirBlue"
                       placeholderClasses="placeholder:!opacity-30 !text-licorice "
                       className="h-12 rounded-md !bg-transparent"
-                      // disabledField
                       placeholder="City"
                       requiredStar
                       labelToShow="City"
@@ -395,7 +416,6 @@ export default function Address({
                       textClassOverride="!text-kashmirBlue"
                       placeholderClasses="placeholder:!opacity-30 !text-licorice "
                       className="h-12 rounded-md !bg-transparent"
-                      // disabledField
                       placeholder="State"
                       requiredStar
                       labelToShow="State"

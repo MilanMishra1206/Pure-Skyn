@@ -1,4 +1,4 @@
-import { lazy, useEffect, useState } from "react";
+import { lazy, Suspense, useEffect, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { FaCartShopping } from "react-icons/fa6";
@@ -6,15 +6,18 @@ import { useSelector, useDispatch } from "react-redux";
 import { GiHamburgerMenu } from "react-icons/gi";
 import { MdShoppingCartCheckout } from "react-icons/md";
 import { useMediaQuery } from "@mui/material";
+import { useMutation } from "react-query";
 import MenuForDesktop from "./MenuForDesktop";
 import MenuForMobile from "./MenuForMobile";
 import Resources from "../../config/Resources";
 import { useAppSnackbar } from "../../config/Context/SnackbarContext";
-import { logoutUser } from "../../redux/Actions";
+import { emptyServiceCart, logoutUser } from "../../redux/Actions";
+import { saveServiceCart } from "../../services/ServiceCart";
 
 const CartDrawer = lazy(
   () => import("../../components/ProductsCart/CartDrawer")
 );
+const CustomLoader = lazy(() => import("../CustomLoader"));
 
 function CustomNavbar() {
   const dispatch = useDispatch();
@@ -57,18 +60,33 @@ function CustomNavbar() {
     }
   }, [location.pathname]);
 
+  const { mutate: saveCartDetails, isLoading: isSavingCartDetails } =
+    useMutation(saveServiceCart, {
+      onSuccess: () => {
+        showSnackbar("Logged-out successfully!", "success");
+        dispatch(emptyServiceCart());
+      },
+      onError: () => {
+        showSnackbar("Logged-out successfully!", "success");
+      },
+    });
+
   const handleLogout = () => {
     setIsConfirmingLogout(true);
     toggleMenu();
   };
 
   const confirmLogout = () => {
+    const reqBody = {
+      userId: userProfile.userId,
+      packageDetails: servicesItems,
+    };
+    sessionStorage.clear();
+    saveCartDetails({ reqBody });
     setIsLoggedIn(false);
     setIsConfirmingLogout(false);
-    sessionStorage.clear();
-    navigate("/");
     dispatch(logoutUser());
-    showSnackbar("Logged-out successfully!", "success");
+    navigate("/");
   };
 
   const cancelLogout = () => {
@@ -150,6 +168,9 @@ function CustomNavbar() {
 
   return (
     <div className="flex flex-col bg-coal !text-white p-3 fixed top-0 left-0 w-full z-50">
+      <Suspense fallback={<div>Logging Out..</div>}>
+        <CustomLoader open={isSavingCartDetails}></CustomLoader>
+      </Suspense>
       <div>
         <nav className="flex items-center justify-between px-2 md:!px-8">
           <button
