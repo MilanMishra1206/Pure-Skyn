@@ -1,7 +1,7 @@
 import { AnimatePresence, motion } from "framer-motion";
 import { lazy, Suspense, useState } from "react";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
-import regex from "../../../../helpers/Regex";
+import { regex } from "../../../../helpers/Regex";
 import FadedLineBreak from "../../../../shared/CustomHrTag";
 
 const CustomTextField = lazy(

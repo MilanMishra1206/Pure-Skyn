@@ -1,13 +1,21 @@
 import React from "react";
 import { MdKeyboardDoubleArrowRight } from "react-icons/md";
-import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { motion } from "framer-motion";
 import CustomCards from "../../../shared/CustomCards";
 import { servicesOffered } from "../../../helpers/LaserServices";
 import CustomHomeHeader from "../../../shared/CustomHomeHeader";
 import FadeInWrapper from "../../../config/MotionFramer/FadeInWrapper";
 
-function ServicesOffered({ isMobile, isLargeScreen, isLaptop }) {
+function ServicesOffered({ isMobile, isLargeScreen }) {
+  const navigate = useNavigate();
+
+  const handleCardsRouting = (treatmentName) => {
+    sessionStorage.setItem("currentBookStep", 1);
+    sessionStorage.setItem("treatmentName", treatmentName);
+    navigate("/book-now");
+  };
+
   return (
     <div>
       <div className="px-4">
@@ -20,13 +28,13 @@ function ServicesOffered({ isMobile, isLargeScreen, isLaptop }) {
       <div>
         <div className="px-5 mt-5">
           <div className="flex justify-end px-5">
-            <Link
+            <button
               to="/services"
               className="flex items-center text-skyn font-bold text-xl font-poppins no-underline hover:opacity-80 hover:underline hover:!tracking-widest"
             >
               Explore More
               <MdKeyboardDoubleArrowRight className="text-2xl text-skyn" />
-            </Link>
+            </button>
           </div>
         </div>
         <motion.div
@@ -39,12 +47,12 @@ function ServicesOffered({ isMobile, isLargeScreen, isLaptop }) {
           <div className="grid place-items-center bg-coffee text-white text-center p-4 gap-4 md:!p-3 shadow-lg h-full">
             <p className="text-xl font-extrabold">{servicesOffered[0].title}</p>
             <p className="font-bold">{servicesOffered[0].description}</p>
-            <Link
+            <button
               className="no-underline border p-1.5 rounded-3xl font-medium w-full md:w-1/2 mt-2 text-white hover:!bg-white hover:!text-skyn transition-colors duration-500"
-              to="/services/laser-hair-removal-packages"
+              onClick={() => handleCardsRouting(servicesOffered[0].title)}
             >
               See Prices
-            </Link>
+            </button>
           </div>
           <img
             src={servicesOffered[0].image}
@@ -59,12 +67,12 @@ function ServicesOffered({ isMobile, isLargeScreen, isLaptop }) {
           <div className="grid place-items-center h-96 md:!h-full bg-lightYellow text-coal text-center p-4 gap-4 md:!p-3 shadow-lg">
             <p className="text-xl font-extrabold">{servicesOffered[1].title}</p>
             <p className="font-bold">{servicesOffered[1].description}</p>
-            <Link
+            <button
               className="no-underline border p-1.5 rounded-3xl font-medium w-full md:w-1/2 mt-2 border-black hover:!border-white text-coal hover:!bg-white hover:!text-skyn transition-colors duration-500"
-              to="/services/laser-hair-removal-packages"
+              onClick={() => handleCardsRouting(servicesOffered[1].title)}
             >
               See Prices
-            </Link>
+            </button>
           </div>
           <img
             src={servicesOffered[1].image}
@@ -79,12 +87,12 @@ function ServicesOffered({ isMobile, isLargeScreen, isLaptop }) {
           <div className="grid place-items-center h-96 md:!h-full bg-coffee text-white text-center p-4 gap-4 md:!p-3 shadow-lg">
             <p className="text-xl font-extrabold">{servicesOffered[2].title}</p>
             <p className="font-bold">{servicesOffered[2].description}</p>
-            <Link
+            <button
               className="no-underline border p-1.5 rounded-3xl font-medium w-full md:w-1/2 mt-2 text-white hover:!bg-white hover:!text-skyn transition-colors duration-500"
-              to="/services/skin/medi-facial-packages"
+              onClick={() => handleCardsRouting(servicesOffered[2].title)}
             >
               See Prices
-            </Link>
+            </button>
           </div>
           <img
             src={servicesOffered[2].image}
@@ -99,12 +107,12 @@ function ServicesOffered({ isMobile, isLargeScreen, isLaptop }) {
           <div className="grid place-items-center md:!h-full bg-lightYellow text-coal text-center p-4 gap-4 md:!p-3 shadow-lg">
             <p className="text-xl font-extrabold">{servicesOffered[3].title}</p>
             <p className="font-bold">{servicesOffered[3].description}</p>
-            <Link
+            <button
               className="no-underline border p-1.5 rounded-3xl font-medium w-full md:w-1/2 mt-2 border-black hover:!border-white text-coal hover:!bg-white hover:!text-skyn transition-colors duration-500"
-              to="/services/skin/medi-facial-packages"
+              onClick={() => handleCardsRouting(servicesOffered[3].title)}
             >
               See Prices
-            </Link>
+            </button>
           </div>
           <img
             src={servicesOffered[3].image}
@@ -114,12 +122,12 @@ function ServicesOffered({ isMobile, isLargeScreen, isLaptop }) {
           <div className="grid place-items-center md:!h-full bg-coffee text-white text-center p-4 gap-4 md:!p-3 shadow-lg">
             <p className="text-xl font-extrabold">{servicesOffered[4].title}</p>
             <p className="font-bold">{servicesOffered[4].description}</p>
-            <Link
+            <button
               className="no-underline border p-1.5 rounded-3xl font-medium w-full md:w-1/2 mt-2 text-white hover:!bg-white hover:!text-skyn transition-colors duration-500"
-              to="/services/skin/medi-facial-packages"
+              onClick={() => handleCardsRouting(servicesOffered[4].title)}
             >
               See Prices
-            </Link>
+            </button>
           </div>
           <img
             src={servicesOffered[4].image}
@@ -134,12 +142,12 @@ function ServicesOffered({ isMobile, isLargeScreen, isLaptop }) {
           <div className="grid place-items-center md:!h-full bg-lightYellow text-coal text-center p-4 gap-4 md:!p-3 shadow-lg">
             <p className="text-xl font-extrabold">{servicesOffered[5].title}</p>
             <p className="font-bold">{servicesOffered[5].description}</p>
-            <Link
+            <button
               className="no-underline border p-1.5 rounded-3xl font-medium w-full md:w-1/2 mt-2 border-black hover:!border-white text-coal hover:!bg-white hover:!text-skyn transition-colors duration-500"
-              to="/services/skin/medi-facial-packages"
+              onClick={() => handleCardsRouting(servicesOffered[5].title)}
             >
               See Prices
-            </Link>
+            </button>
           </div>
           <img
             src={servicesOffered[5].image}

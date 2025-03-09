@@ -17,7 +17,6 @@ const MenuForDesktop = ({
   userName,
   serviceItem,
   profileItem,
-  packagesItem,
   totalServicesItems,
   totalProductsItems,
   isAdmin,
@@ -78,18 +77,9 @@ const MenuForDesktop = ({
                 )}
               />
             </div>
-            <div className="flex items-center navbar-links !p-1 xl:!px-4">
-              <Dropdown
-                header={"Packages"}
-                items={packagesItem}
-                FlyoutContent={({ items }) => (
-                  <DropdownContent
-                    items={items}
-                    handleKeyPress={handleKeyPress}
-                  />
-                )}
-              />
-            </div>
+            <FlyoutLink href="/packages" isActive={isActive("/packages")}>
+              Packages
+            </FlyoutLink>
             <FlyoutLink href="/book-now" isActive={isActive("/book-now")}>
               Book
             </FlyoutLink>
@@ -99,7 +89,7 @@ const MenuForDesktop = ({
           </div>
         )}
       </div>
-      <div className="flex items-center navbar-links gap-4">
+      <div className="flex items-center gap-4">
         {!isAdmin &&
           (isProductsPage ? (
             <button
@@ -127,7 +117,7 @@ const MenuForDesktop = ({
             </button>
           ))}
         {isLoggedIn && (
-          <div className="flex">
+          <div className="flex navbar-links">
             <Dropdown
               header={`Welcome ${userName}`}
               items={profileItem}
@@ -140,8 +130,8 @@ const MenuForDesktop = ({
             />
           </div>
         )}
+        {!isLoggedIn && <FlyoutLink href="/login">Sign-In</FlyoutLink>}
       </div>
-      {!isLoggedIn && <FlyoutLink href="/login">Sign-In</FlyoutLink>}
       {openCart && (
         <AnimatePresence>
           <CartDrawer openCart={openCart} handleOpenCart={handleOpenCart} />

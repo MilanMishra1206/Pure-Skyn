@@ -36,19 +36,6 @@ const serviceItemForMobile = [
   },
 ];
 
-const packagesItemForMobile = [
-  {
-    id: 1,
-    label: "Laser Hair Removal Packages",
-    link: "/services/laser-hair-removal-packages",
-  },
-  {
-    id: 2,
-    label: "Medi Facial",
-    link: "/services/skin/medi-facial-packages",
-  },
-];
-
 const NavHeader = ({ toggleMenu, userName }) => (
   <header className="flex place-content-center items-center px-4 border-b border-gray-300">
     <button
@@ -152,13 +139,10 @@ const MenuForMobile = ({
             name: "Services",
             items: serviceItemForMobile,
           },
-          {
-            name: "Packages",
-            items: packagesItemForMobile,
-          },
           { name: "Book", link: "/book-now" },
           { name: "Shop", link: "/products" },
           { name: "Products Cart", link: "/products/product-cart" },
+          { name: "Packages", link: "/packages" },
           { name: "Services Cart", link: "#", onClick: navigateToServicesCart },
         ]
       : []),

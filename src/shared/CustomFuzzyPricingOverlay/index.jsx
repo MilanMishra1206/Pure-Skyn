@@ -44,7 +44,7 @@ const Content = ({ header, subText, link, buttonText }) => {
       <p className="text-center text-6xl font-black text-neutral-50">
         {header}
       </p>
-      <p className="text-center text-neutral-400">{subText}</p>
+      <p className="text-2xl text-center text-neutral-400">{subText}</p>
       <div className="flex items-center justify-center gap-3">
         <Link
           to={link}

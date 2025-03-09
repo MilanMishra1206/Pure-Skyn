@@ -3,7 +3,7 @@ import { lazy, Suspense, useEffect, useState } from "react";
 import { IoIosCloseCircle } from "react-icons/io";
 import { useMutation } from "react-query";
 import dayjs from "dayjs";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import FadeInWrapper from "../../../config/MotionFramer/FadeInWrapper";
 import {
   allPackageDetails,
@@ -15,13 +15,19 @@ import {
   skinTighteningPackage,
 } from "../../../helpers/LaserServices";
 import BookNowPackageCards from "./BookNowPackageCards";
-import { requestBooking } from "../../../services/Booking";
+import {
+  addServiceToCart,
+  emptyCart,
+  removeServiceFromCart,
+  requestBooking,
+} from "../../../services/Booking";
 import { useAppSnackbar } from "../../../config/Context/SnackbarContext";
 import {
   addToServicesCart,
   emptyServiceCart,
   removeFromServicesCart,
 } from "../../../redux/Actions";
+import { INRCurrency } from "../../../helpers/Regex";
 
 const CustomLoader = lazy(() => import("../../../shared/CustomLoader"));
 
@@ -44,6 +50,7 @@ function BookNowOptions({
   const [featureName, setFeatureName] = useState("");
   const [selectedPackageImg, setSelectedPackageImg] = useState("");
   const showSnackbar = useAppSnackbar();
+  const userProfile = useSelector((state) => state.userProfile.userProfile);
 
   const handlePackageCardClick = (featureName, imgSrc) => {
     servicesCart.map((service) => {
@@ -128,6 +135,55 @@ function BookNowOptions({
     setCurrentStep(2);
   };
 
+  // const { mutate: addingServiceToCart, isLoading: addingToCart } = useMutation(
+  //   addServiceToCart,
+  //   {
+  //     onSuccess(res) {
+  //       if (res?.status === "SUCCESS") {
+  //         const treatmentName = sessionStorage.getItem("treatmentName");
+  //         const newPackage = {
+  //           treatmentName,
+  //           packageName,
+  //           packagePrice,
+  //           serviceId,
+  //           subServiceId,
+  //           featureName,
+  //           selectedPackageImg,
+  //         };
+  //         showSnackbar("Service added to the cart", "success");
+  //         dispatch(addToServicesCart(newPackage));
+  //         setOpenModal(false);
+  //       } else {
+  //         showSnackbar(res?.message, "error");
+  //       }
+  //     },
+  //     onError(err) {
+  //       showSnackbar(err?.message, "error");
+  //     },
+  //   }
+  // );
+
+  const { mutate: removingServiceToCart, isLoading: processingRemoveService } =
+    useMutation(removeServiceFromCart, {
+      onSuccess(res) {
+        if (res?.status === "SUCCESS") {
+          const selectedFeatureName = sessionStorage.getItem(
+            "selectedFeatureName"
+          );
+          const serviceToRemove = servicesCart.find(
+            (service) => service.featureName === selectedFeatureName
+          );
+          dispatch(removeFromServicesCart(serviceToRemove.subServiceId));
+          showSnackbar("Service removed from the cart", "success");
+          setOpenModal(false);
+          setSelectedPackages(null);
+        }
+      },
+      onError(err) {
+        showSnackbar(err.message, "error");
+      },
+    });
+
   const addToCart = () => {
     const treatmentName = sessionStorage.getItem("treatmentName");
     const newPackage = {
@@ -143,8 +199,13 @@ function BookNowOptions({
     if (selectedFeatureName !== newPackage.featureName) {
       showSnackbar("Please select the service option", "error");
     } else {
-      showSnackbar("Service added to the cart", "success");
+      // addingServiceToCart({
+      //   userId: userProfile.userId,
+      //   serviceId,
+      //   subServiceId,
+      // });
       dispatch(addToServicesCart(newPackage));
+      showSnackbar("Service added to the cart", "success");
       setOpenModal(false);
     }
   };
@@ -156,10 +217,7 @@ function BookNowOptions({
     );
 
     if (serviceToRemove) {
-      dispatch(removeFromServicesCart(serviceToRemove.subServiceId));
-      showSnackbar("Service removed from the cart", "success");
-      setOpenModal(false);
-      setSelectedPackages(null);
+      removingServiceToCart({ subServiceId: serviceToRemove.subServiceId });
     } else {
       showSnackbar("Service not available in the cart", "error");
     }
@@ -201,27 +259,44 @@ function BookNowOptions({
     }
   }, [heading, servicesCart]);
 
-  const emptyCart = () => {
-    dispatch(emptyServiceCart());
+  const removeAllService = () => {
+    emptyAllServiceCart({ userId: userProfile.userId });
   };
+
+  const { mutate: emptyAllServiceCart, isLoading: clearingServiceCart } =
+    useMutation(emptyCart, {
+      onSuccess(res) {
+        if (res?.status === "SUCCESS") {
+          dispatch(emptyServiceCart());
+          showSnackbar(res?.message, "success");
+        } else {
+          showSnackbar(res?.message, "error");
+        }
+      },
+      onError(err) {
+        showSnackbar(err?.message, "error");
+      },
+    });
 
   return (
     <div className="py-5">
       <Suspense fallback={<div />}>
-        <CustomLoader open={isLoading} />
+        <CustomLoader
+          open={isLoading || clearingServiceCart || processingRemoveService}
+        />
       </Suspense>
       <p className="font-bold text-4xl text-coffee text-center">{heading}</p>
-      <div className="flex justify-end gap-2">
+      <div className="flex justify-center lg:!justify-end gap-2 mt-4">
         <button
-          className="p-3 rounded bg-coffee text-white font-bold hover:!opacity-80 hover:!shadow-lg"
+          className="px-3 py-2 rounded bg-coffee text-white font-bold hover:!opacity-80 hover:!shadow-lg"
           onClick={viewCartClick}
         >
           View Cart
         </button>
 
         <button
-          className="p-3 rounded bg-coffee text-white font-bold hover:!opacity-80 hover:!shadow-lg"
-          onClick={emptyCart}
+          className="px-3 py-2 rounded bg-coffee text-white font-bold hover:!opacity-80 hover:!shadow-lg"
+          onClick={removeAllService}
         >
           Empty Cart
         </button>
@@ -233,7 +308,7 @@ function BookNowOptions({
         viewport={{ once: true }}
       >
         {heading.includes("Laser") && (
-          <div className="text-sm text-bitterSweet text-center">
+          <div className="text-sm text-bitterSweet text-center mt-4">
             <span>
               <strong className="!text-coal">Note: </strong>Please select either
               Full Body packages or Other Packages. You can't club Full Body
@@ -261,7 +336,7 @@ function BookNowOptions({
             >
               <IoIosCloseCircle size={"2rem"} />
             </button>
-            <div className="flex flex-col gap-3 p-4 mt-5">
+            <div className="flex flex-col gap-3 p-4 mt-4">
               <p className="text-lg md:!text-2xl font-extrabold uppercase text-cello text-center">
                 {heading} Package
               </p>
@@ -288,24 +363,24 @@ function BookNowOptions({
                     {item.name}
                   </span>
                   <span className={`font-bold font-xl text-Green`}>
-                    ₹{item.price}
+                    {INRCurrency(item.price)}
                   </span>
                 </div>
               ))}
               <button
-                className="no-underline p-3 rounded bg-coffee text-white text-center font-bold mt-5 hover:shadow-xl disabled:cursor-not-allowed disabled:opacity-80"
+                className="no-underline p-3 rounded bg-coffee text-white text-center font-bold mt-5 hover:shadow-xl disabled:cursor-not-allowed hover:opacity-80 disabled:opacity-80"
                 onClick={addToCart}
               >
                 Add To Cart
               </button>
               <button
-                className="no-underline p-3 rounded bg-coffee text-white text-center font-bold hover:shadow-xl disabled:cursor-not-allowed disabled:opacity-80"
+                className="no-underline p-3 rounded bg-coffee text-white text-center font-bold hover:shadow-xl disabled:cursor-not-allowed hover:opacity-80 disabled:opacity-80"
                 onClick={viewCartClick}
               >
                 View Cart
               </button>
               <button
-                className="no-underline p-3 rounded bg-secondary text-white text-center font-bold hover:shadow-xl disabled:cursor-not-allowed disabled:opacity-80"
+                className="no-underline p-3 rounded bg-secondary text-white text-center font-bold hover:shadow-xl disabled:cursor-not-allowed hover:opacity-80 disabled:opacity-80"
                 onClick={removeFromCart}
               >
                 Remove From Cart

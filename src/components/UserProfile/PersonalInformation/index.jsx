@@ -4,7 +4,7 @@ import { FiEdit3 } from "react-icons/fi";
 import { useDispatch } from "react-redux";
 import { getPersonalInfoValidationSchema } from "../../../helpers/UserProfile";
 import { useAppSnackbar } from "../../../config/Context/SnackbarContext";
-import regex from "../../../helpers/Regex";
+import { regex } from "../../../helpers/Regex";
 import FadedLineBreak from "../../../shared/CustomHrTag";
 import { useMutation } from "react-query";
 import { updateUserDetails } from "../../../services/Users";
@@ -113,12 +113,14 @@ export default function PersonalInformation({ userProfile }) {
       <Suspense fallback={<div>Loading...</div>}>
         <CustomLoader open={isLoading} />
       </Suspense>
-      <small className="text-bitterSweet">
-        <strong className="!text-black">Note: </strong>
-        {profileMessage}
-      </small>
+      {profileMessage && (
+        <small className="text-bitterSweet">
+          <strong className="!text-black">Note: </strong>
+          {profileMessage}
+        </small>
+      )}
       <form>
-        <div className="flex items-center gap-4 mb-4 justify-center">
+        <div className="flex flex-col md:!flex-row items-center gap-4 mb-4 justify-center mt-4">
           <span className="font-semibold text-cello font-poppins text-xl">
             Personal Information
           </span>
@@ -129,7 +131,7 @@ export default function PersonalInformation({ userProfile }) {
           />
         </div>
         <FadedLineBreak />
-        <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4 font-poppins">
+        <div className="grid lg:!grid-cols-3 gap-4 font-poppins p-4">
           <div>
             {editMode ? (
               <Suspense fallback={<div />}>
@@ -194,39 +196,6 @@ export default function PersonalInformation({ userProfile }) {
               </div>
             )}
           </div>
-          <div>
-            {editMode ? (
-              <Suspense fallback={<div />}>
-                <CustomTextField
-                  textClassOverride="!text-cello"
-                  placeholderClasses="placeholder:!opacity-30 !text-licorice"
-                  className="h-12 rounded-md !bg-transparent"
-                  placeholder="Enter"
-                  requiredStar
-                  regex={/^[^!#$%^&*()=+{}[\]:;<>,?/~`|"\\ ]*$/}
-                  labelToShow="Email Id"
-                  name="email"
-                  textFieldColorClass="shadow-insetLight"
-                  inputClassName="!bg-transparent"
-                  fieldWidth="!mb-4"
-                  maxLength={50}
-                  value={personalInfoFormik.values?.email}
-                  onChange={personalInfoFormik.handleChange}
-                  handleBlur={personalInfoFormik.handleBlur}
-                  error={personalInfoFormik.errors?.email}
-                  touched={personalInfoFormik.touched?.email}
-                />
-              </Suspense>
-            ) : (
-              <div className="flex flex-col">
-                {" "}
-                <span className="text-black font-medium">Email Id</span>
-                <span className="text-cello">
-                  {personalInfoFormik.values.email}
-                </span>
-              </div>
-            )}
-          </div>
           <div className="flex flex-col">
             {editMode ? (
               <>
@@ -258,6 +227,39 @@ export default function PersonalInformation({ userProfile }) {
                 <span className="text-black font-medium">Gender</span>
                 <span className="text-cello">
                   {personalInfoFormik.values.gender}
+                </span>
+              </div>
+            )}
+          </div>
+          <div>
+            {editMode ? (
+              <Suspense fallback={<div />}>
+                <CustomTextField
+                  textClassOverride="!text-cello"
+                  placeholderClasses="placeholder:!opacity-30 !text-licorice"
+                  className="h-12 rounded-md !bg-transparent"
+                  placeholder="Enter"
+                  requiredStar
+                  regex={/^[^!#$%^&*()=+{}[\]:;<>,?/~`|"\\ ]*$/}
+                  labelToShow="Email Id"
+                  name="email"
+                  textFieldColorClass="shadow-insetLight"
+                  inputClassName="!bg-transparent"
+                  fieldWidth="!mb-4"
+                  maxLength={50}
+                  value={personalInfoFormik.values?.email}
+                  onChange={personalInfoFormik.handleChange}
+                  handleBlur={personalInfoFormik.handleBlur}
+                  error={personalInfoFormik.errors?.email}
+                  touched={personalInfoFormik.touched?.email}
+                />
+              </Suspense>
+            ) : (
+              <div className="flex flex-col">
+                {" "}
+                <span className="text-black font-medium">Email Id</span>
+                <span className="text-cello">
+                  {personalInfoFormik.values.email}
                 </span>
               </div>
             )}

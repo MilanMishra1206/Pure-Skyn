@@ -8,6 +8,7 @@ import FadedLineBreak from "../../../../shared/CustomHrTag";
 import CustomButton2 from "../../../../shared/CustomButton2";
 import { useAppSnackbar } from "../../../../config/Context/SnackbarContext";
 import { addToCart } from "../../../../redux/Actions";
+import { INRCurrency } from "../../../../helpers/Regex";
 
 function ProductCard({ product }) {
   const navigate = useNavigate();
@@ -76,7 +77,7 @@ function ProductCard({ product }) {
           </Card.Text>
           {product.strikePrice && (
             <span className="mt-4 text-left text-slate-400 line-through font-bold mr-4">
-              ₹{product.strikePrice}
+              {INRCurrency(product.strikePrice)}
             </span>
           )}
           <span className="mt-4 text-left text-skyn font-bold">

@@ -1,5 +1,5 @@
 import * as yup from "yup";
-import regex from "../Regex";
+import { regex } from "../Regex";
 import React from "react";
 
 const loginInitialValues = {
@@ -136,21 +136,12 @@ const getAddReviewValidation = () =>
 
 const getQueryValidation = () =>
   yup.object().shape({
-    fullName: yup.string().required("Name is required"),
-    phoneNumber: yup.number().required("Phone Number is required"),
-    email: yup
+    name: yup.string().required("Name is required"),
+    phone: yup
       .string()
-      .email("Please Enter Valid Email")
-      .required("Email is required"),
-    query: yup
-      .string()
-      .required("Query is required")
-      .min(10, "Query must be at least 10 characters")
-      .max(250, "Query cannot exceed 250 characters")
-      .test("word-count", "Query must be between 2 and 50 words", (value) => {
-        const wordCount = value ? value.trim().split(/\s+/).length : 0;
-        return wordCount >= 2 && wordCount <= 50;
-      }),
+      .matches(regex.mobileNumber, "Please Enter Valid Mobile Number")
+      .required("Mobile Number is required"),
+    serviceId: yup.string().required("Select Service Option"),
   });
 
 export {
@@ -162,5 +153,5 @@ export {
   bookNowInitialValues,
   getBookNowFormValidation,
   getAddReviewValidation,
-  getQueryValidation
+  getQueryValidation,
 };

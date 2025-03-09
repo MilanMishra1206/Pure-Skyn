@@ -26,16 +26,14 @@ import { ProductReviews } from "./ProductReviews";
 import BuyMoreProducts from "./BuyMoreProducts";
 import Resources from "../../../config/Resources";
 import FadeInWrapper from "../../../config/MotionFramer/FadeInWrapper";
-import regex from "../../../helpers/Regex";
+import { regex, INRCurrency } from "../../../helpers/Regex";
 import CustomTextField from "../../../shared/CustomTextField";
 import CustomDropdown from "../../../shared/CustomDropdown";
-import CustomButton2 from "../../../shared/CustomButton2";
 import { useAppSnackbar } from "../../../config/Context/SnackbarContext";
 import { addToCart } from "../../../redux/Actions";
 import ProductDescriptionImage from "./ProductDescriptionImage";
 import OffersCarousel from "./OffersCarousel";
 import DisplaySection from "../DisplaySection";
-import { Button } from "react-bootstrap";
 
 function ProductsDetails() {
   const { productName } = useParams();
@@ -371,11 +369,11 @@ function ProductsDetails() {
                   <div className="flex flex-col">
                     {products.strikePrice && (
                       <span className="text-left text-sm text-slate-400 line-through font-bold mr-4">
-                        ₹{products.strikePrice}
+                        {INRCurrency(products.strikePrice)}
                       </span>
                     )}
                     <span className="text-3xl text-left text-skyn font-bold">
-                      ₹{products.productPrice}
+                      {INRCurrency(products.productPrice)}
                     </span>
                     <span className="text-xs">{"(incl. of all taxes.)"}</span>
                   </div>
@@ -419,13 +417,12 @@ function ProductsDetails() {
                   value={quantity}
                   handleChange={(e) => setQuantity(e.target.value)}
                 />
-                <Button
-                  variant="contained"
-                  className="!flex !items-center !justify-center gap-2 w-full !bg-coal !text-white py-2 px-4 rounded-md hover:bg-skyn-dark focus:outline-none focus:ring-2 focus:ring-skyn transition-all !shadow-[3px_3px_0px_black] hover:!shadow-none hover:!translate-x-[3px] hover:!translate-y-[3px] cursor-pointer"
+                <button
+                  className="!flex !items-center !justify-center gap-2 w-full !bg-skyn !text-white py-2 px-4 rounded-md hover:bg-skyn-dark focus:outline-none focus:ring-2 focus:ring-skyn transition-all !shadow-[3px_3px_0px_black] hover:!shadow-none hover:!translate-x-[3px] hover:!translate-y-[3px] cursor-pointer"
                   onClick={() => handleAddToCart()}
                 >
                   <FaCartPlus size="1.5rem" /> Add to Cart
-                </Button>
+                </button>
               </div>
               <div className="flex gap-4 place-items-center w-100 md:!w-96 my-6">
                 <CustomTextField
@@ -443,13 +440,12 @@ function ProductsDetails() {
                   value={pinCode}
                   onChange={(e) => setPinCode(e.target.value)}
                 />
-                <Button
-                  variant="contained"
-                  className="!flex !items-center mt-4 !justify-center gap-2 w-full !bg-coal !text-white py-2 px-4 rounded-md hover:bg-skyn-dark focus:outline-none focus:ring-2 focus:ring-skyn transition-all !shadow-[3px_3px_0px_black] hover:!shadow-none hover:!translate-x-[3px] hover:!translate-y-[3px] cursor-pointer"
+                <button
+                  className="!flex !items-center mt-4 !justify-center gap-2 w-full !bg-skyn !text-white py-2 px-4 rounded-md hover:bg-skyn-dark focus:outline-none focus:ring-2 focus:ring-skyn transition-all !shadow-[3px_3px_0px_black] hover:!shadow-none hover:!translate-x-[3px] hover:!translate-y-[3px] cursor-pointer"
                   onClick={handlePincodeCheck}
                 >
                   Check
-                </Button>
+                </button>
               </div>
               {/* <div className="flex flex-col gap-4 mt-5">
                 <div className="flex gap-3">

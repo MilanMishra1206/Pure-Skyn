@@ -8,13 +8,13 @@ import { useMutation } from "react-query";
 
 import CustomButton2 from "../../../shared/CustomButton2";
 import BookNowForm from "./BookNowForm";
-import LoginModal from "../LoginModal";
 import { removeFromServicesCart } from "../../../redux/Actions";
 import ConfirmationModal from "../../ProductsCart/ConfirmationModal";
 import FadedLineBreak from "../../../shared/CustomHrTag";
 import { getBookNowFormValidation } from "../../../helpers/Login";
 import { createNewBooking } from "../../../services/Booking";
 import { useAppSnackbar } from "../../../config/Context/SnackbarContext";
+import { INRCurrency } from "../../../helpers/Regex";
 
 const CustomLoader = lazy(() => import("../../../shared/CustomLoader"));
 
@@ -25,10 +25,8 @@ const BookNowDetails = ({ isLoggedIn }) => {
   const navigate = useNavigate();
   const showSnackbar = useAppSnackbar();
   const [packagePrice, setPackagePrice] = useState(0);
-  const [openLoginModal, setOpenLoginModal] = useState(false);
   const [removeItem, setRemoveItem] = useState(false);
   const [subServiceId, setSubServiceId] = useState("");
-  const [checked, setChecked] = useState(true);
   const [timeSlots, setTimeSlots] = useState([]);
   const [initialValues, setInitialValues] = useState({
     name: "",
@@ -50,26 +48,17 @@ const BookNowDetails = ({ isLoggedIn }) => {
   }, [sessionStorage.getItem("availableTimeSlots")]);
 
   useEffect(() => {
-    checked && isLoggedIn
-      ? setInitialValues({
-          name: userProfile.name || "",
-          email: userProfile.email || "",
-          mobile: userProfile.phone || "",
-          address: "Malibu Town",
-          city: "Gurgaon",
-          treatmentDate: "",
-          timeSlot: "",
-        })
-      : setInitialValues({
-          name: "",
-          email: "",
-          mobile: "",
-          address: "",
-          city: "",
-          treatmentDate: "",
-          timeSlot: "",
-        });
-  }, [checked, isLoggedIn]);
+    isLoggedIn &&
+      setInitialValues({
+        name: userProfile.name || "",
+        email: userProfile.email || "",
+        mobile: userProfile.phone || "",
+        address: "",
+        city: "",
+        treatmentDate: "",
+        timeSlot: "",
+      });
+  }, [isLoggedIn, userProfile]);
 
   const { mutate: createBooking, isLoading } = useMutation(createNewBooking, {
     onSuccess(res) {
@@ -102,14 +91,29 @@ const BookNowDetails = ({ isLoggedIn }) => {
       //   timeSlot: value.treatment,
       //   pinCode: "342001", //to be fetched from Address API
       // });
-      const servicesBooked = servicesCart.map(
-        ({ treatmentName, packageName, serviceId, subServiceId }) => ({
-          treatmentName,
-          packageName,
-          serviceId,
-          subServiceId,
-        })
-      );
+      const servicesBooked = Array.isArray(servicesCart)
+        ? servicesCart.map(
+            ({
+              treatmentName = "",
+              packageName = "",
+              serviceId = "",
+              subServiceId = "",
+              packagePrice = 0,
+              featureName = "",
+              selectedPackageImg = "",
+              strikeOutPrice = null,
+            }) => ({
+              treatmentName,
+              packageName,
+              serviceId,
+              subServiceId,
+              packagePrice,
+              featureName,
+              selectedPackageImg,
+              strikeOutPrice,
+            })
+          )
+        : [];
       const reqBody = {
         userInfo: values,
         servicesBooked,
@@ -120,7 +124,7 @@ const BookNowDetails = ({ isLoggedIn }) => {
 
   useEffect(() => {
     const totalPackagePrice = servicesCart.reduce(
-      (total, service) => total + service.packagePrice,
+      (total, service) => total + +service.packagePrice,
       0
     );
     setPackagePrice(totalPackagePrice);
@@ -159,8 +163,6 @@ const BookNowDetails = ({ isLoggedIn }) => {
               isLoggedIn={isLoggedIn}
               formik={formik}
               timeSlots={timeSlots}
-              checked={checked}
-              setChecked={setChecked}
             />
           </div>
           <div className="flex flex-col border shadow rounded p-4 xl:self-start font-poppins">
@@ -184,7 +186,7 @@ const BookNowDetails = ({ isLoggedIn }) => {
                   </div>
                   <div className="flex gap-2">
                     <span className="text-base text-coal font-semibold">
-                      ₹{service.packagePrice}
+                      {INRCurrency(service.packagePrice)}
                     </span>
                     <MdDeleteForever
                       size="1.5rem"
@@ -199,11 +201,11 @@ const BookNowDetails = ({ isLoggedIn }) => {
             <div className="px-4 py-2">
               <div className="flex justify-between py-2 text-lg text-coal">
                 <span>Total Package Price:</span>
-                <span>₹{packagePrice.toFixed(2)}</span>
+                <span>{INRCurrency(packagePrice)}</span>
               </div>
               <div className="flex justify-between font-semibold py-2 text-lg text-coal">
                 <span>Amount Payable:</span>
-                <span>₹{(packagePrice / 2).toFixed(2)}</span>
+                <span>{INRCurrency(packagePrice / 2)}</span>
               </div>
             </div>
             <small className="text-sm mt-4 text-Green">
@@ -226,7 +228,6 @@ const BookNowDetails = ({ isLoggedIn }) => {
           </div>
         </div>
       </div>
-      {openLoginModal && <LoginModal setOpenLoginModal={setOpenLoginModal} />}
       {removeItem && (
         <ConfirmationModal
           isEmptyCart={false}

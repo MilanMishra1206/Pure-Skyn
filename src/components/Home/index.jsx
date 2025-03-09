@@ -7,7 +7,6 @@ import CustomLoader from "../../shared/CustomLoader";
 const BestSelling = lazy(() => import("./BestSelling"));
 const TestimonialCarousel = lazy(() => import("./TestimonialCarousel"));
 const ServicesOffered = lazy(() => import("./ServicesOffered"));
-const WhyUs = lazy(() => import("./WhyUs"));
 // const ContactUs = lazy(() => import("./ContactUs"));
 const AboutUs = lazy(() => import("./AboutUs"));
 const CustomHeroSection = lazy(() => import("../../shared/CustomHeroSection"));
@@ -37,7 +36,6 @@ function Home() {
             <ServicesOffered
               isMobile={isMobile}
               isLargeScreen={isLargeScreen}
-              isLaptop={isLaptop}
             />
           </MotionWrapper>
         </Suspense>

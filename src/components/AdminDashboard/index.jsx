@@ -2,6 +2,8 @@ import { useMediaQuery } from "@mui/material";
 import { useState } from "react";
 import { FaUser } from "react-icons/fa6";
 import { AiOutlineSchedule } from "react-icons/ai";
+import { MdQuestionAnswer } from "react-icons/md";
+
 import MotionWrapper from "../../config/MotionFramer/MotionWrapper";
 import Appointments from "./Appointments";
 import Schedule from "./Schedule";
@@ -9,6 +11,7 @@ import { PiUserList } from "react-icons/pi";
 import TechniciansList from "./TechniciansList";
 import { AiOutlineUserAdd } from "react-icons/ai";
 import AddAdmin from "./AddAdmin";
+import Queries from "./Queries";
 
 function AdminDashboard() {
   const isTablet = useMediaQuery("(max-width: 1023px)");
@@ -36,6 +39,11 @@ function AdminDashboard() {
       id: "add_admin",
       label: "Add Admin",
       icon: <AiOutlineUserAdd size="1.3rem" />,
+    },
+    {
+      id: "queries",
+      label: "Queries",
+      icon: <MdQuestionAnswer size="1.3rem" />,
     },
   ];
 
@@ -107,6 +115,16 @@ function AdminDashboard() {
                 <p>Admins</p>
               </div>
               <AddAdmin isTablet={isTablet} isMobile={isMobile} />
+            </div>
+          </div>
+        )}
+        {selectedSection === "queries" && (
+          <div className="md:m-5 lg:w-full">
+            <div className="rounded shadow-lg w-full">
+              <div className="text-xl font-poppins font-extrabold bg-skyn text-white p-4 text-center rounded-t-lg">
+                <p>Queries</p>
+              </div>
+              <Queries isTablet={isTablet} isMobile={isMobile} />
             </div>
           </div>
         )}

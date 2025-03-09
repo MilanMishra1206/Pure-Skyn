@@ -112,3 +112,58 @@ export const locationDropdownValues = [
     value: "South Delhi",
   },
 ];
+
+export const mobileHeadersForQueries = [
+  { key: "id", label: "Query ID" },
+  { key: "action", label: "" },
+];
+
+export const headersForQueries = [
+  {
+    key: "id",
+    label: "Query ID",
+  },
+  {
+    key: "name",
+    label: "Name",
+  },
+  {
+    key: "phone",
+    label: "Phone No",
+  },
+  {
+    key: "serviceId",
+    label: "Service",
+  },
+  {
+    key: "queryStatus",
+    label: "Status",
+  },
+  {
+    key: "updateStatus",
+    label: "Update Status",
+  },
+  {
+    key: "submitButton",
+    label: "",
+  },
+  {
+    key: "action",
+    label: "",
+  },
+];
+
+export const queryStatusValues = [
+  {
+    value: "NEW",
+    label: "NEW",
+  },
+  {
+    value: "IN_PROGRESS",
+    label: "IN_PROGRESS",
+  },
+  {
+    value: "ADDRESSED",
+    label: "ADDRESSED",
+  },
+];

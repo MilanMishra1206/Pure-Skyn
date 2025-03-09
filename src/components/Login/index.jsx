@@ -8,7 +8,13 @@ import { getLoginValidation, loginInitialValues } from "../../helpers/Login";
 import LoginForm from "./LoginForm";
 import { useAppSnackbar } from "../../config/Context/SnackbarContext";
 import { loginUser } from "../../services/LoginAndRegister";
-import { setUserProfile } from "../../redux/Actions";
+import {
+  setServicesOnLogin,
+  setUserAddress,
+  setUserProfile,
+} from "../../redux/Actions";
+import { getUserAddress } from "../../services/Users";
+import { getServiceCart } from "../../services/ServiceCart";
 
 const CustomLoader = lazy(() => import("../../shared/CustomLoader"));
 
@@ -17,20 +23,57 @@ function LoginPage() {
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
+  const { mutate: getUserAddresses } = useMutation(getUserAddress, {
+    onSuccess(res) {
+      if (res?.status === "SUCCESS") {
+        dispatch(
+          setUserAddress({
+            addresses: res?.data,
+          })
+        );
+      } else {
+        showSnackbar(res.message, "error");
+      }
+    },
+    onError(err) {
+      showSnackbar(err.message, "error");
+    },
+  });
+
+  const {
+    mutate: getServiceCartDetails,
+    isLoading: fetchingServiceCartDetails,
+  } = useMutation(getServiceCart, {
+    onSuccess: (res) => {
+      if (res?.status === "SUCCESS") {
+        dispatch(setServicesOnLogin(res?.data[0].packageDetails));
+      } else {
+        dispatch(setServicesOnLogin([]));
+      }
+    },
+    onError: () => {
+      dispatch(setServicesOnLogin([]));
+    },
+  });
+
   const { mutate: loginUsers, isLoading } = useMutation(loginUser, {
     onSuccess(res) {
       if (res?.status === "SUCCESS") {
         const data = res?.data;
+        const { id, email, name, phone, gender } = data;
         showSnackbar(res?.message, "success");
         sessionStorage.setItem("token", data?.token);
         dispatch(
           setUserProfile({
-            userId: data?.id,
-            email: data?.email,
-            name: data?.name,
-            phone: data?.phone,
+            userId: id,
+            email,
+            name,
+            phone,
+            gender,
           })
         );
+        getUserAddresses({ userId: id });
+        getServiceCartDetails({ userId: id });
         navigate("/");
       } else {
         showSnackbar(`${res?.message}. Please try again!`, "error");
@@ -66,7 +109,7 @@ function LoginPage() {
   return (
     <div className="md:flex md:justify-center md:items-center min-h-screen relative bg-[#FAFAFA]">
       <Suspense>
-        <CustomLoader open={isLoading} />
+        <CustomLoader open={isLoading || fetchingServiceCartDetails} />
       </Suspense>
       <div
         className="absolute top-0 left-0 w-full h-full bg-cover bg-center hidden md:block"
