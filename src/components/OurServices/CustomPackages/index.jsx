@@ -150,6 +150,12 @@ function CustomPackages() {
             <img
               src={Resources.images.Common.fiftyPercentAfterServiceBanner}
               alt="50% After Service Banner"
+              className="hidden md:!block"
+            />
+            <img
+              src={Resources.images.Common.fiftyPercentAfterServiceBannerMobile}
+              alt="50% After Service Banner"
+              className="block md:!hidden"
             />
           </motion.div>
           <FadedLineBreak />
