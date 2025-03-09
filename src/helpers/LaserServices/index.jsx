@@ -1091,7 +1091,7 @@ export const customPackageDetails = [
     serviceId: "7",
     subServiceId: "7-1",
     featureName: "customLHRWomenSixSessions",
-    selectedPackageImg: "/Pure-Skyn/images/Home/STFullFace.png",
+    selectedPackageImg: Resources.images.Home.customPackages.customPackageImg6,
   },
   {
     treatmentName: "Hair Free Body - Male",
@@ -1101,7 +1101,7 @@ export const customPackageDetails = [
     serviceId: "7",
     subServiceId: "7-2",
     featureName: "customLHRMenSixSessions",
-    selectedPackageImg: "/Pure-Skyn/images/Home/STFullFace.png",
+    selectedPackageImg: Resources.images.Home.customPackages.customPackageImg4,
   },
   {
     treatmentName: "Oxy Hydra Facial + Oxygeneo Therapy",
@@ -1111,7 +1111,7 @@ export const customPackageDetails = [
     serviceId: "7",
     subServiceId: "7-3",
     featureName: "oxyHydraAndOxygeneo",
-    selectedPackageImg: "/Pure-Skyn/images/Home/STFullFace.png",
+    selectedPackageImg: Resources.images.Home.customPackages.customPackageImg2,
   },
   {
     treatmentName: "Medi-Facial Package",
@@ -1121,7 +1121,7 @@ export const customPackageDetails = [
     serviceId: "7",
     subServiceId: "7-4",
     featureName: "oxyhydraOxygenoDermafrac",
-    selectedPackageImg: "/Pure-Skyn/images/Home/STFullFace.png",
+    selectedPackageImg: Resources.images.Home.customPackages.customPackageImg3,
   },
   {
     treatmentName: "Oxygeneo Therapy + Dermafrac",
@@ -1131,7 +1131,7 @@ export const customPackageDetails = [
     serviceId: "7",
     subServiceId: "7-5",
     featureName: "oxygeneoAndDermafrac",
-    selectedPackageImg: "/Pure-Skyn/images/Home/STFullFace.png",
+    selectedPackageImg: Resources.images.Home.customPackages.customPackageImg1,
   },
   {
     treatmentName: "Oxy Hydra Facial + Dermafrac",
@@ -1141,6 +1141,6 @@ export const customPackageDetails = [
     serviceId: "7",
     subServiceId: "7-6",
     featureName: "oxyhydraAndDermafrac",
-    selectedPackageImg: "/Pure-Skyn/images/Home/STFullFace.png",
+    selectedPackageImg: Resources.images.Home.customPackages.customPackageImg5,
   },
 ];

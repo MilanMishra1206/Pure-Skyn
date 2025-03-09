@@ -7,7 +7,6 @@ import { useDispatch, useSelector } from "react-redux";
 import { customPackageDetails } from "../../../helpers/LaserServices";
 import MotionWrapper from "../../../config/MotionFramer/MotionWrapper";
 import FadeInWrapper from "../../../config/MotionFramer/FadeInWrapper";
-import FuzzyPricingOverlay from "../../../shared/CustomFuzzyPricingOverlay";
 import Resources from "../../../config/Resources";
 import FadedLineBreak from "../../../shared/CustomHrTag";
 import CustomPackagesCards from "./PackagesCards";
@@ -94,19 +93,6 @@ function CustomPackages() {
                 />
               )}
             </div>
-            <motion.div
-              variants={FadeInWrapper("left", 0.1)}
-              initial="hidden"
-              whileInView="show"
-              viewport={{ once: true }}
-            >
-              <FuzzyPricingOverlay
-                header={"Customised Packages Just For You!!"}
-                subText={"100% Satisfaction Guaranteed"}
-                buttonText={"Book Now"}
-                link="/book-now"
-              />
-            </motion.div>
             <FadedLineBreak />
             <motion.div
               variants={FadeInWrapper("right", 0.1)}
@@ -152,6 +138,18 @@ function CustomPackages() {
               packageDetails={customPackageDetails}
               handleAddToCart={handleAddToCart}
               addedToCart={addedToCart}
+            />
+          </motion.div>
+          <FadedLineBreak />
+          <motion.div
+            variants={FadeInWrapper("up", 0.1)}
+            initial="hidden"
+            whileInView="show"
+            viewport={{ once: true }}
+          >
+            <img
+              src={Resources.images.Common.fiftyPercentAfterServiceBanner}
+              alt="50% After Service Banner"
             />
           </motion.div>
           <FadedLineBreak />

@@ -24,7 +24,7 @@ const Resources = {
       offerBannerMobile: `${base}/Common/off_banner_mobile.jpg`,
       offerBannerLaptop: `${base}/Common/off_banner_laptop.jpg`,
       googlePlayButton: `${base}/Common/google-play.png`,
-      fiftyPercentAfterServiceBanner: `${base}/Common/50-post-service-banner.png`
+      fiftyPercentAfterServiceBanner: `${base}/Common/50-off-banner.jpg`,
     },
     Home: {
       dermfracMobile: `${base}/Home/dermfrac-mobile.png`,
@@ -71,6 +71,14 @@ const Resources = {
         chestMenPackage: `${base}/Home/chestMenPackage.png`,
         bikiniPackage: `${base}/Home/bikiniPackage.png`,
         underarmsPackage: `${base}/Home/underarmsPackage.png`,
+      },
+      customPackages: {
+        customPackageImg1: `${base}/Home/customPackageImg1.jpeg`,
+        customPackageImg2: `${base}/Home/customPackageImg2.jpeg`,
+        customPackageImg3: `${base}/Home/customPackageImg3.jpg`,
+        customPackageImg4: `${base}/Home/customPackageImg4.jpg`,
+        customPackageImg5: `${base}/Home/customPackageImg5.jpg`,
+        customPackageImg6: `${base}/Home/customPackageImg6.jpg`,
       },
     },
     NavBar: {
@@ -126,7 +134,7 @@ const Resources = {
           imageThree: `${base}/Services/LaserHairRemoval/Women/img3.webp`,
           imageFour: `${base}/Services/LaserHairRemoval/Women/img4.webp`,
           imageFive: `${base}/Services/LaserHairRemoval/Women/img5.webp`,
-          imageSix: `${base}/Services/LaserHairRemoval/Women/img6.webp`,
+          imageSix: `${base}/Services/LaserHairRemoval/Women/img7.webp`,
           imageSeven: `${base}/Services/LaserHairRemoval/Women/img7.webp`,
           LHRWomenHomeCard: `${base}/Services/LaserHairRemoval/Women/LHRWomenHomeCard.png`,
         },

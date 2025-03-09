@@ -1,5 +1,4 @@
 import { useMediaQuery } from "@mui/material";
-import { FaCircleCheck } from "react-icons/fa6";
 import { MdAccessTime } from "react-icons/md";
 import { INRCurrency } from "../../../../helpers/Regex";
 
@@ -22,7 +21,7 @@ function CustomPackagesCards({ packageDetails, handleAddToCart, addedToCart }) {
           </span>
 
           <div
-            className={`flex ${isMobile ? "" : "justify-between gap-2"} mt-4`}
+            className={`flex ${isMobile ? "" : "justify-between gap-5"} mt-4`}
           >
             <div
               className={`flex flex-col ${isMobile ? "w-full" : "w-48 md:!w-4/6 lg:!w-3/5"}`}
@@ -33,12 +32,15 @@ function CustomPackagesCards({ packageDetails, handleAddToCart, addedToCart }) {
                 {item.packageName}
               </p>
               <div
-                className={`${!isMobile ? "hidden" : "flex items-center justify-center"}`}
+                className={`${!isMobile ? "hidden" : "flex items-center justify-center mt-4"}`}
               >
-                <img src={item.imgSrc} className="h-24 md:!h-48 object-cover" />
+                <img
+                  src={item.selectedPackageImg}
+                  className="h-52 w-52 object-cover rounded-xl"
+                />
               </div>
               <div
-                className={`flex mt-3 mb-4 ${isMobile ? "flex-col gap-2" : "flex-row items-center"}`}
+                className={`flex mt-3 mb-4 ${isMobile ? "flex-col gap-2" : "flex-col xl:!flex-row xl:!items-center"}`}
               >
                 <div className="flex gap-2 items-center">
                   <span className="text-coal font-medium mr-2">
@@ -49,12 +51,12 @@ function CustomPackagesCards({ packageDetails, handleAddToCart, addedToCart }) {
                   </span>
                 </div>
                 <div
-                  className={`${isMobile ? "hidden" : "block h-5 w-px bg-gray-300"}`}
+                  className={`${isMobile ? "hidden" : "md:hidden xl:!block h-5 w-px bg-gray-300"}`}
                 ></div>
                 <div className="flex items-center gap-1 text-coal">
                   <MdAccessTime
                     fill="grey"
-                    className={`${isMobile ? "" : "ml-2"}`}
+                    className={`${isMobile ? "" : "xl:ml-2"}`}
                   />
                   <span>60 mins</span>
                 </div>
@@ -74,11 +76,11 @@ function CustomPackagesCards({ packageDetails, handleAddToCart, addedToCart }) {
             </div>
             <div className="flex flex-col gap-4 items-center justify-between">
               <img
-                src={item.imgSrc}
-                className={`h-24 object-cover hidden md:!block`}
+                src={item.selectedPackageImg}
+                className={`h-48 w-48 object-cover hidden md:!block rounded-xl`}
               />
               <button
-                className={`hidden md:!block no-underline mt-4 py-2 ${addedToCart[item.featureName] ? "px-2" : "px-3"} rounded bg-coffee text-white text-center font-bold hover:shadow-xl disabled:cursor-not-allowed hover:opacity-80 disabled:opacity-80`}
+                className={`hidden md:!block no-underline mt-4 py-2 ${addedToCart[item.featureName] ? "px-2" : "px-3"} rounded bg-coffee text-white text-center font-bold hover:shadow-xl hover:opacity-80 disabled:opacity-80 w-full`}
                 onClick={() => handleAddToCart(item)}
               >
                 {addedToCart[item.featureName]
@@ -88,7 +90,7 @@ function CustomPackagesCards({ packageDetails, handleAddToCart, addedToCart }) {
             </div>
           </div>
           <button
-            className={`block md:!hidden w-full no-underline mt-4 py-2 ${addedToCart[item.featureName] ? "px-2" : "px-3"} rounded bg-coffee text-white text-center font-bold hover:shadow-xl disabled:cursor-not-allowed hover:opacity-80 disabled:opacity-80`}
+            className={`block md:!hidden w-full no-underline mt-4 py-2 ${addedToCart[item.featureName] ? "px-2" : "px-3"} rounded bg-coffee text-white text-center font-bold hover:shadow-xl hover:opacity-80 disabled:opacity-80 w-full`}
             onClick={() => handleAddToCart(item)}
           >
             {addedToCart[item.featureName] ? "Added To Cart" : "Add To Cart"}

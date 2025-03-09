@@ -34,7 +34,7 @@ function BookNowPackageCards({
               <div
                 className={`${!isSmallestScreen ? "hidden" : "flex items-center justify-center"}`}
               >
-                <img src={item.imgSrc} className="h-24 md:!h-48 object-cover" />
+                <img src={item.imgSrc} className="h-28 w-28 object-cover" />
               </div>
               <div
                 className={`flex mt-3 mb-4 ${isSmallestScreen ? "flex-col gap-2" : "flex-row items-center"}`}
@@ -69,7 +69,7 @@ function BookNowPackageCards({
             <div className="flex flex-col gap-4 items-center justify-between">
               <img
                 src={item.imgSrc}
-                className={`h-24 object-cover ${isSmallestScreen ? "hidden" : "block"}`}
+                className={`h-28 w-28 object-cover ${isSmallestScreen ? "hidden" : "block"}`}
               />
               <button
                 className={`${isSmallestScreen ? "hidden" : "block"} no-underline mt-4 py-2 ${item.isSelected ? "px-2" : "px-3"} rounded bg-coffee text-white text-center font-bold hover:shadow-xl disabled:cursor-not-allowed hover:opacity-80 disabled:opacity-80`}
