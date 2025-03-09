@@ -1,2 +1,0 @@
-"use strict";(self.webpackChunkpure_skyn=self.webpackChunkpure_skyn||[]).push([[6139],{6139:(e,s,n)=>{n.r(s),n.d(s,{default:()=>r});var t=n(3376),u=n(2483),c=n(6723);const r=function(){const e=(0,t.Zp)();return(0,u.useEffect)((()=>{sessionStorage.clear(),e("/login")})),(0,c.jsx)("div",{className:"p-5 bg-aliceBlue-1 flex justify-between items-center",children:"Logging Out"})}}}]);
-//# sourceMappingURL=6139.2d748b4c.chunk.js.map
