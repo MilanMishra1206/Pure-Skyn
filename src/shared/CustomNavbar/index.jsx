@@ -13,6 +13,7 @@ import Resources from "../../config/Resources";
 import { useAppSnackbar } from "../../config/Context/SnackbarContext";
 import { emptyServiceCart, logoutUser } from "../../redux/Actions";
 import { saveServiceCart } from "../../services/ServiceCart";
+import ConfirmationModal from "../../components/ProductsCart/ConfirmationModal";
 
 const CartDrawer = lazy(
   () => import("../../components/ProductsCart/CartDrawer")
@@ -31,7 +32,7 @@ function CustomNavbar() {
   const [isConfirmingLogout, setIsConfirmingLogout] = useState(false);
   const [userName, setUserName] = useState("");
   const [isProductsPage, setIsProductsPage] = useState(false);
-  const isAdmin = false;
+  const [isAdmin, setIsAdmin] = useState(false);
   const isActive = (path) => location.pathname === path;
   const toggleMenu = () => setMenuOpen(!menuOpen);
 
@@ -51,6 +52,10 @@ function CustomNavbar() {
       setIsLoggedIn(false);
     }
   }, [sessionStorage.getItem("token")]);
+
+  useEffect(() => {
+    setIsAdmin(userProfile?.isAdmin || false);
+  }, [userProfile]);
 
   useEffect(() => {
     if (location.pathname.includes("products")) {
@@ -239,43 +244,15 @@ function CustomNavbar() {
           />
         )}
       </div>
-      <AnimatePresence>
-        {isConfirmingLogout && (
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            transition={{ duration: 0.3 }}
-            className="bg-slate-900/20 backdrop-blur p-4 fixed inset-0 z-50 md:grid place-items-center place-content-center overflow-scroll"
-          >
-            <motion.div
-              initial={{ scale: 0 }}
-              animate={{ scale: 1 }}
-              exit={{ scale: 0 }}
-              transition={{ duration: 0.3 }}
-              className="bg-white p-8 rounded-lg w-full max-w-lg"
-            >
-              <h3 className="text-coal font-bold text-lg mb-4">
-                Are you sure you want to logout?
-              </h3>
-              <div className="flex justify-center gap-4">
-                <button
-                  onClick={cancelLogout}
-                  className="bg-gray-200 text-gray-700 px-4 py-2 rounded-md hover:bg-gray-300"
-                >
-                  Cancel
-                </button>
-                <button
-                  onClick={confirmLogout}
-                  className="bg-red-600 text-white px-4 py-2 rounded-md hover:bg-red-700"
-                >
-                  Logout
-                </button>
-              </div>
-            </motion.div>
-          </motion.div>
-        )}
-      </AnimatePresence>
+      {isConfirmingLogout && (
+        <ConfirmationModal
+          title="Are you sure you want to logout?"
+          handleCancel={cancelLogout}
+          handlePrimaryButtonClick={confirmLogout}
+          confirmButtonText="Logout"
+          imageSrc={Resources.images.Common.Warning}
+        />
+      )}
       {openCart && (
         <AnimatePresence>
           <CartDrawer openCart={openCart} handleOpenCart={handleOpenCart} />

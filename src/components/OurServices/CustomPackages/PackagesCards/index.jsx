@@ -37,6 +37,7 @@ function CustomPackagesCards({ packageDetails, handleAddToCart, addedToCart }) {
                 <img
                   src={item.selectedPackageImg}
                   className="h-52 w-52 object-cover rounded-xl"
+                  alt={item.packageName}
                 />
               </div>
               <div
@@ -76,7 +77,8 @@ function CustomPackagesCards({ packageDetails, handleAddToCart, addedToCart }) {
             <div className="flex flex-col gap-4 items-center justify-between">
               <img
                 src={item.selectedPackageImg}
-                className={`h-48 w-48 object-cover hidden md:!block rounded-xl`}
+                className="h-48 w-48 object-cover hidden md:!block rounded-xl"
+                alt={item.packageName}
               />
               <button
                 className={`hidden md:!block no-underline mt-4 py-2 ${addedToCart[item.featureName] ? "px-2" : "px-3"} rounded bg-coffee text-white text-center font-bold hover:shadow-xl hover:opacity-80 disabled:opacity-80 w-full`}

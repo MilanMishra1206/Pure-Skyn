@@ -83,131 +83,126 @@ export const laserServiceForWomenContent = [
   },
 ];
 
-export const LHRBenefits = [
+export const reviewContent = [
   {
     id: 1,
-    mainText: "Unbeatable Savings",
-    content:
-      "We understand that achieving your hair-free goals shouldn't break the bank. Our discounted packages offer incredible savings, ensuring that you get the best value for your money.",
+    name: "Milan",
+    date: "12-12-2025",
+    rating: 4,
+    review: "Best for combination skin. I love it so much.",
   },
   {
     id: 2,
-    mainText: "Multiple Sessions",
-    content:
-      "Effective hair reduction often requires multiple sessions. With our packages, you'll have access to the number of sessions you need to achieve optimal results without worrying about the cost.",
+    name: "Sophia",
+    date: "13-12-2025",
+    rating: 5,
+    review: "Perfect for my oily skin. Keeps me feeling fresh all day!",
   },
   {
     id: 3,
-    mainText: "Customized Solutions",
-    content:
-      "Every individual is unique, and so are their hair removal needs. Our packages cater to your specific requirements, ensuring that you receive personalized treatment that's tailored to your skin type and hair color.",
+    name: "Lucas",
+    date: "14-12-2025",
+    rating: 3,
+    review: "It's okay, but didn't work as well for my dry skin.",
   },
   {
     id: 4,
-    mainText: "Lasting Results",
-    content:
-      "Imagine a divfe where you wake up with silky-smooth skin every day. Our discounted packages pave the way to a future free from the hassle of constant hair removal.",
-  },
-];
-
-export const fullBodyLaserContent = [
-  {
-    id: 1,
-    header: "FULL BODY LASER HAIR REMOVAL FOR FEMALE",
-    label: "Laser Hair Removal Women",
-    pricingContent: [
-      {
-        label: "Laser Hair Removal Women - (4+1) Session",
-        packageName: "Full Body - (4+1) Session",
-        featureName: "fullBodyWomen",
-        serviceId: "1",
-        subServiceId: "1-1",
-        Step3: true,
-        pricing: 60000,
-        selectedPackageImg:
-          Resources.images.Services.LaserHairRemoval.fullBodyWomenLHR,
-      },
-      {
-        label: "Laser Hair Removal Women - Single Session",
-        packageName: "Full Body - Single Session",
-        featureName: "fullBodyWomen",
-        serviceId: "1",
-        subServiceId: "1-2",
-        Step3: true,
-        pricing: 15000,
-        selectedPackageImg:
-          Resources.images.Services.LaserHairRemoval.fullBodyWomenLHR,
-      },
-    ],
-    imgSrc: Resources.images.Services.LaserHairRemoval.fullBodyWomenLHR,
-  },
-  {
-    id: 2,
-    header: "FULL BODY LASER HAIR REMOVAL FOR MALE",
-    label: "Laser Hair Removal Men",
-    pricingContent: [
-      {
-        label: "Laser Hair Removal Men - (4+1) Session",
-        packageName: "Full Body - (4+1) Session",
-        featureName: "fullBodyMen",
-        serviceId: "2",
-        subServiceId: "2-1",
-        Step3: true,
-        pricing: 60000,
-        selectedPackageImg:
-          Resources.images.Services.LaserHairRemoval.fullBodyMenLHR,
-      },
-      {
-        label: "Laser Hair Removal Men - Single Session",
-        packageName: "Full Body - Single Session",
-        featureName: "fullBodyMen",
-        serviceId: "2",
-        subServiceId: "2-2",
-        Step3: true,
-        pricing: 15000,
-        selectedPackageImg:
-          Resources.images.Services.LaserHairRemoval.fullBodyMenLHR,
-      },
-    ],
-    imgSrc: Resources.images.Services.LaserHairRemoval.fullBodyMenLHR,
-  },
-];
-
-export const sessionWiseHairReduction = [
-  {
-    id: 1,
-    mainText: "1st Session (Week-1)",
-    content: `Fresh growth will start after 10-15 days when the roots of hair targeted will emerge and fall out. This is expected.`,
-  },
-  {
-    id: 2,
-    mainText: "2nd and 3rd session",
-    content: `<p><strong><u>2nd session (Week 7)</u></strong></p>
-              <p class="mb-4">You will notice reduction in one of the following parameters: thickness, colour, density, frequency of hair growth. Keep going!</p>
-              <p><strong><u>3rd session (Week 11)</u></strong></p>
-              <p>You will notice hairless patches. Don't stop now. Great work!</p>`,
-  },
-  {
-    id: 3,
-    mainText: "4th session (Week 15)",
-    content:
-      "You will notice further reduction in thickness/ colour/density/frequency of hair growth. Keep at it!",
-  },
-  {
-    id: 4,
-    mainText: "5th, 6th and 7th session",
-    content: `<p><strong><u>5th session (Week 19)</u></strong></p>
-              <p class="mb-4">You will notice more hairless patches compared to before. Keep going to reach your goal.</p>
-       <p><strong><u>6th session (Week 23)</u></strong></p>
-       <p class="mb-4">You will notice significant reduction in overall hair growth. Not far to go from here!</p>
-       <p><strong><u>7th session (Week 27)</u></strong></p>
-       <p>You will notice very little and scattered hair growth. One more session and you will have achieved your hair-free goal!</p>`,
+    name: "Emma",
+    date: "15-12-2025",
+    rating: 4,
+    review: "Great product! It has helped with my acne and redness.",
   },
   {
     id: 5,
-    mainText: "8th session (Week 31)",
-    content:
-      "You will achieve upto 90% hair reduction. Maintenance sessions may be required going forward. Congratulations!!",
+    name: "Oliver",
+    date: "16-12-2025",
+    rating: 2,
+    review:
+      "Unfortunately, it didn't suit my skin type. My face got irritated.",
+  },
+  {
+    id: 6,
+    name: "Ava",
+    date: "17-12-2025",
+    rating: 5,
+    review: "Absolutely love this! My skin feels smooth and looks radiant.",
+  },
+  {
+    id: 7,
+    name: "Ethan",
+    date: "18-12-2025",
+    rating: 4,
+    review: "Good for sensitive skin. Leaves my face soft and moisturized.",
+  },
+  {
+    id: 8,
+    name: "Isabella",
+    date: "19-12-2025",
+    rating: 1,
+    review: "Caused me a lot of breakouts. I wouldn't recommend it.",
+  },
+  {
+    id: 9,
+    name: "James",
+    date: "20-12-2025",
+    rating: 2,
+    review: "Not the best for my skin, it left it feeling oily.",
+  },
+  {
+    id: 10,
+    name: "Amelia",
+    date: "21-12-2025",
+    rating: 3,
+    review: "Decent product, but nothing special for my dry skin.",
+  },
+  {
+    id: 11,
+    name: "Benjamin",
+    date: "22-12-2025",
+    rating: 5,
+    review: "Amazing! My skin feels so soft and smooth after using this.",
+  },
+  {
+    id: 12,
+    name: "Charlotte",
+    date: "23-12-2025",
+    rating: 4,
+    review: "Great for daily use. Helps keep my skin hydrated and soft.",
+  },
+  {
+    id: 13,
+    name: "Oliver",
+    date: "24-12-2025",
+    rating: 3,
+    review: "Works fine, but I didn't see any big improvement.",
+  },
+  {
+    id: 14,
+    name: "Mia",
+    date: "25-12-2025",
+    rating: 5,
+    review: "Best product I've tried in a long time. Skin feels amazing!",
+  },
+  {
+    id: 15,
+    name: "Noah",
+    date: "26-12-2025",
+    rating: 4,
+    review: "I like it, but I wish it would last a bit longer on my face.",
+  },
+  {
+    id: 16,
+    name: "Liam",
+    date: "27-12-2025",
+    rating: 5,
+    review: "Perfect for my sensitive skin. My face feels so refreshed!",
+  },
+  {
+    id: 17,
+    name: "Ella",
+    date: "28-12-2025",
+    rating: 2,
+    review: "Didn't work for me. It caused irritation after a few uses.",
   },
 ];
 

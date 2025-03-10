@@ -3,10 +3,11 @@ import { Route, Routes, useLocation, Navigate } from "react-router-dom";
 import { useRouteStatus } from "../../config/Context/RouteContext";
 import ScrollToTopButton from "../../shared/CustomBackToTopButton";
 import CustomLoader from "../../shared/CustomLoader";
-import PureSkynLogin from "../../pages/PureSkynLogin";
 
 // Lazy Loaded Routes
 const PureSkynHome = lazy(() => import("../../pages/PureSkynHome"));
+const PureSkynLogin = lazy(() => import("../../pages/PureSkynLogin"));
+const PureSkynLoginAdmin = lazy(() => import("../../pages/PureSkynLoginAdmin"));
 const PureSkynServices = lazy(() => import("../../pages/PureSkynServices"));
 const PureSkynProducts = lazy(() => import("../../pages/PureSkynProducts"));
 const PureSkynProductDetails = lazy(
@@ -42,6 +43,11 @@ const routesConfig = [
   {
     path: "/login",
     Component: PureSkynLogin,
+    accessRule: "redirectIfAuth",
+  },
+  {
+    path: "/login/admin",
+    Component: PureSkynLoginAdmin,
     accessRule: "redirectIfAuth",
   },
   {
@@ -144,7 +150,9 @@ function Router() {
   const { setIsHomePage, setIsMedifacialPage } = useRouteStatus();
   const location = useLocation();
 
-  const showNavAndFooter = !["/login", "/sign-up"].includes(location.pathname);
+  const showNavAndFooter = !["/login", "/sign-up", "/login/admin"].includes(
+    location.pathname
+  );
 
   useEffect(() => {
     window.scrollTo(0, 0);

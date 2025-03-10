@@ -14,7 +14,6 @@ const CustomHeroSection = lazy(() => import("../../shared/CustomHeroSection"));
 function Home() {
   const isMobile = useMediaQuery("(max-width: 767px)");
   const isLargeScreen = useMediaQuery("(min-width: 1023px)");
-  const isLaptop = useMediaQuery("(min-width: 1336px)");
 
   useEffect(() => {
     sessionStorage.removeItem("currentBookStep");

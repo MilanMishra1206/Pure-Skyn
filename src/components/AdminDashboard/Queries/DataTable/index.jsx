@@ -1,9 +1,8 @@
-import React, { lazy, Suspense, useEffect, useState } from "react";
+import React, { lazy, Suspense, useState } from "react";
 import {
   TableBody,
   TableRow,
   useMediaQuery,
-  Link,
   TableCell,
   Collapse,
 } from "@mui/material";

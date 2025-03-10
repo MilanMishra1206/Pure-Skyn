@@ -15,6 +15,7 @@ import { getBookNowFormValidation } from "../../../helpers/Login";
 import { createNewBooking } from "../../../services/Booking";
 import { useAppSnackbar } from "../../../config/Context/SnackbarContext";
 import { INRCurrency } from "../../../helpers/Regex";
+import Resources from "../../../config/Resources";
 
 const CustomLoader = lazy(() => import("../../../shared/CustomLoader"));
 
@@ -26,6 +27,7 @@ const BookNowDetails = ({ isLoggedIn }) => {
   const showSnackbar = useAppSnackbar();
   const [packagePrice, setPackagePrice] = useState(0);
   const [removeItem, setRemoveItem] = useState(false);
+  const [askForLogin, setAskForLogin] = useState(false);
   const [subServiceId, setSubServiceId] = useState("");
   const [timeSlots, setTimeSlots] = useState([]);
   const [initialValues, setInitialValues] = useState({
@@ -80,17 +82,6 @@ const BookNowDetails = ({ isLoggedIn }) => {
     initialValues,
     validationSchema: getBookNowFormValidation,
     onSubmit: (values) => {
-      // createBooking({
-      //   userId: "A12",
-      //   serviceId: "LHR",
-      //   name: value.name,
-      //   email: value.email,
-      //   mobile: value.mobile,
-      //   address: value.address,
-      //   treatmentDate: value.treatmentDate,
-      //   timeSlot: value.treatment,
-      //   pinCode: "342001", //to be fetched from Address API
-      // });
       const servicesBooked = Array.isArray(servicesCart)
         ? servicesCart.map(
             ({
@@ -115,10 +106,15 @@ const BookNowDetails = ({ isLoggedIn }) => {
           )
         : [];
       const reqBody = {
+        userId: userProfile.userId,
         userInfo: values,
         servicesBooked,
       };
-      console.log("reqBody", reqBody);
+      showSnackbar("Booking Done!!!", "success");
+      console.log("Booking Done", reqBody);
+      // createBooking({
+      //   reqBody,
+      // });
     },
   });
 
@@ -132,7 +128,7 @@ const BookNowDetails = ({ isLoggedIn }) => {
 
   const handleServiceBooking = () => {
     if (!isLoggedIn) {
-      navigate("/login");
+      setAskForLogin(true);
     }
     if (!formik.isValid && isLoggedIn) {
       showSnackbar("Please fill all the required fields", "error");
@@ -230,10 +226,20 @@ const BookNowDetails = ({ isLoggedIn }) => {
       </div>
       {removeItem && (
         <ConfirmationModal
-          isEmptyCart={false}
-          removeMessage="Are you sure you want to remove this service from the cart?"
+          title="Are you sure you want to remove this service from the cart?"
           handleCancel={() => setRemoveItem(false)}
-          confirmRemove={confirmRemove}
+          handlePrimaryButtonClick={confirmRemove}
+          confirmButtonText="Remove"
+        />
+      )}
+      {askForLogin && (
+        <ConfirmationModal
+          title="You have to login before booking our services!"
+          handleCancel={() => setAskForLogin(false)}
+          handlePrimaryButtonClick={() => navigate("/login")}
+          confirmButtonText="Login"
+          confirmButtonColor="bg-skyn hover:!opacity-80"
+          imageSrc={Resources.images.Common.Warning}
         />
       )}
     </div>

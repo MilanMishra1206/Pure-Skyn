@@ -7,10 +7,18 @@ import { IoPhonePortraitOutline } from "react-icons/io5";
 import { FaPhoneAlt } from "react-icons/fa";
 import { MdOutlineMail } from "react-icons/md";
 import { FaRegAddressBook } from "react-icons/fa";
+import { useSelector } from "react-redux";
+import { useEffect, useState } from "react";
 import Resources from "../../config/Resources";
 
 function CustomFooter() {
-  const isAdmin = false;
+  const userProfile = useSelector((state) => state.userProfile.userProfile);
+  const [isAdmin, setIsAdmin] = useState(false);
+
+  useEffect(() => {
+    setIsAdmin(userProfile?.isAdmin || false);
+  }, [userProfile]);
+
   return (
     <div className="bottom-0 left-0 w-full bg-coal text-white p-8 font-poppins">
       <div className="flex flex-col px-4">

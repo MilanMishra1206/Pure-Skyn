@@ -7,7 +7,7 @@ import FadeInWrapper from "../../../config/MotionFramer/FadeInWrapper";
 
 const CustomTextField = lazy(() => import("../../../shared/CustomTextField"));
 
-function LoginForm({ formik, handleSubmit, mobileClass }) {
+function LoginForm({ formik, handleSubmit, mobileClass, isAdminPage = false }) {
   const [showPassword, setShowPassword] = useState(false);
 
   return (
@@ -26,7 +26,7 @@ function LoginForm({ formik, handleSubmit, mobileClass }) {
         />
       </div>
       <div className="text-3xl font-poppins text-kashmirBlue font-extrabold mb-6 text-center">
-        SIGN IN
+        {isAdminPage ? "SIGN IN ADMIN" : "SIGN IN"}
       </div>
       <form className="w-full">
         <Suspense fallback={<div />}>
@@ -88,22 +88,29 @@ function LoginForm({ formik, handleSubmit, mobileClass }) {
       >
         Sign In
       </button>
-      <div className="mt-4 text-center">
-        <p>
-          Don't have an account?{" "}
-          <Link to="/sign-up" className="underline text-skyn hover:!opacity-80">
-            Sign up
-          </Link>
-        </p>
-      </div>
-      <div className="mt-4 text-center">
-        <p>
-          Go to{" "}
-          <Link to="/" className="underline text-skyn hover:!opacity-80">
-            Dashboard
-          </Link>
-        </p>
-      </div>
+      {!isAdminPage && (
+        <div className="mt-4 text-center">
+          <p>
+            Don't have an account?{" "}
+            <Link
+              to="/sign-up"
+              className="underline text-skyn hover:!opacity-80"
+            >
+              Sign up
+            </Link>
+          </p>
+        </div>
+      )}
+      {!isAdminPage && (
+        <div className="mt-4 text-center">
+          <p>
+            Go to{" "}
+            <Link to="/" className="underline text-skyn hover:!opacity-80">
+              Dashboard
+            </Link>
+          </p>
+        </div>
+      )}
     </motion.div>
   );
 }

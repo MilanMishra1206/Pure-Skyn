@@ -24,7 +24,7 @@ import { setUserAddress } from "../../redux/Actions";
 const CustomLoader = lazy(() => import("../../shared/CustomLoader"));
 
 function UserProfile() {
-  const isAdmin = false;
+  const [isAdmin, setIsAdmin] = useState(false);
   const showSnackbar = useAppSnackbar();
   const location = useLocation();
   const navigate = useNavigate();
@@ -47,6 +47,7 @@ function UserProfile() {
   useEffect(() => {
     setName(userProfile?.name || "");
     setPhone(userProfile?.phone || "");
+    setIsAdmin(userProfile?.isAdmin || false);
   }, [userProfile]);
 
   const handleSectionClick = (sectionId) => {
@@ -55,7 +56,6 @@ function UserProfile() {
   };
 
   const isTablet = useMediaQuery("(max-width: 1023px)");
-  const isMobile = useMediaQuery("(max-width: 767px)");
 
   const appointmentDetails = [
     { id: 1, treatmentName: "Laser Hair Removal", date: "11-12-2024" },

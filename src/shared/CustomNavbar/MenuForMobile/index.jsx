@@ -172,7 +172,7 @@ const MenuForMobile = ({
               {item.onClick ? (
                 <button
                   onClick={item.onClick}
-                  className="w-full px-6 py-3 font-bold text-coal hover:!bg-skyn text-left hover:!text-white transition"
+                  className="w-full px-6 py-3 font-bold text-coal hover:!bg-gray-200 text-left transition"
                 >
                   {item.name}
                 </button>

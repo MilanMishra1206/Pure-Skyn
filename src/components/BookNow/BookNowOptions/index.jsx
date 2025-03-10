@@ -2,7 +2,6 @@ import { motion } from "framer-motion";
 import { lazy, Suspense, useEffect, useState } from "react";
 import { IoIosCloseCircle } from "react-icons/io";
 import { useMutation } from "react-query";
-import dayjs from "dayjs";
 import { useDispatch, useSelector } from "react-redux";
 import FadeInWrapper from "../../../config/MotionFramer/FadeInWrapper";
 import {
@@ -16,7 +15,6 @@ import {
 } from "../../../helpers/LaserServices";
 import BookNowPackageCards from "./BookNowPackageCards";
 import {
-  addServiceToCart,
   emptyCart,
   removeServiceFromCart,
   requestBooking,

@@ -352,39 +352,6 @@ export const mediFacialFaq = [
   },
 ];
 
-export const whyUsContent = [
-  {
-    id: 1,
-    title: "1. ADVANCED DIODE LASER TECHNOLOGY",
-    content: `Our diode 808nm laser technology offers the gold standard in permanent hair removal. 
-        Its unique wavelength penetrates the hair follicles while protecting the skin around it.`,
-  },
-  {
-    id: 2,
-    title: "2. PAINLESS LASER HAIR REMOVAL",
-    content: `Your clients want to feel comfortable and confident during their treatment. we use contact cooling technology, 
-        which cools the skin to minimise any risk of side effects.`,
-  },
-  {
-    id: 3,
-    title: "3. MEDICAL- GRADE LASER HAIR REMOVAL",
-    content: `Our devices that are medically registered are registered in the uk with the MHRA - Our device has been subject to strict clinical and technical trials - completing these we can gain the correct certification 
-                to meet the requirements to register our device with the MHRA. It's a real no brainer when advertising medical-grade laser services in your area and to stand out from the crowd!`,
-  },
-  {
-    id: 4,
-    title: "4. VASTLY REDUCED HAIR REGROWTH",
-    content: `Our laser hair removal device gently heats the hair follicles under the skin to make them dormant. 
-                  Any regrowth will be finer and lighter - and the results last far longer than your clients could achieve with waxing or shaving.`,
-  },
-  {
-    id: 5,
-    title: "5. TRUSTED TECHNOLOGY",
-    content:
-      "With over 15 years of success in the beauty industry, LumiSKN has developed a range of aesthetic devices that are trusted in salons and clinics across Europe.",
-  },
-];
-
 export const testimonialsCarousel = [
   {
     id: 1,

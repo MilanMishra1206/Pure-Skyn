@@ -26,6 +26,7 @@ const Resources = {
       googlePlayButton: `${base}/Common/google-play.png`,
       fiftyPercentAfterServiceBanner: `${base}/Common/50-off-banner.jpg`,
       fiftyPercentAfterServiceBannerMobile: `${base}/Common/50-off-mobile.jpg`,
+      Warning: `${base}/Common/Warning.svg`
     },
     Home: {
       dermfracMobile: `${base}/Home/dermfrac-mobile.png`,

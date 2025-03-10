@@ -176,10 +176,11 @@ function CustomPackages() {
                     <img
                       src={Resources.images.Services.SkinTightening.img4}
                       className="h-48"
+                      alt="machine"
                     />
                     <img
                       src={Resources.images.Services.LaserHairRemoval.machine}
-                      alt="expertise"
+                      alt="machine"
                       className="mb-5 h-48"
                     />
                   </div>
@@ -192,6 +193,7 @@ function CustomPackages() {
                 <div className="flex flex-col items-center p-2">
                   <img
                     src={Resources.images.Common.dermat}
+                    alt="Experienced Dermats"
                     className="mb-5 h-56 w-56"
                   />
                   <div className="text-coal text-center">
@@ -203,6 +205,7 @@ function CustomPackages() {
                 <div className="flex flex-col p-2">
                   <img
                     src={Resources.images.Common.personalisedPlanning}
+                    alt="personal planning"
                     className="mb-5 h-56"
                   />
                   <div className="text-coal text-center">
@@ -215,6 +218,7 @@ function CustomPackages() {
                   <img
                     src={Resources.images.Common.serviceAtHome}
                     className="mb-5 h-56"
+                    alt="service at home"
                   />
                   <div className="text-coal text-center">
                     <p className="text-xl font-extrabold">

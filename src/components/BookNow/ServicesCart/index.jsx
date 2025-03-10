@@ -7,7 +7,6 @@ import { FaCartPlus } from "react-icons/fa";
 
 import BookNowDetails from "../BookNowDetails";
 import FadeInWrapper from "../../../config/MotionFramer/FadeInWrapper";
-import DrawCircleText from "../../../shared/CustomDrawCircleText";
 import Resources from "../../../config/Resources";
 
 const CustomLoader = lazy(() => import("../../../shared/CustomLoader"));

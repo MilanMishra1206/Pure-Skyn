@@ -7,7 +7,7 @@ import Resources from "../../config/Resources";
 import { getLoginValidation, loginInitialValues } from "../../helpers/Login";
 import LoginForm from "./LoginForm";
 import { useAppSnackbar } from "../../config/Context/SnackbarContext";
-import { loginUser } from "../../services/LoginAndRegister";
+import { loginAdmin, loginUser } from "../../services/LoginAndRegister";
 import {
   setServicesOnLogin,
   setUserAddress,
@@ -18,7 +18,7 @@ import { getServiceCart } from "../../services/ServiceCart";
 
 const CustomLoader = lazy(() => import("../../shared/CustomLoader"));
 
-function LoginPage() {
+function LoginPage({ isAdminPage = false }) {
   const showSnackbar = useAppSnackbar();
   const navigate = useNavigate();
   const dispatch = useDispatch();
@@ -84,6 +84,34 @@ function LoginPage() {
     },
   });
 
+  const { mutate: loginAdminUsers, isLoading: isLoadingAdminUser } =
+    useMutation(loginAdmin, {
+      onSuccess(res) {
+        if (res?.status === "SUCCESS") {
+          const data = res?.data;
+          const { id, email, name, phone, gender, isAdmin } = data;
+          showSnackbar(res?.message, "success");
+          sessionStorage.setItem("token", data?.token);
+          dispatch(
+            setUserProfile({
+              userId: id,
+              email,
+              name,
+              phone,
+              gender,
+              isAdmin,
+            })
+          );
+          navigate("/");
+        } else {
+          showSnackbar(`${res?.message}. Please try again!`, "error");
+        }
+      },
+      onError(error) {
+        showSnackbar(error, "error");
+      },
+    });
+
   const formik = useFormik({
     enableReinitialize: true,
     validateOnMount: true,
@@ -91,10 +119,17 @@ function LoginPage() {
     initialValues: loginInitialValues,
     validationSchema: getLoginValidation,
     onSubmit: (value) => {
-      loginUsers({
-        email: value.email.toLowerCase(),
-        password: value.password,
-      });
+      if (isAdminPage) {
+        loginAdminUsers({
+          email: value.email.toLowerCase(),
+          password: value.password,
+        });
+      } else {
+        loginUsers({
+          email: value.email.toLowerCase(),
+          password: value.password,
+        });
+      }
     },
   });
 
@@ -109,7 +144,9 @@ function LoginPage() {
   return (
     <div className="md:flex md:justify-center md:items-center min-h-screen relative bg-[#FAFAFA]">
       <Suspense>
-        <CustomLoader open={isLoading || fetchingServiceCartDetails} />
+        <CustomLoader
+          open={isLoading || fetchingServiceCartDetails || isLoadingAdminUser}
+        />
       </Suspense>
       <div
         className="absolute top-0 left-0 w-full h-full bg-cover bg-center hidden md:block"
@@ -119,7 +156,11 @@ function LoginPage() {
       />
       <div className="w-full h-full flex flex-col md:flex-row justify-end items-center z-10 relative">
         <div className="hidden md:flex w-full md:w-1/2 p-8 flex-col justify-center items-center">
-          <LoginForm formik={formik} handleSubmit={handleSubmit} />
+          <LoginForm
+            formik={formik}
+            handleSubmit={handleSubmit}
+            isAdminPage={isAdminPage}
+          />
         </div>
       </div>
       <div className="md:hidden w-full h-full absolute flex">
@@ -127,6 +168,7 @@ function LoginPage() {
           formik={formik}
           handleSubmit={handleSubmit}
           mobileClass="flex flex-col items-center"
+          isAdminPage={isAdminPage}
         />
       </div>
     </div>

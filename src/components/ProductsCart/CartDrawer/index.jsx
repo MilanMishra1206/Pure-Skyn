@@ -136,7 +136,11 @@ function CartDrawer({ openCart, handleOpenCart }) {
           <div>
             {cartItems?.length === 0 ? (
               <div className="flex flex-col items-center justify-center px-2 md:!px-5 pb-5">
-                <img src={Resources.images.Common.emptyCart} className="h-52" />
+                <img
+                  src={Resources.images.Common.emptyCart}
+                  className="h-52"
+                  alt="empty cart"
+                />
                 <p className="text-xl font-bold text-center text-coal">
                   Your cart is empty. Let's add some items! ⚡
                 </p>
@@ -258,9 +262,10 @@ function CartDrawer({ openCart, handleOpenCart }) {
           {removeItem && (
             <ConfirmationModal
               isEmptyCart={isEmptyCart}
-              removeMessage={removeMessage}
+              title={removeMessage}
               handleCancel={handleCancel}
-              confirmRemove={confirmRemove}
+              handlePrimaryButtonClick={confirmRemove}
+              confirmButtonText={isEmptyCart ? "Empty" : "Remove"}
             />
           )}
         </motion.div>

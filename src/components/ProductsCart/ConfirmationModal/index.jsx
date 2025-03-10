@@ -1,12 +1,13 @@
-import { AnimatePresence } from "framer-motion";
-import { motion } from "framer-motion";
+import { AnimatePresence, motion } from "framer-motion";
 import Resources from "../../../config/Resources";
 
 function ConfirmationModal({
-  removeMessage,
+  title,
   handleCancel,
-  confirmRemove,
-  isEmptyCart,
+  handlePrimaryButtonClick,
+  confirmButtonText,
+  confirmButtonColor = "bg-red-600 hover:bg-red-700",
+  imageSrc = Resources.images.Common.removeItem,
 }) {
   return (
     <AnimatePresence>
@@ -25,15 +26,12 @@ function ConfirmationModal({
           className="bg-white p-8 rounded-lg w-full max-w-lg"
         >
           <div className="flex justify-center mb-4">
-            <img
-              src={Resources.images.Common.removeItem}
-              className="h-16 mb-3"
-            />
+            <img src={imageSrc} alt="Confirmation Icon" className="h-16" />
           </div>
           <h3 className="font-bold text-lg mb-4 text-center text-coal">
-            {removeMessage}
+            {title}
           </h3>
-          <div className="flex flex-col md:!flex-row justify-center gap-4 mt-4">
+          <div className="flex flex-col md:!flex-row justify-center gap-4 mt-6">
             <button
               onClick={handleCancel}
               className="bg-gray-200 text-gray-700 px-4 py-2 rounded-md hover:bg-gray-300"
@@ -41,10 +39,10 @@ function ConfirmationModal({
               Cancel
             </button>
             <button
-              onClick={confirmRemove}
-              className="bg-red-600 text-white px-4 py-2 rounded-md hover:bg-red-700"
+              onClick={handlePrimaryButtonClick}
+              className={`text-white px-4 py-2 rounded-md ${confirmButtonColor} `}
             >
-              {isEmptyCart ? "Empty" : "Remove"}
+              {confirmButtonText}
             </button>
           </div>
         </motion.div>

@@ -12,16 +12,25 @@ export const loginUser = async ({ email, password }) => {
   }
 };
 
-export const registerUser = async ({
-  name,
-  email,
-  password,
-  phone,
-}) => {
+export const registerUser = async ({ name, email, password, phone }) => {
   const reqBody = { name, email, password, phone };
   try {
     const data = await axiosInstanceLogin.post(
       API_URLS.Auth.registerUser,
+      reqBody
+    );
+    return data;
+  } catch (error) {
+    console.log(error);
+    throw new Error();
+  }
+};
+
+export const loginAdmin = async ({ email, password }) => {
+  const reqBody = { email, password };
+  try {
+    const data = await axiosInstanceLogin.post(
+      API_URLS.Auth.loginAdmin,
       reqBody
     );
     return data;

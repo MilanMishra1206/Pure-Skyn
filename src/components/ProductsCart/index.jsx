@@ -509,9 +509,10 @@ function Cart() {
       {removeItem && (
         <ConfirmationModal
           isEmptyCart={isEmptyCart}
-          removeMessage={removeMessage}
+          title={removeMessage}
           handleCancel={handleCancel}
-          confirmRemove={confirmRemove}
+          handlePrimaryButtonClick={confirmRemove}
+          confirmButtonText={isEmptyCart ? "Empty" : "Remove"}
         />
       )}
     </motion.div>

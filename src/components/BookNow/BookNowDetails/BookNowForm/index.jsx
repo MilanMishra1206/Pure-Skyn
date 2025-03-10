@@ -21,15 +21,26 @@ function BookNowForm({ isLoggedIn, formik, timeSlots }) {
 
   useEffect(() => {
     const userAddresses =
-      userProfile?.addresses?.map((address) => ({
-        label:
-          `${address.fullName}, ${address.addressLine1}, ${address.addressLine2}, ` +
-          `${address.city}, ${address.state} - ${address.pinCode}, ${address.phone}`,
-        value: address.id,
-      })) || [];
+      userProfile?.addresses?.map((address) => {
+        const addressValue = `${address.fullName}, ${address.addressLine1}, ${address.addressLine2}, 
+          ${address.city}, ${address.state} - ${address.pinCode}, ${address.phone}`;
+        return {
+          label: addressValue,
+          value: address.id,
+        };
+      }) || [];
 
     setUserAddressOptions(userAddresses);
   }, [userProfile]);
+
+  useEffect(() => {
+    const selectedCity =
+      userProfile?.addresses?.find(
+        (address) => address.id === formik.values.address
+      )?.city || "";
+
+    formik.setFieldValue("city", selectedCity);
+  }, [formik.values.address, userProfile]);
 
   return (
     <>
@@ -48,7 +59,7 @@ function BookNowForm({ isLoggedIn, formik, timeSlots }) {
                 >
                   Sign-In
                 </button>{" "}
-                to fetch your details
+                before proceeding for booking
               </p>
             )}
           </div>
@@ -142,26 +153,22 @@ function BookNowForm({ isLoggedIn, formik, timeSlots }) {
               </div>
             </Suspense>
             <Suspense fallback={<div />}>
-              <CustomDropdown
+              <CustomTextField
                 textClassOverride="!text-kashmirBlue"
-                classes="!rounded-md !mb-4"
+                placeholderClasses="placeholder:!opacity-30 !text-licorice"
+                disabledField
+                className="h-12 rounded-md !bg-transparent"
                 requiredStar
-                labelToShow="Select City"
+                labelToShow="City"
                 name="city"
-                showIconOutline
-                options={[
-                  { label: "Gurgaon", value: "Gurgaon" },
-                  {
-                    label: "South Delhi",
-                    value: "South Delhi",
-                  },
-                ]}
+                textFieldColorClass="shadow-insetLight"
+                inputClassName="!bg-transparent"
+                fieldWidth="!mb-4"
                 value={formik.values.city}
+                onChange={formik.handleChange}
                 handleBlur={formik.handleBlur}
-                handleChange={formik.handleChange}
-                errorMessage={getIn(formik.errors, "city")}
-                error={getIn(formik.errors, "city")}
-                touched={getIn(formik.touched, "city")}
+                error={formik.errors.city}
+                touched={formik.touched.city}
               />
             </Suspense>
             <div className="mb-4">

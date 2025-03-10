@@ -1,8 +1,4 @@
-import {
-  FormControl,
-  MenuItem,
-  Select,
-} from "@mui/material";
+import { FormControl, MenuItem, Select } from "@mui/material";
 import classNames from "classnames";
 import { useState } from "react";
 import "tailwindcss/tailwind.css";
@@ -35,6 +31,7 @@ function CustomDropdown({
       setOpen((o) => !o);
     }
   };
+
   return (
     <FormControl fullWidth className={classes}>
       {labelToShow && (
@@ -61,14 +58,22 @@ function CustomDropdown({
         inputProps={{
           classes: {
             select: "!text-xs !py-14px !pl-3",
-            placeholder: " !opacity-30 !text-matterhorn",
+            placeholder: "!opacity-30 !text-matterhorn",
           },
+        }}
+        renderValue={(selected) => {
+          const selectedOption = options.find((opt) => opt.value === selected);
+          return (
+            <div className="max-w-40 md:!max-w-full font-poppins text-sm overflow-hidden text-ellipsis whitespace-nowrap">
+              {selectedOption?.label || "Select"}
+            </div>
+          );
         }}
         MenuProps={{
           PaperProps: {
             style: {
-              maxWidth: "90%", // Ensure dropdown doesn't exceed screen width
-              width: "auto", // Adjust the dropdown width based on content
+              maxWidth: "90%",
+              width: "auto",
               overflow: "auto",
             },
           },
@@ -80,7 +85,6 @@ function CustomDropdown({
             vertical: "top",
             horizontal: "left",
           },
-          // getContentAnchorEl: null // Ensure the dropdown opens from the top
         }}
         sx={{
           borderRadius: "6px",

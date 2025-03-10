@@ -96,32 +96,7 @@ const requestBooking = async ({ serviceId, subServiceId, date }) => {
   }
 };
 
-const createNewBooking = async ({
-  userId,
-  serviceId,
-  name,
-  email,
-  mobile,
-  address,
-  treatmentDate,
-  timeSlot,
-  pinCode,
-  treatment,
-  laserOption,
-}) => {
-  const reqBody = {
-    userId,
-    serviceId,
-    name,
-    email,
-    mobile,
-    address,
-    treatmentDate,
-    timeSlot,
-    pinCode,
-    treatment,
-    laserOption,
-  };
+const createNewBooking = async ({ reqBody }) => {
   try {
     const data = await axiosInstanceLogin.post(
       API_URLS.Booking.createBooking,
