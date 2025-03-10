@@ -3,7 +3,7 @@ import { AiOutlinePlus } from "react-icons/ai";
 import { FiEdit2, FiTrash2 } from "react-icons/fi";
 import { AnimatePresence, motion } from "framer-motion";
 import { useMutation, useQuery } from "react-query";
-import { useSelector, useDispatch } from "react-redux";
+import { useSelector } from "react-redux";
 import { regex } from "../../../helpers/Regex";
 import { useAppSnackbar } from "../../../config/Context/SnackbarContext";
 import FadedLineBreak from "../../../shared/CustomHrTag";
@@ -12,7 +12,8 @@ import {
   getUserAddress,
   updateUserAddress,
 } from "../../../services/Users";
-import { removeAddress } from "../../../redux/Actions";
+import ConfirmationModal from "../../ProductsCart/ConfirmationModal";
+import Resources from "../../../config/Resources";
 
 const CustomTextField = lazy(() => import("../../../shared/CustomTextField"));
 const CustomLoader = lazy(() => import("../../../shared/CustomLoader"));
@@ -29,7 +30,6 @@ export default function Address({
   const [isConfirmingDelete, setIsConfirmingDelete] = useState(false);
   const [deleteAddress, setDeleteAddress] = useState({});
   const showSnackbar = useAppSnackbar();
-  const dispatch = useDispatch();
 
   const userProfile = useSelector((state) => state.userProfile.userProfile);
 
@@ -149,10 +149,8 @@ export default function Address({
     {
       onSuccess: (res) => {
         if (res?.status === "SUCCESS") {
-          showSnackbar(res?.message, "success");
+          showSnackbar("Address removed", "success");
           setIsConfirmingDelete(false);
-          const currentAddresses = res?.data?.addresses;
-          dispatch(removeAddress(currentAddresses));
           refetch();
         } else {
           showSnackbar(res?.message, "error");
@@ -231,41 +229,13 @@ export default function Address({
         )}
       </div>
       {isConfirmingDelete && (
-        <AnimatePresence>
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            transition={{ duration: 0.3 }}
-            className="bg-slate-900/20 backdrop-blur p-4 fixed inset-0 z-50 md:grid place-items-center place-content-center overflow-scroll"
-          >
-            <motion.div
-              initial={{ scale: 0 }}
-              animate={{ scale: 1 }}
-              exit={{ scale: 0 }}
-              transition={{ duration: 0.3 }}
-              className="bg-white p-6 rounded-lg w-full max-w-lg"
-            >
-              <h3 className="font-bold text-lg mb-4">
-                Are you sure you want to delete this address?
-              </h3>
-              <div className="flex justify-end gap-4">
-                <button
-                  onClick={cancelDelete}
-                  className="bg-gray-200 text-gray-700 px-4 py-2 rounded-md hover:bg-gray-300"
-                >
-                  Cancel
-                </button>
-                <button
-                  onClick={confirmDelete}
-                  className="bg-red-600 text-white px-4 py-2 rounded-md hover:bg-red-700"
-                >
-                  Confirm
-                </button>
-              </div>
-            </motion.div>
-          </motion.div>
-        </AnimatePresence>
+        <ConfirmationModal
+          title="Are you sure you want to delete this address?"
+          handleCancel={cancelDelete}
+          handlePrimaryButtonClick={confirmDelete}
+          confirmButtonText="Confirm"
+          imageSrc={Resources.images.Common.Warning}
+        />
       )}
       {isAdding && (
         <AnimatePresence>

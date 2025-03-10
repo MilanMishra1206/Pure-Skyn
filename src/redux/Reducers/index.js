@@ -20,16 +20,6 @@ const userReducer = (state = userInitialState, action) => {
           addresses: action.payload.addresses,
         },
       };
-    case types.REMOVE_ADDRESS:
-      return {
-        ...state,
-        userProfile: {
-          ...state.userProfile,
-          addresses: state.userProfile.addresses.filter((address) =>
-            action.payload.some((item) => item.id === address.id)
-          ),
-        },
-      };
     case types.LOGOUT_USER:
       return {
         ...state,

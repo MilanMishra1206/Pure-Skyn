@@ -10,11 +10,6 @@ export const setUserAddress = (addresses) => ({
   payload: addresses,
 });
 
-export const removeAddress = (currentAddresses) => ({
-  type: types.REMOVE_ADDRESS,
-  payload: currentAddresses,
-});
-
 export const logoutUser = () => ({
   type: types.LOGOUT_USER,
 });

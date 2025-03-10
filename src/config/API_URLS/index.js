@@ -12,11 +12,7 @@ const API_URLS = {
     changePassword: "/auth/change-password",
   },
   Booking: {
-    addServiceToCart: "/cart/add",
-    updateServiceInCart: "/cart/update",
     getCartDetails: "/cart/",
-    removeServiceFromCart: "/cart/remove/",
-    clearCart: "/cart/clear/",
     reqBooking: "/booking/request",
     createBooking: "/booking/create",
   },

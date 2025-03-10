@@ -1,8 +1,7 @@
 import { motion } from "framer-motion";
-import { lazy, Suspense, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { IoIosCloseCircle } from "react-icons/io";
-import { useMutation } from "react-query";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import FadeInWrapper from "../../../config/MotionFramer/FadeInWrapper";
 import {
   allPackageDetails,
@@ -14,11 +13,6 @@ import {
   skinTighteningPackage,
 } from "../../../helpers/LaserServices";
 import BookNowPackageCards from "./BookNowPackageCards";
-import {
-  emptyCart,
-  removeServiceFromCart,
-  requestBooking,
-} from "../../../services/Booking";
 import { useAppSnackbar } from "../../../config/Context/SnackbarContext";
 import {
   addToServicesCart,
@@ -26,8 +20,6 @@ import {
   removeFromServicesCart,
 } from "../../../redux/Actions";
 import { INRCurrency } from "../../../helpers/Regex";
-
-const CustomLoader = lazy(() => import("../../../shared/CustomLoader"));
 
 function BookNowOptions({
   heading,
@@ -48,7 +40,6 @@ function BookNowOptions({
   const [featureName, setFeatureName] = useState("");
   const [selectedPackageImg, setSelectedPackageImg] = useState("");
   const showSnackbar = useAppSnackbar();
-  const userProfile = useSelector((state) => state.userProfile.userProfile);
 
   const handlePackageCardClick = (featureName, imgSrc) => {
     servicesCart.map((service) => {
@@ -103,84 +94,11 @@ function BookNowOptions({
     }
   };
 
-  const { mutate: reqBooking, isLoading } = useMutation(requestBooking, {
-    onSuccess(res) {
-      if (res?.status === "SUCCESS") {
-        setOpenModal(false);
-        setTreatmentPackageDetails([]);
-        setCurrentStep(2);
-        showSnackbar(res.message, "success");
-        sessionStorage.setItem(
-          "availableTimeSlots",
-          JSON.stringify(res?.data?.availableTimeSlots)
-        );
-      }
-    },
-    onError(err) {
-      showSnackbar(err.message, "error");
-    },
-  });
-
   const viewCartClick = () => {
-    // reqBooking({
-    //   serviceId,
-    //   subServiceId,
-    //   date: dayjs().format("YYYY-MM-DD"),
-    // });
-    //will revert the changes post API calls are fixed
     setOpenModal(false);
     setTreatmentPackageDetails([]);
     setCurrentStep(2);
   };
-
-  // const { mutate: addingServiceToCart, isLoading: addingToCart } = useMutation(
-  //   addServiceToCart,
-  //   {
-  //     onSuccess(res) {
-  //       if (res?.status === "SUCCESS") {
-  //         const treatmentName = sessionStorage.getItem("treatmentName");
-  //         const newPackage = {
-  //           treatmentName,
-  //           packageName,
-  //           packagePrice,
-  //           serviceId,
-  //           subServiceId,
-  //           featureName,
-  //           selectedPackageImg,
-  //         };
-  //         showSnackbar("Service added to the cart", "success");
-  //         dispatch(addToServicesCart(newPackage));
-  //         setOpenModal(false);
-  //       } else {
-  //         showSnackbar(res?.message, "error");
-  //       }
-  //     },
-  //     onError(err) {
-  //       showSnackbar(err?.message, "error");
-  //     },
-  //   }
-  // );
-
-  const { mutate: removingServiceToCart, isLoading: processingRemoveService } =
-    useMutation(removeServiceFromCart, {
-      onSuccess(res) {
-        if (res?.status === "SUCCESS") {
-          const selectedFeatureName = sessionStorage.getItem(
-            "selectedFeatureName"
-          );
-          const serviceToRemove = servicesCart.find(
-            (service) => service.featureName === selectedFeatureName
-          );
-          dispatch(removeFromServicesCart(serviceToRemove.subServiceId));
-          showSnackbar("Service removed from the cart", "success");
-          setOpenModal(false);
-          setSelectedPackages(null);
-        }
-      },
-      onError(err) {
-        showSnackbar(err.message, "error");
-      },
-    });
 
   const addToCart = () => {
     const treatmentName = sessionStorage.getItem("treatmentName");
@@ -197,11 +115,6 @@ function BookNowOptions({
     if (selectedFeatureName !== newPackage.featureName) {
       showSnackbar("Please select the service option", "error");
     } else {
-      // addingServiceToCart({
-      //   userId: userProfile.userId,
-      //   serviceId,
-      //   subServiceId,
-      // });
       dispatch(addToServicesCart(newPackage));
       showSnackbar("Service added to the cart", "success");
       setOpenModal(false);
@@ -213,9 +126,11 @@ function BookNowOptions({
     const serviceToRemove = servicesCart.find(
       (service) => service.featureName === selectedFeatureName
     );
-
     if (serviceToRemove) {
-      removingServiceToCart({ subServiceId: serviceToRemove.subServiceId });
+      showSnackbar("Service removed from the cart", "success");
+      dispatch(removeFromServicesCart(serviceToRemove.subServiceId));
+      setSelectedPackages(null);
+      setOpenModal(false);
     } else {
       showSnackbar("Service not available in the cart", "error");
     }
@@ -258,31 +173,12 @@ function BookNowOptions({
   }, [heading, servicesCart]);
 
   const removeAllService = () => {
-    emptyAllServiceCart({ userId: userProfile.userId });
+    showSnackbar("Removed all services from cart", "success");
+    dispatch(emptyServiceCart());
   };
-
-  const { mutate: emptyAllServiceCart, isLoading: clearingServiceCart } =
-    useMutation(emptyCart, {
-      onSuccess(res) {
-        if (res?.status === "SUCCESS") {
-          dispatch(emptyServiceCart());
-          showSnackbar(res?.message, "success");
-        } else {
-          showSnackbar(res?.message, "error");
-        }
-      },
-      onError(err) {
-        showSnackbar(err?.message, "error");
-      },
-    });
 
   return (
     <div className="py-5">
-      <Suspense fallback={<div />}>
-        <CustomLoader
-          open={isLoading || clearingServiceCart || processingRemoveService}
-        />
-      </Suspense>
       <p className="font-bold text-4xl text-coffee text-center">{heading}</p>
       <div className="flex justify-center lg:!justify-end gap-2 mt-4">
         <button
