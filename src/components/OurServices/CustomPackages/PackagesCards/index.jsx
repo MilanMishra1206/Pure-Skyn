@@ -1,13 +1,14 @@
 import { useMediaQuery } from "@mui/material";
 import { MdAccessTime } from "react-icons/md";
 import { INRCurrency } from "../../../../helpers/Regex";
+import { packagesDescriptionList } from "../../../../helpers/LaserServices";
 
 function CustomPackagesCards({ packageDetails, handleAddToCart, addedToCart }) {
   const isMobile = useMediaQuery("(max-width: 767px)");
 
   return (
     <div
-      className={`grid lg:!grid-cols-2 gap-4 mt-5 font-poppins w-4/5 lg:!w-full`}
+      className={`grid lg:!grid-cols-2 gap-4 mt-5 font-poppins w-full md:!w-4/5 lg:!w-full xl:!w-4/5`}
     >
       {packageDetails.map((item, index) => (
         <div
@@ -19,12 +20,11 @@ function CustomPackagesCards({ packageDetails, handleAddToCart, addedToCart }) {
           <span className="absolute top-0 left-0 bg-coffee text-white text-sm font-bold px-2 py-1 rounded-tl-2xl rounded-br-2xl">
             Fixed Packages
           </span>
-
           <div
-            className={`flex ${isMobile ? "" : "justify-between gap-5"} mt-4`}
+            className={`flex ${isMobile ? "" : "justify-between gap-5 md:!gap-3 xl:!gap-5"} mt-4`}
           >
             <div
-              className={`flex flex-col ${isMobile ? "w-full" : "w-48 md:!w-4/6 lg:!w-3/5"}`}
+              className={`flex flex-col w-full md:!w-4/5 lg:!w-full xl:!w-4/5`}
             >
               <p
                 className={`font-poppins text-coffee font-bold text-xl ${isMobile ? "text-center" : "text-left"}`}
@@ -62,16 +62,15 @@ function CustomPackagesCards({ packageDetails, handleAddToCart, addedToCart }) {
                 </div>
               </div>
               <div className="flex flex-col gap-2 text-justify">
-                <div className="flex gap-2">
-                  <span className="!font-poppins text-green-700 text-sm">
-                    ✅ No more oohs & aahs while facial threading or waxing
-                  </span>
-                </div>
-                <div className="flex gap-2">
-                  <span className="!font-poppins text-green-700 text-sm">
-                    ✅ Includes only upper lip, chin and lower chin areas
-                  </span>
-                </div>
+                {packagesDescriptionList[item.featureName].map(
+                  (descriptionList) => (
+                    <div className="flex gap-2" key={descriptionList.id}>
+                      <span className="!font-poppins text-green-700 text-sm">
+                        ✅ {descriptionList.desc}
+                      </span>
+                    </div>
+                  )
+                )}
               </div>
             </div>
             <div className="flex flex-col gap-4 items-center justify-between">

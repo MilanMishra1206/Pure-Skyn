@@ -1144,3 +1144,310 @@ export const customPackageDetails = [
     selectedPackageImg: Resources.images.Home.customPackages.customPackageImg5,
   },
 ];
+
+export const packagesDescriptionList = {
+  customLHRWomenSixSessions: [
+    {
+      id: 1,
+      desc: "Say goodbye to painful waxing and shaving forever!",
+    },
+    {
+      id: 2,
+      desc: "Covers full body, including arms, legs, underarms, and bikini line.",
+    },
+    {
+      id: 3,
+      desc: "Long-lasting smooth skin with advanced laser technology.",
+    },
+  ],
+  customLHRMenSixSessions: [
+    {
+      id: 1,
+      desc: "No more painful waxing or frequent shaving hassles.",
+    },
+    {
+      id: 2,
+      desc: "Covers full body, including chest, back, arms, legs, and underarms.",
+    },
+    {
+      id: 3,
+      desc: "Achieve long-lasting smooth and groomed skin with advanced laser technology.",
+    },
+  ],
+  oxyHydraAndOxygeneo: [
+    {
+      id: 1,
+      desc: "Deeply cleanses, hydrates, and rejuvenates your skin for a radiant glow.",
+    },
+    {
+      id: 2,
+      desc: "Combines exfoliation, oxygenation, and nourishment for maximum skin benefits.",
+    },
+    {
+      id: 3,
+      desc: "Reduces fine lines, evens skin tone, and enhances collagen production.",
+    },
+  ],
+  oxyhydraOxygenoDermafrac: [
+    {
+      id: 1,
+      desc: "A powerful 3-in-1 treatment for deep cleansing, hydration, and skin rejuvenation.",
+    },
+    {
+      id: 2,
+      desc: "Combines oxygenation, micro-needling, and serum infusion for enhanced skin repair.",
+    },
+    {
+      id: 3,
+      desc: "Reduces fine lines, improves skin texture, and boosts collagen production.",
+    },
+  ],
+  oxygeneoAndDermafrac: [
+    {
+      id: 1,
+      desc: "Combines deep oxygenation with micro-needling for ultimate skin rejuvenation.",
+    },
+    {
+      id: 2,
+      desc: "Enhances collagen production, reduces fine lines, and improves skin texture.",
+    },
+    {
+      id: 3,
+      desc: "Infuses skin with essential nutrients for a radiant and youthful glow.",
+    },
+  ],
+  oxyhydraAndDermafrac: [
+    {
+      id: 1,
+      desc: "Deeply hydrates and nourishes the skin for a refreshed, dewy glow.",
+    },
+    {
+      id: 2,
+      desc: "Combines exfoliation with micro-needling to enhance skin rejuvenation.",
+    },
+    {
+      id: 3,
+      desc: "Helps reduce fine lines, pigmentation, and uneven skin texture.",
+    },
+  ],
+  fullBodyWomen: [
+    {
+      id: 1,
+      desc: "Say goodbye to painful waxing and shaving forever!",
+    },
+    {
+      id: 2,
+      desc: "Covers full body, including arms, legs, underarms, and bikini line.",
+    },
+  ],
+  faceAndNeckWomen: [
+    {
+      id: 1,
+      desc: "Say goodbye to unwanted facial and neck hair with long-lasting results.",
+    },
+    {
+      id: 2,
+      desc: "Gentle and effective treatment for smooth, hair-free skin.",
+    },
+  ],
+  bikiniAndButtocksWomen: [
+    {
+      id: 1,
+      desc: "Achieve smooth, hair-free skin with long-lasting results.",
+    },
+    {
+      id: 2,
+      desc: "Safe, effective, and designed for sensitive areas.",
+    },
+  ],
+  armsAndUnderarmsWomen: [
+    {
+      id: 1,
+      desc: "Enjoy silky-smooth skin with long-lasting hair reduction.",
+    },
+    {
+      id: 2,
+      desc: "Quick, safe, and effective treatment for flawless underarms and arms.",
+    },
+  ],
+  chestAndBackWomen: [
+    {
+      id: 1,
+      desc: "Get a clean, groomed look with long-lasting hair reduction.",
+    },
+    {
+      id: 2,
+      desc: "Say goodbye to painful waxing and frequent shaving.",
+    },
+  ],
+  halfLegsWomen: [
+    {
+      id: 1,
+      desc: "Smooth, hair-free legs with long-lasting results.",
+    },
+    {
+      id: 2,
+      desc: "No more razor burns or painful waxing sessions.",
+    },
+  ],
+  fullLegsWomen: [
+    {
+      id: 1,
+      desc: "Enjoy silky smooth legs with a long-lasting hair-free look.",
+    },
+    {
+      id: 2,
+      desc: "Say goodbye to frequent shaving and painful waxing.",
+    },
+  ],
+  backWomen: [
+    {
+      id: 1,
+      desc: "Achieve a smooth, hair-free back with long-lasting results.",
+    },
+    {
+      id: 2,
+      desc: "No more painful waxing or constant shaving.",
+    },
+  ],
+  chestWomen: [
+    {
+      id: 1,
+      desc: "Get a hair-free chest with advanced laser technology for smooth skin.",
+    },
+    {
+      id: 2,
+      desc: "Say goodbye to frequent waxing and shaving hassles.",
+    },
+  ],
+  bikiniWomen: [
+    {
+      id: 1,
+      desc: "Achieve a perfectly groomed bikini area with precision laser treatment.",
+    },
+    {
+      id: 2,
+      desc: "No more irritation or ingrown hairs from waxing or shaving.",
+    },
+  ],
+  fullBodyMen: [
+    {
+      id: 1,
+      desc: "No more painful waxing or frequent shaving hassles.",
+    },
+    {
+      id: 2,
+      desc: "Covers full body, including chest, back, arms, legs, and underarms.",
+    },
+  ],
+  faceAndNeckMen: [
+    {
+      id: 1,
+      desc: "Say goodbye to unwanted facial and neck hair with long-lasting results.",
+    },
+    {
+      id: 2,
+      desc: "Gentle and effective treatment for smooth, hair-free skin.",
+    },
+  ],
+  armsAndUnderarmsMen: [
+    {
+      id: 1,
+      desc: "Enjoy silky-smooth skin with long-lasting hair reduction.",
+    },
+    {
+      id: 2,
+      desc: "Quick, safe, and effective treatment for flawless underarms and arms.",
+    },
+  ],
+  chestAndBackMen: [
+    {
+      id: 1,
+      desc: "Get a clean, groomed look with long-lasting hair reduction.",
+    },
+    {
+      id: 2,
+      desc: "Say goodbye to painful waxing and frequent shaving.",
+    },
+  ],
+  halfLegsMen: [
+    {
+      id: 1,
+      desc: "Smooth, hair-free legs with long-lasting results.",
+    },
+    {
+      id: 2,
+      desc: "No more razor burns or painful waxing sessions.",
+    },
+  ],
+  fullLegsMen: [
+    {
+      id: 1,
+      desc: "Enjoy silky smooth legs with a long-lasting hair-free look.",
+    },
+    {
+      id: 2,
+      desc: "Say goodbye to frequent shaving and painful waxing.",
+    },
+  ],
+  backMen: [
+    {
+      id: 1,
+      desc: "Achieve a smooth, hair-free back with long-lasting results.",
+    },
+    {
+      id: 2,
+      desc: "No more painful waxing or constant shaving.",
+    },
+  ],
+  chestMen: [
+    {
+      id: 1,
+      desc: "Get a hair-free chest with advanced laser technology for smooth skin.",
+    },
+    {
+      id: 2,
+      desc: "Say goodbye to frequent waxing and shaving hassles.",
+    },
+  ],
+  stFullFace: [
+    {
+      id: 1,
+      desc: "Tightens and lifts sagging skin for a youthful appearance.",
+    },
+    {
+      id: 2,
+      desc: "Boosts collagen production to enhance skin firmness and elasticity.",
+    },
+  ],
+  oxygeneo: [
+    {
+      id: 1,
+      desc: "Exfoliates, oxygenates, and nourishes skin for an instant glow.",
+    },
+    {
+      id: 2,
+      desc: "Enhances skin hydration and improves texture for a radiant look.",
+    },
+  ],
+  oxyhydraFacial: [
+    {
+      id: 1,
+      desc: "Deeply cleanses, hydrates, and rejuvenates your skin in one session.",
+    },
+    {
+      id: 2,
+      desc: "Removes dead skin cells and impurities while boosting hydration.",
+    },
+  ],
+  dermafrac: [
+    {
+      id: 1,
+      desc: "Uses micro-needling infusion to deliver active serums deep into the skin.",
+    },
+    {
+      id: 2,
+      desc: "Reduces fine lines, acne scars, and pigmentation for smoother skin.",
+    },
+  ],
+};

@@ -1,7 +1,7 @@
 import { useMediaQuery } from "@mui/material";
-import { FaCircleCheck } from "react-icons/fa6";
 import { MdAccessTime } from "react-icons/md";
 import { INRCurrency } from "../../../../helpers/Regex";
+import { packagesDescriptionList } from "../../../../helpers/LaserServices";
 
 function BookNowPackageCards({
   packageDetails,
@@ -9,7 +9,6 @@ function BookNowPackageCards({
   handlePackageCardClick,
 }) {
   const isSmallestScreen = useMediaQuery("(max-width: 450px)");
-  const isMobile = useMediaQuery("(max-width: 767px)");
 
   return (
     <div
@@ -18,7 +17,7 @@ function BookNowPackageCards({
       {packageDetails.map((item) => (
         <div
           key={item.id}
-          className={`overflow-hidden ${isMobile && "w-100"} lg:!w-100 p-3 rounded-2xl cursor-pointer ${item.isSelected ? "border-1 border-[#6b4f3f]" : "border border-[#d6c5b4]"} shadow-md hover:shadow-lg transition-all duration-300`}
+          className={`overflow-hidden w-full md:!w-4/5 lg:!w-full xl:!w-4/5 p-3 rounded-2xl cursor-pointer ${item.isSelected ? "border-1 border-[#6b4f3f]" : "border border-[#d6c5b4]"} shadow-md hover:shadow-lg transition-all duration-300`}
         >
           <div
             className={`flex ${isSmallestScreen ? "" : "justify-between gap-2"}`}
@@ -54,16 +53,15 @@ function BookNowPackageCards({
                 </div>
               </div>
               <div className="flex flex-col gap-2 text-justify">
-                <div className="flex gap-2">
-                  <span className="!font-poppins text-green-700 text-sm">
-                    ✅ No more oohs & aahs while facial threading or waxing
-                  </span>
-                </div>
-                <div className="flex gap-2">
-                  <span className="!font-poppins text-green-700 text-sm">
-                    ✅ Includes only upper lip, chin and lower chin areas
-                  </span>
-                </div>
+                {packagesDescriptionList[item.featureName].map(
+                  (descriptionList) => (
+                    <div className="flex gap-2" key={descriptionList.id}>
+                      <span className="!font-poppins text-green-700 text-sm">
+                        ✅ {descriptionList.desc}
+                      </span>
+                    </div>
+                  )
+                )}
               </div>
             </div>
             <div className="flex flex-col gap-4 items-center justify-between">
