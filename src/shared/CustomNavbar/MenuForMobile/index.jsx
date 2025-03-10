@@ -88,7 +88,7 @@ const SubMenu = ({ item, activeItem, handleClick }) => (
   <div
     className={`overflow-hidden transition-all ${
       activeItem === item.name
-        ? "max-h-[300px] overflow-y-auto"
+        ? "overflow-y-auto"
         : "max-h-0 overflow-hidden"
     }`}
   >

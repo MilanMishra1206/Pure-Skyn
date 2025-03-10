@@ -20,11 +20,14 @@ function BookNowForm({ isLoggedIn, formik, timeSlots }) {
   const [userAddressOptions, setUserAddressOptions] = useState([]);
 
   useEffect(() => {
-    const userAddresses = userProfile.addresses.map((address) => ({
-      label: `${address.fullName}, ${address.addressLine1}, ${address.addressLine2}, 
-              ${address.city}, ${address.state} - ${address.pinCode}, ${address.phone}`,
-      value: address.id,
-    }));
+    const userAddresses =
+      userProfile?.addresses?.map((address) => ({
+        label:
+          `${address.fullName}, ${address.addressLine1}, ${address.addressLine2}, ` +
+          `${address.city}, ${address.state} - ${address.pinCode}, ${address.phone}`,
+        value: address.id,
+      })) || [];
+
     setUserAddressOptions(userAddresses);
   }, [userProfile]);
 
@@ -187,7 +190,8 @@ function BookNowForm({ isLoggedIn, formik, timeSlots }) {
                 htmlFor="timeSlot"
                 className="text-sm font-medium pb-1 !text-kashmirBlue"
               >
-                Select Appointment Time <span className="text-bitterSweet">*</span>
+                Select Appointment Time{" "}
+                <span className="text-bitterSweet">*</span>
               </label>
               <div className="grid grid-cols-2 gap-2 mt-2">
                 {timeSlots.map((slot, index) => (
