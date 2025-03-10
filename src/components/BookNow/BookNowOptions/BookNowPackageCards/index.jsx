@@ -17,7 +17,7 @@ function BookNowPackageCards({
       {packageDetails.map((item) => (
         <div
           key={item.id}
-          className={`overflow-hidden w-full md:!w-4/5 lg:!w-full xl:!w-4/5 p-3 rounded-2xl cursor-pointer ${item.isSelected ? "border-1 border-[#6b4f3f]" : "border border-[#d6c5b4]"} shadow-md hover:shadow-lg transition-all duration-300`}
+          className={`overflow-hidden ${!isMultiplePackage ? "w-full md:!w-3/5" : "w-full md:!w-4/5 lg:!w-full xl:!w-4/5"} p-3 rounded-2xl cursor-pointer ${item.isSelected ? "border-1 border-[#6b4f3f]" : "border border-[#d6c5b4]"} shadow-md hover:shadow-lg transition-all duration-300`}
         >
           <div
             className={`flex ${isSmallestScreen ? "" : "justify-between gap-2"}`}
@@ -31,7 +31,7 @@ function BookNowPackageCards({
                 {item.packageName}
               </p>
               <div
-                className={`${!isSmallestScreen ? "hidden" : "flex items-center justify-center"}`}
+                className={`${!isSmallestScreen ? "hidden" : "flex items-center justify-center mt-4"}`}
               >
                 <img src={item.imgSrc} className="h-28 w-28 object-cover" />
               </div>
