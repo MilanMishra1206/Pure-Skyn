@@ -50,6 +50,7 @@ function CustomNavbar() {
       setUserName(name);
     } else {
       setIsLoggedIn(false);
+      setUserName("");
     }
   }, [sessionStorage.getItem("token")]);
 
