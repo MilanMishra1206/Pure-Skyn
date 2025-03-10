@@ -3,7 +3,7 @@ import { AiOutlinePlus } from "react-icons/ai";
 import { FiEdit2, FiTrash2 } from "react-icons/fi";
 import { AnimatePresence, motion } from "framer-motion";
 import { useMutation, useQuery } from "react-query";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import { regex } from "../../../helpers/Regex";
 import { useAppSnackbar } from "../../../config/Context/SnackbarContext";
 import FadedLineBreak from "../../../shared/CustomHrTag";
@@ -14,6 +14,7 @@ import {
 } from "../../../services/Users";
 import ConfirmationModal from "../../ProductsCart/ConfirmationModal";
 import Resources from "../../../config/Resources";
+import { setUserAddress } from "../../../redux/Actions";
 
 const CustomTextField = lazy(() => import("../../../shared/CustomTextField"));
 const CustomLoader = lazy(() => import("../../../shared/CustomLoader"));
@@ -30,6 +31,7 @@ export default function Address({
   const [isConfirmingDelete, setIsConfirmingDelete] = useState(false);
   const [deleteAddress, setDeleteAddress] = useState({});
   const showSnackbar = useAppSnackbar();
+  const dispatch = useDispatch();
 
   const userProfile = useSelector((state) => state.userProfile.userProfile);
 
@@ -57,6 +59,13 @@ export default function Address({
               country: "India",
             })
           );
+          if (refetch) {
+            dispatch(
+              setUserAddress({
+                addresses: response?.data,
+              })
+            );
+          }
         } else {
           if (!response?.message.includes("No addresses found")) {
             showSnackbar(response?.message, "error");
