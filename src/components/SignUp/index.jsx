@@ -1,17 +1,19 @@
 import React, { lazy, Suspense } from "react";
 import { useFormik } from "formik";
 import { useMutation } from "react-query";
+import { useDispatch } from "react-redux";
+import { useNavigate } from "react-router-dom";
 import { signUpInitialValue, getSignUpValidation } from "../../helpers/Login";
 import SignUpForm from "./SignupForm";
 import Resources from "../../config/Resources";
 import { useAppSnackbar } from "../../config/Context/SnackbarContext";
 import { registerUser } from "../../services/LoginAndRegister";
-import { useDispatch } from "react-redux";
 import { setUserProfile } from "../../redux/Actions";
 
 const CustomLoader = lazy(() => import("../../shared/CustomLoader"));
 
 function SignUpPage() {
+  const navigate = useNavigate();
   const showSnackbar = useAppSnackbar();
   const dispatch = useDispatch();
 
@@ -29,6 +31,7 @@ function SignUpPage() {
             phone: data?.phone,
           })
         );
+        navigate("/");
       } else {
         showSnackbar(`${res?.message}. Please try again!`, "error");
       }
@@ -47,7 +50,6 @@ function SignUpPage() {
     onSubmit: (value) => {
       signupUser({
         name: value.name,
-        lastName: value.lastName,
         email: value.email,
         password: value.password,
         phone: value.phone,
