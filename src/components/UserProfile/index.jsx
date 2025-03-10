@@ -33,6 +33,8 @@ function UserProfile() {
 
   const [addresses, setAddresses] = useState([]);
   const [isAdding, setIsAdding] = useState(false);
+  const [name, setName] = useState("");
+  const [phone, setPhone] = useState("");
   const [selectedSection, setSelectedSection] = useState("Profile");
 
   useEffect(() => {
@@ -42,13 +44,15 @@ function UserProfile() {
     }
   }, [location.hash]);
 
+  useEffect(() => {
+    setName(userProfile?.name || "");
+    setPhone(userProfile?.phone || "");
+  }, [userProfile]);
+
   const handleSectionClick = (sectionId) => {
     setSelectedSection(sectionId);
     navigate("/user-profile", { replace: true });
   };
-
-  const fullName = "Milan Mishra";
-  const phoneNumber = "8767898766";
 
   const isTablet = useMediaQuery("(max-width: 1023px)");
   const isMobile = useMediaQuery("(max-width: 767px)");
@@ -189,8 +193,8 @@ function UserProfile() {
             className={`flex flex-col shadow rounded font-poppins sm:w-full md:!w-3/5 lg:!w-1/3 xl:!1/5 md:!self-start`}
           >
             <div className="flex flex-col bg-skyn text-white font-bold p-4 rounded-t-lg">
-              <p>{fullName}</p>
-              <p>{phoneNumber}</p>
+              <p>{name}</p>
+              <p>{phone}</p>
             </div>
             <div className="flex flex-col p-4">
               {(isAdmin ? sidebarItemsForAdmin : sidebarItems).map((item) => (
