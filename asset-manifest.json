@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/Pure-Skyn/static/css/main.da8ef128.css",
-    "main.js": "/Pure-Skyn/static/js/main.114290f1.js",
+    "main.js": "/Pure-Skyn/static/js/main.e235fce6.js",
     "static/js/7668.256cb8ab.chunk.js": "/Pure-Skyn/static/js/7668.256cb8ab.chunk.js",
     "static/js/5428.ac79dd93.chunk.js": "/Pure-Skyn/static/js/5428.ac79dd93.chunk.js",
     "static/js/8115.127362d0.chunk.js": "/Pure-Skyn/static/js/8115.127362d0.chunk.js",
@@ -10,7 +10,7 @@
     "static/js/705.30383f36.chunk.js": "/Pure-Skyn/static/js/705.30383f36.chunk.js",
     "static/js/7698.90e902d7.chunk.js": "/Pure-Skyn/static/js/7698.90e902d7.chunk.js",
     "static/js/5921.656e8cb4.chunk.js": "/Pure-Skyn/static/js/5921.656e8cb4.chunk.js",
-    "static/js/2772.85348b02.chunk.js": "/Pure-Skyn/static/js/2772.85348b02.chunk.js",
+    "static/js/2772.cd808e50.chunk.js": "/Pure-Skyn/static/js/2772.cd808e50.chunk.js",
     "static/js/841.cc1c43b5.chunk.js": "/Pure-Skyn/static/js/841.cc1c43b5.chunk.js",
     "static/js/1774.a6ebd45d.chunk.js": "/Pure-Skyn/static/js/1774.a6ebd45d.chunk.js",
     "static/js/3214.f7f6a355.chunk.js": "/Pure-Skyn/static/js/3214.f7f6a355.chunk.js",
@@ -87,7 +87,7 @@
     "static/media/slick.woff": "/Pure-Skyn/static/media/slick.295183786cd8a1389865.woff",
     "index.html": "/Pure-Skyn/index.html",
     "main.da8ef128.css.map": "/Pure-Skyn/static/css/main.da8ef128.css.map",
-    "main.114290f1.js.map": "/Pure-Skyn/static/js/main.114290f1.js.map",
+    "main.e235fce6.js.map": "/Pure-Skyn/static/js/main.e235fce6.js.map",
     "7668.256cb8ab.chunk.js.map": "/Pure-Skyn/static/js/7668.256cb8ab.chunk.js.map",
     "5428.ac79dd93.chunk.js.map": "/Pure-Skyn/static/js/5428.ac79dd93.chunk.js.map",
     "8115.127362d0.chunk.js.map": "/Pure-Skyn/static/js/8115.127362d0.chunk.js.map",
@@ -96,7 +96,7 @@
     "705.30383f36.chunk.js.map": "/Pure-Skyn/static/js/705.30383f36.chunk.js.map",
     "7698.90e902d7.chunk.js.map": "/Pure-Skyn/static/js/7698.90e902d7.chunk.js.map",
     "5921.656e8cb4.chunk.js.map": "/Pure-Skyn/static/js/5921.656e8cb4.chunk.js.map",
-    "2772.85348b02.chunk.js.map": "/Pure-Skyn/static/js/2772.85348b02.chunk.js.map",
+    "2772.cd808e50.chunk.js.map": "/Pure-Skyn/static/js/2772.cd808e50.chunk.js.map",
     "841.cc1c43b5.chunk.js.map": "/Pure-Skyn/static/js/841.cc1c43b5.chunk.js.map",
     "1774.a6ebd45d.chunk.js.map": "/Pure-Skyn/static/js/1774.a6ebd45d.chunk.js.map",
     "3214.f7f6a355.chunk.js.map": "/Pure-Skyn/static/js/3214.f7f6a355.chunk.js.map",
@@ -170,6 +170,6 @@
   },
   "entrypoints": [
     "static/css/main.da8ef128.css",
-    "static/js/main.114290f1.js"
+    "static/js/main.e235fce6.js"
   ]
 }
