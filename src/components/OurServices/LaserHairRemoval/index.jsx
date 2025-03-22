@@ -305,18 +305,6 @@ function LaserHairRemoval() {
                   Show More FAQs
                 </Link>
               </div>
-              <div
-                className={`flex justify-center items-center ${!isTablet ? "p-5" : ""}`}
-              >
-                <img
-                  src={
-                    Resources.images.Services.LaserHairRemoval
-                      .laserHairRemovalCard
-                  }
-                  alt="laser-Hair-Removal-Card"
-                  className={`rounded-xl shadow mt-4 ${!isMobile ? "h-75" : ""}`}
-                />
-              </div>
             </div>
           </motion.div>
         )}

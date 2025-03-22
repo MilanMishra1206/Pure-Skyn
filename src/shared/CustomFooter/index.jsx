@@ -3,10 +3,10 @@ import { FaInstagram } from "react-icons/fa";
 import { IoLogoFacebook } from "react-icons/io5";
 import { FaXTwitter } from "react-icons/fa6";
 import { CiYoutube } from "react-icons/ci";
-import { IoPhonePortraitOutline } from "react-icons/io5";
-import { FaPhoneAlt } from "react-icons/fa";
-import { MdOutlineMail } from "react-icons/md";
-import { FaRegAddressBook } from "react-icons/fa";
+// import { IoPhonePortraitOutline } from "react-icons/io5";
+// import { FaPhoneAlt } from "react-icons/fa";
+// import { MdOutlineMail } from "react-icons/md";
+// import { FaRegAddressBook } from "react-icons/fa";
 import { useSelector } from "react-redux";
 import { useEffect, useState } from "react";
 import Resources from "../../config/Resources";
@@ -28,7 +28,7 @@ function CustomFooter() {
           <div className="flex flex-col items-center justify-center">
             <Link>
               <img
-                src={Resources.images.NavBar.logo2}
+                src={Resources.images.Common.logoNavbar}
                 alt="branding"
                 style={{ width: "9rem" }}
                 className="rounded-2"
@@ -44,7 +44,7 @@ function CustomFooter() {
             </div>
           </div>
           {!isAdmin && (
-            <div className="flex items-center md:items-start flex-col">
+            <div className="flex items-center md:!items-start flex-col">
               <div className="text-gray-300 font-bold text-2xl text-center md:!text-left">
                 Quick Links
               </div>
@@ -80,12 +80,6 @@ function CustomFooter() {
                   Products
                 </Link>
                 <Link
-                  to="/products/product-cart"
-                  className="text-skyn transition-colors duration-300 no-underline hover:opacity-80"
-                >
-                  Cart
-                </Link>
-                <Link
                   to="/faq"
                   className="text-skyn transition-colors duration-300 no-underline hover:opacity-80"
                 >
@@ -95,7 +89,28 @@ function CustomFooter() {
             </div>
           )}
           {!isAdmin && (
-            <div className="flex items-center md:items-start flex-col">
+            <div className="flex items-center md:!items-start flex-col">
+              <div className="text-gray-300 font-bold text-2xl text-center md:!text-left">
+                Carts
+              </div>
+              <div className="flex flex-col text-center md:!text-left mt-2">
+                <Link
+                  to="/book-now/services-cart"
+                  className="text-skyn transition-colors duration-300 no-underline hover:opacity-80"
+                >
+                  Services Cart
+                </Link>
+                <Link
+                  to="/products/product-cart"
+                  className="text-skyn transition-colors duration-300 no-underline hover:opacity-80"
+                >
+                  Products Cart
+                </Link>
+              </div>
+            </div>
+          )}
+          {!isAdmin && (
+            <div className="flex items-center md:!items-start flex-col">
               <div className="text-gray-300 font-bold text-2xl text-center md:!text-left">
                 Packages
               </div>
@@ -109,7 +124,7 @@ function CustomFooter() {
               </div>
             </div>
           )}
-          <div className="flex items-center md:items-start flex-col">
+          {/* <div className="flex items-center md:!items-start flex-col">
             <div className="text-gray-300 font-bold text-2xl text-center md:!text-left">
               Contact Us
             </div>
@@ -131,7 +146,7 @@ function CustomFooter() {
                 </div>
               </div>
             </div>
-          </div>
+          </div> */}
         </div>
       </div>
       <hr className="my-8 border-blue-gray-50 px-8" />

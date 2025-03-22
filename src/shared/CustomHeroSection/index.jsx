@@ -3,13 +3,13 @@ import { lazy, Suspense, useEffect, useRef, useState } from "react";
 import { useMediaQuery } from "@mui/material";
 import { Link } from "react-router-dom";
 import { useMutation } from "react-query";
-import { getIn, useFormik } from "formik";
+import { useFormik } from "formik";
 import Resources from "../../config/Resources";
-import CustomButton2 from "../CustomButton2";
 import FadeInWrapper from "../../config/MotionFramer/FadeInWrapper";
 import { getQueryValidation } from "../../helpers/Login";
 import { useAppSnackbar } from "../../config/Context/SnackbarContext";
 import { addNewQuery } from "../../services/Query";
+import QueryForm from "./QueryForm";
 
 const CustomTextField = lazy(() => import("../CustomTextField"));
 const CustomDropdown = lazy(() => import("../CustomDropdown"));
@@ -195,126 +195,12 @@ const CustomHeroSection = () => {
         className="mb-5 font-poppins"
       >
         <section className="w-full px-2 md:!px-5 grid md:grid-cols-2 gap-8 mx-auto font-poppins h-full">
-          <div className="flex flex-col items-center order-2 lg:!order-1">
-            <div className="flex lg:w-4/5 xl:!w-3/5 flex-col shadow rounded-lg px-4 py-6 border bg-[#FFFFFF] ">
-              <div className="flex justify-center p-4">
-                <img
-                  src={Resources.images.Common.newLogoWhite}
-                  alt="branding"
-                  className="w-4/5 md:!w-3/5"
-                />
-              </div>
-              <span className="text-lg font-poppins text-center mb-4">
-                Have Query? We will give a call!{" "}
-              </span>
-              <hr />
-              <form className="w-full mt-4">
-                <Suspense fallback={<div />}>
-                  <CustomTextField
-                    textClassOverride="!text-cello"
-                    placeholderClasses="placeholder:!opacity-30 !text-licorice"
-                    className="h-12 rounded-md !bg-transparent"
-                    placeholder="Enter Your Name"
-                    requiredStar
-                    labelToShow="Name"
-                    name="name"
-                    textFieldColorClass="shadow-insetLight"
-                    inputClassName="!bg-transparent"
-                    fieldWidth="w-full !mb-4"
-                    value={queryFormik.values?.name}
-                    onChange={queryFormik.handleChange}
-                    handleBlur={queryFormik.handleBlur}
-                    error={queryFormik.errors.name}
-                    touched={queryFormik.touched.name}
-                  />
-                </Suspense>
-                <Suspense fallback={<div />}>
-                  <CustomTextField
-                    textClassOverride="!text-cello"
-                    placeholderClasses="placeholder:!opacity-30 !text-licorice"
-                    className="h-12 rounded-md !bg-transparent"
-                    placeholder="Enter Your Number"
-                    requiredStar
-                    labelToShow="Phone Number"
-                    maxLength={10}
-                    name="phone"
-                    textFieldColorClass="shadow-insetLight"
-                    inputClassName="!bg-transparent"
-                    fieldWidth="w-full !mb-4"
-                    value={queryFormik.values?.phone}
-                    onChange={queryFormik.handleChange}
-                    handleBlur={queryFormik.handleBlur}
-                    error={queryFormik.errors.phone}
-                    touched={queryFormik.touched.phone}
-                  />
-                </Suspense>
-                <Suspense fallback={<div />}>
-                  <CustomDropdown
-                    textClassOverride="!text-kashmirBlue"
-                    classes="!rounded-md !mb-4"
-                    requiredStar
-                    labelToShow="Select Service"
-                    name="serviceId"
-                    showIconOutline
-                    options={[
-                      {
-                        label: "Laser Hair Removal",
-                        value: "Laser Hair Removal",
-                      },
-                      {
-                        label: "Oxy Hydra Facial",
-                        value: "Oxy Hydra Facial",
-                      },
-                      {
-                        label: "Oxygeneo",
-                        value: "Oxygeneo",
-                      },
-                      {
-                        label: "RF Skin Tightening",
-                        value: "RF Skin Tightening",
-                      },
-                      {
-                        label: "Dermafrac Infusion Facial",
-                        value: "Dermafrac Infusion Facial",
-                      },
-                    ]}
-                    value={queryFormik.values.serviceId}
-                    handleBlur={queryFormik.handleBlur}
-                    handleChange={queryFormik.handleChange}
-                    errorMessage={getIn(queryFormik.errors, "serviceId")}
-                    error={getIn(queryFormik.errors, "serviceId")}
-                    touched={getIn(queryFormik.touched, "serviceId")}
-                  />
-                </Suspense>
-              </form>
-              <div className="flex justify-center">
-                <CustomButton2
-                  buttonText="Submit"
-                  handleSubmit={handleQueryFormSubmit}
-                />
-              </div>
-            </div>
-          </div>
+          <QueryForm
+            queryFormik={queryFormik}
+            handleQueryFormSubmit={handleQueryFormSubmit}
+          />
           <div className="flex flex-col order-1 lg:!order-2">
             <ShuffleGrid />
-            {/* <div className="text-base md:text-lg text-cello my-4 md:my-6 px-3 lg:!mx-5 font-poppins text-center">
-              <p>
-                <strong className="text-coffee">
-                  Get the Best Deals on Our Latest Promotions!
-                </strong>{" "}
-                Book now and save up to 50% on Laser Hair Removal, Medifacials,
-                advanced skin treatments, and hair regrowth solutions for all
-                skin types.
-              </p>
-            </div>
-            <div className="flex justify-center">
-              <img
-                src={Resources.images.Common.googlePlayButton}
-                alt="Google Play Button"
-                className="w-48 rounded-2 cursor-pointer"
-                onClick={handleDownloadApp}
-              />
-            </div> */}
           </div>
         </section>
       </motion.div>

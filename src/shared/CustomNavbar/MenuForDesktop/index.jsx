@@ -42,7 +42,7 @@ const MenuForDesktop = ({
     >
       <Link to="/" className="no-underline font-bold">
         <img
-          src={Resources.images.NavBar.branding}
+          src={Resources.images.Common.logoNavbar}
           alt="branding"
           style={{ width: "10rem" }}
         />

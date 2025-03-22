@@ -38,16 +38,16 @@ function Home() {
             />
           </MotionWrapper>
         </Suspense>
-        <Suspense fallback={<CustomLoader open={true} />}>
+        {!isMobile && <Suspense fallback={<CustomLoader open={true} />}>
           <MotionWrapper>
             <AboutUs />
           </MotionWrapper>
-        </Suspense>
-        <Suspense fallback={<CustomLoader open={true} />}>
+        </Suspense>}
+        {!isMobile && <Suspense fallback={<CustomLoader open={true} />}>
           <MotionWrapper>
             <BestSelling isMobile={isMobile} isLargeScreen={isLargeScreen} />
           </MotionWrapper>
-        </Suspense>
+        </Suspense>}
         <Suspense fallback={<CustomLoader open={true} />}>
           <MotionWrapper>
             <TestimonialCarousel isMobile={isMobile} />

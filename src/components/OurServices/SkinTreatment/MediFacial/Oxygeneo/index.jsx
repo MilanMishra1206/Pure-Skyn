@@ -209,15 +209,6 @@ function Oxygeneo({ type }) {
                   Show More FAQs
                 </Link>
               </div>
-              <div
-                className={`flex justify-center items-center ${!isTablet ? "px-5" : "mt-4"}`}
-              >
-                <img
-                  src={Resources.images.Services.OxyGeneo.img6}
-                  alt="oxygeneo"
-                  className="rounded-xl shadow h-[30rem]"
-                />
-              </div>
             </div>
           </motion.div>
           <CustomFloatingBookNowButton treatmentName="Oxygeneo" goToStep={1} />

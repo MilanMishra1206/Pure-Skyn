@@ -297,15 +297,6 @@ function DermafracInfusionFacial({ type }) {
                   Show More FAQs
                 </Link>
               </div>
-              <div
-                className={`mt-4 flex justify-center items-center ${!isTablet ? "p-5" : ""}`}
-              >
-                <img
-                  src={Resources.images.Services.Dermafrac.imageFour}
-                  alt="dermafrac-infusion-facial"
-                  className="rounded-xl shadow"
-                />
-              </div>
             </div>
           </motion.div>
           <CustomFloatingBookNowButton treatmentName="Dermafrac Infusion Facial" goToStep={1}/>

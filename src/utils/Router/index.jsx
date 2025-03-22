@@ -1,8 +1,10 @@
-import React, { lazy, Suspense, useEffect } from "react";
+import React, { lazy, Suspense, useEffect, useRef, useState } from "react";
 import { Route, Routes, useLocation, Navigate } from "react-router-dom";
 import { useRouteStatus } from "../../config/Context/RouteContext";
 import ScrollToTopButton from "../../shared/CustomBackToTopButton";
 import CustomLoader from "../../shared/CustomLoader";
+import CustomActionRibbon from "../../shared/CustomActionRibbon";
+import CustomFooter from "../../shared/CustomFooter";
 
 // Lazy Loaded Routes
 const PureSkynHome = lazy(() => import("../../pages/PureSkynHome"));
@@ -37,7 +39,6 @@ const PureSkynCustomPackages = lazy(
 const PureSkynCart = lazy(() => import("../../pages/PureSkynCart"));
 const CustomNavbar = lazy(() => import("../../shared/CustomNavbar"));
 const PageNotFound = lazy(() => import("../../shared/PageNotFound"));
-const CustomFooter = lazy(() => import("../../shared/CustomFooter"));
 
 const routesConfig = [
   {
@@ -148,6 +149,8 @@ const RouteWrapper = ({ Component, accessRule }) => {
 
 function Router() {
   const { setIsHomePage, setIsMedifacialPage } = useRouteStatus();
+  const [isFooterVisible, setIsFooterVisible] = useState(false);
+  const footerRef = useRef(null);
   const location = useLocation();
 
   const showNavAndFooter = !["/login", "/sign-up", "/login/admin"].includes(
@@ -170,6 +173,25 @@ function Router() {
       setIsMedifacialPage(false);
     }
   }, [location.pathname]);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        setIsFooterVisible(entry.isIntersecting);
+      },
+      { threshold: 0.9 }
+    );
+
+    if (footerRef.current) {
+      observer.observe(footerRef.current);
+    }
+
+    return () => {
+      if (footerRef.current) {
+        observer.unobserve(footerRef.current);
+      }
+    };
+  }, []);
 
   return (
     <div>
@@ -207,9 +229,13 @@ function Router() {
       <ScrollToTopButton />
 
       {showNavAndFooter && (
-        <Suspense fallback={<CustomLoader open={true} />}>
+        <div ref={footerRef}>
           <CustomFooter />
-        </Suspense>
+        </div>
+      )}
+
+      {showNavAndFooter && (
+        <CustomActionRibbon isFooterVisible={isFooterVisible} />
       )}
     </div>
   );

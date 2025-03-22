@@ -1,14 +1,26 @@
 import { useMediaQuery } from "@mui/material";
 import { MdAccessTime } from "react-icons/md";
+import { useState } from "react";
 import { INRCurrency } from "../../../../helpers/Regex";
 import { packagesDescriptionList } from "../../../../helpers/LaserServices";
+import CustomPackageTermsAndConditions from "../../../../shared/CustomPackageTermsAndConditions";
 
 function BookNowPackageCards({
   packageDetails,
   isMultiplePackage,
   handlePackageCardClick,
 }) {
+  const [isOpenTandCModal, setIsOpenTandCModal] = useState(false);
+  const [tandCContent, setTandCContent] = useState("");
+  const [packageName, setPackageName] = useState("");
+
   const isSmallestScreen = useMediaQuery("(max-width: 450px)");
+
+  const handleTandC = (content, packageName) => {
+    setTandCContent(content);
+    setPackageName(packageName);
+    setIsOpenTandCModal(true);
+  };
 
   return (
     <div
@@ -33,7 +45,11 @@ function BookNowPackageCards({
               <div
                 className={`${!isSmallestScreen ? "hidden" : "flex items-center justify-center mt-4"}`}
               >
-                <img src={item.imgSrc} className="h-28 w-28 object-cover" />
+                <img
+                  src={item.imgSrc}
+                  className="h-28 w-28 object-cover"
+                  alt={item.packageName}
+                />
               </div>
               <div
                 className={`flex mt-3 mb-4 ${isSmallestScreen ? "flex-col gap-2" : "flex-row items-center"}`}
@@ -68,6 +84,7 @@ function BookNowPackageCards({
               <img
                 src={item.imgSrc}
                 className={`h-28 w-28 object-cover ${isSmallestScreen ? "hidden" : "block"}`}
+                alt={item.packageName}
               />
               <button
                 className={`${isSmallestScreen ? "hidden" : "block"} no-underline mt-4 py-2 ${item.isSelected ? "px-2" : "px-3"} rounded bg-coffee text-white text-center font-bold hover:shadow-xl disabled:cursor-not-allowed hover:opacity-80 disabled:opacity-80`}
@@ -87,8 +104,24 @@ function BookNowPackageCards({
           >
             {item.isSelected ? "Added To Cart" : "Add To Cart"}
           </button>
+          <button
+            className="text-xs text-bitterSweet mt-4 bg-white outline-none border-none hover:underline"
+            onClick={() => handleTandC(item.featureName, item.packageName)}
+          >
+            Terms & Conditions Applied{" "}
+            <span className="text-bitterSweet">*</span>
+          </button>
         </div>
       ))}
+      {isOpenTandCModal && (
+        <CustomPackageTermsAndConditions
+          isOpenTandCModal={isOpenTandCModal}
+          setIsOpenTandCModal={setIsOpenTandCModal}
+          buttonText="I Agree"
+          packageName={packageName}
+          tandCContent="Helloo this is text"
+        />
+      )}
     </div>
   );
 }

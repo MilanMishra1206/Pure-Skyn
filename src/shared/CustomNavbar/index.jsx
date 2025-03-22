@@ -1,5 +1,5 @@
 import { lazy, Suspense, useEffect, useState } from "react";
-import { AnimatePresence, motion } from "framer-motion";
+import { AnimatePresence } from "framer-motion";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { FaCartShopping } from "react-icons/fa6";
 import { useSelector, useDispatch } from "react-redux";
@@ -188,7 +188,7 @@ function CustomNavbar() {
           <div className={`${isTablet ? "flex" : "hidden"}`}>
             <Link to="/" className="no-underline font-bold">
               <img
-                src={Resources.images.NavBar.branding}
+                src={Resources.images.Common.logoNavbar}
                 alt="branding"
                 className="w-32"
               />

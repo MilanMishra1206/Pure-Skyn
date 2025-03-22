@@ -333,15 +333,6 @@ function OxyHydra({ type }) {
                   Show More FAQs
                 </Link>
               </div>
-              <div
-                className={`mt-4 flex justify-center items-center ${!isTablet ? "px-5" : ""}`}
-              >
-                <img
-                  src={Resources.images.Services.Dermafrac.imageFour}
-                  alt="oxy-hydra"
-                  className="rounded-xl shadow"
-                />
-              </div>
             </div>
           </motion.div>
           <CustomFloatingBookNowButton

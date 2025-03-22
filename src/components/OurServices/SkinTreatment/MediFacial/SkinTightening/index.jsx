@@ -315,15 +315,6 @@ function SkinTightening({ type }) {
                   Show More FAQs
                 </Link>
               </div>
-              <div
-                className={`flex justify-center items-center ${!isTablet ? "px-5" : "mt-4"}`}
-              >
-                <img
-                  src={Resources.images.Services.SkinTightening.img3}
-                  alt="skin-tightening"
-                  className="rounded-xl shadow w-4/5"
-                />
-              </div>
             </div>
           </motion.div>
           <CustomFloatingBookNowButton
