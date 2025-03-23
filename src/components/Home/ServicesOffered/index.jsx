@@ -1,6 +1,6 @@
 import React from "react";
 import { MdKeyboardDoubleArrowRight } from "react-icons/md";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { motion } from "framer-motion";
 import CustomCards from "../../../shared/CustomCards";
 import { servicesOffered } from "../../../helpers/LaserServices";
@@ -28,13 +28,13 @@ function ServicesOffered({ isMobile, isLargeScreen }) {
       <div>
         <div className="px-5 mt-5">
           <div className="flex justify-end px-5">
-            <button
+            <Link
               to="/services"
               className="flex items-center text-skyn font-bold text-xl font-poppins no-underline hover:opacity-80 hover:underline hover:!tracking-widest"
             >
               Explore More
               <MdKeyboardDoubleArrowRight className="text-2xl text-skyn" />
-            </button>
+            </Link>
           </div>
         </div>
         <motion.div

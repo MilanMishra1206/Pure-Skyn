@@ -10,9 +10,8 @@ import { getQueryValidation } from "../../helpers/Login";
 import { useAppSnackbar } from "../../config/Context/SnackbarContext";
 import { addNewQuery } from "../../services/Query";
 import QueryForm from "./QueryForm";
+import ServiceCards from "../../components/Home/ServiceCards";
 
-const CustomTextField = lazy(() => import("../CustomTextField"));
-const CustomDropdown = lazy(() => import("../CustomDropdown"));
 const CustomLoader = lazy(() => import("../CustomLoader"));
 
 const CustomHeroSection = () => {
@@ -199,8 +198,11 @@ const CustomHeroSection = () => {
             queryFormik={queryFormik}
             handleQueryFormSubmit={handleQueryFormSubmit}
           />
-          <div className="flex flex-col order-1 lg:!order-2">
+          <div className="hidden md:!flex flex-col order-1 lg:!order-2">
             <ShuffleGrid />
+          </div>
+          <div className="block md:!hidden order-1 lg:!order-2">
+            <ServiceCards />
           </div>
         </section>
       </motion.div>

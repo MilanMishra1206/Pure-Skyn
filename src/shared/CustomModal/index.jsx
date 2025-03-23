@@ -18,7 +18,7 @@ export default function CustomModal({
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
           transition={{ duration: 0.35 }}
-          className="bg-slate-900/20 backdrop-blur p-8 fixed inset-0 z-50 grid place-items-center overflow-scroll cursor-pointer"
+          className="bg-slate-900/20 backdrop-blur p-4 md:!p-8 fixed inset-0 z-50 grid place-items-center overflow-scroll cursor-pointer"
         >
           <motion.div
             initial={{ scale: 0, rotate: "12.5deg" }}

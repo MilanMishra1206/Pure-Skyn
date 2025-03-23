@@ -60,7 +60,7 @@ function LoginPage({ isAdminPage = false }) {
     onSuccess(res) {
       if (res?.status === "SUCCESS") {
         const data = res?.data;
-        const { id, email, name, phone, gender } = data;
+        const { id, email, name, phone, gender, role } = data;
         showSnackbar(res?.message, "success");
         sessionStorage.setItem("token", data?.token);
         dispatch(
@@ -70,6 +70,7 @@ function LoginPage({ isAdminPage = false }) {
             name,
             phone,
             gender,
+            isAdmin: role === "ROLE_ADMIN" ? true : false,
           })
         );
         getUserAddresses({ userId: id });
@@ -89,7 +90,7 @@ function LoginPage({ isAdminPage = false }) {
       onSuccess(res) {
         if (res?.status === "SUCCESS") {
           const data = res?.data;
-          const { id, email, name, phone, gender, isAdmin } = data;
+          const { id, email, name, phone, gender, role } = data;
           showSnackbar(res?.message, "success");
           sessionStorage.setItem("token", data?.token);
           dispatch(
@@ -99,7 +100,7 @@ function LoginPage({ isAdminPage = false }) {
               name,
               phone,
               gender,
-              isAdmin,
+              isAdmin: role === "ROLE_ADMIN" ? true : false,
             })
           );
           navigate("/");

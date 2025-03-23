@@ -8,16 +8,8 @@ import CustomPackageTermsAndConditions from "../../../../shared/CustomPackageTer
 
 function CustomPackagesCards({ packageDetails, handleAddToCart, addedToCart }) {
   const [isOpenTandCModal, setIsOpenTandCModal] = useState(false);
-  const [tandCContent, setTandCContent] = useState("");
-  const [packageName, setPackageName] = useState("");
 
   const isMobile = useMediaQuery("(max-width: 767px)");
-
-  const handleTandC = (content, packageName) => {
-    setTandCContent(content);
-    setPackageName(packageName);
-    setIsOpenTandCModal(true);
-  };
 
   return (
     <div
@@ -111,7 +103,7 @@ function CustomPackagesCards({ packageDetails, handleAddToCart, addedToCart }) {
           </button>
           <button
             className="text-xs text-bitterSweet mt-4 bg-white outline-none border-none hover:underline"
-            onClick={() => handleTandC(item.featureName, item.packageName)}
+            onClick={() => setIsOpenTandCModal(true)}
           >
             Terms & Conditions Applied{" "}
             <span className="text-bitterSweet">*</span>
@@ -123,8 +115,6 @@ function CustomPackagesCards({ packageDetails, handleAddToCart, addedToCart }) {
           isOpenTandCModal={isOpenTandCModal}
           setIsOpenTandCModal={setIsOpenTandCModal}
           buttonText="I Agree"
-          packageName={packageName}
-          tandCContent="Helloo this is text"
         />
       )}
     </div>

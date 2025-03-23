@@ -191,7 +191,7 @@ function Router() {
         observer.unobserve(footerRef.current);
       }
     };
-  }, []);
+  }, [location.pathname]);
 
   return (
     <div>

@@ -6,7 +6,7 @@ const API_URLS = {
   },
   Auth: {
     login: "/auth/login",
-    loginAdmin: "/auth/login/admin",
+    loginAdmin: "/admin/login",
     registerUser: "/auth/register",
     requestChangePassword: "/auth/request-password-change?email=",
     changePassword: "/auth/change-password",

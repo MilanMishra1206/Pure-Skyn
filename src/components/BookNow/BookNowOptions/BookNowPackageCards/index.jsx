@@ -11,16 +11,8 @@ function BookNowPackageCards({
   handlePackageCardClick,
 }) {
   const [isOpenTandCModal, setIsOpenTandCModal] = useState(false);
-  const [tandCContent, setTandCContent] = useState("");
-  const [packageName, setPackageName] = useState("");
 
   const isSmallestScreen = useMediaQuery("(max-width: 450px)");
-
-  const handleTandC = (content, packageName) => {
-    setTandCContent(content);
-    setPackageName(packageName);
-    setIsOpenTandCModal(true);
-  };
 
   return (
     <div
@@ -106,7 +98,7 @@ function BookNowPackageCards({
           </button>
           <button
             className="text-xs text-bitterSweet mt-4 bg-white outline-none border-none hover:underline"
-            onClick={() => handleTandC(item.featureName, item.packageName)}
+            onClick={() => setIsOpenTandCModal(true)}
           >
             Terms & Conditions Applied{" "}
             <span className="text-bitterSweet">*</span>
@@ -118,8 +110,6 @@ function BookNowPackageCards({
           isOpenTandCModal={isOpenTandCModal}
           setIsOpenTandCModal={setIsOpenTandCModal}
           buttonText="I Agree"
-          packageName={packageName}
-          tandCContent="Helloo this is text"
         />
       )}
     </div>

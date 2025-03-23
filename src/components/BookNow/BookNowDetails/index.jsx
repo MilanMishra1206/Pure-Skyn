@@ -16,6 +16,7 @@ import { createNewBooking } from "../../../services/Booking";
 import { useAppSnackbar } from "../../../config/Context/SnackbarContext";
 import { INRCurrency } from "../../../helpers/Regex";
 import Resources from "../../../config/Resources";
+import CustomPackageTermsAndConditions from "../../../shared/CustomPackageTermsAndConditions";
 
 const CustomLoader = lazy(() => import("../../../shared/CustomLoader"));
 
@@ -30,6 +31,7 @@ const BookNowDetails = ({ isLoggedIn }) => {
   const [askForLogin, setAskForLogin] = useState(false);
   const [subServiceId, setSubServiceId] = useState("");
   const [timeSlots, setTimeSlots] = useState([]);
+  const [isOpenTandCModal, setIsOpenTandCModal] = useState(false);
   const [initialValues, setInitialValues] = useState({
     name: "",
     email: "",
@@ -221,6 +223,15 @@ const BookNowDetails = ({ isLoggedIn }) => {
                 handleSubmit={handleServiceBooking}
               />
             </div>
+            <div>
+              <button
+                className="text-xs text-bitterSweet mt-4 bg-white outline-none border-none hover:underline text-left"
+                onClick={() => setIsOpenTandCModal(true)}
+              >
+                Terms & Conditions Applied{" "}
+                <span className="text-bitterSweet">*</span>
+              </button>
+            </div>
           </div>
         </div>
       </div>
@@ -240,6 +251,13 @@ const BookNowDetails = ({ isLoggedIn }) => {
           confirmButtonText="Login"
           confirmButtonColor="bg-skyn hover:!opacity-80"
           imageSrc={Resources.images.Common.Warning}
+        />
+      )}
+      {isOpenTandCModal && (
+        <CustomPackageTermsAndConditions
+          isOpenTandCModal={isOpenTandCModal}
+          setIsOpenTandCModal={setIsOpenTandCModal}
+          buttonText="I Agree"
         />
       )}
     </div>
