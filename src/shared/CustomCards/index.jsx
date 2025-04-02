@@ -3,7 +3,14 @@ import { motion } from "framer-motion";
 import fadeInWrapper from "../../config/MotionFramer/FadeInWrapper";
 import CustomButton from "../CustomButton";
 
-const CustomCards = ({ title, imgSrc, linkTo, buttonText = "Explore", customClass }) => {
+const CustomCards = ({
+  title,
+  imgSrc,
+  linkTo,
+  buttonText = "Explore",
+  customClass,
+  imageClass = "h-96",
+}) => {
   return (
     <motion.div
       variants={fadeInWrapper("left", 0.1)}
@@ -11,10 +18,12 @@ const CustomCards = ({ title, imgSrc, linkTo, buttonText = "Explore", customClas
       whileInView="show"
       viewport={{ once: true }}
     >
-      <div className={`relative overflow-hidden group cursor-pointer ${customClass || "w-72 sm:!w-80 rounded-2xl shadow-lg"}`}>
+      <div
+        className={`relative overflow-hidden group cursor-pointer ${customClass || "w-72 sm:!w-80 rounded-2xl shadow-lg"}`}
+      >
         <img
           src={imgSrc}
-          className="transition-transform group-hover:scale-110 duration-500 w-full h-96"
+          className={`transition-transform group-hover:scale-110 duration-500 w-full ${imageClass}`}
           alt={title}
         />
         <div className="absolute inset-0 flex items-end bg-gradient-to-t from-black/60 to-transparent">

@@ -16,9 +16,11 @@ import { createNewBooking } from "../../../services/Booking";
 import { useAppSnackbar } from "../../../config/Context/SnackbarContext";
 import { INRCurrency } from "../../../helpers/Regex";
 import Resources from "../../../config/Resources";
-import CustomPackageTermsAndConditions from "../../../shared/CustomPackageTermsAndConditions";
 
 const CustomLoader = lazy(() => import("../../../shared/CustomLoader"));
+const CustomPackageTermsAndConditions = lazy(
+  () => import("../../../shared/CustomPackageTermsAndConditions")
+);
 
 const BookNowDetails = ({ isLoggedIn }) => {
   const userProfile = useSelector((state) => state.userProfile.userProfile);
@@ -253,13 +255,14 @@ const BookNowDetails = ({ isLoggedIn }) => {
           imageSrc={Resources.images.Common.Warning}
         />
       )}
-      {isOpenTandCModal && (
+      {/* Terms and Conditions Modal */}
+      <Suspense>
         <CustomPackageTermsAndConditions
           isOpenTandCModal={isOpenTandCModal}
           setIsOpenTandCModal={setIsOpenTandCModal}
           buttonText="I Agree"
         />
-      )}
+      </Suspense>
     </div>
   );
 };

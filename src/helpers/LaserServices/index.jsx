@@ -297,7 +297,7 @@ export const servicesOffered = [
   {
     id: 1,
     title: "Laser Hair Removal Women",
-    imageSrc: `${Resources.images.Services.LaserHairRemoval.Women.imageOne}`,
+    imageSrc: `${Resources.images.Home.serviceCards.lhrWomen}`,
     image: `${Resources.images.Services.LaserHairRemoval.Women.LHRWomenHomeCard}`,
     description: `Laser hair removal is a cosmetic procedure that uses concentrated light beams to target hair follicles. It effectively removes unwanted hair by inhibiting future growth, leaving the skin smooth and hair-free. This treatment is ideal for various body areas and provides long-lasting results.`,
     linkTo: "services/laser-hair-removal/women",
@@ -305,7 +305,7 @@ export const servicesOffered = [
   {
     id: 2,
     title: "Laser Hair Removal Men",
-    imageSrc: `${Resources.images.Services.LaserHairRemoval.Men.image5}`,
+    imageSrc: `${Resources.images.Home.serviceCards.lhrMen}`,
     image: `${Resources.images.Services.LaserHairRemoval.Men.LHRMenHomeCard}`,
     description: `Laser hair removal for men targets hair follicles using focused laser light, reducing unwanted hair. This non-invasive treatment is perfect for areas like the back, chest, or face. It’s effective, quick, and helps achieve smooth, well-groomed skin without the hassle of shaving.`,
     linkTo: "services/laser-hair-removal/men",
@@ -329,7 +329,7 @@ export const servicesOffered = [
   {
     id: 5,
     title: "Dermafrac Infusion Facial",
-    imageSrc: `${Resources.images.Services.Dermafrac.img6}`,
+    imageSrc: `${Resources.images.Home.serviceCards.dermafrac}`,
     image: `${Resources.images.Services.Dermafrac.dermafracHomeCard}`,
     description: `DermaFrac is a microneedling treatment that infuses the skin with customized serums, targeting various skin concerns. It’s effective for fine lines, acne scars, hyperpigmentation, and dehydration. This non-invasive procedure has no downtime and works for all skin types, making it a popular choice for rejuvenation.`,
     linkTo: "services/skin/medi-facial/dermafrac-infusion-facial",
@@ -337,7 +337,7 @@ export const servicesOffered = [
   {
     id: 6,
     title: "Oxygeneo",
-    imageSrc: `${Resources.images.Services.OxyGeneo.img6}`,
+    imageSrc: `${Resources.images.Home.serviceCards.oxygeneo}`,
     image: `${Resources.images.Services.OxyGeneo.oxygenoHomeCard}`,
     description: `OxyGeneo is an advanced 3-in-1 facial treatment that combines exfoliation, oxygenation, and infusion. This non-invasive procedure improves skin texture, tone, and hydration, while stimulating natural oxygenation from within. It is suitable for all skin types and addresses concerns like dullness and fine lines.`,
     linkTo: "services/skin/medi-facial/oxygeneo",

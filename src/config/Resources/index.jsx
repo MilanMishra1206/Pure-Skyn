@@ -27,7 +27,7 @@ const Resources = {
       fiftyPercentAfterServiceBanner: `${base}/Common/50-off-banner.jpg`,
       fiftyPercentAfterServiceBannerMobile: `${base}/Common/50-off-mobile.jpg`,
       Warning: `${base}/Common/Warning.svg`,
-      logoNavbar: `${base}/Common/logo_coal.png`
+      logoNavbar: `${base}/Common/logo_coal.png`,
     },
     Home: {
       dermfracMobile: `${base}/Home/dermfrac-mobile.png`,
@@ -82,6 +82,12 @@ const Resources = {
         customPackageImg4: `${base}/Home/customPackageImg4.jpg`,
         customPackageImg5: `${base}/Home/customPackageImg5.jpg`,
         customPackageImg6: `${base}/Home/customPackageImg6.jpg`,
+      },
+      serviceCards: {
+        dermafrac: `${base}/Home/serviceCards/dermafrac.jpg`,
+        lhrMen: `${base}/Home/serviceCards/lhr_men.jpg`,
+        lhrWomen: `${base}/Home/serviceCards/lhr_women.jpg`,
+        oxygeneo: `${base}/Home/serviceCards/oxygeneo.jpg`        
       },
     },
     NavBar: {

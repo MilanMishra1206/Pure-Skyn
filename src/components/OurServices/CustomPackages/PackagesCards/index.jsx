@@ -1,10 +1,13 @@
 import { useMediaQuery } from "@mui/material";
 import { MdAccessTime } from "react-icons/md";
-import { useState } from "react";
+import { lazy, Suspense, useState } from "react";
 
 import { INRCurrency } from "../../../../helpers/Regex";
 import { packagesDescriptionList } from "../../../../helpers/LaserServices";
-import CustomPackageTermsAndConditions from "../../../../shared/CustomPackageTermsAndConditions";
+
+const CustomPackageTermsAndConditions = lazy(
+  () => import("../../../../shared/CustomPackageTermsAndConditions")
+);
 
 function CustomPackagesCards({ packageDetails, handleAddToCart, addedToCart }) {
   const [isOpenTandCModal, setIsOpenTandCModal] = useState(false);
@@ -110,13 +113,14 @@ function CustomPackagesCards({ packageDetails, handleAddToCart, addedToCart }) {
           </button>
         </div>
       ))}
-      {isOpenTandCModal && (
+      {/* Terms and Conditions Modal */}
+      <Suspense>
         <CustomPackageTermsAndConditions
           isOpenTandCModal={isOpenTandCModal}
           setIsOpenTandCModal={setIsOpenTandCModal}
           buttonText="I Agree"
         />
-      )}
+      </Suspense>
     </div>
   );
 }

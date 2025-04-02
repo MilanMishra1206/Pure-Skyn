@@ -165,6 +165,7 @@ function ServicesOffered({ isMobile, isLargeScreen }) {
               linkTo={item.linkTo}
               key={item.id}
               customClass={"w-72 2xl:!w-60 h-[20.5rem] rounded-2xl shadow-lg"}
+              imageClass="h-100"
             />
           ))}
         </div>
