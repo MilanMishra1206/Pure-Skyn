@@ -11,6 +11,7 @@ import BreadcrumbSection from "./BreadcrumbSection";
 import ProductFilterDrawer from "./ProductFilterDrawer";
 import SidebarFilters from "./SidebarFilters";
 import ProductGrid from "./ProductGrid";
+import { MdOutlineProductionQuantityLimits } from "react-icons/md";
 
 const Products = () => {
   const dispatch = useDispatch();
@@ -58,7 +59,7 @@ const Products = () => {
         variants={FadeInWrapper("left", 0.1)}
         initial="hidden"
         whileInView="show"
-        className={`mt-5 ${isMobile ? "p-3" : "p-5"}`}
+        className={`mt-5 ${isMobile ? "p-3" : "pt-5 pl-5"}`}
       >
         <BreadcrumbSection />
       </motion.div>
@@ -98,17 +99,29 @@ const Products = () => {
           </motion.div>
         )}
 
-        <motion.div
-          variants={FadeInWrapper("up", 0.2)}
-          initial="hidden"
-          whileInView="show"
-        >
-          <ProductGrid
-            products={filteredProducts}
-            onAddToCart={handleAddToCart}
-            isMobile={isMobile}
-          />
-        </motion.div>
+        {filteredProducts.length === 0 ? (
+          <div className="flex flex-col items-center justify-center min-h-[300px] px-4 text-center w-100">
+            <MdOutlineProductionQuantityLimits className="text-5xl text-gray-400 mb-4" />
+            <h2 className="text-xl font-semibold text-gray-700">
+              We are adding products soon
+            </h2>
+            <p className="text-sm text-gray-500 mt-1">
+              Stay tuned! New products will be available shortly.
+            </p>
+          </div>
+        ) : (
+          <motion.div
+            variants={FadeInWrapper("up", 0.2)}
+            initial="hidden"
+            whileInView="show"
+          >
+            <ProductGrid
+              products={filteredProducts}
+              onAddToCart={handleAddToCart}
+              isMobile={isMobile}
+            />
+          </motion.div>
+        )}
       </div>
     </div>
   );

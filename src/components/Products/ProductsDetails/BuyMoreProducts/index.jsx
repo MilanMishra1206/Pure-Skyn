@@ -8,7 +8,11 @@ import { useAppSnackbar } from "../../../../config/Context/SnackbarContext";
 import { INRCurrency } from "../../../../helpers/Regex";
 import { productList } from "../../../../helpers/Products";
 
-function BuyMoreProducts({ showCarousel = true, handleOpenCart }) {
+function BuyMoreProducts({
+  showCarousel = true,
+  handleOpenCart,
+  productCategory = "",
+}) {
   const dispatch = useDispatch();
   const showSnackbar = useAppSnackbar();
 
@@ -17,16 +21,26 @@ function BuyMoreProducts({ showCarousel = true, handleOpenCart }) {
     showSnackbar("Product Added to Cart", "success");
   };
 
+  let products = [];
+
+  if (productCategory && productList[productCategory]) {
+    products = Object.values(productList[productCategory]);
+  } else {
+    products = Object.values(productList).flatMap((category) =>
+      Object.values(category)
+    );
+  }
+
   return (
     <div>
       {showCarousel ? (
-        <ProductCarousel carouselContent={Object.values(productList.sunscreen)} />
+        <ProductCarousel carouselContent={products} />
       ) : (
         <div className="space-y-4">
           <p className="text-center text-2xl mb-5 font-bold text-bold text-emerald-900 uppercase">
             Boost Your Results
           </p>
-          {Object.values(productList.sunscreen).map((item, idx) => (
+          {products.map((item, idx) => (
             <div
               key={idx}
               className="flex flex-col gap-3 justify-center items-center"

@@ -5,9 +5,9 @@ const ProductGrid = ({ products, onAddToCart, isMobile }) => {
     <div
       className={`grid md:!grid-cols-2 xl:!grid-cols-3 gap-4 mb-4 cursor-pointer ${isMobile ? "px-3" : "px-5"}`}
     >
-      {products.map((product) => (
+      {products.map((product, index) => (
         <ProductCard
-          key={product.id}
+          key={index}
           product={product}
           onAddToCart={onAddToCart}
         />

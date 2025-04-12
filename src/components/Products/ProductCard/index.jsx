@@ -26,7 +26,7 @@ const ProductCard = ({ product, onAddToCart }) => {
           onClick={() => navigate(`/products/${product.productName}`)}
         />
       </div>
-      <div className="flex-1 mt-4">
+      <div className="flex-1 mt-4 h-10">
         <Link
           className="font-bold text-coal hover:text-skyn no-underline cursor-pointer"
           to={`/products/${product.productName}`}

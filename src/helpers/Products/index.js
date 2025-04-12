@@ -199,4 +199,73 @@ export const productList = {
       productsAdditionalDetails: productContent,
     },
   },
+  faceSerum: {
+    "Agelite-X Serum": {
+      id: 1,
+      productName: "Agelite-X Serum",
+      imgSrc: Resources.images.Products.products.faceSerum.ageliteSerum.img1,
+      productDescription:
+        "Agelite-X Serum is specially concocted with antioxidants that provides synergistic protection against oxidative stress in skin. It works to brighten dull Skin, improve hyperpigmentation, sun/photo-damaged skin, fine lines and wrinkles.",
+      ratings: 4,
+      smallDescription: [
+        { id: 1, content: "Treats Acne" },
+        { id: 2, content: "Reduces Acne Scars" },
+      ],
+      quantity: 1,
+      productPrice: "999",
+      category: "faceSerum",
+      allImages: Object.values(
+        Resources.images.Products.products.faceSerum.ageliteSerum
+      ),
+      productsAdditionalDetails: productContent,
+    },
+    "C Shine Serum": {
+      id: 2,
+      productName: "C Shine Serum",
+      imgSrc: Resources.images.Products.products.faceSerum.cshine.img1,
+      productDescription:
+        "Illuminate your skin with the C Shine Serum, a luxurious blend of nourishing ingredients and Vitamin C. This serum works to even out skin tone, reduce the appearance of dark spots, and impart a radiant glow. Elevate your skincare regimen with the C Shine Serum for a luminous complexion that captivates.",
+      ratings: 4,
+      strikePrice: "2200",
+      productPrice: "1800",
+      smallDescription: [
+        { id: 1, content: "Treats Acne" },
+        { id: 2, content: "Reduces Acne Scars" },
+      ],
+      quantity: 1,
+      category: "sunscreen",
+      allImages: Object.values(
+        Resources.images.Products.products.faceSerum.cshine
+      ),
+      productsAdditionalDetails: productContent,
+    },
+    "Lumiedge Serum": {
+      id: 3,
+      productName: "Lumiedge Serum",
+      imgSrc: Resources.images.Products.products.faceSerum.ilumeSerum.img1,
+      productDescription:
+        "Lumiedge Serum is a lightweight and non-sticky daily-use skin serum which boosts luminosity and promotes healthy-looking skin.",
+      ratings: 4.5,
+      productPrice: "1100",
+      smallDescription: [
+        { id: 1, content: "Treats Acne" },
+        { id: 2, content: "Reduces Acne Scars" },
+      ],
+      quantity: 1,
+      category: "sunscreen",
+      allImages: Object.values(
+        Resources.images.Products.products.faceSerum.ilumeSerum
+      ),
+      productsAdditionalDetails: productContent,
+    },
+  },
+};
+
+export const getShippingDate = (daysToAdd = 7) => {
+  const today = new Date();
+  today.setDate(today.getDate() + daysToAdd);
+  return today.toLocaleDateString("en-GB", {
+    day: "numeric",
+    month: "short",
+  });
 };

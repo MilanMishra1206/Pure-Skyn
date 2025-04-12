@@ -503,7 +503,7 @@ function Cart() {
           whileInView="show"
           viewport={{ once: true }}
         >
-          <BuyMoreProducts />
+          <BuyMoreProducts productCategory=""/>
         </motion.div>
       </div>
       {removeItem && (

@@ -39,7 +39,7 @@ function ProductCard({ product }) {
           />
         </div>
         <div className="flex flex-col p-3">
-          <Card.Title>
+          <Card.Title className="h-10">
             <Link
               className="font-bold text-coal hover:text-skyn no-underline"
               to={`/products/${product.productName}`}

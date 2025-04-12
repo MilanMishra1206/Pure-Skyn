@@ -256,6 +256,7 @@ function CartDrawer({ openCart, handleOpenCart }) {
               <BuyMoreProducts
                 showCarousel={false}
                 handleOpenCart={handleOpenCart}
+                productCategory=""
               />
             </motion.div>
           </div>

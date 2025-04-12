@@ -1,5 +1,4 @@
 import { Drawer } from "@mui/material";
-import { Button } from "react-bootstrap";
 
 const ProductFilterDrawer = ({
   open,
@@ -23,6 +22,7 @@ const ProductFilterDrawer = ({
               type="checkbox"
               checked={selectedTypes.includes(key)}
               onChange={() => onChange(key)}
+              className="!cursor-pointer"
             />
             <span className="text-coal capitalize">
               {label.replace("-", " ")}
@@ -30,15 +30,6 @@ const ProductFilterDrawer = ({
           </label>
         </div>
       ))}
-      <div className="mt-4">
-        <Button
-          variant="contained"
-          className="!bg-skyn !text-white"
-          onClick={toggleDrawer(false)}
-        >
-          Apply Filters
-        </Button>
-      </div>
     </Drawer>
   );
 };

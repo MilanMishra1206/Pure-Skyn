@@ -35,7 +35,7 @@ import ProductDescriptionImage from "./ProductDescriptionImage";
 import OffersCarousel from "./OffersCarousel";
 import DisplaySection from "../DisplaySection";
 import { reviewContent } from "../../../helpers/LaserServices";
-import { productList } from "../../../helpers/Products";
+import { getShippingDate, productList } from "../../../helpers/Products";
 
 function ProductsDetails() {
   const { productName } = useParams();
@@ -48,9 +48,23 @@ function ProductsDetails() {
   const [pinCode, setPinCode] = useState("");
   const [productDetail, setProductDetail] = useState();
   const [noOfRatings, setNoOfRatings] = useState(0);
+  const [productCategory, setProductCategory] = useState("");
 
   useEffect(() => {
-    setProductDetail(productList?.sunscreen?.[productName]);
+    let foundProduct;
+    let foundCategory = "";
+
+    for (const category in productList) {
+      const product = productList[category]?.[productName];
+      if (product) {
+        foundProduct = product;
+        foundCategory = category;
+        break;
+      }
+    }
+
+    setProductDetail(foundProduct);
+    setProductCategory(foundCategory);
   }, [productName]);
 
   useEffect(() => {
@@ -292,7 +306,7 @@ function ProductsDetails() {
                 <div className="flex items-center gap-2">
                   <FaShippingFast fill="#EE6503" size="1.5rem" />
                   <span className="text-lg text-coal font-medium">
-                    Shipping by 14th Feb
+                    Shipping by {getShippingDate()}
                   </span>
                 </div>
               </div>
@@ -381,7 +395,7 @@ function ProductsDetails() {
             whileInView="show"
             viewport={{ once: true }}
           >
-            <BuyMoreProducts />
+            <BuyMoreProducts productCategory={productCategory}/>
           </motion.div>
           <hr />
           {/* Product Reviews */}

@@ -321,6 +321,18 @@ const Resources = {
             img3: `${base}/Products/products/sunscreen/tint-sunscreen/img3.webp`,
           },
         },
+        faceSerum: {
+          ageliteSerum: {
+            img1: `${base}/Products/products/face-serum/agelite-serum/img1.jpg`,
+          },
+          cshine: {
+            img1: `${base}/Products/products/face-serum/cshine/img1.jpg`,
+            img2: `${base}/Products/products/face-serum/cshine/img2.jpg`,
+          },
+          ilumeSerum: {
+            img1: `${base}/Products/products/face-serum/ilume-serum/img1.jpg`,
+          },
+        },
       },
     },
   },
