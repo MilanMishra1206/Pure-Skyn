@@ -4,7 +4,6 @@ import { FaCartPlus } from "react-icons/fa";
 import { Box, Rating } from "@mui/material";
 import { Link, useNavigate } from "react-router-dom";
 import StarIcon from "@mui/icons-material/Star";
-import FadedLineBreak from "../../../../shared/CustomHrTag";
 import CustomButton2 from "../../../../shared/CustomButton2";
 import { useAppSnackbar } from "../../../../config/Context/SnackbarContext";
 import { addToCart } from "../../../../redux/Actions";
@@ -31,18 +30,26 @@ function ProductCard({ product }) {
   return (
     <div>
       <Card style={{ width: "inherit" }}>
-        <Card.Img
-          variant="top"
-          src={product.imgSrc}
-          className="cursor-pointer"
-          onClick={() => navigate(`/products/${product.productName}`)}
-        />
-        <FadedLineBreak />
-        <Card.Body>
+        <div className="flex items-center justify-center p-2">
+          <img
+            src={product.imgSrc}
+            className="cursor-pointer h-64 rounded-md"
+            onClick={() => navigate(`/products/${product.productName}`)}
+            alt={product.productName}
+          />
+        </div>
+        <div className="flex flex-col p-3">
           <Card.Title>
             <Link
-              className="font-bold text-coal text-xl mt-4 hover:text-skyn no-underline "
+              className="font-bold text-coal hover:text-skyn no-underline"
               to={`/products/${product.productName}`}
+              style={{
+                display: "-webkit-box",
+                WebkitBoxOrient: "vertical",
+                overflow: "hidden",
+                textOverflow: "ellipsis",
+                WebkitLineClamp: 2,
+              }}
             >
               {product.productName}
             </Link>
@@ -66,29 +73,40 @@ function ProductCard({ product }) {
             />
             <Box sx={{ ml: 2 }}>{product.ratings}</Box>
           </Box>
-          <Card.Text className="text-sm !text-kashmirBlue !cursor-default mt-4 mb-4">
-            {truncateText(product.productDescription, 12)}{" "}
-            <Link
-              className="underline !text-skyn hover:!opacity-80"
-              to={`/products/${product.productName}`}
-            >
-              Read More
-            </Link>
+          <Card.Text
+            className="text-sm !text-kashmirBlue !cursor-default mt-4"
+            style={{
+              display: "-webkit-box",
+              WebkitBoxOrient: "vertical",
+              overflow: "hidden",
+              textOverflow: "ellipsis",
+              WebkitLineClamp: 2,
+            }}
+          >
+            {product.productDescription}
           </Card.Text>
-          {product.strikePrice && (
-            <span className="mt-4 text-left text-slate-400 line-through font-bold mr-4">
-              {INRCurrency(product.strikePrice)}
+          <Link
+            className="text-xs underline !text-skyn hover:!opacity-80"
+            to={`/products/${product.productName}`}
+          >
+            Read More
+          </Link>
+          <div className="flex">
+            {product.strikePrice && (
+              <span className="mt-4 text-left text-slate-400 line-through font-bold mr-4">
+                {INRCurrency(product.strikePrice)}
+              </span>
+            )}
+            <span className="mt-4 text-left text-skyn font-bold">
+              ₹{product.productPrice}
             </span>
-          )}
-          <span className="mt-4 text-left text-skyn font-bold">
-            ₹{product.productPrice}
-          </span>
+          </div>
           <CustomButton2
             buttonText="Add to Cart"
             faIcon={<FaCartPlus size="1.5rem" />}
             handleSubmit={handleAddToCart}
           />
-        </Card.Body>
+        </div>
       </Card>
     </div>
   );

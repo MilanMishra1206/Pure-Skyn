@@ -1,52 +1,58 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Resources from "../../../../config/Resources";
 import { FaShieldAlt, FaShippingFast } from "react-icons/fa";
 
-function ProductDescriptionImage({ productName }) {
-  const allImages = Object.values(
-    Resources.images.Products.dermaticaAzeProactiveLotion
-  );
+function ProductDescriptionImage({ productDetail, defaultImage }) {
+  const allImages = productDetail?.allImages;
 
-  const [bigImage, setBigImage] = useState(allImages[0]);
-  const [smallImages, setSmallImages] = useState(allImages);
+  const [bigImage, setBigImage] = useState("");
+
+  useEffect(() => {
+    if (defaultImage) {
+      setBigImage(defaultImage);
+    }
+  }, [defaultImage]);
 
   const handleImageClick = (clickedImage) => {
     setBigImage(clickedImage);
   };
 
   const handleBackClick = () => {
-    const currentIndex = allImages.indexOf(bigImage);
+    const currentIndex = allImages?.indexOf(bigImage);
     const newIndex =
-      currentIndex === 0 ? allImages.length - 1 : currentIndex - 1;
-    setBigImage(allImages[newIndex]);
+      currentIndex === 0 ? allImages?.length - 1 : currentIndex - 1;
+    setBigImage(allImages?.[newIndex]);
   };
 
   const handleForwardClick = () => {
-    const currentIndex = allImages.indexOf(bigImage);
+    const currentIndex = allImages?.indexOf(bigImage);
     const newIndex =
-      currentIndex === allImages.length - 1 ? 0 : currentIndex + 1;
-    setBigImage(allImages[newIndex]);
+      currentIndex === allImages?.length - 1 ? 0 : currentIndex + 1;
+    setBigImage(allImages?.[newIndex]);
   };
+
+  const renderSmallImages = () =>
+    allImages?.map((image, index) => (
+      <img
+        key={index}
+        src={image}
+        alt={productDetail?.productName}
+        className={`rounded-lg shadow-lg border w-26 cursor-pointer ${bigImage === image ? "border-2 !border-skyn" : ""}`}
+        onClick={() => handleImageClick(image)}
+      />
+    ));
 
   return (
     <>
       <div className="hidden md:!flex gap-6 lg:!hidden xl:!flex">
         <div className="flex flex-col gap-4 justify-center py-3 self-start">
-          {smallImages.map((image, index) => (
-            <img
-              key={index}
-              src={image}
-              alt={productName}
-              className={`rounded-lg shadow-lg border w-26 cursor-pointer ${bigImage === image ? "border-2 !border-skyn" : ""}`}
-              onClick={() => handleImageClick(image)}
-            />
-          ))}
+          {renderSmallImages()}
         </div>
         <div className="flex flex-col flex-grow items-center justify-center w-1/2 self-start">
           <div className="relative rounded-lg shadow-lg">
             <img
               src={bigImage}
-              alt={productName}
+              alt={productDetail?.productName}
               className="rounded-lg w-full max-w-lg"
             />
             <button
@@ -67,7 +73,11 @@ function ProductDescriptionImage({ productName }) {
       </div>
       <div className="grid md:!hidden lg:!grid lg:!grid-cols-1 xl:!hidden">
         <div className="rounded-lg shadow-lg flex justify-center self-start relative">
-          <img src={bigImage} alt={productName} className="rounded-lg" />
+          <img
+            src={bigImage}
+            alt={productDetail?.productName}
+            className="rounded-lg"
+          />
           <button
             onClick={handleBackClick}
             className="absolute left-0 top-1/2 transform -translate-y-1/2 text-white bg-gray-800 px-2 py-1 text-2xl hover:opacity-80 rounded-full"
@@ -82,15 +92,7 @@ function ProductDescriptionImage({ productName }) {
           </button>
         </div>
         <div className="grid grid-cols-4 md:px-5 py-3 gap-2 cursor-pointer">
-          {smallImages.map((image, index) => (
-            <img
-              key={index}
-              src={image}
-              alt={productName}
-              className={`rounded-lg shadow-lg border w-26 cursor-pointer ${bigImage === image ? "border-2 !border-skyn" : ""}`} // Add conditional border
-              onClick={() => handleImageClick(image)}
-            />
-          ))}
+          {renderSmallImages()}
         </div>
         <div>{Tabs()}</div>
       </div>

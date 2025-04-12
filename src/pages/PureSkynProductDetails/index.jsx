@@ -1,11 +1,7 @@
 import ProductsDetails from "../../components/Products/ProductsDetails";
 
 function PureSkynProductDetails() {
-  return (
-    <div>
-      <ProductsDetails />
-    </div>
-  );
+  return <ProductsDetails />;
 }
 
 export default PureSkynProductDetails;

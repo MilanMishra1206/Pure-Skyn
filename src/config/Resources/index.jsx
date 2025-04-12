@@ -283,11 +283,44 @@ const Resources = {
       img4: `${base}/Products/img4.jpg`,
       img5: `${base}/Products/img5.jpg`,
       img6: `${base}/Products/img6.jpg`,
-      dermaticaAzeProactiveLotion: {
-        img1: `${base}/Products/dermatica-aze-proactive-lotion/img1.jpeg`,
-        img2: `${base}/Products/dermatica-aze-proactive-lotion/img2.jpeg`,
-        img3: `${base}/Products/dermatica-aze-proactive-lotion/img3.jpeg`,
-        img4: `${base}/Products/dermatica-aze-proactive-lotion/img4.jpeg`,
+      products: {
+        sunscreen: {
+          dermaticaAzeProactiveLotion: {
+            img1: `${base}/Products/products/sunscreen/dermatica-aze-proactive-lotion/img1.jpeg`,
+            img2: `${base}/Products/products/sunscreen/dermatica-aze-proactive-lotion/img2.jpeg`,
+            img3: `${base}/Products/products/sunscreen/dermatica-aze-proactive-lotion/img3.jpeg`,
+            img4: `${base}/Products/products/sunscreen/dermatica-aze-proactive-lotion/img4.jpeg`,
+          },
+          berlion: {
+            img1: `${base}/Products/products/sunscreen/berlion/img1.webp`,
+            img2: `${base}/Products/products/sunscreen/berlion/img2.webp`,
+            img3: `${base}/Products/products/sunscreen/berlion/img3.webp`,
+            img4: `${base}/Products/products/sunscreen/berlion/img4.webp`,
+            img5: `${base}/Products/products/sunscreen/berlion/img5.webp`,
+          },
+          rayback: {
+            img1: `${base}/Products/products/sunscreen/rayback/img1.jpg`,
+            img2: `${base}/Products/products/sunscreen/rayback/img2.jpg`,
+            img3: `${base}/Products/products/sunscreen/rayback/img3.webp`,
+          },
+          seeckusSuncreen: {
+            img1: `${base}/Products/products/sunscreen/seeckusSuncreen/img1.webp`,
+            img2: `${base}/Products/products/sunscreen/seeckusSuncreen/img3.webp`,
+            img3: `${base}/Products/products/sunscreen/seeckusSuncreen/img5.webp`,
+            img4: `${base}/Products/products/sunscreen/seeckusSuncreen/img6.webp`,
+          },
+          sunlite: {
+            img1: `${base}/Products/products/sunscreen/sunlite/img1.webp`,
+            img2: `${base}/Products/products/sunscreen/sunlite/img2.webp`,
+            img3: `${base}/Products/products/sunscreen/sunlite/img3.webp`,
+            img4: `${base}/Products/products/sunscreen/sunlite/img4.webp`,
+          },
+          tintSunscreen: {
+            img1: `${base}/Products/products/sunscreen/tint-sunscreen/img1.webp`,
+            img2: `${base}/Products/products/sunscreen/tint-sunscreen/img2.webp`,
+            img3: `${base}/Products/products/sunscreen/tint-sunscreen/img3.webp`,
+          },
+        },
       },
     },
   },

@@ -35,6 +35,7 @@ import ProductDescriptionImage from "./ProductDescriptionImage";
 import OffersCarousel from "./OffersCarousel";
 import DisplaySection from "../DisplaySection";
 import { reviewContent } from "../../../helpers/LaserServices";
+import { productList } from "../../../helpers/Products";
 
 function ProductsDetails() {
   const { productName } = useParams();
@@ -45,99 +46,12 @@ function ProductsDetails() {
   const isLargeScreen = useMediaQuery("(min-width: 1438px)");
   const [quantity, setQuantity] = useState("1");
   const [pinCode, setPinCode] = useState("");
+  const [productDetail, setProductDetail] = useState();
   const [noOfRatings, setNoOfRatings] = useState(0);
 
-  const products = {
-    productName: "Dermatica Aze Proactive Lotion",
-    imgSrc: Resources.images.Products.img1,
-    productDescription:
-      "At Pureskyn, we believe that the foundation of real beauty is flawless, clear skin. We are thrilled to present Dermatica Aze Proactive Lotion, a revolutionary skincare solution created to effectively and gently treat acne, acne scars, and acne marks. With Dermatica Aze, your secret to bright, glowing skin, bid adieu to the aggravation of acne and the scarring that follows.",
-    ratings: 4,
-    smallDescription: [
-      { id: 1, content: "Treats Acne" },
-      { id: 2, content: "Reduces Acne Scars" },
-    ],
-    productPrice: "1080",
-    category: "Machine",
-    quantity: 1,
-  };
-
-  const productContent = [
-    {
-      id: 1,
-      name: "Description",
-      content: `At Pureskyn, we believe that the foundation of real beauty is flawless, clear skin. We are thrilled to present Dermatica Aze Proactive Lotion, a revolutionary skincare solution created to effectively and gently treat acne, acne scars, and acne marks. With Dermatica Aze, your secret to bright, glowing skin, bid adieu to the aggravation of acne and the scarring that follows.`,
-    },
-    {
-      id: 2,
-      name: "Key Benefits",
-      content: `<div class="grid gap-2">
-      <div>
-        <span class="font-bold">Fades Acne Marks: </span>
-        <span>Acne marks can linger long after blemishes have healed. Our lotion works to fade these marks, allowing your skin to regain its even, flawless complexion.</span>
-      </div>
-      <div>
-        <span class="font-bold">Reduces Acne Scars: </span>
-        <span>Acne scars can be a source of insecurity, but Dermatica Aze is here to reduce their appearance. It helps diminish the visibility of scars, promoting a smoother, more refined skin texture.</span>
-      </div>
-      <div>
-        <span class="font-bold">Multi-Action Formulation: </span>
-        <span>We understand that acne and its aftermath require a multi-faceted approach. Dermatica Aze Proactive Lotion is formulated to take care of acne, acne marks, and acne scars in one gentle formulation.</span>
-      </div>
-      <div>
-        <span class="font-bold">Gentle and Effective: </span>
-        <span>Harsh treatments can worsen acne and scars. Our lotion is designed to be gentle on your skin while delivering effective results. It treats your skin with care, ensuring a soothing experience.</span>
-      </div>
-      <div>
-        <span class="font-bold">Promotes Healthy Skin: </span>
-        <span>Healthy skin is the foundation of beauty. Dermatica Aze not only addresses current concerns but also promotes the overall health and well-being of your skin.</span>
-      </div>
-    </div>`,
-    },
-    {
-      id: 3,
-      name: "How to Use",
-      content: `<u class="space-y-4 list-disc no-underline">
-                  <li>Take a sufficient of product in your palm</li>
-                  <li>Apply on cleansed face and nect at night</li>
-                  <li>Use regularly or as directed by your physician</li>
-                </u>`,
-    },
-    {
-      id: 4,
-      name: "Ingredients",
-      content: `<u class="space-y-2 list-disc no-underline">
-                  <li>DM Water</li>
-                  <li>Porassium Azeloyl Diglycinate</li>
-                  <li>DMDM Hydantoin</li>
-                  <li>Lodopropynyl Butylcarbamate</li>
-                </u>`,
-    },
-    {
-      id: 5,
-      name: "Additional Information",
-      content: `<div class="space-y-2">
-                  <p>Make Dermatica Aze Proactive Lotion a part of your daily skincare routine, and watch as acne, marks, and scars become a thing of the past. Say goodbye to the insecurity of acne-related skin issues and hello to the confidence of clear, radiant beauty.</p> 
-                  <p>Invest in your skin, invest in Dermatica Aze Proactive Lotion today!</p> 
-                  <p>Rediscover the joy of clear, blemish-free skin with Dermatica Aze Proactive Lotion from Pureskyn. Embrace the confidence that comes with a clearer, more radiant complexion, and step out into the world with pride!</p>
-                </div>`,
-    },
-    {
-      id: 6,
-      name: "Shipping & Return",
-      content: `<div class="font-bold text-xl">Returns Policy</div>
-                  <div class="space-y-4 font-poppins">
-                    <p class="mt-4">Personal use items once delivered cannot be returned. <b>Please record an unboxing video during opening of the package as this is necessary for issuing refund in case of wrong item delivery/damaged delivery. Please Note this is the policy of shipping partner and not pureskyn.com. Without unboxing video a refund will not be issued.</b></p>
-                    <p>Once a return is raised we will get the return order picked up from the same address as the address of delivery.</p>
-                    <p class="mb-4">You can expect the refund/replacement within 5-30 days of handing over the package for return, in most cases you will receive a refund more quickly. This time period includes the transit time for us to receive your return order (5 to 10 business days) + the time it takes for us to process your return once we receive it (3 to 5 business days) + the time it takes for the bank to process the refund request (5 to 10 business days).</p>
-                  </div>
-                  <div class="font-bold text-xl">Shipping</div>
-                  <div class="space-y-4">
-                    <p class="mt-4">We can ship to majority countries across the world provided there are no restrictions on the products in the destinations country.</p>
-                    <p>When you place an order, we will estimate shipping cost for you.</p>
-                  </div>`,
-    },
-  ];
+  useEffect(() => {
+    setProductDetail(productList?.sunscreen?.[productName]);
+  }, [productName]);
 
   useEffect(() => {
     setNoOfRatings(reviewContent.length);
@@ -155,13 +69,15 @@ function ProductsDetails() {
       Products
     </Link>,
     <Typography key="3" className="!text-coal !font-poppins">
-      {products.productName}
+      {productName}
     </Typography>,
   ];
 
-  const [selectedItem, setSelectedItem] = useState(productContent[0].id); // update this to null and then setSelectedItem after the API call
-  const selectedContent = productContent.find(
-    (item) => item.id === selectedItem
+  const [selectedItem, setSelectedItem] = useState(
+    productDetail?.productsAdditionalDetails[0]?.id
+  ); // update this to null and then setSelectedItem after the API call
+  const selectedContent = productDetail?.productsAdditionalDetails?.find(
+    (item) => item?.id === selectedItem
   )?.content;
 
   const calculateSaveAmount = (oldPrice, newPrice) => {
@@ -177,7 +93,7 @@ function ProductsDetails() {
   };
 
   const handleAddToCart = () => {
-    dispatch(addToCart(products));
+    dispatch(addToCart(productDetail));
     showSnackbar("Product Added to Cart", "success");
   };
 
@@ -195,12 +111,15 @@ function ProductsDetails() {
             {breadcrumbs}
           </Breadcrumbs>
           <div className="grid lg:grid-cols-2 gap-4 bg-[#FAFAFA] p-0 md:!p-4">
-            <ProductDescriptionImage productName={productName} />
+            <ProductDescriptionImage
+              productDetail={productDetail}
+              defaultImage={productDetail?.imgSrc}
+            />
             <div className={`${isMobile ? "mt-5" : "ml-5"}`}>
               <div>
                 <p className="text-3xl font-bold">{productName}</p>
                 <div className="flex gap-2">
-                  {products.smallDescription.map((desc) => (
+                  {productDetail?.smallDescription.map((desc) => (
                     <div key={desc.id} className="flex items-center gap-2">
                       <FaCircleCheck fill="green" size="1rem" />
                       <p className="!font-poppins text-sm text-green-700">
@@ -245,21 +164,21 @@ function ProductsDetails() {
                 <hr className="!my-6" />
                 <div className="flex md:!items-start lg:!items-center flex-col md:!flex-row gap-2">
                   <div className="flex flex-col">
-                    {products.strikePrice && (
+                    {productDetail?.strikePrice && (
                       <span className="text-left text-sm text-slate-400 line-through font-bold mr-4">
-                        {INRCurrency(products.strikePrice)}
+                        {INRCurrency(productDetail?.strikePrice)}
                       </span>
                     )}
                     <span className="text-3xl text-left text-skyn font-bold">
-                      {INRCurrency(products.productPrice)}
+                      {INRCurrency(productDetail?.productPrice)}
                     </span>
                     <span className="text-xs">{"(incl. of all taxes.)"}</span>
                   </div>
-                  {products.strikePrice && (
+                  {productDetail?.strikePrice && (
                     <button className="shadow-md rounded-xl p-2 text-sm font-semibold bg-emerald-700 text-white w-24">
                       {calculateSaveAmount(
-                        products.strikePrice,
-                        products.productPrice
+                        productDetail?.strikePrice,
+                        productDetail?.productPrice
                       )}
                     </button>
                   )}
@@ -399,7 +318,7 @@ function ProductsDetails() {
             {isLargeScreen && (
               <div>
                 <ul className="flex justify-center items-center gap-4 border-b-2">
-                  {productContent.map((item) => (
+                  {productDetail?.productsAdditionalDetails.map((item) => (
                     <li
                       key={item.id}
                       className={`text-lg font-semibold cursor-pointer group p-2`}
@@ -423,7 +342,7 @@ function ProductsDetails() {
             )}
             {!isLargeScreen && (
               <div className="mb-5">
-                {productContent.map((item) => (
+                {productDetail?.productsAdditionalDetails.map((item) => (
                   <Accordion defaultExpanded={item.id === 1} key={item.id}>
                     <AccordionSummary
                       expandIcon={<ExpandMoreIcon className="text-skyn" />}
