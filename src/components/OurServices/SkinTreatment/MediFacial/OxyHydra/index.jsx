@@ -39,7 +39,6 @@ function OxyHydra({ type }) {
         <div className="text-justify">
           <Suspense fallback={<div>Loading...</div>}>
             <CommonHeader
-              isTablet={isTablet}
               imgSrcLaptop={Resources.images.Home.oxyhydra}
               imgSrcTablet={Resources.images.Home.oxyhydraMoble}
               linkTo="/book-now"

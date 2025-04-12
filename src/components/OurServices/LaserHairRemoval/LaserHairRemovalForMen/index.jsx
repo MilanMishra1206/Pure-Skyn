@@ -39,7 +39,6 @@ function LaserHairRemovalForMen({ category, isMobile, isTablet, isLaptop }) {
           <div>
             <Suspense fallback={<div>Loading...</div>}>
               <CommonHeader
-                isTablet={isTablet}
                 imgSrcLaptop={Resources.images.Home.lhrMen}
                 imgSrcTablet={Resources.images.Home.lhrMenMobile}
                 linkTo="/book-now"

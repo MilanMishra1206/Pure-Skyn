@@ -39,7 +39,6 @@ function SkinTightening({ type }) {
         <div>
           <Suspense fallback={<div>Loading...</div>}>
             <CommonHeader
-              isTablet={isTablet}
               imgSrcLaptop={Resources.images.Home.skinTightening}
               imgSrcTablet={Resources.images.Home.skinTighteningMobile}
               linkTo="/Book-now"
@@ -65,27 +64,29 @@ function SkinTightening({ type }) {
                 <div className="text-2xl font-bold mb-4">
                   What is HIFU Facial
                 </div>
-                <p>
-                  At Pure Skyn, we offer HIFU, considered the best
-                  skin-tightening solution that transforms your ageing & sagging
-                  skin. It's a non-invasive, quick 8-minute procedure that lets
-                  you enjoy it for 18 months!
-                </p>
-                <p>
-                  HIFU stands for High-Intensity Focused Ultrasound. It's a
-                  state-of-the-art skin tightening procedure. It's painless.
-                  HIFU uses non-surgical techniques to send ultrasonic waves
-                  deep into your skin to remove fat cells. This encourages the
-                  body to mend itself and manufacture collagen.
-                </p>
-                <p>
-                  Looking for a safe, non-surgical way to reduce fat and improve
-                  skin texture? Consider Pure Skyn's ultrasound-based HIFU laser
-                  treatment! This tightening procedure is excellent for
-                  facelifts, body contouring, and targeted skin tightening.
-                  Plus, it stimulates cell regeneration for firmer, tighter
-                  skin.
-                </p>
+                <div className="text-justify">
+                  <p>
+                    At Pure Skyn, we offer HIFU, considered the best
+                    skin-tightening solution that transforms your ageing &
+                    sagging skin. It's a non-invasive, quick 8-minute procedure
+                    that lets you enjoy it for 18 months!
+                  </p>
+                  <p>
+                    HIFU stands for High-Intensity Focused Ultrasound. It's a
+                    state-of-the-art skin tightening procedure. It's painless.
+                    HIFU uses non-surgical techniques to send ultrasonic waves
+                    deep into your skin to remove fat cells. This encourages the
+                    body to mend itself and manufacture collagen.
+                  </p>
+                  <p>
+                    Looking for a safe, non-surgical way to reduce fat and
+                    improve skin texture? Consider Pure Skyn's ultrasound-based
+                    HIFU laser treatment! This tightening procedure is excellent
+                    for facelifts, body contouring, and targeted skin
+                    tightening. Plus, it stimulates cell regeneration for
+                    firmer, tighter skin.
+                  </p>
+                </div>
               </div>
               <div className="flex justify-center items-center mt-4 md:!mt-0">
                 <img
@@ -110,7 +111,7 @@ function SkinTightening({ type }) {
                 <div className="!text-2xl font-bold mb-4">
                   How does HIFU facial work?
                 </div>
-                <p>
+                <p className="text-justify">
                   A HIFU facial mainly stimulates collagen and elastin growth to
                   tighten your sagging and wrinkled skin. The HIFU machine
                   transfers ultrasound waves that penetrate deep within your
@@ -126,7 +127,7 @@ function SkinTightening({ type }) {
                   />
                   <div className="flex flex-col justify-center">
                     <div className="!text-xl font-bold mb-4">Hifu/Fus</div>
-                    <p>
+                    <p className="text-justify">
                       HIFU offers the non-invasive alternative to thae surgical
                       face lift while improving the fine lines, wrinkles,
                       décolleté etc. It is the best skin treatment for face
@@ -245,27 +246,29 @@ function SkinTightening({ type }) {
               <div className="text-2xl font-bold mb-4">
                 Why choose Pure Skyn for a HIFU procedure?
               </div>
-              <p>
-                The HIFU procedure at Pure Skyn, directed & conducted by our
-                Pure Skyn skin experts, involves using the KFDA-approved Double
-                Gold HIFU machine, a start-of-the-art device used for body
-                contouring, face lifting, & skin tightening.
-              </p>
-              <p>
-                This world-class HIFU machine is the fastest device used for
-                HIFU treatments across the world that delivers safe, accurate,
-                and almost painless skin tightening within a mere 8 minutes!
-                This incredibly fast-acting HIFU machine used at Pure Skyn
-                ensures a quick procedure that provides effects that last you up
-                to 18 months!
-              </p>
-              <p>
-                At Pure Skyn, we prioritise your long-term skin health and
-                well-being. Owing to that, we optimise our anti-ageing
-                treatments by using best-in-class devices for face & body
-                contouring, skin tightening & lifting for quick and long-lasting
-                results that can be effortlessly maintained!
-              </p>
+              <div className="text-justify">
+                <p>
+                  The HIFU procedure at Pure Skyn, directed & conducted by our
+                  Pure Skyn skin experts, involves using the KFDA-approved
+                  Double Gold HIFU machine, a start-of-the-art device used for
+                  body contouring, face lifting, & skin tightening.
+                </p>
+                <p>
+                  This world-class HIFU machine is the fastest device used for
+                  HIFU treatments across the world that delivers safe, accurate,
+                  and almost painless skin tightening within a mere 8 minutes!
+                  This incredibly fast-acting HIFU machine used at Pure Skyn
+                  ensures a quick procedure that provides effects that last you
+                  up to 18 months!
+                </p>
+                <p>
+                  At Pure Skyn, we prioritise your long-term skin health and
+                  well-being. Owing to that, we optimise our anti-ageing
+                  treatments by using best-in-class devices for face & body
+                  contouring, skin tightening & lifting for quick and
+                  long-lasting results that can be effortlessly maintained!
+                </p>
+              </div>
             </div>
           </motion.div>
           {type && (

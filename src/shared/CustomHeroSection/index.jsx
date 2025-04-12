@@ -87,7 +87,7 @@ const CustomHeroSection = () => {
                     <p>It's All About </p>
                     <p className="mt-3">The Results!</p>
                   </div>
-                  <p className="mt-3 text-coffee text-lg font-poppins font-bold">
+                  <p className="mt-3 text-coffee text-lg font-poppins font-bold text-center">
                     Hair free smooth and glowing skin with no hassle!
                   </p>
                   <p className="text-xl text-coal">
@@ -153,7 +153,7 @@ const CustomHeroSection = () => {
                   <p className="mt-3">The Results!</p>
                 </div>
               </div>
-              <p className="mt-3 text-coffee font-poppins font-bold text-lg">
+              <p className="mt-3 text-coffee font-poppins font-bold text-lg text-center">
                 Hair free smooth and glowing skin with no hassle!
               </p>
               <div className=" text-cello my-4 md:my-6 px-3 lg:!mx-5 font-poppins text-center">
