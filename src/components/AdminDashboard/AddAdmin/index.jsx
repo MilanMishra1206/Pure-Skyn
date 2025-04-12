@@ -53,18 +53,16 @@ function AddAdmin({ isTablet, isMobile }) {
     validationSchema: getSignUpValidation,
     onSubmit: (value) => {
       signupAdmin({
-        firstName: value.firstName,
-        lastName: value.lastName,
+        name: value.name,
         email: value.email,
         password: value.password,
-        email: value.email,
+        phone: value.phone,
       });
     },
   });
 
   const handleSubmit = () => {
     if (!adminFormik.isValid) {
-      console.log(adminFormik.errors);
       showSnackbar("Please enter all the required fields!", "error");
       return;
     } else {

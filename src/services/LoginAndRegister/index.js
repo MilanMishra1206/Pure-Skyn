@@ -41,13 +41,12 @@ export const loginAdmin = async ({ email, password }) => {
 };
 
 export const registerAdmin = async ({
-  firstName,
-  lastName,
+  name,
   email,
   password,
   phone,
 }) => {
-  const params = { firstName, lastName, email, password, phone, role: "admin" };
+  const params = { name, email, password, phone };
   try {
     const data = await axiosInstanceLogin.post(
       API_URLS.Auth.registerUser,

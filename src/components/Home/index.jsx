@@ -5,6 +5,7 @@ import MotionWrapper from "../../config/MotionFramer/MotionWrapper";
 import CustomLoader from "../../shared/CustomLoader";
 
 const BestSelling = lazy(() => import("./BestSelling"));
+const MostPopularLhr = lazy(() => import("./MostPopularLhr"));
 const TestimonialCarousel = lazy(() => import("./TestimonialCarousel"));
 const ServicesOffered = lazy(() => import("./ServicesOffered"));
 // const ContactUs = lazy(() => import("./ContactUs"));
@@ -38,16 +39,26 @@ function Home() {
             />
           </MotionWrapper>
         </Suspense>
-        {!isMobile && <Suspense fallback={<CustomLoader open={true} />}>
-          <MotionWrapper>
-            <AboutUs />
-          </MotionWrapper>
-        </Suspense>}
-        {!isMobile && <Suspense fallback={<CustomLoader open={true} />}>
-          <MotionWrapper>
-            <BestSelling isMobile={isMobile} isLargeScreen={isLargeScreen} />
-          </MotionWrapper>
-        </Suspense>}
+        {!isMobile && (
+          <Suspense fallback={<CustomLoader open={true} />}>
+            <MotionWrapper>
+              <AboutUs />
+            </MotionWrapper>
+          </Suspense>
+        )}
+        {!isMobile && (
+          <Suspense fallback={<CustomLoader open={true} />}>
+            <MotionWrapper>
+              <MostPopularLhr
+                isMobile={isMobile}
+                isLargeScreen={isLargeScreen}
+              />
+            </MotionWrapper>
+          </Suspense>
+        )}
+        <MotionWrapper>
+          <BestSelling isMobile={isMobile} isLargeScreen={isLargeScreen} />
+        </MotionWrapper>
         <Suspense fallback={<CustomLoader open={true} />}>
           <MotionWrapper>
             <TestimonialCarousel isMobile={isMobile} />

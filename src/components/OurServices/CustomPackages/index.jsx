@@ -149,11 +149,11 @@ function CustomPackages() {
           >
             <img
               src={Resources.images.Common.fiftyPercentAfterServiceBanner}
-              alt="50% After Service Banner"
-              className="hidden md:!block"
+              alt="Offer"
+              className="md:hidden"
             />
             <img
-              src={Resources.images.Common.fiftyPercentAfterServiceBannerMobile}
+              src={Resources.images.Common.fiftyPercentAfterServiceBanner}
               alt="50% After Service Banner"
               className="block md:!hidden"
             />

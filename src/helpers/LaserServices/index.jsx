@@ -37,7 +37,7 @@ export const laserServiceForMenContent = [
       "Everyone's hair is different. Generally, once a session is completed, it can last for years, even in some cases forever. 4-8 treatments are required at 4-6 week intervals. One of the main benefits of laser hair removal is that it is a long-term solution. Unlike other hair removal methods that require regular maintenance, laser hair removal targets the hair follicles themselves, preventing hair growth for an extended period of time.",
     sectionTwo:
       "After just a few sessions, you'll notice a significant reduction in hair growth and may even experience permanent hair removal.",
-    img: Resources.images.Services.LaserHairRemoval.Men.image5,
+    img: Resources.images.Home.serviceCards.lhrMen,
   },
 ];
 
@@ -52,7 +52,7 @@ export const laserServiceForWomenContent = [
       "Introducing the ultimate solution to your hair removal woes - laser hair removal for women! Say goodbye to painful waxing, endless shaving, and unsightly hair growth. Our laser hair removal service offers a safe, effective, and long-lasting solution to unwanted hair on any part of your body. Imagine waking up every morning to smooth, hair-free skin without the hassle of shaving or waxing. With laser hair removal, you can achieve just that.",
     sectionTwo:
       "In addition to being cost-effective, laser hair removal is also incredibly convenient. You no longer need to worry about scheduling regular waxing or shaving appointments or spending hours in the bathroom trying to remove unwanted hair. With our laser hair removal service, you can achieve smooth and hair-free skin in just a few sessions.",
-    img: Resources.images.Services.LaserHairRemoval.Women.imageOne,
+    img: Resources.images.Home.serviceCards.lhrWomen,
   },
   {
     id: 2,
@@ -614,7 +614,7 @@ export const allPackageDetails = {
         subServiceId: "1-6",
         featureName: "bikiniAndButtocksWomen",
         name: "Bikini and Buttocks - Single Session",
-        price: 6000,
+        price: 6500,
         imgSrc: Resources.images.Home.lhr.bikiniPackage,
       },
     ],
@@ -634,7 +634,7 @@ export const allPackageDetails = {
         subServiceId: "1-8",
         featureName: "armsAndUnderarmsWomen",
         name: "Arms and Underarms - Single Session",
-        price: 6500,
+        price: 8500,
         imgSrc: Resources.images.Home.lhr.armsPackage,
       },
     ],
@@ -709,7 +709,7 @@ export const allPackageDetails = {
         subServiceId: "1-15",
         featureName: "bikiniWomen",
         name: "Bikini - Single Session",
-        price: 5000,
+        price: 4500,
         imgSrc: Resources.images.Home.lhr.bikiniPackage,
       },
     ],
@@ -771,7 +771,7 @@ export const allPackageDetails = {
         subServiceId: "2-6",
         featureName: "armsAndUnderarmsMen",
         name: "Arms and Underarms - Single Session",
-        price: 6500,
+        price: 8500,
         imgSrc: Resources.images.Home.lhr.armsPackage,
       },
     ],
@@ -791,7 +791,7 @@ export const allPackageDetails = {
         subServiceId: "2-8",
         featureName: "chestAndBackMen",
         name: "Chest and Back - Single Session",
-        price: 8000,
+        price: 8500,
         imgSrc: Resources.images.Home.lhr.chestBackPackage,
       },
     ],
@@ -850,7 +850,7 @@ export const allPackageDetails = {
         featureName: "stFullFace",
         name: "Full Face - Single Session",
         imgSrc: Resources.images.Home.skinTighteningPackage.STFullFace,
-        price: 5000,
+        price: 4500,
       },
     ],
   },
@@ -864,7 +864,7 @@ export const allPackageDetails = {
         featureName: "oxyhydraFacial",
         name: "Oxy Hydra - Single Session",
         imgSrc: Resources.images.Home.oxyhydraPackage,
-        price: 5000,
+        price: 4500,
       },
     ],
   },
@@ -878,7 +878,7 @@ export const allPackageDetails = {
         featureName: "oxygeneo",
         name: "Oxy Geneo - Single Session",
         imgSrc: Resources.images.Home.oxygeneoPackage,
-        price: 5000,
+        price: 6500,
       },
     ],
   },
@@ -899,144 +899,148 @@ export const allPackageDetails = {
 };
 
 export const beforeAfterCarouselContent = {
-  lhrFemale: [
+  "LHR Female": [
     {
       id: 1,
+      serviceName: "LHR Female",
       beforeImg: Resources.images.Services.BeforeAfter.lhrFemale.img1Before,
       afterImg: Resources.images.Services.BeforeAfter.lhrFemale.img1After,
     },
     {
       id: 2,
+      serviceName: "LHR Female",
       beforeImg: Resources.images.Services.BeforeAfter.lhrFemale.img2Before,
       afterImg: Resources.images.Services.BeforeAfter.lhrFemale.img2After,
     },
     {
       id: 3,
+      serviceName: "LHR Female",
       beforeImg: Resources.images.Services.BeforeAfter.lhrFemale.img3Before,
       afterImg: Resources.images.Services.BeforeAfter.lhrFemale.img3After,
     },
     {
       id: 4,
+      serviceName: "LHR Female",
       beforeImg: Resources.images.Services.BeforeAfter.lhrFemale.img4Before,
       afterImg: Resources.images.Services.BeforeAfter.lhrFemale.img4After,
     },
     {
       id: 5,
+      serviceName: "LHR Female",
       beforeImg: Resources.images.Services.BeforeAfter.lhrFemale.img5Before,
       afterImg: Resources.images.Services.BeforeAfter.lhrFemale.img5After,
     },
     {
       id: 6,
+      serviceName: "LHR Female",
       beforeImg: Resources.images.Services.BeforeAfter.lhrFemale.img6Before,
       afterImg: Resources.images.Services.BeforeAfter.lhrFemale.img6After,
     },
   ],
-  lhrMale: [
+  "LHR Male": [
     {
       id: 1,
+      serviceName: "LHR Male",
       beforeImg: Resources.images.Services.BeforeAfter.lhrMale.img1Before,
       afterImg: Resources.images.Services.BeforeAfter.lhrMale.img1After,
     },
     {
       id: 2,
+      serviceName: "LHR Male",
       beforeImg: Resources.images.Services.BeforeAfter.lhrMale.img2Before,
       afterImg: Resources.images.Services.BeforeAfter.lhrMale.img2After,
     },
     {
       id: 3,
+      serviceName: "LHR Male",
       beforeImg: Resources.images.Services.BeforeAfter.lhrMale.img3Before,
       afterImg: Resources.images.Services.BeforeAfter.lhrMale.img3After,
     },
   ],
-  skinTightening: [
+  "RF Skin Tightening": [
     {
       id: 1,
+      serviceName: "RF Skin Tightening",
       beforeImg:
         Resources.images.Services.BeforeAfter.skinTightening.img1Before,
       afterImg: Resources.images.Services.BeforeAfter.skinTightening.img1After,
     },
     {
       id: 2,
+      serviceName: "RF Skin Tightening",
       beforeImg:
         Resources.images.Services.BeforeAfter.skinTightening.img2Before,
       afterImg: Resources.images.Services.BeforeAfter.skinTightening.img2After,
     },
-    {
-      id: 3,
-      beforeImg:
-        Resources.images.Services.BeforeAfter.skinTightening.img3Before,
-      afterImg: Resources.images.Services.BeforeAfter.skinTightening.img3After,
-    },
-    {
-      id: 4,
-      beforeImg:
-        Resources.images.Services.BeforeAfter.skinTightening.img4Before,
-      afterImg: Resources.images.Services.BeforeAfter.skinTightening.img4After,
-    },
-    {
-      id: 5,
-      beforeImg:
-        Resources.images.Services.BeforeAfter.skinTightening.img5Before,
-      afterImg: Resources.images.Services.BeforeAfter.skinTightening.img5After,
-    },
   ],
-  oxygeneo: [
+  Oxygeneo: [
     {
       id: 1,
+      serviceName: "Oxygeneo",
       beforeImg: Resources.images.Services.BeforeAfter.oxygeneo.img1Before,
       afterImg: Resources.images.Services.BeforeAfter.oxygeneo.img1After,
     },
     {
       id: 2,
+      serviceName: "Oxygeneo",
       beforeImg: Resources.images.Services.BeforeAfter.oxygeneo.img2Before,
       afterImg: Resources.images.Services.BeforeAfter.oxygeneo.img2After,
     },
     {
       id: 3,
+      serviceName: "Oxygeneo",
       beforeImg: Resources.images.Services.BeforeAfter.oxygeneo.img3Before,
       afterImg: Resources.images.Services.BeforeAfter.oxygeneo.img3After,
     },
   ],
-  oxyhydra: [
+  "Oxy Hydra": [
     {
       id: 1,
+      serviceName: "Oxy Hydra",
       beforeImg: Resources.images.Services.BeforeAfter.oxyhydra.img1Before,
       afterImg: Resources.images.Services.BeforeAfter.oxyhydra.img1After,
     },
     {
       id: 2,
+      serviceName: "Oxy Hydra",
       beforeImg: Resources.images.Services.BeforeAfter.oxyhydra.img2Before,
       afterImg: Resources.images.Services.BeforeAfter.oxyhydra.img2After,
     },
     {
       id: 3,
+      serviceName: "Oxy Hydra",
       beforeImg: Resources.images.Services.BeforeAfter.oxyhydra.img3Before,
       afterImg: Resources.images.Services.BeforeAfter.oxyhydra.img3After,
     },
-    {
-      id: 4,
-      beforeImg: Resources.images.Services.BeforeAfter.oxyhydra.img4Before,
-      afterImg: Resources.images.Services.BeforeAfter.oxyhydra.img4After,
-    },
   ],
-  dermafrac: [
+  "Dermafrac Facial": [
     {
       id: 1,
+      serviceName: "Dermafrac Facial",
       beforeImg: Resources.images.Services.BeforeAfter.dermafrac.img1Before,
       afterImg: Resources.images.Services.BeforeAfter.dermafrac.img1After,
     },
     {
       id: 2,
+      serviceName: "Dermafrac Facial",
       beforeImg: Resources.images.Services.BeforeAfter.dermafrac.img2Before,
       afterImg: Resources.images.Services.BeforeAfter.dermafrac.img2After,
     },
     {
       id: 3,
+      serviceName: "Dermafrac Facial",
       beforeImg: Resources.images.Services.BeforeAfter.dermafrac.img3Before,
       afterImg: Resources.images.Services.BeforeAfter.dermafrac.img3After,
     },
   ],
 };
+
+export const homeBeforeAfterCarouselContent = Object.entries(
+  beforeAfterCarouselContent
+).map(([category, items]) => ({
+  category,
+  ...items[0],
+}));
 
 export const treatmentList = [
   {
@@ -1099,16 +1103,6 @@ export const customPackageDetails = [
     selectedPackageImg: Resources.images.Home.customPackages.customPackageImg4,
   },
   {
-    treatmentName: "Oxy Hydra Facial + Oxygeneo Therapy",
-    packageName: "Oxy Hydra Facial + Oxygeneo Therapy",
-    packagePrice: 10000,
-    strikeOutPrice: 15000,
-    serviceId: "7",
-    subServiceId: "7-3",
-    featureName: "oxyHydraAndOxygeneo",
-    selectedPackageImg: Resources.images.Home.customPackages.customPackageImg2,
-  },
-  {
     treatmentName: "Medi-Facial Package",
     packageName: "Oxy Hydra Facial + Oxygeno + Dermafrac",
     packagePrice: 15000,
@@ -1117,6 +1111,16 @@ export const customPackageDetails = [
     subServiceId: "7-4",
     featureName: "oxyhydraOxygenoDermafrac",
     selectedPackageImg: Resources.images.Home.customPackages.customPackageImg3,
+  },
+  {
+    treatmentName: "Oxy Hydra Facial + Oxygeneo Therapy",
+    packageName: "Oxy Hydra Facial + Oxygeneo Therapy",
+    packagePrice: 10000,
+    strikeOutPrice: 15000,
+    serviceId: "7",
+    subServiceId: "7-3",
+    featureName: "oxyHydraAndOxygeneo",
+    selectedPackageImg: Resources.images.Home.customPackages.customPackageImg2,
   },
   {
     treatmentName: "Oxygeneo Therapy + Dermafrac",

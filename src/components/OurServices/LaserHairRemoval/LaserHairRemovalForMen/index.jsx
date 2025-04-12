@@ -77,7 +77,7 @@ function LaserHairRemovalForMen({ category, isMobile, isTablet, isLaptop }) {
                       <img
                         src={item.img}
                         alt={item.header.toLowerCase()}
-                        className="rounded-2xl h-75"
+                        className="rounded-2xl h-75 w-75"
                       />
                     </div>
                   )}
@@ -147,7 +147,7 @@ function LaserHairRemovalForMen({ category, isMobile, isTablet, isLaptop }) {
                 </div>
                 <FadedLineBreak />
                 <BeforeAfterCarousel
-                  carouselContent={beforeAfterCarouselContent.lhrMale}
+                  carouselContent={beforeAfterCarouselContent?.["LHR Male"]}
                 />
                 <FadedLineBreak />
                 <div className="text-center text-skyn font-bold text-3xl px-4">
@@ -156,7 +156,9 @@ function LaserHairRemovalForMen({ category, isMobile, isTablet, isLaptop }) {
                 <div
                   className={`flex justify-center items-center ${isTablet ? "p-3 flex-col" : "flex-row"}`}
                 >
-                  <div className={`mt-4 w-full ${!isTablet ? "px-5" : ""}`}>
+                  <div
+                    className={`mt-4 w-full xl:!w-1/2 ${!isTablet ? "px-5" : ""}`}
+                  >
                     <CustomAccordion accordionData={LHRMenAccordianContent} />
                     <Link
                       to="/faq#Laser Hair Removal Men"

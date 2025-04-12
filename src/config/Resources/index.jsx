@@ -25,9 +25,9 @@ const Resources = {
       offerBannerLaptop: `${base}/Common/off_banner_laptop.jpg`,
       googlePlayButton: `${base}/Common/google-play.png`,
       fiftyPercentAfterServiceBanner: `${base}/Common/50-off-banner.jpg`,
-      fiftyPercentAfterServiceBannerMobile: `${base}/Common/50-off-mobile.jpg`,
       Warning: `${base}/Common/Warning.svg`,
       logoNavbar: `${base}/Common/logo_coal.png`,
+      googleGLogo: `${base}/Common/google_g_logo.webp`,
     },
     Home: {
       dermfracMobile: `${base}/Home/dermfrac-mobile.png`,
@@ -87,7 +87,7 @@ const Resources = {
         dermafrac: `${base}/Home/serviceCards/dermafrac.jpg`,
         lhrMen: `${base}/Home/serviceCards/lhr_men.jpg`,
         lhrWomen: `${base}/Home/serviceCards/lhr_women.jpg`,
-        oxygeneo: `${base}/Home/serviceCards/oxygeneo.jpg`        
+        oxygeneo: `${base}/Home/serviceCards/oxygeneo.jpg`,
       },
     },
     NavBar: {

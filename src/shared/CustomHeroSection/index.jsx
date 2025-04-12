@@ -87,6 +87,9 @@ const CustomHeroSection = () => {
                     <p>It's All About </p>
                     <p className="mt-3">The Results!</p>
                   </div>
+                  <p className="mt-3 text-coffee text-lg font-poppins font-bold">
+                    Hair free smooth and glowing skin with no hassle!
+                  </p>
                   <p className="text-xl text-coal">
                     Laser Hair Removal, Oxy Hydra Facial, RF Skin Tightening,
                     Dermafrac Infusion, Oxygeneo & More.
@@ -150,6 +153,9 @@ const CustomHeroSection = () => {
                   <p className="mt-3">The Results!</p>
                 </div>
               </div>
+              <p className="mt-3 text-coffee font-poppins font-bold text-lg">
+                Hair free smooth and glowing skin with no hassle!
+              </p>
               <div className=" text-cello my-4 md:my-6 px-3 lg:!mx-5 font-poppins text-center">
                 <p>
                   <strong className="text-coffee">
@@ -193,7 +199,7 @@ const CustomHeroSection = () => {
         viewport={{ once: true }}
         className="mb-5 font-poppins"
       >
-        <section className="w-full px-2 md:!px-5 grid md:grid-cols-2 gap-8 mx-auto font-poppins h-full">
+        <section className="grid md:grid-cols-2 gap-8 items-center w-full px-2 md:!px-5 mx-auto font-poppins h-full">
           <QueryForm
             queryFormik={queryFormik}
             handleQueryFormSubmit={handleQueryFormSubmit}

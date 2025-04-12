@@ -2,6 +2,7 @@ import React from "react";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
+import CustomHomeHeader from "../../../shared/CustomHomeHeader";
 
 const BeforeAfterCarousel = ({ carouselContent }) => {
   const settings = {
@@ -17,13 +18,14 @@ const BeforeAfterCarousel = ({ carouselContent }) => {
 
   return (
     <div className="w-[250px] md:!w-[500px] lg:!w-[1000px] mx-auto font-poppins">
-      <h2 className="text-2xl md:text-3xl font-bold text-center mb-4">
-        Before & After Treatments
-      </h2>
+      <CustomHomeHeader heading="Before & After Treatments" />
       <div className="w-[250px] md:!w-[500px] lg:!w-[1000px] mx-auto">
         <Slider {...settings}>
           {carouselContent.map((item, index) => (
             <div key={index} className="p-2">
+              <p className="font-bold text-lg text-kashmirBlue text-center mb-4">
+                {item.serviceName}
+              </p>
               <div className="flex flex-col md:flex-row items-center justify-center gap-4">
                 <div className="relative">
                   <img

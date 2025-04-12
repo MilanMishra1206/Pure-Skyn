@@ -1,11 +1,10 @@
 import React, { useRef } from "react";
 import { MdChevronLeft, MdChevronRight } from "react-icons/md";
-import { customPackageDetails } from "../../../helpers/LaserServices";
-import CustomHomeHeader from "../../../shared/CustomHomeHeader";
-import { Link } from "react-router-dom";
-import CustomCards from "../../../shared/CustomCards";
+import CustomHomeHeader from "../../../../shared/CustomHomeHeader";
+import { servicesOffered } from "../../../../helpers/LaserServices";
+import CustomCards from "../../../../shared/CustomCards";
 
-const BestSellingCarousel = () => {
+const CustomServicesCardsCarousel = () => {
   const sliderRef = useRef(null);
 
   const scrollLeft = () => {
@@ -31,20 +30,16 @@ const BestSellingCarousel = () => {
 
         <div
           ref={sliderRef}
-          className="flex overflow-x-auto space-x-4 px-10 py-1 scrollbar-hide scroll-smooth bg-white"
+          className="flex overflow-x-auto space-x-4 px-10 py-1 scrollbar-hide scroll-smooth"
         >
-          {customPackageDetails.map((item, index) => (
+          {servicesOffered.map((item) => (
             <CustomCards
-              title={item.treatmentName}
-              imgSrc={item.selectedPackageImg}
-              linkTo="/packages"
-              packagePrice={item.packagePrice}
-              strikeOutPrice={item.strikeOutPrice}
-              bgGradient="bg-gradient-to-t from-black/60 via-black/40 to-transparent"
-              key={index}
-              customClass="w-72 2xl:!w-60 h-[20.5rem] rounded-2xl shadow-lg"
+              title={item.title}
+              imgSrc={item.imageSrc}
+              linkTo={item.linkTo}
+              key={item.id}
+              customClass={"w-72 2xl:!w-60 h-[20.5rem] rounded-2xl shadow-lg"}
               imageClass="h-100"
-              titleClass="text-white"
             />
           ))}
         </div>
@@ -58,4 +53,4 @@ const BestSellingCarousel = () => {
   );
 };
 
-export default BestSellingCarousel;
+export default CustomServicesCardsCarousel;

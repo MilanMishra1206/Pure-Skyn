@@ -133,7 +133,7 @@ function LaserHairRemovalForWomen({ category, isMobile, isTablet }) {
               >
                 <FadedLineBreak />
                 <BeforeAfterCarousel
-                  carouselContent={beforeAfterCarouselContent.lhrFemale}
+                  carouselContent={beforeAfterCarouselContent?.["LHR Female"]}
                 />
                 <FadedLineBreak />
                 <div
@@ -156,9 +156,11 @@ function LaserHairRemovalForWomen({ category, isMobile, isTablet }) {
                   <p>Frequently Asked Questions(FAQs)</p>
                 </div>
                 <div
-                  className={`flex justify-center items-center ${isTablet ? "p-3 flex-col" : "flex-row"}`}
+                  className={`flex justify-center items-center ${isTablet ? "p-3" : ""}`}
                 >
-                  <div className={`mt-4 w-full ${!isTablet ? "px-5" : ""}`}>
+                  <div
+                    className={`mt-4 w-full xl:!w-1/2 ${!isTablet ? "px-5" : ""}`}
+                  >
                     <CustomAccordion accordionData={LHRWomenAccordianContent} />
                     <Link
                       to="/faq#Laser Hair Removal Men"

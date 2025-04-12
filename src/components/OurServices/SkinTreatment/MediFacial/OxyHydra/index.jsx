@@ -313,17 +313,17 @@ function OxyHydra({ type }) {
           >
             <FadedLineBreak />
             <BeforeAfterCarousel
-              carouselContent={beforeAfterCarouselContent.oxyhydra}
+              carouselContent={beforeAfterCarouselContent?.["Oxy Hydra"]}
             />
             <FadedLineBreak />
             <div className="text-center text-skyn font-bold text-3xl px-4">
               <p>Frequently Asked Questions(FAQs)</p>
             </div>
             <div
-              className={`flex justify-center items-center ${isTablet ? "p-3 flex-col" : "flex-row"}`}
+              className={`flex justify-center items-center ${isTablet ? "p-3" : ""}`}
             >
               <div
-                className={`mt-4 w-full lg:!w-1/2 ${!isTablet ? "px-5" : ""}`}
+                className={`mt-4 w-full xl:!w-1/2 ${!isTablet ? "px-5" : ""}`}
               >
                 <CustomAccordion accordionData={oxyHydraAccordianContent} />
                 <Link

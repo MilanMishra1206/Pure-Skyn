@@ -38,46 +38,25 @@ function AdminModal({
           </div>
           <FadedLineBreak />
           <form className="w-full">
-            <div className="flex flex-col md:flex-row md:gap-4">
-              <Suspense fallback={<div />}>
-                <CustomTextField
-                  textClassOverride="!text-kashmirBlue"
-                  placeholderClasses="placeholder:!opacity-30 !text-licorice"
-                  className="h-12 rounded-md !bg-transparent"
-                  placeholder="Enter"
-                  requiredStar
-                  labelToShow="First Name"
-                  name="firstName"
-                  textFieldColorClass="shadow-insetLight"
-                  inputClassName="!bg-transparent"
-                  fieldWidth="w-full !mb-4"
-                  value={adminFormik.values?.firstName}
-                  onChange={adminFormik.handleChange}
-                  handleBlur={adminFormik.handleBlur}
-                  error={adminFormik.errors.firstName}
-                  touched={adminFormik.touched.firstName}
-                />
-              </Suspense>
-              <Suspense fallback={<div />}>
-                <CustomTextField
-                  textClassOverride="!text-kashmirBlue"
-                  placeholderClasses="placeholder:!opacity-30 !text-licorice"
-                  className="h-12 rounded-md !bg-transparent"
-                  placeholder="Enter"
-                  requiredStar
-                  labelToShow="Last Name"
-                  name="lastName"
-                  textFieldColorClass="shadow-insetLight"
-                  inputClassName="!bg-transparent"
-                  fieldWidth="w-full !mb-4"
-                  value={adminFormik.values?.lastName}
-                  onChange={adminFormik.handleChange}
-                  handleBlur={adminFormik.handleBlur}
-                  error={adminFormik.errors.lastName}
-                  touched={adminFormik.touched.lastName}
-                />
-              </Suspense>
-            </div>
+            <Suspense fallback={<div />}>
+              <CustomTextField
+                textClassOverride="!text-kashmirBlue"
+                placeholderClasses="placeholder:!opacity-30 !text-licorice"
+                className="h-12 rounded-md !bg-transparent"
+                placeholder="Enter"
+                requiredStar
+                labelToShow="Name"
+                name="name"
+                textFieldColorClass="shadow-insetLight"
+                inputClassName="!bg-transparent"
+                fieldWidth="w-full !mb-4"
+                value={adminFormik.values?.name}
+                onChange={adminFormik.handleChange}
+                handleBlur={adminFormik.handleBlur}
+                error={adminFormik.errors.name}
+                touched={adminFormik.touched.name}
+              />
+            </Suspense>
             <div className="flex flex-col md:flex-row md:gap-4">
               <Suspense fallback={<div />}>
                 <CustomTextField

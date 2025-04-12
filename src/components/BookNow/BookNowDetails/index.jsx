@@ -111,7 +111,7 @@ const BookNowDetails = ({ isLoggedIn }) => {
         : [];
       const reqBody = {
         userId: userProfile.userId,
-        userInfo: values,
+        beneficiary: values,
         servicesBooked,
       };
       showSnackbar("Booking Done!!!", "success");

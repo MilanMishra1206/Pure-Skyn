@@ -189,14 +189,14 @@ function Oxygeneo({ type }) {
           >
             <FadedLineBreak />
             <BeforeAfterCarousel
-              carouselContent={beforeAfterCarouselContent.oxygeneo}
+              carouselContent={beforeAfterCarouselContent.Oxygeneo}
             />
             <FadedLineBreak />
             <div className="text-center text-skyn font-bold text-3xl px-4">
               <p>Frequently Asked Questions(FAQs)</p>
             </div>
             <div
-              className={`mt-3 flex justify-center items-center ${isTablet ? "p-3 flex-col" : "flex-row"}`}
+              className={`mt-3 flex justify-center items-center ${isTablet ? "p-3" : ""}`}
             >
               <div
                 className={`mt-4 w-full xl:!w-1/2 ${!isTablet ? "px-5" : ""}`}

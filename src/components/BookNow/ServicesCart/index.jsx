@@ -84,12 +84,12 @@ function ServicesCart() {
             src={Resources.images.Common.fiftyPercentAfterServiceBanner}
             alt="50% After Service Banner"
             className="hidden md:!block"
-          />
-          <img
-            src={Resources.images.Common.fiftyPercentAfterServiceBannerMobile}
+            />
+            <img
+            src={Resources.images.Common.fiftyPercentAfterServiceBanner}
             alt="50% After Service Banner"
             className="block md:!hidden"
-          />
+            />
         </motion.div>
         {servicesCart.length > 0 ? (
           <BookNowDetails isLoggedIn={isLoggedIn} />

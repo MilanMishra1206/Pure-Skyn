@@ -277,17 +277,17 @@ function DermafracInfusionFacial({ type }) {
           >
             <FadedLineBreak />
             <BeforeAfterCarousel
-                  carouselContent={beforeAfterCarouselContent.dermafrac}
-                />
-                <FadedLineBreak />
+              carouselContent={beforeAfterCarouselContent?.["Dermafrac Facial"]}
+            />
+            <FadedLineBreak />
             <div className="text-center text-skyn font-bold text-3xl px-4">
               <p>Frequently Asked Questions(FAQs)</p>
             </div>
             <div
-              className={`mt-3 flex justify-center items-center ${isTablet ? "p-3 flex-col" : "flex-row"}`}
+              className={`mt-3 flex justify-center items-center ${isTablet ? "p-3" : ""}`}
             >
               <div
-                className={`mt-4 w-full lg:!w-1/2 !text-left ${!isTablet ? "p-5" : ""}`}
+                className={`mt-4 w-full xl:!w-1/2 !text-left ${!isTablet ? "p-5" : ""}`}
               >
                 <CustomAccordion accordionData={dermoFracAccordianContent} />
                 <Link
@@ -299,7 +299,10 @@ function DermafracInfusionFacial({ type }) {
               </div>
             </div>
           </motion.div>
-          <CustomFloatingBookNowButton treatmentName="Dermafrac Infusion Facial" goToStep={1}/>
+          <CustomFloatingBookNowButton
+            treatmentName="Dermafrac Infusion Facial"
+            goToStep={1}
+          />
         </div>
       )}
     </div>
