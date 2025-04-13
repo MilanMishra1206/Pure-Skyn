@@ -1,6 +1,5 @@
 import { useEffect, useState } from "react";
 import Resources from "../../../../config/Resources";
-import { FaShieldAlt, FaShippingFast } from "react-icons/fa";
 
 function ProductDescriptionImage({ productDetail, defaultImage }) {
   const allImages = productDetail?.allImages;
@@ -48,12 +47,12 @@ function ProductDescriptionImage({ productDetail, defaultImage }) {
         <div className="flex flex-col gap-4 justify-center py-3 self-start">
           {renderSmallImages()}
         </div>
-        <div className="flex flex-col flex-grow items-center justify-center w-1/2 self-start">
+        <div className="flex flex-col flex-grow items-center justify-center w-1/2 md:!self-start self-auto">
           <div className="relative rounded-lg shadow-lg">
             <img
               src={bigImage}
               alt={productDetail?.productName}
-              className="rounded-lg w-full max-w-lg"
+              className="rounded-lg w-full max-w-lg h-96 md:!h-75"
             />
             <button
               onClick={handleBackClick}
@@ -76,7 +75,7 @@ function ProductDescriptionImage({ productDetail, defaultImage }) {
           <img
             src={bigImage}
             alt={productDetail?.productName}
-            className="rounded-lg"
+            className="rounded-lg h-96 md:!h-75"
           />
           <button
             onClick={handleBackClick}

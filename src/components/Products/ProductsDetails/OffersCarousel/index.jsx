@@ -2,8 +2,10 @@ import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import { useMediaQuery } from "@mui/material";
+import { useAppSnackbar } from "../../../../config/Context/SnackbarContext";
 
 const OffersCarousel = () => {
+  const showSnackbar = useAppSnackbar();
   const smallestMobile = useMediaQuery("(max-width: 395px)");
   const mediumMobile = useMediaQuery(
     "(min-width: 396px) and (max-width: 658px)"
@@ -47,16 +49,16 @@ const OffersCarousel = () => {
   };
   const offers = [
     {
-      title: "Best Value Offer",
-      description: "Get 50% off on all skincare products. Limited time offer!",
-      code: "SKIN50",
+      title: "Best Value Offer - 30% Off",
+      description: "Get 30% off on all skincare products. Limited time offer!",
+      code: "PS30",
       validUntil: "31st Dec 2025",
     },
     {
-      title: "Buy 1 Get 1 Free",
-      description: "Buy one product and get another one for free.",
-      code: "BUY1GET1",
-      validUntil: "15th Feb 2025",
+      title: "Best Value Offer - 40% Off",
+      description: "Get 40% off on your next purchase.",
+      code: "PS40",
+      validUntil: "30th Mar 2025",
     },
     {
       title: "Free Shipping",
@@ -64,17 +66,11 @@ const OffersCarousel = () => {
       code: "FREESHIP",
       validUntil: "28th Feb 2025",
     },
-    {
-      title: "10% Off",
-      description: "Get 10% off on your next purchase.",
-      code: "NEXT10",
-      validUntil: "30th Mar 2025",
-    },
   ];
 
   const copyToClipboard = (code) => {
     navigator.clipboard.writeText(code).then(() => {
-      alert("Coupon code copied!");
+      showSnackbar(`${code} copied. Use it during the checkout.`, "success");
     });
   };
 

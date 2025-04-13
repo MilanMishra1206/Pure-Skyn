@@ -333,6 +333,107 @@ const Resources = {
             img1: `${base}/Products/products/face-serum/ilume-serum/img1.jpg`,
           },
         },
+        facewash: {
+          agelite: {
+            img1: `${base}/Products/products/facewash/agelite/img1.jpg`,
+            img2: `${base}/Products/products/facewash/agelite/img2.jpg`,
+            img3: `${base}/Products/products/facewash/agelite/img3.jpg`,
+            img4: `${base}/Products/products/facewash/agelite/img4.jpg`,
+          },
+          aquaedege: {
+            img1: `${base}/Products/products/facewash/aquaedege/img1.jpg`,
+            img2: `${base}/Products/products/facewash/aquaedege/img2.jpg`,
+            img3: `${base}/Products/products/facewash/aquaedege/img3.jpg`,
+          },
+          dsglow: {
+            img1: `${base}/Products/products/facewash/dsglow/img1.webp`,
+            img2: `${base}/Products/products/facewash/dsglow/img5.webp`,
+            img3: `${base}/Products/products/facewash/dsglow/img6.webp`,
+            img4: `${base}/Products/products/facewash/dsglow/img4.webp`,
+          },
+          tabulaAst: {
+            img1: `${base}/Products/products/facewash/tabula-ast/img1.webp`,
+            img2: `${base}/Products/products/facewash/tabula-ast/img2.webp`,
+          },
+          tabulaOs: {
+            img1: `${base}/Products/products/facewash/tabula-os/img1.webp`,
+            img2: `${base}/Products/products/facewash/tabula-os/img2.webp`,
+          },
+          tabulaRasaDs: {
+            img1: `${base}/Products/products/facewash/tabula-rasa-ds/img1.webp`,
+            img2: `${base}/Products/products/facewash/tabula-rasa-ds/img2.png`,
+          },
+        },
+        moisturiser: {
+          cerasoft: {
+            img1: `${base}/Products/products/moisturiser/cerasoft/img1.jpg`,
+            img2: `${base}/Products/products/moisturiser/cerasoft/img2.jpg`,
+          },
+          fiMoist: {
+            img1: `${base}/Products/products/moisturiser/fi-moist/img1.jpg`,
+          },
+          moiser: {
+            img1: `${base}/Products/products/moisturiser/moiser/img1.jpg`,
+          },
+          relizmaLotion: {
+            img1: `${base}/Products/products/moisturiser/relizma-lotion/img1.webp`,
+            img2: `${base}/Products/products/moisturiser/relizma-lotion/img2.webp`,
+          },
+          uligo: {
+            img1: `${base}/Products/products/moisturiser/uligo/img1.jpg`,
+            img2: `${base}/Products/products/moisturiser/uligo/img2.jpg`,
+          },
+          uresoft: {
+            img1: `${base}/Products/products/moisturiser/uresoft/img1.webp`,
+            img2: `${base}/Products/products/moisturiser/uresoft/img2.webp`,
+            img3: `${base}/Products/products/moisturiser/uresoft/img3.webp`,
+          },
+        },
+        pigmentation: {
+          glambakUltra: {
+            img1: `${base}/Products/products/pigmentation/glambak-ultra/img1.webp`,
+          },
+          kcliteGold: {
+            img1: `${base}/Products/products/pigmentation/kclite-gold/img1.jpg`,
+          },
+          lumiedgeCream: {
+            img1: `${base}/Products/products/pigmentation/lumiedge-cream/img1.jpg`,
+            img2: `${base}/Products/products/pigmentation/lumiedge-cream/img2.jpg`,
+            img3: `${base}/Products/products/pigmentation/lumiedge-cream/img3.jpg`,
+            img4: `${base}/Products/products/pigmentation/lumiedge-cream/img4.jpg`,
+          },
+          lumiedgeTx: {
+            img1: `${base}/Products/products/pigmentation/lumiedge-tx/img1.jpg`,
+          },
+          melaluminUltra: {
+            img1: `${base}/Products/products/pigmentation/melalumin-ultra/img1.webp`,
+            img2: `${base}/Products/products/pigmentation/melalumin-ultra/img2.webp`,
+            img3: `${base}/Products/products/pigmentation/melalumin-ultra/img3.webp`,
+          },
+          transglowHd: {
+            img1: `${base}/Products/products/pigmentation/transglow-hd/img1.webp`,
+            img2: `${base}/Products/products/pigmentation/transglow-hd/img2.webp`,
+          },
+        },
+        skinAntioxidant: {
+          cwiz: {
+            img1: `${base}/Products/products/skin-antioxient/cwiz/img1.jpg`,
+          },
+          glutasurgeA: {
+            img1: `${base}/Products/products/skin-antioxient/flutasurge-a/img1.webp`,
+            img2: `${base}/Products/products/skin-antioxient/flutasurge-a/img2.png`,
+          },
+          glFizz: {
+            img1: `${base}/Products/products/skin-antioxient/gl-fizz/img1.jpg`,
+          },
+          glootamin: {
+            img1: `${base}/Products/products/skin-antioxient/glootamin/img1.webp`,
+            img2: `${base}/Products/products/skin-antioxient/glootamin/img2.webp`,
+          },
+          glutasurgeC: {
+            img1: `${base}/Products/products/skin-antioxient/glutasurge-c/img1.jpg`,
+          },
+        },
       },
     },
   },

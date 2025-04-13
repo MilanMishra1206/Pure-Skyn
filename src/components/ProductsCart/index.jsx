@@ -21,12 +21,14 @@ import { FaCircleCheck } from "react-icons/fa6";
 import HandleQuantity from "./HandleQuantity";
 import ConfirmationModal from "./ConfirmationModal";
 import { INRCurrency } from "../../helpers/Regex";
+import { useAppSnackbar } from "../../config/Context/SnackbarContext";
 
 const CustomTextField = lazy(() => import("../../shared/CustomTextField"));
 
 function Cart() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
+  const showSnackbar = useAppSnackbar();
 
   const isTablet = useMediaQuery("(max-width: 1023px)");
   const isMobile = useMediaQuery("(max-width: 767px)");
@@ -147,17 +149,25 @@ function Cart() {
       : setShippingCharges(149);
   }, [originalCartValue]);
 
+  const handleCouponClick = (selectedCoupon) => {
+    setIsCouponApplied(true);
+    setCouponCodeName(selectedCoupon);
+    handleCouponApply(selectedCoupon);
+  };
+
   const handleCouponApply = (couponCode) => {
-    const couponDetails = availableCoupons.filter(
+    const couponDetails = availableCoupons?.filter(
       (item) => item.couponCode === couponCode
     );
-    if (couponCodeName.trim()) {
+    if (couponCode?.trim()) {
       if (couponDetails.length > 0 && originalCartValue >= 500) {
         const percentOff = couponDetails[0].percentOff;
         setTotalCartValue(totalCartValue - (totalCartValue * percentOff) / 100);
-        setAmountAfterCoupon((totalCartValue * percentOff) / 100);
+        const amountSaved = (totalCartValue * percentOff) / 100;
+        setAmountAfterCoupon(amountSaved);
         setIsCouponApplied(true);
         setShowMinValueMessage("");
+        showSnackbar(`Great! You saved ${INRCurrency(amountSaved)}`, "success");
       } else {
         if (originalCartValue < 500) {
           setShowMinValueMessage("Minimum cart value should be more than ₹500");
@@ -182,7 +192,7 @@ function Cart() {
     if (originalCartValue < 500) {
       handleCouponApply();
     }
-  }, [originalCartValue]);
+  }, [originalCartValue, couponCodeName]);
 
   const breadcrumbs = [
     <Link
@@ -192,10 +202,14 @@ function Cart() {
     >
       Home
     </Link>,
-    <Typography
+    <Link
       key="2"
-      className="!text-coal !font-poppins !text-lg"
+      to="/products"
+      className="text-skyn no-underline font-poppins hover:opacity-80 text-lg"
     >
+      Shop
+    </Link>,
+    <Typography key="3" className="!text-coal !font-poppins !text-lg">
       Cart
     </Typography>,
   ];
@@ -378,12 +392,18 @@ function Cart() {
                             style={{ color: "#fde047", fontSize: "1.6rem" }}
                           />
                           <span key={coupon.id}>{coupon.description} - </span>
-                          <span className="text-skyn font-bold cursor-pointer hover:opacity-80">
+                          <button
+                            className={`text-skyn font-bold cursor-pointer hover:opacity-80 ${
+                              couponCodeName === coupon.couponCode
+                                ? "underline"
+                                : ""
+                            }`}
+                            onClick={() =>
+                              handleCouponClick(coupon?.couponCode)
+                            }
+                          >
                             {coupon.couponCode}{" "}
-                          </span>
-                          <StarRateRoundedIcon
-                            style={{ color: "#fde047", fontSize: "1.6rem" }}
-                          />
+                          </button>
                         </div>
                       ))
                     )}
@@ -438,7 +458,8 @@ function Cart() {
                           </button>
                         </div>
                         <span className="font-bold bg-emerald-700 text-white p-2 rounded text-ce">
-                          Congratulations! You got {INRCurrency(amountAfterCoupon)} OFF
+                          Congratulations! You got{" "}
+                          {INRCurrency(amountAfterCoupon)} OFF
                         </span>
                       </div>
                     ) : (
@@ -475,7 +496,7 @@ function Cart() {
                   <div className="mt-6 flex items-center justify-between">
                     <p className="font-medium text-kashmirBlue">Total</p>
                     <p className="text-xl font-semibold text-coal">
-                      {INRCurrency((totalCartValue + shippingCharges))}
+                      {INRCurrency(totalCartValue + shippingCharges)}
                     </p>
                   </div>
                   <div className="mt-6 flex justify-end mb-5">
@@ -503,7 +524,7 @@ function Cart() {
           whileInView="show"
           viewport={{ once: true }}
         >
-          <BuyMoreProducts productCategory=""/>
+          <BuyMoreProducts productCategory="" />
         </motion.div>
       </div>
       {removeItem && (

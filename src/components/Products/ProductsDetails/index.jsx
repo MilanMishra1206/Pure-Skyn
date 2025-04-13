@@ -89,7 +89,14 @@ function ProductsDetails() {
 
   const [selectedItem, setSelectedItem] = useState(
     productDetail?.productsAdditionalDetails[0]?.id
-  ); // update this to null and then setSelectedItem after the API call
+  );
+
+  useEffect(() => {
+    if (productDetail?.productsAdditionalDetails?.length > 0) {
+      setSelectedItem(productDetail.productsAdditionalDetails[0].id);
+    }
+  }, [productDetail]);
+
   const selectedContent = productDetail?.productsAdditionalDetails?.find(
     (item) => item?.id === selectedItem
   )?.content;
@@ -107,7 +114,12 @@ function ProductsDetails() {
   };
 
   const handleAddToCart = () => {
-    dispatch(addToCart(productDetail));
+    const updatedProduct = {
+      ...productDetail,
+      quantity: Number(quantity),
+    };
+
+    dispatch(addToCart(updatedProduct));
     showSnackbar("Product Added to Cart", "success");
   };
 
@@ -335,11 +347,15 @@ function ProductsDetails() {
                   {productDetail?.productsAdditionalDetails.map((item) => (
                     <li
                       key={item.id}
-                      className={`text-lg font-semibold cursor-pointer group p-2`}
+                      className="text-lg font-semibold cursor-pointer group p-2"
                       onClick={() => handleClick(item.id)}
                     >
                       <span
-                        className={`border-skyn group-hover:border-b-4 p-2 ${item.id === selectedItem ? "!border-skyn border-b-4" : ""}`}
+                        className={`border-skyn group-hover:border-b-4 p-2 ${
+                          item.id === selectedItem
+                            ? "!border-skyn border-b-4"
+                            : ""
+                        }`}
                       >
                         {item.name}
                       </span>
@@ -349,7 +365,12 @@ function ProductsDetails() {
                 {selectedItem && (
                   <div
                     className="p-4"
-                    dangerouslySetInnerHTML={{ __html: selectedContent }}
+                    dangerouslySetInnerHTML={{
+                      __html:
+                        productDetail?.productsAdditionalDetails?.find(
+                          (item) => item.id === selectedItem
+                        )?.content || "",
+                    }}
                   />
                 )}
               </div>
@@ -395,7 +416,7 @@ function ProductsDetails() {
             whileInView="show"
             viewport={{ once: true }}
           >
-            <BuyMoreProducts productCategory={productCategory}/>
+            <BuyMoreProducts productCategory={productCategory} />
           </motion.div>
           <hr />
           {/* Product Reviews */}

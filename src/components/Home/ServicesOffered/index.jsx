@@ -70,11 +70,11 @@ function ServicesOffered({ isMobile, isLargeScreen }) {
           />
           <div className="grid place-items-center bg-lightYellow text-coal text-center p-2 gap-2 md:!p-3 shadow-lg">
             <p className="text-lg font-extrabold">{servicesOffered[1].title}</p>
-            <p className="text-base md:!text-[13px] font-bold">
+            <p className="text-[13px] md:!text-[13px] font-bold">
               {servicesOffered[1].description}
             </p>
             <button
-              className="text-base md:!text-[13px] no-underline border p-1.5 rounded-3xl font-medium w-full md:w-1/2 mt-2 border-black hover:!border-white text-coal hover:!bg-white hover:!text-skyn transition-colors duration-500"
+              className="text-[13px] md:!text-[13px] no-underline border p-1.5 rounded-3xl font-medium w-full md:w-1/2 mt-2 border-black hover:!border-white text-coal hover:!bg-white hover:!text-skyn transition-colors duration-500"
               onClick={() => handleCardsRouting(servicesOffered[1].title)}
             >
               See Prices
@@ -92,11 +92,11 @@ function ServicesOffered({ isMobile, isLargeScreen }) {
           />
           <div className="grid place-items-center bg-coffee text-white text-center p-4 gap-4 md:!p-3 shadow-lg">
             <p className="text-lg font-extrabold">{servicesOffered[2].title}</p>
-            <p className="text-base md:!text-[13px] font-bold">
+            <p className="text-[13px] md:!text-[13px] font-bold">
               {servicesOffered[2].description}
             </p>
             <button
-              className="text-base md:!text-[13px] no-underline border p-1.5 rounded-3xl font-medium w-full md:w-1/2 mt-2 text-white hover:!bg-white hover:!text-skyn transition-colors duration-500"
+              className="text-[13px] md:!text-[13px] no-underline border p-1.5 rounded-3xl font-medium w-full md:w-1/2 mt-2 text-white hover:!bg-white hover:!text-skyn transition-colors duration-500"
               onClick={() => handleCardsRouting(servicesOffered[2].title)}
             >
               See Prices
@@ -114,11 +114,11 @@ function ServicesOffered({ isMobile, isLargeScreen }) {
           />
           <div className="grid place-items-center bg-lightYellow text-coal text-center p-4 gap-4 md:!p-3 shadow-lg">
             <p className="text-lg font-extrabold">{servicesOffered[3].title}</p>
-            <p className="text-base md:!text-[13px] font-bold">
+            <p className="text-[13px] md:!text-[13px] font-bold">
               {servicesOffered[3].description}
             </p>
             <button
-              className="text-base md:!text-[13px] no-underline border p-1.5 rounded-3xl font-medium w-full md:w-1/2 mt-2 border-black hover:!border-white text-coal hover:!bg-white hover:!text-skyn transition-colors duration-500"
+              className="text-[13px] md:!text-[13px] no-underline border p-1.5 rounded-3xl font-medium w-full md:w-1/2 mt-2 border-black hover:!border-white text-coal hover:!bg-white hover:!text-skyn transition-colors duration-500"
               onClick={() => handleCardsRouting(servicesOffered[3].title)}
             >
               See Prices
@@ -131,11 +131,11 @@ function ServicesOffered({ isMobile, isLargeScreen }) {
           />
           <div className="grid place-items-center bg-coffee text-white text-center p-4 gap-4 md:!p-3 shadow-lg">
             <p className="text-lg font-extrabold">{servicesOffered[4].title}</p>
-            <p className="text-base md:!text-[13px] font-bold">
+            <p className="text-[13px] md:!text-[13px] font-bold">
               {servicesOffered[4].description}
             </p>
             <button
-              className="text-base md:!text-[13px] no-underline border p-1.5 rounded-3xl font-medium w-full md:w-1/2 mt-2 text-white hover:!bg-white hover:!text-skyn transition-colors duration-500"
+              className="text-[13px] md:!text-[13px] no-underline border p-1.5 rounded-3xl font-medium w-full md:w-1/2 mt-2 text-white hover:!bg-white hover:!text-skyn transition-colors duration-500"
               onClick={() => handleCardsRouting(servicesOffered[4].title)}
             >
               See Prices
@@ -153,11 +153,11 @@ function ServicesOffered({ isMobile, isLargeScreen }) {
           />
           <div className="grid place-items-center bg-lightYellow text-coal text-center p-4 gap-4 md:!p-3 shadow-lg">
             <p className="text-lg font-extrabold">{servicesOffered[5].title}</p>
-            <p className="text-base md:!text-[13px] font-bold">
+            <p className="text-[13px] md:!text-[13px] font-bold">
               {servicesOffered[5].description}
             </p>
             <button
-              className="text-base md:!text-[13px] no-underline border p-1.5 rounded-3xl font-medium w-full md:w-1/2 mt-2 border-black hover:!border-white text-coal hover:!bg-white hover:!text-skyn transition-colors duration-500"
+              className="text-[13px] md:!text-[13px] no-underline border p-1.5 rounded-3xl font-medium w-full md:w-1/2 mt-2 border-black hover:!border-white text-coal hover:!bg-white hover:!text-skyn transition-colors duration-500"
               onClick={() => handleCardsRouting(servicesOffered[5].title)}
             >
               See Prices

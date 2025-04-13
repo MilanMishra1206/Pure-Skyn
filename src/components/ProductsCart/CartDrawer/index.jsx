@@ -34,6 +34,8 @@ function CartDrawer({ openCart, handleOpenCart }) {
 
   const cartItems = useSelector((state) => state.cart.items);
 
+  console.log("cartItems", cartItems)
+
   const getTotalForItem = (item) => item.quantity * +item.productPrice;
 
   useEffect(() => {
@@ -51,8 +53,8 @@ function CartDrawer({ openCart, handleOpenCart }) {
   const availableCoupons = [
     {
       id: 1,
-      couponCode: "PS125",
-      description: "₹125 OFF above ₹1500!",
+      couponCode: "PS30",
+      description: "30% off on the cart value",
       priceOff: 30,
       productsFree: 0,
     },

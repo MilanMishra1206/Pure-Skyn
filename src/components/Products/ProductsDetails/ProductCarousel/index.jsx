@@ -41,7 +41,7 @@ function ProductCarousel({ carouselContent }) {
   return (
     <div className="p-4 w-auto my-4">
       <div className="flex flex-col md:!flex-row md:gap-2 justify-center mb-4 cursor-pointer">
-        <CustomRevealHeading heading="Similar" />
+        <CustomRevealHeading heading="Browse" />
         <CustomRevealHeading heading="Products" />
       </div>
       <Slider {...settings}>

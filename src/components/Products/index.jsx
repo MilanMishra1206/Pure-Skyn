@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 import { useMediaQuery } from "@mui/material";
 import { motion } from "framer-motion";
@@ -12,6 +12,7 @@ import ProductFilterDrawer from "./ProductFilterDrawer";
 import SidebarFilters from "./SidebarFilters";
 import ProductGrid from "./ProductGrid";
 import { MdOutlineProductionQuantityLimits } from "react-icons/md";
+import PaginationControls from "./PaginationControls";
 
 const Products = () => {
   const dispatch = useDispatch();
@@ -19,6 +20,9 @@ const Products = () => {
   const showSnackbar = useAppSnackbar();
   const [isFilterDrawerOpen, setIsFilterDrawerOpen] = useState(false);
   const [selectedTypes, setSelectedTypes] = useState([]);
+  const [totalProductCount, setTotalProductCount] = useState(0);
+  const [currentPage, setCurrentPage] = useState(1);
+  const productsPerPage = 12;
 
   const productTypes = [
     { key: "sunscreen", label: "Sunscreen" },
@@ -32,9 +36,13 @@ const Products = () => {
   const toggleFilterDrawer = (open) => () => setIsFilterDrawerOpen(open);
 
   const handleTypeChange = (key) => {
-    setSelectedTypes((prev) =>
-      prev.includes(key) ? prev.filter((type) => type !== key) : [...prev, key]
-    );
+    setSelectedTypes((prev) => {
+      const newSelection = prev.includes(key)
+        ? prev.filter((type) => type !== key)
+        : [...prev, key];
+      setCurrentPage(1);
+      return newSelection;
+    });
   };
 
   const handleAddToCart = (product) => {
@@ -52,6 +60,38 @@ const Products = () => {
       : selectedTypes.flatMap((type) =>
           productList[type] ? Object.values(productList[type]) : []
         );
+
+  useEffect(() => {
+    setTotalProductCount(filteredProducts?.length);
+  }, [filteredProducts]);
+
+  const paginateProducts = () => {
+    const indexOfLastProduct = currentPage * productsPerPage;
+    const indexOfFirstProduct = indexOfLastProduct - productsPerPage;
+    return filteredProducts.slice(indexOfFirstProduct, indexOfLastProduct);
+  };
+
+  const handlePageChange = (pageNumber) => {
+    if (
+      pageNumber >= 1 &&
+      pageNumber <= Math.ceil(filteredProducts.length / productsPerPage)
+    ) {
+      setCurrentPage(pageNumber);
+    }
+  };
+
+  const totalPages = Math.ceil(filteredProducts.length / productsPerPage);
+
+  const calculateRange = () => {
+    const indexOfLastProduct = currentPage * productsPerPage;
+    const indexOfFirstProduct = indexOfLastProduct - productsPerPage;
+    const start = indexOfFirstProduct + 1;
+    const end =
+      indexOfLastProduct > totalProductCount
+        ? totalProductCount
+        : indexOfLastProduct;
+    return `${start}-${end}`;
+  };
 
   return (
     <div className="mt-5">
@@ -82,7 +122,6 @@ const Products = () => {
         selectedTypes={selectedTypes}
         onChange={handleTypeChange}
       />
-
       <div className="flex flex-col lg:!flex-row">
         {!isMobile && (
           <motion.div
@@ -116,13 +155,25 @@ const Products = () => {
             whileInView="show"
           >
             <ProductGrid
-              products={filteredProducts}
+              products={paginateProducts()}
               onAddToCart={handleAddToCart}
               isMobile={isMobile}
+              totalProductCount={totalProductCount}
             />
           </motion.div>
         )}
       </div>
+      <div className="flex justify-center my-4">
+        <div className="text-gray-700">
+          Showing {calculateRange()} of {totalProductCount} items
+        </div>
+      </div>
+
+      <PaginationControls
+        currentPage={currentPage}
+        totalPages={totalPages}
+        onPageChange={handlePageChange}
+      />
     </div>
   );
 };

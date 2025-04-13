@@ -52,7 +52,13 @@ const cartReducer = (state = initialState, action) => {
       } else {
         return {
           ...state,
-          items: [...state.items, { ...action.payload, quantity: 1 }],
+          items: [
+            ...state.items,
+            {
+              ...action.payload,
+              quantity: action.payload.quantity || 1,
+            },
+          ],
         };
       }
 
