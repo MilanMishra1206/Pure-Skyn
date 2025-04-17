@@ -63,29 +63,40 @@ function OxyHydra({ type }) {
             <div
               className={`flex ${isMobile ? "flex-col" : "flex-row justify-center items-center"} font-poppins text-cello`}
             >
+              {!isMobile && (
+                <div className="flex justify-center items-center">
+                  <img
+                    src={Resources.images.Services.OxyHydra.img4}
+                    alt="oxy-hydra"
+                    className="rounded-xl shadow w-80 h-96 ml-10 mr-10"
+                  />
+                </div>
+              )}
               <div className={`${!isMobile ? "w-50 mr-5" : "w-full"}`}>
-                <p>
-                  Hydra Facial in Delhi is a well-known and most demanding
-                  procedure. The procedure has got fame in the society because
-                  of its enormous benefits. Nowadays, people are behind the
-                  white and fair skin whitening in Delhi. So, they are looking
-                  for ways that can provide them with their desired skin color.
-                  Your skin color may be affected for any reason.
+                <p className="font-bold text-xl">
+                  Oxy Hydra Facial at Home with PureSkyn: Rejuvenate Your Skin
+                  in the Comfort of Your Home
                 </p>
                 <p>
-                  The cause can be heredity, genetics, environmental effects,
-                  side effects of medicine, etc. Hence, whatever the reason is,
-                  Pure Skyn is the best cosmetic & Hydra Facial and provides you
-                  the treatment with optimal results.
+                  At <strong>PureSkyn</strong>, we bring the luxury of
+                  professional skincare right to your doorstep with our Oxy
+                  Hydra Facial at home services. This advanced facial treatment
+                  uses cutting- edge technology to hydrate, rejuvenate and
+                  refresh your skin, all while addressing common skin concerns
+                  like dryness, fine lines and uneven skin tone. Skip the spa
+                  visit and enjoy a radiant, glowing complexion without leaving
+                  the comfort of your home.
                 </p>
               </div>
-              <div className="flex justify-center items-center">
-                <img
-                  src={Resources.images.Services.OxyHydra.img4}
-                  alt="oxy-hydra"
-                  className={`rounded-xl shadow ${isMobile ? "mt-4" : "w-80 h-96 ml-5"} lg:ml-10`}
-                />
-              </div>
+              {isMobile && (
+                <div className="flex justify-center items-center">
+                  <img
+                    src={Resources.images.Services.OxyHydra.img4}
+                    alt="oxy-hydra"
+                    className="rounded-xl shadow mt-4"
+                  />
+                </div>
+              )}
             </div>
           </motion.div>
           <motion.div
@@ -101,19 +112,37 @@ function OxyHydra({ type }) {
               <div
                 className={`flex flex-col ${!isMobile ? "w-50 mr-5" : "w-full"}`}
               >
-                <div className="!text-2xl font-bold">Evaluations</div>
-                <div className="flex flex-col">
-                  <p>
-                    To get Hydra Facial At Home , it is necessary to get a prior
-                    valuation. So, we make the initial session compulsory for
-                    all. In this session, Pure Skyn is the best plastic and
-                    cosmetic surgeon takes a medical history. Further, he
-                    assesses skin tone and skin texture in addition to know the
-                    demands of the patient and other important aspects. After
-                    that evaluation, Pure Skyn is the best cosmetic & plastic
-                    surgeon in Delhi tells the patient if he or she can get
-                    optimal results or not.
-                  </p>
+                <div className="!text-2xl font-bold">
+                  Why Choose PureSkyn for Oxy Hydra Facial at Home?
+                </div>
+                <div>
+                  <ul className="list-disc mt-4">
+                    <li>
+                      <strong>Convenience at Your Doorstep:</strong> Forget the
+                      hassle of booking salon appointments or waiting in line.
+                      With <strong>PureSkyn</strong>, you can enjoy a
+                      professional <strong>Oxy Hydra Facial </strong> right in
+                      the comfort of your own home.
+                    </li>
+                    <li>
+                      <strong>Expert Skincare Professionals:</strong> Our
+                      licensed and experienced skincare specialists are trained
+                      to deliver exceptional results. We ensure that each
+                      treatment is personalized to your skin type and concerns
+                      so you get the best possible outcome.
+                    </li>
+                    <li>
+                      <strong>Safe & Effective:</strong> We use the latest Oxy
+                      Hydra Facial technology to deeply cleanse, exfoliate,
+                      hydrate and revitalize your skin, making it suitable for
+                      all skin types including sensitive skin.
+                    </li>
+                    <li>
+                      <strong>Instant Glow:</strong> With this treatment, you'll
+                      notice immediate results—radiant, refreshed skin with a
+                      youthful glow that lasts.
+                    </li>
+                  </ul>
                 </div>
               </div>
               <div className="flex justify-center items-center">
@@ -123,6 +152,70 @@ function OxyHydra({ type }) {
                   className={`rounded-xl shadow ${isMobile ? "mt-4" : "h-96 ml-5"} lg:ml-10`}
                 />
               </div>
+            </div>
+          </motion.div>
+          <motion.div
+            variants={FadeInWrapper("left", 0.1)}
+            initial="hidden"
+            whileInView="show"
+            viewport={{ once: true }}
+            className={`mt-5 ${isTablet ? "p-4" : ""}`}
+          >
+            <div
+              className={`flex ${isMobile ? "flex-col" : "justify-center items-center"} font-poppins text-cello`}
+            >
+              {!isMobile && (
+                <div className="flex justify-center items-center">
+                  <img
+                    src={Resources.images.Services.OxyHydra.oxyPackage}
+                    alt="oxy-hydra"
+                    className="w-80 rounded-xl shadow h-96 ml-5 lg:ml-10 mr-10"
+                  />
+                </div>
+              )}
+              <div
+                className={`flex flex-col ${!isMobile ? "w-50 mr-5" : "w-full"}`}
+              >
+                <div className="!text-2xl font-bold">
+                  What is an Oxy Hydra Facial?
+                </div>
+                <p className="mt-4">
+                  An <strong>Oxy Hydra Facial</strong> is a non-invasive facial
+                  treatment that combines oxygen infusion and hydradermabrasion
+                  to cleanse, exfoliate and hydrate the skin. It involves using
+                  a unique device that delivers oxygen and a series of hydrating
+                  serums directly into your skin. This process helps to:
+                </p>
+                <div>
+                  <ul className="list-disc">
+                    <li>
+                      <strong>Remove dead skin cells</strong> and impurities
+                      from your pores.
+                    </li>
+                    <li>
+                      <strong>Boost hydration</strong> by infusing your skin
+                      with essential moisture.
+                    </li>
+                    <li>
+                      <strong>Reduce the appearance of fine lines</strong> and
+                      wrinkles, promoting a more youthful look.
+                    </li>
+                    <li>
+                      <strong>Improve skin tone and texture,</strong> leaving
+                      your skin smoother and brighter.
+                    </li>
+                  </ul>
+                </div>
+              </div>
+              {isMobile && (
+                <div className="flex justify-center items-center">
+                  <img
+                    src={Resources.images.Services.OxyHydra.oxyPackage}
+                    alt="oxy-hydra"
+                    className={`w-80 rounded-xl shadow mt-4 lg:ml-10`}
+                  />
+                </div>
+              )}
             </div>
           </motion.div>
           <motion.div
@@ -137,96 +230,128 @@ function OxyHydra({ type }) {
             >
               <div className="flex flex-col">
                 <div className="!text-xl font-bold text-center">
-                  AIMS OF OXY HYDRA FACIAL TREATMENT
+                  Benefits of Oxy Hydra Facial at Home
                 </div>
                 <FadedLineBreak />
                 <div className="flex flex-col">
                   <ul className="list-disc pl-4 space-y-3 !text-left">
                     <li>
-                      <strong>Introduction to Hydrafacial</strong>:
-                      Understanding the Core Objectives of the Treatment
+                      <strong>Hydration Boost:</strong>
+                      The oxygen infusion and hydrating serums provide intense
+                      moisture to your skin, making it look plump, healthy and
+                      hydrated.
                     </li>
                     <li>
-                      <strong>Holistic Approach of Hydrafacial</strong>:
-                      Targeting Skin Health from Multiple Angles
+                      <strong>Brightens & Revitalizes:</strong>
+                      The treatment helps to brighten dull skin, giving it a
+                      healthy glowing appearance. Perfect for those with uneven
+                      skin tone or pigmentation.
                     </li>
                     <li>
-                      <strong>The Therapeutic Goals of Hydrafacial</strong>:
-                      What to Expect from Your Skin Renewal Journey
-                    </li>
-                  </ul>
-                </div>
-                {/* <Divider orientation="vertical" flexItem className="!border-r-2 !ml-4 !mr-1"/> */}
-              </div>
-              <div className="flex flex-col">
-                <div className="!text-xl font-bold text-center">
-                  BENEFITS OF OXY HYDRA FACIAL
-                </div>
-                <FadedLineBreak />
-                <div className="flex flex-col">
-                  <ul className="list-disc pl-4 space-y-3 !text-left">
-                    <li>
-                      <strong>Maximizing Skin Health</strong>: Key Benefits of
-                      Opting for HydraFacial in Delhi
+                      <strong>Anti-Aging Effects:</strong>
+                      The Oxy Hydra Facial can reduce the appearance of fine
+                      lines and wrinkles, giving your skin a more youthful
+                      rejuvenated look.
                     </li>
                     <li>
-                      <strong>Transformative Results</strong>: How HydraFacial
-                      Can Revitalize Your Skin
+                      <strong>Gentle Yet Effective:</strong>
+                      This treatment is non-invasive, gentle and suitable for
+                      all skin types. Unlike harsher treatments, there's no
+                      downtime so you can enjoy beautiful skin with zero
+                      recovery time.
                     </li>
                     <li>
-                      <strong>Customized Skincare with HydraFacial</strong>:
-                      Tailoring Treatment to Individual Skin Needs
+                      <strong>Customized for Your Skin:</strong>
+                      At PureSkyn, we offer personalized Oxy Hydra Facials based
+                      on your unique skin concerns—whether it's dryness, acne or
+                      signs of aging, we've got you covered.
                     </li>
                   </ul>
                 </div>
               </div>
               <div className="flex flex-col">
                 <div className="!text-xl font-bold text-center">
-                  UNDERSTANDING OF HAVING OXY HYDRA FACIAL
+                  How Does the Oxy Hydra Facial at Home Work?
                 </div>
                 <FadedLineBreak />
+                <div className="flex flex-col">
+                  <ul className="list-disc pl-4 space-y-3 !text-left">
+                    <li>
+                      <strong>Cleansing:</strong> We start by thoroughly
+                      cleansing your skin to remove any makeup, dirt or oils
+                      preparing it for the next steps.
+                    </li>
+                    <li>
+                      <strong>Exfoliation:</strong>Using gentle exfoliation, we
+                      remove dead skin cells, leaving your skin soft and ready
+                      to absorb the hydrating serums.
+                    </li>
+                    <li>
+                      <strong>Oxygen Infusion:</strong>
+                      We apply an oxygen-based serum that helps to hydrate and
+                      revitalize the skin, boosting collagen production and
+                      improving overall skin texture.
+                    </li>
+                    <li>
+                      <strong>Hydration:</strong>
+                      The treatment concludes with a series of hydrating serums
+                      tailored for your skin's specific needs leaving your skin
+                      nourished, rejuvenated and glowing.
+                    </li>
+                  </ul>
+                </div>
+              </div>
+              <div className="flex flex-col">
+                <div className="!text-xl font-bold text-center">
+                  Is Oxy Hydra Facial Right for You?
+                </div>
+                <FadedLineBreak />
+                <p className="mt-2 mb-2">
+                  Oxy Hydra Facial is suitable for all skin types from dry and
+                  sensitive to oily and acne- prone skin. If you're looking for
+                  a treatment that can:
+                </p>
                 <ul className="list-disc pl-4 space-y-3 !text-left">
-                  <li>
-                    <strong>General Price Range</strong>: In Delhi, the cost of
-                    a HydraFacial treatment typically ranges between PKR 5,000
-                    to PKR 30,000. This variation in price is influenced by the
-                    comprehensiveness of the treatment and the reputation of the
-                    clinic.
-                  </li>
-                  <li>
-                    <strong>All-Inclusive Costing</strong>: At most reputable
-                    clinics like Pure Skyn, this pricing includes the full
-                    spectrum of the HydraFacial procedure. It's important to
-                    understand that lower-priced options might not offer the
-                    complete treatment, potentially excluding crucial steps.
-                  </li>
-                  <li>
-                    <strong>Customized Skincare with HydraFacial</strong>:
-                    Tailoring Treatment to Individual Skin Needs
-                  </li>
+                  <li>Hydrate and nourish dry skin.</li>
+                  <li>Minimize fine lines and wrinkles.</li>
+                  <li>Improve skin texture and clarity.</li>
+                  <li>Brighten dull, uneven skin tone.</li>
+                  <li>Detoxify and cleanse the skin.</li>
                 </ul>
+                <p className="mt-2 mb-2">
+                  Then the <strong>Oxy Hydra Facial</strong> at home is perfect
+                  for you! Whether you have a special event coming up or just
+                  want to give your skin a regular rejuvenating treatment,{" "}
+                  <strong>PureSkyn</strong> can help.
+                </p>
               </div>
               <div className="flex flex-col">
                 <div className="!text-xl font-bold text-center">
-                  IMPORTANCE OF CHOOSING A RELIABLE CLINIC
+                  Why Choose Oxy Hydra Facial Over Other Facials?
                 </div>
                 <FadedLineBreak />
                 <div className="flex flex-col">
                   <ul className="list-disc pl-4 space-y-3 !text-left">
                     <li>
-                      <strong>Quality and Safety at Pure Skyn</strong>: When
-                      considering a HydraFacial, it's crucial to opt for a
-                      trusted provider like Pure Skyn. They are known for
-                      delivering high-quality treatments, ensuring each step of
-                      the procedure is meticulously carried out.
+                      <strong>Instant Results:</strong> Unlike traditional
+                      facials, the Oxy Hydra Facial provides instant visible
+                      results with glowing, hydrated and rejuvenated skin after
+                      just one session.
                     </li>
                     <li>
-                      <strong>Risks of Budget Options</strong>: Cheaper
-                      alternatives might seem appealing, but they can come with
-                      risks. There have been instances where substandard
-                      treatments have led to adverse reactions like burns and
-                      blisters. Pure Skyn stands apart by prioritizing client
-                      safety and using state-of-the-art technology.
+                      <strong>No Downtime:</strong> There's no recovery time
+                      required, so you can continue with your day immediately
+                      after the treatment.
+                    </li>
+                    <li>
+                      <strong>Non-Invasive and Safe:</strong> The treatment is
+                      gentle and non-invasive, making it safe for even the most
+                      sensitive skin types.
+                    </li>
+                    <li>
+                      <strong>Long-Lasting Effects:</strong> Regular treatments
+                      can maintain smooth youthful skin keeping your complexion
+                      looking vibrant and fresh.
                     </li>
                   </ul>
                 </div>
@@ -240,29 +365,28 @@ function OxyHydra({ type }) {
               </div>
               <div className="flex flex-col justify-center">
                 <div className="!text-2xl font-bold text-center">
-                  Pure Skyn'S COMMITMENT TO EXCELENCE
+                  How to Book Your Oxy Hydra Facial at Home with PureSkyn
                 </div>
                 <FadedLineBreak />
                 <div className="flex flex-col">
                   <ul className="list-disc pl-4 space-y-3 !text-left">
                     <li>
-                      <strong>Premium Service</strong>: Pure Skyn in Delhi
-                      distinguishes itself by offering top-tier HydraFacial
-                      treatments. They focus on delivering a holistic
-                      experience, ensuring clients receive the full benefits of
-                      the procedure.
+                      <strong>Consultation:</strong> Contact{" "}
+                      <strong>PureSkyn</strong> to book a free consultation. Our
+                      experts will assess your skin type and concerns to create
+                      a personalized treatment plan.
                     </li>
                     <li>
-                      <strong>Expertise and Care</strong>: The team of
-                      professionals at Pure Skyn is trained in the latest
-                      skincare techniques, ensuring each HydraFacial session is
-                      both effective and relaxing.
+                      <strong>Schedule Your Appointment:</strong> Once your plan
+                      is ready, book your treatment at a time that suits you.
+                      We'll come to your home fully equipped with all the tools
+                      and products needed to perform the treatment.
                     </li>
                     <li>
-                      <strong>Customized Treatments</strong>: Understanding that
-                      each skin type is unique, Pure Skyn tailors the
-                      HydraFacial to meet individual skin needs, enhancing the
-                      overall effectiveness of the treatment.
+                      <strong>Enjoy Glowing Skin:</strong> After the treatment,
+                      enjoy immediate results—hydrated, smooth and glowing skin!
+                      We'll also provide post-treatment care recommendations to
+                      ensure your skin remains in top condition.
                     </li>
                   </ul>
                 </div>
@@ -280,12 +404,10 @@ function OxyHydra({ type }) {
               className={`${isTablet ? "" : "px-3"} font-poppins text-cello mb-5`}
             >
               <p className="text-lg border-l-8 p-3">
-                In summary, while the cost of a HydraFacial in Delhi varies,
-                choosing a reputable clinic like Pure Skyn ensures a
-                comprehensive, safe, and effective treatment. The investment in
-                a quality HydraFacial at a trusted clinic not only safeguards
-                your skin but also guarantees you are receiving the full range
-                of benefits this advanced skincare treatment has to offer.
+                Book Your Oxy Hydra Facial at Home Today! <br />
+                Ready to experience the ultimate{" "}
+                <strong>Oxy Hydra Facial</strong> in the comfort of your home?
+                Let <strong>PureSkyn</strong> help you for the best.
               </p>
             </div>
           </motion.div>

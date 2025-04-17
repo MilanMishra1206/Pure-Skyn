@@ -150,8 +150,8 @@ export const dermoFracAccordianContent = [
   },
   {
     id: 4,
-    title: "WHAT ARE THE BENEFITS OF DERMAFRAC INFUSION?",
-    content: `The main benefits of DermaFrac include:
+    title: "WHAT ARE THE BENEFITS OF DERMA INFUSION FACIAL?",
+    content: `The main benefits of Derma Infusion Facial include:
     1. Improves skin texture and elasticity
     2. Hydrates and nourishes the skin
     3. Reduces fine lines and wrinkles
@@ -170,7 +170,7 @@ export const dermoFracAccordianContent = [
   },
   {
     id: 7,
-    title: "IS DERMAFRAC INFUSION SAFE?",
+    title: "IS DERMA INFUSION FACIAL SAFE?",
     content: `Yes, it is a safe and non-invasive treatment performed by trained professionals. It is suitable for all skin types.`,
   },
 ];

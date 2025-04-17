@@ -15,7 +15,7 @@ function MostPopularLhr({ isMobile, isLargeScreen }) {
       title: "For Women",
       image: `${Resources.images.Services.LaserHairRemoval.Women.imageTwo}`,
       buttonText: "Read More",
-      heading: "Laser Hair Removal For Women",
+      heading: "Laser Hair Removal For Women At Home",
       content:
         "Laser hair removal is a cosmetic procedure that uses concentrated light beams to target hair follicles. It effectively removes unwanted hair by inhibiting future growth, leaving the skin smooth and hair-free. This treatment is ideal for various body areas and provides long-lasting results.",
       treatmentName: "Laser Hair Removal Women",
@@ -26,7 +26,7 @@ function MostPopularLhr({ isMobile, isLargeScreen }) {
       title: "For Men",
       image: `${Resources.images.Services.LaserHairRemoval.Men.headerMenMobile}`,
       buttonText: "Read More",
-      heading: "Laser Hair Removal For Men",
+      heading: "Laser Hair Removal For Men At Home",
       content:
         "Laser hair removal for men targets hair follicles using focused laser light, reducing unwanted hair. This non-invasive treatment is perfect for areas like the back, chest, or face. It's effective, quick, and helps achieve smooth, well-groomed skin without the hassle of shaving.",
       treatmentName: "Laser Hair Removal Men",
@@ -43,7 +43,7 @@ function MostPopularLhr({ isMobile, isLargeScreen }) {
   return (
     <div>
       <FadedLineBreak />
-      <CustomHomeHeader heading="Most Popular - Laser Hair Removal" />
+      <CustomHomeHeader heading="Most Popular - Laser Hair Removal At Home" />
       <div className="flex justify-end px-5">
         <Link
           to="/services/laser-hair-removal"

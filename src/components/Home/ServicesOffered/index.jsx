@@ -23,7 +23,9 @@ function ServicesOffered({ isMobile, isLargeScreen }) {
       <div className="px-4">
         <div className={`${isMobile ? "" : "px-4"}`}>
           <CustomHomeHeader
-            heading={"Services Offered - Start Your Skin Journey Today"}
+            heading={
+              "Beauty Treatment Offered At Home - Start Your Pureskyn Journey Today"
+            }
           />
         </div>
       </div>

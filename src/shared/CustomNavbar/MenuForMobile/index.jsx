@@ -26,8 +26,8 @@ const serviceItemForMobile = [
   },
   {
     id: 5,
-    label: "Dermafrac Infusion Facial",
-    link: "/services/skin/medi-facial/dermafrac-infusion-facial",
+    label: "Derma Infusion Facial",
+    link: "/services/skin/medi-facial/derma-infusion-facial",
   },
   {
     id: 6,

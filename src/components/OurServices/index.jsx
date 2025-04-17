@@ -50,7 +50,7 @@ function LaserServices() {
                 </div>
                 <p className="text-center text-coal text-xl">
                   Laser Hair Removal, Oxy Hydra Facial, RF Skin Tightening,
-                  Dermafrac Infusion, Oxygenero & More.
+                  Derma Infusion Facial, Oxygenero & More.
                 </p>
               </div>
               <div className="grid  mt-4 lg:!mt-0">
@@ -83,7 +83,7 @@ function LaserServices() {
                 </div>
                 <p className="text-center text-coal text-xl">
                   Laser Hair Removal, Oxy Hydra Facial, RF Skin Tightening,
-                  Dermafrac Infusion, Oxygenero & More.
+                  Derma Infusion Facial, Oxygenero & More.
                 </p>
               </div>
               <div className="grid mt-4 lg:!mt-0">

@@ -36,11 +36,11 @@ function AboutUs() {
         </p>
 
         <p className="mt-4 font-poppins text-kashmirBlue font-bold text-2xl">
-          Laser Hair Removal
+          Laser Hair Removal At Home
         </p>
         <p className="mt-4 font-poppins text-cello font-medium">
           Say goodbye to shaving, waxing, and the hassle of constant hair
-          removal. Our advanced Laser Hair Removal services are designed to
+          removal. Our advanced Laser Hair Removal services at home are designed to
           offer permanent hair reduction with minimal discomfort. Whether you're
           looking to remove hair from your face, body, or sensitive areas, we
           have the expertise and technology to get you the smooth skin you've
@@ -54,7 +54,7 @@ function AboutUs() {
           <MdKeyboardDoubleArrowRight className="hidden group-hover:!block text-xl text-skyn duration-3000" />
         </Link>
         <p className="mt-5 font-poppins text-kashmirBlue font-bold text-2xl">
-          Medi Facial Treatments
+          Medi Facial Treatments At Home
         </p>
         <p className="mt-4 font-poppins text-cello font-medium">
           Achieve glowing, healthy skin with our Medi Facial Treatments,

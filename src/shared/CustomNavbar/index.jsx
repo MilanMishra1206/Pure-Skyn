@@ -158,9 +158,9 @@ function CustomNavbar() {
     },
     {
       id: 5,
-      label: "Dermafrac Infusion Facial",
+      label: "Derma Infusion Facial",
       action: () => {
-        navigate("/services/skin/medi-facial/dermafrac-infusion-facial");
+        navigate("/services/skin/medi-facial/derma-infusion-facial");
       },
     },
     {

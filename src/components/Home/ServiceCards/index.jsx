@@ -18,7 +18,7 @@ const SmallCard = ({ image, title }) => {
       onClick={() => handleCardClick(title)}
     >
       <img src={image} alt={title} className="object-cover rounded-md" />
-      <p className="text-sm mt-2 text-center font-poppins ">{title}</p>
+      <p className="text-sm mt-2 text-center font-poppins">{title}</p>
     </div>
   );
 };

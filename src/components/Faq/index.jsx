@@ -42,9 +42,9 @@ function Faq() {
       content: mediFacialFaq,
     },
     {
-      label: "Dermafrac Infusion Facial",
-      id: "dermaFraq",
-      title: "Dermafrac Infusion Facial - FAQs",
+      label: "Derma Infusion Facial",
+      id: "dermaInfusionFacial",
+      title: "Derma Infusion Facial - FAQs",
       content: dermoFracAccordianContent,
     },
     {

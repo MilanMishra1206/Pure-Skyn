@@ -1,6 +1,6 @@
 import Resources from "../../config/Resources";
 
-export const dermaFracMicroneedling = [
+export const dermaInfusionFacial = [
   {
     id: 1,
     title: "Rejuvenate",

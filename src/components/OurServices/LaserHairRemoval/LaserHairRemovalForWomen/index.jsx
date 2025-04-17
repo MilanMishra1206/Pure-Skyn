@@ -45,7 +45,7 @@ function LaserHairRemovalForWomen({ category, isMobile, isTablet }) {
                 imgSrcLaptop={Resources.images.Home.lhrWomen}
                 imgSrcTablet={Resources.images.Home.lhrWomenMobile}
                 linkTo="/book-now"
-                heading="Laser Hair Removal Women"
+                heading="Laser Hair Removal Women At Home"
                 breadcrumbs1="Laser Hair Removal"
                 route1="/services/laser-hair-removal"
                 breadcrumbs2="Women"
@@ -88,16 +88,38 @@ function LaserHairRemovalForWomen({ category, isMobile, isTablet }) {
                       {item.header}
                     </div>
                     <FadedLineBreak />
-                    {item.subHeader && (
+                    {item?.subHeader && (
                       <h4 className="font-medium">{item.subHeader}</h4>
                     )}
-                    {item.subHeaderTwo && (
-                      <h4 className="font-semibold mt-5 text-lg !text-left">
+                    {item?.subHeaderTwo && (
+                      <h4 className="font-semibold mt-5">
                         {item.subHeaderTwo}
                       </h4>
                     )}
-                    <p className="font-medium text-cello">{item.sectionOne}</p>
-                    <p className="font-medium text-cello">{item.sectionTwo}</p>
+                    {item?.sectionOne && (
+                      <p className="font-medium text-cello mt-2">
+                        {item.sectionOne}
+                      </p>
+                    )}
+                    {item?.sectionTwo && (
+                      <p className="font-medium text-cello mb-2">
+                        {item.sectionTwo}
+                      </p>
+                    )}
+                    {item?.listHeader && (
+                      <p className="font-semibold text-cello mb-2 text-lg mt-4">
+                        {item.listHeader}
+                      </p>
+                    )}
+                    {item?.listContent?.length > 0 && (
+                      <ul className="list-disc ml-5">
+                        {item?.listContent.map((list) => (
+                          <li key={list.id}>
+                            <strong>{list.label}</strong> {list.content}
+                          </li>
+                        ))}
+                      </ul>
+                    )}
                   </div>
                   {!isLaptop && (
                     <div className="flex flex-col w-full">
@@ -122,6 +144,102 @@ function LaserHairRemovalForWomen({ category, isMobile, isTablet }) {
                   )}
                 </motion.div>
               ))}
+              <motion.div
+                variants={FadeInWrapper("right", 0.1)}
+                initial="hidden"
+                whileInView="show"
+                viewport={{ once: true }}
+                className={`mt-3 ${isTablet ? "p-4" : ""}`}
+              >
+                <div
+                  className={`grid grid-cols-1 md:grid-cols-2 gap-5 ${isTablet ? "" : "p-5"} font-poppins text-cello`}
+                >
+                  <div className="flex flex-col">
+                    <div className="!text-xl font-bold text-center">
+                      How to Get Started with PureSkyn's Laser Hair Reduction at
+                      Home Service for Women
+                    </div>
+                    <FadedLineBreak />
+                    <div className="flex flex-col">
+                      <ul className="list-disc pl-4 space-y-3 !text-left">
+                        <li>
+                          <strong>Book a Consultation:</strong> Contact PureSkyn
+                          today for a free consultation. Our specialists will
+                          assess your skin type, hair growth and treatment goals
+                          to design a personalized plan.
+                        </li>
+                        <li>
+                          <strong>Schedule Your Treatment:</strong>
+                          Once we've created your personalized treatment plan,
+                          book an appointment at a time that works best for you.
+                          Our technicians will come to your home fully equipped
+                          to perform the treatment.
+                        </li>
+                        <li>
+                          <strong>Enjoy Smooth, Hair-Free Skin:</strong>
+                          After just a few sessions, you'll notice a{" "}
+                          <strong>significant reduction in hair growth</strong>,
+                          leaving you with smooth, silky skin. We'll continue to
+                          support you throughout the process to ensure optimal
+                          results.
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
+                  <div className="flex flex-col">
+                    <div className="!text-xl font-bold text-center">
+                      The Best Areas for Laser Hair Reduction for Women
+                    </div>
+                    <FadedLineBreak />
+                    <p className="font-semibold text-cello mb-2 text-lg mt-4">
+                      Laser hair reduction is effective on various areas of the
+                      body including:
+                    </p>
+                    <div className="flex flex-col">
+                      <ul className="list-disc pl-4 space-y-3 !text-left">
+                        <li>
+                          <strong>Face:</strong> Remove unwanted facial hair
+                          from the upper lip, chin and sidelocks with precision.
+                        </li>
+                        <li>
+                          <strong>Bikini Line:</strong> Achieve a clean, smooth
+                          bikini line without the pain of waxing.
+                        </li>
+                        <li>
+                          <strong>Underarms:</strong>
+                          Get rid of underarm hair without the hassle of shaving
+                          or waxing.
+                        </li>
+                        <li>
+                          <strong>Arms and Legs:</strong>
+                          Enjoy smooth, hair-free arms and legs with
+                          long-lasting results.
+                        </li>
+                        <li>
+                          <strong>Back and Stomach:</strong>
+                          Eliminate stubborn back and stomach hair, leaving your
+                          skin smoother.
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+                <div className="flex flex-col gap-2 font-poppins border-l-8 p-3">
+                  <p className="font-semibold text-xl">
+                    Book Your Laser Hair Reduction Appointment Today!
+                  </p>
+                  <p>
+                    Ready to experience the benefits of{" "}
+                    <strong>laser hair reduction at home for women?</strong>{" "}
+                    <br />
+                    At <strong>PureSkyn</strong>, we make it easy, safe and
+                    convenient for you to achieve smooth, hair-free skin in the
+                    comfort of your own home. Book your consultation today and
+                    take the first step toward a more permanent hair removal
+                    solution.
+                  </p>
+                </div>
+              </motion.div>
             </div>
             {category === "women" && (
               <motion.div

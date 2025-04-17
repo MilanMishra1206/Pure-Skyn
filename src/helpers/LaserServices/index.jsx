@@ -3,40 +3,119 @@ import Resources from "../../config/Resources";
 export const laserServiceForMenContent = [
   {
     id: 1,
-    header: "DIODE LASER HAIR REMOVAL TECHNOLOGY",
-    subHeader: "Effective Treatment Solution For Men",
+    header: "Laser Hair Reduction at Home for Men",
+    subHeader:
+      "Laser Hair Reduction at Home for Men with PureSkyn: Get Smooth, Hair-Free Skin in the Comfort of Your Home",
     subHeaderTwo: "Are you looking for a permanent hair removal solution?",
-    sectionOne:
-      "Laser hair removal is a safe and effective solution for men who are tired of constantly shaving, waxing or plucking unwanted hair from their bodies. If you're looking for a more permanent solution to hair removal, then you've come to the right place! Our laser hair removal treatment for men is specifically designed to target unwanted hair growth, leaving your skin smooth and hair-free.",
-    sectionTwo:
-      "We understand that many men find it embarrassing or uncomfortable to discuss their unwanted hair growth, which is why we have created a discreet and professional environment where you can feel completely comfortable. Our trained technicians are experts in laser hair removal and will guide you through the entire process, from the initial consultation to the final treatment session.",
+    sectionOne: `At PureSkyn, we understand that men deserve smooth, hair-free skin just as much as
+      women do. That's why we offer professional laser hair reduction at home for men,
+      providing a convenient, safe and effective solution for unwanted body hair. Whether
+      you're tired of shaving, waxing or just want a more permanent solution, our at-home
+      services bring expert-grade laser hair removal directly to your door.`,
     img: Resources.images.Services.LaserHairRemoval.Men.imageOne,
   },
   {
     id: 2,
-    header: "Men Treatment Areas",
-    sectionOne:
-      "Our laser hair removal treatment is suitable for all skin types and hair colors, making it an ideal solution for men of all ages and backgrounds. Whether you're looking to remove hair from your back, chest, arms, legs, or any other area of your body, we've got you covered.",
-    sectionTwo:
-      "Our advanced laser technology ensures that the treatment is precise and effective, targeting only the hair follicles without damaging the surrounding skin.",
+    header: "Why Choose PureSkyn for Laser Hair Reduction at Home?",
+    listContent: [
+      {
+        id: 2.1,
+        label: "Convenience at Your Doorstep:",
+        content: `No more trips to the salon. We bring
+          professional laser hair reduction services right to your home, saving you time
+          and energy.`,
+      },
+      {
+        id: 2.2,
+        label: "Expert Technicians:",
+        content: `Our certified and experienced technicians are specially
+          trained in men's hair reduction, ensuring a treatment that suits your skin type
+          and hair removal needs.`,
+      },
+      {
+        id: 2.3,
+        label: "Safe and Effective:",
+        content: `We use the latest technology to provide safe, effective and
+          long-lasting hair reduction with results you can see after just a few sessions.`,
+      },
+      {
+        id: 2.4,
+        label: "Pain-Free and Comfortable:",
+        content: `Laser hair reduction is virtually pain-free
+          compared to waxing or other traditional methods, giving you a comfortable
+          experience while achieving smooth skin.`,
+      },
+    ],
     img: Resources.images.Services.LaserHairRemoval.Men.imageTwo,
   },
   {
     id: 3,
-    header: "Is Laser Hair Removal Safe?",
-    sectionOne:
-      "We use latest state of the art Venus Velocity™ Diode laser hair removal machine, ensures that the hair is removed from the root, giving you long-lasting results that you can enjoy for months or even years. Many men who have undergone laser hair removal have reported that they feel more confident and comfortable in their own skin.",
-    sectionTwo:
-      "In fact, laser hair removal has become increasingly popular among men in recent years, with more and more men realizing the benefits of this treatment.",
+    header: "How Does Laser Hair Reduction Work for Men?",
+    sectionOne: `Laser hair reduction uses concentrated light to target the pigment in hair follicles. The
+      light energy is absorbed by the hair, damaging the follicle and inhibiting future hair
+      growth. Over time, the treated area will show a significant reduction in
+      hair—leaving your skin smoother and more refined.`,
+    sectionTwo: `Whether you want to target specific areas like your back, chest, arms, or legs, or need
+      a full-body solution, PureSkyn is here to provide the best results for your needs.`,
+    listHeader: "Benefits of Laser Hair Reduction at Home for Men:",
+    listContent: [
+      {
+        id: 2.1,
+        label: "Eliminate the Hassle of Shaving and Waxing:",
+        content: `Laser hair reduction offers a
+          permanent solution to unwanted hair. Say goodbye to daily shaving and painful
+          waxing sessions.`,
+      },
+      {
+        id: 2.2,
+        label: "Perfect for Sensitive Areas:",
+        content: `Laser hair removal is ideal for sensitive or hard-
+          to-reach areas such as the back, chest and shoulders, where traditional hair
+          removal methods can be uncomfortable or impractical.`,
+      },
+      {
+        id: 2.3,
+        label: "No More Razor Burns or Ingrown Hairs:",
+        content: `Unlike shaving, laser hair
+          reduction reduces the risk of irritation, razor burns and ingrown hairs giving
+          you smoother skin without the hassle.`,
+      },
+      {
+        id: 2.4,
+        label: "Tailored to Your Needs:",
+        content: `We understand that men's hair removal needs can
+          vary greatly. That's why we offer personalized laser treatments to ensure the
+          best results, whether you're targeting a small area or a larger section of your body.`,
+      },
+    ],
     img: Resources.images.Services.LaserHairRemoval.Men.imageThree,
   },
   {
     id: 4,
-    header: "How Many Sessions Of Laser Hair Removal?",
-    sectionOne:
-      "Everyone's hair is different. Generally, once a session is completed, it can last for years, even in some cases forever. 4-8 treatments are required at 4-6 week intervals. One of the main benefits of laser hair removal is that it is a long-term solution. Unlike other hair removal methods that require regular maintenance, laser hair removal targets the hair follicles themselves, preventing hair growth for an extended period of time.",
-    sectionTwo:
-      "After just a few sessions, you'll notice a significant reduction in hair growth and may even experience permanent hair removal.",
+    header: "Is Laser Hair Reduction Right for You?",
+    sectionOne: `Laser hair reduction is an excellent choice for men who want a long-term solution to
+      unwanted hair. Whether you're looking to get rid of back hair, reduce beard growth, or
+      achieve a more polished look for your chest and arms, PureSkyn can help. The
+      treatment is safe for most skin types and hair colors, making it a versatile and effective
+      solution for many men.`,
+    listHeader: "Why Choose Laser Hair Reduction Over Traditional Methods?",
+    listContent: [
+      {
+        id: 2.1,
+        label: "Faster and More Efficient:",
+        content: `Laser hair reduction targets multiple hairs at once, making it faster than traditional methods like waxing or shaving.`,
+      },
+      {
+        id: 2.2,
+        label: "Long-Term Savings:",
+        content: `While there's an upfront cost, laser hair reduction is more cost-effective in the long run, as you won't need to purchase razors, shaving creams, or wax regularly.`,
+      },
+      {
+        id: 2.3,
+        label: "Precision:",
+        content: `Laser technology is precise, allowing technicians to focus on specific areas with great accuracy, making it ideal for areas like the neck, chest and back.`,
+      },
+    ],
     img: Resources.images.Home.serviceCards.lhrMen,
   },
 ];
@@ -44,41 +123,113 @@ export const laserServiceForMenContent = [
 export const laserServiceForWomenContent = [
   {
     id: 1,
-    header: "DIODE LASER HAIR REMOVAL TECHNOLOGY",
-    subHeader: "Extensive Treatment To Our Clients",
-    subHeaderTwo:
-      "Are you ready to transform your beauty and regain your confidence?",
-    sectionOne:
-      "Introducing the ultimate solution to your hair removal woes - laser hair removal for women! Say goodbye to painful waxing, endless shaving, and unsightly hair growth. Our laser hair removal service offers a safe, effective, and long-lasting solution to unwanted hair on any part of your body. Imagine waking up every morning to smooth, hair-free skin without the hassle of shaving or waxing. With laser hair removal, you can achieve just that.",
-    sectionTwo:
-      "In addition to being cost-effective, laser hair removal is also incredibly convenient. You no longer need to worry about scheduling regular waxing or shaving appointments or spending hours in the bathroom trying to remove unwanted hair. With our laser hair removal service, you can achieve smooth and hair-free skin in just a few sessions.",
-    img: Resources.images.Home.serviceCards.lhrWomen,
+    header: "Laser Hair Reduction at Home for Women",
+    subHeader:
+      "Laser Hair Reduction at Home for Women with PureSkyn: Smooth, Hair-Free Skin in the Comfort of Your Home",
+    subHeaderTwo: "Are you looking for a permanent hair removal solution?",
+    sectionOne: `At PureSkyn, we believe that every woman deserves the luxury of smooth, flawless
+      skin without the hassle of constant shaving, waxing or threading. Our laser hair reduction at home for women provides a convenient, effective and long-lasting
+      solution to unwanted body hair. Say goodbye to time-consuming hair removal methods and enjoy the confidence of silky, hair-free skin with the help of our expert team.`,
+      img: Resources.images.Home.serviceCards.lhrWomen,
   },
   {
     id: 2,
-    header: "Women Treatment Areas",
-    sectionOne:
-      "Whether you want to remove hair from your legs, underarms, bikini area, or any other part of your body, our laser hair removal for women service is the perfect solution. Our trained and experienced technicians will work with you to design a customized treatment plan that meets your unique needs and delivers the best possible results.",
-    sectionTwo:
-      "With laser hair removal, you can save both time and money in the long run. With just a few sessions of laser hair removal, you can achieve permanent results that will save you money in the long run.",
+    header: "Why Choose PureSkyn for Laser Hair Reduction at Home for Women?",
+    listContent: [
+      {
+        id: 2.1,
+        label: "Convenience at Your Doorstep:",
+        content: `Skip the salon visits and enjoy the comfort of
+          receiving professional laser hair reduction services right at home, on your schedule.`,
+      },
+      {
+        id: 2.2,
+        label: "Expert Technicians:",
+        content: `Our certified and experienced technicians are trained to
+          understand the unique needs of women&#39;s hair removal. We provide a safe, personalized treatment for your skin type and hair goals.`,
+      },
+      {
+        id: 2.3,
+        label: "Safe and Effective:",
+        content: `We use the latest in laser technology to ensure safe, precise and effective hair removal that offers long-lasting results.`,
+      },
+      {
+        id: 2.4,
+        label: "Pain-Free and Comfortable:",
+        content: `Unlike traditional methods, laser hair reduction is
+          virtually painless and comfortable, leaving you with smooth skin without the irritation caused by waxing or shaving.`,
+      },
+    ],
     img: Resources.images.Services.LaserHairRemoval.Women.imageTwo,
   },
   {
     id: 3,
-    header: "Is Laser Hair Removal Safe?",
-    sectionOne:
-      "We use latest state of the art Venus Velocity™ Diode laser hair removal machine, ensures that the hair is removed from the root, giving you long-lasting results that you can enjoy for months or even years. One of the biggest advantages of laser hair removal for women is the painless and non-invasive nature of the treatment.",
-    sectionTwo:
-      "Our laser treatments are safe, effective, and suitable for all skin types and hair colors. Whether you have light or dark skin, or fine or coarse hair, we can help you achieve the results you desire.",
+    header: "How Does Laser Hair Reduction Work for Women?",
+    sectionOne: `Laser hair reduction uses concentrated light to target the pigment in hair follicles. The
+      light energy is absorbed by the hair, damaging the follicle and inhibiting future hair
+      growth. Over the course of several sessions, you'll experience a gradual and
+      permanent reduction in unwanted hair for smoother, softer skin.`,
+    sectionTwo: `Whether you want to treat small areas like your upper lip or larger areas such as your
+      legs, bikini line or back, PureSkyn has customized treatments designed for women.`,
+    listHeader: "Benefits of Laser Hair Reduction at Home for Women:",
+    listContent: [
+      {
+        id: 2.1,
+        label: "No More Shaving or Waxing:",
+        content: `Laser hair reduction eliminates the need for
+          regular shaving or painful waxing, providing you with a more permanent solution to hair removal.`,
+      },
+      {
+        id: 2.2,
+        label: "Precision and Accuracy:",
+        content: `Laser hair technology is precise, making it ideal for
+          sensitive areas like the face, bikini line, underarms and more.`,
+      },
+      {
+        id: 2.3,
+        label: "Smooth Skin Without Irritation:",
+        content: `Unlike shaving, which can cause cuts, razor
+          burns or ingrown hairs, laser hair reduction leaves your skin smoother and free from irritation.`,
+      },
+      {
+        id: 2.4,
+        label: "Long-Lasting Results:",
+        content: `Laser hair reduction offers permanent hair reduction after several sessions, saving you time and money in the long run.`,
+      },
+    ],
     img: Resources.images.Services.LaserHairRemoval.Women.imageThree,
   },
   {
     id: 4,
-    header: "How Many Sessions Of Laser Hair Removal?",
-    sectionOne:
-      "Everyone's hair is different. Generally, once a session is completed, it can last for years, even in some cases forever. 4-8 treatments are required at 4-6 week intervals. To maintain the results of your laser hair removal treatment, regrowth can be controlled with touch-ups every 6 to 12 months, depending on how quickly the hair grows back. These touch-ups keep your skin smooth and hair-free.",
-    sectionTwo:
-      "Since each hair is in a different stage of growth and the laser can only target actively growing hair, it is not possible to remove the hair completely in one session.",
+    header: "Is Laser Hair Reduction Right for You?",
+    sectionOne: `Laser hair reduction is perfect for women who want to enjoy long-term results
+      without the hassle of frequent hair removal methods. Whether you&#39;re tired of the
+      repetitive nature of shaving or waxing or you want a more permanent solution,
+      PureSkyn offers a service designed for all skin types and hair colors.`,
+    sectionTwo: `Our team will assess your needs and tailor the treatment to suit your specific goals.
+      From targeting fine facial hair to removing thicker body hair, we've got you covered.`,
+    listHeader: "Why Laser Hair Reduction Over Other Hair Removal Methods?",
+    listContent: [
+      {
+        id: 2.1,
+        label: "Time-Saving:",
+        content: `Laser hair reduction is a fast procedure that treats multiple hairs
+          at once, reducing the time spent compared to traditional hair removal methods.`,
+      },
+      {
+        id: 2.2,
+        label: "Cost-Effective:",
+        content: `Although the upfront investment is higher, laser hair reduction
+          saves you money in the long run by eliminating the need for regular purchases
+          of razors, waxes and other hair removal products.`,
+      },
+      {
+        id: 2.3,
+        label: "Safe for Sensitive Skin:",
+        content: `Unlike waxing which can irritate sensitive skin, laser
+          hair reduction is safe and gentle making it ideal for delicate areas such as the face and bikini line.`,
+      },
+    ],
     img: Resources.images.Services.LaserHairRemoval.Women.imageFour,
   },
 ];
@@ -260,20 +411,20 @@ export const servicesCardDetails = [
   },
   {
     id: 4,
-    title: "Dermafrac Infusion Facial: Advanced Skin Rejuvenation",
-    cardTitle: "Dermafrac Infusion Facial",
-    description: `DermaFrac Infusion is a non-invasive treatment that combines microneedling with the
+    title: "Derma Infusion Facial: Advanced Skin Rejuvenation",
+    cardTitle: "Derma Infusion Facial",
+    description: `Derma Infusion is a non-invasive treatment that combines microneedling with the
       infusion of customized serums to rejuvenate the skin. It is a non-invasive procedure that helps
       address various skin concerns, including fine lines, acne scars, hyperpigmentation, and
       dehydration. The microchannels created during the treatment allow for the deep penetration
-      of serums into the dermis, enhancing their effectiveness. DermaFrac is suitable for all skin
+      of serums into the dermis, enhancing their effectiveness. Derma infusion facial is suitable for all skin
       types and has no downtime, making it a popular choice for skin rejuvenation.`,
     benefits: [
       "Reduces fine lines, brightens skin, improves acne scars, and hydrates deeply",
       "Quick recovery with glowing, refreshed skin",
     ],
     image: `${Resources.images.Services.Dermafrac.imageOne}`,
-    linkTo: "/services/skin/medi-facial/dermafrac-infusion-facial",
+    linkTo: "/services/skin/medi-facial/derma-infusion-facial",
   },
   {
     id: 5,
@@ -296,7 +447,7 @@ export const servicesCardDetails = [
 export const servicesOffered = [
   {
     id: 1,
-    title: "Laser Hair Removal Women",
+    title: "Laser Hair Removal Women At Home",
     imageSrc: `${Resources.images.Home.serviceCards.lhrWomen}`,
     image: `${Resources.images.Services.LaserHairRemoval.Women.LHRWomenHomeCard}`,
     description: `Laser hair removal is a cosmetic procedure that uses concentrated light beams to target hair follicles. It effectively removes unwanted hair by inhibiting future growth, leaving the skin smooth and hair-free. This treatment is ideal for various body areas and provides long-lasting results.`,
@@ -304,7 +455,7 @@ export const servicesOffered = [
   },
   {
     id: 2,
-    title: "Laser Hair Removal Men",
+    title: "Laser Hair Removal Men At Home",
     imageSrc: `${Resources.images.Home.serviceCards.lhrMen}`,
     image: `${Resources.images.Services.LaserHairRemoval.Men.LHRMenHomeCard}`,
     description: `Laser hair removal for men targets hair follicles using focused laser light, reducing unwanted hair. This non-invasive treatment is perfect for areas like the back, chest, or face. It’s effective, quick, and helps achieve smooth, well-groomed skin without the hassle of shaving.`,
@@ -312,7 +463,7 @@ export const servicesOffered = [
   },
   {
     id: 3,
-    title: "Oxy Hydra Facial",
+    title: "Oxy Hydra Facial At Home",
     imageSrc: `${Resources.images.Services.OxyHydra.img4}`,
     image: `${Resources.images.Services.OxyHydra.oxyHydraHomeCard}`,
     description: `The Oxy Hydra Facial is a rejuvenating facial that cleanses, exfoliates, and hydrates the skin. Using advanced technology, it delivers nutrients and oxygen deep into the skin, leaving it smooth and glowing. It addresses skin concerns like dryness, fine lines, and dullness for all skin types.`,
@@ -320,7 +471,7 @@ export const servicesOffered = [
   },
   {
     id: 4,
-    title: "RF Skin Tightening",
+    title: "RF Skin Tightening At Home",
     imageSrc: `${Resources.images.Services.SkinTightening.img7}`,
     image: `${Resources.images.Services.SkinTightening.sTHomeCard}`,
     description: `RF Skin Tightening is a non-invasive procedure that uses radiofrequency energy to stimulate collagen production. This treatment helps reduce fine lines, wrinkles, and sagging skin, improving skin elasticity. It’s commonly used on the face, neck, abdomen, and thighs for a youthful, lifted appearance.`,
@@ -328,15 +479,15 @@ export const servicesOffered = [
   },
   {
     id: 5,
-    title: "Dermafrac Infusion Facial",
+    title: "Derma Infusion Facial At Home",
     imageSrc: `${Resources.images.Home.serviceCards.dermafrac}`,
     image: `${Resources.images.Services.Dermafrac.dermafracHomeCard}`,
-    description: `DermaFrac is a microneedling treatment that infuses the skin with customized serums, targeting various skin concerns. It’s effective for fine lines, acne scars, hyperpigmentation, and dehydration. This non-invasive procedure has no downtime and works for all skin types, making it a popular choice for rejuvenation.`,
-    linkTo: "services/skin/medi-facial/dermafrac-infusion-facial",
+    description: `Derma Infusion Facial is a microneedling treatment that infuses the skin with customized serums, targeting various skin concerns. It’s effective for fine lines, acne scars, hyperpigmentation, and dehydration. This non-invasive procedure has no downtime and works for all skin types, making it a popular choice for rejuvenation.`,
+    linkTo: "services/skin/medi-facial/derma-infusion-facial",
   },
   {
     id: 6,
-    title: "Oxygeneo",
+    title: "Oxygeneo Facial At Home",
     imageSrc: `${Resources.images.Home.serviceCards.oxygeneo}`,
     image: `${Resources.images.Services.OxyGeneo.oxygenoHomeCard}`,
     description: `OxyGeneo is an advanced 3-in-1 facial treatment that combines exfoliation, oxygenation, and infusion. This non-invasive procedure improves skin texture, tone, and hydration, while stimulating natural oxygenation from within. It is suitable for all skin types and addresses concerns like dullness and fine lines.`,
@@ -548,9 +699,9 @@ export const skinTighteningPackage = [
 export const dermafraqPackage = [
   {
     id: 1,
-    packageName: "Dermafrac Infusion Facial",
-    label: "Dermafrac Infusion Facial",
-    featureName: "dermafrac",
+    packageName: "Derma Infusion Facial",
+    label: "Derma Infusion Facial",
+    featureName: "dermaInfusionFacial",
     singleSessionPricing: 10000,
     imgSrc: Resources.images.Home.dermafracPackage,
   },
@@ -882,15 +1033,15 @@ export const allPackageDetails = {
       },
     ],
   },
-  dermafrac: {
-    dermafrac: [
+  dermaInfusionFacial: {
+    dermaInfusionFacial: [
       {
         id: 1,
         serviceId: "6",
         subServiceId: "6-1",
-        label: "Dermafrac Infusion Facial",
-        featureName: "dermafrac",
-        name: "Dermafrac Infusion Facial - Single Session",
+        label: "Derma Infusion Facial",
+        featureName: "dermaInfusionFacial",
+        name: "Derma Infusion Facial - Single Session",
         imgSrc: Resources.images.Home.dermafracPackage,
         price: 10000,
       },
@@ -1013,22 +1164,22 @@ export const beforeAfterCarouselContent = {
       afterImg: Resources.images.Services.BeforeAfter.oxyhydra.img3After,
     },
   ],
-  "Dermafrac Facial": [
+  "Derma Infusion Facial": [
     {
       id: 1,
-      serviceName: "Dermafrac Facial",
+      serviceName: "Derma Infusion Facial",
       beforeImg: Resources.images.Services.BeforeAfter.dermafrac.img1Before,
       afterImg: Resources.images.Services.BeforeAfter.dermafrac.img1After,
     },
     {
       id: 2,
-      serviceName: "Dermafrac Facial",
+      serviceName: "Derma Infusion Facial",
       beforeImg: Resources.images.Services.BeforeAfter.dermafrac.img2Before,
       afterImg: Resources.images.Services.BeforeAfter.dermafrac.img2After,
     },
     {
       id: 3,
-      serviceName: "Dermafrac Facial",
+      serviceName: "Derma Infusion Facial",
       beforeImg: Resources.images.Services.BeforeAfter.dermafrac.img3Before,
       afterImg: Resources.images.Services.BeforeAfter.dermafrac.img3After,
     },
@@ -1045,37 +1196,37 @@ export const homeBeforeAfterCarouselContent = Object.entries(
 export const treatmentList = [
   {
     id: 1,
-    treatmentName: "Laser Hair Removal Women",
+    treatmentName: "Laser Hair Removal Women At Home",
     imgSrc: Resources.images.Home.lhrWomenMobile,
     label: "lhrWomen",
   },
   {
     id: 2,
-    treatmentName: "Laser Hair Removal Men",
+    treatmentName: "Laser Hair Removal Men At Home",
     imgSrc: Resources.images.Home.lhrMenMobile,
     label: "lhrMen",
   },
   {
     id: 3,
-    treatmentName: "Oxy Hydra Facial",
+    treatmentName: "Oxy Hydra Facial At Home",
     imgSrc: Resources.images.Home.oxyhydraMoble,
     label: "oxyHydraFacial",
   },
   {
     id: 4,
-    treatmentName: "RF Skin Tightening",
+    treatmentName: "RF Skin Tightening At Home",
     imgSrc: Resources.images.Home.skinTighteningMobile,
     label: "skinTightening",
   },
   {
     id: 5,
-    treatmentName: "Dermafrac Infusion Facial",
+    treatmentName: "Derma Infusion Facial At Home",
     imgSrc: Resources.images.Home.dermfracMobile,
-    label: "dermafrac",
+    label: "dermaInfusionFacial",
   },
   {
     id: 6,
-    treatmentName: "Oxygeneo",
+    treatmentName: "Oxygeneo Facial At Home",
     imgSrc: Resources.images.Home.oxygeneoMobile,
     label: "oxygeneo",
   },
@@ -1104,12 +1255,12 @@ export const customPackageDetails = [
   },
   {
     treatmentName: "Medi-Facial Package",
-    packageName: "Oxy Hydra Facial + Oxygeno + Dermafrac",
+    packageName: "Oxy Hydra Facial + Oxygeno + Derma Infusion Facial",
     packagePrice: 15000,
     strikeOutPrice: 20000,
     serviceId: "7",
     subServiceId: "7-4",
-    featureName: "oxyhydraOxygenoDermafrac",
+    featureName: "oxyhydraOxygenoDermaInfusionFacial",
     selectedPackageImg: Resources.images.Home.customPackages.customPackageImg3,
   },
   {
@@ -1123,23 +1274,23 @@ export const customPackageDetails = [
     selectedPackageImg: Resources.images.Home.customPackages.customPackageImg2,
   },
   {
-    treatmentName: "Oxygeneo Therapy + Dermafrac",
-    packageName: "Oxygeneo + Dermafrac",
+    treatmentName: "Oxygeneo Therapy + Derma Infusion Facial",
+    packageName: "Oxygeneo + Derma Infusion Facial",
     packagePrice: 10000,
     strikeOutPrice: 15000,
     serviceId: "7",
     subServiceId: "7-5",
-    featureName: "oxygeneoAndDermafrac",
+    featureName: "oxygeneoAndDermaInfusionFacial",
     selectedPackageImg: Resources.images.Home.customPackages.customPackageImg1,
   },
   {
-    treatmentName: "Oxy Hydra Facial + Dermafrac",
-    packageName: "Oxy Hydra Facial + Dermafrac",
+    treatmentName: "Oxy Hydra Facial + Derma Infusion Facial",
+    packageName: "Oxy Hydra Facial + Derma Infusion Facial",
     packagePrice: 10000,
     strikeOutPrice: 15000,
     serviceId: "7",
     subServiceId: "7-6",
-    featureName: "oxyhydraAndDermafrac",
+    featureName: "oxyhydraAndDermaInfusionFacial",
     selectedPackageImg: Resources.images.Home.customPackages.customPackageImg5,
   },
 ];
@@ -1187,7 +1338,7 @@ export const packagesDescriptionList = {
       desc: "Reduces fine lines, evens skin tone, and enhances collagen production.",
     },
   ],
-  oxyhydraOxygenoDermafrac: [
+  oxyhydraOxygenoDermaInfusionFacial: [
     {
       id: 1,
       desc: "A powerful 3-in-1 treatment for deep cleansing, hydration, and skin rejuvenation.",
@@ -1201,7 +1352,7 @@ export const packagesDescriptionList = {
       desc: "Reduces fine lines, improves skin texture, and boosts collagen production.",
     },
   ],
-  oxygeneoAndDermafrac: [
+  oxygeneoAndDermaInfusionFacial: [
     {
       id: 1,
       desc: "Combines deep oxygenation with micro-needling for ultimate skin rejuvenation.",
@@ -1215,7 +1366,7 @@ export const packagesDescriptionList = {
       desc: "Infuses skin with essential nutrients for a radiant and youthful glow.",
     },
   ],
-  oxyhydraAndDermafrac: [
+  oxyhydraAndDermaInfusionFacial: [
     {
       id: 1,
       desc: "Deeply hydrates and nourishes the skin for a refreshed, dewy glow.",
@@ -1439,7 +1590,7 @@ export const packagesDescriptionList = {
       desc: "Removes dead skin cells and impurities while boosting hydration.",
     },
   ],
-  dermafrac: [
+  dermaInfusionFacial: [
     {
       id: 1,
       desc: "Uses micro-needling infusion to deliver active serums deep into the skin.",

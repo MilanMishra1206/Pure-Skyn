@@ -87,8 +87,8 @@ function QueryForm({ queryFormik, handleQueryFormSubmit }) {
                   value: "RF Skin Tightening",
                 },
                 {
-                  label: "Dermafrac Infusion Facial",
-                  value: "Dermafrac Infusion Facial",
+                  label: "Derma Infusion Facial",
+                  value: "Derma Infusion Facial",
                 },
               ]}
               value={queryFormik.values.serviceId}
@@ -109,28 +109,12 @@ function QueryForm({ queryFormik, handleQueryFormSubmit }) {
               showIconOutline
               options={[
                 {
-                  label: "Delhi",
-                  value: "Delhi",
+                  label: "South Delhi",
+                  value: "South Delhi",
                 },
                 {
                   label: "Gurgaon",
                   value: "Gurgaon",
-                },
-                {
-                  label: "Noida",
-                  value: "Noida",
-                },
-                {
-                  label: "Greater Noida",
-                  value: "Greater Noida",
-                },
-                {
-                  label: "Faridabad",
-                  value: "Faridabad",
-                },
-                {
-                  label: "Ghaziabad",
-                  value: "Ghaziabad",
                 },
               ]}
               value={queryFormik.values.city}

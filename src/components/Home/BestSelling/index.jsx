@@ -21,7 +21,7 @@ const BestSellingCarousel = () => {
   };
 
   return (
-    <div className="px-4 py-10 font-poppins">
+    <div className="px-1 py-10 font-poppins">
       <CustomHomeHeader heading="BEST SELLING DEALS" />
       <div className="relative mt-4">
         <MdChevronLeft
@@ -42,7 +42,7 @@ const BestSellingCarousel = () => {
               strikeOutPrice={item.strikeOutPrice}
               bgGradient="bg-gradient-to-t from-black/60 via-black/40 to-transparent"
               key={index}
-              customClass="w-72 2xl:!w-60 h-[20.5rem] rounded-2xl shadow-lg"
+              customClass="w-64 2xl:!w-64 h-[20.5rem] rounded-2xl shadow-lg"
               imageClass="h-100"
               titleClass="text-white"
             />

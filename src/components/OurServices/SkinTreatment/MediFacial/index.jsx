@@ -49,9 +49,9 @@ function MediFacial() {
     },
     {
       id: 3,
-      title: "Dermafrac Infusion Facial",
+      title: "Derma Infusion Facial",
       image: `${Resources.images.Services.Dermafrac.img6}`,
-      linkTo: "dermafrac-infusion-facial",
+      linkTo: "derma-infusion-facial",
     },
     {
       id: 4,
@@ -293,13 +293,13 @@ function MediFacial() {
             )}
           </div>
         )}
-        {(!type || type === "dermafrac-infusion-facial") && (
+        {(!type || type === "derma-infusion-facial") && (
           <div className="flex flex-col items-center">
             <Suspense fallback={<CustomLoader open={true} />}>
               <DermafracInfusionFacial type={type} />
             </Suspense>
             {pathname !==
-              "/services/skin/medi-facial/dermafrac-infusion-facial" && (
+              "/services/skin/medi-facial/derma-infusion-facial" && (
               <div className="flex justify-center">
                 <CustomCards
                   title={mediFacialServices[2].title}

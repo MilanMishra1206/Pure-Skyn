@@ -84,7 +84,7 @@ function BookNowOptions({
     } else if (heading.includes("Men")) {
       setTreatmentPackageDetails(allPackageDetails.LHRMen[featureName]);
     } else if (heading.includes("Derma")) {
-      setTreatmentPackageDetails(allPackageDetails.dermafrac[featureName]);
+      setTreatmentPackageDetails(allPackageDetails.dermaInfusionFacial[featureName]);
     } else if (heading.includes("Skin")) {
       setTreatmentPackageDetails(allPackageDetails.skinTightening[featureName]);
     } else if (heading.includes("Oxygeneo")) {
@@ -151,7 +151,7 @@ function BookNowOptions({
         package: skinTighteningPackage,
         isMultiple: false,
       },
-      "Dermafrac Infusion Facial": {
+      "Derma Infusion Facial": {
         package: dermafraqPackage,
         isMultiple: false,
       },
