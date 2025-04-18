@@ -170,59 +170,6 @@ const productContent = {
       },
       shippingInformation,
     ],
-    "Seekcaus Hydra Sunscreen Gel SPF 50 PA++++": [
-      {
-        id: 1,
-        name: "Description",
-        content: `Seekcaus Hydra Sunscreen Gel SPF 50 PA++++ is a hydrating sun protection formula designed to shield your skin from harmful UV rays while providing essential moisture. This lightweight, non-greasy gel offers broad-spectrum protection with SPF 50 and PA++++, guarding against UVA and UVB rays. Enriched with hydrating ingredients like hyaluronic acid and aloe vera, it keeps your skin moisturized and refreshed throughout the day. Suitable for all skin types, it leaves no white cast and is perfect for daily use.`,
-      },
-      {
-        id: 2,
-        name: "Key Benefits",
-        content: `<div class="grid gap-2">   
-          <span>Provides broad-spectrum protection with SPF 50 PA++++.</span>
-          <span>Shields skin from harmful UVA and UVB rays.</span>
-          <span>Hydrates and moisturizes the skin.</span>
-          <span>Lightweight, non-greasy formula ideal for daily use.</span>
-          <span>Leaves no white cast and is suitable for all skin types.</span>       
-      </div>`,
-      },
-      {
-        id: 3,
-        name: "How to Use",
-        content: `<ul class="space-y-4 list-disc pl-4">
-          <li><strong>Application:</strong> Apply generously to the face and neck 15 minutes before sun exposure.</li>
-          <li><strong>Reapplication:</strong> Reapply every 2 hours, or immediately after swimming, sweating, or towel drying.</li>
-          <li><strong>Daily Use:</strong> Can be worn alone or under makeup for daily sun protection.</li>
-        </ul>`,
-      },
-      {
-        id: 4,
-        name: "Ingredients",
-        content: `<u class="space-y-2 list-disc no-underline">
-          <li>Hyaluronic Acid</li>
-          <li>Aloe Vera Extract</li>
-          <li>Vitamin E</li>
-          <li>Green Tea Extract</li>
-          <li>Niacinamide</li>
-          <li>Squalane</li>
-          <li>Titanium Dioxide</li>
-          <li>Cyclopentasiloxane</li>
-          <li>Dimethicone</li>
-          <li>Chamomile Extract</li>
-        </u>`,
-      },
-      {
-        id: 5,
-        name: "Additional Information",
-        content: `<div class="space-y-2">
-                    <p>Formulated with skin-loving ingredients like Hyaluronic Acid and Aloe Vera, Seekcaus Hydra Sunscreen Gel not only protects your skin from UV damage but also ensures it remains soft, supple, and hydrated all day long.</p>
-                    <p>Its non-greasy, fast-absorbing texture makes it ideal for daily use, even under makeup. Designed to suit all skin types, this sunscreen leaves no white cast and offers strong protection with a PA++++ rating.</p>
-                    <p>Experience advanced sun defense that feels just like skincare - wear it with confidence every day.</p>
-                  </div>`,
-      },
-      shippingInformation,
-    ],
     "Ivatherm Sunlight SPF 50+ Dry Touch Cream": [
       {
         id: 1,
@@ -1738,27 +1685,6 @@ export const productList = {
       ),
       productsAdditionalDetails:
         productContent?.sunscreen["Ray Back Broad Spectrum SPF 50+++"],
-    },
-    "Seekcaus Hydra Sunscreen Gel SPF 50 PA++++": {
-      id: 4,
-      productName: "Seekcaus Hydra Sunscreen Gel SPF 50 PA++++",
-      imgSrc: Resources.images.Products.products.sunscreen.seeckusSuncreen.img1,
-      productDescription:
-        "Seekcaus Hydra Sunscreen Gel SPF 50 PA++++ is a hydrating sun protection formula designed to shield your skin from harmful UV rays while providing essential moisture. This lightweight, non-greasy gel offers broad-spectrum protection with SPF 50 and PA++++, guarding against UVA and UVB rays. Enriched with hydrating ingredients like hyaluronic acid and aloe vera, it keeps your skin moisturized and refreshed throughout the day. Suitable for all skin types, it leaves no white cast and is perfect for daily use.",
-      ratings: 5,
-      strikePrice: "1000",
-      productPrice: "700",
-      smallDescription: [
-        { id: 1, content: "Hydrating SPF 50 PA++++" },
-        { id: 2, content: "Lightweight, no white cast" },
-      ],
-
-      category: "sunscreen",
-      allImages: Object.values(
-        Resources.images.Products.products.sunscreen.seeckusSuncreen
-      ),
-      productsAdditionalDetails:
-        productContent?.sunscreen["Seekcaus Hydra Sunscreen Gel SPF 50 PA++++"],
     },
     "Ivatherm Sunlight SPF 50+ Dry Touch Cream": {
       id: 5,
