@@ -3,77 +3,180 @@ import Resources from "../../config/Resources";
 export const dermaInfusionFacial = [
   {
     id: 1,
-    title: "Rejuvenate",
+    title: "Micro-Channeling:",
     content:
-      "This is a peptide serum that stimulates the production of collagen and fibroblast in the skin. With higher collagen production, your skin will appear smoother and issues like fine lines, wrinkles, skin laxity, and scarring will fade away.",
+      "Tiny micro-needles create micro-channels in the skin, triggering a healing response that boosts collagen and elastin production.",
   },
   {
     id: 2,
-    title: "Hydrate",
+    title: "Serum Infusion:",
     content:
-      "This hyaluronic acid-based serum uses HylaSponge technology to replenish the moisture in your skin. Hyaluronic acid is a hypoallergenic sugar-based molecule that is known for helping your skin retain moisture. Hyaluronic acid is also scientifically proven to help increase natural collagen production.",
+      "Simultaneously, customized serums are infused deep into the skin. Options include:",
+    list: [
+      {
+        id: 2.1,
+        label: "Hydration Serum",
+        content: "with hyaluronic acid",
+      },
+      {
+        id: 2.2,
+        label: "Rejuvenating Peptides",
+        content: "for anti-aging",
+      },
+      {
+        id: 2.3,
+        label: "Clarifying Serum",
+        content: "for acne-prone skin",
+      },
+      {
+        id: 2.4,
+        label: "Brightening Complex",
+        content: "for pigmentation",
+      },
+      {
+        id: 2.5,
+        label: "Vitamin C Infusion",
+        content: "for antioxidant protection",
+      },
+    ],
   },
   {
     id: 3,
-    title: "Clarify",
+    title: "LED Light Therapy:",
     content:
-      "If you are struggling with oily or acne-prone skin, then the Clarity serum is the right solution for you. The combination of lactic and salicylic acids gently exfoliate the skin to allow for better product absorption from acne-fighting products and treatments.",
-  },
-  {
-    id: 4,
-    title: "Lighten",
-    content:
-      "For patients who are struggling with pigmentation concerns, the Lighten serum is an ideal choice. Everything from post-inflammatory hyperpigmentation caused by acne to sun damage, dark spots, and melasma can be effectively treated with this brightening serum.",
+      "Red or blue LED therapy is used post-treatment to calm inflammation, stimulate repair and enhance results.",
   },
 ];
 
 export const OxyGeneoContent = [
   {
     id: 1,
-    title: "What is OxyGeneo?",
+    title: "Benefits of the Oxygeneo Facial by PureSkyn",
     content:
-      "OxyGeneo combines the benefits of microdermabrasion, facials, and skin infusions into one simple, non-invasive therapy. It is paired with two unique formulas to infuse the skin with essential nutrients that improve its texture and appearance. The NeoBright formula is intended to lighten and brighten the skin with azelaic acid, kojic acid, and retinol. The NeoRevive formula is an anti-aging treatment containing hyaluronic acid (the active ingredient found in many fillers), peptides, and retinol.",
+      "Our Oxygeneo facial offers more than just a glow—it delivers real, visible skin improvements from the first session:",
+    listContent: [
+      {
+        id: 2.1,
+        label: "Instantly brighter, smoother skin",
+      },
+      {
+        id: 2.2,
+        label: "Reduced appearance of fine lines and wrinkles",
+      },
+      {
+        id: 2.3,
+        label: "Boosted collagen production and cell turnover",
+      },
+      {
+        id: 2.4,
+        label: "Even skin tone and diminished pigmentation",
+      },
+      {
+        id: 2.5,
+        label: "Deep hydration for plumper, healthier skin",
+      },
+      {
+        id: 2.6,
+        label: "Safe and effective for all skin types",
+      },
+      {
+        id: 2.7,
+        label: "No downtime—just radiant results",
+      },
+    ],
   },
   {
     id: 2,
-    title: "How it works",
+    title: "Why Choose PureSkyn's At-Home Oxygeneo Facial?",
     content:
-      "OxyGeneo uses a Capsugen® tablet that glides over the surface of the skin to gently exfoliate the upper skin layer, infuse the skin with one of two special formulas to brighten or rejuvenate the skin, and produce CO2 bubbles to gently burst on the surface of the skin. This allows the active ingredients in the NeoBright and NeoRevive formulas to be better absorbed as well as prompt a natural healing response beneath the skin that delivers more oxygen-rich blood to the area. That means more nutrients where you need them most for a continued improvement in your skin.",
+      "At PureSkyn, we're committed to bringing professional skincare directly to you. Our Oxygeneo facials are not only effective but also relaxing, convenient, and 100% vegan. Here’s what sets us apart:",
+    listContent: [
+      {
+        id: 2.1,
+        label: "Noticeable results after just one session.",
+      },
+      {
+        id: 2.2,
+        label: "Naturally oxygenate skin.",
+      },
+      {
+        id: 2.3,
+        label: "Infuses natural, active ingredients deeply into your skin.",
+      },
+      {
+        id: 2.4,
+        label: "Promotes long-term skin health and glow.",
+      },
+      {
+        id: 2.5,
+        label: "Suitable for both face and body.",
+      },
+      {
+        id: 2.6,
+        label: "Perfect for all skin types and tones.",
+      },
+      {
+        id: 2.7,
+        label: "No harsh chemicals, dyes or preservatives.",
+      },
+      {
+        id: 2.8,
+        label: "No downtime — get back to your day with glowing skin.",
+      },
+    ],
   },
   {
     id: 3,
-    title: "What to expect",
-    content:
-      "Before beginning treatment, we will examine the area under and around the chin to determine if KYBELLA® is right for you. Then we will tailor a treatment designed for your aesthetic goals. The treatment consists of multiple small injections under your chin and is complete in 15-20 minutes. You will likely experience some swelling, bruising, or numbness under your chin. Be sure to inform your healthcare professional if you develop an uneven smile, facial muscle weakness, or difficulty swallowing.",
-  },
-  {
-    id: 4,
-    title: "Why we love it",
-    content:
-      "We are raving about OxyGeneo because it works for any skin type without any irritation or side effects. It’s the perfect lunchtime treatment that takes just as long as a facial with much more dramatic results. Because there are no noticeable side effects from treatment, it’s also the perfect way to get a last-minute touch up before a major event, where treatments like microdermabrasion and chemical peels would need more healing time.",
+    title: "What Makes the Oxygeneo Facial Unique?",
+    content: `Our facials use a specialized component called the OxyPod—a capsule filled with
+      powerful active ingredients in dormant form. Once activated during the treatment,
+      these ingredients release their full potential for maximum effectiveness, safety and
+      freshness. With no preservatives or additives, you can trust you're getting a
+      clean, natural skincare experience.`,
   },
 ];
 
 export const oxygeneoThreeSteps = [
   {
     id: 1,
-    title: "Exfoliate",
+    title: "Exfoliation",
     imgSrc: Resources.images.Services.OxyGeneo.exfoliate,
     content:
-      "The Capsugen tablet exfoliates the upper skin layer to remove dead cells, smooth and renew the skin, preparing the skin to receive active nutrients.",
+      "A gentle vacuum exfoliates the skin, removing dead skin cells and prepping the surface for deep absorption of nutrients.",
   },
   {
     id: 2,
-    title: "Infuse",
+    title: "Oxygenation",
     imgSrc: Resources.images.Services.OxyGeneo.infuse,
     content:
-      "Capsugen cleanses the skin, preparing it for infusion of active ingredients: NeoRevive for rejuvenation and anti-aging or NeoBright for skin brightening and texture improvement",
+      "Our device creates CO₂ bubbles on the skin's surface —a natural physiological response that increases oxygen-rich blood flow to your skin, boosting cell metabolism and enhancing skin vitality.",
   },
   {
     id: 3,
-    title: "Oxygenate",
+    title: "Infusion",
     imgSrc: Resources.images.Services.OxyGeneo.oxygenate,
     content:
-      "The OxyGeneO effect produces CO2 bubbles which gently burst on the skin surface creating a physiological response, sending oxygen-rich blood to the area. This increases capillary flow and skin metabolism. Oxygenation results in optimal absorption of active ingredients.",
+      "Powerful, nutrient-rich serums are infused into the skin to deeply nourish and target specific concerns like pigmentation, dehydration or aging.",
+  },
+];
+
+export const skinTighteningThreeSteps = [
+  {
+    id: 1,
+    title: "Deep Dermal Heating",
+    content:
+      "RF energy gently heats the deeper layer of your skin triggering your body's natural healing response.",
+  },
+  {
+    id: 2,
+    title: "Collagen & Elastin Stimulation",
+    content:
+      "This heat kickstarts the production of collagen and elastin, two key proteins responsible for keeping your skin firm, plump and elastic.",
+  },
+  {
+    id: 3,
+    title: "Skin Tightening & Smoothing",
+    content:
+      "As collagen rebuilds, skin becomes tighter, smoother and more lifted, reducing the appearance of wrinkles, sagging and fine lines.",
   },
 ];

@@ -81,10 +81,12 @@ const CustomHeroSection = () => {
               alt="Banner"
             />
             <div className="relative w-full h-full flex flex-row justify-end items-center z-10 mt-2">
-              <div className="flex w-full md:w-1/2 py-5 px-4 flex-col h-[44.5rem] rounded-lg">
+              <div className="flex w-full md:w-1/2 py-5 px-4 flex-col mt-10 h-[44.5rem]">
                 <div className="space-y-10 text-center lg:mb-5">
                   <div className="text-2xl xl:text-3xl font-medium text-coal">
-                    <p className="!text-coffee bg-[#fdeac4] rounded">Hair free smooth and glowing skin with no hassle </p>
+                    <p className="!text-coffee bg-[#fdeac4] rounded">
+                      Hair free smooth and glowing skin with no hassle{" "}
+                    </p>
                     <p className="mt-3">At comfort of your Home!!</p>
                   </div>
                   <p className="text-xl text-coal">
@@ -145,14 +147,13 @@ const CustomHeroSection = () => {
             />
             <div className="flex flex-col justify-between py-4 px-2 bg-[#FFF7E9]">
               <div className="space-y-10 text-center lg:mb-5">
-                <div className="text-4xl font-medium text-coal">
-                  <p>It's All About </p>
-                  <p className="mt-3">The Results!</p>
+                <div className="text-2xl xl:text-3xl font-medium text-coal">
+                  <p className="!text-coffee bg-[#fdeac4] rounded">
+                    Hair free smooth and glowing skin with no hassle{" "}
+                  </p>
+                  <p className="mt-3">At comfort of your Home!!</p>
                 </div>
               </div>
-              <p className="mt-3 text-coffee font-poppins font-bold text-lg text-center">
-                Hair free smooth and glowing skin with no hassle!
-              </p>
               <div className=" text-cello my-4 md:my-6 px-3 lg:!mx-5 font-poppins text-center">
                 <p>
                   <strong className="text-coffee">

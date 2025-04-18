@@ -47,7 +47,7 @@ function Oxygeneo({ type }) {
               imgSrcLaptop={Resources.images.Home.oxygeneo}
               imgSrcTablet={Resources.images.Home.oxygeneoMobile}
               linkTo="/book-now"
-              heading="Oxygeneo"
+              heading="Oxygeneo Facial at Home with PureSkyn"
               breadcrumbs1="Medi Facial"
               route1="/services/skin/medi-facial"
               breadcrumbs2="Oxygeneo"
@@ -67,15 +67,13 @@ function Oxygeneo({ type }) {
             <div className="flex flex-col md:!flex-row lg:!px-5 justify-center items-center font-poppins text-cello">
               <div className={`w-full xl:!w-4/5 lg:!px-5 mb-4`}>
                 <p>
-                  Throughout your daily routine, your skin takes a lot of abuse
-                  with exposure to the elements, which only encourages and
-                  accelerates the existing degradation of facial skin caused by
-                  the aging process. As a result, you might see fine lines,
-                  wrinkles, dark spots, blotchy skin, oversized pores, and an
-                  overall dull appearance in your face. While you might use
-                  products to combat these effects, you may occasionally desire
-                  a deeper, more intense healing experience for your skin, and
-                  that is what you'll find with OxyGeneo.
+                  Experience the ultimate skin rejuvenation with PureSkyn's
+                  Oxygeneo Facial—a powerful 3-in-1 treatment that combines
+                  exfoliation, oxygenation and infusion to refresh and
+                  revitalize your skin. Now available in the comfort of your own
+                  home, this innovative facial is designed to treat dullness,
+                  uneven skin texture, fine lines, wrinkles and pigmentation
+                  with immediate and long-lasting results.
                 </p>
                 <p>
                   This non-invasive treatment is designed to be a 3-in-1 Super
@@ -103,8 +101,13 @@ function Oxygeneo({ type }) {
             viewport={{ once: true }}
             className="flex flex-col items-center justify-center font-poppins font-medium text-xl text-center text-coal mt-5 gap-4"
           >
-            <div className="text-3xl text-center">
-              <p className="font-bold">Step By Step Process</p>
+            <div className="text-3xl text-center px-2">
+              <p className="font-bold">How the Oxygeneo Facial Works</p>
+              <p className="text-xl">
+                At PureSkyn, we bring professional-grade skincare to your
+                doorstep using advanced Oxygeneo technology. Here's how the
+                treatment works:
+              </p>
             </div>
             <div
               className="bg-center bg-cover bg-repeat flex p-5 place-content-center w-full"
@@ -152,6 +155,13 @@ function Oxygeneo({ type }) {
                   <div className="mb-5" key={item.id}>
                     <div className="!text-2xl font-bold mb-4">{item.title}</div>
                     <div className="flex">{item.content}</div>
+                    {item?.listContent?.length > 0 && (
+                      <ul className="list-disc text-left">
+                        {item?.listContent.map((list) => (
+                          <li key={list.id}>{list.label}</li>
+                        ))}
+                      </ul>
+                    )}
                   </div>
                 ))}
               </div>

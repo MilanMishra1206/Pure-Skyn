@@ -14,9 +14,9 @@ function CommonHeader({
   route1,
   breadcrumbs2,
 }) {
-  const isLargestScreen = useMediaQuery("(min-width: 1570px)");
+  const isLargestScreen = useMediaQuery("(min-width: 1601px)");
   const isLaptopScreen = useMediaQuery(
-    "(min-width: 1024px) and (max-width: 1579px)"
+    "(min-width: 1024px) and (max-width: 1600px)"
   );
   const isTablet = useMediaQuery("(max-width: 1023px)");
   const breadcrumbs = [
@@ -93,11 +93,7 @@ function CommonHeader({
               {heading.toUpperCase()}
             </div>
             <div className="flex items-start justify-center">
-              <img
-                src={imgSrcTablet}
-                alt="laser-hair-removal-men"
-                className="md:!h-96"
-              />
+              <img src={imgSrcTablet} alt={heading} className="md:!h-96" />
             </div>
           </div>
           <motion.div
@@ -167,7 +163,7 @@ function CommonHeader({
             </div>
           </div>
           <div className="flex items-center justify-center bg-[#FFF9EA]">
-            <img src={imgSrcTablet} alt="laser-hair-removal-men" />
+            <img src={imgSrcTablet} alt={heading} />
           </div>
         </div>
       )}

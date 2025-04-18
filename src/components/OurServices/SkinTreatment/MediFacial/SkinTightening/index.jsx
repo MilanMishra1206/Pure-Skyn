@@ -12,6 +12,7 @@ import DrawCircleText from "../../../../../shared/CustomDrawCircleText";
 import CustomFloatingBookNowButton from "../../../../../shared/CustomFloatingBookNowButton";
 import BeforeAfterCarousel from "../../../BeforeAfterCarousel";
 import { beforeAfterCarouselContent } from "../../../../../helpers/LaserServices";
+import { skinTighteningThreeSteps } from "../../../../../helpers/MediFacial";
 
 const CommonHeader = lazy(() => import("../../../CommonHeader"));
 
@@ -42,7 +43,7 @@ function SkinTightening({ type }) {
               imgSrcLaptop={Resources.images.Home.skinTightening}
               imgSrcTablet={Resources.images.Home.skinTighteningMobile}
               linkTo="/Book-now"
-              heading="RF Skin Tightening"
+              heading="At-Home RF Skin Tightening Treatment by PureSkyn"
               breadcrumbs1="Medi Facial"
               route1="/services/skin/medi-facial"
               breadcrumbs2="Skin Tightening"
@@ -66,25 +67,33 @@ function SkinTightening({ type }) {
                 </div>
                 <div className="text-justify">
                   <p>
-                    At Pure Skyn, we offer HIFU, considered the best
-                    skin-tightening solution that transforms your ageing &
-                    sagging skin. It's a non-invasive, quick 8-minute procedure
-                    that lets you enjoy it for 18 months!
+                    Looking for a non-invasive way to lift, firm and rejuvenate
+                    your skin—without stepping foot in a clinic? With{" "}
+                    <strong>PureSkyn's </strong>
+                    professional{" "}
+                    <strong>
+                      RF (Radio Frequency) skin tightening at home
+                    </strong>
+                    , you can enjoy.our advanced RF technology which helps
+                    tighten sagging skin, reduce wrinkles and restore youthful
+                    firmness—all without surgery or downtime.
+                  </p>
+                  <p className="font-semibold">What is RF Skin Tightening?</p>
+                  <p>
+                    <strong>Radio Frequency (RF) skin tightening</strong> is a
+                    safe, non-invasive cosmetic procedure that uses controlled
+                    heat energy to stimulate collagen and elastin production
+                    deep within the skins which results? Smoother, tighter, more
+                    youthful-looking skin over time.
                   </p>
                   <p>
-                    HIFU stands for High-Intensity Focused Ultrasound. It's a
-                    state-of-the-art skin tightening procedure. It's painless.
-                    HIFU uses non-surgical techniques to send ultrasonic waves
-                    deep into your skin to remove fat cells. This encourages the
-                    body to mend itself and manufacture collagen.
-                  </p>
-                  <p>
-                    Looking for a safe, non-surgical way to reduce fat and
-                    improve skin texture? Consider Pure Skyn's ultrasound-based
-                    HIFU laser treatment! This tightening procedure is excellent
-                    for facelifts, body contouring, and targeted skin
-                    tightening. Plus, it stimulates cell regeneration for
-                    firmer, tighter skin.
+                    Whether you're looking to{" "}
+                    <strong>
+                      contour your jawline, lift your cheeks, smooth fine lines
+                      or tighten loose skin on the body
+                    </strong>
+                    , RF treatment offers a proven solution with visible
+                    results.
                   </p>
                 </div>
               </div>
@@ -98,50 +107,38 @@ function SkinTightening({ type }) {
             </div>
           </motion.div>
           <motion.div
-            variants={FadeInWrapper("left", 0.1)}
+            variants={FadeInWrapper("left", 0.2)}
             initial="hidden"
             whileInView="show"
             viewport={{ once: true }}
-            className={`mt-3 ${isTablet ? "p-4" : ""}`}
+            className="flex flex-col items-center justify-center font-poppins font-medium text-xl text-center text-coal mt-5 gap-4 mb-4"
           >
+            <div className="text-3xl text-center px-2">
+              <p className="font-bold">How RF Skin Tightening Works</p>
+              <p className="text-xl">
+                At PureSkyn, we use the latest in RF technology to safely
+                deliver results through a 3-step process:
+              </p>
+            </div>
             <div
-              className={`flex ${isTablet ? "flex-col" : "ml-3 p-5"} font-poppins text-cello`}
+              className="bg-center bg-cover bg-repeat flex p-5 place-content-center w-full"
+              style={{
+                backgroundImage: `url(${Resources.images.Common.cardBg2})`,
+              }}
             >
-              <div className={`flex flex-col ${!isTablet ? "" : "w-full"}`}>
-                <div className="!text-2xl font-bold mb-4">
-                  How does HIFU facial work?
-                </div>
-                <p className="text-justify">
-                  A HIFU facial mainly stimulates collagen and elastin growth to
-                  tighten your sagging and wrinkled skin. The HIFU machine
-                  transfers ultrasound waves that penetrate deep within your
-                  skin layers, diminish fat skin cells, and initiate the body's
-                  repair function. This ultimately boosts your collagen
-                  production & rewards you with firm & youthful skin!
-                </p>
-                <div className={`flex ${isMobile ? "flex-col" : "flex-row"}`}>
-                  <img
-                    src={Resources.images.Services.SkinTightening.img4}
-                    alt="skin-tightening-instrument"
-                    className={`${isMobile ? "w-full" : "w-1/2"}`}
-                  />
-                  <div className="flex flex-col justify-center">
-                    <div className="!text-xl font-bold mb-4">Hifu/Fus</div>
-                    <p className="text-justify">
-                      HIFU offers the non-invasive alternative to thae surgical
-                      face lift while improving the fine lines, wrinkles,
-                      décolleté etc. It is the best skin treatment for face
-                      contouring also. HIFU uses the ultrasound waves to safely
-                      lift & tighten the skin. It penetrates deep into the
-                      dermal layers at high temperature and also protects the
-                      skin. During the procedure, thermal heat is created within
-                      the skin tissue that creates the tiny wounds and cellular
-                      friction. This promotes the healing mechanism of the skin
-                      and also enhances the collagen production, giving skin a
-                      tight and lifted effect.
-                    </p>
+              <div className="grid grid-cols-1 md:grid-cols-3 font-medium text-start mt-4 gap-4 bg-opacity-40">
+                {skinTighteningThreeSteps.map((item) => (
+                  <div
+                    className="flex flex-col rounded-2xl shadow bg-[#143048] text-white p-4 opacity-90"
+                    key={item.id}
+                  >
+                    <div className="text-xl font-bold text-center">
+                      {item.title}
+                    </div>
+                    <FadedLineBreak />
+                    <p className="text-center">{item.content}</p>
                   </div>
-                </div>
+                ))}
               </div>
             </div>
           </motion.div>
@@ -150,16 +147,86 @@ function SkinTightening({ type }) {
             initial="hidden"
             whileInView="show"
             viewport={{ once: true }}
-            className="flex flex-col md:!flex-row px-5"
+            className="flex flex-col md:!flex-row items-center justify-center"
           >
-            <div
-              className={`flex justify-center items-center ${!isTablet ? "px-5" : "mt-4"}`}
-            >
-              <img
-                src={Resources.images.Services.SkinTightening.img5}
-                alt="skin-tightening"
-                className="rounded-xl shadow"
-              />
+            {!isMobile && (
+              <div
+                className={`flex justify-center items-center ${!isTablet ? "px-5" : "mt-4"}`}
+              >
+                <img
+                  src={Resources.images.Services.SkinTightening.img7}
+                  alt="skin-tightening"
+                  className="rounded-xl shadow h-96 md:!h-80 lg:!h-96 w-80"
+                />
+              </div>
+            )}
+            <div className="flex flex-col px-4">
+              <p className="font-bold text-2xl text-center">
+                Benefits of RF Skin Tightening at Home with PureSkyn
+              </p>
+              <FadedLineBreak classes="!my-2" />
+              <ul className="list-disc pl-4 space-y-4 text-left">
+                <li>
+                  <strong>Non-Invasive & Painless</strong> - No needles, no
+                  surgery and no recovery time.
+                </li>
+                <li>
+                  <strong>Safe for All Skin Types</strong> - Suitable for both
+                  men and women.
+                </li>
+                <li>
+                  <strong>Full-Body Versatility</strong> - Ideal for treating
+                  the <strong>face, neck, arms, thighs, abdomen</strong> and
+                  more.
+                </li>
+                <li>
+                  <strong>Convenient & Comfortable</strong> - Enjoy expert
+                  skincare services in your own space.
+                </li>
+                <li>
+                  <strong>Long-Lasting Effects</strong> - Results continue to
+                  improve with consistent sessions and proper maintenance.
+                </li>
+              </ul>
+            </div>
+            {isMobile && (
+              <div
+                className={`flex justify-center items-center ${!isTablet ? "px-5" : "mt-4"}`}
+              >
+                <img
+                  src={Resources.images.Services.SkinTightening.img7}
+                  alt="skin-tightening"
+                  className="rounded-xl shadow h-96 w-80"
+                />
+              </div>
+            )}
+          </motion.div>
+          <motion.div
+            variants={FadeInWrapper("right", 0.1)}
+            initial="hidden"
+            whileInView="show"
+            viewport={{ once: true }}
+            className="flex flex-col md:!flex-row items-center justify-center mt-5 mb-5"
+          >
+            <div className="flex flex-col px-4">
+              <p className="font-bold text-2xl text-center">
+                Things to Know Before Your RF Treatment
+              </p>
+              <FadedLineBreak classes="!my-2" />
+              <ul className="list-disc pl-4 space-y-4">
+                <li>
+                  <strong>Results May Vary</strong> - Age, skin condition and
+                  lifestyle can affect outcomes.
+                </li>
+                <li>
+                  <strong>Multiple Sessions Recommended</strong> - For best
+                  results, a series of treatments is often suggested.
+                </li>
+                <li>
+                  <strong>Maintenance Is Key</strong> - Occasional maintenance
+                  sessions help prolong your results.
+                </li>
+              </ul>
             </div>
             <div
               className={`flex justify-center items-center ${!isTablet ? "px-5" : "mt-4"}`}
@@ -167,110 +234,11 @@ function SkinTightening({ type }) {
               <img
                 src={Resources.images.Services.SkinTightening.img6}
                 alt="skin-tightening"
-                className="rounded-xl shadow"
+                className="rounded-xl shadow w-96"
               />
             </div>
           </motion.div>
-          <motion.div
-            variants={FadeInWrapper("left", 0.1)}
-            initial="hidden"
-            whileInView="show"
-            viewport={{ once: true }}
-            className={`mt-3 ${isTablet ? "p-4" : ""}`}
-          >
-            <div className={`${isTablet ? "" : "p-5"} font-poppins text-cello`}>
-              <div className="flex flex-col">
-                <div className="!text-2xl font-bold">
-                  HIFU facial before and after Precautions
-                </div>
-                <p>
-                  Here are some measures to follow before and after your HIFU
-                  therapy:-
-                </p>
-                <div className="grid grid-cols-1 md:!grid-cols-2 mt-4">
-                  <div className="flex flex-col px-4">
-                    <div className="font-bold text-xl mb-4">
-                      Before Treatment
-                    </div>
-                    <ul className="list-disc pl-4">
-                      <li>
-                        Avoid getting the procedure if you are sunburned or have
-                        recently tanned.
-                      </li>
-                      <li>
-                        Avoid using strong chemicals or bleaches on the skin.
-                      </li>
-                      <li>
-                        Inform your Pure Skyn skin specialist if you are on
-                        antibiotics; some may generate a strong reaction.
-                      </li>
-                      <li>
-                        Inform your Pure Skyn skin specialist if you have a
-                        history of developing cold sores.
-                      </li>
-                      <li>Avoid getting the procedure if you have a fever.</li>
-                    </ul>
-                  </div>
-                  <div className="flex flex-col px-4">
-                    <div className="font-bold text-xl mb-4">
-                      After Treatment
-                    </div>
-                    <ul className="list-disc pl-4">
-                      <li>
-                        You may experience mild discomfort during & post the
-                        procedure for a few hours.
-                      </li>
-                    </ul>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </motion.div>
-          <motion.div
-            variants={FadeInWrapper("up", 0.1)}
-            initial="hidden"
-            whileInView="show"
-            viewport={{ once: true }}
-            className="px-4"
-          >
-            <FadedLineBreak />
-          </motion.div>
-          <motion.div
-            variants={FadeInWrapper("right", 0.1)}
-            initial="hidden"
-            whileInView="show"
-            viewport={{ once: true }}
-            className={`mt-3 ${isTablet ? "p-4" : ""}`}
-          >
-            <div className={`${isTablet ? "" : "p-5"} font-poppins text-cello`}>
-              <div className="text-2xl font-bold mb-4">
-                Why choose Pure Skyn for a HIFU procedure?
-              </div>
-              <div className="text-justify">
-                <p>
-                  The HIFU procedure at Pure Skyn, directed & conducted by our
-                  Pure Skyn skin experts, involves using the KFDA-approved
-                  Double Gold HIFU machine, a start-of-the-art device used for
-                  body contouring, face lifting, & skin tightening.
-                </p>
-                <p>
-                  This world-class HIFU machine is the fastest device used for
-                  HIFU treatments across the world that delivers safe, accurate,
-                  and almost painless skin tightening within a mere 8 minutes!
-                  This incredibly fast-acting HIFU machine used at Pure Skyn
-                  ensures a quick procedure that provides effects that last you
-                  up to 18 months!
-                </p>
-                <p>
-                  At Pure Skyn, we prioritise your long-term skin health and
-                  well-being. Owing to that, we optimise our anti-ageing
-                  treatments by using best-in-class devices for face & body
-                  contouring, skin tightening & lifting for quick and
-                  long-lasting results that can be effortlessly maintained!
-                </p>
-              </div>
-            </div>
-          </motion.div>
+
           {type && (
             <motion.div
               variants={FadeInWrapper("left", 0.1)}

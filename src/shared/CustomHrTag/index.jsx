@@ -1,6 +1,6 @@
 import React from "react";
 
-const FadedLineBreak = () => {
+const FadedLineBreak = (classes) => {
   const hrStyle = {
     borderWidth: "0 0 4px",
     borderImage:
@@ -10,7 +10,7 @@ const FadedLineBreak = () => {
   };
 
   return (
-    <div className="my-6">
+    <div className={`my-6 ${classes}`}>
       <hr style={hrStyle} />
     </div>
   );
