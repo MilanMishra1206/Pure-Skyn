@@ -250,7 +250,7 @@ function LaserHairRemovalForWomen({ category, isMobile, isTablet }) {
               >
                 <FadedLineBreak />
                 <BeforeAfterCarousel
-                  carouselContent={beforeAfterCarouselContent?.["LHR Female"]}
+                  carouselContent={beforeAfterCarouselContent?.["Laser Hair Removal"]}
                 />
                 <FadedLineBreak />
                 <div

@@ -40,11 +40,12 @@ const CustomHeroSection = () => {
       name: "",
       phone: "",
       serviceId: "",
+      city: "",
     },
     validationSchema: getQueryValidation,
     onSubmit: (value) => {
-      const { name, phone, serviceId } = value;
-      askQuery({ name, phone, serviceId });
+      const { name, phone, serviceId, city } = value;
+      askQuery({ name, phone, serviceId, city });
     },
   });
 

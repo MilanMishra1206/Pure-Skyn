@@ -434,7 +434,7 @@ function OxyHydra({ type }) {
           >
             <FadedLineBreak />
             <BeforeAfterCarousel
-              carouselContent={beforeAfterCarouselContent?.["Oxy Hydra"]}
+              carouselContent={beforeAfterCarouselContent?.["Oxyhydra Facial"]}
             />
             <FadedLineBreak />
             <div className="text-center text-skyn font-bold text-3xl px-4">

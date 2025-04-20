@@ -260,7 +260,7 @@ function LaserHairRemovalForMen({ category, isMobile, isTablet, isLaptop }) {
                 </div>
                 <FadedLineBreak />
                 <BeforeAfterCarousel
-                  carouselContent={beforeAfterCarouselContent?.["LHR Male"]}
+                  carouselContent={beforeAfterCarouselContent?.["Laser Hair Removal"]}
                 />
                 <FadedLineBreak />
                 <div className="text-center text-skyn font-bold text-3xl px-4 mt-4">

@@ -1,8 +1,8 @@
 import API_URLS from "../../config/API_URLS";
 import { axiosInstanceLogin } from "../../utils/Axios";
 
-const addNewQuery = async ({ name, phone, serviceId }) => {
-  const reqBody = { name, phone, serviceId, queryStatus: "NEW" };
+const addNewQuery = async ({ name, phone, serviceId, city }) => {
+  const reqBody = { name, phone, serviceId, city, queryStatus: "NEW" };
   try {
     const data = await axiosInstanceLogin.post(
       `${API_URLS.Query.newQuery}`,
@@ -15,7 +15,6 @@ const addNewQuery = async ({ name, phone, serviceId }) => {
 };
 
 // Below APIs are for Admins
-
 const getAllQuery = async () => {
   try {
     const data = await axiosInstanceLogin.get(API_URLS.Query.getAllQuery);

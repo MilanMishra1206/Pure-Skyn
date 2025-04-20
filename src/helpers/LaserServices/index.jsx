@@ -1050,138 +1050,77 @@ export const allPackageDetails = {
 };
 
 export const beforeAfterCarouselContent = {
-  "LHR Female": [
+  "Laser Hair Removal": [
     {
       id: 1,
-      serviceName: "LHR Female",
-      beforeImg: Resources.images.Services.BeforeAfter.lhrFemale.img1Before,
-      afterImg: Resources.images.Services.BeforeAfter.lhrFemale.img1After,
+      serviceName: "Laser Hair Removal",
+      img: Resources.images.Services.BeforeAfter.lhr.img1,
     },
     {
       id: 2,
-      serviceName: "LHR Female",
-      beforeImg: Resources.images.Services.BeforeAfter.lhrFemale.img2Before,
-      afterImg: Resources.images.Services.BeforeAfter.lhrFemale.img2After,
+      serviceName: "Laser Hair Removal",
+      img: Resources.images.Services.BeforeAfter.lhr.img2,
     },
     {
       id: 3,
-      serviceName: "LHR Female",
-      beforeImg: Resources.images.Services.BeforeAfter.lhrFemale.img3Before,
-      afterImg: Resources.images.Services.BeforeAfter.lhrFemale.img3After,
+      serviceName: "Laser Hair Removal",
+      img: Resources.images.Services.BeforeAfter.lhr.img3,
     },
     {
       id: 4,
-      serviceName: "LHR Female",
-      beforeImg: Resources.images.Services.BeforeAfter.lhrFemale.img4Before,
-      afterImg: Resources.images.Services.BeforeAfter.lhrFemale.img4After,
-    },
-    {
-      id: 5,
-      serviceName: "LHR Female",
-      beforeImg: Resources.images.Services.BeforeAfter.lhrFemale.img5Before,
-      afterImg: Resources.images.Services.BeforeAfter.lhrFemale.img5After,
-    },
-    {
-      id: 6,
-      serviceName: "LHR Female",
-      beforeImg: Resources.images.Services.BeforeAfter.lhrFemale.img6Before,
-      afterImg: Resources.images.Services.BeforeAfter.lhrFemale.img6After,
-    },
-  ],
-  "LHR Male": [
-    {
-      id: 1,
-      serviceName: "LHR Male",
-      beforeImg: Resources.images.Services.BeforeAfter.lhrMale.img1Before,
-      afterImg: Resources.images.Services.BeforeAfter.lhrMale.img1After,
-    },
-    {
-      id: 2,
-      serviceName: "LHR Male",
-      beforeImg: Resources.images.Services.BeforeAfter.lhrMale.img2Before,
-      afterImg: Resources.images.Services.BeforeAfter.lhrMale.img2After,
-    },
-    {
-      id: 3,
-      serviceName: "LHR Male",
-      beforeImg: Resources.images.Services.BeforeAfter.lhrMale.img3Before,
-      afterImg: Resources.images.Services.BeforeAfter.lhrMale.img3After,
+      serviceName: "Laser Hair Removal",
+      img: Resources.images.Services.BeforeAfter.lhr.img4,
     },
   ],
   "RF Skin Tightening": [
     {
       id: 1,
       serviceName: "RF Skin Tightening",
-      beforeImg:
-        Resources.images.Services.BeforeAfter.skinTightening.img1Before,
-      afterImg: Resources.images.Services.BeforeAfter.skinTightening.img1After,
+      img: Resources.images.Services.BeforeAfter.skinTightening.img1,
     },
     {
       id: 2,
       serviceName: "RF Skin Tightening",
-      beforeImg:
-        Resources.images.Services.BeforeAfter.skinTightening.img2Before,
-      afterImg: Resources.images.Services.BeforeAfter.skinTightening.img2After,
+      img: Resources.images.Services.BeforeAfter.skinTightening.img2,
     },
   ],
   "Oxygeneo Facial": [
     {
       id: 1,
       serviceName: "Oxygeneo Facial",
-      beforeImg: Resources.images.Services.BeforeAfter.oxygeneo.img1Before,
-      afterImg: Resources.images.Services.BeforeAfter.oxygeneo.img1After,
+      img: Resources.images.Services.BeforeAfter.oxygeneo.img1,
     },
     {
       id: 2,
       serviceName: "Oxygeneo Facial",
-      beforeImg: Resources.images.Services.BeforeAfter.oxygeneo.img2Before,
-      afterImg: Resources.images.Services.BeforeAfter.oxygeneo.img2After,
-    },
-    {
-      id: 3,
-      serviceName: "Oxygeneo Facial",
-      beforeImg: Resources.images.Services.BeforeAfter.oxygeneo.img3Before,
-      afterImg: Resources.images.Services.BeforeAfter.oxygeneo.img3After,
+      img: Resources.images.Services.BeforeAfter.oxygeneo.img2,
     },
   ],
-  "Oxy Hydra": [
+  "Oxyhydra Facial": [
     {
       id: 1,
-      serviceName: "Oxy Hydra",
-      beforeImg: Resources.images.Services.BeforeAfter.oxyhydra.img1Before,
-      afterImg: Resources.images.Services.BeforeAfter.oxyhydra.img1After,
+      serviceName: "Oxyhydra Facial",
+      img: Resources.images.Services.BeforeAfter.oxyhydra.img1,
+
     },
     {
       id: 2,
-      serviceName: "Oxy Hydra",
-      beforeImg: Resources.images.Services.BeforeAfter.oxyhydra.img2Before,
-      afterImg: Resources.images.Services.BeforeAfter.oxyhydra.img2After,
-    },
-    {
-      id: 3,
-      serviceName: "Oxy Hydra",
-      beforeImg: Resources.images.Services.BeforeAfter.oxyhydra.img3Before,
-      afterImg: Resources.images.Services.BeforeAfter.oxyhydra.img3After,
+      serviceName: "Oxyhydra Facial",
+      img: Resources.images.Services.BeforeAfter.oxyhydra.img2,
+
     },
   ],
   "Derma Infusion Facial": [
     {
       id: 1,
       serviceName: "Derma Infusion Facial",
-      beforeImg: Resources.images.Services.BeforeAfter.dermafrac.img1Before,
-      afterImg: Resources.images.Services.BeforeAfter.dermafrac.img1After,
+      img: Resources.images.Services.BeforeAfter.dermafrac.img1,
+
     },
     {
       id: 2,
       serviceName: "Derma Infusion Facial",
-      beforeImg: Resources.images.Services.BeforeAfter.dermafrac.img2Before,
-      afterImg: Resources.images.Services.BeforeAfter.dermafrac.img2After,
-    },
-    {
-      id: 3,
-      serviceName: "Derma Infusion Facial",
-      beforeImg: Resources.images.Services.BeforeAfter.dermafrac.img3Before,
-      afterImg: Resources.images.Services.BeforeAfter.dermafrac.img3After,
+      img: Resources.images.Services.BeforeAfter.dermafrac.img2,
     },
   ],
 };

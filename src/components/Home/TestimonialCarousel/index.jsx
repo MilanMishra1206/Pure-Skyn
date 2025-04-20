@@ -11,7 +11,6 @@ import BeforeAfterCarousel from "../../OurServices/BeforeAfterCarousel";
 import FadeInWrapper from "../../../config/MotionFramer/FadeInWrapper";
 import { motion } from "framer-motion";
 import {
-  beforeAfterCarouselContent,
   homeBeforeAfterCarouselContent,
 } from "../../../helpers/LaserServices";
 
