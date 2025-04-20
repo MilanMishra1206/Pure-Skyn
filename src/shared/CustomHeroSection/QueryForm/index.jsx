@@ -79,8 +79,8 @@ function QueryForm({ queryFormik, handleQueryFormSubmit }) {
                   value: "Oxy Hydra Facial",
                 },
                 {
-                  label: "Oxygeneo",
-                  value: "Oxygeneo",
+                  label: "Oxygeneo Facial",
+                  value: "Oxygeneo Facial",
                 },
                 {
                   label: "RF Skin Tightening",

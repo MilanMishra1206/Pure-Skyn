@@ -18,7 +18,6 @@ const OxyHydra = lazy(() => import("./OxyHydra"));
 const SkinTightening = lazy(() => import("./SkinTightening"));
 
 function MediFacial() {
-
   useEffect(() => {
     sessionStorage.removeItem("currentBookStep");
     sessionStorage.removeItem("treatmentName");
@@ -71,27 +70,29 @@ function MediFacial() {
           className={`mt-5 ${isMobile ? "p-3" : "p-5"}`}
         >
           <CustomHeader
-            heading={"Medi Facial"}
-            showBackButton={true}
-            navigateTo={"/services"}
+            heading="Medi-Facial at Home by PureSkyn"
+            subHeading="Advanced Skincare & Amazing Results All From the Comfort of Home."
+            showBackButton
+            navigateTo="/services"
           />
           <section className="mt-4">
             <div className="flex flex-col justify-center items-center md:!flex-row space-x-2 text-justify">
-              <div className="lg:mr-10">
-                <p className="text-cello font-medium">
-                  Who doesn't want glowing skin? And to meet that need, Indians
-                  are very much fond of facials. Spa facials are now available
-                  everywhere from malls to our neighborhood. But are these
-                  facials really doing good to your skin?
+              <div className="lg:mr-10 space-y-3">
+                <p className="font-medium">
+                  Who doesn't want <strong>glowing, radiant skin?</strong> In
+                  India, facials have long been a go-to beauty ritual, with
+                  salon services available everywhere—from high-end malls to
+                  local parlors. But here's the truth:{" "}
+                  <strong>traditional salon facials often fall short</strong>{" "}
+                  when it comes to delivering real, lasting skin benefits.
                 </p>
-                <p className="text-cello font-medium">
-                  Women include facials for their skincare regime but turns out
-                  these salon facials ain't giving effective results. This is
-                  because they are unsupervised by medical professionals and use
-                  the same products for every skin type. The salon facials
-                  provide temporary pampering to the skin. The face mask used
-                  sits on the skin layer, which means it doesn't penetrate the
-                  skin where healing & repairing is required.
+                <p className="font-medium">
+                  At <strong>PureSkyn</strong>, we bring you something far more
+                  effective — <strong>Medi-facials at home</strong>. Backed by
+                  science and designed by skin experts, our Medi-facials go
+                  beyond surface-level pampering to{" "}
+                  <strong>repair, rejuvenate and transform your skin</strong>{" "}
+                  from within.
                 </p>
                 {isTablet && (
                   <div className="flex justify-center mt-4 mb-4 lg:!mt-0 lg:!mb-0">
@@ -102,22 +103,17 @@ function MediFacial() {
                     />
                   </div>
                 )}
-                <p className="text-cello font-medium">
-                  So now you must be wondering about the solution, right? You
-                  don't have to worry much. Medi-facial is the rescue to this
-                  problem! Medi facial or Medical Facial is designed under the
-                  supervision of dermatologists and is customizable as per your
-                  skin type. This new age treatment uses skin-friendly
-                  ingredients & has medically proven skin benefits in the long
-                  run.
+                <p className="font-bold text-xl mt-5 mb-2">
+                  What Is a Medi-Facial?
                 </p>
-                <p className="text-cello font-medium">
-                  Instead of harsh exfoliation or chemical peels like
-                  traditional facials, Medi facials use natural & prescribed
-                  ingredients for exfoliation which work deep into the skin
-                  cells. The Medi-facial not only combat skin issues like acne,
-                  scar, sull skin, etc, but also improves skin texture, tone, &
-                  increases collagen production which results in anti-aging.
+                <p>
+                  A <strong>Medi-facial (Medical Facial)</strong> is a{" "}
+                  <strong>dermatologist-approved skincare treatment</strong>{" "}
+                  tailored to your unique skin type and concerns. Medi-facials
+                  are customized using{" "}
+                  <strong>clinically-tested, skin-friendly ingredients</strong>{" "}
+                  to treat a wide range of skin issues including acne,
+                  pigmentation, dullness and early signs of aging.
                 </p>
               </div>
               {isLaptop && (
@@ -129,113 +125,136 @@ function MediFacial() {
               )}
             </div>
             <hr className="my-4 border-blue-gray-50 px-8" />
-            <h4 className="text-kashmirBlue font-bold text-xl">
-              How is Medi-facial customizable?
-            </h4>
-            <p className="text-cello font-medium mt-3 text-justify">
-              When you visit a medical professional, they initially analyze your
-              skin type & the skin conditions that need to be treated. Based on
-              the report, they prescribe the natural ingredients required as per
-              your skin type and hence commence the facial. The overall
-              procedure rejuvenates & hydrates your skin thoroughly. You would
-              witness the results even from one Medi-facial. In addition to the
-              face massage, skin specialists would cover other areas of the neck
-              & shoulders as well for massage, making you feel relaxed &
-              pampered.
+            <h4 className="font-bold text-xl">How Does a Medi-Facial Work?</h4>
+            <p className="font-medium mt-3 text-justify">
+              During your{" "}
+              <strong>at-home Medi-facial session with PureSkyn</strong>, our
+              certified skincare specialist begins by analyzing your skin type,
+              texture and condition. Based on this assessment, we tailor the
+              treatment using{" "}
+              <strong>natural, safe and effective ingredients</strong>—combined
+              with <strong>advanced technologies</strong> like:
             </p>
-            <hr className="my-4 border-blue-gray-50 px-8" />
-            <h4 className="text-kashmirBlue font-bold text-xl">
-              Why Medi-facial?
-            </h4>
-            <p className="text-cello font-medium mt-3 text-justify">
-              Even now if you are not fully convinced, let's have a look at the
-              following benefits provided by Medi facial to your skin.
-            </p>
-            <ul className="text-cello font-medium list-disc pl-5">
-              <li>Hydrates the skin deeply</li>
-              <li>Stimulates blood circulation</li>
-              <li>Relaxes facial muscles</li>
-              <li>Removes blackheads & whiteheads</li>
-              <li>Boost collagen & elastin production</li>
-              <li>Adds instant glow</li>
-              <li>Rejuvenates the skin</li>
-              <li>Detoxify skin cells</li>
-              <li>Unblocks & purifies pores</li>
+            <ul className="font-medium list-disc pl-5 mt-4">
+              <li>Oxyhaydra Facial</li>
+              <li>Oxygeneo Facial </li>
+              <li>Derma Infusion facial</li>
+              <li>RF Skin Tightening</li>
             </ul>
-            <p className="text-kashmirBlue font-medium mt-3 border-l-8 p-3">
-              Along with these, it is also beneficial for repairing sun-damaged
-              skin, deep moisturization, tightening of the skin, slowing down
-              skin aging, works best for wrinkles & fines, makes the skin less
-              oily, makes skin soft & supple, improves tone & texture and what
-              not! Would a regular facial do that?
+            <p className="font-medium mt-4">
+              These techniques allow active ingredients to{" "}
+              <strong>
+                penetrate deep into the skin layers, promoting cell renewal,
+                collagen production and deep hydration
+              </strong>{" "}
+              — with <strong>no harsh chemicals</strong> or side effects.
             </p>
             <hr className="my-4 border-blue-gray-50 px-8" />
-            <h4 className="text-kashmirBlue font-bold text-xl">
-              Medifacials can be altered as per the patient's individual skin
-              concerns including:
+            <h4 className="font-bold text-xl">
+              Why Choose a Medi-Facial Over a Regular Facial?
             </h4>
-            <p className="text-cello font-bold mt-3">
-              Laser hair removal can be performed on nearly any area of the
-              body, including:
+            <p className="mt-3 text-justify">
+              Unlike regular salon facials, PureSkyn's{" "}
+              <strong>Medi-facials are results-driven</strong>, offering{" "}
+              <strong>visible improvements</strong> from just one session.
+              Here's what sets us apart:
             </p>
-            <ul className="text-cello font-medium list-disc pl-5">
-              <li>Sun-damaged skin</li>
-              <li>Acne</li>
-              <li>Wrinkles and fine lines</li>
-              <li>Pigmentation</li>
-              <li>Comedones (blackheads, whiteheads)</li>
-              <li>Dull or sallow skin</li>
-              <li>Dehydrated skin</li>
-              <li>Broken capillaries</li>
-            </ul>
-            <p className="text-kashmirBlue font-medium mt-3 border-l-8 p-3">
-              Considering the growing popularity & concern for skincare, Medi
-              facial should definitely be considered not only as a facial but
-              medicated treatment to heal your skin. Whether you should switch
-              to a medical facial over a regular facial or not?
+            <p className="font-semibold text-xl mt-4">
+              Benefits of Medi-Facials at Home with PureSkyn
             </p>
-            <hr className="my-4 border-blue-gray-50 px-8" />
-            <h4 className="text-kashmirBlue font-bold text-xl">
-              Read on the following points to understand why medi facial is
-              better than regular facial.
-            </h4>
-            <ul className="list-disc pl-5 text-cello font-medium mt-3">
+            <ul className="font-medium list-disc pl-5 mt-4 space-y-2">
               <li>
-                It is being supervised by professional & trained dermatologists
+                Deeply <strong>hydrates and nourishes</strong> the skin.
               </li>
-              <li>It has no downtime & side effects</li>
-              <li>No harsh chemicals are used</li>
-              <li>Suitable for all skin type & age</li>
-              <li>Causes no internal damage to the skin</li>
-              <li>Long-lasting glow & results</li>
-              <li>Unique formulation for skin conditions & skin type</li>
               <li>
-                Natural, well-researched & scientifically approved products are
-                used
+                <strong>Stimulates collagen and elastin</strong> for anti-aging
+                benefits.
               </li>
-              <li>Hydrates skin & makes it soft & supple</li>
-              <li>Restores collagen & tightens the skin</li>
+              <li>
+                <strong>Detoxifies and purifies</strong> clogged pores.
+              </li>
+              <li>
+                <strong>Removes blackheads and whiteheads</strong> painlessly.
+              </li>
+              <li>
+                <strong>Brightens dull, tired skin</strong> with an instant
+                glow.
+              </li>
+              <li>
+                Helps <strong>repair sun-damaged and pigmented skin.</strong>
+              </li>
+              <li>
+                <strong>Reduces acne, scars, fine lines,</strong> and uneven
+                texture.
+              </li>
+              <li>
+                <strong>Improves skin tone and tightness</strong> over time.
+              </li>
+              <li>
+                Suitable for <strong>all genders, ages and skin types.</strong>
+              </li>
+              <li>
+                No downtime, no irritation, just{" "}
+                <strong>pure skincare benefits.</strong>
+              </li>
             </ul>
-            <div className="border-l-8">
-              <p className="text-cello font-medium mt-3 px-3 py-1">
-                Simply, a medical facial gives corrective, natural, and
-                guaranteed results that are not temporary. Regular facial limits
-                the age group. As earlier, people in their 30s & 40s, especially
-                women, adopted these facial . With Medi-facial, no matter if you
-                are in your 20s or you are a man or woman, you can go for it
-                without having second thoughts.
+            <hr className="my-4 border-blue-gray-50 px-8" />
+            <h4 className="font-bold text-xl">
+              Who Can Benefit from a Medi-Facial?
+            </h4>
+            <p className="font-medium mt-3 mb-3">
+              Medi-facials are effective for a wide range of skin concerns,
+              including:
+            </p>
+            <ul className="font-medium list-disc pl-5 space-y-3">
+              <li>Sun damage and pigmentation.</li>
+              <li>Acne and post-acne scarring.</li>
+              <li>Wrinkles, fine lines and early aging.</li>
+              <li>Blackheads, whiteheads.</li>
+              <li>Dull or uneven skin tone.</li>
+              <li>Dehydrated, flaky skin.</li>
+              <li>Sensitive or irritated skin.</li>
+            </ul>
+            <hr className="my-4 border-blue-gray-50 px-8" />
+            <h4 className="font-bold text-xl">
+              Why Choose PureSkyn for Medi-Facials at Home?
+            </h4>
+            <p className="mt-4 mb-2">
+              At PureSkyn, we combine <strong>clinical expertise</strong> with
+              the <strong>comfort of home service</strong>. Here's why thousands
+              trust us with their skin:
+            </p>
+            <ul className="list-disc pl-5 font-medium mt-3 space-y-3">
+              <li>
+                <strong>Expert-led sessions</strong> by trained skincare
+                professionals.
+              </li>
+              <li>
+                <strong>No downtime or irritation.</strong>
+              </li>
+              <li>
+                Products and techniques are{" "}
+                <strong>personalized to your skin.</strong>
+              </li>
+              <li>
+                Safe, hygienic, and <strong>fully sanitized equipment.</strong>
+              </li>
+              <li>
+                Treatments conducted at{" "}
+                <strong>your convenience, in your home.</strong>
+              </li>
+            </ul>
+            <div className="border-l-8 mt-4">
+              <p className="text-xl font-bold mt-3 px-3 py-1">
+                Ready to Glow with PureSkyn?
               </p>
-              <p className="text-cello font-medium px-3 py-1">
-                It is suitable because it uses microdermabrasion, peels, photo
-                rejuvenation, LED Therapy, or a combination of these and also
-                includes laser devices. All these therapies target the root
-                cause of the skin condition that repairs, nourishes & balances
-                the skin well.
-              </p>
-              <p className="text-cello font-medium px-3 py-1">
-                So if you are ready to have a satisfactory, long-lasting glow,
-                hydrating & brightened face, pamper your skin with a new age
-                Medi facial.
+              <p className="font-medium px-3 py-1">
+                Treat your skin to the{" "}
+                <strong>next generation of facial care</strong>. Whether you're
+                preparing for a big event, refreshing your routine or targeting
+                a specific skin concern —{" "}
+                <strong>PureSkyn's at-home Medi-facial services</strong> are
+                designed to help you <strong>look and feel your best.</strong>
               </p>
             </div>
           </section>
@@ -350,7 +369,7 @@ function MediFacial() {
               <CustomAccordion accordionData={mediFacialAccordianContent} />
               <Link
                 to="/faq#Medi Facial"
-                className="text-skyn hover:opacity-80 text-xl font-bold"
+                className="text-skyn hover:opacity-80 text-xl font-bold cursor-pointer"
               >
                 Show More FAQs
               </Link>

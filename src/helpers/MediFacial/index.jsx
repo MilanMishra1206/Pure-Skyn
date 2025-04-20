@@ -53,7 +53,7 @@ export const OxyGeneoContent = [
     id: 1,
     title: "Benefits of the Oxygeneo Facial by PureSkyn",
     content:
-      "Our Oxygeneo facial offers more than just a glow—it delivers real, visible skin improvements from the first session:",
+      "Our Oxygeneo Facial offers more than just a glow—it delivers real, visible skin improvements from the first session:",
     listContent: [
       {
         id: 2.1,

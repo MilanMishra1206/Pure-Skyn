@@ -30,7 +30,7 @@ function LaserHairRemovalForMen({ category, isMobile, isTablet, isLaptop }) {
         >
           {!category && (
             <CustomHeader
-              heading={"Laser Hair Removal For Men"}
+              heading={"Laser Hair Removal For Men At Home"}
               headerClass={!category && "!text-2xl"}
             />
           )}
@@ -263,7 +263,7 @@ function LaserHairRemovalForMen({ category, isMobile, isTablet, isLaptop }) {
                   carouselContent={beforeAfterCarouselContent?.["LHR Male"]}
                 />
                 <FadedLineBreak />
-                <div className="text-center text-skyn font-bold text-3xl px-4">
+                <div className="text-center text-skyn font-bold text-3xl px-4 mt-4">
                   <p>Frequently Asked Questions(FAQs)</p>
                 </div>
                 <div
@@ -275,7 +275,7 @@ function LaserHairRemovalForMen({ category, isMobile, isTablet, isLaptop }) {
                     <CustomAccordion accordionData={LHRMenAccordianContent} />
                     <Link
                       to="/faq#Laser Hair Removal Men"
-                      className="text-skyn hover:opacity-80 text-xl font-bold"
+                      className="text-skyn hover:opacity-80 text-xl font-bold cursor-pointer"
                     >
                       Show More FAQs
                     </Link>

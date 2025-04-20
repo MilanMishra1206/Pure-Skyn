@@ -41,13 +41,13 @@ function Oxygeneo({ type }) {
       </motion.div>
 
       {type && (
-        <div className="text-justify">
+        <div>
           <Suspense fallback={<div>Loading...</div>}>
             <CommonHeader
               imgSrcLaptop={Resources.images.Home.oxygeneo}
               imgSrcTablet={Resources.images.Home.oxygeneoMobile}
               linkTo="/book-now"
-              heading="Oxygeneo Facial at Home with PureSkyn"
+              heading="Oxygeneo Facial at Home"
               breadcrumbs1="Medi Facial"
               route1="/services/skin/medi-facial"
               breadcrumbs2="Oxygeneo"
@@ -116,7 +116,7 @@ function Oxygeneo({ type }) {
               }}
             >
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 font-medium text-start mt-4 gap-4 bg-opacity-40">
-                {oxygeneoThreeSteps.map((item) => (
+                {oxygeneoThreeSteps?.map((item) => (
                   <div
                     className="flex flex-col rounded-2xl shadow bg-[#143048] text-white p-4 opacity-90"
                     key={item.id}
@@ -151,13 +151,13 @@ function Oxygeneo({ type }) {
               <div
                 className={`flex flex-col ${!isTablet ? "w-75 ml-5 mr-5" : "w-full"} lg:mr-10`}
               >
-                {OxyGeneoContent.map((item) => (
+                {OxyGeneoContent?.map((item) => (
                   <div className="mb-5" key={item.id}>
                     <div className="!text-2xl font-bold mb-4">{item.title}</div>
-                    <div className="flex">{item.content}</div>
+                    <div className="flex text-justify">{item.content}</div>
                     {item?.listContent?.length > 0 && (
-                      <ul className="list-disc text-left">
-                        {item?.listContent.map((list) => (
+                      <ul className="list-disc text-left space-y-2 mt-2">
+                        {item?.listContent?.map((list) => (
                           <li key={list.id}>{list.label}</li>
                         ))}
                       </ul>
@@ -165,12 +165,21 @@ function Oxygeneo({ type }) {
                   </div>
                 ))}
               </div>
-              <div className="flex justify-center items-center">
-                <img
-                  src={Resources.images.Services.OxyGeneo.img5}
-                  alt="oxygeneo"
-                  className="rounded-xl shadow w-3/5 lg:!w-auto xl:!w-3/5"
-                />
+              <div className="flex flex-col md:!flex-row lg:!flex-col gap-4">
+                <div className="flex justify-center items-center">
+                  <img
+                    src={Resources.images.Services.OxyGeneo.img7}
+                    alt="oxygeneo"
+                    className="rounded-xl shadow lg:!w-96 xl:!w-3/5"
+                  />
+                </div>
+                <div className="flex justify-center items-center">
+                  <img
+                    src={Resources.images.Services.OxyGeneo.img8}
+                    alt="oxygeneo"
+                    className="rounded-xl shadow lg:!w-96 xl:!w-3/5"
+                  />
+                </div>
               </div>
             </div>
           </motion.div>
@@ -198,7 +207,7 @@ function Oxygeneo({ type }) {
           >
             <FadedLineBreak />
             <BeforeAfterCarousel
-              carouselContent={beforeAfterCarouselContent.Oxygeneo}
+              carouselContent={beforeAfterCarouselContent?.["Oxygeneo Facial"]}
             />
             <FadedLineBreak />
             <div className="text-center text-skyn font-bold text-3xl px-4">
@@ -213,7 +222,7 @@ function Oxygeneo({ type }) {
                 <CustomAccordion accordionData={oxygeneoFaqAccordianContent} />
                 <Link
                   to="/faq#Oxygeneo"
-                  className="text-skyn hover:opacity-80 text-xl font-bold"
+                  className="text-skyn hover:opacity-80 text-xl font-bold cursor-pointer"
                 >
                   Show More FAQs
                 </Link>

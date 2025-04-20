@@ -16,6 +16,7 @@ import { createNewBooking } from "../../../services/Booking";
 import { useAppSnackbar } from "../../../config/Context/SnackbarContext";
 import { INRCurrency } from "../../../helpers/Regex";
 import Resources from "../../../config/Resources";
+import BookingSuccessModal from "./BookingSuccessModal";
 
 const CustomLoader = lazy(() => import("../../../shared/CustomLoader"));
 const CustomPackageTermsAndConditions = lazy(
@@ -34,6 +35,9 @@ const BookNowDetails = ({ isLoggedIn }) => {
   const [subServiceId, setSubServiceId] = useState("");
   const [timeSlots, setTimeSlots] = useState([]);
   const [isOpenTandCModal, setIsOpenTandCModal] = useState(false);
+  const [isChecked, setIsChecked] = useState(false);
+  const [showBookingSuccessModal, setShowBookingSuccessModal] = useState(false);
+  const [successBookingContent, setSuccessBookingContent] = useState({});
   const [initialValues, setInitialValues] = useState({
     name: "",
     email: "",
@@ -56,9 +60,9 @@ const BookNowDetails = ({ isLoggedIn }) => {
   useEffect(() => {
     isLoggedIn &&
       setInitialValues({
-        name: userProfile.name || "",
-        email: userProfile.email || "",
-        mobile: userProfile.phone || "",
+        name: userProfile?.name || "",
+        email: userProfile?.email || "",
+        mobile: userProfile?.phone || "",
         address: "",
         city: "",
         treatmentDate: "",
@@ -68,7 +72,9 @@ const BookNowDetails = ({ isLoggedIn }) => {
 
   const { mutate: createBooking, isLoading } = useMutation(createNewBooking, {
     onSuccess(res) {
-      if (res?.isError) {
+      if (res?.status !== "ERROR") {
+        setShowBookingSuccessModal(true);
+        setSuccessBookingContent(res?.data);
         showSnackbar(res?.message, "success");
       } else {
         showSnackbar(res?.message, "error");
@@ -86,39 +92,71 @@ const BookNowDetails = ({ isLoggedIn }) => {
     initialValues,
     validationSchema: getBookNowFormValidation,
     onSubmit: (values) => {
+      const { name, email, address, city, mobile, timeSlot, treatmentDate } =
+        values;
+      const [day, month, year] = treatmentDate.split("/");
+      const formattedDate = `${year}-${month}-${day}`;
+      const formattedTimeISO = new Date(
+        `${formattedDate} ${timeSlot}`
+      ).toISOString();
+
       const servicesBooked = Array.isArray(servicesCart)
-        ? servicesCart.map(
-            ({
-              treatmentName = "",
-              packageName = "",
-              serviceId = "",
-              subServiceId = "",
-              packagePrice = 0,
-              featureName = "",
-              selectedPackageImg = "",
-              strikeOutPrice = null,
-            }) => ({
-              treatmentName,
-              packageName,
-              serviceId,
+        ? servicesCart.map(({ subServiceId }) => {
+            const date = formattedDate;
+            const time = formattedTimeISO;
+            return {
               subServiceId,
-              packagePrice,
-              featureName,
-              selectedPackageImg,
-              strikeOutPrice,
-            })
-          )
+              date,
+              time,
+              sessions: [
+                {
+                  id: subServiceId,
+                  date,
+                  time,
+                },
+              ],
+            };
+          })
         : [];
+      // const servicesBooked = Array.isArray(servicesCart)
+      //   ? servicesCart.map(
+      //       ({
+      //         treatmentName = "",
+      //         packageName = "",
+      //         serviceId = "",
+      //         subServiceId = "",
+      //         packagePrice = 0,
+      //         featureName = "",
+      //         selectedPackageImg = "",
+      //         strikeOutPrice = null,
+      //       }) => ({
+      //         treatmentName,
+      //         packageName,
+      //         serviceId,
+      //         subServiceId,
+      //         packagePrice,
+      //         featureName,
+      //         selectedPackageImg,
+      //         strikeOutPrice,
+      //       })
+      //     )
+      //   : [];
+      const beneficiary = {
+        name,
+        email,
+        mobile,
+        address,
+        city,
+      };
       const reqBody = {
         userId: userProfile.userId,
-        beneficiary: values,
+        beneficiary,
         servicesBooked,
+        paymentId: "P123",
       };
-      showSnackbar("Booking Done!!!", "success");
-      console.log("Booking Done", reqBody);
-      // createBooking({
-      //   reqBody,
-      // });
+      createBooking({
+        reqBody,
+      });
     },
   });
 
@@ -212,6 +250,25 @@ const BookNowDetails = ({ isLoggedIn }) => {
               Note: You will have to pay <strong>50%</strong> at the time of
               booking and the rest 50% amount post service
             </small>
+            <div className="flex items-center gap-2 mt-4">
+              <input
+                type="checkbox"
+                id="tandc"
+                checked={isChecked}
+                onChange={(e) => setIsChecked(e.target.checked)}
+                className="accent-skyn cursor-pointer"
+              />
+              <label htmlFor="tandc">
+                I Agree to the{" "}
+                <button
+                  type="button"
+                  className="text-bitterSweet hover:underline bg-white outline-none border-none"
+                  onClick={() => setIsOpenTandCModal(true)}
+                >
+                  Terms & Conditions*
+                </button>
+              </label>
+            </div>
             <div className="mt-6 flex justify-end mb-5">
               <CustomButton2
                 buttonText="Book Now"
@@ -221,18 +278,9 @@ const BookNowDetails = ({ isLoggedIn }) => {
                     className="ml-2 group-hover:scale-110 group-hover:!ml-5"
                   />
                 }
-                buttonClass="!w-96 !justify-end !text-xl"
+                buttonClass={`!w-96 !justify-end !text-xl ${!isChecked ? "disabled" : ""}`}
                 handleSubmit={handleServiceBooking}
               />
-            </div>
-            <div>
-              <button
-                className="text-xs text-bitterSweet mt-4 bg-white outline-none border-none hover:underline text-left"
-                onClick={() => setIsOpenTandCModal(true)}
-              >
-                Terms & Conditions Applied{" "}
-                <span className="text-bitterSweet">*</span>
-              </button>
             </div>
           </div>
         </div>
@@ -253,6 +301,13 @@ const BookNowDetails = ({ isLoggedIn }) => {
           confirmButtonText="Login"
           confirmButtonColor="bg-skyn hover:!opacity-80"
           imageSrc={Resources.images.Common.Warning}
+        />
+      )}
+      {/* Booking Success Content Modal */}
+      {showBookingSuccessModal && (
+        <BookingSuccessModal
+          handlePrimaryButtonClick={() => setShowBookingSuccessModal(false)}
+          bookingData={successBookingContent}
         />
       )}
       {/* Terms and Conditions Modal */}

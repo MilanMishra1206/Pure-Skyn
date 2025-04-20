@@ -3,6 +3,7 @@ import { lazy } from "react";
 import { useMediaQuery } from "@mui/material";
 import MotionWrapper from "../../config/MotionFramer/MotionWrapper";
 import CustomLoader from "../../shared/CustomLoader";
+import Resources from "../../config/Resources";
 
 const BestSelling = lazy(() => import("./BestSelling"));
 const MostPopularLhr = lazy(() => import("./MostPopularLhr"));
@@ -45,6 +46,13 @@ function Home() {
               <AboutUs />
             </MotionWrapper>
           </Suspense>
+        )}
+        {!isMobile && (
+          <img
+            src={Resources.images.Common.ourFeature}
+            alt="what-we-offer"
+            className="w-full mt-4 mb-4"
+          />
         )}
         {!isMobile && (
           <Suspense fallback={<CustomLoader open={true} />}>

@@ -42,7 +42,7 @@ function OxyHydra({ type }) {
               imgSrcLaptop={Resources.images.Home.oxyhydra}
               imgSrcTablet={Resources.images.Home.oxyhydraMoble}
               linkTo="/book-now"
-              heading="Oxy Hydra Facial"
+              heading="Oxyhydra Facial At home"
               breadcrumbs1="Medi Facial"
               route1="/services/skin/medi-facial"
               breadcrumbs2="Oxy Hydra Facial"
@@ -449,7 +449,7 @@ function OxyHydra({ type }) {
                 <CustomAccordion accordionData={oxyHydraAccordianContent} />
                 <Link
                   to="/faq#Oxy Hydra Facial"
-                  className="text-skyn hover:opacity-80 text-xl font-bold"
+                  className="text-skyn hover:opacity-80 text-xl font-bold cursor-pointer"
                 >
                   Show More FAQs
                 </Link>

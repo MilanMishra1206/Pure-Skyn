@@ -43,7 +43,7 @@ function SkinTightening({ type }) {
               imgSrcLaptop={Resources.images.Home.skinTightening}
               imgSrcTablet={Resources.images.Home.skinTighteningMobile}
               linkTo="/Book-now"
-              heading="At-Home RF Skin Tightening Treatment by PureSkyn"
+              heading="RF Skin Tightening Treatment At Home"
               breadcrumbs1="Medi Facial"
               route1="/services/skin/medi-facial"
               breadcrumbs2="Skin Tightening"
@@ -283,7 +283,7 @@ function SkinTightening({ type }) {
                 />
                 <Link
                   to="/faq#RF Skin Tightening"
-                  className="text-skyn hover:opacity-80 text-xl font-bold"
+                  className="text-skyn hover:opacity-80 text-xl font-bold cursor-pointer"
                 >
                   Show More FAQs
                 </Link>

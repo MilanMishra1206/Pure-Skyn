@@ -31,7 +31,7 @@ const serviceItemForMobile = [
   },
   {
     id: 6,
-    label: "Oxygeneo",
+    label: "Oxygeneo Facial",
     link: "/services/skin/medi-facial/oxygeneo",
   },
 ];

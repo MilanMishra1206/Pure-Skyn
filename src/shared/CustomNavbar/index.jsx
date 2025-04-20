@@ -33,6 +33,8 @@ function CustomNavbar() {
   const [userName, setUserName] = useState("");
   const [isProductsPage, setIsProductsPage] = useState(false);
   const [isAdmin, setIsAdmin] = useState(false);
+  const [openCart, setOpenCart] = useState(false);
+
   const isActive = (path) => location.pathname === path;
   const toggleMenu = () => setMenuOpen(!menuOpen);
 
@@ -59,21 +61,21 @@ function CustomNavbar() {
   }, [userProfile]);
 
   useEffect(() => {
-    if (location.pathname.includes("products")) {
-      setIsProductsPage(true);
-    } else {
-      setIsProductsPage(false);
-    }
+    setIsProductsPage(location.pathname.includes("products"));
   }, [location.pathname]);
 
   const { mutate: saveCartDetails, isLoading: isSavingCartDetails } =
     useMutation(saveServiceCart, {
-      onSuccess: () => {
-        showSnackbar("Logged-out successfully!", "success");
-        dispatch(emptyServiceCart());
+      onSuccess: (res) => {
+        if (res?.status !== "ERROR") {
+          showSnackbar("Logged-out successfully!", "success");
+          dispatch(emptyServiceCart());
+        } else {
+          showSnackbar("Something went wrong", "error");
+        }
       },
       onError: () => {
-        showSnackbar("Logged-out successfully!", "success");
+        showSnackbar("Something went wrong", "error");
       },
     });
 
@@ -99,8 +101,6 @@ function CustomNavbar() {
     setIsConfirmingLogout(false);
   };
 
-  const [openCart, setOpenCart] = useState(false);
-
   const handleOpenCart = () => {
     setOpenCart(!openCart);
   };
@@ -115,9 +115,7 @@ function CustomNavbar() {
       id: 1,
       label: "User Profile",
       icon: Resources.images.NavBar.userProfile,
-      action: () => {
-        navigate("/user-profile");
-      },
+      action: () => navigate("/user-profile"),
     },
     {
       id: 2,
@@ -131,95 +129,93 @@ function CustomNavbar() {
     {
       id: 1,
       label: "Laser Hair Removal Women",
-      action: () => {
-        navigate("/services/laser-hair-removal/women");
-      },
+      action: () => navigate("/services/laser-hair-removal/women"),
     },
     {
       id: 2,
       label: "Laser Hair Removal Men",
-      action: () => {
-        navigate("/services/laser-hair-removal/men");
-      },
+      action: () => navigate("/services/laser-hair-removal/men"),
     },
     {
       id: 3,
       label: "Oxy Hydra Facial",
-      action: () => {
-        navigate("/services/skin/medi-facial/oxy-hydra-facial");
-      },
+      action: () => navigate("/services/skin/medi-facial/oxy-hydra-facial"),
     },
     {
       id: 4,
       label: "RF Skin Tightening",
-      action: () => {
-        navigate("/services/skin/medi-facial/skin-tightening");
-      },
+      action: () => navigate("/services/skin/medi-facial/skin-tightening"),
     },
     {
       id: 5,
       label: "Derma Infusion Facial",
-      action: () => {
-        navigate("/services/skin/medi-facial/derma-infusion-facial");
-      },
+      action: () =>
+        navigate("/services/skin/medi-facial/derma-infusion-facial"),
     },
     {
       id: 6,
-      label: "Oxygeneo",
-      action: () => {
-        navigate("/services/skin/medi-facial/oxygeneo");
-      },
+      label: "Oxygeneo Facial",
+      action: () => navigate("/services/skin/medi-facial/oxygeneo"),
     },
   ];
 
   return (
     <div className="flex flex-col bg-coal !text-white p-3 fixed top-0 left-0 w-full z-50">
       <Suspense fallback={<div>Logging Out..</div>}>
-        <CustomLoader open={isSavingCartDetails}></CustomLoader>
+        <CustomLoader open={isSavingCartDetails} />
       </Suspense>
+
       <div>
-        <nav className="flex items-center justify-between px-2 md:!px-8">
+        <nav
+          className={`flex items-center px-2 md:!px-8 ${
+            isAdmin ? "justify-between" : "justify-between"
+          }`}
+        >
           <button
             className={`${isTablet ? "block" : "hidden"} text-white focus:outline-none`}
             onClick={toggleMenu}
           >
             <GiHamburgerMenu size={"2rem"} />
           </button>
-          <div className={`${isTablet ? "flex" : "hidden"}`}>
+          <div
+            className={`flex-1 flex justify-center ${isTablet ? "block" : "hidden"}`}
+          >
             <Link to="/" className="no-underline font-bold">
               <img
                 src={Resources.images.Common.logoNavbar}
                 alt="branding"
-                className="w-32"
+                className="w-32 mx-auto"
               />
             </Link>
           </div>
-          {isProductsPage ? (
-            <button
-              onClick={handleOpenCart}
-              className={`relative ${isTablet ? "block" : "hidden"}`}
-            >
-              <FaCartShopping size="1.8rem" />
-              {totalProductsItems > 0 && (
-                <span className="absolute left-1/2 bottom-50 text-xs bg-skyn text-white rounded-full px-2 py-1">
-                  {totalProductsItems}
-                </span>
-              )}
-            </button>
-          ) : (
-            <button
-              onClick={navigateToServicesCart}
-              className={`relative ${isTablet ? "block" : "hidden"}`}
-            >
-              <MdShoppingCartCheckout size="2rem" />
-              {totalServicesItems > 0 && (
-                <span className="absolute top-0 text-sm bg-skyn text-white rounded-full px-2">
-                  {totalServicesItems}
-                </span>
-              )}
-            </button>
-          )}
+          {!isAdmin &&
+            (isProductsPage ? (
+              <button
+                onClick={handleOpenCart}
+                className={`relative ${isTablet ? "block" : "hidden"}`}
+              >
+                <FaCartShopping size="1.8rem" />
+                {totalProductsItems > 0 && (
+                  <span className="absolute left-1/2 bottom-50 text-xs bg-skyn text-white rounded-full px-2 py-1">
+                    {totalProductsItems}
+                  </span>
+                )}
+              </button>
+            ) : (
+              <button
+                onClick={navigateToServicesCart}
+                className={`relative ${isTablet ? "block" : "hidden"}`}
+              >
+                <MdShoppingCartCheckout size="2rem" />
+                {totalServicesItems > 0 && (
+                  <span className="absolute top-0 text-sm bg-skyn text-white rounded-full px-2">
+                    {totalServicesItems}
+                  </span>
+                )}
+              </button>
+            ))}
         </nav>
+
         {!isTablet ? (
           <MenuForDesktop
             isActive={isActive}
@@ -245,6 +241,7 @@ function CustomNavbar() {
           />
         )}
       </div>
+
       {isConfirmingLogout && (
         <ConfirmationModal
           title="Are you sure you want to logout?"
@@ -254,6 +251,7 @@ function CustomNavbar() {
           imageSrc={Resources.images.Common.Warning}
         />
       )}
+
       {openCart && (
         <AnimatePresence>
           <CartDrawer openCart={openCart} handleOpenCart={handleOpenCart} />

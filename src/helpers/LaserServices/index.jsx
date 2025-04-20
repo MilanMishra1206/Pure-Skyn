@@ -428,9 +428,9 @@ export const servicesCardDetails = [
   },
   {
     id: 5,
-    title: "Oxygeneo: 3-in-1 Facial for Ultimate Skin Rejuvenation",
-    cardTitle: "Oxygeneo",
-    description: `OxyGeneo is an advanced 3-in-1 facial treatment that combines exfoliation, oxygenation, and
+    title: "Oxygeneo Facial: 3-in-1 Facial for Ultimate Skin Rejuvenation",
+    cardTitle: "Oxygeneo Facial",
+    description: `OxyGeneo Facial is an advanced 3-in-1 facial treatment that combines exfoliation, oxygenation, and
       infusion to rejuvenate the skin. This non-invasive procedure enhances skin texture, tone, and
       hydration while stimulating natural oxygenation from within. It's non-invasive, suitable for
       all skin types, and targets concerns like dullness, fine lines, and uneven tone.`,
@@ -490,7 +490,7 @@ export const servicesOffered = [
     title: "Oxygeneo Facial At Home",
     imageSrc: `${Resources.images.Home.serviceCards.oxygeneo}`,
     image: `${Resources.images.Services.OxyGeneo.oxygenoHomeCard}`,
-    description: `OxyGeneo is an advanced 3-in-1 facial treatment that combines exfoliation, oxygenation, and infusion. This non-invasive procedure improves skin texture, tone, and hydration, while stimulating natural oxygenation from within. It is suitable for all skin types and addresses concerns like dullness and fine lines.`,
+    description: `OxyGeneo Facial is an advanced 3-in-1 facial treatment that combines exfoliation, oxygenation, and infusion. This non-invasive procedure improves skin texture, tone, and hydration, while stimulating natural oxygenation from within. It is suitable for all skin types and addresses concerns like dullness and fine lines.`,
     linkTo: "services/skin/medi-facial/oxygeneo",
   },
 ];
@@ -677,9 +677,9 @@ export const oxyHydraPackage = [
 export const oxygeneoPackage = [
   {
     id: 1,
-    packageName: "Oxygeneo",
-    label: "Oxygeneo",
-    featureName: "oxygeneo",
+    packageName: "Oxygeneo Facial",
+    label: "Oxygeneo Facial",
+    featureName: "oxygeneoFacial",
     singleSessionPricing: 5000,
     imgSrc: Resources.images.Home.oxygeneoPackage,
   },
@@ -1019,15 +1019,15 @@ export const allPackageDetails = {
       },
     ],
   },
-  oxygeneo: {
-    oxygeneo: [
+  oxygeneoFacial: {
+    oxygeneoFacial: [
       {
         id: 1,
         serviceId: "5",
         subServiceId: "5-1",
-        label: "Oxygeneo",
-        featureName: "oxygeneo",
-        name: "Oxy Geneo - Single Session",
+        label: "Oxygeneo Facial",
+        featureName: "oxygeneoFacial",
+        name: "Oxygeneo Facial - Single Session",
         imgSrc: Resources.images.Home.oxygeneoPackage,
         price: 6500,
       },
@@ -1124,22 +1124,22 @@ export const beforeAfterCarouselContent = {
       afterImg: Resources.images.Services.BeforeAfter.skinTightening.img2After,
     },
   ],
-  Oxygeneo: [
+  "Oxygeneo Facial": [
     {
       id: 1,
-      serviceName: "Oxygeneo",
+      serviceName: "Oxygeneo Facial",
       beforeImg: Resources.images.Services.BeforeAfter.oxygeneo.img1Before,
       afterImg: Resources.images.Services.BeforeAfter.oxygeneo.img1After,
     },
     {
       id: 2,
-      serviceName: "Oxygeneo",
+      serviceName: "Oxygeneo Facial",
       beforeImg: Resources.images.Services.BeforeAfter.oxygeneo.img2Before,
       afterImg: Resources.images.Services.BeforeAfter.oxygeneo.img2After,
     },
     {
       id: 3,
-      serviceName: "Oxygeneo",
+      serviceName: "Oxygeneo Facial",
       beforeImg: Resources.images.Services.BeforeAfter.oxygeneo.img3Before,
       afterImg: Resources.images.Services.BeforeAfter.oxygeneo.img3After,
     },
@@ -1228,7 +1228,7 @@ export const treatmentList = [
     id: 6,
     treatmentName: "Oxygeneo Facial At Home",
     imgSrc: Resources.images.Home.oxygeneoMobile,
-    label: "oxygeneo",
+    label: "oxygeneoFacial",
   },
 ];
 
@@ -1275,7 +1275,7 @@ export const customPackageDetails = [
   },
   {
     treatmentName: "Oxygeneo Therapy + Derma Infusion Facial",
-    packageName: "Oxygeneo + Derma Infusion Facial",
+    packageName: "Oxygeneo Facial + Derma Infusion Facial",
     packagePrice: 10000,
     strikeOutPrice: 15000,
     serviceId: "7",
@@ -1570,7 +1570,7 @@ export const packagesDescriptionList = {
       desc: "Boosts collagen production to enhance skin firmness and elasticity.",
     },
   ],
-  oxygeneo: [
+  oxygeneoFacial: [
     {
       id: 1,
       desc: "Exfoliates, oxygenates, and nourishes skin for an instant glow.",

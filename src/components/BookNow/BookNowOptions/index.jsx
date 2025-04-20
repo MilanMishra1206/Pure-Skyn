@@ -84,11 +84,13 @@ function BookNowOptions({
     } else if (heading.includes("Men")) {
       setTreatmentPackageDetails(allPackageDetails.LHRMen[featureName]);
     } else if (heading.includes("Derma")) {
-      setTreatmentPackageDetails(allPackageDetails.dermaInfusionFacial[featureName]);
+      setTreatmentPackageDetails(
+        allPackageDetails.dermaInfusionFacial[featureName]
+      );
     } else if (heading.includes("Skin")) {
       setTreatmentPackageDetails(allPackageDetails.skinTightening[featureName]);
     } else if (heading.includes("Oxygeneo")) {
-      setTreatmentPackageDetails(allPackageDetails.oxygeneo[featureName]);
+      setTreatmentPackageDetails(allPackageDetails.oxygeneoFacial[featureName]);
     } else if (heading.includes("Oxy Hydra")) {
       setTreatmentPackageDetails(allPackageDetails.oxyhydraFacial[featureName]);
     }
@@ -138,24 +140,24 @@ function BookNowOptions({
 
   useEffect(() => {
     const packageMapping = {
-      "Laser Hair Removal Women": {
+      "Laser Hair Removal Women At Home": {
         package: laserHairWomenPackage,
         isMultiple: true,
       },
-      "Laser Hair Removal Men": {
+      "Laser Hair Removal Men At Home": {
         package: laserHairMenPackage,
         isMultiple: true,
       },
-      "Oxy Hydra Facial": { package: oxyHydraPackage, isMultiple: false },
-      "RF Skin Tightening": {
+      "Oxy Hydra Facial At Home": { package: oxyHydraPackage, isMultiple: false },
+      "RF Skin Tightening At Home": {
         package: skinTighteningPackage,
         isMultiple: false,
       },
-      "Derma Infusion Facial": {
+      "Derma Infusion Facial At Home": {
         package: dermafraqPackage,
         isMultiple: false,
       },
-      Oxygeneo: { package: oxygeneoPackage, isMultiple: false },
+      "Oxygeneo Facial At Home": { package: oxygeneoPackage, isMultiple: false },
     };
 
     const selectedPackage = packageMapping[heading];

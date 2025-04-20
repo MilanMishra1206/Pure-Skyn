@@ -89,24 +89,47 @@ function LoginForm({ formik, handleSubmit, mobileClass, isAdminPage = false }) {
         Sign In
       </button>
       {!isAdminPage && (
-        <div className="mt-4 text-center">
-          <p>
-            Don't have an account?{" "}
-            <Link
-              to="/sign-up"
-              className="underline text-skyn hover:!opacity-80"
-            >
-              Sign up
-            </Link>
-          </p>
-        </div>
+        <>
+          <div className="mt-4 text-center">
+            <p>
+              Don't have an account?{" "}
+              <Link
+                to="/sign-up"
+                className="underline text-skyn hover:!opacity-80"
+              >
+                Sign up
+              </Link>
+            </p>
+          </div>
+          <div className="flex flex-col items-center justify-center md:!flex-row gap-4 mt-4">
+            <div className="text-center">
+              <p>
+                Go to{" "}
+                <Link to="/" className="underline text-skyn hover:!opacity-80">
+                  Dashboard
+                </Link>
+              </p>
+            </div>
+            <div className="text-center">
+              <p>
+                Go to{" "}
+                <Link
+                  to="/login/admin"
+                  className="underline text-skyn hover:!opacity-80"
+                >
+                  Admin Login
+                </Link>
+              </p>
+            </div>
+          </div>
+        </>
       )}
-      {!isAdminPage && (
-        <div className="mt-4 text-center">
+      {isAdminPage && (
+        <div className="mt-2 text-center">
           <p>
             Go to{" "}
-            <Link to="/" className="underline text-skyn hover:!opacity-80">
-              Dashboard
+            <Link to="/login" className="underline text-skyn hover:!opacity-80">
+              User Login
             </Link>
           </p>
         </div>

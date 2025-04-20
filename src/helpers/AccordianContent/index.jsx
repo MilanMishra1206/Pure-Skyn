@@ -240,8 +240,8 @@ export const oxygeneoFaqAccordianContent = [
   },
   {
     id: 3,
-    title: "WHAT MAKES OXYGENEO BY PURESKYN UNIQUE?",
-    content: `OxyGeneo combines oxygenation with exfoliation and infusion, making it more effective than traditional facials.`,
+    title: "WHAT MAKES OXYGENEO FACIAL BY PURESKYN UNIQUE?",
+    content: `OxyGeneo Facial combines oxygenation with exfoliation and infusion, making it more effective than traditional facials.`,
   },
   {
     id: 4,

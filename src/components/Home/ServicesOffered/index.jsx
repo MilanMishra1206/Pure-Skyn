@@ -70,7 +70,7 @@ function ServicesOffered({ isMobile, isLargeScreen }) {
             alt={servicesOffered[1].title}
             className="hidden md:!block xl:!hidden shadow-lg object-cover w-full h-[22rem] xl:!h-[18rem] 2xl:!h-[20.5rem]"
           />
-          <div className="grid place-items-center bg-lightYellow text-coal text-center p-2 gap-2 md:!p-3 shadow-lg">
+          <div className="grid place-items-center bg-lightYellow text-coal text-center p-4 gap-2 md:!p-3 shadow-lg">
             <p className="text-lg font-extrabold">{servicesOffered[1].title}</p>
             <p className="text-[13px] md:!text-[13px] font-bold">
               {servicesOffered[1].description}

@@ -46,7 +46,7 @@ function DermafracInfusionFacial({ type }) {
               imgSrcLaptop={Resources.images.Home.dermfrac}
               imgSrcTablet={Resources.images.Home.dermfracMobile}
               linkTo="/book-now"
-              heading="Derma Infusion Facial at Home by PureSkyn - Professional-Grade Skincare in Your Hands"
+              heading="Derma Infusion Facial at Home"
               breadcrumbs1="Medi Facial"
               route1="/services/skin/medi-facial"
               breadcrumbs2="Derma Infusion Facial"
@@ -100,7 +100,7 @@ function DermafracInfusionFacial({ type }) {
               </div>
               <div className="flex justify-center items-center lg:ml-10">
                 <img
-                  src={Resources.images.Services.Dermafrac.imageOne}
+                  src={Resources.images.Services.Dermafrac.img8}
                   alt="derma-infusion-facial"
                   className="rounded-xl shadow w-96"
                 />
@@ -117,7 +117,7 @@ function DermafracInfusionFacial({ type }) {
             <div
               className={`flex ${isTablet ? "flex-col" : "justify-center items-center p-5"} font-poppins text-cello`}
             >
-              {!isMobile && (
+              {!isTablet && (
                 <img
                   src={Resources.images.Services.Dermafrac.imageTwo}
                   alt="derma-infusion-facial"
@@ -154,7 +154,7 @@ function DermafracInfusionFacial({ type }) {
                   sessions right at your doorstep.
                 </p>
               </div>
-              {isMobile && (
+              {isTablet && (
                 <div className="flex justify-center items-center">
                   <img
                     src={Resources.images.Services.Dermafrac.imageTwo}
@@ -213,11 +213,11 @@ function DermafracInfusionFacial({ type }) {
                   <li>Ideal for face, neck, décolletage and even hands.</li>
                 </ul>
               </div>
-              <div className="flex justify-center items-center ml-10">
+              <div className="flex justify-center items-center md:!ml-10">
                 <img
-                  src={Resources.images.Services.Dermafrac.img6}
+                  src={Resources.images.Services.Dermafrac.img9}
                   alt="derma-infusion-facial"
-                  className="rounded-xl shadow w-96"
+                  className="rounded-xl shadow md:!w-96"
                 />
               </div>
             </div>
@@ -381,7 +381,7 @@ function DermafracInfusionFacial({ type }) {
                 <CustomAccordion accordionData={dermoFracAccordianContent} />
                 <Link
                   to="/faq#Derma Infusion Facial"
-                  className="text-skyn hover:opacity-80 text-xl font-bold"
+                  className="text-skyn hover:opacity-80 text-xl font-bold cursor-pointer"
                 >
                   Show More FAQs
                 </Link>

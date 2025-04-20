@@ -5,6 +5,7 @@ import ScrollToTopButton from "../../shared/CustomBackToTopButton";
 import CustomLoader from "../../shared/CustomLoader";
 import CustomActionRibbon from "../../shared/CustomActionRibbon";
 import CustomFooter from "../../shared/CustomFooter";
+import { useSelector } from "react-redux";
 
 // Lazy Loaded Routes
 const PureSkynHome = lazy(() => import("../../pages/PureSkynHome"));
@@ -150,8 +151,18 @@ const RouteWrapper = ({ Component, accessRule }) => {
 function Router() {
   const { setIsHomePage, setIsMedifacialPage } = useRouteStatus();
   const [isFooterVisible, setIsFooterVisible] = useState(false);
+  const [isAdmin, setIsAdmin] = useState(false);
   const footerRef = useRef(null);
   const location = useLocation();
+  const userProfile = useSelector((state) => state?.userProfile?.userProfile);
+
+  useEffect(() => {
+    if (Object.entries(userProfile).length > 0) {
+      setIsAdmin(userProfile.isAdmin);
+    } else {
+      setIsAdmin(false);
+    }
+  }, [userProfile]);
 
   const showNavAndFooter = !["/login", "/sign-up", "/login/admin"].includes(
     location.pathname
@@ -234,7 +245,7 @@ function Router() {
         </div>
       )}
 
-      {showNavAndFooter && (
+      {showNavAndFooter && !isAdmin && (
         <CustomActionRibbon isFooterVisible={isFooterVisible} />
       )}
     </div>

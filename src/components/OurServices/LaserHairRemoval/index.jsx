@@ -65,152 +65,155 @@ function LaserHairRemoval() {
             className={`mt-5 ${isMobile ? "p-3" : "p-5"} text-justify`}
           >
             <CustomHeader
-              heading={"Laser Hair Removal"}
-              subHeading={"The Future of Smooth, Hair-Free Skin"}
+              heading={"Laser Hair Removal At Home With PureSkyn"}
+              subHeading={"Smooth, Hair-Free Skin Starts at Home"}
               showBackButton={true}
               navigateTo={"/services"}
             />
             <section className="mt-4">
-              <span className="text-cello font-medium">
-                Laser hair removal is a modern, non-invasive solution to
-                unwanted body hair. It's the preferred choice for both men and
-                women who want to enjoy smooth, hair-free skin without the
-                hassle of shaving, waxing, or plucking. By using highly focused
-                light to target hair follicles, laser hair removal provides
-                long-lasting results, making it the most effective way to
-                permanently reduce unwanted hair.
+              <span className="font-medium">
+                At <strong>PureSkyn</strong>, we offer the ultimate solution to
+                unwanted hair —{" "}
+                <strong>professional, non-invasive laser hair removal</strong>{" "}
+                done conveniently <strong>at home</strong>. No more razors,
+                waxing appointments or painful plucking. Our expert technicians
+                use <strong>advanced laser technology</strong> to help you
+                achieve <strong>smooth glowing skin</strong> with
+                <strong> long-lasting results</strong> — right from the comfort
+                and privacy of your own space.
               </span>
-              <h4 className="text-kashmirBlue font-bold mt-5">
-                How Does Laser Hair Removal Work?
+              <h4 className="text-xl font-bold mt-5">
+                How Does At-Home Laser Hair Removal Work?
               </h4>
-              <p className="text-cello font-medium mt-3">
-                Laser hair removal works by emitting light energy that is
-                absorbed by the pigment (melanin) in the hair. This energy is
-                converted to heat, which damages the hair follicle, inhibiting
-                future hair growth. The procedure is highly precise and can be
-                performed on various parts of the body, leaving the surrounding
-                skin undisturbed.
+              <p className="font-medium mt-3">
+                Our <strong>at-home laser hair removal</strong> service uses
+                state-of-the-art devices that emit{" "}
+                <strong>highly focused light energy</strong>. This light is
+                absorbed by the melanin (pigment) in the hair, converting to
+                heat that <strong>damages the hair follicle</strong> and slows
+                or stops future hair growth. The treatment is{" "}
+                <strong>precise and safe</strong>, targeting only the hair
+                without harming the surrounding skin.
               </p>
               <FadedLineBreak />
-              <h4 className="text-kashmirBlue font-bold">
-                Why Choose Laser Hair Removal?
+              <h4 className="font-bold text-xl mb-4">
+                Why Choose PureSkyn's Laser Hair Removal at Home?
               </h4>
-              <ul className="text-cello font-medium list-disc pl-5 mt-3 space-y-3">
+              <p className="font-bold text-lg">Long-Lasting Hair Reduction</p>
+              <span>
+                Unlike traditional methods like shaving or waxing, laser hair
+                removal provides <strong>permanent hair reduction</strong> after
+                just a few sessions. Enjoy smooth, hair-free skin for{" "}
+                <strong>months — or even years</strong>.
+              </span>
+              <p className="font-bold text-lg mt-3">
+                Precision & Effectiveness{" "}
+              </p>
+              <span>
+                Our lasers target <strong>dark, coarse hair</strong> with
+                pinpoint accuracy, leaving your skin smooth, even and untouched
+                by irritation or razor burn.
+              </span>
+              <p className="font-bold text-lg mt-3">
+                Fast, Convenient Sessions{" "}
+              </p>
+              <span>
+                Small areas like the upper lip can be treated in minutes, while
+                larger areas like legs or back take just 30-60 minutes—all in
+                the comfort of your home.
+              </span>
+              <p className="font-bold text-lg mt-3">Comfortable & Safe</p>
+              <span>
+                We use modern technology with built-in cooling systems for a
+                <strong> comfortable experience</strong>, often described as a
+                light snapping sensation. Our licensed professionals ensure
+                every session is
+                <strong> safe, hygienic and stress-free.</strong>
+              </span>
+              <FadedLineBreak />
+              <h4 className="font-bold text-xl">Areas We Treat </h4>
+              <p className="font-bold mt-3 mb-4 text-lg">
+                PureSkyn offers{" "}
+                <strong>customized laser hair removal treatments</strong> for
+                nearly every area of the body, including:
+              </p>
+              <ul className="font-medium list-disc pl-5 space-y-3">
                 <li>
-                  <strong>Long-Term Results:</strong> Unlike shaving or waxing,
-                  which provide temporary results, laser hair removal offers a
-                  more permanent reduction in hair growth. After a few sessions,
-                  most clients experience smooth, hair-free skin for months or
-                  even years.
+                  <strong>Face:</strong> Chin, upper lip, cheeks, jawline and
+                  sidelocks.
                 </li>
                 <li>
-                  <strong>Precision and Effectiveness:</strong> The laser
-                  selectively targets dark, coarse hair while leaving the
-                  surrounding skin unharmed, ensuring a smooth and even result.
+                  <strong>Arms and Legs:</strong> Full or partial treatments for
+                  long-lasting smoothness
                 </li>
                 <li>
-                  <strong>Quick and Convenient:</strong> Each session is fast,
-                  with small areas like the upper lip taking just a few minutes,
-                  and larger areas like the legs or back requiring only 30
-                  minutes to an hour.
+                  <strong>Back and Chest:</strong> Ideal for men and women
+                  wanting to reduce dense or coarse hair
                 </li>
                 <li>
-                  <strong>Minimal Discomfort:</strong> While laser hair removal
-                  might cause mild discomfort during the procedure, many people
-                  describe the sensation as similar to a light snap of a rubber
-                  band. Modern technology ensures a more comfortable experience
-                  with built-in cooling systems.
+                  <strong>Underarms and Bikini Line:</strong> Say goodbye to
+                  irritation and ingrowns in these sensitive areas.
                 </li>
               </ul>
               <FadedLineBreak />
-              <h4 className="text-kashmirBlue font-bold">
-                Areas of the Body We Treat
+              <h4 className="font-bold mb-4 text-xl">
+                What to Expect During Your PureSkyn Session
               </h4>
-              <p className="text-cello font-bold mt-3">
-                Laser hair removal can be performed on nearly any area of the
-                body, including:
-              </p>
-              <ul className="text-cello font-medium list-disc pl-5 space-y-3">
-                <li>
-                  <strong>Face:</strong> Chin, upper lip, jawline, and even the
-                  eyebrows.
-                </li>
-                <li>
-                  <strong>Arms and Legs:</strong> Say goodbye to shaving and
-                  waxing for smooth, long-lasting results.
-                </li>
-                <li>
-                  <strong>Back and Chest:</strong> Perfect for men and women
-                  looking to remove dense or coarse hair.
-                </li>
-                <li>
-                  <strong>Underarms and Bikini Line:</strong> Target sensitive
-                  areas with precision for a clean, hair-free finish.
-                </li>
-                <li>
-                  <strong>Intimate Areas::</strong> For both men and women,
-                  laser hair removal offers a safe and effective solution for
-                  the bikini area.
-                </li>
-              </ul>
+              <p className="font-bold text-lg">Consultation</p>
+              <span>
+                We begin with a personalized consultation to assess your{" "}
+                <strong>skin tone, hair type and treatment goals</strong>,
+                ensuring the best and safest results.
+              </span>
+              <p className="font-bold text-lg mt-3">Treatment</p>
+              <span>
+                The area is cleaned and a cooling gel is applied. The laser is
+                then gently passed over the skin in{" "}
+                <strong>short, controlled pulses</strong> to effectively target
+                hair follicles.
+              </span>
+              <p className="font-bold text-lg mt-3">Aftercare</p>
+              <span>
+                You may notice slight redness or swelling (similar to a mild
+                sunburn), which fades within a few hours. Our team provides
+                complete <strong>aftercare guidance</strong> to ensure your skin
+                heals beautifully.
+              </span>
               <FadedLineBreak />
-              <h4 className="text-kashmirBlue font-bold">
-                What to Expect During the Treatment
+              <h4 className="font-bold text-xl">
+                Benefits of Choosing PureSkyn
               </h4>
               <ul className="list-disc pl-5 text-cello font-medium mt-3 space-y-3">
                 <li>
-                  <strong>Consultation:</strong> During your first visit, we
-                  will assess your skin type, hair color, and the areas you wish
-                  to treat to tailor the procedure to your needs.
+                  <strong>Precision:</strong> Only hair follicles are
+                  affected—your skin remains untouched.
                 </li>
                 <li>
-                  <strong>Treatment:</strong> The area to be treated will be
-                  cleaned, and a cooling gel or device will be applied to the
-                  skin. The laser will be gently passed over the area in short
-                  pulses.
+                  <strong>Speed:</strong> Treat large or small areas quickly.
                 </li>
                 <li>
-                  <strong>Aftercare:</strong> After your treatment, you may
-                  experience slight redness or swelling, similar to a mild
-                  sunburn, which usually disappears within a few hours. It's
-                  essential to avoid sun exposure and follow any aftercare
-                  instructions provided by our specialists.
+                  <strong>Savings:</strong> While upfront costs may be higher
+                  than waxing, the long-term results make it a cost-effective
+                  beauty investment.
+                </li>
+                <li>
+                  <strong>Convenience:</strong> Enjoy quality treatments from
+                  the comfort of your home
                 </li>
               </ul>
-              <FadedLineBreak />
-              <h4 className="text-kashmirBlue font-bold">
-                Is Laser Hair Removal Right for You?
-              </h4>
-              <p className="text-cello font-medium mt-3">
-                Laser hair removal is effective on most skin types and hair
-                colors, though it tends to work best on individuals with light
-                skin and dark hair. However, advancements in technology have
-                made it possible for people with darker skin tones to benefit as
-                well. During your consultation, our experts will evaluate your
-                skin and hair type to recommend the most suitable approach for
-                optimal results.
-              </p>
-              <FadedLineBreak />
-              <h4 className="text-kashmirBlue font-bold">
-                Benefits of Laser Hair Removal
-              </h4>
-              <ul className="list-disc pl-5 text-cello font-medium mt-3 space-y-3">
-                <li>
-                  <strong>Precision:</strong> Laser targets only the hair
-                  follicles, leaving the surrounding skin unaffected.
-                </li>
-                <li>
-                  <strong>Efficiency:</strong> Each pulse of the laser takes
-                  only a fraction of a second and can treat multiple hair
-                  simultaneously.
-                </li>
-                <li>
-                  <strong>Cost-Effective:</strong> While the initial cost of
-                  laser hair removal may be higher than waxing or shaving, the
-                  long-term savings are significant due to the permanent
-                  reduction of hair growth.
-                </li>
-              </ul>
+              <div className="flex flex-col gap-2 font-poppins border-l-8 p-3 mt-4">
+                <p className="font-semibold text-xl">
+                  Ready to Ditch the Razor?
+                </p>
+                <p>
+                  With{" "}
+                  <strong>
+                    PureSkyn's expert at-home laser hair removal services,
+                  </strong>{" "}
+                  getting smooth, radiant skin has never been easier. No travel.
+                  No wait times. Just pure, confident skin.
+                </p>
+              </div>
             </section>
           </motion.div>
         )}
@@ -288,19 +291,20 @@ function LaserHairRemoval() {
             initial="hidden"
             whileInView="show"
             viewport={{ once: true }}
+            className="mb-4"
           >
             <FadedLineBreak />
             <div className="text-center text-skyn font-bold text-3xl px-4">
               <p>Frequently Asked Questions(FAQs)</p>
             </div>
             <div
-              className={`flex justify-center items-center ${isTablet ? "p-3 flex-col" : "flex-row"}`}
+              className={`flex justify-center items-center ${isTablet ? "p-3" : ""}`}
             >
-              <div className={`mt-4 w-full ${!isTablet ? "px-5" : ""}`}>
+              <div className={`mt-4 w-full xl:!w-1/2 ${!isTablet ? "px-5" : ""}`}>
                 <CustomAccordion accordionData={LHRAccordianContent} />
                 <Link
                   to="/faq#Laser Hair Removal"
-                  className="text-skyn hover:opacity-80 text-xl font-bold"
+                  className="text-skyn hover:opacity-80 text-xl font-bold cursor-pointer"
                 >
                   Show More FAQs
                 </Link>

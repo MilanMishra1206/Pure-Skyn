@@ -132,6 +132,10 @@ export const headersForQueries = [
     label: "Phone No",
   },
   {
+    key: "city",
+    label: "City",
+  },
+  {
     key: "serviceId",
     label: "Service",
   },

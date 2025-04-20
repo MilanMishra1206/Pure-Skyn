@@ -1,5 +1,5 @@
 const API_URLS = {
-  baseURL: "https://3.109.206.27/api/v1",
+  baseURL: "https://skynapi.duckdns.org/api/v1",
   Admin: {
     getAllUsers: "users/all",
     availableTechnicians: "admin/available-technicians",

@@ -33,8 +33,8 @@ function LaserHairRemovalForWomen({ category, isMobile, isTablet }) {
         >
           {!category && (
             <CustomHeader
-              heading={"Laser Hair Removal For Women"}
-              headerClass={`${!category ? "!text-center" : ""}`}
+              heading={"Laser Hair Removal For Women At Home"}
+              headerClass={`${!category ? "!text-center !text-2xl" : ""}`}
             />
           )}
         </motion.div>
@@ -281,7 +281,7 @@ function LaserHairRemovalForWomen({ category, isMobile, isTablet }) {
                     <CustomAccordion accordionData={LHRWomenAccordianContent} />
                     <Link
                       to="/faq#Laser Hair Removal Men"
-                      className="text-skyn hover:opacity-80 text-xl font-bold"
+                      className="text-skyn hover:opacity-80 text-xl font-bold cursor-pointer"
                     >
                       Show More FAQs
                     </Link>

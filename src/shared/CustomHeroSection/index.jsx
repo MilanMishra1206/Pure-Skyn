@@ -84,7 +84,7 @@ const CustomHeroSection = () => {
               <div className="flex w-full md:w-1/2 py-5 px-4 flex-col mt-10 h-[44.5rem]">
                 <div className="space-y-10 text-center lg:mb-5">
                   <div className="text-2xl xl:text-3xl font-medium text-coal">
-                    <p className="!text-coffee bg-[#fdeac4] rounded">
+                    <p className="!text-coffee font-bold rounded">
                       Hair free smooth and glowing skin with no hassle{" "}
                     </p>
                     <p className="mt-3">At comfort of your Home!!</p>
@@ -146,14 +146,6 @@ const CustomHeroSection = () => {
               alt="Banner"
             />
             <div className="flex flex-col justify-between py-4 px-2 bg-[#FFF7E9]">
-              <div className="space-y-10 text-center lg:mb-5">
-                <div className="text-2xl xl:text-3xl font-medium text-coal">
-                  <p className="!text-coffee bg-[#fdeac4] rounded">
-                    Hair free smooth and glowing skin with no hassle{" "}
-                  </p>
-                  <p className="mt-3">At comfort of your Home!!</p>
-                </div>
-              </div>
               <div className=" text-cello my-4 md:my-6 px-3 lg:!mx-5 font-poppins text-center">
                 <p>
                   <strong className="text-coffee">
