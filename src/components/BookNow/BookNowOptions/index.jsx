@@ -91,7 +91,7 @@ function BookNowOptions({
       setTreatmentPackageDetails(allPackageDetails.skinTightening[featureName]);
     } else if (heading.includes("Oxygeneo")) {
       setTreatmentPackageDetails(allPackageDetails.oxygeneoFacial[featureName]);
-    } else if (heading.includes("Oxy Hydra")) {
+    } else if (heading.includes("Oxyhydra")) {
       setTreatmentPackageDetails(allPackageDetails.oxyhydraFacial[featureName]);
     }
   };
@@ -148,7 +148,10 @@ function BookNowOptions({
         package: laserHairMenPackage,
         isMultiple: true,
       },
-      "Oxy Hydra Facial At Home": { package: oxyHydraPackage, isMultiple: false },
+      "Oxyhydra Facial At Home": {
+        package: oxyHydraPackage,
+        isMultiple: false,
+      },
       "RF Skin Tightening At Home": {
         package: skinTighteningPackage,
         isMultiple: false,
@@ -157,7 +160,10 @@ function BookNowOptions({
         package: dermafraqPackage,
         isMultiple: false,
       },
-      "Oxygeneo Facial At Home": { package: oxygeneoPackage, isMultiple: false },
+      "Oxygeneo Facial At Home": {
+        package: oxygeneoPackage,
+        isMultiple: false,
+      },
     };
 
     const selectedPackage = packageMapping[heading];

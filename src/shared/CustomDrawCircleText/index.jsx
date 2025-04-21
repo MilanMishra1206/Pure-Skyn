@@ -1,29 +1,40 @@
 import React from "react";
 import { motion } from "framer-motion";
-import { Link } from "react-router-dom";
 import { useMediaQuery } from "@mui/material";
+import { useNavigate } from "react-router-dom";
 
 const DrawCircleText = ({
   headerText,
   serviceName,
   buttonText,
-  link,
+  link = "/book-now",
   subText,
 }) => {
-  const isSmallerDevice = useMediaQuery("(max-width: 393px)")
+  const navigate = useNavigate();
+  const isSmallerDevice = useMediaQuery("(max-width: 393px)");
   // bg-gradient-to-br from-[#313440] to-[#4F585A]
   // bg-gradient-to-b from-[#313440] to-[#1F3A3B]
   // bg-gradient-to-b from-[#313440] to-[#3C3F52]
   // bg-gradient-to-r from-[#313440] to-[#0A4C4F]
   // bg-gradient-to-r from-[#313440] to-[#ee6503]
   // bg-gradient-to-r from-[#313440] to-[#103d40]
+
+  const handleLinkClick = () => {
+    const currentStep = serviceName.includes("Packages!") ? 0 : 1;
+    sessionStorage.setItem("currentBookStep", currentStep);
+    sessionStorage.setItem("treatmentName", serviceName);
+    navigate(link);
+  };
+
   return (
     <motion.div
       viewport={{ once: false }}
       className="grid place-content-center bg-gradient-to-r from-[#313440] to-[#1F3A3B] px-4 py-24 text-yellow-50"
     >
       <h1 className="max-w-2xl text-center text-5xl leading-snug">
-        <span className={`relative ${isSmallerDevice ? "flex text-center" : ""}`}>
+        <span
+          className={`relative ${isSmallerDevice ? "flex text-center" : ""}`}
+        >
           {headerText}
           <svg
             viewBox="0 0 286 73"
@@ -55,12 +66,12 @@ const DrawCircleText = ({
       )}
       {buttonText && (
         <div className="flex items-center justify-center gap-3 mt-4">
-          <Link
-            to={link}
+          <button
+            onClick={handleLinkClick}
             className="w-fit bg-neutral-200 px-4 py-2 font-semibold text-neutral-700 transition-colors hover:bg-neutral-50 no-underline"
           >
             {buttonText}
-          </Link>
+          </button>
         </div>
       )}
     </motion.div>

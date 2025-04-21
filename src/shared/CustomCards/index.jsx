@@ -49,7 +49,7 @@ const CustomCards = ({
             <CustomButton
               text={buttonText}
               linkTo={linkTo}
-              linkClass="no-underline cursor-pointer font-poppins font-bold flex items-center transition-opacity duration-300"
+              linkClass="no-underline cursor-pointer text-white font-poppins font-bold flex items-center transition-opacity duration-300"
             />
           </div>
         </div>

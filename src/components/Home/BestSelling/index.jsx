@@ -2,7 +2,6 @@ import React, { useRef } from "react";
 import { MdChevronLeft, MdChevronRight } from "react-icons/md";
 import { customPackageDetails } from "../../../helpers/LaserServices";
 import CustomHomeHeader from "../../../shared/CustomHomeHeader";
-import { Link } from "react-router-dom";
 import CustomCards from "../../../shared/CustomCards";
 
 const BestSellingCarousel = () => {

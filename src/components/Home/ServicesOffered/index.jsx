@@ -2,7 +2,6 @@ import React from "react";
 import { MdKeyboardDoubleArrowRight } from "react-icons/md";
 import { Link, useNavigate } from "react-router-dom";
 import { motion } from "framer-motion";
-import CustomCards from "../../../shared/CustomCards";
 import { servicesOffered } from "../../../helpers/LaserServices";
 import CustomHomeHeader from "../../../shared/CustomHomeHeader";
 import FadeInWrapper from "../../../config/MotionFramer/FadeInWrapper";

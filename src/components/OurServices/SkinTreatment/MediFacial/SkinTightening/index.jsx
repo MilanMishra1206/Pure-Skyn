@@ -43,7 +43,7 @@ function SkinTightening({ type }) {
               imgSrcLaptop={Resources.images.Home.skinTightening}
               imgSrcTablet={Resources.images.Home.skinTighteningMobile}
               linkTo="/Book-now"
-              heading="RF Skin Tightening Treatment At Home"
+              heading="RF Skin Tightening At Home"
               breadcrumbs1="Medi Facial"
               route1="/services/skin/medi-facial"
               breadcrumbs2="Skin Tightening"
@@ -248,9 +248,8 @@ function SkinTightening({ type }) {
             >
               <DrawCircleText
                 headerText={"Exciting Offers -"}
-                serviceName={"Medi-Facial Packages!"}
+                serviceName={"RF Skin Tightening At Home"}
                 buttonText="Check Now"
-                link="/services/skin/medi-facial-packages"
               />
             </motion.div>
           )}
@@ -291,7 +290,7 @@ function SkinTightening({ type }) {
             </div>
           </motion.div>
           <CustomFloatingBookNowButton
-            treatmentName="RF Skin Tightening"
+            treatmentName="RF Skin Tightening At Home"
             goToStep={1}
           />
         </div>

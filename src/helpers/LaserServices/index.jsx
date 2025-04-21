@@ -130,7 +130,7 @@ export const laserServiceForWomenContent = [
     sectionOne: `At PureSkyn, we believe that every woman deserves the luxury of smooth, flawless
       skin without the hassle of constant shaving, waxing or threading. Our laser hair reduction at home for women provides a convenient, effective and long-lasting
       solution to unwanted body hair. Say goodbye to time-consuming hair removal methods and enjoy the confidence of silky, hair-free skin with the help of our expert team.`,
-      img: Resources.images.Home.serviceCards.lhrWomen,
+    img: Resources.images.Home.serviceCards.lhrWomen,
   },
   {
     id: 2,
@@ -463,7 +463,7 @@ export const servicesOffered = [
   },
   {
     id: 3,
-    title: "Oxy Hydra Facial At Home",
+    title: "Oxyhydra Facial At Home",
     imageSrc: `${Resources.images.Services.OxyHydra.img4}`,
     image: `${Resources.images.Services.OxyHydra.oxyHydraHomeCard}`,
     description: `The Oxy Hydra Facial is a rejuvenating facial that cleanses, exfoliates, and hydrates the skin. Using advanced technology, it delivers nutrients and oxygen deep into the skin, leaving it smooth and glowing. It addresses skin concerns like dryness, fine lines, and dullness for all skin types.`,
@@ -627,7 +627,7 @@ export const laserHairMenPackage = [
     multiplSessions: true,
     singleSessionPricing: 8000,
     mutlipleSessionPricing: 32000,
-    imgSrc: Resources.images.Home.lhr.armsPackage,
+    imgSrc: Resources.images.Home.lhr.chestMenPackage,
   },
   {
     id: 5,
@@ -1101,13 +1101,11 @@ export const beforeAfterCarouselContent = {
       id: 1,
       serviceName: "Oxyhydra Facial",
       img: Resources.images.Services.BeforeAfter.oxyhydra.img1,
-
     },
     {
       id: 2,
       serviceName: "Oxyhydra Facial",
       img: Resources.images.Services.BeforeAfter.oxyhydra.img2,
-
     },
   ],
   "Derma Infusion Facial": [
@@ -1115,7 +1113,6 @@ export const beforeAfterCarouselContent = {
       id: 1,
       serviceName: "Derma Infusion Facial",
       img: Resources.images.Services.BeforeAfter.dermafrac.img1,
-
     },
     {
       id: 2,
@@ -1147,7 +1144,7 @@ export const treatmentList = [
   },
   {
     id: 3,
-    treatmentName: "Oxy Hydra Facial At Home",
+    treatmentName: "Oxyhydra Facial At Home",
     imgSrc: Resources.images.Home.oxyhydraMoble,
     label: "oxyHydraFacial",
   },

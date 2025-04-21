@@ -11,6 +11,7 @@ import CustomHeader from "../../../../shared/CustomHeader";
 import CustomCards from "../../../../shared/CustomCards";
 import CustomAccordion from "../../../../shared/CustomAccordion";
 import DrawCircleText from "../../../../shared/CustomDrawCircleText";
+import FadedLineBreak from "../../../../shared/CustomHrTag";
 
 const DermafracInfusionFacial = lazy(() => import("./DermafracInfusionFacial"));
 const Oxygeneo = lazy(() => import("./Oxygeneo"));
@@ -124,7 +125,7 @@ function MediFacial() {
                 />
               )}
             </div>
-            <hr className="my-4 border-blue-gray-50 px-8" />
+            <FadedLineBreak />
             <h4 className="font-bold text-xl">How Does a Medi-Facial Work?</h4>
             <p className="font-medium mt-3 text-justify">
               During your{" "}
@@ -149,7 +150,7 @@ function MediFacial() {
               </strong>{" "}
               — with <strong>no harsh chemicals</strong> or side effects.
             </p>
-            <hr className="my-4 border-blue-gray-50 px-8" />
+            <FadedLineBreak />
             <h4 className="font-bold text-xl">
               Why Choose a Medi-Facial Over a Regular Facial?
             </h4>
@@ -198,7 +199,7 @@ function MediFacial() {
                 <strong>pure skincare benefits.</strong>
               </li>
             </ul>
-            <hr className="my-4 border-blue-gray-50 px-8" />
+            <FadedLineBreak />
             <h4 className="font-bold text-xl">
               Who Can Benefit from a Medi-Facial?
             </h4>
@@ -215,7 +216,7 @@ function MediFacial() {
               <li>Dehydrated, flaky skin.</li>
               <li>Sensitive or irritated skin.</li>
             </ul>
-            <hr className="my-4 border-blue-gray-50 px-8" />
+            <FadedLineBreak />
             <h4 className="font-bold text-xl">
               Why Choose PureSkyn for Medi-Facials at Home?
             </h4>
@@ -271,7 +272,7 @@ function MediFacial() {
             headerText={"Exciting Offers -"}
             serviceName={"Medi-Facial Packages!"}
             buttonText="Check Now"
-            link="/services/skin/medi-facial-packages"
+            link="/book-now"
           />
         </motion.div>
       )}
@@ -356,16 +357,16 @@ function MediFacial() {
           viewport={{ once: true }}
         >
           {" "}
-          <div className="px-4">
-            <hr className="border-t-4 my-4" />
-          </div>
+          <FadedLineBreak />
           <div className="text-center text-skyn font-bold text-3xl px-4">
             <p>Frequently Asked Questions(FAQs)</p>
           </div>
           <div
-            className={`flex justify-center items-center ${isTablet ? "p-3 flex-col" : "flex-row"}`}
+            className={`flex justify-center items-center ${isTablet ? "p-3" : ""}`}
           >
-            <div className={`mt-4 w-full ${!isTablet ? "px-5" : ""}`}>
+            <div
+              className={`mt-4 w-full xl:!w-1/2 ${!isTablet ? "px-5" : ""} mb-4 mt-4`}
+            >
               <CustomAccordion accordionData={mediFacialAccordianContent} />
               <Link
                 to="/faq#Medi Facial"

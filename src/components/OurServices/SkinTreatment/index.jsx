@@ -5,11 +5,9 @@ const MediFacial = lazy(() => import("./MediFacial"));
 
 function SkinTreatment() {
   return (
-    <div>
-      <Suspense fallback={<CustomLoader open={true} />}>
-        <MediFacial />
-      </Suspense>
-    </div>
+    <Suspense fallback={<CustomLoader open={true} />}>
+      <MediFacial />
+    </Suspense>
   );
 }
 

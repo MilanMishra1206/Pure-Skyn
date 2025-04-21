@@ -12,7 +12,6 @@ import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { FaCartPlus } from "react-icons/fa";
-import DrawCircleText from "../../shared/CustomDrawCircleText";
 import FadeInWrapper from "../../config/MotionFramer/FadeInWrapper";
 import BookNowDetails from "./BookNowDetails";
 import BookNowOptions from "./BookNowOptions";
@@ -172,7 +171,7 @@ function BookNow() {
                   alt={item.treatmentName}
                 />
                 <div className="bottom-0 left-0 w-full p-3 md:!p-4 bg-coffee bg-opacity-60 backdrop-blur-md rounded-b-lg text-center">
-                  <span className="font-poppins text-white font-bold md:!text-xl">
+                  <span className="font-poppins text-white font-bold md:!text-lg">
                     {item.treatmentName}
                   </span>
                 </div>

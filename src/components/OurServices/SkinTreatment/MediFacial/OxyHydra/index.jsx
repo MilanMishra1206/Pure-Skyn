@@ -30,7 +30,7 @@ function OxyHydra({ type }) {
       >
         {!type && (
           <CustomHeader
-            heading={"Oxy Hydra Facial"}
+            heading={"Oxyhydra Facial"}
             headerClass={!type && "!text-xl"}
           />
         )}
@@ -42,7 +42,7 @@ function OxyHydra({ type }) {
               imgSrcLaptop={Resources.images.Home.oxyhydra}
               imgSrcTablet={Resources.images.Home.oxyhydraMoble}
               linkTo="/book-now"
-              heading="Oxyhydra Facial At home"
+              heading="Oxyhydra Facial At Home"
               breadcrumbs1="Medi Facial"
               route1="/services/skin/medi-facial"
               breadcrumbs2="Oxy Hydra Facial"
@@ -420,9 +420,8 @@ function OxyHydra({ type }) {
             >
               <DrawCircleText
                 headerText={"Exciting Offers -"}
-                serviceName={"Medi-Facial Packages!"}
+                serviceName={"Oxyhydra Facial At Home"}
                 buttonText="Check Now"
-                link="/services/skin/medi-facial-packages"
               />
             </motion.div>
           )}
@@ -457,7 +456,7 @@ function OxyHydra({ type }) {
             </div>
           </motion.div>
           <CustomFloatingBookNowButton
-            treatmentName="Oxy Hydra Facial"
+            treatmentName="Oxyhydra Facial At Home"
             goToStep={1}
           />
         </div>

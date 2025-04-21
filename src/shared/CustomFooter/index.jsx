@@ -1,12 +1,7 @@
 import { Link } from "react-router-dom";
 import { FaInstagram } from "react-icons/fa";
 import { IoLogoFacebook } from "react-icons/io5";
-import { FaXTwitter } from "react-icons/fa6";
 import { CiYoutube } from "react-icons/ci";
-// import { IoPhonePortraitOutline } from "react-icons/io5";
-// import { FaPhoneAlt } from "react-icons/fa";
-// import { MdOutlineMail } from "react-icons/md";
-// import { FaRegAddressBook } from "react-icons/fa";
 import { useSelector } from "react-redux";
 import { useEffect, useState } from "react";
 import Resources from "../../config/Resources";
@@ -150,33 +145,35 @@ function CustomFooter() {
         </div>
       </div>
       <hr className="my-8 border-blue-gray-50 px-8" />
-      <div className="flex gap-8 flex-col md:flex-row items-center justify-center text-center mt-4 text-sm">
-        <p>&copy; {new Date().getFullYear()} Pure Skyn. All Rights Reserved.</p>
+      <div className="flex gap-8 flex-col md:flex-row items-center justify-center text-center text-sm">
+        <span>
+          &copy; {new Date().getFullYear()} Pure Skyn. All Rights Reserved.
+        </span>
         <div className="flex gap-2">
-          <Link
-            to="https://www.instagram.com/laserclinicindia/"
+          <a
+            href="https://www.instagram.com/pureskynindia"
+            target="_blank"
+            rel="noopener noreferrer"
             className="bg-skyn no-underline p-2 rounded-5 text-white hover:opacity-80 text-lg"
           >
             <FaInstagram />
-          </Link>
-          <Link
-            to="https://www.instagram.com/laserclinicindia/"
+          </a>
+          <a
+            href="https://www.facebook.com/share/1Fr1FEZ4Zo"
+            target="_blank"
+            rel="noopener noreferrer"
             className="bg-skyn no-underline p-2 rounded-5 text-white hover:opacity-80 text-lg"
           >
             <IoLogoFacebook />
-          </Link>
-          <Link
-            to="https://www.instagram.com/laserclinicindia/"
-            className="bg-skyn no-underline p-2 rounded-5 text-white hover:opacity-80 text-lg"
-          >
-            <FaXTwitter />
-          </Link>
-          <Link
-            to="https://www.instagram.com/laserclinicindia/"
+          </a>
+          <a
+            href="https://www.instagram.com/ABDS/"
+            target="_blank"
+            rel="noopener noreferrer"
             className="bg-skyn no-underline p-2 rounded-5 text-white hover:opacity-80 text-lg"
           >
             <CiYoutube />
-          </Link>
+          </a>
         </div>
       </div>
     </div>

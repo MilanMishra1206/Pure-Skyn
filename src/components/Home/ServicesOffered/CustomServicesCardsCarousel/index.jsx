@@ -3,6 +3,7 @@ import { MdChevronLeft, MdChevronRight } from "react-icons/md";
 import CustomHomeHeader from "../../../../shared/CustomHomeHeader";
 import { servicesOffered } from "../../../../helpers/LaserServices";
 import CustomCards from "../../../../shared/CustomCards";
+import FadedLineBreak from "../../../../shared/CustomHrTag";
 
 const CustomServicesCardsCarousel = () => {
   const sliderRef = useRef(null);
@@ -21,6 +22,7 @@ const CustomServicesCardsCarousel = () => {
 
   return (
     <div className="px-1 lg:!px-2 !py-10 font-poppins">
+      <FadedLineBreak />
       <CustomHomeHeader heading="BEST SERVICES AT HOME" />
       <div className="relative mt-4 md:!px-10">
         <MdChevronLeft
@@ -38,7 +40,9 @@ const CustomServicesCardsCarousel = () => {
               imgSrc={item.imageSrc}
               linkTo={item.linkTo}
               key={item.id}
-              customClass={"!w-56 2xl:!w-[14.5rem] h-[20.5rem] rounded-2xl shadow-lg"}
+              customClass={
+                "!w-56 2xl:!w-[14.5rem] h-[20.5rem] rounded-2xl shadow-lg"
+              }
               imageClass="h-100"
             />
           ))}

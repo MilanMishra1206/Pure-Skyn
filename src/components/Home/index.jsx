@@ -4,6 +4,7 @@ import { useMediaQuery } from "@mui/material";
 import MotionWrapper from "../../config/MotionFramer/MotionWrapper";
 import CustomLoader from "../../shared/CustomLoader";
 import Resources from "../../config/Resources";
+import FadedLineBreak from "../../shared/CustomHrTag";
 
 const BestSelling = lazy(() => import("./BestSelling"));
 const MostPopularLhr = lazy(() => import("./MostPopularLhr"));
@@ -32,6 +33,7 @@ function Home() {
             <CustomHeroSection />
           </div>
         </Suspense>
+        <FadedLineBreak />
         <Suspense fallback={<CustomLoader open={true} />}>
           <MotionWrapper>
             <ServicesOffered
@@ -64,6 +66,7 @@ function Home() {
             </MotionWrapper>
           </Suspense>
         )}
+        <FadedLineBreak />
         <MotionWrapper>
           <BestSelling isMobile={isMobile} isLargeScreen={isLargeScreen} />
         </MotionWrapper>

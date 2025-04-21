@@ -32,7 +32,9 @@ function LaserHairRemoval() {
     sessionStorage.removeItem("packageName");
     sessionStorage.removeItem("packagePrice");
     setTreatmentName(
-      category === "men" ? "Laser Hair Removal Men" : "Laser Hair Removal Women"
+      category === "men"
+        ? "Laser Hair Removal Men At Home"
+        : "Laser Hair Removal Women At Home"
     );
   }, []);
 
@@ -66,7 +68,7 @@ function LaserHairRemoval() {
           >
             <CustomHeader
               heading={"Laser Hair Removal At Home With PureSkyn"}
-              subHeading={"Smooth, Hair-Free Skin Starts at Home"}
+              subHeading={"Smooth, Hair-Free Skin Starts At Home"}
               showBackButton={true}
               navigateTo={"/services"}
             />
@@ -300,7 +302,9 @@ function LaserHairRemoval() {
             <div
               className={`flex justify-center items-center ${isTablet ? "p-3" : ""}`}
             >
-              <div className={`mt-4 w-full xl:!w-1/2 ${!isTablet ? "px-5" : ""}`}>
+              <div
+                className={`mt-4 w-full xl:!w-1/2 ${!isTablet ? "px-5" : ""}`}
+              >
                 <CustomAccordion accordionData={LHRAccordianContent} />
                 <Link
                   to="/faq#Laser Hair Removal"
@@ -312,10 +316,7 @@ function LaserHairRemoval() {
             </div>
           </motion.div>
         )}
-        <CustomFloatingBookNowButton
-          treatmentName={treatmentName}
-          goToStep={1}
-        />
+        <CustomFloatingBookNowButton goToStep={0} />
       </div>
     </MotionWrapper>
   );

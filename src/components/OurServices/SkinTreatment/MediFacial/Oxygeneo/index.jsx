@@ -47,7 +47,7 @@ function Oxygeneo({ type }) {
               imgSrcLaptop={Resources.images.Home.oxygeneo}
               imgSrcTablet={Resources.images.Home.oxygeneoMobile}
               linkTo="/book-now"
-              heading="Oxygeneo Facial at Home"
+              heading="Oxygeneo Facial At Home"
               breadcrumbs1="Medi Facial"
               route1="/services/skin/medi-facial"
               breadcrumbs2="Oxygeneo"
@@ -192,9 +192,8 @@ function Oxygeneo({ type }) {
             >
               <DrawCircleText
                 headerText={"Exciting Offers -"}
-                serviceName={"Medi-Facial Packages!"}
+                serviceName={"Oxygeno Facial At Home"}
                 buttonText="Check Now"
-                link="/services/skin/medi-facial-packages"
               />
             </motion.div>
           )}
@@ -229,7 +228,10 @@ function Oxygeneo({ type }) {
               </div>
             </div>
           </motion.div>
-          <CustomFloatingBookNowButton treatmentName="Oxygeneo" goToStep={1} />
+          <CustomFloatingBookNowButton
+            treatmentName="Oxygeneo Facial At Home"
+            goToStep={1}
+          />
         </div>
       )}
     </div>

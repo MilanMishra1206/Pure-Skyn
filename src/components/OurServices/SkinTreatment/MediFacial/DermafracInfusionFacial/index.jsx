@@ -46,7 +46,7 @@ function DermafracInfusionFacial({ type }) {
               imgSrcLaptop={Resources.images.Home.dermfrac}
               imgSrcTablet={Resources.images.Home.dermfracMobile}
               linkTo="/book-now"
-              heading="Derma Infusion Facial at Home"
+              heading="Derma Infusion Facial At Home"
               breadcrumbs1="Medi Facial"
               route1="/services/skin/medi-facial"
               breadcrumbs2="Derma Infusion Facial"
@@ -76,10 +76,10 @@ function DermafracInfusionFacial({ type }) {
                   to target fine lines, wrinkles, acne scars and dull skin—all
                   from the comfort of your home.
                 </p>
-                <p className="font-semibold">
+                <p className="font-semibold mt-4">
                   Why Choose Derma Infusion Facial at Home?
                 </p>
-                <ul className="list-disc text-left">
+                <ul className="list-disc text-left mt-4 mb-4 space-y-3">
                   <li>
                     <strong>Non-Invasive & Painless - </strong> Enjoy
                     professional results without downtime.
@@ -125,15 +125,15 @@ function DermafracInfusionFacial({ type }) {
                 />
               )}
               <div
-                className={`flex flex-col ${!isTablet ? "w-50 ml-5" : "w-full"} lg:ml-10`}
+                className={`flex flex-col ${!isTablet ? "w-50 ml-5" : "w-full"} lg:ml-10 space-y-3`}
               >
-                <p className="text-lg">
+                <p>
                   Join thousands achieving{" "}
                   <strong>smoother, firmer and more youthful skin</strong> with{" "}
                   <strong>PureSkyn's at-home Derma Infusion Facial</strong>{" "}
                   solution. Elevate your skincare routine today!
                 </p>
-                <p className="font-semibold">
+                <p className="font-semibold mt-2">
                   Looking for a non-invasive, effective and convenient skin
                   rejuvenation treatment?
                 </p>
@@ -144,7 +144,7 @@ function DermafracInfusionFacial({ type }) {
                   first time in your city, you can enjoy this clinic-grade
                   skincare treatment in the comfort and privacy of your home.
                 </p>
-                <p>
+                <p className="mb-4">
                   At <strong>PureSkyn</strong>, we bring{" "}
                   <strong>Derma Infusion Facial</strong> treatments to clients
                   who want glowing, younger-looking and healthier skin—without
@@ -198,10 +198,10 @@ function DermafracInfusionFacial({ type }) {
                   simultaneously infusing medical- grade serums deep into the
                   skin for maximum effectiveness.
                 </p>
-                <p className="font-semibold mt-2 mb-2">
+                <p className="font-semibold mt-4 mb-2">
                   Benefits of Derma Infusion Facial Treatment
                 </p>
-                <ul className="list-disc text-left">
+                <ul className="list-disc text-left space-y-2 mb-4">
                   <li>Non-invasive & pain-free.</li>
                   <li>Suitable for all skin types.</li>
                   <li>No downtime or recovery period.</li>
@@ -233,7 +233,7 @@ function DermafracInfusionFacial({ type }) {
               className={`font-poppins text-cello ${isTablet ? "flex justify-center items-center" : ""}`}
             >
               <div className="flex flex-col ml-0 xl:!ml-5">
-                <div className="!text-2xl font-bold mb-2">
+                <div className="!text-2xl font-bold mb-2 text-center md:!text-left">
                   How Does Derma Infusion Facial Works - The Science Behind the
                   Glow
                 </div>
@@ -243,7 +243,7 @@ function DermafracInfusionFacial({ type }) {
                     backgroundImage: `url(${Resources.images.Common.cardBg2})`,
                   }}
                 >
-                  <div className="grid grid-cols-1 md:!grid-cols-3 gap-5 mt-5">
+                  <div className="grid md:!grid-cols-2 lg:!grid-cols-3 gap-5 mt-5">
                     {dermaInfusionFacial.map((item) => (
                       <div
                         key={item.id}
@@ -282,14 +282,16 @@ function DermafracInfusionFacial({ type }) {
               className={`flex ${isTablet ? "flex-col" : "justify-center items-center p-5"} font-poppins text-cello`}
             >
               {!isMobile && (
-                <img
-                  src={Resources.images.Services.Dermafrac.imageThree}
-                  alt="derma-infusion-facial"
-                  className="rounded-xl shadow w-96"
-                />
+                <div className="flex justify-center items-center">
+                  <img
+                    src={Resources.images.Services.Dermafrac.img7}
+                    alt="derma-infusion-facial"
+                    className="rounded-xl shadow w-96"
+                  />
+                </div>
               )}
               <div
-                className={`flex flex-col ${!isTablet ? "w-50 ml-5" : "w-full"} lg:ml-10`}
+                className={`flex flex-col ${!isTablet ? "w-50 ml-5" : "w-full"} lg:ml-10 mt-4`}
               >
                 <div className="!text-2xl font-bold">
                   Who Can Benefit From Derma Infusion Facial?
@@ -308,7 +310,7 @@ function DermafracInfusionFacial({ type }) {
                     <li>Rosacea and sensitive skin conditions.</li>
                   </ul>
                 </div>
-                <p>
+                <p className="mt-4">
                   Whether you're in your 20s wanting to maintain your glow or in
                   your 40s and beyond looking for rejuvenation, Derma Infusion
                   Facial adapts to your skincare needs.
@@ -317,14 +319,14 @@ function DermafracInfusionFacial({ type }) {
               {isMobile && (
                 <div className="flex justify-center items-center">
                   <img
-                    src={Resources.images.Services.Dermafrac.imageThree}
+                    src={Resources.images.Services.Dermafrac.img7}
                     alt="derma-infusion-facial"
                     className="rounded-xl shadow w-96"
                   />
                 </div>
               )}
             </div>
-            <div className="flex flex-col gap-2 font-poppins border-l-8 p-3 mb-6">
+            <div className="flex flex-col gap-2 font-poppins border-l-8 p-3 mb-6 mt-4">
               <p className="font-semibold text-xl">
                 Why Choose PureSkyn for At-Home Derma Infusion Facial?
               </p>
@@ -350,9 +352,8 @@ function DermafracInfusionFacial({ type }) {
             >
               <DrawCircleText
                 headerText={"Exciting Offers -"}
-                serviceName={"Medi-Facial Packages!"}
+                serviceName={"Derma Infusion Facial At Home"}
                 buttonText="Check Now"
-                link="/services/skin/medi-facial-packages"
               />
             </motion.div>
           )}
@@ -389,7 +390,7 @@ function DermafracInfusionFacial({ type }) {
             </div>
           </motion.div>
           <CustomFloatingBookNowButton
-            treatmentName="Derma Infusion Facial"
+            treatmentName="Derma Infusion Facial At Home"
             goToStep={1}
           />
         </div>
