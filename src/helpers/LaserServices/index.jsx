@@ -1049,6 +1049,40 @@ export const allPackageDetails = {
   },
 };
 
+export const SERVICE_MAP = {
+  "1-1": "Laser Hair Removal Women - Full Body - (4+1) Session",
+  "1-2": "Laser Hair Removal Women - Full Body - Single Session",
+  "1-3": "Laser Hair Removal Women - Face and Neck - (4+1) Session",
+  "1-4": "Laser Hair Removal Women - Face and Neck - Single Session",
+  "1-5": "Laser Hair Removal Women - Bikini and Buttocks - (4+1) Session",
+  "1-6": "Laser Hair Removal Women - Bikini and Buttocks - Single Session",
+  "1-7": "Laser Hair Removal Women - Arms and Underarms - (4+1) Session",
+  "1-8": "Laser Hair Removal Women - Arms and Underarms - Single Session",
+  "1-9": "Laser Hair Removal Women - Chest and Back - (4+1) Session",
+  "1-10": "Laser Hair Removal Women - Chest and Back - Single Session",
+  "1-11": "Laser Hair Removal Women - Half Legs - Single Session",
+  "1-12": "Laser Hair Removal Women - Full Legs - Single Session",
+  "1-13": "Laser Hair Removal Women - Back - Single Session",
+  "1-14": "Laser Hair Removal Women - Chest - Single Session",
+  "1-15": "Laser Hair Removal Women - Bikini - Single Session",
+  "2-1": "Laser Hair Removal Men - Full Body - (4+1) Session",
+  "2-2": "Laser Hair Removal Men - Full Body - Single Session",
+  "2-3": "Laser Hair Removal Men - Face and Neck - (4+1) Session",
+  "2-4": "Laser Hair Removal Men - Face and Neck - Single Session",
+  "2-5": "Laser Hair Removal Men - Arms and Underarms - (4+1) Session",
+  "2-6": "Laser Hair Removal Men - Arms and Underarms - Single Session",
+  "2-7": "Laser Hair Removal Men - Chest and Back - (4+1) Session",
+  "2-8": "Laser Hair Removal Men - Chest and Back - Single Session",
+  "2-9": "Laser Hair Removal Men - Half Legs - Single Session",
+  "2-10": "Laser Hair Removal Men - Full Legs - Single Session",
+  "2-11": "Laser Hair Removal Men - Back - Single Session",
+  "2-12": "Laser Hair Removal Men - Chest - Single Session",
+  "3-1": "RF Skin Tightening - Full Face - Single Session",
+  "4-1": "Oxy Hydra Facial - Single Session",
+  "5-1": "Oxygeneo Facial - Single Session",
+  "6-1": "Derma Infusion Facial - Single Session",
+};
+
 export const beforeAfterCarouselContent = {
   "Laser Hair Removal": [
     {

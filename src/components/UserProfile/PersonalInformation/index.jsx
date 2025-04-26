@@ -131,7 +131,7 @@ export default function PersonalInformation({ userProfile }) {
           />
         </div>
         <FadedLineBreak />
-        <div className="grid lg:!grid-cols-3 gap-4 font-poppins p-4">
+        <div className="grid lg:!grid-cols-3 gap-3 font-poppins p-4">
           <div>
             {editMode ? (
               <Suspense fallback={<div />}>

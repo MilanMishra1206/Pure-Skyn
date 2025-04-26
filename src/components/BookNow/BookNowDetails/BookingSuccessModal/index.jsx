@@ -1,5 +1,6 @@
 import { AnimatePresence, motion } from "framer-motion";
 import { FaCheckCircle } from "react-icons/fa";
+import { SERVICE_MAP } from "../../../../helpers/LaserServices";
 
 function BookingSuccessModal({ handlePrimaryButtonClick, bookingData }) {
   if (!bookingData) return null;
@@ -65,9 +66,13 @@ function BookingSuccessModal({ handlePrimaryButtonClick, bookingData }) {
                 Services Booked
               </h2>
               {servicesBooked?.map((service, index) => (
-                <div key={index} className="mb-4 border-b pb-4 last:border-b-0 space-y-2 ">
+                <div
+                  key={index}
+                  className="mb-4 border-b pb-4 last:border-b-0 space-y-2 "
+                >
                   <p>
-                    <strong>Service ID:</strong> {service.subServiceId}
+                    <strong>Service Name:</strong>{" "}
+                    {SERVICE_MAP[service.subServiceId] || "Unknown Service"}
                   </p>
                   <p>
                     <strong>Date:</strong> {formatDate(service.date)}
@@ -117,14 +122,12 @@ function BookingSuccessModal({ handlePrimaryButtonClick, bookingData }) {
               </div>
             )}
           </div>
-
-          {/* Footer Button */}
           <div className="border-t p-4 flex justify-center">
             <button
               onClick={handlePrimaryButtonClick}
               className="text-white px-4 py-2 rounded-md bg-denim hover:opacity-90"
             >
-              Done
+              Continue
             </button>
           </div>
         </motion.div>

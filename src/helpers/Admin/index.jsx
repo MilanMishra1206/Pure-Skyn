@@ -1,15 +1,11 @@
 export const mobileHeaders = [
-  { key: "userId", label: "User ID" },
+  { key: "name", label: "Name" },
   { key: "action", label: "" },
 ];
 
 export const headers = [
   {
-    key: "userId",
-    label: "User ID",
-  },
-  {
-    key: "userName",
+    key: "name",
     label: "Name",
   },
   {

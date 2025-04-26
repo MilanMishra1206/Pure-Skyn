@@ -1,6 +1,6 @@
 import React, { lazy, Suspense } from "react";
 import { useFormik } from "formik";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import { useMutation } from "react-query";
 import { useDispatch } from "react-redux";
 import Resources from "../../config/Resources";
@@ -20,6 +20,7 @@ const CustomLoader = lazy(() => import("../../shared/CustomLoader"));
 
 function LoginPage({ isAdminPage = false }) {
   const showSnackbar = useAppSnackbar();
+  const location = useLocation();
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
@@ -75,7 +76,10 @@ function LoginPage({ isAdminPage = false }) {
         );
         getUserAddresses({ userId: id });
         getServiceCartDetails({ userId: id });
-        navigate("/");
+        const redirectTo = location.state?.redirectTo || "/";
+        setTimeout(() => {
+          navigate(redirectTo, { replace: true });
+        }, 0);
       } else {
         showSnackbar(`${res?.message}. Please try again!`, "error");
       }

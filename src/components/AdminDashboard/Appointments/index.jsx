@@ -3,8 +3,6 @@ import { useDebounce } from "use-debounce";
 import { Divider } from "@mui/material";
 import DataTable from "./DataTable";
 import CustomPagination from "../../../shared/CustomDashboardTable/CustomPagination";
-import { locationDropdownValues } from "../../../helpers/Admin";
-import DataTableFilter from "../TableContent/DataTableFilter";
 import DataTableHeader from "../TableContent/DataTableHeader";
 import { useQuery } from "react-query";
 import { getAllUsers } from "../../../services/Admin";
@@ -88,14 +86,6 @@ function Appointments({ isMobile }) {
       <Suspense fallback={<div>Loading...</div>}>
         <CustomLoader open={isFetching} />
       </Suspense>
-      <div className="mb-3">
-        <DataTableFilter
-          filters={filters}
-          setFilters={setFilters}
-          dropdownValues={locationDropdownValues}
-        />
-      </div>
-      <Divider />
       <div className="mt-4">
         <DataTableHeader
           filters={filters}

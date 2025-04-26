@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { lazy, Suspense, useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 import { useMediaQuery } from "@mui/material";
 import { motion } from "framer-motion";
@@ -13,6 +13,10 @@ import SidebarFilters from "./SidebarFilters";
 import ProductGrid from "./ProductGrid";
 import { MdOutlineProductionQuantityLimits } from "react-icons/md";
 import PaginationControls from "./PaginationControls";
+// import { useQuery } from "react-query";
+// import { getAllProducts } from "../../services/Products";
+
+const CustomLoader = lazy(() => import("../../shared/CustomLoader"));
 
 const Products = () => {
   const dispatch = useDispatch();
@@ -22,6 +26,7 @@ const Products = () => {
   const [selectedTypes, setSelectedTypes] = useState([]);
   const [totalProductCount, setTotalProductCount] = useState(0);
   const [currentPage, setCurrentPage] = useState(1);
+  // const [allProducts, setAllProducts] = useState([]);
   const productsPerPage = 12;
 
   const productTypes = [
@@ -32,6 +37,17 @@ const Products = () => {
     { key: "facewash", label: "Facewash" },
     { key: "faceSerum", label: "Face-Serum" },
   ];
+
+  // const { isFetching } = useQuery(["getAllProducts"], () => getAllProducts(), {
+  //   refetchOnMount: true,
+  //   refetchOnWindowFocus: false,
+  //   refetchOnReconnect: false,
+  //   retry: false,
+  //   onSuccess: (response) => {
+  //     setAllProducts(response?.data);
+  //     console.log(response?.data);
+  //   },
+  // });
 
   const toggleFilterDrawer = (open) => () => setIsFilterDrawerOpen(open);
 
@@ -95,6 +111,9 @@ const Products = () => {
 
   return (
     <div className="mt-5">
+      <Suspense>
+        <CustomLoader open={false} />
+      </Suspense>
       <motion.div
         variants={FadeInWrapper("left", 0.1)}
         initial="hidden"

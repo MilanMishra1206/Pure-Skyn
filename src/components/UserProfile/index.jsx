@@ -57,11 +57,6 @@ function UserProfile() {
 
   const isTablet = useMediaQuery("(max-width: 1023px)");
 
-  const appointmentDetails = [
-    { id: 1, treatmentName: "Laser Hair Removal", date: "11-12-2024" },
-    { id: 2, treatmentName: "Oxy Hydra", date: "12-12-2024" },
-  ];
-
   const orderHistory = [
     { id: 1, product: "Cleanser", orderedOn: "11-12-2024" },
     { id: 2, product: "Vitamin C Hydra Gel Creame", orderedOn: "12-12-2024" },
@@ -235,7 +230,7 @@ function UserProfile() {
             )}
             {selectedSection === "Appointments" && (
               <Suspense fallback={<div />}>
-                <AppointmentDetails appointmentDetails={appointmentDetails} />
+                <AppointmentDetails userProfile={userProfile}/>
               </Suspense>
             )}
             {selectedSection === "Orders" && (

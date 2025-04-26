@@ -1,10 +1,22 @@
 import API_URLS from "../../config/API_URLS";
-import { axiosInstanceLogin } from "../../utils/Axios";
+import { axiosInstance } from "../../utils/Axios";
 
 const getServiceCart = async ({ userId }) => {
   try {
-    const data = await axiosInstanceLogin.get(
+    const data = await axiosInstance.get(
       `${API_URLS.Booking.getCartDetails}${userId}`
+    );
+    return data;
+  } catch (error) {
+    console.log(error);
+    throw new Error();
+  }
+};
+
+const getUserBookings = async ({ userId }) => {
+  try {
+    const data = await axiosInstance.get(
+      `${API_URLS.Booking.getUserBookings}/${userId}`
     );
     return data;
   } catch (error) {
@@ -15,7 +27,7 @@ const getServiceCart = async ({ userId }) => {
 
 const createNewBooking = async ({ reqBody }) => {
   try {
-    const data = await axiosInstanceLogin.post(
+    const data = await axiosInstance.post(
       API_URLS.Booking.createBooking,
       reqBody
     );
@@ -26,4 +38,4 @@ const createNewBooking = async ({ reqBody }) => {
   }
 };
 
-export { createNewBooking, getServiceCart };
+export { createNewBooking, getServiceCart, getUserBookings };

@@ -8,7 +8,10 @@ import { useMutation } from "react-query";
 
 import CustomButton2 from "../../../shared/CustomButton2";
 import BookNowForm from "./BookNowForm";
-import { removeFromServicesCart } from "../../../redux/Actions";
+import {
+  emptyServiceCart,
+  removeFromServicesCart,
+} from "../../../redux/Actions";
 import ConfirmationModal from "../../ProductsCart/ConfirmationModal";
 import FadedLineBreak from "../../../shared/CustomHrTag";
 import { getBookNowFormValidation } from "../../../helpers/Login";
@@ -189,6 +192,12 @@ const BookNowDetails = ({ isLoggedIn }) => {
     setRemoveItem(false);
   };
 
+  const handlePrimaryButtonClick = () => {
+    setShowBookingSuccessModal(false);
+    dispatch(emptyServiceCart());
+    navigate("/");
+  };
+
   return (
     <div>
       <Suspense>
@@ -297,7 +306,9 @@ const BookNowDetails = ({ isLoggedIn }) => {
         <ConfirmationModal
           title="You have to login before booking our services!"
           handleCancel={() => setAskForLogin(false)}
-          handlePrimaryButtonClick={() => navigate("/login")}
+          handlePrimaryButtonClick={() =>
+            navigate("/login", { state: { redirectTo: "/book-now/services-cart" } })
+          }
           confirmButtonText="Login"
           confirmButtonColor="bg-skyn hover:!opacity-80"
           imageSrc={Resources.images.Common.Warning}
@@ -306,7 +317,7 @@ const BookNowDetails = ({ isLoggedIn }) => {
       {/* Booking Success Content Modal */}
       {showBookingSuccessModal && (
         <BookingSuccessModal
-          handlePrimaryButtonClick={() => setShowBookingSuccessModal(false)}
+          handlePrimaryButtonClick={handlePrimaryButtonClick}
           bookingData={successBookingContent}
         />
       )}

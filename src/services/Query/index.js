@@ -1,10 +1,10 @@
 import API_URLS from "../../config/API_URLS";
-import { axiosInstanceLogin } from "../../utils/Axios";
+import { axiosInstance } from "../../utils/Axios";
 
 const addNewQuery = async ({ name, phone, serviceId, city }) => {
   const reqBody = { name, phone, serviceId, city, queryStatus: "NEW" };
   try {
-    const data = await axiosInstanceLogin.post(
+    const data = await axiosInstance.post(
       `${API_URLS.Query.newQuery}`,
       reqBody
     );
@@ -17,7 +17,7 @@ const addNewQuery = async ({ name, phone, serviceId, city }) => {
 // Below APIs are for Admins
 const getAllQuery = async () => {
   try {
-    const data = await axiosInstanceLogin.get(API_URLS.Query.getAllQuery);
+    const data = await axiosInstance.get(API_URLS.Query.getAllQuery);
     return data;
   } catch (response) {
     throw new Error(response?.data?.error?.message);
@@ -26,7 +26,7 @@ const getAllQuery = async () => {
 
 const updateQueryStatus = async ({ queryId, status }) => {
   try {
-    const data = await axiosInstanceLogin.patch(
+    const data = await axiosInstance.patch(
       `${API_URLS.Query.updateQueryStatus}${queryId}/status?status=${status}`
     );
     return data;
@@ -37,7 +37,7 @@ const updateQueryStatus = async ({ queryId, status }) => {
 
 const getQueryWithFilter = async ({ status }) => {
   try {
-    const data = await axiosInstanceLogin.get(
+    const data = await axiosInstance.get(
       `${API_URLS.Query.getQueryWithFilter}${status}`
     );
     return data;

@@ -1,11 +1,7 @@
 import Login from "../../components/Login";
 
 function PureSkynLogin() {
-    return (
-        <div>
-          <Login />
-        </div>
-      );
+  return <Login />;
 }
 
 export default PureSkynLogin;

@@ -55,7 +55,9 @@ function BookNowForm({ isLoggedIn, formik, timeSlots }) {
               <p className="text-sm font-bold">
                 <button
                   className="text-[#175EC3] hover:opacity-80"
-                  onClick={() => navigate("/login")}
+                  onClick={() =>
+                    navigate("/login", { state: { redirectTo: "/book-now/services-cart" } })
+                  }
                 >
                   Sign-In
                 </button>{" "}

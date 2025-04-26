@@ -190,20 +190,20 @@ export default function Address({
         Address Details
       </p>
       <FadedLineBreak />
-      <div className="grid xl:!grid-cols-2 gap-4 mt-4 font-poppins">
+      <div className="grid xl:!grid-cols-2 gap-4 mt-4 font-poppins p-2">
         {addresses.map((address, index) => (
           <div
             key={index}
-            className="flex flex-col justify-between bg-white p-5 rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 ease-in-out"
+            className="flex flex-col justify-between bg-white p-4 rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 ease-in-out"
           >
             <>
-              <p className="text-gray-600 font-bold">{address.fullName}</p>
-              <p className="text-gray-600 text-sm mt-2">{address.phone}</p>
-              <p className="text-gray-600 text-sm">{address.addressLine1}</p>
-              <p className="text-gray-600 text-sm">{address.addressLine2}</p>
-              <p className="text-gray-600 text-sm">
+              <span className="text-gray-600 font-bold">{address.fullName}</span>
+              <span className="text-gray-600 text-sm mt-2">{address.phone}</span>
+              <span className="text-gray-600 text-sm">{address.addressLine1}</span>
+              <span className="text-gray-600 text-sm">{address.addressLine2}</span>
+              <span className="text-gray-600 text-sm">
                 {`${address.city}, ${address.state} - ${address.pinCode}`}
-              </p>
+              </span>
               <hr className="my-4 border-blue-gray-50 px-8" />
             </>
             <div className="flex flex-col lg:!flex-row gap-3 mt-4">

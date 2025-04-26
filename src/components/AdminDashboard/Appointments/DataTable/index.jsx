@@ -12,6 +12,8 @@ import CustomTable from "../../../../shared/CustomDashboardTable/CustomTable";
 import { headers, mobileHeaders } from "../../../../helpers/Admin";
 import { AnimatePresence, motion } from "framer-motion";
 import { IoIosCloseCircle } from "react-icons/io";
+import { SERVICE_MAP } from "../../../../helpers/LaserServices";
+import FadedLineBreak from "../../../../shared/CustomHrTag";
 
 function DataTable({ data, totalCount }) {
   const [openModal, setOpenModal] = useState(false);
@@ -29,8 +31,8 @@ function DataTable({ data, totalCount }) {
 
   const handleOpenModal = (item) => {
     setOpenModal(true);
-    setAddressDetails(item.addresses);
-    setBookingDetails(item.bookings);
+    setAddressDetails(item?.addresses);
+    setBookingDetails(item?.bookings);
   };
 
   return (
@@ -40,17 +42,12 @@ function DataTable({ data, totalCount }) {
           <TableBody>
             {totalCount > 0 ? (
               data?.map((item, index) => (
-                <>
+                <React.Fragment key={index}>
                   <TableRow
                     key={item.id}
                     className={`cursor-pointer h-14 ${(index + 1) % 2 === 0 ? "bg-gray-100" : "bg-white"}`}
                   >
-                    <TableCell className="font-poppins text-sm text-blue">
-                      {item?.id}
-                    </TableCell>
-                    <TableCell
-                      className={`font-poppins text-sm text-blue ${isMobile && "!hidden"}`}
-                    >
+                    <TableCell className={`font-poppins text-sm text-blue`}>
                       {item?.name || "-"}
                     </TableCell>
                     <TableCell
@@ -80,12 +77,12 @@ function DataTable({ data, totalCount }) {
                       >
                         {expandedRows[index] ? (
                           <MdOutlineExpandLess
-                            className="!text-lg"
+                            className="!text-lg cursor-pointer"
                             onClick={(e) => handleToggle(index, e)}
                           />
                         ) : (
                           <MdExpandMore
-                            className="!text-lg"
+                            className="!text-lg cursor-pointer"
                             onClick={(e) => handleToggle(index, e)}
                           />
                         )}
@@ -121,15 +118,13 @@ function DataTable({ data, totalCount }) {
                                 {heading.label !== "Action" &&
                                   item?.[heading.key]}{" "}
                                 {heading.label === "Action" && (
-                                  <>
-                                    <Link
-                                      className="no-underline text-skyn cursor-pointer hover:!underline hover:opacity-80"
-                                      onClick={() => handleOpenModal(item)}
-                                    >
-                                      {" "}
-                                      More Info{" "}
-                                    </Link>
-                                  </>
+                                  <Link
+                                    className="no-underline text-skyn cursor-pointer hover:!underline hover:opacity-80"
+                                    onClick={() => handleOpenModal(item)}
+                                  >
+                                    {" "}
+                                    More Info{" "}
+                                  </Link>
                                 )}
                               </p>
                             </div>
@@ -137,7 +132,7 @@ function DataTable({ data, totalCount }) {
                       </div>
                     </Collapse>
                   </TableCell>
-                </>
+                </React.Fragment>
               ))
             ) : (
               <TableRow>
@@ -161,7 +156,7 @@ function DataTable({ data, totalCount }) {
             transition={{ duration: 0.45 }}
             className="bg-slate-900/20 backdrop-blur p-4 fixed inset-0 z-50 md:grid place-items-center overflow-scroll"
           >
-            <div className="bg-white shadow p-4 rounded-md font-poppins w-4/5">
+            <div className="bg-white shadow p-3 md:!p-4 rounded-md font-poppins w-full md:!w-4/5 lg:!w-3/5">
               <div className="flex justify-end">
                 <button
                   className="text-2xl text-coal"
@@ -170,22 +165,27 @@ function DataTable({ data, totalCount }) {
                   <IoIosCloseCircle size={"2rem"} />
                 </button>
               </div>
-              <div className="text-center text-2xl md:!text-3xl font-bold">
+              <div className="text-center text-xl md:!text-2xl font-bold">
                 <span className="text-center">Additional Information</span>
               </div>
               <hr />
+              {(addressDetails?.length === 0 || addressDetails === null) &&
+                bookingDetails?.length === 0 && (
+                  <div>
+                    <p className="text-kashmirBlue font-bold text-xl !text-center mt-5 p-4">
+                      No details available for this user!
+                    </p>
+                  </div>
+                )}
               {addressDetails?.length > 0 && (
                 <div>
-                  <p className="font-bold text-xl md:!text-2xl !text-center mt-5 p-4 bg-skyn text-white rounded">
+                  <p className="font-bold text-xl !text-center mt-5 p-2 bg-skyn text-white rounded">
                     Address Details
                   </p>
-                  <div className="grid">
+                  <div className="grid bg-white rounded-xl shadow-md p-2 md:p-6 border border-gray-200 mt-4">
                     {addressDetails?.map((item, index) => (
-                      <>
-                        <div
-                          key={index}
-                          className="grid md:grid-cols-2 xl:!grid-cols-3 p-4 gap-2"
-                        >
+                      <React.Fragment key={index}>
+                        <div className="grid md:grid-cols-2 xl:!grid-cols-3 py-4 px-2 md:!p-4 gap-2 text-sm">
                           <div className="flex flex-col">
                             <p className="text-coal font-medium">Name: </p>
                             <p className="text-kashmirBlue">{item?.fullName}</p>
@@ -226,21 +226,131 @@ function DataTable({ data, totalCount }) {
                           </div>
                         </div>
                         <hr />
-                      </>
+                      </React.Fragment>
                     ))}
                   </div>
                 </div>
               )}
-              <hr />
               {bookingDetails?.length > 0 && (
                 <div>
-                  <p className="font-bold text-2xl !text-center mt-5 p-4 bg-skyn text-white rounded">
+                  <p className="font-bold text-xl !text-center mt-5 p-2 bg-skyn text-white rounded">
                     Booking Details
                   </p>
-                  <div className="grid">
-                    {bookingDetails?.map((item, index) => (
-                      <div key={index}>{item}</div>
-                    ))}
+                  <div className="grid gap-6 mt-4">
+                    {bookingDetails?.map((item, index) => {
+                      const matchedAddress = addressDetails?.find(
+                        (addr) => addr.id === item?.userInfo?.address
+                      );
+                      return (
+                        <div
+                          key={index}
+                          className="grid py-4 px-2 md:!p-4 gap-2 text-sm bg-gray-50 rounded-lg shadow-md p-4 mb-6 space-y-2"
+                        >
+                          <p className="font-bold text-xl text-center">
+                            Booking #{index + 1}
+                          </p>
+                          <FadedLineBreak />
+                          <div>
+                            <p className="font-semibold text-denim">
+                              Booking ID:{" "}
+                              <span className="font-normal text-cello">
+                                {item?.bookingId}
+                              </span>
+                            </p>
+                            <p className="font-semibold text-denim mb-2 mt-2">
+                              Status:{" "}
+                              <span className="font-normal text-cello">
+                                {item?.status}
+                              </span>
+                            </p>
+                            <p className="font-semibold text-denim">
+                              Created At:{" "}
+                              <span className="font-normal text-black">
+                                {new Date(item?.createdAt).toLocaleString()}
+                              </span>
+                            </p>
+                          </div>
+                          <div className="border p-4 rounded">
+                            <p className="text-xl font-semibold mb-2">
+                              User Info
+                            </p>
+                            <div className="flex flex-col gap-2">
+                              <p className="font-medium text-coal">
+                                <span className="font-medium text-cello">
+                                  Name:
+                                </span>{" "}
+                                {item?.userInfo.name}
+                              </p>
+                              <p className="font-medium text-coal">
+                                <span className="font-medium text-cello">
+                                  Email:
+                                </span>{" "}
+                                {item?.userInfo.email}
+                              </p>
+                              <p className="font-medium text-coal">
+                                <span className="font-medium text-cello">
+                                  Mobile:
+                                </span>{" "}
+                                {item?.userInfo.mobile}
+                              </p>
+                              <p className="font-medium text-coal">
+                                <span className="font-medium text-cello">
+                                  Address:
+                                </span>{" "}
+                                {matchedAddress?.addressLine1},{" "}
+                                {matchedAddress?.addressLine2}
+                              </p>
+                              <p className="font-medium text-coal">
+                                <span className="font-medium text-cello">
+                                  City:
+                                </span>{" "}
+                                {item?.userInfo.city}
+                              </p>
+                              <p className="font-medium text-coal">
+                                <span className="font-medium text-cello">
+                                  Pin Code:
+                                </span>{" "}
+                                {matchedAddress?.pinCode}
+                              </p>
+                            </div>
+                          </div>
+                          <div className="border p-4 rounded">
+                            <h3 className="text-xl font-semibold mb-2">
+                              Technician
+                            </h3>
+                            <p>{item?.technicianName}</p>
+                          </div>
+                          <div className="border p-4 rounded">
+                            <h3 className="text-xl font-semibold mb-2">
+                              Services Booked
+                            </h3>
+                            {item?.servicesBooked.map((service, sIndex) => (
+                              <div key={sIndex} className="mb-4 border-t pt-2">
+                                <p className="font-semibold text-denim">
+                                  Service Name:{" "}
+                                  <span className="text-coal">
+                                    {SERVICE_MAP[service.subServiceId] ||
+                                      "Unknown Service"}
+                                  </span>
+                                </p>
+                                {service.sessions.map((session, sessIndex) => (
+                                  <div key={sessIndex} className="ml-4 mt-2">
+                                    <p className="text-sm">
+                                      <strong>Date:</strong>{" "}
+                                      {session?.treatmentDate}
+                                    </p>
+                                    <p className="text-sm">
+                                      <strong>Time:</strong>{" "}
+                                      {session?.appointmentTime}
+                                    </p>
+                                  </div>
+                                ))}
+                              </div>
+                            ))}
+                          </div>
+                        </div>
+                      );
+                    })}
                   </div>
                 </div>
               )}

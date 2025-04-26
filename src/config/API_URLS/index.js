@@ -15,10 +15,15 @@ const API_URLS = {
     getCartDetails: "/cart/",
     reqBooking: "/booking/request",
     createBooking: "/booking/create",
+    getUserBookings: "/booking",
   },
   Cart: {
     saveServiceCart: "/cart/add-update",
     getServiceCart: "/cart/",
+  },
+  Products: {
+    getAllProducts: "/products/all",
+    getProductsByCategory: "/products/category",
   },
   Query: {
     newQuery: "/query/new",
