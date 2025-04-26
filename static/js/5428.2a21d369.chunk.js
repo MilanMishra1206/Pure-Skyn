@@ -1,0 +1,2 @@
+"use strict";(self.webpackChunkpure_skyn=self.webpackChunkpure_skyn||[]).push([[5428],{5428:(e,s,u)=>{u.r(s),u.d(s,{default:()=>k});var n=u(4213),r=u(6723);const k=function(){return(0,r.jsx)(n.A,{})}}}]);
+//# sourceMappingURL=5428.2a21d369.chunk.js.map
