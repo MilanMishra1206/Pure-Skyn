@@ -7,7 +7,7 @@ const Resources = {
       backArrow: `${base}/Common/backArrow.svg`,
       blackNoise: `${base}/Common/black-noise.png`,
       cardBg2: `${base}/Common/cards-bg-2.png`,
-      searchIcon: `${base}/Common/searchIcon.svg`,
+      searchIcon: `${base}/Common/SearchIcon.svg`,
       filterIcon: `${base}/Common/Filter.svg`,
       dropdownIcon: `${base}/Common/DropdownIcon.svg`,
       emptyCart: `${base}/Common/empty-cart.png`,
