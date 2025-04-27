@@ -1571,3 +1571,39 @@ export const packagesDescriptionList = {
     },
   ],
 };
+
+export const formatDateMMDDYYYY = (treatmentDate) => {
+  if (!treatmentDate) {
+    const today = new Date();
+    today.setDate(today.getDate() + 15);
+    treatmentDate = today.toISOString().split("T")[0];
+  }
+  const dateParts = treatmentDate?.split("-");
+
+  const year = dateParts[0];
+  const month = dateParts[1];
+  const day = dateParts[2];
+
+  return `${day}/${month}/${year}`;
+};
+
+export const convertToIndianTime = (appointmentTime) => {
+  if (!appointmentTime) {
+    const today = new Date();
+    today.setDate(today.getDate() + 15);
+    today.setHours(10, 0, 0, 0);
+    appointmentTime = today.toISOString();
+  }
+  const utcDate = new Date(appointmentTime);
+
+  const istOffset = 5.5 * 60;
+  const istDate = new Date(utcDate.getTime() + istOffset * 60000);
+
+  const day = String(istDate.getDate()).padStart(2, "0");
+  const month = String(istDate.getMonth() + 1).padStart(2, "0");
+  const year = istDate.getFullYear();
+  const hours = String(istDate.getHours()).padStart(2, "0");
+  const minutes = String(istDate.getMinutes()).padStart(2, "0");
+
+  return `${day}/${month}/${year} ${hours}:${minutes}`;
+};

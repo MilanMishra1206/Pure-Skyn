@@ -1,9 +1,10 @@
 import { lazy, Suspense, useEffect, useState } from "react";
 import { getIn } from "formik";
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import FadedLineBreak from "../../../../shared/CustomHrTag";
 import { regex } from "../../../../helpers/Regex";
 import { useSelector } from "react-redux";
+import { Link } from "@mui/material";
 
 const CustomTextField = lazy(
   () => import("../../../../shared/CustomTextField")
@@ -42,6 +43,14 @@ function BookNowForm({ isLoggedIn, formik, timeSlots }) {
     formik.setFieldValue("city", selectedCity);
   }, [formik.values.address, userProfile]);
 
+  const handleAddAddress = () => {
+    if (isLoggedIn) {
+      navigate("/user-profile#Address");
+    } else {
+      navigate("/login", { state: { redirectTo: "/book-now/services-cart" } });
+    }
+  };
+
   return (
     <>
       <form className="w-full">
@@ -56,7 +65,9 @@ function BookNowForm({ isLoggedIn, formik, timeSlots }) {
                 <button
                   className="text-[#175EC3] hover:opacity-80"
                   onClick={() =>
-                    navigate("/login", { state: { redirectTo: "/book-now/services-cart" } })
+                    navigate("/login", {
+                      state: { redirectTo: "/book-now/services-cart" },
+                    })
                   }
                 >
                   Sign-In
@@ -131,7 +142,7 @@ function BookNowForm({ isLoggedIn, formik, timeSlots }) {
               <div>
                 <CustomDropdown
                   textClassOverride="!text-kashmirBlue"
-                  classes="!rounded-md !mb-4"
+                  classes="!rounded-md !mb-2"
                   requiredStar
                   labelToShow="Select Address"
                   name="address"
@@ -146,8 +157,8 @@ function BookNowForm({ isLoggedIn, formik, timeSlots }) {
                 />
                 <div>
                   <Link
-                    className="text-sm underline text-skyn hover:opacity-80"
-                    to="/user-profile#Address"
+                    className="text-sm underline text-skyn hover:opacity-80 cursor-pointer"
+                    onClick={handleAddAddress}
                   >
                     Add Address
                   </Link>

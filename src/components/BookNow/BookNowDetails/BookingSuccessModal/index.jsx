@@ -1,18 +1,23 @@
 import { AnimatePresence, motion } from "framer-motion";
 import { FaCheckCircle } from "react-icons/fa";
-import { SERVICE_MAP } from "../../../../helpers/LaserServices";
+import {
+  convertToIndianTime,
+  formatDateMMDDYYYY,
+  SERVICE_MAP,
+} from "../../../../helpers/LaserServices";
 
-function BookingSuccessModal({ handlePrimaryButtonClick, bookingData }) {
+function BookingSuccessModal({
+  handlePrimaryButtonClick,
+  bookingData,
+  userProfile,
+}) {
   if (!bookingData) return null;
 
   const { bookingId, userInfo, servicesBooked, payment } = bookingData;
 
-  const formatDate = (dateStr) => new Date(dateStr).toLocaleDateString();
-  const formatTime = (timeStr) =>
-    new Date(timeStr).toLocaleTimeString([], {
-      hour: "2-digit",
-      minute: "2-digit",
-    });
+  const matchedAddress = userProfile?.addresses?.find(
+    (addr) => addr.id === userInfo.address
+  );
 
   return (
     <AnimatePresence>
@@ -32,7 +37,7 @@ function BookingSuccessModal({ handlePrimaryButtonClick, bookingData }) {
         >
           <div className="overflow-y-auto p-6">
             <div className="flex flex-col items-center mb-6">
-              <FaCheckCircle className="text-green-500 text-6xl mb-4" />
+              <FaCheckCircle className="text-green-700 text-5xl mb-4" />
               <h1 className="text-2xl font-semibold text-gray-800 mb-2">
                 Booking Confirmed!
               </h1>
@@ -48,18 +53,27 @@ function BookingSuccessModal({ handlePrimaryButtonClick, bookingData }) {
               <h2 className="text-lg font-semibold text-gray-800 mb-4">
                 User Details
               </h2>
-              <p>
-                <strong>Name:</strong> {userInfo?.name}
-              </p>
-              <p>
-                <strong>Email:</strong> {userInfo?.email}
-              </p>
-              <p>
-                <strong>Mobile:</strong> {userInfo?.mobile}
-              </p>
-              <p>
-                <strong>Address:</strong> {userInfo?.address}, {userInfo?.city}
-              </p>
+              <div className="grid lg:!grid-cols-2 gap-2 mt-4">
+                <span>
+                  <strong>Name:</strong> {userInfo?.name}
+                </span>
+                <span>
+                  <strong>Email:</strong> {userInfo?.email}
+                </span>
+                <span>
+                  <strong>Mobile:</strong> {userInfo?.mobile}
+                </span>
+                <span className="font-medium text-coal">
+                  <strong>Address:</strong> {matchedAddress?.addressLine1},{" "}
+                  {matchedAddress?.addressLine2}
+                </span>
+                <span className="font-medium text-coal">
+                  <strong>City:</strong> {userInfo.city}
+                </span>
+                <span className="font-medium text-coal">
+                  <strong>Pin Code:</strong> {matchedAddress?.pinCode}
+                </span>
+              </div>
             </div>
             <div className="bg-gray-50 rounded-lg shadow-md p-4 mb-6 text-sm">
               <h2 className="text-lg font-semibold text-gray-800 mb-4">
@@ -74,13 +88,6 @@ function BookingSuccessModal({ handlePrimaryButtonClick, bookingData }) {
                     <strong>Service Name:</strong>{" "}
                     {SERVICE_MAP[service.subServiceId] || "Unknown Service"}
                   </p>
-                  <p>
-                    <strong>Date:</strong> {formatDate(service.date)}
-                  </p>
-                  <p>
-                    <strong>Time:</strong> {formatTime(service.time)}
-                  </p>
-
                   {service.sessions?.length > 0 && (
                     <div className="mt-2">
                       <p className="font-bold text-sm text-gray-700 mb-1">
@@ -89,11 +96,15 @@ function BookingSuccessModal({ handlePrimaryButtonClick, bookingData }) {
                       {service.sessions.map((session, i) => (
                         <div key={i} className="text-sm text-gray-600 ml-4">
                           <p>
-                            • {formatDate(session.date)} at{" "}
-                            {formatTime(session.time)}
+                            • {formatDateMMDDYYYY(session.treatmentDate)} at{" "}
+                            {convertToIndianTime(session.appointmentTime)}
                           </p>
                         </div>
                       ))}
+                      <p className="text-green-700 font-poppins mt-2 text-xs">
+                        You can update the dates for other sessions from Profile
+                        section under My Appointments*
+                      </p>
                     </div>
                   )}
                 </div>
@@ -114,10 +125,12 @@ function BookingSuccessModal({ handlePrimaryButtonClick, bookingData }) {
                   <strong>Mode:</strong> {payment.paymentMode}
                 </p>
                 <p>
-                  <strong>Date:</strong> {formatDate(payment.paymentDate)}
+                  <strong>Date:</strong>{" "}
+                  {formatDateMMDDYYYY(payment.paymentDate)}
                 </p>
                 <p>
-                  <strong>Time:</strong> {formatTime(payment.paymentTime)}
+                  <strong>Time:</strong>{" "}
+                  {convertToIndianTime(payment.paymentTime)}
                 </p>
               </div>
             )}

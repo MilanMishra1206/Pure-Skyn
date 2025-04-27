@@ -38,4 +38,22 @@ const createNewBooking = async ({ reqBody }) => {
   }
 };
 
-export { createNewBooking, getServiceCart, getUserBookings };
+const bookingSessionUpdate = async ({ reqBody }) => {
+  try {
+    const data = await axiosInstance.post(
+      API_URLS.Booking.updateSession,
+      reqBody
+    );
+    return data;
+  } catch (error) {
+    console.log(error);
+    throw new Error();
+  }
+};
+
+export {
+  createNewBooking,
+  getServiceCart,
+  getUserBookings,
+  bookingSessionUpdate,
+};

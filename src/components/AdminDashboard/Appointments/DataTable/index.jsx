@@ -12,8 +12,11 @@ import CustomTable from "../../../../shared/CustomDashboardTable/CustomTable";
 import { headers, mobileHeaders } from "../../../../helpers/Admin";
 import { AnimatePresence, motion } from "framer-motion";
 import { IoIosCloseCircle } from "react-icons/io";
-import { SERVICE_MAP } from "../../../../helpers/LaserServices";
-import FadedLineBreak from "../../../../shared/CustomHrTag";
+import {
+  convertToIndianTime,
+  formatDateMMDDYYYY,
+  SERVICE_MAP,
+} from "../../../../helpers/LaserServices";
 
 function DataTable({ data, totalCount }) {
   const [openModal, setOpenModal] = useState(false);
@@ -21,6 +24,7 @@ function DataTable({ data, totalCount }) {
   const [expandedRows, setExpandedRows] = useState([]);
   const [bookingDetails, setBookingDetails] = useState([]);
   const [addressDetails, setAddressDetails] = useState([]);
+  const [openAccordion, setOpenAccordion] = useState(null);
 
   const handleToggle = (index, e) => {
     e.stopPropagation();
@@ -33,6 +37,10 @@ function DataTable({ data, totalCount }) {
     setOpenModal(true);
     setAddressDetails(item?.addresses);
     setBookingDetails(item?.bookings);
+  };
+
+  const handleAccordionClick = (index) => {
+    setOpenAccordion(openAccordion === index ? null : index);
   };
 
   return (
@@ -236,7 +244,7 @@ function DataTable({ data, totalCount }) {
                   <p className="font-bold text-xl !text-center mt-5 p-2 bg-skyn text-white rounded">
                     Booking Details
                   </p>
-                  <div className="grid gap-6 mt-4">
+                  <div className="grid mt-4">
                     {bookingDetails?.map((item, index) => {
                       const matchedAddress = addressDetails?.find(
                         (addr) => addr.id === item?.userInfo?.address
@@ -244,110 +252,139 @@ function DataTable({ data, totalCount }) {
                       return (
                         <div
                           key={index}
-                          className="grid py-4 px-2 md:!p-4 gap-2 text-sm bg-gray-50 rounded-lg shadow-md p-4 mb-6 space-y-2"
+                          className="grid py-4 px-2 md:!p-4 gap-2 text-sm rounded-lg shadow-md p-2 mb-6 space-y-2"
                         >
-                          <p className="font-bold text-xl text-center">
-                            Booking #{index + 1}
-                          </p>
-                          <FadedLineBreak />
-                          <div>
-                            <p className="font-semibold text-denim">
-                              Booking ID:{" "}
-                              <span className="font-normal text-cello">
-                                {item?.bookingId}
-                              </span>
-                            </p>
-                            <p className="font-semibold text-denim mb-2 mt-2">
-                              Status:{" "}
-                              <span className="font-normal text-cello">
-                                {item?.status}
-                              </span>
-                            </p>
-                            <p className="font-semibold text-denim">
-                              Created At:{" "}
-                              <span className="font-normal text-black">
-                                {new Date(item?.createdAt).toLocaleString()}
-                              </span>
-                            </p>
-                          </div>
-                          <div className="border p-4 rounded">
-                            <p className="text-xl font-semibold mb-2">
-                              User Info
-                            </p>
-                            <div className="flex flex-col gap-2">
-                              <p className="font-medium text-coal">
-                                <span className="font-medium text-cello">
-                                  Name:
-                                </span>{" "}
-                                {item?.userInfo.name}
-                              </p>
-                              <p className="font-medium text-coal">
-                                <span className="font-medium text-cello">
-                                  Email:
-                                </span>{" "}
-                                {item?.userInfo.email}
-                              </p>
-                              <p className="font-medium text-coal">
-                                <span className="font-medium text-cello">
-                                  Mobile:
-                                </span>{" "}
-                                {item?.userInfo.mobile}
-                              </p>
-                              <p className="font-medium text-coal">
-                                <span className="font-medium text-cello">
-                                  Address:
-                                </span>{" "}
-                                {matchedAddress?.addressLine1},{" "}
-                                {matchedAddress?.addressLine2}
-                              </p>
-                              <p className="font-medium text-coal">
-                                <span className="font-medium text-cello">
-                                  City:
-                                </span>{" "}
-                                {item?.userInfo.city}
-                              </p>
-                              <p className="font-medium text-coal">
-                                <span className="font-medium text-cello">
-                                  Pin Code:
-                                </span>{" "}
-                                {matchedAddress?.pinCode}
-                              </p>
+                          <div
+                            onClick={() => handleAccordionClick(index)}
+                            className="cursor-pointer flex justify-between items-center bg-gray-100 p-4 rounded-t-md"
+                          >
+                            <div className="font-bold text-coal">
+                              Booking #{index + 1} -{" "}
+                              {new Date(item?.createdAt).toLocaleString()}
+                            </div>
+                            <div className="text-coal">
+                              {openAccordion === index ? "▲" : "▼"}
                             </div>
                           </div>
-                          <div className="border p-4 rounded">
-                            <h3 className="text-xl font-semibold mb-2">
-                              Technician
-                            </h3>
-                            <p>{item?.technicianName}</p>
-                          </div>
-                          <div className="border p-4 rounded">
-                            <h3 className="text-xl font-semibold mb-2">
-                              Services Booked
-                            </h3>
-                            {item?.servicesBooked.map((service, sIndex) => (
-                              <div key={sIndex} className="mb-4 border-t pt-2">
+                          {openAccordion === index && (
+                            <div className="rounded-b-md space-y-4">
+                              <div>
                                 <p className="font-semibold text-denim">
-                                  Service Name:{" "}
-                                  <span className="text-coal">
-                                    {SERVICE_MAP[service.subServiceId] ||
-                                      "Unknown Service"}
+                                  Booking ID:{" "}
+                                  <span className="font-normal text-cello">
+                                    {item?.bookingId}
                                   </span>
                                 </p>
-                                {service.sessions.map((session, sessIndex) => (
-                                  <div key={sessIndex} className="ml-4 mt-2">
-                                    <p className="text-sm">
-                                      <strong>Date:</strong>{" "}
-                                      {session?.treatmentDate}
+                                <p className="font-semibold text-denim mb-2 mt-2">
+                                  Status:{" "}
+                                  <span className="font-normal text-cello">
+                                    {item?.status}
+                                  </span>
+                                </p>
+                                <p className="font-semibold text-denim">
+                                  Created At:{" "}
+                                  <span className="font-normal text-black">
+                                    {new Date(item?.createdAt).toLocaleString()}
+                                  </span>
+                                </p>
+                              </div>
+                              <div className="border p-4 rounded">
+                                <p className="text-xl font-semibold mb-2">
+                                  User Info
+                                </p>
+                                <div className="flex flex-col gap-2">
+                                  <p className="font-medium text-coal">
+                                    <span className="font-medium text-cello">
+                                      Name:
+                                    </span>{" "}
+                                    {item?.userInfo.name}
+                                  </p>
+                                  <p className="font-medium text-coal">
+                                    <span className="font-medium text-cello">
+                                      Email:
+                                    </span>{" "}
+                                    {item?.userInfo.email}
+                                  </p>
+                                  <p className="font-medium text-coal">
+                                    <span className="font-medium text-cello">
+                                      Mobile:
+                                    </span>{" "}
+                                    {item?.userInfo.mobile}
+                                  </p>
+                                  <p className="font-medium text-coal">
+                                    <span className="font-medium text-cello">
+                                      Address:
+                                    </span>{" "}
+                                    {matchedAddress?.addressLine1},{" "}
+                                    {matchedAddress?.addressLine2}
+                                  </p>
+                                  <p className="font-medium text-coal">
+                                    <span className="font-medium text-cello">
+                                      City:
+                                    </span>{" "}
+                                    {item?.userInfo.city}
+                                  </p>
+                                  <p className="font-medium text-coal">
+                                    <span className="font-medium text-cello">
+                                      Pin Code:
+                                    </span>{" "}
+                                    {matchedAddress?.pinCode}
+                                  </p>
+                                </div>
+                              </div>
+                              <div className="border p-4 rounded">
+                                <h3 className="text-xl font-semibold mb-2">
+                                  Technician
+                                </h3>
+                                <p>{item?.technicianName}</p>
+                              </div>
+                              <div className="border p-4 rounded">
+                                <h3 className="text-xl font-semibold mb-2">
+                                  Services Booked
+                                </h3>
+                                {item?.servicesBooked.map((service, sIndex) => (
+                                  <div
+                                    key={sIndex}
+                                    className="mb-4 border-t pt-2"
+                                  >
+                                    <p className="font-semibold text-denim">
+                                      Service Name:{" "}
+                                      <span className="text-coal">
+                                        {SERVICE_MAP[service.subServiceId] ||
+                                          "Unknown Service"}
+                                      </span>
                                     </p>
-                                    <p className="text-sm">
-                                      <strong>Time:</strong>{" "}
-                                      {session?.appointmentTime}
-                                    </p>
+                                    {service.sessions.map(
+                                      (session, sessIndex) => (
+                                        <div
+                                          key={sessIndex}
+                                          className="ml-4 mt-2"
+                                        >
+                                          <div className="flex flex-col bg-slate-100 p-4 rounded-lg">
+                                            <p className="font-bold text-lg">
+                                              Session - {sessIndex + 1}
+                                            </p>
+                                            <p className="text-sm">
+                                              <strong>Date:</strong>{" "}
+                                              {formatDateMMDDYYYY(
+                                                session?.treatmentDate
+                                              )}
+                                            </p>
+                                            <p className="text-sm">
+                                              <strong>Time:</strong>{" "}
+                                              {convertToIndianTime(
+                                                session?.appointmentTime
+                                              )}
+                                            </p>
+                                          </div>
+                                        </div>
+                                      )
+                                    )}
                                   </div>
                                 ))}
                               </div>
-                            ))}
-                          </div>
+                            </div>
+                          )}
                         </div>
                       );
                     })}

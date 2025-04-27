@@ -197,10 +197,18 @@ export default function Address({
             className="flex flex-col justify-between bg-white p-4 rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 ease-in-out"
           >
             <>
-              <span className="text-gray-600 font-bold">{address.fullName}</span>
-              <span className="text-gray-600 text-sm mt-2">{address.phone}</span>
-              <span className="text-gray-600 text-sm">{address.addressLine1}</span>
-              <span className="text-gray-600 text-sm">{address.addressLine2}</span>
+              <span className="text-gray-600 font-bold">
+                {address.fullName}
+              </span>
+              <span className="text-gray-600 text-sm mt-2">
+                {address.phone}
+              </span>
+              <span className="text-gray-600 text-sm">
+                {address.addressLine1}
+              </span>
+              <span className="text-gray-600 text-sm">
+                {address.addressLine2}
+              </span>
               <span className="text-gray-600 text-sm">
                 {`${address.city}, ${address.state} - ${address.pinCode}`}
               </span>

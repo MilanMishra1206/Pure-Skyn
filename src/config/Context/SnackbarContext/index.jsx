@@ -13,7 +13,7 @@ export const AppSnackbarProvider = ({ children }) => {
   const { enqueueSnackbar, closeSnackbar } = useSnackbar();
 
   const showSnackbar = (message, variant = "default") => {
-    enqueueSnackbar(message, {
+    enqueueSnackbar(message || "Something went wrong!", {
       variant,
       action: (key) => (
         <IconButton

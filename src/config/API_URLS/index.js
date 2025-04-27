@@ -16,6 +16,7 @@ const API_URLS = {
     reqBooking: "/booking/request",
     createBooking: "/booking/create",
     getUserBookings: "/booking",
+    updateSession: "/session/update",
   },
   Cart: {
     saveServiceCart: "/cart/add-update",

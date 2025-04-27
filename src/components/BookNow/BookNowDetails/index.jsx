@@ -109,41 +109,15 @@ const BookNowDetails = ({ isLoggedIn }) => {
             const time = formattedTimeISO;
             return {
               subServiceId,
-              date,
-              time,
               sessions: [
                 {
-                  id: subServiceId,
-                  date,
-                  time,
+                  treatmentDate: date,
+                  appointmentTime: time,
                 },
               ],
             };
           })
         : [];
-      // const servicesBooked = Array.isArray(servicesCart)
-      //   ? servicesCart.map(
-      //       ({
-      //         treatmentName = "",
-      //         packageName = "",
-      //         serviceId = "",
-      //         subServiceId = "",
-      //         packagePrice = 0,
-      //         featureName = "",
-      //         selectedPackageImg = "",
-      //         strikeOutPrice = null,
-      //       }) => ({
-      //         treatmentName,
-      //         packageName,
-      //         serviceId,
-      //         subServiceId,
-      //         packagePrice,
-      //         featureName,
-      //         selectedPackageImg,
-      //         strikeOutPrice,
-      //       })
-      //     )
-      //   : [];
       const beneficiary = {
         name,
         email,
@@ -307,7 +281,9 @@ const BookNowDetails = ({ isLoggedIn }) => {
           title="You have to login before booking our services!"
           handleCancel={() => setAskForLogin(false)}
           handlePrimaryButtonClick={() =>
-            navigate("/login", { state: { redirectTo: "/book-now/services-cart" } })
+            navigate("/login", {
+              state: { redirectTo: "/book-now/services-cart" },
+            })
           }
           confirmButtonText="Login"
           confirmButtonColor="bg-skyn hover:!opacity-80"
@@ -319,6 +295,7 @@ const BookNowDetails = ({ isLoggedIn }) => {
         <BookingSuccessModal
           handlePrimaryButtonClick={handlePrimaryButtonClick}
           bookingData={successBookingContent}
+          userProfile={userProfile}
         />
       )}
       {/* Terms and Conditions Modal */}
