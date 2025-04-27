@@ -4,10 +4,7 @@ import {
   DialogTitle,
   DialogContent,
   DialogActions,
-  Button,
 } from "@mui/material";
-import { useFormik } from "formik";
-import * as Yup from "yup";
 
 const CustomDatePicker = lazy(
   () => import("../../../../shared/CustomDatePicker")
@@ -25,24 +22,10 @@ const appointmentTimes = [
 export default function EditSessionModal({
   open,
   onClose,
-  onSave,
-  selectedSessionInfo,
+  formik,
+  handleSave,
   sessionNo,
 }) {
-  const formik = useFormik({
-    initialValues: {
-      treatmentDate: selectedSessionInfo?.treatmentDate || "",
-      appointmentTime: selectedSessionInfo?.appointmentTime || "",
-    },
-    validationSchema: Yup.object({
-      treatmentDate: Yup.string().required("Date is required"),
-      appointmentTime: Yup.string().required("Time slot is required"),
-    }),
-    onSubmit: (values) => {
-      onSave(values);
-    },
-  });
-
   return (
     <Dialog open={open} onClose={onClose} fullWidth maxWidth="sm">
       <DialogTitle className="text-center font-bold text-cello p-4">
@@ -113,7 +96,7 @@ export default function EditSessionModal({
         </button>
         <button
           type="button"
-          onClick={formik.handleSubmit}
+          onClick={handleSave}
           className="bg-skyn text-white px-4 py-2 rounded-md hover:opacity-85 shadow-md"
         >
           Save

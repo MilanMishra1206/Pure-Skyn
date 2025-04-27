@@ -1,6 +1,8 @@
 import React, { lazy, Suspense, useState } from "react";
-import FadedLineBreak from "../../../shared/CustomHrTag";
 import { useMutation, useQuery } from "react-query";
+import { useFormik } from "formik";
+import * as Yup from "yup";
+import FadedLineBreak from "../../../shared/CustomHrTag";
 import {
   bookingSessionUpdate,
   getUserBookings,
@@ -52,6 +54,7 @@ export default function AppointmentDetails({ userProfile }) {
       onSuccess: (res) => {
         if (res?.status === "SUCCESS") {
           showSnackbar(res?.message, "success");
+          setEditModalOpen(false);
           refetch();
         } else {
           showSnackbar(res?.message, "error");
@@ -66,15 +69,33 @@ export default function AppointmentDetails({ userProfile }) {
     setOpenAccordion(openAccordion === index ? null : index);
   };
 
+  const formik = useFormik({
+    initialValues: {
+      treatmentDate: selectedSessionInfo?.treatmentDate || "",
+      appointmentTime: selectedSessionInfo?.appointmentTime || "",
+    },
+    validationSchema: Yup.object({
+      treatmentDate: Yup.string().required("Date is required"),
+      appointmentTime: Yup.string().required("Time slot is required"),
+    }),
+    onSubmit: (values) => {
+      handleSaveSession(values);
+    },
+  });
+
   const handleEditSession = (session, sessionNumber) => {
     setSelectedSessionInfo(session);
     setSessionNo(sessionNumber);
     setEditModalOpen(true);
   };
 
+  const handleSave = () => {
+    formik.handleSubmit();
+  };
+
   const handleSaveSession = (values) => {
     const { appointmentTime, treatmentDate } = values;
-    const [day, month, year] = treatmentDate.split("/");
+    const [day, month, year] = treatmentDate?.split("/");
     const formattedDate = `${year}-${month}-${day}`;
     const formattedTimeISO = new Date(
       `${formattedDate} ${appointmentTime}`
@@ -85,7 +106,6 @@ export default function AppointmentDetails({ userProfile }) {
       treatmentDate: formattedDate,
     };
     handleSessionUpdate({ reqBody: payload });
-    setEditModalOpen(false);
   };
 
   return (
@@ -217,8 +237,8 @@ export default function AppointmentDetails({ userProfile }) {
       <EditSessionModal
         open={editModalOpen}
         onClose={() => setEditModalOpen(false)}
-        onSave={handleSaveSession}
-        selectedSessionInfo={selectedSessionInfo}
+        handleSave={handleSave}
+        formik={formik}
         sessionNo={sessionNo}
       />
     </div>
