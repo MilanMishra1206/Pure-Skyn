@@ -120,8 +120,8 @@ export default function PersonalInformation({ userProfile }) {
         </small>
       )}
       <form>
-        <div className="flex flex-col md:!flex-row items-center gap-4 mb-4 justify-center mt-4">
-          <span className="font-semibold text-cello font-poppins text-xl">
+        <div className="flex items-center gap-4 mb-4 justify-center mt-4">
+          <span className="font-semibold text-cello font-poppins text-lg md:!text-xl">
             Personal Information
           </span>
           <FiEdit3

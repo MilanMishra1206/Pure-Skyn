@@ -93,11 +93,11 @@ export default function AppointmentDetails({ userProfile }) {
       <Suspense>
         <CustomLoader open={isFetching || updatingBookingSession} />
       </Suspense>
-      <p className="font-semibold text-cello font-poppins text-xl text-center">
+      <p className="font-semibold text-cello font-poppins text-xl text-center mt-4">
         My Appointments
       </p>
       <FadedLineBreak />
-      <div className="grid grid-cols-1 gap-4">
+      <div className="grid gap-4 px-2">
         {appointmentDetails?.map((item, index) => {
           const matchedAddress = userProfile?.addresses?.find(
             (addr) => addr.id === item?.userInfo?.address
@@ -106,7 +106,7 @@ export default function AppointmentDetails({ userProfile }) {
             <div key={index} className="border rounded-md shadow-md">
               <div
                 onClick={() => handleAccordionClick(index)}
-                className="cursor-pointer flex justify-between items-center bg-gray-100 p-4 rounded-t-md"
+                className="cursor-pointer flex justify-between items-center bg-gray-100 px-3 py-2 md:!px-4 md:!py-4 rounded-t-md"
               >
                 <div className="font-bold text-coal">
                   Booking #{index + 1} -{" "}
@@ -118,7 +118,7 @@ export default function AppointmentDetails({ userProfile }) {
               </div>
 
               {openAccordion === index && (
-                <div className="p-4 bg-gray-50 rounded-b-md space-y-4">
+                <div className="p-3 bg-gray-50 rounded-b-md space-y-4">
                   <div className="flex flex-col gap-2">
                     <span className="font-semibold text-denim">
                       Status:{" "}
@@ -166,7 +166,7 @@ export default function AppointmentDetails({ userProfile }) {
                       </span>
                     </div>
                   </div>
-                  <div className="border p-4 rounded">
+                  <div className="border p-3 md:!p-4 rounded">
                     <h5 className="font-semibold mb-2">Services Booked</h5>
                     {item?.servicesBooked.map((service, sIndex) => (
                       <div key={sIndex} className="mb-4 border-t pt-2">
@@ -178,30 +178,31 @@ export default function AppointmentDetails({ userProfile }) {
                           </span>
                         </p>
                         {service.sessions.map((session, sessIndex) => (
-                          <div key={sessIndex} className="ml-4 mt-2">
-                            <div className="flex flex-col bg-slate-100 p-4 rounded-lg">
-                              <div className="flex justify-between items-center">
-                                <p className="font-bold text-lg">
-                                  Session - {sessIndex + 1}
-                                </p>
-                                <button
-                                  onClick={() =>
-                                    handleEditSession(session, sessIndex + 1)
-                                  }
-                                  className="text-sm text-skyn underline"
-                                >
-                                  Edit
-                                </button>
-                              </div>
-                              <p className="text-sm">
-                                <strong>Date:</strong>{" "}
-                                {formatDateMMDDYYYY(session?.treatmentDate)}
+                          <div
+                            className="bg-slate-100 border-b-4 flex flex-col p-4 rounded-lg"
+                            key={sessIndex}
+                          >
+                            <div className="flex justify-between items-center">
+                              <p className="font-bold text-lg">
+                                Session - {sessIndex + 1}
                               </p>
-                              <p className="text-sm">
-                                <strong>Time:</strong>{" "}
-                                {convertToIndianTime(session?.appointmentTime)}
-                              </p>
+                              <button
+                                onClick={() =>
+                                  handleEditSession(session, sessIndex + 1)
+                                }
+                                className="text-sm text-skyn underline"
+                              >
+                                Edit
+                              </button>
                             </div>
+                            <p className="text-sm">
+                              <strong>Date:</strong>{" "}
+                              {formatDateMMDDYYYY(session?.treatmentDate)}
+                            </p>
+                            <p className="text-sm">
+                              <strong>Time:</strong>{" "}
+                              {convertToIndianTime(session?.appointmentTime)}
+                            </p>
                           </div>
                         ))}
                       </div>

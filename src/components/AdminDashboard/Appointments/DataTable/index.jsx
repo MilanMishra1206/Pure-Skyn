@@ -162,9 +162,9 @@ function DataTable({ data, totalCount }) {
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 0.45 }}
-            className="bg-slate-900/20 backdrop-blur p-4 fixed inset-0 z-50 md:grid place-items-center overflow-scroll"
+            className="bg-slate-900/20 backdrop-blur p-3 md:!p-4 fixed inset-0 z-50 md:grid md:place-items-center overflow-scroll"
           >
-            <div className="bg-white shadow p-3 md:!p-4 rounded-md font-poppins w-full md:!w-4/5 lg:!w-3/5">
+            <div className="bg-white shadow p-2 md:!p-4 rounded-md font-poppins md:!w-4/5 lg:!w-3/5">
               <div className="flex justify-end">
                 <button
                   className="text-2xl text-coal"
@@ -252,7 +252,7 @@ function DataTable({ data, totalCount }) {
                       return (
                         <div
                           key={index}
-                          className="grid py-4 px-2 md:!p-4 gap-2 text-sm rounded-lg shadow-md p-2 mb-6 space-y-2"
+                          className="grid md:!p-4 gap-2 text-sm rounded-lg shadow-md mb-6 space-y-2"
                         >
                           <div
                             onClick={() => handleAccordionClick(index)}
@@ -267,7 +267,7 @@ function DataTable({ data, totalCount }) {
                             </div>
                           </div>
                           {openAccordion === index && (
-                            <div className="rounded-b-md space-y-4">
+                            <div className="rounded-b-md space-y-4 p-2">
                               <div>
                                 <p className="font-semibold text-denim">
                                   Booking ID:{" "}

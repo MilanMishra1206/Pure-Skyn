@@ -111,13 +111,12 @@ export default function EditSessionModal({
         >
           Cancel
         </button>
-        <Button
-          onClick={formik.handleSubmit}
-          variant="contained"
-          color="primary"
+        <button
+          onClick={() => formik.handleSubmit()}
+          className="bg-skyn text-white px-4 py-2 rounded-md hover:opacity-85 shadow-md"
         >
           Save
-        </Button>
+        </button>
       </DialogActions>
     </Dialog>
   );
