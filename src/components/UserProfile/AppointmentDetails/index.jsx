@@ -234,13 +234,14 @@ export default function AppointmentDetails({ userProfile }) {
           );
         })}
       </div>
-      <EditSessionModal
-        open={editModalOpen}
-        onClose={() => setEditModalOpen(false)}
-        handleSave={handleSave}
-        formik={formik}
-        sessionNo={sessionNo}
-      />
+      {editModalOpen && (
+        <EditSessionModal
+          onClose={() => setEditModalOpen(false)}
+          handleSave={handleSave}
+          formik={formik}
+          sessionNo={sessionNo}
+        />
+      )}
     </div>
   );
 }
