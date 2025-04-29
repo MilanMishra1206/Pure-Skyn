@@ -1,4 +1,4 @@
-import React, { lazy, Suspense, useState } from "react";
+import React, { lazy, Suspense, useEffect, useState } from "react";
 import { useMutation, useQuery } from "react-query";
 import { useFormik } from "formik";
 import * as Yup from "yup";
@@ -69,6 +69,12 @@ export default function AppointmentDetails({ userProfile }) {
     setOpenAccordion(openAccordion === index ? null : index);
   };
 
+  const handleEditSession = (session, sessionNumber) => {
+    setSelectedSessionInfo(session);
+    setSessionNo(sessionNumber);
+    setEditModalOpen(true);
+  };
+
   const formik = useFormik({
     initialValues: {
       treatmentDate: selectedSessionInfo?.treatmentDate || "",
@@ -79,34 +85,35 @@ export default function AppointmentDetails({ userProfile }) {
       appointmentTime: Yup.string().required("Time slot is required"),
     }),
     onSubmit: (values) => {
-      handleSaveSession(values);
+      const { appointmentTime, treatmentDate } = values;
+      const [day, month, year] = treatmentDate?.split("/");
+      const formattedDate = `${year}-${month}-${day}`;
+      const formattedTimeISO = new Date(
+        `${formattedDate} ${appointmentTime}`
+      ).toISOString();
+
+      const payload = {
+        id: selectedSessionInfo?.id,
+        appointmentTime: formattedTimeISO,
+        treatmentDate: formattedDate,
+      };
+
+      handleSessionUpdate({ reqBody: payload });
     },
   });
-
-  const handleEditSession = (session, sessionNumber) => {
-    setSelectedSessionInfo(session);
-    setSessionNo(sessionNumber);
-    setEditModalOpen(true);
-  };
 
   const handleSave = () => {
     formik.handleSubmit();
   };
 
-  const handleSaveSession = (values) => {
-    const { appointmentTime, treatmentDate } = values;
-    const [day, month, year] = treatmentDate?.split("/");
-    const formattedDate = `${year}-${month}-${day}`;
-    const formattedTimeISO = new Date(
-      `${formattedDate} ${appointmentTime}`
-    ).toISOString();
-    const payload = {
-      id: selectedSessionInfo?.id,
-      appointmentTime: formattedTimeISO,
-      treatmentDate: formattedDate,
-    };
-    handleSessionUpdate({ reqBody: payload });
-  };
+  useEffect(() => {
+    if (selectedSessionInfo) {
+      formik.setValues({
+        treatmentDate: selectedSessionInfo?.treatmentDate || "",
+        appointmentTime: selectedSessionInfo?.appointmentTime || "",
+      });
+    }
+  }, [selectedSessionInfo]);
 
   return (
     <div>
