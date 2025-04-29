@@ -34,7 +34,6 @@ export default function AppointmentDetails({ userProfile }) {
       refetchOnReconnect: false,
       retry: false,
       onSuccess: (response) => {
-        alert("inside onSuccess of refetch");
         if (response?.status === "SUCCESS") {
           setAppointmentDetails(response?.data);
           setEditModalOpen(false);
@@ -54,7 +53,6 @@ export default function AppointmentDetails({ userProfile }) {
   const { mutate: handleSessionUpdate, isLoading: updatingBookingSession } =
     useMutation(bookingSessionUpdate, {
       onSuccess: (res) => {
-        alert("inside onSuccess", res?.data);
         if (res?.status === "SUCCESS") {
           showSnackbar(res?.message, "success");
           setEditModalOpen(false);
@@ -100,14 +98,9 @@ export default function AppointmentDetails({ userProfile }) {
         appointmentTime: formattedTimeISO,
         treatmentDate: formattedDate,
       };
-      alert("inside onSubmit");
       handleSessionUpdate({ reqBody: payload });
     },
   });
-
-  const handleSave = () => {
-    formik.handleSubmit();
-  };
 
   useEffect(() => {
     if (selectedSessionInfo) {
@@ -247,7 +240,7 @@ export default function AppointmentDetails({ userProfile }) {
       {editModalOpen && (
         <EditSessionModal
           onClose={() => setEditModalOpen(false)}
-          handleSave={handleSave}
+          handleSave={() => formik.handleSubmit()}
           formik={formik}
           sessionNo={sessionNo}
         />

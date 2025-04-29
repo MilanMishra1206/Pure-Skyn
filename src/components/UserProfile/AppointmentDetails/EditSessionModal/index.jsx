@@ -87,12 +87,12 @@ function EditSessionModal({ onClose, formik, handleSave, sessionNo }) {
           <button
             type="button"
             role="button"
-            onClick={handleSave}
-            onTouchEnd={handleSave}
+            onClick={() => handleSave()}
+            onTouchEnd={() => handleSave()}
             tabIndex={0}
             className="bg-skyn text-white px-4 py-2 rounded-md hover:opacity-85 shadow-md w-full md:!w-50 cursor-pointer"
           >
-            Save
+            Saves
           </button>
           <button
             type="button"
