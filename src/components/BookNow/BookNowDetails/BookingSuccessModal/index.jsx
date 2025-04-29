@@ -97,7 +97,7 @@ function BookingSuccessModal({
                         <div key={i} className="text-sm text-gray-600 ml-4">
                           <p>
                             • {formatDateMMDDYYYY(session.treatmentDate)} at{" "}
-                            {convertToIndianTime(session.appointmentTime)}
+                            {session.appointmentTime}
                           </p>
                         </div>
                       ))}

@@ -99,20 +99,16 @@ const BookNowDetails = ({ isLoggedIn }) => {
         values;
       const [day, month, year] = treatmentDate.split("/");
       const formattedDate = `${year}-${month}-${day}`;
-      const formattedTimeISO = new Date(
-        `${formattedDate} ${timeSlot}`
-      ).toISOString();
 
       const servicesBooked = Array.isArray(servicesCart)
         ? servicesCart.map(({ subServiceId }) => {
             const date = formattedDate;
-            const time = formattedTimeISO;
             return {
               subServiceId,
               sessions: [
                 {
                   treatmentDate: date,
-                  appointmentTime: time,
+                  appointmentTime: timeSlot,
                 },
               ],
             };
