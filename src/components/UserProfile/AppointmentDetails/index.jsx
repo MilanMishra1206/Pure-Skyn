@@ -102,6 +102,10 @@ export default function AppointmentDetails({ userProfile }) {
     },
   });
 
+  const handleSave = () => {
+    formik.handleSubmit();
+  };
+
   useEffect(() => {
     if (selectedSessionInfo) {
       formik.setValues({
@@ -240,7 +244,7 @@ export default function AppointmentDetails({ userProfile }) {
       {editModalOpen && (
         <EditSessionModal
           onClose={() => setEditModalOpen(false)}
-          handleSave={() => formik.handleSubmit()}
+          handleSave={handleSave}
           formik={formik}
           sessionNo={sessionNo}
         />
