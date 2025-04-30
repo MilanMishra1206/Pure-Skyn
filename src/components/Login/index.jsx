@@ -126,12 +126,12 @@ function LoginPage({ isAdminPage = false }) {
     onSubmit: (value) => {
       if (isAdminPage) {
         loginAdminUsers({
-          email: value.email.toLowerCase(),
+          email: value.email?.toLowerCase(),
           password: value.password,
         });
       } else {
         loginUsers({
-          email: value.email.toLowerCase(),
+          email: value.email?.toLowerCase(),
           password: value.password,
         });
       }

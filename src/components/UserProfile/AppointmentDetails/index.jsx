@@ -257,10 +257,10 @@ export default function AppointmentDetails({ userProfile }) {
                                     <strong>Status:</strong>{" "}
                                     <span
                                       className={
-                                        session?.sessionStatus.toLowerCase() ===
+                                        session?.sessionStatus?.toLowerCase() ===
                                         "completed"
                                           ? "text-green-600"
-                                          : session?.sessionStatus.toLowerCase() ===
+                                          : session?.sessionStatus?.toLowerCase() ===
                                               "cancelled"
                                             ? "text-red-600"
                                             : "text-yellow-600"

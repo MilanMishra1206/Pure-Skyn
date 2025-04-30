@@ -12,7 +12,7 @@ const Table = ({
 
   const filteredData = useMemo(() => {
     return data.filter((row) =>
-      row.name.toLowerCase().includes(filter.toLowerCase())
+      row.name?.toLowerCase().includes(filter?.toLowerCase())
     );
   }, [filter, data]);
 
