@@ -145,8 +145,8 @@ function DataTable({ data, totalCount, refetchData, setApplicationData }) {
     }
   }, [selectedSessionInfo]);
 
-  const confirmUpdate = (bookingId, status) => {
-    statusUpdate({ bookingId, status });
+  const confirmUpdate = (sessionId, newStatus) => {
+    statusUpdate({ sessionId, newStatus });
   };
 
   const handleStatusChange = (val, sessionServiceId) => {

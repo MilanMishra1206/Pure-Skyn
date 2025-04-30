@@ -51,10 +51,10 @@ const bookingSessionUpdate = async ({ reqBody }) => {
   }
 };
 
-const sessionStatusUpdate = async ({ bookingId, status }) => {
+const sessionStatusUpdate = async ({ sessionId, newStatus }) => {
   try {
     const data = await axiosInstance.patch(
-      `${API_URLS.Booking.updateSessionStatus}/${bookingId}/status?newStatus=${status}`
+      `${API_URLS.Booking.updateSessionStatus}/${sessionId}/status?newStatus=${newStatus}`
     );
     return data;
   } catch (error) {
