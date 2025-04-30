@@ -51,9 +51,22 @@ const bookingSessionUpdate = async ({ reqBody }) => {
   }
 };
 
+const sessionStatusUpdate = async ({ bookingId, status }) => {
+  try {
+    const data = await axiosInstance.patch(
+      `${API_URLS.Booking.updateSessionStatus}/${bookingId}/status?newStatus=${status}`
+    );
+    return data;
+  } catch (error) {
+    console.log(error);
+    throw new Error();
+  }
+};
+
 export {
   createNewBooking,
   getServiceCart,
   getUserBookings,
   bookingSessionUpdate,
+  sessionStatusUpdate,
 };

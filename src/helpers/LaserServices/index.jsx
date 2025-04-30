@@ -1081,6 +1081,12 @@ export const SERVICE_MAP = {
   "4-1": "Oxy Hydra Facial - Single Session",
   "5-1": "Oxygeneo Facial - Single Session",
   "6-1": "Derma Infusion Facial - Single Session",
+  "7-1": "Full Body Laser Hair Reduction - Female (6 sessions)",
+  "7-2": "Full Body Laser Hair Reduction - Male (6 sessions)",
+  "7-3": "Oxy Hydra Facial + Oxygeno + Derma Infusion Facial",
+  "7-4": "Oxy Hydra Facial + Oxygeneo Therapy",
+  "7-5": "Oxygeneo Facial + Derma Infusion Facial",
+  "7-6": "Oxy Hydra Facial + Derma Infusion Facial",
 };
 
 export const beforeAfterCarouselContent = {

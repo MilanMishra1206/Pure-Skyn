@@ -122,7 +122,7 @@ export default function AppointmentDetails({ userProfile }) {
       </p>
       <FadedLineBreak />
       {!isFetching && appointmentDetails?.length === 0 && (
-        <p className="font-bold font-poppins text-xl text-center">
+        <p className="text-center text-lg text-red-500 mt-8">
           No Appointments Found!!
         </p>
       )}
@@ -133,16 +133,19 @@ export default function AppointmentDetails({ userProfile }) {
               (addr) => addr.id === item?.userInfo?.address
             );
             return (
-              <div key={index} className="border rounded-md shadow-md">
+              <div
+                key={index}
+                className="rounded-xl shadow-lg border border-gray-200 overflow-hidden transition-all duration-300 hover:shadow-xl"
+              >
                 <div
                   onClick={() => handleAccordionClick(index)}
-                  className="cursor-pointer flex justify-between items-center bg-gray-100 px-3 py-2 md:!px-4 md:!py-4 rounded-t-md"
+                  className="cursor-pointer flex justify-between items-center bg-gradient-to-r from-gray-100 to-white px-4 py-4 hover:bg-gray-200 transition-all"
                 >
-                  <div className="font-bold text-coal">
+                  <div className="font-semibold text-base md:text-lg text-denim">
                     Booking #{index + 1} -{" "}
-                    {new Date(item?.createdAt).toLocaleString()}
+                    {convertToIndianTime(item?.createdAt)}
                   </div>
-                  <div className="text-lg text-coal">
+                  <div className="text-xl text-cello">
                     {openAccordion === index ? "▲" : "▼"}
                   </div>
                 </div>
@@ -164,9 +167,10 @@ export default function AppointmentDetails({ userProfile }) {
                       </span>
                     </div>
                     <div className="border p-4 rounded">
-                      <p className="text-xl font-semibold mb-2">User Info</p>
-                      <hr />
-                      <div className="grid lg:grid-cols-2 gap-2 mt-4">
+                      <p className="text-lg font-bold text-coal mb-2 border-b pb-1">
+                        User Info
+                      </p>
+                      <div className="grid sm:grid-cols-2 gap-y-3 gap-x-6 text-sm text-gray-700">
                         <span className="font-medium text-coal">
                           <span className="font-medium text-cello">Name:</span>{" "}
                           {item?.userInfo.name}
@@ -201,44 +205,74 @@ export default function AppointmentDetails({ userProfile }) {
                       </div>
                     </div>
                     <div className="border p-3 md:!p-4 rounded">
-                      <h5 className="font-semibold mb-2">Services Booked</h5>
+                      <p className="text-lg font-bold text-coal mb-2 border-b pb-1 mt-2">
+                        Services Booked
+                      </p>
                       {item?.servicesBooked.map((service, sIndex) => (
-                        <div key={sIndex} className="mb-4 border-t pt-2">
-                          <p className="font-semibold text-denim">
+                        <div key={sIndex} className="mb-4 pt-2">
+                          <p className="font-semibold text-denim mb-4">
                             Service Name:{" "}
                             <span className="text-coal">
                               {SERVICE_MAP[service.subServiceId] ||
                                 "Unknown Service"}
                             </span>
                           </p>
-                          {service.sessions.map((session, sessIndex) => (
-                            <div
-                              className="bg-slate-100 border-b-4 flex flex-col p-4 rounded-lg"
-                              key={sessIndex}
-                            >
-                              <div className="flex justify-between items-center">
-                                <p className="font-bold text-lg">
-                                  Session - {sessIndex + 1}
-                                </p>
-                                <button
-                                  onClick={() =>
-                                    handleEditSession(session, sessIndex + 1)
-                                  }
-                                  className="text-sm text-skyn underline"
+                          <div className="grid xl:!grid-cols-2 gap-4">
+                            {service.sessions.map((session, sessIndex) => {
+                              const isPastDate =
+                                session?.treatmentDate &&
+                                new Date() > new Date(session.treatmentDate);
+                              return (
+                                <div
+                                  className="bg-sky-50 border-l-4 border-skyn px-4 py-3 rounded-lg space-y-2"
+                                  key={sessIndex}
                                 >
-                                  Edit
-                                </button>
-                              </div>
-                              <p className="text-sm">
-                                <strong>Date:</strong>{" "}
-                                {formatDateMMDDYYYY(session?.treatmentDate)}
-                              </p>
-                              <p className="text-sm">
-                                <strong>Time:</strong>{" "}
-                                {session?.appointmentTime}
-                              </p>
-                            </div>
-                          ))}
+                                  <div className="flex justify-between items-center">
+                                    <p className="font-semibold text-md text-coal">
+                                      Session - {sessIndex + 1}
+                                    </p>
+                                    {!isPastDate && (
+                                      <button
+                                        onClick={() =>
+                                          handleEditSession(
+                                            session,
+                                            sessIndex + 1
+                                          )
+                                        }
+                                        className="text-sm text-skyn underline"
+                                      >
+                                        Edit
+                                      </button>
+                                    )}
+                                  </div>
+                                  <p className="text-sm">
+                                    <strong>Date:</strong>{" "}
+                                    {formatDateMMDDYYYY(session?.treatmentDate)}
+                                  </p>
+                                  <p className="text-sm">
+                                    <strong>Time:</strong>{" "}
+                                    {session?.appointmentTime}
+                                  </p>
+                                  <p className="text-sm">
+                                    <strong>Status:</strong>{" "}
+                                    <span
+                                      className={
+                                        session?.sessionStatus.toLowerCase() ===
+                                        "completed"
+                                          ? "text-green-600"
+                                          : session?.sessionStatus.toLowerCase() ===
+                                              "cancelled"
+                                            ? "text-red-600"
+                                            : "text-yellow-600"
+                                      }
+                                    >
+                                      {session?.sessionStatus ?? "Pending"}
+                                    </span>
+                                  </p>
+                                </div>
+                              );
+                            })}
+                          </div>
                         </div>
                       ))}
                     </div>

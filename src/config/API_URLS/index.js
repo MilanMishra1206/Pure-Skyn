@@ -17,6 +17,7 @@ const API_URLS = {
     createBooking: "/booking/create",
     getUserBookings: "/booking",
     updateSession: "/session/update",
+    updateSessionStatus: "/booking", //booking/{bookingId}/status?newStatus=PENDING
   },
   Cart: {
     saveServiceCart: "/cart/add-update",
