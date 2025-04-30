@@ -47,7 +47,7 @@ function BookingSuccessModal({
             </div>
             <div className="flex gap-2 items-center bg-gray-50 rounded-lg shadow-md p-4 mb-6">
               <p className="text-sm text-gray-600">Booking ID</p>
-              <p className="text-lg font-bold text-denim">{bookingId}</p>
+              <p className="text-sm font-bold text-denim">{bookingId}</p>
             </div>
             <div className="bg-gray-50 rounded-lg shadow-md p-4 mb-6 text-sm space-y-2">
               <h2 className="text-lg font-semibold text-gray-800 mb-4">
