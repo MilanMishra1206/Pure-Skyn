@@ -14,6 +14,7 @@ import FadedLineBreak from "../../../../shared/CustomHrTag";
 import CustomAccordion from "../../../../shared/CustomAccordion";
 import { LHRWomenAccordianContent } from "../../../../helpers/AccordianContent";
 import BeforeAfterCarousel from "../../BeforeAfterCarousel";
+import CustomFloatingBookNowButton from "../../../../shared/CustomFloatingBookNowButton";
 
 const CommonHeader = lazy(() => import("../../CommonHeader"));
 
@@ -250,7 +251,9 @@ function LaserHairRemovalForWomen({ category, isMobile, isTablet }) {
               >
                 <FadedLineBreak />
                 <BeforeAfterCarousel
-                  carouselContent={beforeAfterCarouselContent?.["Laser Hair Removal"]}
+                  carouselContent={
+                    beforeAfterCarouselContent?.["Laser Hair Removal"]
+                  }
                 />
                 <FadedLineBreak />
                 <div
@@ -292,6 +295,12 @@ function LaserHairRemovalForWomen({ category, isMobile, isTablet }) {
           </div>
         )}
       </div>
+      {category === "women" && (
+        <CustomFloatingBookNowButton
+          treatmentName="Laser Hair Removal Women At Home"
+          goToStep={1}
+        />
+      )}
     </MotionWrapper>
   );
 }

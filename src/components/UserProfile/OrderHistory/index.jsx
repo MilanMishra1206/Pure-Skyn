@@ -3,7 +3,7 @@ import FadedLineBreak from "../../../shared/CustomHrTag";
 
 export default function OrderHistory({ orderHistory }) {
   return (
-    <div>
+    <div className="p-4">
       <p className="font-semibold text-cello font-poppins text-xl text-center">
         My Orders
       </p>

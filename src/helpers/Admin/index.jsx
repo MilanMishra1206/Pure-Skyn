@@ -110,7 +110,7 @@ export const locationDropdownValues = [
 ];
 
 export const mobileHeadersForQueries = [
-  { key: "id", label: "Query ID" },
+  { key: "name", label: "Name" },
   { key: "action", label: "" },
 ];
 

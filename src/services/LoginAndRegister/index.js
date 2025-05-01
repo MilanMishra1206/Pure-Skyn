@@ -40,16 +40,11 @@ export const loginAdmin = async ({ email, password }) => {
   }
 };
 
-export const registerAdmin = async ({
-  name,
-  email,
-  password,
-  phone,
-}) => {
+export const registerAdmin = async ({ name, email, password, phone }) => {
   const params = { name, email, password, phone };
   try {
     const data = await axiosInstanceLogin.post(
-      API_URLS.Auth.registerUser,
+      API_URLS.Auth.registerAdmin,
       params
     );
     return data;

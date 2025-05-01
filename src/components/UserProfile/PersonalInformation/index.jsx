@@ -114,10 +114,12 @@ export default function PersonalInformation({ userProfile }) {
         <CustomLoader open={isLoading} />
       </Suspense>
       {profileMessage && (
-        <small className="text-bitterSweet">
-          <strong className="!text-black">Note: </strong>
-          {profileMessage}
-        </small>
+        <div className="py-2 px-4">
+          <small className="text-bitterSweet">
+            <strong className="!text-black">Note: </strong>
+            {profileMessage}
+          </small>
+        </div>
       )}
       <form>
         <div className="flex items-center gap-4 mb-4 justify-center mt-4">

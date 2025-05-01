@@ -1,10 +1,10 @@
 import API_URLS from "../../config/API_URLS";
-import { axiosInstance } from "../../utils/Axios";
+import { axiosInstance, axiosInstanceLogin } from "../../utils/Axios";
 
 const addNewQuery = async ({ name, phone, serviceId, city }) => {
   const reqBody = { name, phone, serviceId, city, queryStatus: "NEW" };
   try {
-    const data = await axiosInstance.post(
+    const data = await axiosInstanceLogin.post(
       `${API_URLS.Query.newQuery}`,
       reqBody
     );

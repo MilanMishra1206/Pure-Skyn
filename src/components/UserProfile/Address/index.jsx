@@ -274,7 +274,7 @@ export default function Address({
               <form>
                 {/* Contact Details */}
                 <h2 className="font-bold mb-4 text-lg">Contact Details</h2>
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div className="grid grid-cols-1 md:grid-cols-2 md:gap-2">
                   <Suspense fallback={<div />}>
                     <CustomTextField
                       textClassOverride="!text-kashmirBlue"
@@ -317,7 +317,7 @@ export default function Address({
                   </Suspense>
                 </div>
                 <h2 className="font-bold mb-4 text-lg">Address Details</h2>
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div className="grid grid-cols-1 md:grid-cols-2 md:gap-2">
                   {/* Address Fields */}
                   <Suspense fallback={<div />}>
                     <CustomTextField

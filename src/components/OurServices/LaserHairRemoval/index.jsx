@@ -316,7 +316,6 @@ function LaserHairRemoval() {
             </div>
           </motion.div>
         )}
-        <CustomFloatingBookNowButton goToStep={0} />
       </div>
     </MotionWrapper>
   );

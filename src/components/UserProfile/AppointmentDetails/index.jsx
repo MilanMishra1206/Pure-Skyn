@@ -14,11 +14,14 @@ import {
   SERVICE_MAP,
 } from "../../../helpers/LaserServices";
 import EditSessionModal from "./EditSessionModal";
+import { FaCartPlus } from "react-icons/fa";
+import { useNavigate } from "react-router-dom";
 
 const CustomLoader = lazy(() => import("../../../shared/CustomLoader"));
 
 export default function AppointmentDetails({ userProfile }) {
   const showSnackbar = useAppSnackbar();
+  const navigate = useNavigate();
   const [appointmentDetails, setAppointmentDetails] = useState([]);
   const [openAccordion, setOpenAccordion] = useState(null);
   const [editModalOpen, setEditModalOpen] = useState(false);
@@ -112,6 +115,12 @@ export default function AppointmentDetails({ userProfile }) {
     }
   }, [selectedSessionInfo]);
 
+  const handleBookServiceNow = () => {
+    navigate("/book-now");
+    sessionStorage.removeItem("treatmentName");
+    sessionStorage.removeItem("currentBookStep");
+  };
+
   return (
     <div>
       <Suspense>
@@ -122,9 +131,17 @@ export default function AppointmentDetails({ userProfile }) {
       </p>
       <FadedLineBreak />
       {!isFetching && appointmentDetails?.length === 0 && (
-        <p className="text-center text-lg text-red-500 mt-8">
-          No Appointments Found!!
-        </p>
+        <div className="flex flex-col items-center justify-center p-4 text-center">
+          <p className="text-lg text-red-500">No Appointments Found.</p>
+          <span className="text-green-700">Let's add some! ⚡</span>
+          <button
+            className="flex gap-2 items-center justify-center rounded-3xl font-medium px-4 active:!bg-white active:!text-skyn bg-skyn text-white hover:!opacity-80 active:!border-none transition duration-500 py-2 mt-4"
+            onClick={handleBookServiceNow}
+          >
+            <FaCartPlus size="1.2rem" />
+            Book Services
+          </button>
+        </div>
       )}
       {appointmentDetails?.length !== 0 && (
         <div className="grid gap-4 px-2">

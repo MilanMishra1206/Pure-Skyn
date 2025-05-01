@@ -1,5 +1,5 @@
 import React from "react";
-import { FaPhone, FaCalendarAlt, FaShoppingCart } from "react-icons/fa";
+import { FaPhoneAlt, FaCalendarAlt, FaShoppingCart } from "react-icons/fa";
 import { Link } from "react-router-dom";
 
 const CustomActionRibbon = ({ isFooterVisible }) => {
@@ -12,7 +12,7 @@ const CustomActionRibbon = ({ isFooterVisible }) => {
         className="flex flex-col no-underline items-center cursor-pointer hover:bg-gray-600 rounded-md px-4 py-2"
         to="tel:+1234567890"
       >
-        <FaPhone className="text-2xl text-white" />
+        <FaPhoneAlt className="text-2xl text-white" />
         <span className="text-sm mt-1 text-white">Call</span>
       </Link>
 

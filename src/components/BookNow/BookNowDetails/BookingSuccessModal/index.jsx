@@ -45,7 +45,7 @@ function BookingSuccessModal({
                 Your appointment has been successfully scheduled.
               </p>
             </div>
-            <div className="flex gap-2 items-center bg-gray-50 rounded-lg shadow-md p-4 mb-6">
+            <div className="flex flex-col gap-2 items-center bg-gray-50 rounded-lg shadow-md p-4 mb-6">
               <p className="text-sm text-gray-600">Booking ID</p>
               <p className="text-sm font-bold text-denim">{bookingId}</p>
             </div>

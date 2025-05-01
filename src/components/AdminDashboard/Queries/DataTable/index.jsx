@@ -77,12 +77,12 @@ function DataTable({ data, totalCount, refetch }) {
                   key={item.id}
                   className={`cursor-pointer h-14 ${(index + 1) % 2 === 0 ? "bg-gray-100" : "bg-white"}`}
                 >
-                  <TableCell className="font-poppins text-sm text-blue">
-                    {item?.id}
-                  </TableCell>
                   <TableCell
                     className={`font-poppins text-sm text-blue ${isMobile && "!hidden"}`}
                   >
+                    {item?.id}
+                  </TableCell>
+                  <TableCell className="font-poppins text-sm text-blue">
                     {item?.name || "-"}
                   </TableCell>
                   <TableCell
