@@ -24,7 +24,6 @@ import { BiSolidOffer } from "react-icons/bi";
 
 import { ProductReviews } from "./ProductReviews";
 import BuyMoreProducts from "./BuyMoreProducts";
-import Resources from "../../../config/Resources";
 import FadeInWrapper from "../../../config/MotionFramer/FadeInWrapper";
 import { regex, INRCurrency } from "../../../helpers/Regex";
 import CustomTextField from "../../../shared/CustomTextField";

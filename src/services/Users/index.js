@@ -25,12 +25,12 @@ const getUserAddress = async ({ userId }) => {
   }
 };
 
-const updateUserDetails = async ({ reqBody }) => {
+const updateUserDetails = async ({ isAdmin, reqBody }) => {
+  const url = isAdmin
+    ? API_URLS.Admin.updateAdminDetails
+    : API_URLS.Users.updateUserDetails;
   try {
-    const data = await axiosInstanceLogin.put(
-      API_URLS.Users.updateUserDetails,
-      reqBody
-    );
+    const data = await axiosInstanceLogin.put(url, reqBody);
     return data;
   } catch (response) {
     throw new Error(response?.data?.error?.message);

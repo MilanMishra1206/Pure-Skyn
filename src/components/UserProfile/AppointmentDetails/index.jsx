@@ -38,7 +38,7 @@ export default function AppointmentDetails({ userProfile }) {
       retry: false,
       onSuccess: (response) => {
         if (response?.status === "SUCCESS") {
-          setAppointmentDetails(response?.data);
+          setAppointmentDetails(response?.data.slice().reverse());
           setEditModalOpen(false);
         } else {
           showSnackbar(response?.message, "error");

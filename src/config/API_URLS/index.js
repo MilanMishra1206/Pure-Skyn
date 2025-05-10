@@ -3,6 +3,7 @@ const API_URLS = {
   Admin: {
     getAllUsers: "users/all",
     availableTechnicians: "admin/available-technicians",
+    updateAdminDetails: "/admin/update",
   },
   Auth: {
     login: "/auth/login",

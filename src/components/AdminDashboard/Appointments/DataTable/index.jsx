@@ -361,216 +361,226 @@ function DataTable({ data, totalCount, refetchData, setApplicationData }) {
                     Booking Details
                   </p>
                   <div className="grid mt-4 gap-2">
-                    {selectedItem?.bookings?.map((item, index) => {
-                      const matchedAddress = selectedItem?.addresses?.find(
-                        (addr) => addr.id === item?.userInfo?.address
-                      );
-                      return (
-                        <div
-                          key={index}
-                          className="rounded-xl shadow-lg border border-gray-200 overflow-hidden transition-all duration-300 hover:shadow-xl"
-                        >
+                    {selectedItem?.bookings
+                      ?.slice()
+                      .reverse()
+                      ?.map((item, index) => {
+                        const matchedAddress = selectedItem?.addresses?.find(
+                          (addr) => addr.id === item?.userInfo?.address
+                        );
+                        return (
                           <div
-                            onClick={() => handleAccordionClick(index)}
-                            className="cursor-pointer flex justify-between items-center bg-gradient-to-r from-gray-100 to-white px-4 py-4 hover:bg-gray-200 transition-all"
+                            key={index}
+                            className="rounded-xl shadow-lg border border-gray-200 overflow-hidden transition-all duration-300 hover:shadow-xl"
                           >
-                            <div className="font-semibold text-base text-denim">
-                              Booking #{index + 1} -{" "}
-                              {convertToIndianTime(item?.createdAt)}
-                            </div>
-                            <div className="text-coal">
-                              {openAccordion === index ? "▲" : "▼"}
-                            </div>
-                          </div>
-                          {openAccordion === index && (
-                            <div className="p-3 bg-gray-50 rounded-b-md space-y-4">
-                              <div className="flex flex-col gap-2">
-                                <p className="font-semibold text-denim text-sm">
-                                  Booking ID:{" "}
-                                  <span className="font-normal text-cello">
-                                    {item?.bookingId}
-                                  </span>
-                                </p>
-                                <p className="font-semibold text-denim mb-2 mt-2 text-sm">
-                                  Status:{" "}
-                                  <span className="font-normal text-cello">
-                                    {item?.status}
-                                  </span>
-                                </p>
-                                <p className="font-semibold text-denim text-sm">
-                                  Created At:{" "}
-                                  <span className="font-normal text-black">
-                                    {new Date(item?.createdAt).toLocaleString()}
-                                  </span>
-                                </p>
+                            <div
+                              onClick={() => handleAccordionClick(index)}
+                              className="cursor-pointer flex justify-between items-center bg-gradient-to-r from-gray-100 to-white px-4 py-4 hover:bg-gray-200 transition-all"
+                            >
+                              <div className="font-semibold text-base text-denim">
+                                Booking #{index + 1} -{" "}
+                                {convertToIndianTime(item?.createdAt)}
                               </div>
-                              <div className="border p-4 rounded">
-                                <p className="text-lg font-bold text-coal mb-2 border-b pb-1">
-                                  User Info
-                                </p>
-                                <div className="grid sm:grid-cols-2 gap-y-3 gap-x-6 text-sm text-gray-700">
-                                  <p className="font-medium text-coal">
-                                    <span className="font-medium text-cello">
-                                      Name:
-                                    </span>{" "}
-                                    {item?.userInfo.name}
+                              <div className="text-coal">
+                                {openAccordion === index ? "▲" : "▼"}
+                              </div>
+                            </div>
+                            {openAccordion === index && (
+                              <div className="p-3 bg-gray-50 rounded-b-md space-y-4">
+                                <div className="flex flex-col gap-2">
+                                  <p className="font-semibold text-denim text-sm">
+                                    Booking ID:{" "}
+                                    <span className="font-normal text-cello">
+                                      {item?.bookingId}
+                                    </span>
                                   </p>
-                                  <p className="font-medium text-coal">
-                                    <span className="font-medium text-cello">
-                                      Email:
-                                    </span>{" "}
-                                    {item?.userInfo.email}
+                                  <p className="font-semibold text-denim mb-2 mt-2 text-sm">
+                                    Status:{" "}
+                                    <span className="font-normal text-cello">
+                                      {item?.status}
+                                    </span>
                                   </p>
-                                  <p className="font-medium text-coal">
-                                    <span className="font-medium text-cello">
-                                      Mobile:
-                                    </span>{" "}
-                                    {item?.userInfo.mobile}
-                                  </p>
-                                  <p className="font-medium text-coal">
-                                    <span className="font-medium text-cello">
-                                      Address:
-                                    </span>{" "}
-                                    {matchedAddress?.addressLine1},{" "}
-                                    {matchedAddress?.addressLine2}
-                                  </p>
-                                  <p className="font-medium text-coal">
-                                    <span className="font-medium text-cello">
-                                      City:
-                                    </span>{" "}
-                                    {item?.userInfo.city}
-                                  </p>
-                                  <p className="font-medium text-coal">
-                                    <span className="font-medium text-cello">
-                                      Pin Code:
-                                    </span>{" "}
-                                    {matchedAddress?.pinCode}
+                                  <p className="font-semibold text-denim text-sm">
+                                    Created At:{" "}
+                                    <span className="font-normal text-black">
+                                      {new Date(
+                                        item?.createdAt
+                                      ).toLocaleString()}
+                                    </span>
                                   </p>
                                 </div>
-                              </div>
-                              <div className="border p-4 rounded">
-                                <p className="text-lg font-bold text-coal mb-2 border-b pb-1 mt-2">
-                                  Technician
-                                </p>
-                                <p>{item?.technicianName}</p>
-                              </div>
-                              <div className="border p-4 rounded">
-                                <p className="text-lg font-bold text-coal mb-2 border-b pb-1 mt-2">
-                                  Services Booked
-                                </p>
-                                {item?.servicesBooked.map((service, sIndex) => (
-                                  <div key={sIndex} className="mb-4 pt-2">
-                                    <p className="font-semibold text-denim mb-4">
-                                      Service Name:{" "}
-                                      <span className="text-coal">
-                                        {SERVICE_MAP[service.subServiceId] ||
-                                          "Unknown Service"}
-                                      </span>
+                                <div className="border p-4 rounded">
+                                  <p className="text-lg font-bold text-coal mb-2 border-b pb-1">
+                                    User Info
+                                  </p>
+                                  <div className="grid sm:grid-cols-2 gap-y-3 gap-x-6 text-sm text-gray-700">
+                                    <p className="font-medium text-coal">
+                                      <span className="font-medium text-cello">
+                                        Name:
+                                      </span>{" "}
+                                      {item?.userInfo.name}
                                     </p>
-                                    <div className="grid xl:!grid-cols-2 gap-4">
-                                      {service.sessions.map(
-                                        (session, sessIndex) => {
-                                          const isPastDate =
-                                            session?.treatmentDate &&
-                                            new Date() >
-                                              new Date(session.treatmentDate);
-                                          return (
-                                            <div
-                                              className="bg-sky-50 border-l-4 border-skyn px-4 py-3 rounded-lg space-y-2"
-                                              key={sessIndex}
-                                            >
-                                              <div className="flex justify-between items-center">
-                                                <p className="font-semibold text-md text-coal">
-                                                  Session - {sessIndex + 1}
-                                                </p>
-                                                {!isPastDate && (
-                                                  <button
-                                                    onClick={() =>
-                                                      handleEditSession(
-                                                        session,
-                                                        sessIndex + 1
-                                                      )
-                                                    }
-                                                    className="text-sm text-skyn underline"
-                                                  >
-                                                    Edit
-                                                  </button>
-                                                )}
-                                              </div>
-                                              <p className="text-sm">
-                                                <strong>Date:</strong>{" "}
-                                                {formatDateMMDDYYYY(
-                                                  session?.treatmentDate
-                                                )}
-                                              </p>
-                                              <p className="text-sm">
-                                                <strong>Time:</strong>{" "}
-                                                {session?.appointmentTime}
-                                              </p>
-                                              <p className="text-sm">
-                                                <strong>Status:</strong>{" "}
-                                                <span
-                                                  className={
-                                                    session?.sessionStatus?.toLowerCase() ===
-                                                    "completed"
-                                                      ? "text-green-600"
-                                                      : session?.sessionStatus?.toLowerCase() ===
-                                                          "cancelled"
-                                                        ? "text-red-600"
-                                                        : "text-yellow-600"
-                                                  }
-                                                >
-                                                  {session?.sessionStatus ??
-                                                    "Pending"}
-                                                </span>
-                                              </p>
-                                              {!isPastDate && (
-                                                <div className="flex gap-2 items-center">
-                                                  <p className="text-sm">
-                                                    <strong>
-                                                      Update Status:
-                                                    </strong>{" "}
-                                                  </p>
-                                                  <select
-                                                    value={
-                                                      session?.sessionStatus
-                                                    }
-                                                    onChange={(e) =>
-                                                      handleStatusChange(
-                                                        e.target.value,
-                                                        session?.id
-                                                      )
-                                                    }
-                                                    className="border px-4 py-1 rounded text-xs"
-                                                  >
-                                                    <option value="PENDING">
-                                                      PENDING
-                                                    </option>
-                                                    <option value="ASSIGNED">
-                                                      ASSIGNED
-                                                    </option>
-                                                    <option value="COMPLETED">
-                                                      COMPLETED
-                                                    </option>
-                                                    <option value="CANCELLED">
-                                                      CANCELLED
-                                                    </option>
-                                                  </select>
-                                                </div>
-                                              )}
-                                            </div>
-                                          );
-                                        }
-                                      )}
-                                    </div>
+                                    <p className="font-medium text-coal">
+                                      <span className="font-medium text-cello">
+                                        Email:
+                                      </span>{" "}
+                                      {item?.userInfo.email}
+                                    </p>
+                                    <p className="font-medium text-coal">
+                                      <span className="font-medium text-cello">
+                                        Mobile:
+                                      </span>{" "}
+                                      {item?.userInfo.mobile}
+                                    </p>
+                                    <p className="font-medium text-coal">
+                                      <span className="font-medium text-cello">
+                                        Address:
+                                      </span>{" "}
+                                      {matchedAddress?.addressLine1},{" "}
+                                      {matchedAddress?.addressLine2}
+                                    </p>
+                                    <p className="font-medium text-coal">
+                                      <span className="font-medium text-cello">
+                                        City:
+                                      </span>{" "}
+                                      {item?.userInfo.city}
+                                    </p>
+                                    <p className="font-medium text-coal">
+                                      <span className="font-medium text-cello">
+                                        Pin Code:
+                                      </span>{" "}
+                                      {matchedAddress?.pinCode}
+                                    </p>
                                   </div>
-                                ))}
+                                </div>
+                                <div className="border p-4 rounded">
+                                  <p className="text-lg font-bold text-coal mb-2 border-b pb-1 mt-2">
+                                    Technician
+                                  </p>
+                                  <p>{item?.technicianName}</p>
+                                </div>
+                                <div className="border p-4 rounded">
+                                  <p className="text-lg font-bold text-coal mb-2 border-b pb-1 mt-2">
+                                    Services Booked
+                                  </p>
+                                  {item?.servicesBooked.map(
+                                    (service, sIndex) => (
+                                      <div key={sIndex} className="mb-4 pt-2">
+                                        <p className="font-semibold text-denim mb-4">
+                                          Service Name:{" "}
+                                          <span className="text-coal">
+                                            {SERVICE_MAP[
+                                              service.subServiceId
+                                            ] || "Unknown Service"}
+                                          </span>
+                                        </p>
+                                        <div className="grid xl:!grid-cols-2 gap-4">
+                                          {service.sessions.map(
+                                            (session, sessIndex) => {
+                                              const isPastDate =
+                                                session?.treatmentDate &&
+                                                new Date() >
+                                                  new Date(
+                                                    session.treatmentDate
+                                                  );
+                                              return (
+                                                <div
+                                                  className="bg-sky-50 border-l-4 border-skyn px-4 py-3 rounded-lg space-y-2"
+                                                  key={sessIndex}
+                                                >
+                                                  <div className="flex justify-between items-center">
+                                                    <p className="font-semibold text-md text-coal">
+                                                      Session - {sessIndex + 1}
+                                                    </p>
+                                                    {!isPastDate && (
+                                                      <button
+                                                        onClick={() =>
+                                                          handleEditSession(
+                                                            session,
+                                                            sessIndex + 1
+                                                          )
+                                                        }
+                                                        className="text-sm text-skyn underline"
+                                                      >
+                                                        Edit
+                                                      </button>
+                                                    )}
+                                                  </div>
+                                                  <p className="text-sm">
+                                                    <strong>Date:</strong>{" "}
+                                                    {formatDateMMDDYYYY(
+                                                      session?.treatmentDate
+                                                    )}
+                                                  </p>
+                                                  <p className="text-sm">
+                                                    <strong>Time:</strong>{" "}
+                                                    {session?.appointmentTime}
+                                                  </p>
+                                                  <p className="text-sm">
+                                                    <strong>Status:</strong>{" "}
+                                                    <span
+                                                      className={
+                                                        session?.sessionStatus?.toLowerCase() ===
+                                                        "completed"
+                                                          ? "text-green-600"
+                                                          : session?.sessionStatus?.toLowerCase() ===
+                                                              "cancelled"
+                                                            ? "text-red-600"
+                                                            : "text-yellow-600"
+                                                      }
+                                                    >
+                                                      {session?.sessionStatus ??
+                                                        "Pending"}
+                                                    </span>
+                                                  </p>
+                                                  {!isPastDate && (
+                                                    <div className="flex gap-2 items-center">
+                                                      <p className="text-sm">
+                                                        <strong>
+                                                          Update Status:
+                                                        </strong>{" "}
+                                                      </p>
+                                                      <select
+                                                        value={
+                                                          session?.sessionStatus
+                                                        }
+                                                        onChange={(e) =>
+                                                          handleStatusChange(
+                                                            e.target.value,
+                                                            session?.id
+                                                          )
+                                                        }
+                                                        className="border px-4 py-1 rounded text-xs"
+                                                      >
+                                                        <option value="PENDING">
+                                                          PENDING
+                                                        </option>
+                                                        <option value="ASSIGNED">
+                                                          ASSIGNED
+                                                        </option>
+                                                        <option value="COMPLETED">
+                                                          COMPLETED
+                                                        </option>
+                                                        <option value="CANCELLED">
+                                                          CANCELLED
+                                                        </option>
+                                                      </select>
+                                                    </div>
+                                                  )}
+                                                </div>
+                                              );
+                                            }
+                                          )}
+                                        </div>
+                                      </div>
+                                    )
+                                  )}
+                                </div>
                               </div>
-                            </div>
-                          )}
-                        </div>
-                      );
-                    })}
+                            )}
+                          </div>
+                        );
+                      })}
                   </div>
                 </div>
               )}

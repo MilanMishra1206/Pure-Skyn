@@ -213,7 +213,10 @@ function UserProfile() {
           <div className="shadow md:!p-5 rounded w-full">
             {selectedSection === "Profile" && (
               <Suspense fallback={<div />}>
-                <PersonalInformation userProfile={userProfile} />
+                <PersonalInformation
+                  userProfile={userProfile}
+                  isAdmin={isAdmin}
+                />
               </Suspense>
             )}
             {selectedSection === "Address" && (
@@ -230,7 +233,7 @@ function UserProfile() {
             )}
             {selectedSection === "Appointments" && (
               <Suspense fallback={<div />}>
-                <AppointmentDetails userProfile={userProfile}/>
+                <AppointmentDetails userProfile={userProfile} />
               </Suspense>
             )}
             {selectedSection === "Orders" && (

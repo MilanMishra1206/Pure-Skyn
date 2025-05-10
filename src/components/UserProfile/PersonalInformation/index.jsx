@@ -13,7 +13,7 @@ import { setUserProfile } from "../../../redux/Actions";
 const CustomTextField = lazy(() => import("../../../shared/CustomTextField"));
 const CustomLoader = lazy(() => import("../../../shared/CustomLoader"));
 
-export default function PersonalInformation({ userProfile }) {
+export default function PersonalInformation({ userProfile, isAdmin }) {
   const showSnackbar = useAppSnackbar();
   const dispatch = useDispatch();
   const [editMode, setEditMode] = useState(false);
@@ -52,6 +52,7 @@ export default function PersonalInformation({ userProfile }) {
             name: data?.name,
             phone: data?.phone,
             gender: data?.gender,
+            isAdmin,
           })
         );
         setFormikInitialValues({
@@ -81,13 +82,13 @@ export default function PersonalInformation({ userProfile }) {
       email: userProfile?.email || "",
       gender: userProfile?.gender || "",
     },
-    validationSchema: getPersonalInfoValidationSchema,
+    validationSchema: getPersonalInfoValidationSchema(isAdmin),
     onSubmit: (value) => {
       const reqBody = {
         id: userProfile?.userId || "",
         ...value,
       };
-      updateDetails({ reqBody });
+      updateDetails({ isAdmin, reqBody });
     },
   });
 
@@ -113,7 +114,7 @@ export default function PersonalInformation({ userProfile }) {
       <Suspense fallback={<div>Loading...</div>}>
         <CustomLoader open={isLoading} />
       </Suspense>
-      {profileMessage && (
+      {!isAdmin && profileMessage && (
         <div className="py-2 px-4">
           <small className="text-bitterSweet">
             <strong className="!text-black">Note: </strong>
@@ -198,41 +199,43 @@ export default function PersonalInformation({ userProfile }) {
               </div>
             )}
           </div>
-          <div className="flex flex-col">
-            {editMode ? (
-              <>
-                <span className="text-sm font-medium pb-1 !text-cello">
-                  Gender<small className="text-bitterSweet">*</small>
-                </span>
-                <div className="grid grid-cols-1 gap-2">
-                  {genders.map((gender, index) => (
-                    <button
-                      key={index}
-                      type="button"
-                      className={`py-2 lg:px-4 rounded-lg text-sm font-medium transition-all border ${
-                        personalInfoFormik.values.gender === gender
-                          ? "bg-skyn text-white border-skyn shadow-md"
-                          : "bg-white text-gray-700 border-gray-300 hover:bg-gray-100"
-                      }`}
-                      onClick={() =>
-                        personalInfoFormik.setFieldValue("gender", gender)
-                      }
-                    >
-                      {gender}
-                    </button>
-                  ))}
+          {!isAdmin && (
+            <div className="flex flex-col">
+              {editMode ? (
+                <>
+                  <span className="text-sm font-medium pb-1 !text-cello">
+                    Gender<small className="text-bitterSweet">*</small>
+                  </span>
+                  <div className="grid grid-cols-1 gap-2">
+                    {genders.map((gender, index) => (
+                      <button
+                        key={index}
+                        type="button"
+                        className={`py-2 lg:px-4 rounded-lg text-sm font-medium transition-all border ${
+                          personalInfoFormik.values.gender === gender
+                            ? "bg-skyn text-white border-skyn shadow-md"
+                            : "bg-white text-gray-700 border-gray-300 hover:bg-gray-100"
+                        }`}
+                        onClick={() =>
+                          personalInfoFormik.setFieldValue("gender", gender)
+                        }
+                      >
+                        {gender}
+                      </button>
+                    ))}
+                  </div>
+                </>
+              ) : (
+                <div className="flex flex-col">
+                  {" "}
+                  <span className="text-black font-medium">Gender</span>
+                  <span className="text-cello">
+                    {personalInfoFormik.values.gender}
+                  </span>
                 </div>
-              </>
-            ) : (
-              <div className="flex flex-col">
-                {" "}
-                <span className="text-black font-medium">Gender</span>
-                <span className="text-cello">
-                  {personalInfoFormik.values.gender}
-                </span>
-              </div>
-            )}
-          </div>
+              )}
+            </div>
+          )}
           <div>
             {editMode ? (
               <Suspense fallback={<div />}>

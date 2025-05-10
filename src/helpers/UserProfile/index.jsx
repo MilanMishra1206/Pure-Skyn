@@ -30,7 +30,7 @@ export const getAddressValidationSchema = () =>
     state: yup.string().required("State is required"),
   });
 
-export const getPersonalInfoValidationSchema = () =>
+export const getPersonalInfoValidationSchema = (isAdmin) =>
   yup.object().shape({
     name: yup.string().required("Name is required"),
     phone: yup
@@ -38,5 +38,7 @@ export const getPersonalInfoValidationSchema = () =>
       .matches(/^[0-9]{10}$/, "Enter a valid 10-digit contact number")
       .required("Mobile number is required"),
     email: yup.string().email("Please Enter Valid Email").required("Required"),
-    gender: yup.string().required("Please select a gender"),
+    gender: isAdmin
+      ? yup.string()
+      : yup.string().required("Please select a gender"),
   });
