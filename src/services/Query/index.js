@@ -26,7 +26,7 @@ const getAllQuery = async () => {
 
 const updateQueryStatus = async ({ queryId, status }) => {
   try {
-    const data = await axiosInstance.patch(
+    const data = await axiosInstance.post(
       `${API_URLS.Query.updateQueryStatus}${queryId}/status?status=${status}`
     );
     return data;

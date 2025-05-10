@@ -53,7 +53,7 @@ const bookingSessionUpdate = async ({ reqBody }) => {
 
 const sessionStatusUpdate = async ({ sessionId, newStatus }) => {
   try {
-    const data = await axiosInstance.patch(
+    const data = await axiosInstance.post(
       `${API_URLS.Booking.updateSessionStatus}/${sessionId}/status?newStatus=${newStatus}`
     );
     return data;

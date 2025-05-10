@@ -1,5 +1,5 @@
 const API_URLS = {
-  baseURL: "https://skynapi.duckdns.org/api/v1",
+  baseURL: "https://api.pureskyn.in/api/v1",
   Admin: {
     getAllUsers: "users/all",
     availableTechnicians: "admin/available-technicians",
