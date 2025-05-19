@@ -5,6 +5,7 @@ import { useNavigate } from "react-router-dom";
 import { useFormik } from "formik";
 import { useSelector } from "react-redux";
 import { useMutation } from "react-query";
+import confetti from "canvas-confetti";
 
 import CustomButton2 from "../../../shared/CustomButton2";
 import BookNowForm from "./BookNowForm";
@@ -77,6 +78,11 @@ const BookNowDetails = ({ isLoggedIn }) => {
     onSuccess(res) {
       if (res?.status !== "ERROR") {
         setShowBookingSuccessModal(true);
+        confetti({
+          particleCount: 250,
+          spread: 60,
+          ticks: 300,
+        });
         setSuccessBookingContent(res?.data);
         showSnackbar(res?.message, "success");
       } else {
