@@ -34,8 +34,6 @@ function CartDrawer({ openCart, handleOpenCart }) {
 
   const cartItems = useSelector((state) => state.cart.items);
 
-  console.log("cartItems", cartItems)
-
   const getTotalForItem = (item) => item.quantity * +item.productPrice;
 
   useEffect(() => {

@@ -55,9 +55,11 @@ export const registerAdmin = async ({ name, email, password, phone }) => {
 };
 
 export const requestChangePassword = async ({ email }) => {
+  
   try {
     const data = await axiosInstanceLogin.post(
-      `${API_URLS.Auth.requestChangePassword}${email}`
+      API_URLS.Auth.requestChangePassword,
+      { email }
     );
     return data;
   } catch (error) {

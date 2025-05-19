@@ -21,34 +21,36 @@ const CustomLoader = lazy(() => import("../../shared/CustomLoader"));
 
 function ChangePassword() {
   const dispatch = useDispatch();
-  const showSnackbar = useAppSnackbar();
   const navigate = useNavigate();
+  const showSnackbar = useAppSnackbar();
+  const isMobile = useMediaQuery("(max-width: 767px)");
+  const isTablet = useMediaQuery("(max-width: 1023px)");
   const useQuery = () => {
     return new URLSearchParams(useLocation().search);
   };
   const query = useQuery();
   const token = query.get("token");
 
-  const [isLinkSent, setIsLinkSent] = useState(false);
   const [email, setEmail] = useState("");
+  const [isLinkSent, setIsLinkSent] = useState(false);
   const [showCurrentPassword, setShowCurrentPassword] = useState(false);
   const [showNewPassword, setShowNewPassword] = useState(false);
   const [showConfirmNewPassword, setShowConfirmNewPassword] = useState(false);
-  const isMobile = useMediaQuery("(max-width: 767px)");
-  const isTablet = useMediaQuery("(max-width: 1023px)");
 
-  const { mutate: reqPasswordChange, isSending } = useMutation(
+  const { mutate: reqPasswordChange, isLoading: isSendingMail } = useMutation(
     requestChangePassword,
     {
       onSuccess(res) {
-        if (res?.status === "ERROR") {
-          showSnackbar(`${res?.message}. Please try again!`, "error");
-        } else {
+        if (res?.status !== "ERROR") {
           setIsLinkSent(true);
-          showSnackbar(`${res?.message}`, "success");
+          showSnackbar(res?.message, "success");
+        } else {
+          setIsLinkSent(false);
+          showSnackbar(`${res?.message}. Please try again!`, "error");
         }
       },
       onError(error) {
+        setIsLinkSent(false);
         showSnackbar(error, "error");
       },
     }
@@ -114,7 +116,7 @@ function ChangePassword() {
       className={`mt-3 ${isTablet ? "py-3" : ""}`}
     >
       <Suspense fallback={<div />}>
-        <CustomLoader open={isSending || isLoading} />
+        <CustomLoader open={isSendingMail || isLoading} />
       </Suspense>
       <div className="mt-3 p-5">
         <CustomHeader
@@ -233,11 +235,9 @@ function ChangePassword() {
             </>
           )}
           {isLinkSent && !token && (
-            <>
-              <p className="font-bold text-center text-emerald-900 text-xl">
-                Reset link is sent to your email. Please check.
-              </p>
-            </>
+            <p className="font-bold text-center text-emerald-900 text-xl">
+              Reset link is sent to your email. Please check.
+            </p>
           )}
         </div>
       </div>

@@ -10,7 +10,7 @@ const API_URLS = {
     loginAdmin: "/admin/login",
     registerUser: "/auth/register",
     registerAdmin: "/admin/register",
-    requestChangePassword: "/auth/request-password-change?email=",
+    requestChangePassword: "/auth/request-password-change",
     changePassword: "/auth/change-password",
   },
   Booking: {
