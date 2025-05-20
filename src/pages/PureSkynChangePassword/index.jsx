@@ -1,11 +1,7 @@
 import ChangePassword from "../../components/ChangePassword";
 
 function PureSkynChangePassword() {
-    return (
-        <div>
-          <ChangePassword />
-        </div>
-      );
+  return <ChangePassword />;
 }
 
 export default PureSkynChangePassword;

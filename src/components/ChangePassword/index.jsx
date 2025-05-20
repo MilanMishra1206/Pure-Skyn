@@ -60,13 +60,13 @@ function ChangePassword() {
     changePassword,
     {
       onSuccess(res) {
-        if (res?.status === "ERROR") {
+        if (res?.status === "FAIL") {
           showSnackbar(`${res?.message}. Please try again!`, "error");
         } else {
-          showSnackbar(res?.message, "success");
+          showSnackbar(`${res?.message}. Please login to continue.`, "success");
           sessionStorage.clear();
-          navigate("/login");
           dispatch(logoutUser());
+          navigate("/login");
         }
       },
       onError(error) {
@@ -199,7 +199,7 @@ function ChangePassword() {
                 />
               </Suspense>
               <button
-                type="submit"
+                type="button"
                 className="w-full xl:!w-1/2 bg-skyn text-white py-2 px-4 rounded-md hover:bg-skyn-dark focus:outline-none transition-all shadow-[3px_3px_0px_#313440] hover:shadow-none hover:translate-x-[3px] hover:translate-y-[3px]"
                 onClick={() => passwordFormik.handleSubmit()}
               >

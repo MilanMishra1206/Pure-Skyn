@@ -1,11 +1,7 @@
 import SignUpPage from "../../components/SignUp";
 
 function PureSkynSignUp() {
-    return (
-        <div>
-          <SignUpPage />
-        </div>
-      );
+  return <SignUpPage />;
 }
 
 export default PureSkynSignUp;

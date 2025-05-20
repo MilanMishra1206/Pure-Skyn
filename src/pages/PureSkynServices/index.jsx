@@ -1,11 +1,7 @@
 import LaserServices from "../../components/OurServices";
 
 function PureSkynServices() {
-  return (
-    <div>
-      <LaserServices />
-    </div>
-  );
+  return <LaserServices />;
 }
 
 export default PureSkynServices;

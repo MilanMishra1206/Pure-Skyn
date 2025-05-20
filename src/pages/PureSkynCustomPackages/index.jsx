@@ -1,11 +1,7 @@
 import CustomPackages from "../../components/OurServices/CustomPackages";
 
 function PureSkynCustomPackages() {
-  return (
-    <div>
-      <CustomPackages />
-    </div>
-  );
+  return <CustomPackages />;
 }
 
 export default PureSkynCustomPackages;

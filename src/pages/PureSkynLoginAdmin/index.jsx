@@ -1,11 +1,7 @@
 import LoginAdmin from "../../components/LoginAdmin";
 
 function PureSkynLoginAdmin() {
-    return (
-        <div>
-          <LoginAdmin />
-        </div>
-      );
+  return <LoginAdmin />;
 }
 
 export default PureSkynLoginAdmin;

@@ -1,11 +1,7 @@
 import BookNow from "../../components/BookNow";
 
 function PureSkynBookNow() {
-    return (
-        <div>
-          <BookNow />
-        </div>
-      );
+  return <BookNow />;
 }
 
 export default PureSkynBookNow;

@@ -1,11 +1,7 @@
 import Faq from "../../components/Faq";
 
 function PureSkynFaq() {
-    return (
-        <div>
-          <Faq />
-        </div>
-      );
+  return <Faq />;
 }
 
 export default PureSkynFaq;
